@@ -1,0 +1,90 @@
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>{if $app.breadCrumbs}{foreach key=key from=$app.breadCrumbs item=breadCrumb}{if $key > 0 && $key < count($app.breadCrumbs)} &raquo; {/if}{$breadCrumb.title}{/foreach}{else}{/if}</title>
+	<link rel="alternate" type="application/rss+xml" title="{if $app.breadCrumbs}{foreach key=key from=$app.breadCrumbs item=breadCrumb}{if $key > 0 && $key < count($app.breadCrumbs)} &raquo; {/if}{$breadCrumb.title}{/foreach}{else}{/if}" href="{$app.breadCrumbs[0].href}&mode=rss" />
+	<link rel="stylesheet" type="text/css" href="{$app.config.url.root}/css/weblink.css?v={$app.settings.currentVersion|forURL}" />
+	<link rel="stylesheet" type="text/css" href="{$app.config.url.root}/js/jquery/swipebox/css/swipebox.css?v={$app.settings.currentVersion|forURL}" />
+	<link rel="stylesheet" type="text/css" href="{$app.config.url.root}/js/jquery/jG/justifiedGallery.min.css?v={$app.settings.currentVersion|forURL}" />
+	<script type="text/javascript" src="{$app.config.url.root}/js/min.php?weblink_gallery=1{if $app.config.misc.developmentMode}&debug=1{/if}&v={$app.settings.currentVersion|forURL}"></script>
+	{if $app.linkInfo.allow_uploads}
+	<script type="text/javascript" src="{$app.config.url.root}/js/min.php?flow-standalone=1&v={$app.settings.currentVersion|forURL}"></script>
+	{/if}
+	<script type="text/javascript">
+		var URLRoot = '{$app.config.url.root}';
+		var WebLinkId = '{$app.linkInfo.id_rnd}';
+		var WebLinkPass = {if $app.linkInfo.password}'{$app.linkInfo.password|md5}'{else}false{/if};
+		var UploadToPath = '{$app.path|safeJS}';
+		var UploadChunkSize = {$app.chunkSize};
+		var downloadURL = '{$app.config.url.root}/?module=weblinks&section=default&page=public&multidownload=1&id={$app.linkInfo.id_rnd}{if $app.path}&path={$app.path|forHTML|forURL}{/if}';
+		var hasTerms = {if $app.linkInfo.download_terms}true{else}false{/if};
+		var allowsUploads = {if $app.linkInfo.allow_uploads}true{else}false{/if};
+		var hasGallery = true;
+		var downloadLabel = '{t}Download{/t}';
+		var showPreDownload = {if $app.preDownloadPage}true{else}false{/if};
+		var itemCount = {sizeof($app.list.files)};
+	</script>
+
+</head>
+
+<body>
+<div class="header" id="header">
+	<div style="margin:15px">
+		<div style="float: left">
+			{if $app.breadCrumbs}
+			{foreach key=key from=$app.breadCrumbs item=breadCrumb}
+			{if $key > 0 && $key < count($app.breadCrumbs)}<span class="bcSep">›</span>{/if}
+			{if $breadCrumb.href}<a href="{$breadCrumb.href}" class="breadCrumb">{/if}{$breadCrumb.title}{if $breadCrumb.href}</a>{/if}{/foreach}
+			{else}
+			&nbsp;
+			{/if}
+			<div class="itemCount">
+				{if sizeof($app.list.all) == 1}
+				One item
+				{elseif sizeof($app.list.all) == 0}
+				Empty folder
+				{else}
+				{$app.list.all|sizeof} items
+				{/if}
+			</div>
+		</div>
+		<div style="float:right">
+			<span id="upStatus"></span>
+			<a href="javascript:FR.startUpload();" id="upbtn" class="actionBtn" style="display:none">{t}Upload{/t}</a>
+			<a href="javascript:FR.download();" id="dnbtn" class="actionBtn">{t}Download All{/t}</a>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+</div>
+
+
+<div class="galleryContainer">
+
+	<div id="gallery-folders">
+{foreach from=$app.list.folders item=item}
+<a href="{$item.url}"><img alt="{$item.filename|safeHTML}" src="{$app.config.url.root}/images/fico/folder.png"/></a>
+{/foreach}
+	</div>
+
+	<div id="gallery">
+{foreach from=$app.list.files item=item}
+
+<a href="{$item.url}&thumbnail=1&height=400&g=cover" class="swipebox" title="{$item.filename|safeHTML}" data-download="{$item.url}" {if $item.isWebSafe}data-large="{$item.url}&inline=1"{else}data-large="{$item.url}&thumbnail=1&height=1024"{/if}><img alt="{$item.filename|safeHTML}" src="{$item.url}&thumbnail=1&height=400&g=cover"/></a>
+{/foreach}
+	</div>
+
+</div>
+
+
+{if $app.linkInfo.download_terms}
+<div id="terms">
+	<div id="terms-contents">
+		<div>{$app.linkInfo.download_terms|forHTML}</div>
+	</div>
+	<a class="actionBtn acceptBtn" href="javascript:FR.acceptTerms()">{t}Download{/t}</a>
+	<a class="actionBtn cancelBtn" href="javascript:FR.cancelTerms()">{t}Cancel{/t}</a>
+</div>
+{/if}
+
+{if $app.settings.tracker_codes}{$app.settings.tracker_codes}{/if}

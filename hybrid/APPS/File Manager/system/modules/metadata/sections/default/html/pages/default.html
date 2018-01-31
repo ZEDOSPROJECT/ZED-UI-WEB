@@ -1,0 +1,16 @@
+<script>
+FR = { };
+FR.filename = '{$app.filename|forHTML|safeJS}';
+FR.path = '{$app.path|forHTML|safeJS}';
+FR.filetypes = {$app.fileTypes};
+FR.popupId = '{$app.popupId}';
+FR.selectedFileType = '{$app.fileTypeId}';
+FR.data = {$app.data};
+FR.UI = { translations: [] };
+</script>
+<script src="?module=fileman&section=utils&v={$app.settings.currentVersion|forURL}&sec=Metadata&lang={$app.language|forURL}&page=translation.js"></script>
+<script src="js/ext/ux/superboxselect/superboxselect.js?v={$app.settings.currentVersion|forURL}"></script>
+<link type="text/css" href="js/ext/ux/superboxselect/superboxselect-gray.css?v={$app.settings.currentVersion|forURL}" rel="stylesheet" rev="stylesheet">
+<script src="js/ext/ux/starfield.js?v={$app.settings.currentVersion|forURL}"></script>
+<script src="js/fileman/metadata.js?v={$app.settings.currentVersion|forURL}"></script>
+<style>.x-fieldset { border: none; }</style>

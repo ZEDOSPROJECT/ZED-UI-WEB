@@ -1,0 +1,4726 @@
++-- Login Page --+
+
+Username
+Nom d'utilisateur
+
+Password
+Mot de passe
+
+Language
+Langue
+
+Keep me signed in
+Rester connecté
+
+By checking this box, you'll stay logged in for up to 2 weeks or until you log out. You'll get easier access to the files, even if you close your browser or shut down your computer.<br>If you're using a public computer or you share this computer with others, we recommend that you uncheck the box.
+En cochant cette option, vous resterez connecté pendant 2 semaines ou jusqu'à ce que vous vous déconnectiez de l'application. Vous aurez plus facilement accès aux fichiers même si vous fermez votre navigateur ou éteignez votre ordinateur.<br> Si vous utilisez un ordinateur public ou que vous partagez cet ordinateur avec d'autres, nous vous recommandons de décocher la case.
+
+Sign in
+Connexion
+
+Please login.
+S'il vous plaît connectez-vous.
+
+Please type a username.
+S’il vous plaît entrez un nom d'utilisateur.
+
+Invalid password.
+Mot de passe incorrect.
+
+Invalid username.
+Nom d'utilisateur incorrect.
+
+Your account has been deactivated!
+Votre compte a ete désactivé!
+
+Register
+Enregistrement
+
+Forgot password?
+Mot de passe oublié?
+
+Signing in...
+Connexion en cours...
+
+Your account access is limited to a particular IP address!
+Votre accès est restreint à une adresse IP en particulier !
+
+2-step verification: add account
+2- Étape de vérification : Ajouter un compte
+
+Scan this barcode with the <a href="%1" target="_blank">Google Authenticator</a> app on your mobile device to add your account.
+Scanner ce code barre avec l'application <a href="%1" target="_blank">Google Authenticator</a> sur votre périphérique mobile pour ajouter votre compte..
+
+Done
+Fini
+
+Your account is configured for 2-step verification. You need to type in a verification code!
+Votre compte est configuré pour la vérification en deux étapes. Vous devez saisir un code de vérification !
+
+The provided verification code is not valid!
+Le code de vérification fourni est invalide !
+
+Your account is configured for 2-step verification. Click Ok to start the setup.
+Votre compte est configuré pour la vérification en deux étapes. Cliquez sur "OK" pour commencer la configuration.
+
+Type the following key code into your authentication app:
+Saisissez le code-clé suivant dans votre application d'authentification.
+
+Verification code
+Code de vérification
+
+Please type a password.
+Merci de saisir un mot de passe
+
+Changing language...
+Changement de langue...
+
+Loading...
+Chargement en cours...
+
++-- User Registration --+
+
+User Registration
+Enregistrement de l'utilisateur
+
+Username
+Nom d'utilisateur
+
+E-mail address
+Adresse email
+
+Password
+Mot de passe
+
+Retype password
+Confirmez le mot de passe
+
+Name
+Nom
+
+Company
+Société
+
+Web site address
+Adresse du site Web
+
+Comment
+Commentaire
+
+Submit
+Envoi
+
+Please type an username!
+S'il vous plaît, tapez un nom d'utilisateur!
+
+Please avoid using special characters for the username!
+S'il vous plaît, n'utilisez pas de caractères spéciaux pour le nom d'utilisateur!
+
+Username already in use. Please choose another one.
+Nom d'utilisateur déjà utilisé. S'il vous plaît, choisissez en un autre.
+
+Please type a password!
+Veuillez saisir un mot de passe !
+
+Please retype the password correctly!
+Veuillez saisir le mot de passe correctement !
+
+Please type your name!
+Veuillez saisir votre nom !
+
+Please type your email address!
+Veuillez saisir votre adresse email !
+
+Please type the company name!
+Veuillez saisir le nom de votre société !
+
+Please type your website address!
+Veuillez saisir l'adresse de votre site internet !
+
+Please type the comment!
+Veuillez saisir le commentaire !
+
+Failed to create user account!
+La création du compte utilisateur a échoué !
+
+Your account has been successfully created.
+Votre compte a été correctement créé.
+
+Login
+Connexion
+
+Your account information has been emailed to you!
+Les informations de votre compte utilisateur ont été envoyées par email!
+
+An e-mail message has been sent at "%1" with details on how to complete the registration process.
+Un email a été envoyé a "%1" avec les détails sur la procédure pour terminer l'enregistrement.
+
+E-mail address already registered. Please use the password recovery options if you forgot your password.
+L'adresse mail spécifiée est déjà enregistrée. Cliquez sur mot de passe oublié si vous avez oublié votre mot de passe.
+
+Cancel
+Annuler
+
+Please type the two words correctly!
+Merci de saisir correctement les deux mots !
+
++-- Password Reset --+
+
+The login information has been sent to your email address.
+Les informations de connexion a été envoyé à votre adresse email.
+
+Password Reset
+Réinitialiser mot de passe
+
+E-mail address
+Adresse mail
+
+Submit
+Soumettre
+
+Cancel
+Annuler
+
+Please type the e-mail address.
+S'il vous plaît entrez l'adresse e-mail.
+
+The e-mail address was not found in the database.
+L'adresse e-mail n'a pas été trouvé dans la base de données.
+
+Please check your inbox for information on how to reset your account's password.
+S'il vous plaît vérifiez votre boîte de réception de l'information sur la façon de réinitialiser mot de passe de votre compte.
+
++-- Main Interface --+
+
+Date Format: Grid - Modified Date
+d-M-Y, H:i
+
+Loading...
+Chargement...
+
+Sign out
+Déconnexion
+
+Control Panel
+Panneau de Contrôle
+
+Change password
+Changez le mot de passe
+
+Preview
+Prévisualisation
+
+No preview available for this type of files.
+Impossible de prévisualiser ce type de fichier.
+
+Comments
+Commentaires
+
+Please select a file.
+S'il vous plaît, sélectionnez un fichier.
+
+Folder contains no image file
+Dossier vide
+
+There are no files in this folder.
+Il n'y a pas de fichier de ce répertoire.
+
+This file was created or modified since your last access.
+Ce fichier a été créé ou modifié depuis votre dernier accès.
+
+This file is locked by %1.
+Le fichier est utilisé par %1.
+
+This file has %1 comment(s).
+Ce fichier a %1 commentaire(s).
+
+This file has a WebLink attached to it.
+Ce fichier a un lien web associé.
+
+Loading Preview...
+Chargement prévisualisation...
+
+Free space available:
+Espace libre disponible:
+
+Delete "%1"?
+Confirmation
+
+Loading Java applet, please wait...
+Chargement de l'applet Java, patientez s'il vous plaît...
+
+Internet Explorer is blocking the download?<br>Click <a href="%1" target="_blank">here</a> to download the file without reloading this page.
+Internet Explorer bloque le téléchargement?<br>Cliquer <a href="%1" target="_blank">ici</a> pour télécharger le fichier sans recharger cette page.
+
+Upload
+Envoyer
+
+Regular
+Normal
+
+%1 used (%2%)
+%1 (%2%) sur %3 utilisé
+
+Please type a file name:
+Merci de saisir le nom du fichier :
+
+Creating blank file...
+Création du fichier vierge...
+
+Sort
+Sorte
+
+Settings
+Parametrages
+
+Select All
+Tous les fichiers
+
+View
+Visualisation
+
+Tools
+Outils
+
+List view
+Vue detaillée
+
+Switch to thumbnails
+Vue par vignette
+
+Refresh
+Rafraîchir
+
+Refresh file list
+Rafraichir la liste des fichiers
+
+New File
+Fichier
+
+Traffic:
+Trafic:
+
+Space:
+Espace:
+
+Search
+Rechercher
+
+File Search
+Recherche des fichiers
+
+Share
+Partager
+
+Sharing
+Partage
+
+New sub-folder
+Nouveau sous-dossier
+
+Rename
+Renommer
+
+Remove
+Supprimer
+
+Properties
+Masquer dossier
+
+Download
+Télécharger
+
+..in one zip file
+..en un seul fichier zip
+
+Open with..
+Ouvrir avec..
+
+E-mail Files
+Envoi par email
+
+Get link
+Lien Web
+
+Details and activity
+Détails et activités
+
+Upload, Delete, Rename, etc.
+Uploader, Supprimer, Renommer, etc.
+
+Download, Preview, Copy, etc.
+Télécharger, Prévisualiser, Copier, etc. 
+
+Versioning
+Version
+
+Previous Versions
+Versions précédentes
+
+Lock
+Verrouiller
+
+Unlock
+Déverrouiller
+
+File Versions
+Versions du fichier
+
+Metadata
+Meta-donnée
+
+Comment
+Commentaire
+
+Add to zip
+Ajouter au zip
+
+Extract archive
+Décompresser
+
+Copy
+Copier
+
+Loading file list...
+Chargement en cours...
+
+Name
+Nom de fichier
+
+Size
+Taille
+
+Meta Type
+Méta-type
+
+Modified
+Date de modification
+
+Created
+Date Création
+
+Comments count
+Compteur de commentaires
+
+Yes
+Oui
+
+No
+Non
+
+Is new
+Nouveau
+
+Locked by
+Verrouillé par
+
+Sort Ascending
+Tri croissant
+
+Sort Descending
+Tri décroissant
+
+Columns
+Colonnes
+
+Reset Columns
+Remettre les colonnes
+
+%1 items
+%1 fichier(s)
+
+Opening popup window... <br>Click <a href="%1" target="_blank">here</a> if the browser prevents it from opening.
+Ouverture d'une fenêtre popup... <br>Cliquer <a href="%1" target="_blank">ici</a> si le navigateur empêche l'ouverture.
+
+Moving files...
+Déplacement des fichiers
+
+Moving folder...
+Déplacement du dossier...
+
+Renaming file...
+Renommage du fichier...
+
+Zipping files...
+Compression de(s) fichier(s)...
+
+Extracting archive contents...
+Décompression du fichier...
+
+Deleting...
+Suppression de(s) fichier(s)...
+
+Restoring file(s)...
+Restauration de(s) fichier(s)...
+
+Locking file...
+Verrouillage du fichier...
+
+Unlocking file...
+Déverouillage du fichier...
+
+Renaming folder...
+Renommage du dossier...
+
+Please wait while the selected files are being zipped...
+Veuillez patienter jusqu'à ce que les fichiers soient compressés...
+
+Please wait while the selected folder is being zipped...
+Veuillez patienter jusqu'à ce que le dossier soit compressé...
+
+Selected Files.zip
+Fichiers_selectionnes.zip
+
+Downloading zip file...
+Téléchargement du fichier zip...
+
+Are you sure you want to delete the selected file(s)?
+Etes-vous sûr de vouloir supprimer les fichiers sélectionnés?
+
+The selected folder and all its contents will be deleted.
+Etes-vous sûr de vouloir supprimer le dossier sélectionné et son contenu?
+
+Permanent deletion
+Suppression définitive
+
+New Folder
+Nouveau dossier
+
+Creating new folder...
+Création du nouveau dossier...
+
+Please type a folder name for the archive contents:
+S'il vous plaît, tapez un nom pour le dossier qui sera créé:
+
+Extracted Files
+Fichiers décompressés
+
+Deleted from
+Supprimé de
+
+Trash
+Fichiers supprimés
+
+Restore
+Restaurer
+
+Folder Activity
+Activité du dossier
+
+Please type a name for the zip file:
+S'il vous plaît, tapez un nom pour l'archive zip:
+
+New Archive.zip
+Nouvelle Archive.zip
+
+E-mail
+Email
+
+Activity log
+Journal d'activité
+
+Loading the file's activity log...
+Chargement journal d'activité du fichier...
+
+External Window
+Fenêtre extérieure
+
+Zip and download
+Compresser et télécharger
+
+This type of archives is not supported by the current server configuration.
+Ce type d'archive n'est pas pris en charge par le serveur.
+
+With users
+Avec utilisateurs
+
+One item
+Un objet
+
+%1 items
+%1 objets
+
+One item selected
+Un objet selectionné
+
+%1 items selected
+%1 objet selectionné
+
+More
+Plus
+
+Confirm
+Confirmer
+
+Details
+Détails
+
+My Files
+Mes fichiers
+
+Upload to "%1"
+Uploader vers "%1"
+
+Folder upload
+Envoi de dossier
+
+File upload
+Envoi de fichier
+
+Create new
+Créer nouveau
+
+Add Files
+Ajouter fichiers
+
+Add Folder
+Ajouter dossier
+
+Remove from queue
+Supprimer de la file d'attente
+
+Cancel
+Annuler
+
+Cancel all
+Annuler tous
+
+Skip file
+Ignorer le fichier
+
+Resume file
+Reprendre le fichier
+
+Pause all
+Tout suspendre
+
+File name
+Nom du fichier
+
+Size
+Taille
+
+Uploaded
+Uploadé
+
+Progress
+Progression
+
+Speed
+Vitesse
+
+Time remaining
+Temps restant
+
+%1 files left
+%1 fichiers restants
+
+%1 of %2
+%1 sur %2
+
+[Skipped]
+[Ignoré]
+
+Paused
+Suspendu
+
+Uploading (Retry #%1)...
+Upload (Re essai #%1)...
+
+Paused (%1%)
+Suspendu (%1%)
+
+Waiting (100%)
+En attente (100%)
+
+Server error
+Erreur serveur
+
+A problem has been encountered!
+Un problème a été rencontré!
+
+Try again
+Essayez à nouveau
+
+Skip file
+Ignorer le fichier
+
+%1 hours
+%1 heures
+
+%1 seconds
+%1 secondes
+
+You are not allowed to upload the file "%1"
+Vous n'êtes pas autorisé à télécharger le fichier "%1"
+
+There are no comments for this item
+Il n'y a aucun commentaire pour cet objet
+
+Write a comment...
+Ecrire un commentaire ...
+
+Use the displayed header bar to sort by the desired field.
+Utilisez les en-têtes de colonne pour trier par le champ souhaité.
+
+Drop files here
+Déposez les fichiers ici
+
+or use the red "New" button
+ou utilisez le bouton d'upload
+
+Queued
+En file d'attente
+
+Mute sound notifications
+Couper les notification sonores
+
+Right-click the destination folder for pasting the copied item
+Cliquez-droit sur le dossier de destination pour coller l'élément copié
+
+Add to cart
+Ajouter au panier
+
+Download cart
+Télécharger le panier
+
+Label
+Etiquette
+
+No label
+Sans étiquette
+
+Custom label
+Etiquette personnalisée
+
+Please type the label's text
+Merci de saisir le libellé de l'étiquette
+
+of {0}
+sur {0}
+
+First Page
+Première page
+
+Last Page
+Dernière page
+
+Next Page
+Page suivante
+
+Previous Page
+Page précédente
+
+Refresh
+Rafraîchir
+
+Uploading pasted image...
+Envoi de l'image collée...
+
+Pasted image
+Image collée
+
+Pasted image successfully uploaded
+Image envoyée avec succès
+
+%1 of %2 results
+%1 sur %2 resultats
+
+%1 results
+%1 resultats
+
+Show more...
+Montrer plus...
+
+Search file names
+Rechercher dans le nom des fichiers
+
+Search file contents
+Rechercher dans le contenu des fichiers
+
+Search metadata
+Rechercher metadata
+
+Star
+Favori
+
+Starred
+Favoris
+
+Add star
+Ajouter aux favoris
+
+Remove star
+Retirer des favoris
+
+Add stars to files to easily find them later.
+Ajouter aux favoris pour retrouver facilement par la suite.
+
+You have not shared any file through web links.
+Vous n'avez partagé aucun fichier via le Weblink
+
+Folder
+Dossier
+
+File
+Fichier
+
+More options
+Autres options
+
+Location
+Emplacement
+
+Please wait as loading the file might take a while...
+Merci de patienter quelques instants pendant le chargement du fichier
+
+New
+Nouveau
+
+Shared links
+Liens partagés
+
+Locate
+Localiser
+
+Next
+Suivant
+
+Previous
+Précédent
+
+Close
+Fermer
+
+%1 of %2 items
+%1 de %2 items
+
+First page
+Première page
+
+You are required to change your password.
+Vous devez modifier votre mot de passe.
+
+No file was found matching your search criteria.
+Aucun fichier n'a été trouvé avec vos critères de recherche.
+
+To upload files, drag them from your computer
+Pour envoyer des fichiers, glissez-les depuis votre ordinateur
+
+Account settings
+Paramètres de compte
+
+Drag here the files and folders you wish to download
+Glissez ici les fichiers et dossiers que vous souhaiter télécharger.
+
+Download all
+Tout télécharger
+
+Use "Page Down" and "Page Up" to change the page
+Utilisez "Page Haut" et "Page Bas" pour changer de page.
+
+Empty trash
+Vider la corbeille
+
+Emptying trash...
+Vidage de la corbeille...
+
+Empty trash?
+Vider la corbeille ?
+
+All files and folders in your trash are about to be permanently deleted.
+Tous les fichiers et dossiers de votre corbeille sont sur le point d'être définitivement supprimés.
+
+The Google Chrome browser has a limitation when uploading folders by drag&drop. It will upload a maximum of 100 files per subfolder.<br /><br />It has now collected <b>%1 files</b> for uploading.<br><br>If your folder has more files than that, please click "Cancel all" and use the "NEW" red button to select the folder for uploading.<br>If it doesn\'t, you can click "Resume" to proceed with the current upload.
+Le navigateur Google Chrome a une limitation lors de l'envoi des dossiers par glisser-déposer. Il va uploader un maximum de 100 fichiers par sous-dossier. <br /> <br /> Il a maintenant recueilli <b>%1 fichiers </b> pour upload. <br> Si votre dossier a plus de fichiers que ça, merci de cliquer sur «Annuler tout» et utilisez le bouton rouge "NOUVEAU" pour sélectionner le dossier pour upload. <br> Si vous ne pouvez, cliquer sur "Resumer" pour procéder à l'upload en cours.
+
+An error occurred while trying to process the request.
+Une erreur est survenue lors du traitement de la demande.
+
+Resume
+Résumer
+
++-- General --+
+
+One minute ago
+Il y a une minute
+
+One minute
+Une minute
+
+Under one minute
+Il y a moins d'une minute
+
+just now
+à l'instant
+
+Submit
+Envoi
+
+Save
+Enregistrer
+
+Cancel
+Annuler
+
+Error
+Erreur
+
+Invalid path.
+Chemin non valide.
+
+File not found!
+Fichier non trouvé!
+
+You are not allowed to preview the selected file.
+Vous n'êtes pas autorisé à prévisualiser le fichier sélectionné.
+
+%1 users
+%1 utilisateurs
+
+You are not allowed to download the requested file!
+Vous n'êtes pas autorisé à télécharger le fichier demandé!
+
+The file you are trying to download is no longer available!
+Le fichier que vous essayez de télécharger n'est plus disponible!
+
+You are not allowed to download or preview files.
+Vous n'avez pas la permission de télécharger ou prévisualiser des fichiers.
+
+Invalid folder.
+Dossier invalide.
+
+You are not allowed to copy that shared file.
+Vous n'êtes pas autorisé à copier ce fichier.
+
+You are not allowed to copy files to the specified target.
+Vous n'êtes pas autorisé à copier des fichiers dans le dossier choisi.
+
+No file was copied!
+Les fichiers n'ont pas été copiés!
+
+One file copied.
+Un fichier copié.
+
+%1 files copied.
+%1 fichiers copiés.
+
+No more file space available.
+Il n'y a plus d'espace disponible pour les fichiers.
+
+You are not allowed to delete files from this shared folder.
+Vous n'êtes pas autorisé à supprimer des fichiers de ce dossier.
+
+No files were deleted!
+Pas de fichiers supprimés!
+
+One file deleted.
+Un fichier supprimé.
+
+%1 files successfully deleted.
+%1 fichiers supprimés.
+
+You are not allowed to move that shared file.
+Vous n'êtes pas autorisé à déplacer ce dossier.
+
+You are not allowed to move files to the specified target.
+Vous n'êtes pas autorisé à déplacer des fichiers dans ce dossier.
+
+You are not allowed to move these shared files to your own folder.
+Vous n'êtes pas autorisé à déplacer ces fichiers partagés vers votre propre repertoire.
+
+No file was moved!
+Pas de fichiers déplacés!
+
+One file moved.
+Un fichier deplacé.
+
+%1 files moved.
+%1 fichiers deplacés.
+
+Invalid target path, file already exists.
+Chemin cible non valide, le fichier existe déjà.
+
+File is locked by somebody else.
+Fichier verrouillé par quelqu'un d'autre.
+
+Invalid path, not a file.
+Chemin non valide, ce n'est pas un fichier.
+
+Invalid path, not a folder.
+Chemin non valide, ce n'est pas un dossier.
+
+Invalid source path, not a folder.
+Chemin source non valide, ce n'est pas un dossier.
+
+Invalid target path, not a folder.
+Chemin cible non valide, ce n'est pas un dossier.
+
+Invalid source path, not a file.
+Chemin source non valide, ce n'est pas un fichier.
+
+You are not allowed to rename files in this shared folder.
+Vous n'êtes pas autorisé à renommer les fichiers de ce dossier.
+
+File successfully renamed.
+Fichier renommé avec succès.
+
+There is already a file or a folder with the same name!
+Il y a déjà un fichier avec le même nom dans ce dossier!
+
+Failed to rename file!
+Impossible de renommer le fichier!
+
+You are not allowed to extract archives in this shared folder.
+Vous n'êtes pas autorisé à décompresser des fichiers dans ce dossier.
+
+You are not allowed to zip files in this shared folder.
+Vous n'êtes pas autorisé à compresser des fichiers dans ce dossier.
+
+Invalid folder name!
+Nom de dossier invalide!
+
+Invalid file name
+Nom de fichier non valide
+
+A folder with that name already exists!
+Un dossier portant ce nom existe déjà!
+
+Unzipped Files
+Fichiers décompressés
+
+The archive was successfully extracted.
+Le fichier a été décompressé avec succès.
+
+Invalid zip name!
+Nom d'archive invalide!
+
+A file with that name already exists!
+Un fichier portant le même nom existe déjà
+
+Zip archive successfully created.
+L'archive zip a été créée avec succès.
+
+You are not allowed to delete that shared folder.
+Vous n'êtes pas autorisé à supprimer ce dossier partagé.
+
+You cannot delete the root of a shared folder.
+Vous ne pouvez pas supprimer la racine d'un dossier partagé.
+
+Folder deleted.
+La dossier a été supprimé.
+
+Failed to delete folder!
+Impossible de supprimer le dossier!
+
+You are not allowed to move that shared folder.
+Vous n'êtes pas autorisé à déplacer ce dossier partagé.
+
+You are not allowed to copy that shared folder.
+Vous n'êtes pas autorisé à copier ce dossier partagé.
+
+You are not allowed to copy folder to the specified target.
+Vous n'êtes pas autorisé à copier le dossier a la cible specifiée.
+
+You are not allowed to move the folder to the shared location.
+Vous n'êtes pas autorisé à déplacer le dossier à cet endroit.
+
+You are not allowed to move this shared folder to your own folder.
+Vous n'êtes pas autorisé à déplacer le dossier partagé vers votre propre dossier.
+
+Folder moved.
+Le dossier a été déplacé.
+
+Failed to move folder!
+Impossible de déplacer le dossier!
+
+Failed to rename folder!
+Impossible de renommer le dossier!
+
+There is already a folder with the same name in this folder!
+Il y a déjà un dossier avec le même nom dans ce dossier!
+
+Folder created.
+Le dossier a été créé.
+
+Failed to create folder!
+Impossible de créér le dossier!
+
+Failed to upload file "%1": %2
+Impossible de transferer le fichier sur le serveur "%1": %2
+
+You are not allowed to upload to this shared folder.
+Vous n'êtes pas autorisé à envoyer des fichiers dans ce dossier partagé.
+
+No more file space available!
+Il n'y a plus d'espace disponible pour les fichiers.
+
+File uploaded.
+Le fichier a été téléchargé.
+
+The previous version is available from the versioning menu.
+La version précédente est disponible depuis le menu de versionning.
+
+Failed to upload file.
+Impossible de charger le fichier.
+
+Please specify a file for upload.
+S'il vous plaît, choisissez un fichier pour le chargement.
+
+The monthly traffic limit has been reached!
+La limite mensuelle de trafic a été atteinte!
+
+Click <a href="%1">here</a> to go back.
+Cliquer <a href="%1">ici</a> pour revenir en arrière.
+
+A file named "%1" already exists!
+Un fichier nommé "%1" existe déjà!
+
+The path of your home folder doesn't point to an existing folder. Please contact the site administrator.
+Le chemin de votre dossier d'accueil ne pointe pas sur un dossier existant. S'il vous plaît contactez votre administrateur système.
+
+The shared folder is no longer available.
+Le dossier partagé n'est plus disponible.
+
+You are not allowed to modify files in this shared folder.
+Vous n'êtes par autorisé à modifier les fichiers dans ce dossier partagé.
+
+You are not allowed to upload files in this folder.
+Vous n'êtes pas autorisé à uploadé de fichiers dans ce dossier.
+
+Please type a name for the file!
+Merci de donner un nom à ce fichier svp !
+
+Please type a name for the folder!
+Merci de donner un nom à ce dossier svp !
+
+You are not allowed to create folders under this shared folder.
+Vous n'êtes pas autorisé à créer de dossier dans ce dossier partagé.
+
+%1 minutes ago
+il y a %1 minute
+
+One hour
+Une heure
+
+One hour ago
+Il y a une heure
+
+%1 hours
+%1 heures
+
+%1 hours ago
+il y a %1 heures
+
+One day
+Un jour
+
+One day ago
+Il y a un jour
+
+Yesterday
+Hier
+
+%1 days
+%1 jours
+
+%1 days ago
+Il y a %1 jours
+
+One week
+Une semaine
+
+One week ago
+Il y a une semaine
+
+%1 weeks
+%1 semaines
+
+%1 weeks ago
+il y a %1 semaines
+
+One month
+Un mois
+
+One month ago
+Il y a un mois
+
+%1 months
+%1 mois
+
+%1 months ago
+il y a %1 mois
+
+One year
+Un an
+
+One year ago
+Il y a un an
+
+%1 years
+%1 ans
+
+%1 years ago
+il y a %1 ans
+
+You are not allowed to rename folders!
+
+Vous n'êtes pas autorisé à renommer les dossiers!
+
+You are not allowed to create folders!
+Vous n'êtes pas autorisé à créer des dossiers!
+
+One file moved to trash.
+Un fichier a été mis à la corbeille.
+
+%1 files successfully moved to trash.
+%1 fichiers ont été mis à la corbeille avec succès.
+
++-- DateTime --+
+
+January
+Janvier
+
+February
+Février
+
+March
+Mars
+
+April
+Avril
+
+May
+Mai
+
+June
+Juin
+
+July
+Juillet
+
+August
+Août
+
+September
+Septembre
+
+October
+Octobre
+
+November
+Novembre
+
+December
+Décembre
+
+Sunday
+Dimanche
+
+Monday
+Lundi
+
+Tuesday
+Mardi
+
+Wednesday
+Mercredi
+
+Thursday
+Jeudi
+
+Friday
+Vendredi
+
+Saturday
+Samedi
+
+Today
+Aujourd'hui
+
+This date is before the minimum date
+La date est avant la date minimum
+
+This date is after the maximum date
+La date est après la date maximum
+
+Next Month (Control+Right)
+Mois prochain (CTRL + droite)
+
+Previous Month (Control+Left)
+Mois précédent (CTRL + gauche)
+
+Choose a month (Control+Up/Down to move years)
+Choisir un mois (CTRL + Haut/Bas pour changer d'année)
+
+{0} (Spacebar)
+{0} (Barre d'espace)
+
+Cancel
+Annuler
+
++-- Mobile --+
+
+Sign in
+Login
+
+Sign out
+Logout
+
+Loading...
+Chargement...
+
+Username
+Nom d'utilisateur
+
+Password
+Mot de passe
+
+Language
+Langue
+
+Back
+Retour
+
+Preview
+Prévisualiser
+
+More...
+Plus...
+
+Open with...
+Ouvrir avec...
+
+Generate WebLink
+Générer le Lien Web
+
+Delete
+Supprimer
+
+Are you sure you want to delete the selected file?
+Êtes vous sur de vouloir supprimer le fichier sélectionner ?
+
+Name
+Nom
+
+Size
+Taille
+
+Date Created
+Date de création
+
+Date Modified
+Date de modification
+
+WebLink
+Lien Web
+
+Close
+Fermer
+
+Download
+Télécharger
+
+Remove WebLink
+Retirer le Lien Web
+
+Open WebLink as...
+Ouvrir le Lien Web avec...
+
+Image Gallery
+Galerie d'image
+
+Audio Playlist
+Play liste audio
+
+RSS Feed
+Flux RSS
+
+Home Folder
+Dossier d'accueil
+
+New folder
+Nouveau dossier
+
+Type the name of the folder
+Nommer le dossier
+
++-- Trash --+
+
+A file or folder already exists at the original location.
+Poubelle: le fichier ou dossier restauré existe déjà.
+
+No items were restored!
+Aucun élément restauré!
+
+One item restored.
+Un élément restauré.
+
+%1 items successfully restored.
+%1 éléments restorés.
+
+Failed to empty trash
+Impossible de vider la corbeille
+
++-- Account Settings --+
+
+Current password
+Mot de passe actuel
+
+New password
+Nouveau mot de passe
+
+Confirm new password
+Confirmez le nouveau mot de passe
+
+Save
+Enregistrer
+
+Cancel
+Supprimer
+
+Please type the current password correctly.
+S'il vous plaît, tapez correctement le mot de passe actuel.
+
+The password needs at least one character.
+Le mot de passe doit contenir au moins un caractère.
+
+Please do not use question marks (?) for the new password.
+S'il vous plaît n'utilisez pas de point d'interrogation (?) pour le nouveau mot de passe.
+
+Please retype the new password correctly.
+S'il vous plaît, retapez correctement le nouveau mot de passe.
+
+The new password is the same as the current one.
+Le nouveau mot de passe est le même que l'actuel.
+
+Please type your name
+Merci de saisir votre nom
+
+Please type your e-mail address
+Merci de saisir votre adresse mail
+
+The password needs at least %1 more characters.
+Le mot de passe doit contenir au moins %1 caractères.
+
+The password needs at least one uppercase letter.
+Le mot de passe doit contenir au moins une lettre majuscule.
+
+The password needs at least one special character.
+Le mot de passe doit contenir au moins un caractère spécial.
+
+The password needs at to contain at least one letter.
+Le mot de passe doit contenir au moins une lettre.
+
+The password needs at to contain at least one digit.
+Le mot de passe doit contenir au moins un chiffre.
+
+The password cannot contain the "%1" sequence.
+Le mot de passe ne peut pas contenir la chaine suivante : "%1".
+
+The password cannot contain the "%1" part.
+Le mot de passe ne peut pas contenir la partie suivante : "%1".
+
+Access revoked for %1 apps
+Accès révoqué pour les applications %1
+
+The changes has been successfully saved
+Les changements ont bien été enregistrés
+
+Failed to save the changes!
+Impossible d'enregistrer les changements !
+
+No changes made
+Aucun changement effectué
+
++-- File Upload --+
+
+File uploaded
+Fichier uploadé
+
+Failed to upload file
+Echec de l'upload du fichier
+
+Failed to create folder
+Echec de la création du dossier
+
+This application requires Java support installed and enabled in your browser!
+Cette application nécessite le support Java installé et activé sur votre navigateur!
+
+Requires <a href="http://www.java.com/en/download/installed.jsp" target="_blank">Java</a> support enabled in your browser.
+Nécessite le support <a href="http://www.java.com/en/download/installed.jsp" target="_blank">Java</a> activé sur votre navigateur.
+
+Drag files from your computer here<br>or click "%1"
+Glisser les fichiers de votre ordinateur ici<br>ou cliquer "%1"
+
+Drag files or folders from your computer here<br>or click "%1"
+Glisser les fichiers ou dossiers de votre ordinateur ici<br>ou cliquer "%1"
+
+Upload
+Téléchargement
+
+Cancel Upload
+Annuler
+
+Select Files
+Choisir fichiers
+
+Click "Select Files"
+Cliquer sur "Choisir fichiers"
+
+Remove
+Supprimer
+
+Remove selected
+Supprimer les selectionnés
+
+Remove uploaded
+Supprimer les uploadés
+
+Remove all
+Tout supprimer
+
+Queued
+En file d'attente
+
+Uploading ({0}%)
+En cours d'upload ({0}%)
+
+Failed
+Echoué
+
+Done
+Terminé
+
+{2} of {1} uploaded ({5}/s)
+{2} sur {1} uploadé ({5}/s)
+
+Select files for uploading:
+Selectionner les fichiers à uploader :
+
+Uploading:
+Upload :
+
+Upload cancelled
+Transfert annulé
+
+Upload completed
+Transfert terminé
+
+Upload failed:
+Echec de l'envoi:
+
+{0} authentication - Attempt {1}
+{0} authentification - Tentative {1}
+
+{0} Proxy authentication - Attempt {1}
+{0} Proxy authentification - Tentative {1}
+
+Domain
+Domaine
+
+Scheme
+Schema
+
+Server
+Serveur
+
+Proxy settings
+Paramètres du proxy
+
+Use proxy
+Utilise un proxy
+
+Yes
+Oui
+
+No
+Non
+
+Host name
+Nom d'hôte
+
+Username
+Nom d'utilisateur
+
+Password
+Mot de passe
+
+NTLM proxy domain name
+Nom du proxy de domaine NTLM
+
+NTLM server domain name
+Nom du serveur de domaine NTLM
+
+An error has occured, click "Ok" to see the related message!
+Une erreur est survenue, vérifiez le log de téléchargement pour les détails!
+
+Failed to upload file "%1": %2
+Echec de l'upload du fichier "%1": %2
+
+The monthly traffic limit has been reached!
+La limite mensuelle de trafic a été atteinte!
+
+No more file space available!
+Plus d'espace disque disponible!
+
+A file named "%1" already exists!
+Un fichier nommé "%1" existe déja!
+
+The file needs to be uploaded from the beginning.
+Le fichier doit être uploadé à partir du début.
+
+Failed to transfer data. Make sure you are not trying to upload an empty folder.
+Echec du transfert de données. Assurez-vous que vous n'essayez pas d'uploader un dossier vide.
+
+You are not allowed to upload to this shared folder.
+Vous n'êtes pas autorisé à uploader dans ce dossier partagé.
+
+This upload method cannot resume interrupted uploads. Delete the file "%1" or use the Java upload method to resume the file's transfer.
+Cette méthode d'upload ne permet pas de reprendre un upload interrompu. Supprimer le fichier "%1" ou utiliser la méthode d'upload Java pour reprendre le transfert des fichiers.
+
+Failed to upload file part
+Echec de l'upload d'une part du fichier
+
+Failed to upload file. Please try again.
+Echec de l'upload du fichier. Merci de rééssayer
+
+Uploading.. %1
+Upload... %1
+
+Upload paused
+Upload en pause
+
++-- E-mail Files --+
+
+Done
+Terminé
+
+Please fill in "From" field!
+S’il vous plaît, remplissez le champ "De"!
+
+Please set at least one recipient!
+S’il vous plaît, remplissez le champ "A"!
+
+Please type a subject!
+S’il vous plaît, tapez un sujet!
+
+Please type a message!
+S’il vous plaît, tapez un message!
+
+Email successfuly sent!
+L’email a été envoyé avec succès!
+
+Failed to send email!
+Impossible d'envoyer l’email!
+
+From
+De
+
+To
+A
+
+Separate recipients by ,
+Séparer les destinataires par ,
+
+Select Users
+Sélectionner des utilisateurs
+
+Cancel
+Annuler
+
+Subject
+Sujet
+
+Attachments
+Pièces jointes
+
+Send WebLinks instead of attaching the files.
+Créer et attacher des liens web au lieu d'envoyer les fichiers actuels.
+
+Web link to
+Faire un Lien Web à
+
+Send
+Envoyer
+
+Please make the appropriate <br>changes to the highlighted fields.
+S’il vous plaît, faites les changements <br>appropriés dans les champs en surbrillance.
+
+Sending e-mail, please wait...
+Envoi d'email, patientez s'il vous plaît...
+
+No recipient addresses found!
+Pas de destinataire trouvé!
+
+You are not allowed to share the file "%1"!
+Vous n'êtes pas autorisé à envoyer des fichiers par email depuis ce dossier!
+
+Web Link Options
+Options du Lien Web
+
+The message was not sent to any of the recipients
+Le message n'a été envoyé à aucun des destinataires
+
+The message has been sent to one recipient
+Le message a été envoyé a un destinataire
+
+The message has been sent to %1 recipients
+Le message a été envoyé à %1 destinataires
+
+Errors: %1
+Erreurs : %1
+
+Overwrite existing WebLink settings
+Ecraser les paramètres de WebLink existants
+
++-- Share Files --+
+
+Permissions for <span id="group-editing-note" style="text-decoration:underline">all users within</span> <span id="actorName"></span>
+Permissions pour <span id="group-editing-note" style="text-decoration:underline">tous les utilisateurs de </span> <span id="actorName"></span>
+
+Upload
+Téléchargement
+
+Download/Copy/Preview
+Télécharger / Copier / Prévisualiser
+
+Add comments
+Ajouter des commentaires
+
+Read comments
+Lire les commentaires
+
+Move/Rename/Delete
+Déplacer/Renommer/Supprimer
+
+Share anonymously
+Partage anonyme
+
+You can set different options for each user or group by clicking on their names.
+Vous pouvez définir des options différentes pour chaque utilisateur ou groupe d’utilisateurs en cliquant sur leurs noms.
+
+Share with
+Partager avec
+
+Select Users
+Sélectionner des utilisateurs
+
+Cancel
+Annuler
+
+Unsorted, %1 users
+Non classé(s), %1 utilisateurs
+
+The above apply to "%1"
+S'applique à "%1"
+
+Add Users
+Ajouter des utilisateurs
+
+Remove Selected
+Supprimer la sélection
+
+Save
+Enregistrer
+
+Loading data...
+Chargement des données...
+
+Saving options...
+Enregistrement des options...
+
+Add users to share with.
+Ajouter des utilisateurs avec lesquels vous pouvez partager.
+
+Sharing options saved.
+Les options de partage ont été sauvegardées.
+
+Please select an item from the list.
+Choisir un élément dans la liste.
+
+You cannot disable both upload and download permissions.
+Vous ne pouvez pas désactiver à la foi les permissions d'envoi et de téléchargement.
+
+Share as
+Partager comme
+
++-- Folder Notifications --+
+
+Notification settings successfully saved
+Configuration de la notification sauvegardée avec succès
+
++-- Web Links --+
+
+Loading data...
+Chargement des données...
+
+Link address
+Adresse du lien
+
+Short address
+Adresse courte
+
+- click to generate -
+- cliquer pour générer -
+
+This file is currently not linked
+Ce fichier n'a pas de lien web
+
+Expiration date
+Date d'expiration
+
+Download limit
+Limite de téléchargement
+
+Set a password
+Entrer un mot de passe
+
+Receive e-mail notifications
+Recevoir des emails de notifications
+
+Allow visitors to upload files
+Autoriser les visiteurs à uploader des fichiers
+
+Create Web Link
+Créer le lien web
+
+Save changes
+Mettre à jour les paramètres
+
+Remove link
+Supprimer le lien web
+
+You cannot allow uploads in this folder
+Vous ne pouvez pas permettre d'upload dans ce dossier
+
+Web link successfully created!
+Le Lien web a été créé avec succès!
+
+Failed to create web link!
+La création du lien web a échoué!
+
+Web link successfully updated!
+Les options ont été modifiées.
+
+Failed to update web link!
+La modification des options a échoué!
+
+Web link successfully deleted!
+Le Lien web a été supprimé avec succès!
+
+Failed to delete web link!
+La suppression du lien web a échoué.
+
+The requested file requires a password.
+Le fichier demandé necessite un mot de passe.
+
+Password
+Mot de passe
+
+Submit
+Envoyer
+
+The requested file is no longer available!
+Le fichier souhaité n'est plus disponible!
+
+The user's monthly traffic limit has been reached!
+La limite mensuelle de trafic de l'utilisateur a été atteinte!
+
+Click <a href="%1">here</a> to go back.
+Cliquer <a href="%1">ici</a> pour revenir en arrière.
+
+Open
+Ouvrir
+
+E-mail
+Envoyer
+
+Simple Folder
+Répertoire simple
+
+Short Link
+Lien abrégé
+
+Image Gallery
+Galerie d'image
+
+Audio Playlist
+Playliste audio
+
+RSS Feed
+Flux RSS
+
+You are required to password protect the link
+Un mot de passe est nécessaire pour protéger le lien
+
+Post
+Publier
+
+Download Terms
+Conditions de téléchargement
+
+By downloading this file, you agree to the following terms and conditions:
+En téléchargeant ce(s) fichier(s), vous acceptez les présentes conditions.
+
+Link
+Lien
+
+Add download terms and conditions
+Ajouter les conditions de téléchargement
+
+Force the visitors to accept your written terms before being able to download files.
+Forcer les visiteurs à accepter les termes écrits avant de pouvoir télécharger des fichiers.
+
+QR Code
+Code QR
+
+Scan this QR code with your mobile device.
+Scannez ce code QR avec votre appareil mobile.
+
+You are not allowed to access web links!
+Vous n'êtes pas autorisé à accéder aux liens !
+
+Prompt the visitor to save the file
+Proposer au visiteur de sauvegarder le fichier
+
+Force the file to download, instead of having the browser open it.
+Forcer le téléchargement du fichier.
+
+Changes saved.
+Modifications sauvegardées.
+
+Empty contents.
+Vider le contenu.
+
+Failed to save changes.
+Impossible de sauver les modifications.
+
+Done
+Terminé
+
+E-mail program
+Programme e-mail
+
++-- Files Activity Log --+
+
+User
+Utilisateur
+
+Details
+Détails
+
+No activity records found for this file.
+Pas de relevés d'activité trouvés pour ce fichier.
+
+You are not allowed to access the files activity logs
+Vous n'êtes pas autorisé à accéder aux journaux d'activité des fichiers
+
+Displaying records {0} - {1} of {2}
+Affichage des enregistrements {0} - {1} sur {2}
+
+No records to display
+Aucun enregistrement à afficher
+
+of {0}
+de {0}
+
+First Page
+Première page
+
+Last Page
+Dernière page
+
+Next Page
+Prochaine page
+
+Previous Page
+Page précédente
+
+Refresh
+Rafraichir
+
+%2 by <span style="color:black">%1</span>
+%2 par <span style="color:black">%1</span>
+
+File uploaded
+Fichier uploadé
+
+Uploaded by %1
+Uploadé par %1
+
+File downloaded
+Fichier téléchargé
+
+Downloaded by %1
+Téléchargé par %1
+
+File archived for download
+Fichier archivé pour le téléchargement
+
+Archived for download by %1
+Archivé pour le téléchargement par %1
+
+File archived
+Fichier archivé
+
+File copied
+Fichier copié
+
+Copied by %1
+Copié par %1
+
+File pasted
+Fichier collé
+
+Pasted by %1
+Collé par %1
+
+File moved
+Fichier déplacé
+
+Moved by %1
+Déplacé par %1
+
+File deleted
+Fichier supprimé
+
+Deleted by %1
+Supprimé par %1
+
+Deleted file restored
+Fichier restauré supprimé
+
+Restored by %1
+Restauré par %1
+
+File previewed
+Fichier prévisualisé
+
+Previewed by %1
+Prévisualisé par %1
+
+WebLink download
+Téléchargement du Lien Web
+
+Downloaded through %1's WebLink
+Téléchargé via le Lien Web de %1
+
+WebLink created
+Lien Web créé
+
+%1 attached a WebLink
+%1 a joint un Lien Web
+
+WebLink updated
+Lien Web mis à jour
+
+%1 changed the WebLink's options
+%1 a modifié le paramétrage du Lien Web
+
+WebLink removed
+Lien Web supprimé
+
+%1 removed the WebLink
+%1 a supprimé le Lien Web
+
+Comment added
+Commentaire ajouté
+
+%1 wrote a comment: "%2"
+%1 a ajouté le commentaire : "%2"
+
+Comment removed
+Commentaire supprimé
+
+%1 removed a comment: "%2"
+%1 a supprimé le commentaire : "%2"
+
+Metadata changed
+Métadonnée modifiées
+
+Metadata changed by %1
+Métadonnées modifiées par %1
+
+File locked
+Fichier verrouillé
+
+Locked by %1
+Verrouillé par %1
+
+File unlocked
+Fichier déverrouillé
+
+Unlocked by %1
+Déverrouillé par %1
+
+Previous file version restored
+Précédente version du fichier restaurée
+
+Previous version restored by %1
+Précédente version du fichier restaurée par %1
+
+Previous file version deleted
+Précédente version du fichier supprimée
+
+Previous version deleted by %1
+Précédente version du fichier supprimée par %1
+
+File renamed
+Fichier renommé
+
+Renamed by %1
+Fichier renommé par %1
+
+File encrypted
+Fichier crypté
+
+Encrypted by %1
+Fichier crypté par %1
+
+File decrypted
+Fichier décrypté
+
+Decrypted by %1
+Fichier décrypté par %1
+
+File sent by e-mail
+Fichier envoyé par email
+
+Send by e-mail by %1
+Envoyé par email par %1
+
+Changed label
+Etiquette modifiée
+
+Label removed
+Etiquette supprimée
+
+Labeled by %1: %2
+Etiquetté par %1: %2
+
+Label removed by %1
+Etiquette supprimée par %1
+
+Are you sure you want to clear the file's activity log?
+Etes-vous sûr de vouloir effacer le journal d'activité de ce fichier ?
+
+Activity log successfully cleared
+Journal d'activité effacé
+
+Failed to clear activity log
+Impossible d'effacer le journal d'activité
+
++-- Metadata --+
+
+You are not allowed to alter data in this shared folder.
+Vous n'êtes pas autorisé à modifier les informations de ce dossier partage.
+
+Software Error: Failed to insert new path.
+Erreur du Logiciel: Impossible d'insérer une nouvelle entrée dans la base de données.
+
+File Type
+Type de fichier
+
+Select...
+Sélectionnez
+
+- File Type Not Found -
+- Type de fichier non trouvé -
+
+Save
+Enregistrer
+
+Saving data...
+Sauvegarder les données...
+
+Failed to save data!
+Impossible de sauvegarder les données!
+
+- No Special Type -
+- Aucun type spécial de fichier -
+
++-- Versioning --+
+
+Date Format: Grid - Date
+d-M-Y, H:i
+
+User
+Utilisateur
+
+Download
+Téléchargement
+
+Restore
+Restaurer
+
+Delete
+Effacer
+
+File version restored.
+La version du fichier a été restaurée.
+
+Failed to restore file version.
+Impossible de restaurer la version du fichier.
+
+File version deleted.
+La version du fichier a été supprimée.
+
+Failed to delete file version.
+Impossible de supprimer la version du fichier.
+
+You are not allowed to lock/unlock files in this shared folder.
+Vous n'êtes pas autorisé à verrouiller / déverrouiller les fichiers de ce dossier partagé.
+
+The file has been locked.
+Le fichier a été verrouillé.
+
+The file has been unlocked.
+Le fichier a été déverrouillé.
+
+Failed to lock file!
+Impossible de verrouiller le fichier!
+
+Failed to unlock file!
+Impossible de déverrouiller le fichier!
+
+File is locked by another user.
+Le fichier est verrouillé par un autre utilisateur.
+
+File is already locked by somebody else.
+Le fichier est déjà verrouillé par quelqu'un d'autre.
+
+Modified by
+Modifié par
+
+Size
+Taille
+
++-- Searching --+
+
+File name
+Nom de fichier
+
+File contents
+Le contenu du fichier
+
+Look in
+Rechercher dans
+
+Metadata Field
+Champ méta-donnée
+
+Metadata
+Méta-donnée
+
+Select...
+Choisir...
+
+Path
+Chemin
+
+Searching...
+Chercher...
+
+Search
+Rechercher
+
+- None Selected -
+- Aucune sélection -
+
+Metadata Type
+Type de métadonnée
+
+Field Value
+Valeur du champ
+
++-- Custom Actions: CloudConvert --+
+
+Convert "%1" to:
+Convertir "%1" en :
+
+No conversion option found for the "%1" file type.
+Aucun option de conversion trouvée pour les fichiers de type "%1".
+
++-- File Comments --+
+
+Author
+Auteur
+
+Comment
+Commentaire
+
+Add comment
+Ajouter commentaire
+
+Type in your comment
+Tapez votre commentaire
+
+Remove comment
+Supprimer commentaire
+
+You are not allowed to read comments.
+Vous n'êtes pas autorisés à lire les commentaires.
+
+You are not allowed to add comments.
+Vous n'êtes pas autorisés à ajouter des commentaires.
+
+You are not allowed to remove comments.
+Vous n'êtes pas autorisés à supprimer des commentaires.
+
+You are not allowed to add comments to files in this shared folder.
+vous n'avez pas la permission d'ajouter des commentaires dans ce dossier partagé.
+
+You are not allowed to remove comments from files in this shared folder.
+vous n'avez pas la permission de supprimer des commentaires dans ce dossier partagé.
+
+You are allowed to delete only your own comments from a shared file.
+Vous pouvez supprimer vos propres commentaires sur un fichier partagé.
+
+You are not allowed to read comments in this shared folder.
+Vous n'êtes pas autorisés à lire les commentaires dans ce dossier partagé.
+
+No comments available for this file.
+Pas de commentaire pour ce fichier.
+
+Comment successfully added.
+Commentaire ajouté avec succès.
+
+Failed to add comment to file.
+Impossible d'ajouter un commentaire au fichier.
+
+Comment successfully removed.
+Commentaire supprimé avec succès.
+
+Failed to remove comment from file.
+Impossible de supprimer le commentaire du fichier.
+
+Are you sure you want to remove the comment?
+Etes vous certain de vouloir supprimer ce commentaire ?
+
++-- Image Browser (deprecated) --+
+
+Fit to window
+Ajuster à la fenêtre
+
+Slideshow
+Diaporama
+
+Previous Page
+Page précédente
+
+Next Page
+Prochaine page
+
+Previous File
+Fichier précédent
+
+Next File
+Prochain fichier
+
++-- Custom Actions: Text Editor --+
+
+Text Editor
+Editeur de texte
+
+Text File
+Fichier texte
+
+Untitled.txt
+Sans titre.txt
+
+Save
+Sauvegarder
+
+Saving...
+Sauvegarde...
+
+File successfully saved
+Fichier texte enregistré
+
+File successfully created
+Fichier texte créé
+
+A file with that name already exists
+Un fichier portant ce nom existe déjà
+
+Please type a file name
+Veuillez saisir un nom de fichier.
+
+Other..
+Autre...
+
+New Text File.txt
+Nouveau fichier texte.txt
+
+Would you like to reload the file using the selected charset? Any unsaved changes will be lost.
+Souhaitez vous recharger le fichier en utilisant le jeu de caractères sélectionné ? Les modifications non enregistrées seront perdues.
+
++-- Custom Actions: Zoho --+
+
+Zoho Editor
+Editeur Zoho
+
+Document with Zoho
+Document avec Zoho
+
+Untitled.docx
+Sans titre.docx
+
+Blank file created successfully
+Fichier vierge créé avec succès
+
++-- Custom Actions: Pixlr --+
+
+Image with Pixlr
+Image avec Pixlr
+
+Untitled.png
+Sans titre.png
+
+Blank image created successfully
+Image vierge créée avec succès
+
++-- Custom Actions: File Encryption --+
+
+AES File Encryption
+Cryptage de fichiers AES
+
+Password
+Mot de passe
+
+Decrypt "%1"
+Décrypter "%1"
+
+Encrypt "%1"
+Crypter "%1"
+
+Processing file...
+Traitement du fichier...
+
+The user doesn't have permission to use this function!
+L'utilisateur n'a pas l'autorisation d'utiliser cette fonction !
+
+The selected file was successfully decrypted.
+Le fichier sélectionner a bien été décrypté.
+
+Failed to decrypt the selected file!
+Echec du décryptage du fichier sélectionner !
+
+A file named "%1" already exists!
+Le fichier nommé "%1" existe déjà !
+
+The selected file was successfully encrypted.
+Le fichier sélectionné a été crypté avec succès.
+
+Failed to encrypt the selected file!
+Echec du cryptage du fichier sélectionné !
+
+The selected file was not found!
+Le fichier sélectionné n'a pas été trouvé !
+
+Confirm password
+Confirmer le mot de passe
+
+Delete the source file
+Supprimer le fichier d'origine
+
+Please type the password
+Merci de saisir le mot de passe
+
+Please confirm the password
+Merci de confirmer le mot de passe
+
++-- Admin --+
+
+Control Panel
+Panneau de contrôle
+
+Users
+Utilisateurs
+
+Import users
+Importer des utilisateurs
+
+Activity logs
+Journal d'activités
+
+E-mail notifications
+Notifications email
+
+System configuration
+Configuration système
+
+Configure system options.
+Configurer les options du système.
+
+Interface options
+Options d'interface
+
+User login and registration
+Login et enregistrement des utilisateurs
+
+E-mail settings
+Paramètres d'email
+
+File indexing and searching
+Indexation et recherche de fichier
+
+Misc options
+Options diverses
+
+Metadata
+Métadonnées
+
+Software update
+Mise à jour logicielle
+
+Software licensing
+Licence Logicielle
+
+Tools
+Outils
+
+File space quota usage
+Quota d'espace de fichier utilisé
+
+Traffic quota usage
+Utilisation des quotas de trafic
+
+Archive logs
+Logs d'archive
+
+Roles
+Rôles
+
+Groups
+Groupes
+
+Image preview
+Prévisualisation de fichier et vignettes
+
+File Manager
+Gestionnaire de fichiers
+
+Sign out
+Déconnexion
+
+Displaying records {0} - {1} of {2}
+Affichage des enregistrements {0} - {1} sur {2}
+
+No records to display
+Aucun enregistrement à afficher
+
+of {0}
+de {0}
+
+First Page
+Première page
+
+Last Page
+Dernière page
+
+Next Page
+Prochaine page
+
+Previous Page
+Page précédente
+
+Refresh
+Rafraichir
+
+Field sets
+Ensemble de champs
+
+File types
+Type de fichier
+
+Web Links
+Liens Web
+
+Open Web Link
+Ouvrir le Lien Web
+
+Please confirm web link deletion
+Merci de confirmer la suppression du Lien Web
+
+Add
+Ajouter
+
+Edit
+Editer
+
+Search
+Rechercher
+
+Quick search
+Recherche rapide
+
+Save Changes
+Sauvegarder les changements
+
+Add Groups
+Ajouter des groupes
+
+Add Users
+Ajouter des utilisateurs
+
+Remove Selected
+Supprimer la sélection
+
+Select Users
+Selectionner les utilisateurs
+
+Delete
+Supprimer
+
+Cancel
+Annuler
+
+Delete users?
+Merci de confirmer la suppression des utilisateur
+
+Permanently delete the users home folders.
+Supprimer de manière définitive le dossier racine de ces utilisateurs.
+
+Third party services
+Services tiers
+
+Enable Pusher.com Integration
+Autoriser l'intégration Pusher.com
+
+App ID
+ID de l'App
+
+App Key
+Clé de l'App
+
+Number of days to keep the user activity log entries
+Nombre de jours de conservation des données d'activités de l'utilisateur
+
+Number of days to keep the file activity log entries
+Nombre de jours de conservation des données d'activités du fichier
+
+View
+Vue
+
+Password policy
+Paramétrage des mots de passe
+
+Export users
+Exporter les utilisateurs
+
++-- Admin: Setup --+
+
+Upload language file
+Upload du fichier de traduction
+
+Application title
+Titre de l'application
+
+Login form logo URL
+URL logo formulaire login
+
+Login form welcome message
+Message sur formulaire login
+
+Default view mode
+Mode de visualisation par défaut
+
+List
+Liste
+
+Thumbnails
+Vignettes
+
+Default
+Défaut
+
+Enabled
+Activé
+
+Set a number between 1 and 99, representing the quota usage percentage.
+Définissez un nombre compris entre 1 et 99, qui représente le pourcentage d'utilisation des quotas.
+
+Default language
+Langue par défaut
+
+Display language menu
+Affichage du menu de language
+
+Double-click files action
+Action du double clic sur les fichiers
+
+open preview
+Ouvrir en prévisualisation
+
+open in browser
+Ouvrir dans le navigateur
+
+prompt to save
+Confirmer l'enregistrement
+
+display contextual menu
+afficher le menu contextuel
+
+User Login
+Login utilisateur
+
+User Registration
+Enregistrement de l'utilisateur
+
+Allow persistent logins.
+Permettre des connexions persistantes.
+
+These settings are not available when using a third-part authentication plugin.
+Ces paramètres ne sont pas disponibles lorsque vous utilisez un plugin d'authentification tierce partie.
+
+Maximum login attempts
+Tentatives maximum de connexion
+
+The user's account will be automatically deactivated after the last failed attempt.
+Le compte utilisateur sera automatiquement désactivé après la dernière tentative echouée.
+
+The recommended value is 4.
+La valeur recommandée est 4.
+
+Enable user registration.
+Activer l'enregistrement de l'utilisateur.
+
+E-mail account confirmation links.
+Lien de confirmation de compte email.
+
+New accounts require admin activation.
+Les nouveaux comptent doivent être activés par un administrateur.
+
+Automatically generate the passwords.
+Générer automatiquement les mots de passe.
+
+Required fields
+Champs requis
+
+Enable ImageMagick support.
+Activer ImageMagick.
+
+Path to ImageMagick "convert" binary
+Chemin de l'exécutable d'ImageMagick
+
+Generate ImageMagick thumbnails for the following file types
+Générer des vignettes ImageMagick pour les types de fichier suivants
+
+Thumbnail size
+Taille vignette
+
+Enable FFmpeg support.
+Activer FFmpeg.
+
+Path to FFmpeg binary
+Chermin vers application FFmpeg
+
+Generate FFmpeg thumbnails for the following file types
+Générer miniatures FFmpeg pour les types de fichier suivants
+
+Use a SMTP server.
+Utiliser un serveur SMTP.
+
+SMTP server
+Serveur SMTP
+
+SMTP requires authentication.
+SMTP nécessite une authentification.
+
+SMTP username
+Utilisateur SMTP
+
+SMTP password
+Mot de passe SMTP
+
+E-mail notifications
+Notifications email
+
+Default sender e-mail address
+Adresse mail de l'expéditeur par défaut
+
+Instant email notifications
+Notifications email instantannée
+
+Uncheck this option if you will be running the notification script using a scheduled task.
+Décocher cette option si vous faites tourner le script de notification avec une tâche plannifiée.
+
+Allow users to set notification settings to folders.
+Autoriser les utilisateurs à paramétrer des notifications sur leurs dossiers.
+
+Enable file indexing.
+Activer l'indexation de fichier.
+
+Binary to text converters
+Convertisseur binaire en texte
+
+Metadata
+Méta-donnée
+
+Allow users to change their passwords.
+Permettre aux utilisateurs de changer leur mot de passe.
+
+Allow users to import e-mail attachments.
+Permettre aux utilisateur d'importer des pièces jointes d'email.
+
+Disable file versioning.
+Désactiver le versioning des fichiers.
+
+Redirect URL after logout
+URL de redirection après déconnexion
+
+Users quota warning level
+Niveau d'alerte du quota utilisateur
+
+Settings successfully saved.
+Paramètres enregistrés avec succès.
+
+Check
+Vérifier
+
+Regular
+Régulier
+
+Allow users to reset their passwords.
+Permettre aux utilisateurs de réinitialiser leur mot de passe.
+
+Force users to change their passwords after reset.
+Forcer les utilisateurs à changer leurs mots de passe après la réinitialisation.
+
+Example list:
+Liste d'exemple:
+
+Settings saved
+Paramètres enregistrés
+
+Login form title
+Titre de l'écran de connexion
+
+File types blocked from uploading
+Types de fichiers bloqués en upload
+
+User Logout
+Déconnexion de l'utilisateur
+
+Enable <a href="http://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA</a>.
+Activer <a href="http://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA</a>.
+
+Default groups
+Groupes par défaut
+
+E-mail address
+Adresse mail
+
+Company
+Société
+
+Web site address
+Adresse web
+
+Comment
+Commentaire
+
+Disable the file activity logs.
+Désactiver les journaux d'activité de fichier.
+
+Logo URL
+URL du logo
+
+Recommended height for the image file is 38 pixels
+La hauteur recommandée pour le fichier d'image est de 38 pixels
+
+Use title as logo
+Utiliser le titre comme logo
+
+Logo link URL
+Lien URL du logo
+
+This is the address to where the users are redirected when clicking the logo
+Voici l'adresse à laquelle les utilisateurs sont redirigés en cliquant sur le logo
+
+Select file..
+Selectionner le fichier
+
+Failed to upload language file: %1
+Echec du chargement du fichier de traduction: %1
+
+%1 translation successfuly uploaded
+%1 traduction chargée avec succès
+
+%1 translation successfuly updated
+%1 traduction mise à jour avec succès
+
+Failed to upload file "%1": %2
+Echec de l'upload du fichier \"%1\": %2
+
+Invalid file name!
+Nom de fichier non valide!
+
+The filename should not contain space characters!
+Le nom du fichier ne doit pas contenir d'espace!
+
+Please select only text files!
+Merci de ne choisir que des fichiers texte!
+
+Disables users access and WebLinks.<br>The superuser still has normal access.
+Désactive l'accès des utilisateurs et les WebLinks. <br> L'administrateur conserve toujours un accès normal.
+
+Maintenance message to users
+Message de maintenance aux utilisateurs
+
+Maintenance message to public
+Message de maintenance au public
+
+Allow the users to edit the e-mail address their are sending files from.
+Permettre à l'utilisateur d'éditer l'adresse courriel avec laquelle ils envoient des fichiers.
+
+Test settings
+Tester la configuration
+
+Please type a hostname
+Veuillez saisir un nom d'hôte.
+
+Please type a port number
+Veuillez saisir  un numéro de port
+
+Please type a username
+Veuillez saisir un nom d'utilisateur
+
+The SMTP settings have been successfully tested
+Les paramètres SMTP ont été testés avec succès.
+
+The SMTP authentication failed: %1
+L'authentification SMTP a échoué : %1
+
+The SMTP connection test failed: %1
+Le test de connexion SMTP a échoué : %1
+
+Password policy
+Politique des mots de passe
+
+Minimum password length
+Longueur minimale du mot de passe
+
+Recommended value:
+Valeur recommandée :
+
+Passwords should contain both letters and digits
+Les mots de passe doivent contenir à la fois des lettres et des chiffres
+
+Passwords should contain at least one uppercase letter
+Les mots de passe doivent contenir au moins une lettre en majuscule
+
+Passwords should contain at least one special character
+Les mots de passe doivent contenir au moins un caractère spécial
+
+Special characters:
+Caractères spéciaux :
+
+Passwords should not contain keyboard row sequences
+Les mots de passe ne doivent pas contenir les séquences de lettres sur un clavier
+
+Example sequences:
+Séquences d'exemple
+
+Prevent user information to be used as part of the password
+Empêcher les informations de l'utilisateur d'être une partie du mot de passe
+
+Number of days users can use the same passwords
+Nombre de jours pendant lequel les utilisateurs peuvent utiliser le même mot de passe
+
+The users will be asked to change their passwords at this interval.
+Les utilisateurs seront amenés à changer leur mot de passe à cet intervalle.
+
+Third-party authentication
+Authentification tierce
+
+Enabled plugin
+Extension activée
+
+Use this application's own users database
+Utiliser la base de donnée des utilisateurs de cette application
+
+Hide the logout option
+Cacher l'option de déconnexion
+
+Logout URL
+URL de déconnexion
+
+Sync passwords to the local database
+Synchroniser les mots de passe avec la base de données locale
+
+Allows the users to login even after the third-party authentication system is not active or enabled. The passwords are stored encrypted.
+
+Permet aux utilisateurs de se connecter, même après que le système d'authentification tiers ne soit plus actif ou activé. Les mots de passe stockés sont chiffrés.
+
+Automatically create and assign groups
+Créer et assigner automatiquement les groupes
+
+reCAPTCHA site key
+Clé de site reCAPTCHA
+
+reCAPTCHA secret key
+Clé secrète reCAPTCHA
+
+Get these two keys from %1
+Récupérer ces deux clés depuis %1
+
+Enable <a href="%1" target="_blank">reCAPTCHA</a>
+Activer <a href="%1" target="_blank">reCAPTCHA</a>
+
+Client ID
+ID Client
+
+Public API access
+Accès public API
+
+API key
+Clé API
+
+Welcome message
+Message de bienvenue
+
+BCC
+CCI
+
+Specify an e-mail address where to send copies of the notifications
+Indiquez une adresse e-mail où envoyer des copies des notifications
+
+Message template
+Modèle de message
+
+Subject template
+Sujet modèle
+
+Force users to access via HTTPS.
+Forcer les utilisateurs à accéder via HTTPS.
+
+Failed to test HTTPS connection! The settings have not been saved.
+Impossible de tester la connexion HTTPS ! Les paramètres n'ont pas été enregistrés.
+
++-- Admin: Users --+
+
+Date Format: Registration date
+d M Y
+
+Date Format: Last login
+d-M-Y, H:i
+
+Date Format: Expiration date
+d-M-Y
+
+Important: Changing this path will remove the users folder sharing settings and weblinks.
+Important: La modification de ce chemin va supprimer les dossiers utilisateurs, paramètres de partage et Weblinks.
+
+Users
+Utilisateurs
+
+Parent user
+Utilisateur parent
+
+You are not allowed to manage users.
+Vous n'êtes pas autorisé à gérer les utlisateurs
+
+You are not allowed to manage user accounts.
+Vous n'êtes pas autorisé à gérer des comptes d'utilisateurs.
+
+User successfully created.
+Le nouveau compte utilisateur a été créé avec succès.
+
+You cannot delete your own account!
+Vous ne pouvez pas supprimer votre propre compte!
+
+You cannot create user accounts any more, the limit was reached!
+Vous ne pouvez pas créer des comptes d'utilisateurs, la limite a été atteinte!
+
+You are not allowed to manage this user.
+Vous n'êtes pas autorisé à gérer cet utilisateur.
+
+User succcessfuly updated!
+Les informations ont été sauvegardées.
+
+User account succcessfuly activated.
+Le compte d'utilisateur a été activé avec succès.
+
+Failed to activate user account!
+Impossible d'activer le compte d'utilisateur!
+
+Sorry, the "superuser" account cannot be deactivated!
+Désolé, ce compte d'utilisateur "superuser" ne peut pas etre désactivé!
+
+You cannot deactivate your own user account!
+Vous ne pouvez pas désactiver votre propre compte utilisateur!
+
+User account succcessfuly deactivated.
+Le compte d'utilisateur a été désactivé.
+
+Failed to deactivate user account!
+Impossible de désactiver le compte d'utilisateur !
+
+Action unavailable in this demo version of the software!
+Action non disponible dans cette version de démonstration du logiciel!
+
+Please type a username!
+S'il vous plaît, tapez un nom d'utilisateur!
+
+Please type a name!
+S'il vous plaît, tapez un nom!
+
+Please don't use special characters for the username!
+S'il vous plaît, n'utilisez pas de caractères spéciaux pour le nom d'utilisateur!
+
+Username already in use. Please choose another one.
+Nom d'utilisateur déjà utilisé, S'il vous plaît choisissez un autre.
+
+Please type a password!
+S'il vous plaît, tapez un mot de passe!
+
+Please retype the password correctly!
+S'il vous plaît retapez correctement le mot de passe.
+
+An independent admin user should be able to create at least one user account!
+Un administrateur indépendant doit être en mesure de créer au moins un compte d'utilisateur!
+
+You are required to set a space quota for this user!
+Veuillez fixer un quota d'espace pour cet utilisateur!
+
+The maximum space quota you can assign to this user is %1MB!
+Le quota d'espace que vous pouvez attribuer à cet utilisateur est de %1MB!
+
+You are required to set a traffic quota for this user!
+Vous devez saisir un quota limite de trafic pour cet utilisateur!
+
+The maximum traffic quota you can assign to this user is %1MB!
+Le quota maximum de trafic que vous pouvez fixer pour cet utilisateur est %1MB!
+
+Failed to update user!
+Impossible de mettre à jour le compte d'utilisateur!
+
+Edit user.
+Modifier l'utilisateur.
+
+Sorry, the superuser account cannot be deleted!
+Désolé, le  compte d'utilisateur ("superuser") ne peut pas etre supprimé!
+
+Failed to delete user "%1"!
+Impossible de supprimer le compte d'utilisateur "%1"!
+
+Delete user
+Supprimer l'utilisateur
+
+You cannot create user accounts when custom authentication is used!
+Vous ne pouvez pas créer de compte utilisateur lorsque l'authentification personnalisée est utilisée!
+
+Can see and exchange files with
+Peut voir
+
+[All users]
+[Tous les utilisateurs]
+
+Hold "Ctrl" key to select multiple options.
+Maintenir la touche "Ctrl" pour sélectionner plusieurs options.
+
+Failed to create user!
+La création du compte d'utilisateur a échoué!
+
+Create user
+Créez un utilisateur
+
+Username
+Nom d'utilisateur
+
+Password
+Mot de passe
+
+Retype password
+Confirmez le mot de passe
+
+Name
+Nom
+
+Company
+Société
+
+Website
+Site web
+
+E-mail address
+Adresse email
+
+If checked, this option gets the user notified when:<br>- somebody downloads files from the user's folders<br>- somebody uploads, moves, copies files into one of the user's folders
+Si cette option est cochée, l'utilisateur sera averti lorsque: <br> - un autre utilisateur télécharge les fichiers de son dossier <br> - un autre utilisateur télécharge, déplace, copie des fichiers dans le répertoires de cet utilisateur.
+
+Role
+Rôle
+
+- None -
+- Aucun -
+
+The role defines the user's permission settings. The individual permission settings of the user cannot be changed if a role is selected.
+Le rôle définit les paramètres d'autorisation de l'utilisateur. Les paramètres d'autorisation individuelle de l'utilisateur ne peuvent pas être modifiés si un rôle est sélectionné.
+
+Home folder
+Page d'accueil du dossier
+
+Type the path to a folder on your server. This is the user's personal working space.<br><br>Examples: 	c:/users/group_name<br>/home/users/group_name
+Tapez le chemin d'accès à un dossier sur votre serveur. Il sera utilisé comme espace de travail de cet utilisateur. <br> <br> Exemples: c:/Utilisateurs/Nom <br> /home/users/nom
+
+Your personal home folder is:
+Votre dossier d'accueil est:
+
+Check path
+Vérifier chemin
+
+Create folder now
+Créer le dossier maintenant
+
+The path is valid.
+Le chemin est valide.
+
+Please specify a path!
+S'il vous plaît spécifiez un chemin!
+
+Please type a home folder path or select a role for the user.
+Merci de saisir le chemin d'accès du dossier racine ou de sélectionner un rôle pour l'utilisateur.
+
+Invalid folder!
+Dossier non valide!
+
+The folder "%1" does not exists or it is not accessible by PHP.
+Le dossier "%1" n'existe pas ou n'est pas accessible par PHP.
+
+Failed to create folder.
+Impossible de créer le dossier.
+
+Folder successfuly created.
+Dossier créé avec succès.
+
+User can upload files
+L'utilisateur peut charger des fichiers
+
+User can download files
+L'utilisateur peut télécharger des fichiers
+
+User can publish files as "Web Links"
+L'utilisateur peut créer des "Liens Web"
+
+User can email files as attachments
+L'utilisateur peut envoyer des fichiers en pièces jointes
+
+User cannot move, rename delete, etc..
+L'utilisateur ne peut pas déplacer, renommer, supprimer, [...] des fichiers.
+
+User can share folders
+L'utilisateur peut partager des dossiers
+
+User can access metadata
+L'utilisateur peut accéder aux métadonnées
+
+User can change the password
+L'utilisateur peut changer son mot de passe
+
+User can zip and download folders
+L'utilisateur peut compresser et télécharger des dossiers
+
+User can read file comments
+L'utilisateur peut lire les commentaires
+
+User can write file comments
+L'utilisateur peut écrire des commentaires
+
+Space quota
+Quota de fichiers
+
+Traffic quota
+Quota de trafic
+
+This month's traffic
+Trafic mensuel
+
+MB/month
+MB/mois
+
+User group(s)
+Groupe utilisateur(s)
+
+Home folder<br>template path
+Dossier d'accueil<br>élément de chemin
+
+This folder will be automatically created in your home folder, if it doesn't exists already.
+Ce dossier sera automatiquement créé dans votre dossier d'accueil s'il n'existe pas déjà.
+
+Admin
+Administrateur
+
+Yes
+Oui
+
+Yes, Independent
+Oui, Indépendant
+
+- Can only see and manage users, groups, etc. created by himself.
+- Il peut visualiser et gérer seulement les comptes d'utilisateurs,  les groupes, etc. créés par lui-meme.
+
+- He can assign space quotas within a total of his own space quota.
+- Il peut attribuer des quotas d'espace dans la limite de son propre espace disponible.
+
+User can create new user accounts.
+L'utilisateur peut créer de nouveaux comptes utilisateur.
+
+User can manage groups.
+L'utilisateur peut gérer les groupes.
+
+User can manage roles.
+L'utilisateur peut gérer les rôles.
+
+User can manage notifications.
+L'utilisateur peut gérer les notifications.
+
+User can access the activity logs.
+L'utilisateur peut accéder aux logs d'activité.
+
+User can change the metadata settings.
+L'utilisateur peut changer les paramètres de méta données.
+
+Can manage
+Peut gérer
+
+- All Groups -
+- Tous les groupes -
+
+Max users
+Maximum d'utilisateurs
+
+This is the maximum number of user accounts this independent admin user can create.
+C'est le nombre maximum de comptes d'utilisateurs que cet utilisateur peut créer.
+
+Example: /home/users/{USERNAME}
+Exemple: /home/users/{USERNAME}
+
+{USERNAME} will be automatically replaced with each user's login name.
+{USERNAME} sera automatiquement remplacé avec le login de chaque utilisateur.
+
+{NAME} will be automatically replaced with this user's name.
+{NAME} sera automatiquement remplacé avec le nom d'utilisateur.
+
+{EMAIL} will be automatically replaced with this user's e-mail.
+{EMAIL} sera automatiquement remplacé par l'e-mail de l'utilisateur.
+
+{COMPANY} will be automatically replaced with this user's company name.
+{COMPANY} sera automatiquement remplacé par le nom de l'entreprise de l'utilisateur.
+
+The permission to manage roles cannot be granted if a "Home folder template path" is set.
+L'autorisation de gérer des rôles ne peut être accordée que si un "Modèle de dossier racine" est réglé.
+
+If you wish to grant the permission to manage roles, please use the "Can manage" option to select at least one group of users.
+Si vous souhaitez accorder l'autorisation pour gérer les rôles, merci d'utiliser l'option "peut gérer" pour sélectionner au moins un groupe d'utilisateurs.
+
+If you wish to grant the permission to create new user accounts, please use the "Can manage" option to select at least one group.
+Si vous souhaitez accorder l'autorisation pour créer de nouveaux comptes d'utilisateurs, merci d'utiliser l'option "peut gérer" pour sélectionner au moins un groupe d'utilisateurs.
+
+Leave the field empty to allow the admin to set the paths manually.
+Laisser ce champs vide permet a l'administrateur de saisir les chemins manuellement.
+
+You need to allow the user to manage at least one group to be able to create new user accounts.
+Vous devez autoriser l'utilisateur a gérer au moins un groupe pour être capable de créer de nouveaux comptes utilisateurs..
+
+You need to allow the user to manage at least one group to be able to manage roles.
+Vous devez autoriser l'utilisateur a gérer au moins un rôle pour être capable de gérer les rôles.
+
+Send a notification now
+Envoyer une notification
+
+An e-mail message with the login information will be sent to the user's address.
+Un email avec les informations de connexion sera envoyé à l'adresse de l'utilisateur.
+
+Submit
+Envoyer
+
+Cancel
+Annuler
+
+This is the "superuser" account, and it cannot be deleted.
+C'est l'utilisateur "superuser", il ne peut donc pas etre supprimé.
+
+Please confirm the deletion of the user
+S'il vous plaît, confirmez la suppression du compte d'utilisateur
+
+Delete
+Supprimer
+
+You can add %1 more users.
+Vous pouvez ajouter 1% utilisateurs.
+
+You have reached the maximum number of user account allowed.
+Vous avez atteint le nombre maximum de comptes utilisateurs autorisés.
+
+Showing only users created by
+Seulement les utilisateurs créés par
+
+Click <a href="%1/?module=users&section=admin&page=index&filter_indep=1" style="text-decoration:underline">here</a> to show all "independent admin users".
+Cliquez<a href="%1/?module=users&section=admin&page=index&filter_indep=1" style="text-decoration:underline">here</a> pour afficher tous les comptes d'utilisateurs.
+
+Show only "independent admin users"
+Afficher uniquement les comptes utilisateurs du type "administrateur independant"
+
+Show only deactivated users
+Afficher uniquement les comptes utilisateurs désactivés
+
+Filter users by group:
+Filtrer les comptes selon le groupe:
+
+- All -
+- Tous les groupes -
+
+Users created:
+Utilisateurs créés:
+
+Calculating space quota for users created by <strong>%1</strong>:
+Calcul du quota de l'espace utilisé par les utilisateurs ajoutés par <strong>%1</strong>:
+
+There is no user account created by this user.
+Il n'y a pas de compte d'utilisateur créé par cet utilisateur.
+
+Loading...
+Chargement...
+
+Free space available:
+Espace libre disponible:
+
+Edit User
+Editer utilisateur
+
+Search users by name:
+Rechercher les utilisateurs par nom:
+
+Search by company name:
+Rechercher par nom de société:
+
+Toggle filtering options
+Modifier les options de filtrage
+
+Search
+Rechercher
+
+Deactivate user account
+Désactiver le compte d'utilisateur
+
+Activate user account
+Activer le compte d'utilisateur
+
+This is the "superuser" account, and it cannot be deactivated.
+C'est le compte "superuser", il ne peut donc pas être désactivé.
+
+Click to deactivate user account.
+Cliquer pour désactiver ce compte d'utilisateur.
+
+Click to activate user account.
+Cliquer pour activer ce compte d'utilisateur.
+
+Browse users
+Parcourir les utilisateurs
+
+Browse users created by this "independent admin user".
+Parcourir les comptes d'utilisateurs créés par cet "administrateur independant".
+
+Space quota info
+Informations sur le quota d'espace
+
+View space quota information with breakdown by users.
+Visualiser des informations sur le quota d'espace, réparti par comptes d'utilisateurs créés.
+
+Delete user.
+Supprimer le compte d'utilisateur.
+
+No
+Non
+
+The users created by this administrator will have their home folders set depending on this template.
+Les utilisateurs créés par cet administrateur auront leurs répertoires en fonction de ce modèle.
+
+{ADMUSERNAME} will be automatically replaced with this user's login name.
+{ADMUSERNAME} sera automatiquement remplacé par le login de l'utilisateur.
+
+Last login
+Dernier login
+
+User "%1" succcessfuly deleted!
+Le compte utilisateur "%1" a été supprimé avec succès!
+
+Require user to change the password
+Exiger de l'utilisateur de changer le mot de passe
+
+Registration date
+Date d'enregistrement
+
+The user's home folder cannot be deleted as other users have home folders located inside!
+Le dossier personnel de l'utilisateur ne peut être supprimé alors que d'autres utilisateurs ont des dossiers de départ situé à l'intérieur!
+
+Add User
+Créer un utilisateur
+
+Basic Information
+Information de base
+
+Login Info
+Info de login
+
+E-mail Options
+Options des emails
+
+Details
+Détails
+
+Expiration date
+Date d'expiration
+
+The user account will be automatically deactivated at the specified date.
+Le compte utilisateur sera automatiquement désactivé à la date indiquée.
+
+Please replace the back slashes (\) with forward slashes (/)!
+Merci de remplacer le back slash (\) avec le slash (/) !
+
+The path should start with a drive letter! Example: C:/files/
+Le chemin doit commencer par une lettre de lecteur! Exemple: C:/fichiers/
+
+The path should start with a forward slash! Example: /files/
+Le chemin doit commencer avec un slash! Exemple: /fichiers/
+
+User can access the files' activity logs
+L'utilisateur peut accéder à l'activité des journaux des fichiers
+
+Quotas
+Quota
+
+MB
+Mo
+
+The values are in megabytes. The value of 0 disables the limitation.
+Les valeurs sont en mégaoctets. La valeur 0 désactive la limitation.
+
+Permanently delete the user's home folder.
+Supprimer définitivement le dossier racine de l'utilisateur.
+
+Delete User Account
+Supprimer le compte utilisateur
+
+The account is deactivated
+Le compte est désactivé
+
+Important: Changing this path will update the home folder paths of all user accounts using this role. It will results in the automatic removal of the users' folder sharing settings and weblinks.
+Important: La modification de ce chemin va mettre à jour les chemins de tous les comptes utilisateur utilisant ce rôle. Cela entraînera la suppression automatique des dossiers de partage, des paramètres et des Weblinks de ces utilisateurs.
+
+User can sync folders with BitTorrent Sync
+L'utilisateur peut synchroniser des dossiers avec BitTorrent Sync
+
+Important: Changing this path will update the home folder paths of all user accounts created by this admin. It will results in the automatic removal of these users' folder sharing settings and weblinks.
+Important: La modification de ce chemin va mettre à jour les chemins de tous les comptes utilisateurs créés par cet administrateur. Cela entraînera la suppression automatique des dossiers de partage, des paramètres et des Weblinks de ces utilisateurs.
+
+Important: Changing this path will update the home folder paths of all user accounts created by admins using this role. It will results in the automatic removal of the users' folder sharing settings and weblinks.
+Important: La modification de ce chemin va mettre à jour les chemins de tous les comptes d'utilisateurs créés par les administrateurs utilisant ce rôle. Cela entraînera la suppression automatique des dossiers de partage, des paramètres et des Weblinks de ces utilisateurs.
+
+Enable 2-step verification
+Autoriser l'authentification en 2 étapes
+
+In order for the user to login, he will need to type in also a temporary code which can be generated on a mobile device with a dedicated app such as Google Authenticator.
+Pour permettre à l'utilisateur de se connecter, il devra saisir également un code temporaire qui peut être généré sur un appareil mobile avec une application dédiée comme Google Authenticator.
+
+Expires
+Expire
+
++-- Admin: Groups --+
+
+You are not allowed to delete groups.
+Vous n'êtes pas autorisé à supprimer des groupes.
+
+You are not allowed to manage user groups.
+Vous n'êtes pas autorisé à gérer des groupes d'utilisateurs.
+
+You are not allowed to manage this group.
+Vous n'êtes pas autorisé à gérer ce groupe.
+
+(%1 users)
+(%1 utilisateurs)
+
+Group succcessfuly created!
+Le groupe a été créé avec succès!
+
+Add a new user groups.
+Ajoutez un nouveau groupe d'utilisateurs.
+
+Please type a name for the group!
+S'il vous plaît, tapez un nom pour le groupe!
+
+Please don't use special characters for the group's name!
+S'il vous plaît, n'utilisez pas de caractères spéciaux pour le nom du groupe!
+
+Group name already used. Please choose another one.
+Nom de groupe déjà utilisé. S'il vous plaît, choisissez un autre.
+
+Failed to create group!
+La création du groupe a échoué!
+
+Groups
+Groupes
+
+Create group
+Créer un groupe
+
+Group name
+Nom du groupe
+
+Failed to edit group!
+Impossible de modifier le groupe!
+
+Edit group
+Modifier le groupe
+
+Delete group
+Supprimer le groupe
+
+Failed to delete group!
+Impossible de supprimer le groupe!
+
+Please confirm group deletion.
+S'il vous plaît, confirmez la suppression du groupe d'utilisateurs.
+
+Delete
+Supprimer
+
+Edit group.
+Modifier les informations du groupe d'utilisateurs.
+
+Delete group.
+Supprimer le groupe d'utilisateurs.
+
+Group succcessfuly deleted!
+Le groupe d'utilisateurs a été supprimé avec succès!
+
+Name
+Nom
+
+Created by
+Créé par
+
+Users
+Utilisateurs
+
+Add Group
+Ajouter un groupe
+
++-- Admin: Notifications --+
+
+Notification rule added.
+Règle de notification ajoutée.
+
+Failed to add notification!
+Impossible d'ajouter la notification!
+
+Please type an email address.
+S'il vous plaît, tapez une adresse email.
+
+Please select at least one action.
+S'il vous plaît, selectionnez au moins une action.
+
+Notification rule removed.
+Règle de notification supprimée.
+
+Failed to remove notification!
+Impossible de supprimer la notification!
+
+E-mail address
+Adresse email
+
+Ungrouped users
+Utilisateurs dissociés
+
+File previewed
+Fichier prévisualisé
+
+File uploaded
+Fichier uploadé
+
+File received (via upload)
+Fichier reçu (par upload)
+
+File received (via copy)
+Fichier reçu (par copie)
+
+File received (via move)
+Fichier reçu (par déplacement)
+
+Upload failed
+Echec de l'envoi
+
+File downloaded
+Fichier téléchargé
+
+WebLink download
+Lien web téléchargé
+
+File received (via WebLink)
+Fichier reçu (par Lien Web)
+
+Folder shared
+Dossier partagé
+
+Folder unshared
+Dossier non partagé
+
+New shared folder available
+Nouveau dossier partagé disponible
+
+Login
+Connexion
+
+Logout
+Déconnexion
+
+File moved
+Fichier déplacé
+
+Folder moved
+Dossier déplacé
+
+Folder copied
+Dossier copié
+
+Failed to copy folder
+Impossible de copier le dossier
+
+File copied
+Fichier copié
+
+File deleted
+Fichier supprimé
+
+Folder deleted
+Dossier supprimé
+
+File renamed
+Fichier renommé
+
+Failed to rename file
+Impossible de renommer le fichier
+
+Folder renamed
+Dossier renommé
+
+New folder created
+Nouveau dossier créé
+
+WebLink upload failed
+Echec d'upload du Weblink
+
+Failed to move file
+Impossible de déplacer le fichier
+
+Failed to copy file
+Impossible de copier le fichier
+
+Failed to move folder
+Impossible de déplacer le dossier
+
+Failed to delete file
+Impossible de supprimer le fichier
+
+Failed to delete folder
+Impossible de supprimer le dossier
+
+Failed to rename folder
+Impossible de renommer le dossier
+
+Failed to create new folder
+Impossible de créer un nouveau dossier
+
+File version restored
+Version du fichier restaurée
+
+Failed to restore file version
+Impossible de restaurer la version du fichier
+
+File version deleted
+Version du fichier supprimée
+
+Failed to delete file version
+Impossible de supprimer la version du fichier
+
+New user registration
+Enregistrement nouvel utilisateur
+
+Folder zipped
+Dossier compressé
+
+Failed to zip folder
+Impossible de compresser le dossier
+
+Files zipped
+Fichiers compressés
+
+Failed to zip files
+Impossible de compresser les fichiers
+
+Restored deleted file
+Fichiers suprrimés restaurés
+
+Restored deleted folder
+Dossier supprimé restauré
+
+File permanently deleted
+Fichier définitivement suprrimé
+
+Folder permanently deleted
+Dossier définitivement supprimé
+
+File locked
+Fichier verrouillé
+
+Failed to lock file
+Impossible de verrouiller le fichier
+
+File unlocked
+Fichier déverrouillé
+
+Failed to unlock file
+Impossible de déverrouiller le fichier
+
+File comment added
+Commentaire ajouté sur le fichier
+
+Failed to add comment to file
+Impossible d'ajouter le commenter au fichier
+
+File comment removed
+Commentaire du fichier supprimé
+
+Failed to remove comment from file
+Impossible de supprimer le commentaire du fichier
+
+Files sent by email
+Fichiers envoyés par email
+
+Failed to send files by email
+Impossible d'envoyer les fichiers par email
+
+You are not allowed to manage e-mail notifications.
+Vous n'êtes pas autorise à gérer les notifications d'email.
+
+User added
+Utilisateur ajouté
+
+User edited
+Utilisateur modifié
+
+User deleted
+Utilisateur supprimé
+
+User manual activation
+Activation du guide de l'utilisateur
+
+User manual deactivation
+Désactivation du guide de l'utilisateur
+
+Space quota warning
+Avertissement taille du quota
+
+Password recovery
+Récupération du mot de passe
+
+WebLink removed
+WebLink supprimé
+
+WebLink modified
+WebLink modifié
+
+WebLink created
+WebLink créé
+
+Metadata changed
+Metadata changé
+
+Role added
+Rôle créé
+
+Role edited
+Rôle édité
+
+Role deleted
+Rôle supprimé
+
+Add Notification Rule
+Ajouter une règle de notification
+
+Edit Notification Rule
+Editer la règle de notification
+
+Delete Notification Rule
+Supprimer la règle de notification
+
+Please confirm notification rule deletion.
+Merci de confirmer la suppression de la règle de notification
+
+User or group
+Utilisateur ou groupe
+
+Users
+Utilisateurs
+
+Notify e-mail address
+Notifier à l'adresse mail
+
+WebLink folder access
+Accès au dossier du WebLink
+
+File encrypted
+Fichier crypté
+
+File decrypted
+Fichier décrypté
+
+Logs
+Enregistrements
+
+E-mail notifications logs
+Journal des notifications par mail
+
+Sent message (%1)
+Message envoyé (%1)
+
+From
+De
+
+To
+A
+
+Subject
+Objet
+
+Has errors
+Contient des erreurs
+
+File downloaded by another user
+Fichier téléchargé par un autre utilisateur
+
+Folder added to BitTorrent Sync
+Dossier ajouté à BitTorrent Sync
+
+Folder removed from BitTorrent Sync
+Dossier retiré de BitTorrent Sync
+
+Label changed
+Etiquette modifiée
+
+Star added
+Favori ajouté
+
+Star removed
+Favori supprimé
+
+Trash emptied
+Corbeille vidée
+
+Failed to empty trash
+Impossible de vider la corbeille
+
+Label received
+Étiquette reçue
+
+Download failed
+Échec du téléchargement
+
++-- Admin: Logs --+
+
+Date Format: Grid - Date
+d-M-Y H:i
+
+Activity logs
+Logs d'activité
+
+Toggle search options
+Options de recherche
+
+User
+Utilisateur
+
+Users
+Utilisateurs
+
+Date start
+Date de début
+
+Date end
+Date de fin
+
+Search
+Rechercher
+
+Loading data...
+Chargement des données...
+
+Details
+Détails
+
+Keyword
+Mot clé
+
+The search results have been saved to your home folder as "%1"
+Les résultats de recherche ont été sauvegardés dans votre dossier racine comme "%1"
+
+Please confirm the archiving and deletion of the activity logs.
+S'il vous plaît confirmez l'archivage et la suppression des logs d'activité.
+
+Activity log has been successfuly archived!
+Logs d'activité archivés avec succès!
+
+Failed to retrieve log data!
+Impossible de récuperer les données de log!
+
+Failed to create archive file!
+Impossible de créer le fichier d'archive!
+
+Failed to clear logs!
+Impossible de vider les logs!
+
+Failed to archive logs!
+Impossible d'archiver les logs!
+
+You are not allowed to access the activity logs.
+Vous n'êtes pas autorisé à acceder aux logs d'activité.
+
+Export results to CSV
+Exporter le résultat au format .CSV
+
+Search Activity Logs
+Rechercher dans le journal d'activité
+
+Export
+Exporter
+
++-- Admin: Metadata --+
+
+Metadata
+Méta-donnée
+
+Manage the different types of information that can be associated with classes of files.
+Gérer les différents types d'informations qui peuvent être associés à des classes de fichiers.
+
+You are not allowed to manage the metadata settings.
+Vous n'êtes pas autorisé à gérer les paramètres des méta données
+
+Fieldsets
+Ensemble de champs
+
++-- Admin: Metadata: Filetypes --+
+
+File type
+Type de fichier
+
+File types
+Types de fichiers
+
+File type succcessfuly created!
+Le type de fichiers a été ajouté!
+
+File type succcessfuly deleted!
+Le type de fichiers a été supprimé!
+
+Add File Type
+Ajouter un nouveau type
+
+Please type a name for the file type!
+S'il vous plaît, tapez un nom!
+
+Please don't use weird characters for the file type's name!
+S'il vous plaît, n'utilisez pas de caractères spéciaux pour le nom!
+
+File type name already in use. Please choose another one.
+Le nom du fichier est déjà utilisé. S'il vous plaît, choisissez-en un autre.
+
+Failed to edit file type!
+Impossible de modifier le type du fichier!
+
+Failed to add file type!
+Impossible d'ajouter le type du fichier!
+
+Edit File Type
+Modifier le type de fichier
+
+Click here to manage fieldsets.
+Cliquez ici pour gérer les fieldsets.
+
+Delete File Type
+Supprimer
+
+File type succcessfuly updated!
+Le type de fichiers a été modifié!
+
+Failed to delete file type!
+Impossible de supprimer le type du fichier!
+
+Please confirm file type deletion.
+S'il vous plaît, confirmez la suppression du type de fichiers.
+
+Cancel
+Annuler
+
+Field sets
+Ensemble de champs
+
+Name
+Nom
+
+Created by
+Créé par
+
+File type name
+Type de fichier
+
+File extensions
+Extensions de fichier
+
+Comma separated list of file extensions that should automatically use this file type.
+Liste d'extensions de fichiers séparés par des virgules qui devront utiliser automatiquement ce type de fichier.
+
+Automatic source
+Source automatique
+
+This is the path to the "Media Info" field.
+Voici le chemin vers le champs "Media Info"
+
++-- Admin: Metadata: Fieldsets --+
+
+Fieldset succcessfuly deleted!
+L'ensemble de champs a été supprimé!
+
+Add Field Set
+Ajouter un ensemble de champs
+
+Please type a name for the field set!
+S'il vous plaît, tapez un nom pour l'ensemble de champs!
+
+Field set name already in use. Please choose another one.
+Ce nom est déjà utilisé. S'il vous plaît, choisissez-en un autre.
+
+Failed to edit field set!
+Impossible de modifier L'ensemble de champs!
+
+Failed to add field set!
+Impossible d'ajouter L'ensemble de champs!
+
+Failed to delete field set!
+Impossible de supprimer L'ensemble de champs!
+
+Field set succcessfuly added
+L'ensemble de champs a été ajouté
+
+Field set succcessfuly updated
+L'ensemble de champs a été mis à jour
+
+Field set name
+Nom de l'ensemble de champs
+
+Generic field set
+Field set générique
+
+A generic field set is one that is available for every file by default.
+Un ensemble de champs générique est celui qui est disponible par défaut pour tous les fichiers.
+
+Edit
+Modifier
+
+Delete
+Supprimer
+
+Fieldsets
+Ensembles de champs
+
+Name
+Nom
+
+Fields
+Champs
+
+Created by
+Créé par
+
+Edit Field Set
+Editer l'ensemble de champs
+
+Delete Field Set
+Supprimer l'ensemble de champs
+
+Field set successfuly deleted
+Ensemble de champs supprimé avec succès
+
+Basic Info
+Information de base
+
+Fields can be added after creating the set.
+Les champs peuvent être créer après avoir créer un ensemble.
+
+Please confirm field set deletion.
+Merci de confirmer la suppression du champs.
+
+Add
+Ajouter
+
++-- Admin: Metadata: Fields --+
+
+Fields
+Domaines
+
+Add Field
+Créer un nouveau champ
+
+Edit Field
+Modifier
+
+Field succcessfuly deleted!
+Le champ a été supprimé!
+
+Please type a name for the field!
+S'il vous plaît, tapez un nom!
+
+Field name already in use. Please choose another one.
+Ce nom est déjà utilisé. S'il vous plaît,choisissez-en unautre.
+
+Failed to edit field!
+Impossible de modifier le champ!
+
+Failed to delete field!
+Impossible de supprimer le champ!
+
+Failed to add fieldset!
+Impossible d'ajouter le fieldset!
+
+Field succcessfuly added
+Le champ a été ajouté
+
+Field succcessfuly updated
+Le champ a été mis à jour
+
+Field succcessfuly deleted
+Le champ a été supprimé
+
+Delete Field
+Supprimer
+
+Field name
+Nom du champ
+
+Show by default as column in file grid
+Afficher la colonne dans le fichier grille
+
+Hide fieldset name in column header
+Masquez le nom du fieldset dans l'en-tête de colonne
+
+Predefined values
+Valeur prédéfinie
+
+Separate values by commas. Example: one, two, three
+Séparer les valeurs par des virgules. Exemple: un, deux, trois
+
+The already attached meta information will remained unchanged, even though you rename the values here.
+Les données méta déjà liées resteront inchangée, même si vous renommez cette valeur.
+
+Please confirm field deletion.
+S'il vous plaît, confirmez la suppression du champ.
+
++-- Admin: Licensing --+
+
+Software licensing
+Licence logicielle
+
+You are using <b>%1 user accounts</b> out of <b>%2</b>.
+Vous utilisez<b> %1 des comptes utilisateurs </strong> sur un total de <strong>%2</strong>.
+
+Update
+Mise à jour
+
+Invalid license file (invalid structure).
+Le fichier de licence est invalide (structure invalide).
+
+Invalid license data (invalid domain name).
+La licence des données est invalide (nom de domaine invalide).
+
+Failed to upgrade license:
+La mise à jour de la licence a échoué:
+
+Failed to connect to licensing server!
+Impossible de se connecter au serveur de licence!
+
+License successfully updated.
+License mise à jour avec succès.
+
+The license will expire on <b>%1</b>.
+La licence expirera dans <b>%1</b>.
+
+License upgraded.<br><span class="nowrap">You can now have <strong>%1</strong> user accounts.</span>
+Licence mise à jour. <br> <span Class="nowrap"> Vous pouvez maintenant créer <strong>% 1 </ strong>  comptes utilisateurs. </ Span>
+
+License key in use: <b>%1</b>
+Clé de licence utilisée: <b>%1</b>
+
+unlimited
+illimité
+
++-- Admin: Software update --+
+
+Software update
+Mise à jour logicielle
+
+Step 1:
+Etape 1:
+
+Check for updates
+Vérifier les nouvelles mises à jour
+
+Step 2:
+Etape 2:
+
+Download update
+Télécharger la mise à jour
+
+Step 3:
+Etape 3:
+
+Install update
+Installer la mise à jour
+
+Start over (to check for more updates)
+Lancer de nouveau (pour vérifier s'il y a d'autres mises à jour)
+
+Step 4:
+Etape 4:
+
+Your current software version is %1
+Votre version du logiciel est la %1
+
++-- Admin: Roles --+
+
+Add a new user role.
+Ajouter un nouveau rôle d'utilisateur.
+
+Create role
+Créer un rôle
+
+Role name
+Nom du rôle
+
+Home folder<br> template
+Répertoire racine<br> Modèle
+
+Automatically create the folder if it doesn't exists.
+Créer automatiquement le dossier s'il n'existe pas.
+
+(%1 users)
+(%1 utilisateurs)
+
+Edit Role
+Editer rôle
+
+Delete Role
+Supprimer rôle
+
+Please set a home folder template.
+Merci de définir le dossier racine de référence
+
+Please confirm role deletion.
+S'il vous plaît confirmez la suppression du rôle.
+
+Delete
+Supprimer
+
+You are required to set a space quota for this role!
+Vous devez saisir un quota d'espace pour ce rôle!
+
+You are required to set a traffic quota for this role!
+Vous devez saisir un quota de trafic pour ce rôle!
+
+The maximum traffic quota you can assign to this role is %1MB!
+Le quota de trafic maximum que vous pouvez saisir pour ce rôle est %1MB!
+
+The maximum space quota you can assign to this role is %1MB!
+Le quota d'espace maximum que vous pouvez saisir pour ce rôle est %1MB!
+
+You are not allowed to manage this role.
+Vous n'êtes pas autorisé à gérer ce rôle.
+
+You are not allowed to manage user roles.
+Vous n'êtes pas autorisé à gérer ces rôles d'utilisateurs.
+
+Role succcessfuly created!
+Rôle créé avec succès!
+
+Role successfully updated!
+Rôle modifié avec succès!
+
+Roles
+Rôles
+
+Name
+Nom
+
+Created by
+Créé par
+
+Users
+Utilisateurs
+
+Home folder template
+Dossier racine de référence
+
+Add Role
+Ajouter un rôle
+
+Save Changes
+Sauvegarder les changements
+
+You cannot delete this role because it is assigned to %1 users.
+Vous ne pouvez pas supprimer ce rôle car il est assigné à %1 utilisateurs
+
++-- Admin: WebLinks --+
+
+Path
+Chemin
+
+User
+Utilisateur
+
+Expires
+Expire
+
++-- Admin: Tools --+
+
+Name
+Nom
+
+Username
+Nom d'utilisateur
+
+Used
+Utilisé
+
+Usage
+Utilisation
+
+Calculating quota usage for "%1"...
+Calcul de l'espace utilisé pour  "%1"...
+
+The traffic usage is reset automatically once every %1 days.
+Le trafic d'utilisation est réinitialisé tous les %1 jours.
+
+Last reset happened on %1.
+Dernière réinitialisation le %1.
+
+Reset now
+Réinitialiser maintenant.
+
+Id
+Identifiant
+
++-- Admin: Tools: Import Users --+
+
+Comma
+Virgule
+
+Semicolon
+Point-virgule
+
+Tab
+Tabulation
+
+Import Users
+Importer des utilisateurs
+
+Step 1: Upload CSV File
+Etape 1 : Uploader le fichier CSV
+
+Step 2: Map Fields
+Etape 2 : Attribution des champs
+
+Step 3: Import Users
+Etape 3 : Import des utilisateurs
+
+Select CSV file
+Selectionner le fichier CSV
+
+Only CSV files are supported!
+Seuls les fichiers CSV sont accetpés!
+
+The CSV file should have at least two columns!
+Le fichier CSV doit avoir au moins trois colonnes!
+
+Fields are separated by
+Les champs sont séparés par
+
+Uploading...%1%
+Chargement...%1%
+
+Upload starting...
+Début du chargement...
+
+%1 records were found
+%1 enregistrements ont été trouvés
+
+Assign a role to the users
+Attribuer un rôle aux utilisateurs
+
+Add the users to groups
+Ajouter les utilisateurs aux groupes
+
+Start with record number
+Commencer par le nombre record
+
+Failed to parse file contents!
+Échec de l'analyse du contenu du fichier!
+
+Only the first 10 records are being displayed here.
+Seuls les 10 premiers résultats sont affichés ici.
+
+Username
+Nom d'utilisateur
+
+Password
+Mot de passe
+
+Name 1
+Nom 1
+
+Name 2
+Nom 2
+
+Name 3
+Nom 3
+
+E-mail
+Email
+
+Company
+Société
+
+Website
+Site Web
+
+You need to map a column for the username!
+Vous devez attribuer une colonne pour le nom d'utilisateur!
+
+You need to map a column for the password!
+Vous devez attribuer une colonne pour le mot de passe!
+
+You need to map at least one column for the name!
+Vous devez attribuer au moins une colonne pour le nom!
+
+The selected role was not found!
+Le rôle sélectionné n'a pas été trouvé!
+
+Record %1: The username is missing! The record was skipped.
+Enregistrement %1: Le nom d'utilisateur est manquant! L'enregistrement a été ignoré.
+
+Record %1: The name is missing! The record was skipped.
+Enregistrement %1: Le nom est manquant! L'enregistrement a été ignoré.
+
+Record %1: The password is missing! The record was skipped.
+Enregistrement %1: Le mot de passe est manquant! L'enregistrement a été ignoré.
+
+Record %1: The username "%2" is already in use! The record was skipped.
+Enregistrement %1: Le nom d'utilisateur "%2" est déja utilisé! L'enregistrement a été ignoré.
+
+Record %1: User "%2" has been added. Password: %3
+Enregistrement %1: Utilisateur "%2" est créé
+
+Passwords are in clear text
+Les mots de passe sont en clair
+
+Enable this option if the passwords stored in your CSV files are not encrypted.
+Activez cette option si les mots de passe contenus dans votre fichier CSV ne sont pas chiffrés.
+
+Record number
+Nombre d'enregistrements
+
+Username/E-mail
+Nom d'utilisateur / E-mail
+
++-- BitTorrent Sync --+
+
+API password
+Mot de passe de l'API
+
+Test settings
+Tester les paramètres
+
+Settings successfully tested.<br>The server is running BitTorrent Sync version %1
+Paramètres testés avec succès. <br> BitTorrent Sync fonctionne sur le serveur en version %1
+
+The provided credentials are not valid
+Les informations d'identification fournies ne sont pas valides
+
+API username
+Nom d'utilisateur de l'API
+
+The default port number is 8888
+Le numéro de port par défaut est 8888
+
+API port
+Port de l'API
+
+BitTorrent Sync needs to run on this server.
+BitTorrent Sync a besoin de fonctionner sur ce serveur.
+
+API host
+Hôte API
+
+Enable BitTorrent Sync API Integration
+Activer l'intégration de  	
+BitTorrent Sync API
+
+BitTorrent Sync Integration
+Intégration de  	
+BitTorrent Sync
+
+Read Only
+Lecture seule
+
+Full Access
+Accès complet
+
+Scan this QR code with your mobile device to connect sync folders.
+Scannez ce code QR avec votre appareil mobile pour connecter les dossiers à synchroniser.
+
+QR Code
+Code QR
+
+Start sharing
+Commencer le partage
+
+Unsharing folder...
+Départage dossier...
+
+If you have a secret, paste it here
+Si vous avez un secret, collez le ici
+
+Sharing folder...
+Partage dossier...
+
+Select your platform or visit the <a href="http://www.bittorrent.com/sync" target="_blank">BitTorrent Sync</a> website:
+Choisissez votre plate-forme ou visitez le <a href="http://www.bittorrent.com/sync" target="_blank"> BitTorrent Sync </a> site web:
+
+Download BitTorrent Sync
+Télécharger BitTorrent Sync
+
+Connect mobile device
+Connecter un appareil mobile
+
+Unshare
+Départage
+
+Read-only secret
+Secret en lecture seul
+
+Full access secret
+Accès secret complet
+
+Folder successfully unshared
+Echec du partage du dossier
+
+Failed to unshare folder
+Echec du départage du dossier
+
+Folder successfully shared
+Dossier partagé avec succès
+
+This folder does not have a full-access secret
+Ce dossier n'a pas un accès secret complet
+
+Initializing BitTorrent Sync panel...
+Initialisation du panneau BitTorrent Sync
+
+Reload secrets
+Recharger les secrets
+
+Full Access
+Accès complèt
+
+Read Only
+Lecture seule
+
+Updating secrets...
+Mise à jour des secrets...
+
+Failed to retrieve list of BTSync folders. Is BTSync running?
+Echec de la récupération de la liste des dossier BTSync. BTSync fonctionne-t-il ?
+
++-- Metadata: Custom --+
+
+Image proprieties
+Propriétés de l'image
+
+Audio proprieties
+Propriétés audio
+
+Height
+Hauteur
+
+Width
+Largeur
+
+Duration
+Durée
+
++-- Labels --+
+
+APPROVED
+APPROUVÉ
+
+PENDING
+EN ATTENTE
+
+REJECTED
+REJETÉ
+
+Failed to insert new label
+Echec pour insérer la nouvelle étiquette
+
+No files were labeled
+Aucun fichier étiquetté
+
+File successfully labeled
+Fichier étiquetté avec succès
+
+%1 files successfully labeled
+%1 fichiers ont été étiquettés avec succès
+
++-- Custom Actions: MediaInfo --+
+
+Media Info
+Information sur le média
+
++-- Stars --+
+
+You are not allowed to set stars!
+Vous n'êtes pas autorisé à régler les favoris !
+
+No stars were added
+Aucun favori ajouté
+
+Star successfully added
+Favori ajouté avec succès
+
+%1 stars successfully added
+%1 favoris ont été ajoutés avec succès
+
+No stars were removed
+Aucun favoris n'a été retiré
+
+Star successfully removed
+Favori retiré avec succès
+
+%1 stars successfully removed
+%1 favoris retirés avec succès
+
++-- Custom Actions: Box View --+
+
+Loading preview...
+Chargement de la prévisualisation...

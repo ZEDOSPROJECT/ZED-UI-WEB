@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<head>
+	<title>{$app.config.install.branding.name} :: Installation</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css?v={$app.currentVersion|forURL}" />
+	<link rel="stylesheet" type="text/css" href="css/ext.php?v={$app.currentVersion|forURL}" />
+	<script type="text/javascript" src="js/min.php?extjs=1&v={$app.currentVersion|forURL}"></script>
+	<script type="text/javascript" src="js/install.js?v={$app.currentVersion|forURL}"></script>
+	<script type="text/javascript">
+	var URLRoot = '{$app.url.root}';
+	var appName = '{$app.config.install.branding.name}';
+	var licenseAgreementURL = '{$app.config.install.branding.license_agreement_url}';
+	</script>
+    <style>.ext-el-mask { background-color: white; }</style>
+</head>
+<body id="theBODY">
+</body>
+</html>

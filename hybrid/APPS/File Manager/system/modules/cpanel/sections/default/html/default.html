@@ -1,0 +1,38 @@
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>{$app.settings.app_title} :: {t s="Main Interface"}Control Panel{/t}</title>
+	<link rel="stylesheet" type="text/css" href="css/ext.php?v={$app.settings.currentVersion|forURL}{if $app.config.misc.developmentMode}&debug=1{/if}" />
+	<link rel="stylesheet" type="text/css" href="css/cpanel.css?v={$app.settings.currentVersion|forURL}" />
+	{if $app.settings.pushercom_enable}
+	<script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+	{/if}
+	<script src="js/min.php?extjs=1{if $app.config.misc.developmentMode}&debug=1{/if}&v={$app.settings.currentVersion|forURL}"></script>
+	<script src="js/min.php?cpanel=1&v={$app.settings.currentVersion|forURL}"></script>
+	<script src="?module=fileman&section=utils&sec=Admin&lang={$app.language|forURL}&v={$app.settings.currentVersion|forURL}&page=translation.js"></script>
+	{if $app.user.isSuperUser}
+	<script src="https://www.filerun.com/version_check/{$app.settings.currentVersion|forURL}{if $app.isFree}/f{/if}" defer></script>
+	{/if}
+	<script>
+	FR.URLRoot = '{$app.url.root}';
+	FR.iconURL = '{$app.url.root}/images/icons/';
+	FR.system = {$app.system};
+	FR.user = {
+		isAdmin: {if $app.user.isSuperUser OR $app.user.perms.admin_type == 'simple'}true{else}false{/if},
+		isIndep: {if $app.user.perms.admin_type == 'indep'}true{else}false{/if},
+		isSuperuser: {if $app.user.isSuperUser}true{else}false{/if},
+		perms: {
+			adminUsers: {if $app.user.isSuperUser || $app.user.perms.admin_users || $app.user.perms.admin_type == 'indep'}true{else}false{/if},
+			adminRoles: {if $app.user.isSuperUser || $app.user.perms.admin_roles || $app.user.perms.admin_type == 'indep'}true{else}false{/if},
+			adminLogs: {if $app.user.isSuperUser || $app.user.perms.admin_logs || $app.user.perms.admin_type == 'indep'}true{else}false{/if},
+			adminNotif: {if $app.user.isSuperUser || $app.user.perms.admin_notifications || $app.user.perms.admin_type == 'indep'}true{else}false{/if},
+			adminMetadata: {if $app.user.isSuperUser || $app.user.perms.admin_metadata || $app.user.perms.admin_type == 'indep'}true{else}false{/if}
+		}
+	}
+	</script>
+    <style>.ext-el-mask { background-color: white; }</style>
+</head>
+<body></body>
+</html>

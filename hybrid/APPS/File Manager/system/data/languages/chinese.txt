@@ -1,0 +1,4000 @@
++-- Login Page --+
+
+Username
+用户名
+
+Password
+密码
+
+Language
+语言
+
+Keep me signed in
+保持登录状态
+
+By checking this box, you'll stay logged in for up to 2 weeks or until you log out. You'll get easier access to the files, even if you close your browser or shut down your computer.<br>If you're using a public computer or you share this computer with others, we recommend that you uncheck the box.
+选中此框，系统可以在该设备上保持两周的登陆状态，直到您主动退出。<BR>如您正在使用公用计算机，请谨慎选择。
+
+Sign in
+登录
+
+Please login.
+请登录
+
+Please type a username.
+请输入用户名
+
+Invalid password.
+错误的密码
+
+Invalid username.
+错误的用户名
+
+Your account has been deactivated!
+账户已被锁定
+
+Register
+注册
+
+Forgot password?
+忘记密码？
+
+Signing in...
+正在登录...
+
+Your account access is limited to a particular IP address!
+您的账户仅被允许从特定IP地址访问！
+
++-- User Registration --+
+
+User Registration
+用户注册
+
+Username
+用户名
+
+E-mail address
+电子邮箱地址
+
+Password
+新密码
+
+Retype password
+确认新密码
+
+Name
+姓名
+
+Company
+公司
+
+Web site address
+网站地址
+
+Comment
+评论
+
+Submit
+提交
+
+Please type an username!
+请输入用户名
+
+Please avoid using special characters for the username!
+用户名不能为特殊字符
+
+Username already in use. Please choose another one.
+用户名已存在，请选择其他用户名
+
+Please type a password!
+请输入密码
+
+Please retype the password correctly!
+请确认两次输入的密码相同
+
+Please type your name!
+请输入您的姓名
+
+Please type your email address!
+请输入电子邮箱地址
+
+Please type the company name!
+请输入公司名称
+
+Please type your website address!
+请输入网站地址
+
+Please type the comment!
+请输入评论内容
+
+Failed to create user account!
+用户创建失败
+
+Your account has been successfully created.
+用户创建成功
+
+Login
+登录
+
+Your account information has been emailed to you!
+账户信息已发送至您的电子邮箱
+
+An e-mail message has been sent at "%1" with details on how to complete the registration process.
+关于如何完成注册过程的详情，已发送至"%1"
+
+E-mail address already registered. Please use the password recovery options if you forgot your password.
+该Email已被注册. 如果您忘记密码请使用密码恢复功能
+
+Cancel
+取消
+
+Please type the two words correctly!
+请正确的重复输入
+
++-- Password Reset --+
+
+The login information has been sent to your email address.
+登录信息已发送到您的电子邮箱
+
+Password Reset
+密码重置
+
+E-mail address
+电子邮箱地址
+
+Submit
+提交
+
+Cancel
+取消
+
+Please type the e-mail address.
+请输入电子邮箱地址
+
+The e-mail address was not found in the database.
+未检索到该电子邮箱地址
+
+Please check your inbox for information on how to reset your account's password.
+关于如何找回密码,请检查您的收件箱
+
++-- Main Interface --+
+
+Date Format: Grid - Modified Date
+Y年m月d日 H:i
+
+Loading...
+正在加载...
+
+Sign out
+注销
+
+Control Panel
+控制面板
+
+Change password
+修改密码
+
+Preview
+预览
+
+No preview available for this type of files.
+此类文件无可用预览
+
+Comments
+评论
+
+Please select a file.
+请选择一个文件。
+
+Folder contains no image file
+目录为空
+
+There are no files in this folder.
+此目录内无任何文件
+
+This file was created or modified since your last access.
+自您上次登陆，此文件被创建或修改
+
+This file is locked by %1.
+此文件被 %1 锁定.
+
+This file has %1 comment(s).
+此文件有 %1 条评论.
+
+This file has a WebLink attached to it.
+此文件有一个Web链接
+
+Loading Preview...
+正在加载预览...
+
+Free space available:
+剩余空间:
+
+Delete "%1"?
+确认
+
+Loading Java applet, please wait...
+正在加载JAVA applet，请稍候...
+
+Internet Explorer is blocking the download?<br>Click <a href="%1" target="_blank">here</a> to download the file without reloading this page.
+无法下载?<br>点击 <a href="%1" target="_blank">这里</a> 下载文件
+
+Upload
+上传
+
+Regular
+常规
+
+Please type a file name:
+请输入文件名
+
+Creating blank file...
+正在创建空白文件...
+
+Select All
+选择所有
+
+View
+查看
+
+Tools
+工具
+
+List view
+详细视图
+
+Switch to thumbnails
+缩略视图
+
+Refresh
+刷新
+
+Refresh file list
+刷新文件列表
+
+New File
+文件
+
+Traffic:
+流量:
+
+Space:
+容量:
+
+Search
+搜索
+
+File Search
+文件搜索
+
+Share
+共享
+
+Sharing
+共享
+
+New sub-folder
+新建子目录
+
+Rename
+重命名
+
+Remove
+删除
+
+Properties
+属性
+
+Download
+下载
+
+..in one zip file
+..到一个压缩文件
+
+Open with..
+打开为...
+
+E-mail Files
+电子邮箱文件
+
+Get link
+Web链接
+
+Details and activity
+通知
+
+Upload, Delete, Rename, etc.
+上传,删除,重命名等
+
+Download, Preview, Copy, etc.
+下载,预览,复制等
+
+Versioning
+版本
+
+Previous Versions
+上一版本
+
+Lock
+锁定
+
+Unlock
+解锁
+
+File Versions
+文件版本
+
+Metadata
+元数据
+
+Comment
+评论
+
+Add to zip
+添加到压缩文件
+
+Extract archive
+解压缩
+
+Copy
+复制
+
+Loading file list...
+加载文件列表...
+
+Name
+名称
+
+Size
+大小
+
+Type
+类型
+
+Meta Type
+Meta类型
+
+Modified
+修改时间
+
+Created
+创建时间
+
+Comments count
+评论条数
+
+Yes
+是
+
+No
+否
+
+Version
+版本
+
+Is new
+新的
+
+Locked by
+被谁锁定:
+
+Sort Ascending
+升序排列
+
+Sort Descending
+降序排列
+
+Columns
+列
+
+Reset Columns
+重置列
+
+%1 items
+%1 文件
+
+Opening popup window... <br>Click <a href="%1" target="_blank">here</a> if the browser prevents it from opening.
+正在打开窗口... <br>如果打开窗口失败，请点击 <a href="%1" target="_blank">这里</a>
+
+Moving files...
+移动文件...
+
+Moving folder...
+移动目录...
+
+Renaming file...
+重命名文件...
+
+Zipping files...
+压缩文件...
+
+Extracting archive contents...
+加压缩文件...
+
+Deleting...
+删除文件...
+
+Restoring file(s)...
+恢复文件...
+
+Locking file...
+锁定文件...
+
+Unlocking file...
+解锁文件...
+
+Renaming folder...
+重命名目录...
+
+Please wait while the selected files are being zipped...
+正在所选文件，请稍候...
+
+Please wait while the selected folder is being zipped...
+正在所选目录，请稍候...
+
+Selected Files.zip
+所选文件.zip
+
+Downloading zip file...
+下载压缩文件...
+
+Are you sure you want to delete the selected file(s)?
+确定删除所选文件?
+
+The selected folder and all its contents will be deleted.
+确定删除所选目录及目录下所有内容?
+
+Permanent deletion
+永久删除
+
+New Folder
+创建新目录
+
+Creating new folder...
+创建新目录...
+
+Please type a folder name for the archive contents:
+为压缩文件输入目录名:
+
+Extracted Files
+解压缩文件
+
+Deleted from
+从何处删除
+
+Trash
+已删除文件
+
+Restore
+还原
+
+Please type a name for the zip file:
+输入压缩文件名称:
+
+New Archive.zip
+新建压缩文件Archive.zip
+
+E-mail
+Email地址
+
+Activity log
+活动日志
+
+Loading the file's activity log...
+正在加载文件的变更日志
+
+External Window
+外部窗口
+
+Zip and download
+压缩并下载
+
+This type of archives is not supported by the current server configuration.
+服务器不支持此类压缩包
+
+With users
+关联用户
+
+One item
+1个项目
+
+%1 items
+%1个项目
+
+One item selected
+选中1个项目
+
+%1 items selected
+选中%1个项目
+
+More
+更多
+
+Confirm
+确认
+
++-- General --+
+
+One minute ago
+大于1分钟
+
+One minute
+1分钟
+
+Under one minute
+小于1分钟
+
+just now
+刚才
+
+Submit
+提交
+
+Save
+保存
+
+Cancel
+取消
+
+Error
+错误
+
+Invalid path.
+非法路径.
+
+File not found!
+文件不存在!
+
+You are not allowed to preview the selected file.
+您无权预览选定文件.
+
+%1 users
+%1 用户
+
+You are not allowed to download the requested file!
+您无权下载该文件!
+
+The file you are trying to download is no longer available!
+您试图下载的文件已失效!
+
+You are not allowed to download or preview files.
+您无权下载或预览文件.
+
+Invalid folder.
+非法目录.
+
+You are not allowed to copy that shared file.
+您无权复制该共享文件.
+
+You are not allowed to copy files to the specified target.
+您无权复制文件至指定目标.
+
+No file was copied!
+文件复制失败
+
+One file copied.
+1个文件被复制完毕.
+
+%1 files copied.
+%1个文件被复制完毕.
+
+No more file space available.
+磁盘空间不足.
+
+You are not allowed to delete files from this shared folder.
+您无权从此共享目录删除文件.
+
+No files were deleted!
+没有文件被删除!
+
+One file deleted.
+1个文件被成功删除.
+
+%1 files successfully deleted.
+%1个文件被成功删除.
+
+You are not allowed to move that shared file.
+您无权移动该共享文件.
+
+You are not allowed to move files to the specified target.
+您无权移动文件至指定目标.
+
+You are not allowed to move these shared files to your own folder.
+您无权移动此共享文件到您的目录.
+
+No file was moved!
+没有文件被移动!
+
+One file moved.
+1个文件被移动.
+
+%1 files moved.
+%1个文件被移动.
+
+Invalid target path, file already exists.
+目标路径非法, 文件已存在.
+
+File is locked by somebody else.
+文件被其他人锁定.
+
+Invalid path, not a file.
+非法路径, 不是一个文件.
+
+Invalid path, not a folder.
+非法路径, 不是一个目录.
+
+Invalid source path, not a folder.
+非法源路径, 不是一个目录.
+
+Invalid target path, not a folder.
+非法目标路径, 不是一个目录.
+
+Invalid source path, not a file.
+非法源路径, 不是一个文件.
+
+You are not allowed to rename files in this shared folder.
+您无权重命名此共享目录下的文件.
+
+File successfully renamed.
+文件重命名成功.
+
+There is already a file or a folder with the same name!
+此目录已存在同名文件!
+
+Failed to rename file!
+重命名文件失败!
+
+You are not allowed to extract archives in this shared folder.
+您无权在此共享目录内解压文件.
+
+You are not allowed to zip files in this shared folder.
+您无权在此共享目录内压缩文件.
+
+Invalid folder name!
+非法目录名!
+
+Invalid file name
+非法文件名
+
+A folder with that name already exists!
+已存在同名目录!
+
+Unzipped Files
+解压缩文件
+
+The archive was successfully extracted.
+文档成功解压.
+
+Invalid zip name!
+压缩文件名非法!
+
+A file with that name already exists!
+已存在同名文件!
+
+Zip archive successfully created.
+成功创建压缩文档.
+
+You are not allowed to delete that shared folder.
+您无权删除该共享目录.
+
+You cannot delete the root of a shared folder.
+不能删除共享根目录.
+
+Folder deleted.
+目录删除成功.
+
+Failed to delete folder!
+目录删除失败!
+
+You are not allowed to move that shared folder.
+您无权移动该共享目录.
+
+You are not allowed to copy that shared folder.
+您无权复制该共享目录.
+
+You are not allowed to copy folder to the specified target.
+您无权复制目录至指定目标.
+
+You are not allowed to move the folder to the shared location.
+您无权移动目录至共享位置.
+
+You are not allowed to move this shared folder to your own folder.
+您无权移动该共享目录到您的目录.
+
+Folder moved.
+目录移动成功.
+
+Failed to move folder!
+目录移动失败!
+
+Failed to rename folder!
+目录重命名失败!
+
+There is already a folder with the same name in this folder!
+此目录下已存在同名目录!
+
+Folder created.
+目录创建成功.
+
+Failed to create folder!
+目录创建失败!
+
+Failed to upload file "%1": %2
+上传文件失败 "%1": %2
+
+You are not allowed to upload to this shared folder.
+您无权上传至此共享目录.
+
+No more file space available!
+磁盘空间不足!
+
+File uploaded.
+文件上传成功.
+
+The previous version is available from the versioning menu.
+上一可用版本.
+
+Failed to upload file.
+文件上传失败.
+
+Please specify a file for upload.
+请指定上传文件.
+
+The monthly traffic limit has been reached!
+已达到月流量限制!
+
+Click <a href="%1">here</a> to go back.
+点击 <a href="%1">这里</a> 返回.
+
+A file named "%1" already exists!
+已存在同名文件 "%1" !
+
+The path of your home folder doesn't point to an existing folder. Please contact the site administrator.
+您的个人工作目录不存在, 请联系系统管理员.
+
+Zip Archive.zip
+压缩为archive.zip
+
+The shared folder is no longer available.
+该共享目录已失效
+
+You are not allowed to modify files in this shared folder.
+您无权修改此共享目录内的文件
+
+You are not allowed to upload files in this folder.
+您无权在此目录上传文件
+
+Please type a name for the file!
+请为此文件输入文件名
+
+Please type a name for the folder!
+请为此目录输入名称
+
+You are not allowed to create folders under this shared folder.
+您无权在此目录创建文件夹
+
+%1 minutes
+%1分钟
+
+%1 minutes ago
+%1分钟之前
+
+One hour
+1小时
+
+One hour ago
+1小时之前
+
+%1 hours
+%1小时
+
+%1 hours ago
+%1小时之前
+
+One day
+1天
+
+One day ago
+1天之前
+
+Yesterday
+昨天
+
+%1 days
+%1天
+
+%1 days ago
+%1天之前
+
+One week
+1周
+
+One week ago
+1周之前
+
+%1 weeks
+%1周
+
+%1 weeks ago
+%1周之前
+
+One month
+1个月
+
+One month ago
+1个月之前
+
+%1 months
+%1个月
+
+%1 months ago
+%1个月之前
+
+One year
+1年
+
+One year ago
+1年之前
+
+%1 years
+%1年
+
+%1 years ago
+%1年之前
+
++-- DateTime --+
+
+January
+一月
+
+February
+二月
+
+March
+三月
+
+April
+四月
+
+May
+五月
+
+June
+六月
+
+July
+七月
+
+August
+八月
+
+September
+九月
+
+October
+十月
+
+November
+十一月
+
+December
+十二月
+
+Sunday
+星期日
+
+Monday
+星期一
+
+Tuesday
+星期二
+
+Wednesday
+星期三
+
+Thursday
+星期四
+
+Friday
+星期五
+
+Saturday
+星期六
+
+Today
+今天
+
+This date is before the minimum date
+此日期早于最早许可日期
+
+This date is after the maximum date
+此日期晚于最晚许可日期
+
+Next Month (Control+Right)
+下月(CTRL键+右方向键)
+
+Previous Month (Control+Left)
+前月(CTRL键+左方向键)
+
+Choose a month (Control+Up/Down to move years)
+选择月份(CTRL键+上/下方向键来改变年份)
+
+{0} (Spacebar)
+{0} (空格键)
+
+Cancel
+取消
+
++-- Mobile --+
+
+Sign in
+登陆
+
+Sign out
+登出
+
+Loading...
+加载中...
+
+Username
+用户名
+
+Password
+密码
+
+Language
+语言
+
+Back
+后退
+
+Preview
+预览
+
+More...
+更多...
+
+Open with...
+使用其他方式打开...
+
+Generate WebLink
+生成WebLink
+
+Delete
+删除
+
+Are you sure you want to delete the selected file?
+确认删除所选文件?
+
+Name
+名称
+
+Size
+大小
+
+Date Created
+创建日期
+
+Date Modified
+修改日期
+
+Close
+关闭
+
+Upload
+上传
+
+Download
+下载
+
+Remove WebLink
+删除WebLink
+
+Open WebLink as...
+使用其他方式打开WebLink...
+
+Image Gallery
+图片库
+
+Audio Playlist
+音乐列表
+
+RSS Feed
+RSS 订阅
+
+Type
+类型
+
+Home Folder
+主文件夹
+
+New folder
+新建文件夹
+
+Type the name of the folder
+输入文件夹名称
+
++-- Trash --+
+
+A file or folder already exists at the original location.
+已存在该恢复路径.
+
+No items were restored!
+没有项目被恢复!
+
+One item restored.
+1个项目被恢复.
+
+%1 items successfully restored.
+%1个项目被恢复.
+
++-- Account Settings --+
+
+Current password
+当前密码
+
+New password
+新密码
+
+Confirm new password
+确认新密码
+
+Save
+保存
+
+Cancel
+取消
+
+Please type the current password correctly.
+请正确输入当前密码.
+
+Please do not use question marks (?) for the new password.
+新密码请勿使用问号(?).
+
+Please retype the new password correctly.
+请正确输入确认密码.
+
+The new password is the same as the current one.
+新密码与旧密码相同.
+
++-- File Upload --+
+
+This application requires Java support installed and enabled in your browser!
+此应用程序需要您的浏览器安装并开启Java支持!
+
+Requires <a href="http://www.java.com/en/download/installed.jsp" target="_blank">Java</a> support enabled in your browser.
+您的浏览器需要开启 <a href="http://www.java.com/en/download/installed.jsp" target="_blank">Java</a> 支持.
+
+Drag files from your computer here<br>or click "%1"
+从你的计算机拖拽文件到这里，或点击<br>"%1"
+
+Drag files or folders from your computer here<br>or click "%1"
+从你的计算机拖拽文件或文件夹到这里，或点击<br>"%1"
+
+Upload
+上传
+
+Cancel Upload
+取消上传
+
+Select Files
+选择文件
+
+Click "Select Files"
+点击“选择文件”
+
+Remove
+删除
+
+Remove selected
+删除所选
+
+Remove uploaded
+删除已上传
+
+Remove all
+删除所有
+
+Queued
+已排队
+
+Uploading ({0}%)
+上传中({0}%)
+
+Failed
+失败
+
+Done
+完成
+
+{2} of {1} uploaded ({5}/s)
+ 
+{2}个中的{1}个已上传 ({5}/s) 
+
+Select files for uploading:
+选择要上传的文件:
+
+Uploading:
+正在上传:
+
+Upload cancelled
+上传已取消
+
+Upload completed
+上传已完成
+
+Upload failed:
+上传失败:
+
+{0} authentication - Attempt {1}
+{0} 身份验证 - 尝试 {1}
+
+{0} Proxy authentication - Attempt {1}
+{0} 代理验证 - 尝试 {1}
+
+Domain
+域
+
+Realm
+范围
+
+Scheme
+结构
+
+Server
+服务器
+
+Proxy settings
+代理设置
+
+Use proxy
+使用代理
+
+Yes
+是
+
+No
+否
+
+Host name
+主机名
+
+Port
+端口
+
+Username
+用户名
+
+Password
+密码
+
+NTLM proxy domain name
+NTLM 代理名称
+
+NTLM server domain name
+NTLM 服务器名称
+
+An error has occured, click "Ok" to see the related message!
+发生错误, 请查阅上传日志!
+
+This upload method cannot resume interrupted uploads. Delete the file "%1" or use the Java upload method to resume the file's transfer.
+该上传方式无法恢复中止的上传。请删除文件"%1"或使用Java来恢复上传过程。
+
++-- E-mail Files --+
+
+Please fill in "From" field!
+请填写发件人!
+
+Please set at least one recipient!
+请填写收件人!
+
+Please type a subject!
+请输入标题!
+
+Please type a message!
+请输入内容!
+
+Email successfuly sent!
+Email发送成功!
+
+Failed to send email!
+Email发送失败!
+
+From
+发件人
+
+To
+收件人
+
+Separate recipients by ,
+多个收件人用 , 分隔
+
+Select Users
+选择用户
+
+Cancel
+取消
+
+Subject
+标题
+
+Message
+内容
+
+Attachments
+附件
+
+Send WebLinks instead of attaching the files.
+创建附件链接，而不发送真实附件.
+
+Web link to
+链接至
+
+Send
+发送
+
+Please make the appropriate <br>changes to the highlighted fields.
+高亮区域请做适当修改.
+
+Sending e-mail, please wait...
+正在发送，请稍候...
+
+No recipient addresses found!
+未发现收件人!
+
+You are not allowed to share the file "%1"!
+您无权从该目录发送文件!
+
+Web Link Options
+Web Link选项
+
+The message was not sent to any of the recipients
+该消息没有发送到任何人。
+
+The message has been sent to one recipient
+该消息已经被发送给1个收件人。
+
+The message has been sent to %1 recipients
+该消息已经被发送给1%个收件人。
+
+Errors: %1
+错误: %1
+
++-- Share Files --+
+
+Permissions for <span id="group-editing-note" style="text-decoration:underline">all users within</span> <span id="actorName"></span>
+权限分配:<span id="group-editing-note" style="text-decoration:underline">all users within</span> <span id="actorName"></span>
+
+Upload
+上传
+
+Download/Copy/Preview
+下载/复制/预览
+
+Add comments
+添加评论
+
+Read comments
+读取评论
+
+Move/Rename/Delete
+移动/重命名/删除
+
+Share anonymously
+匿名共享
+
+You can set different options for each user or group by clicking on their names.
+点击每个用户或用户组，可设置不同选项.
+
+Share with
+共享
+
+Select Users
+选择用户
+
+Cancel
+取消
+
+Unsorted, %1 users
+不排序, %1用户
+
+Permissions
+权限
+
+Options
+选项
+
+The above apply to "%1"
+以下将会应用的"%1"
+
+Add Users
+添加用户
+
+Remove Selected
+删除所选
+
+Save
+保存
+
+Loading data...
+加载数据...
+
+Saving options...
+保存选项...
+
+Add users to share with.
+添加共享用户.
+
+Sharing options saved.
+共享选项已保存.
+
+Please select an item from the list.
+请从列表选择一个项目.
+
+You cannot disable both upload and download permissions.
+不可同时禁用上传和下载权限.
+
+Ok
+确定
+
+Share as
+共享给
+
++-- Folder Notifications --+
+
+Notification settings successfully saved
+通知消息成功保存
+
++-- Web Links --+
+
+Loading data...
+加载数据...
+
+Link address
+链接地址
+
+Short address
+短地址
+
+- click to generate -
+点击这里生成
+
+This file is currently not linked
+当前文件尚无Web链接
+
+Expiration date
+过期时间
+
+Download limit
+可供下载次数
+
+Set a password
+设置密码
+
+Receive e-mail notifications
+接受电子邮件提示
+
+Allow visitors to upload files
+允许访问者上传文件
+
+Create Web Link
+创建Web链接
+
+Save changes
+更新设置
+
+Remove link
+移除Web链接
+
+You cannot allow uploads in this folder
+你不能上传文件到该文件夹
+
+Web link successfully created!
+Web链接创建成功!
+
+Failed to create web link!
+Web链接创建失败!
+
+Web link successfully updated!
+Web链接更新成功!
+
+Failed to update web link!
+Web链接更新失败!
+
+Web link successfully deleted!
+Web链接删除成功!
+
+Failed to delete web link!
+Web链接删除失败!
+
+The requested file requires a password.
+请求的文件需要密码.
+
+Password
+密码
+
+Submit
+提交
+
+The requested file is no longer available!
+请求的文件已失效!
+
+The user's monthly traffic limit has been reached!
+用户月流量已超限!
+
+Click <a href="%1">here</a> to go back.
+点击 <a href="%1">这里</a> 返回.
+
+Open
+打开
+
+E-mail
+电子邮件
+
+Simple Folder
+简单文件夹
+
+Short Link
+短链接
+
+Image Gallery
+图像库
+
+Audio Playlist
+音乐列表
+
+RSS Feed
+RSS订阅
+
+You are required to password protect the link
+你需要一个密码以保护该链接
+
+Options
+选项
+
+Post
+公告
+
+Download Terms
+下载条款
+
+By downloading this file, you agree to the following terms and conditions:
+下载文件即表明你同意以下条款和限制：
+
+Link
+链接
+
+Add download terms and conditions
+添加下载条款和限制：
+
+Force the visitors to accept your written terms before being able to download files.
+强制访客在下载前接受你的条款。
+
+QR Code
+QR码
+
+Scan this QR code with your mobile device.
+用你的移动设备扫描该QR码
+
++-- Files Activity Log --+
+
+Date
+日期
+
+User
+用户
+
+Action
+行为
+
+Details
+明细
+
+No activity records found for this file.
+没有发现该文件的活动日志。
+
+You are not allowed to access the files activity logs
+你不允许访问该文件的活动日志。
+
+Displaying records {0} - {1} of {2}
+显示记录{0} - {1} of {2}
+
+No records to display
+没有要显示的记录
+
+Page
+页
+
+of {0}
+共{0}
+
+First Page
+第一页
+
+Last Page
+最后一页
+
+Next Page
+下一页
+
+Previous Page
+前一页
+
+Refresh
+刷新
+
+%2 by <span style="color:black">%1</span>
+%2 由<span style="color:black">%1</span>
+
+File uploaded
+文件已上传
+
+Uploaded by %1
+由%1上传
+
+File downloaded
+文件已下载
+
+Downloaded by %1
+由%1下载
+
+File archived for download
+文件已经被打包供下载
+
+Archived for download by %1
+由%1打包
+
+File archived
+文件被打包
+
+File copied
+文件被复制
+
+Copied by %1
+由%1复制
+
+File pasted
+文件被粘贴
+
+Pasted by %1
+由%1粘贴
+
+File moved
+文件被移动
+
+Moved by %1
+有%1移动
+
+File deleted
+文件被删除
+
+Deleted by %1
+被%1删除
+
+Deleted file restored
+已恢复被删除文件
+
+Restored by %1
+由%恢复
+
+File previewed
+文件被预览
+
+Previewed by %1
+由%1预览
+
+WebLink download
+WebLink被下载
+
+Downloaded through %1's WebLink
+下载通过%1的WebLink
+
+WebLink created
+WebLink被创建
+
+%1 attached a WebLink
+%1附加了WebLink
+
+WebLink updated
+WebLink被更新
+
+%1 changed the WebLink's options
+%1更改了WebLink选项
+
+WebLink removed
+WebLink被删除
+
+%1 removed the WebLink
+%1删除了WebLink
+
+Comment added
+评论被添加
+
+%1 wrote a comment: "%2"
+%1添加了评论：%2
+
+Comment removed
+评论被删除
+
+%1 removed a comment: "%2"
+%1删除了评论：%2
+
+Metadata changed
+元数据被更改
+
+Metadata changed by %1
+元数据被%1更改
+
+File locked
+文件被锁定
+
+Locked by %1
+文件被%1锁定
+
+File unlocked
+文件被解锁
+
+Unlocked by %1
+文件被%1解锁
+
+Previous file version restored
+预览文件版本被恢复
+
+Previous version restored by %1
+预览文件版本被%1恢复
+
+Previous file version deleted
+预览文件版本被删除
+
+Previous version deleted by %1
+预览文件版本被%1删除
+
+File renamed
+文件被重命名
+
+Renamed by %1
+文件被%1重命名
+
+File encrypted
+文件被加密
+
+Encrypted by %1
+文件被%1加密
+
+File decrypted
+文件被解密
+
+Decrypted by %1
+文件被%1解密
+
+File sent by e-mail
+文件被通过电子邮件发送
+
+Send by e-mail by %1
+由%1通过电子邮件发送
+
++-- Metadata --+
+
+You are not allowed to alter data in this shared folder.
+您无权在此共享目录内更改数据.
+
+Software Error: Failed to insert new path.
+软件错误: 插入新路径失败.
+
+File Type
+文件类型
+
+Select...
+选择...
+
+- File Type Not Found -
+- 未找到文件类型 -
+
+Save
+保存
+
+Saving data...
+保存数据...
+
+Failed to save data!
+保存数据失败!
+
+- No Special Type -
+- 无指定类型 -
+
++-- Versioning --+
+
+Date Format: Grid - Date
+Y-m-d H:i
+
+Version
+版本
+
+User
+用户
+
+Date
+日期
+
+Download
+下载
+
+Restore
+还原
+
+Delete
+删除
+
+File version restored.
+文件版本还原成功.
+
+Failed to restore file version.
+文件版本还原失败.
+
+File version deleted.
+文件版本删除成功.
+
+Failed to delete file version.
+文件版本删除失败.
+
+You are not allowed to lock/unlock files in this shared folder.
+您无权在此目录内锁定/解锁文件.
+
+The file has been locked.
+该文件已被锁定.
+
+The file has been unlocked.
+该文件已解锁.
+
+Failed to lock file!
+锁定文件失败!
+
+Failed to unlock file!
+解锁文件失败!
+
+File is locked by another user.
+文件已被其他人锁定.
+
+File is already locked by somebody else.
+文件已被其他人锁定.
+
+Modified by
+修改者
+
+Size
+大小
+
++-- Searching --+
+
+File name
+文件名
+
+File contents
+文件内容
+
+Look in
+查看
+
+Metadata Field
+元数据域
+
+Metadata
+元数据
+
+Select...
+选择...
+
+Path
+路径
+
+Searching...
+搜索...
+
+Search
+搜索
+
+- None Selected -
+- 未选定 -
+
+Metadata Type
+元数据类型
+
+Field Value
+字段值
+
++-- File Comments --+
+
+Author
+作者
+
+Comment
+评论
+
+Add comment
+添加评论
+
+Type in your comment
+输入您的评论
+
+Remove comment
+删除评论
+
+You are not allowed to read comments.
+您无权读取评论
+
+You are not allowed to add comments.
+您无权添加评论
+
+You are not allowed to remove comments.
+您无权删除评论
+
+You are not allowed to add comments to files in this shared folder.
+您无权添加此目录的评论。
+
+You are not allowed to remove comments from files in this shared folder.
+您无权删除此目录的评论。
+
+You are allowed to delete only your own comments from a shared file.
+您仅可删除共享文件中您自己的评论.
+
+You are not allowed to read comments in this shared folder.
+您无权读取此目录的评论。
+
+No comments available for this file.
+没有评论。
+
+Comment successfully added.
+评论成功.
+
+Failed to add comment to file.
+评论失败.
+
+Comment successfully removed.
+评论删除成功.
+
+Failed to remove comment from file.
+评论删除失败.
+
++-- Image Browser (deprecated) --+
+
+Fit to window
+自适应窗口大小
+
+Slideshow
+幻灯片浏览
+
+Previous Page
+上一页
+
+Next Page
+下一页
+
+Previous File
+上一个文件
+
+Next File
+下一个文件
+
++-- Custom Actions: Text Editor --+
+
+Text Editor
+文本编辑器
+
+Text File
+文本文件
+
+Untitled.txt
+未命名.txt
+
+Save
+保存
+
+Saving...
+保存中...
+
+File successfully saved
+文本文件保存成功
+
+File successfully created
+文本文件创建成功
+
++-- Custom Actions: Zoho --+
+
+Zoho Editor
+Zoho 编辑器
+
+Document with Zoho
+Zoho文档
+
+Untitled.docx
+未命名.docx
+
+Blank file created successfully
+空文件创建成功
+
++-- Custom Actions: Pixlr --+
+
+Image with Pixlr
+Pixlr图像
+
+Untitled.png
+未命名.png
+
+Blank image created successfully
+空图像创建成功
+
++-- Custom Actions: File Encryption --+
+
+AES File Encryption
+AES文件加密
+
+Password
+密码
+
+Decrypt "%1"
+解密 “%1”
+
+Encrypt "%1"
+加密 “%1”
+
+Processing file...
+文件处理中...
+
+The user doesn't have permission to use this function!
+这个用户无权使用该功能！
+
+The selected file was successfully decrypted.
+选中的文件已被成功解密。
+
+Failed to decrypt the selected file!
+选中的文件无法成功解密！
+
+A file named "%1" already exists!
+一个叫做“%1”的文件已经存在！
+
+The selected file was successfully encrypted.
+选中的文件已被成功加密。
+
+Failed to encrypt the selected file!
+选中的文件无法成功加密！
+
+The selected file was not found!
+无法找到选中的文件！
+
+Confirm password
+确认密码
+
+Delete the source file
+删除源文件
+
+Please type the password
+请输入密码
+
+Please confirm the password
+请再次输入密码
+
++-- Admin --+
+
+Control Panel
+控制面板
+
+Users
+用户
+
+Import users
+导入用户
+
+Activity logs
+活动日志
+
+E-mail notifications
+E-mail通知
+
+System configuration
+系统配置
+
+Configure system options.
+系统选项.
+
+Interface options
+界面选项
+
+User login and registration
+用户登录和注册
+
+E-mail settings
+E-mail设置
+
+File indexing and searching
+文件索引和搜索
+
+Misc options
+Misc选项
+
+Metadata
+元数据
+
+Software update
+软件升级
+
+Software licensing
+软件许可证
+
+Tools
+工具
+
+File space quota usage
+磁盘配额
+
+Traffic quota usage
+流量配额
+
+Archive logs
+归档日志
+
+Roles
+角色
+
+Groups
+组
+
+Image preview
+文件预览和缩略图
+
+File Manager
+文件管理器
+
+Sign out
+登出
+
+Displaying records {0} - {1} of {2}
+显示记录 {0} - {1} 共 {2}
+
+No records to display
+没有要显示的记录
+
+Page
+页
+
+of {0}
+共 {0}
+
+First Page
+第一页
+
+Last Page
+最后一页
+
+Next Page
+下一页
+
+Previous Page
+上一页
+
+Refresh
+刷新
+
+Field sets
+字段集
+
+File types
+文件类型
+
+Open Web Link
+打开Web Links
+
+Please confirm web link deletion
+请确认删除Web Links
+
+Add
+新建
+
+Edit
+修改
+
+Search
+搜索
+
+Quick search
+快速搜索
+
+Save Changes
+保存更改
+
+Add Groups
+添加组
+
+Add Users
+添加用户
+
+Remove Selected
+删除所选
+
+Select Users
+选择用户
+
+Delete
+删除
+
+Cancel
+取消
+
+Delete users?
+请确认删除选中的用户
+
+Permanently delete the users home folders.
+永久删除用户主目录
+
+Third party services
+第三方服务
+
+Enable Pusher.com Integration
+启用与Pusher.com的集成
+
+Number of days to keep the user activity log entries
+用户日志保留天数
+
+Number of days to keep the file activity log entries
+文件日志保留天数
+
++-- Admin: Setup --+
+
+Application title
+应用程序名称
+
+Login form logo URL
+登陆窗体LOGO URL
+
+Login form welcome message
+登陆窗体欢迎消息
+
+Default view mode
+默认查看模式
+
+List
+列表方式
+
+Thumbnails
+缩略方式
+
+Default
+默认
+
+Enabled
+启用
+
+Default language
+默认语言
+
+Display language menu
+显示语言菜单
+
+Double-click files action
+双击文件动作
+
+open preview
+打开预览
+
+open in browser
+在浏览器内打开
+
+prompt to save
+提示保存
+
+display contextual menu
+显示上下文菜单
+
+User Login
+用户登录
+
+User Registration
+用户注册
+
+Allow persistent logins.
+允许保持登录状态.
+
+These settings are not available when using a third-part authentication plugin.
+当使用第三方验证插件时，这些设置将不起作用.
+
+Maximum login attempts
+最大登录尝试次数
+
+The user's account will be automatically deactivated after the last failed attempt.
+最后一次登录尝试后，用户账户将自动锁定.
+
+The recommended value is 4.
+推荐值为 4.
+
+Enable user registration.
+允许用户注册.
+
+E-mail account confirmation links.
+E-mail账户确认链接.
+
+New accounts require admin activation.
+新账户需要管理员激活.
+
+Automatically generate the passwords.
+自动生成密码.
+
+Required fields
+必填项
+
+Enable ImageMagick support.
+启用 ImageMagick 支持.
+
+Path to ImageMagick "convert" binary
+ImageMagick "转化" 二进制路径
+
+Generate ImageMagick thumbnails for the following file types
+为以下文件类型生成ImageMagick 缩略图
+
+Thumbnail size
+缩略图大小
+
+Enable FFmpeg support.
+启用对FFmpeg的支持。
+
+Path to FFmpeg binary
+FFmpeg的路径
+
+Generate FFmpeg thumbnails for the following file types
+为下列文件创建FFmpeg缩略图
+
+Use a SMTP server.
+使用SMTP服务器.
+
+SMTP server
+SMTP服务器
+
+SMTP requires authentication.
+SMTP需要身份验证.
+
+SMTP username
+SMTP 用户名
+
+SMTP password
+SMTP 密码
+
+E-mail notifications
+E-mail 通知
+
+Default sender e-mail address
+默认发送者电子邮件地址
+
+Instant email notifications
+立即E-mail通知
+
+Uncheck this option if you will be running the notification script using a scheduled task.
+如果您使用计划任务通知脚本请勿选择此项.
+
+Allow users to set notification settings to folders.
+允许用户为目录设置提示消息
+
+Enable file indexing.
+启用文件索引.
+
+Binary to text converters
+二进制转化为文本
+
+Metadata
+元数据
+
+Allow users to change their passwords.
+允许用户修改密码.
+
+Allow users to import e-mail attachments.
+允许用户导入E-mail附件.
+
+Disable file versioning.
+禁用文件版本.
+
+Redirect URL after logout
+注销后重定向URL
+
+Users quota warning level
+用户配额报警级别
+
+Settings successfully saved.
+设置已保存
+
+Check
+检查
+
+Regular
+定期
+
+Allow users to reset their passwords.
+允许用户重置密码
+
+Force users to change their passwords after reset.
+强制用户在重置密码后修改新密码。
+
+Example list:
+示例:
+
+Settings saved
+设置已保存
+
+Login form title
+登陆窗体标题
+
+File types blocked from uploading
+被禁止上传的文件类型
+
+User Logout
+用户登出
+
+Enable <a href="http://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA</a>.
+启用<a href="http://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA</a>.
+
+Default groups
+默认组
+
+E-mail address
+电子邮件地址
+
+Company
+公司
+
+Web site address
+网站地址
+
+Comment
+评论
+
+Disable the file activity logs.
+禁用文件活动日志
+
+Logo URL
+登陆URL
+
++-- Admin: Users --+
+
+Date Format: Registration date
+d M Y
+
+Date Format: Last login
+Y-M-d, H:i
+
+Date Format: Expiration date
+Y-M-d
+
+Important: Changing this path will remove the users folder sharing settings and weblinks.
+重要：更改本路径将会删除用户文件夹的共享和WebLinks。
+
+Users
+用户
+
+Parent user
+父用户
+
+You are not allowed to manage users.
+您无权管理用户.
+
+You are not allowed to manage user accounts.
+您完全管理用户账户.
+
+User successfully created.
+用户创建成功.
+
+You cannot delete your own account!
+您无能删除自己的账户!
+
+You cannot create user accounts any more, the limit was reached!
+您不能继续创建账户，账户数已达上限!
+
+You are not allowed to manage this user.
+您无权管理此用户.
+
+User succcessfuly updated!
+用户更新成功!
+
+User account succcessfuly activated.
+用户激活成功.
+
+Failed to activate user account!
+用户激活失败!
+
+Sorry, the "superuser" account cannot be deactivated!
+无法锁定超级用户账户!
+
+You cannot deactivate your own user account!
+您不能锁定自己的账户!
+
+User account succcessfuly deactivated.
+账户锁定成功.
+
+Failed to deactivate user account!
+账户锁定失败!
+
+Action unavailable in this demo version of the software!
+演示版本中此功能无效!
+
+Please type a username!
+请输入用户名!
+
+Please type a name!
+请输入名称!
+
+Please don't use special characters for the username!
+用户名中请勿使用特殊字符!
+
+Username already in use. Please choose another one.
+用户名已存在，请选择其他用户名.
+
+Please type a password!
+请输入密码!
+
+Please retype the password correctly!
+请正确的重新输入密码!
+
+An independent admin user should be able to create at least one user account!
+唯一的管理账户应该至少创建一个用户账户!
+
+You are required to set a space quota for this user!
+请为此用户设置空间配额!
+
+The maximum space quota you can assign to this user is %1MB!
+您能为此用户分配的最大空间配额是 %1MB!
+
+You are required to set a traffic quota for this user!
+请为此用户设置流量配额!
+
+The maximum traffic quota you can assign to this user is %1MB!
+您能为此用户分配的最大流量配额是 %1MB!
+
+Failed to update user!
+更新用户失败!
+
+Edit user.
+编辑用户.
+
+Sorry, the superuser account cannot be deleted!
+无法删除超级用户账户!
+
+Failed to delete user "%1"!
+无法删除用户"%1"!
+
+Delete user
+删除用户
+
+You cannot create user accounts when custom authentication is used!
+使用自定义身份验证时，无法创建用户账户!
+
+Can see and exchange files with
+可以看到
+
+[All users]
+[所有用户]
+
+Hold "Ctrl" key to select multiple options.
+按住"CTRL"键选择多个选项。
+
+Failed to create user!
+创建用户失败!
+
+Create user
+创建用户
+
+Username
+用户名
+
+Password
+密码
+
+Retype password
+确认密码
+
+Name
+名称
+
+Company
+公司
+
+Website
+网站地址
+
+E-mail address
+E-mail地址
+
+Notifications
+通知
+
+If checked, this option gets the user notified when:<br>- somebody downloads files from the user's folders<br>- somebody uploads, moves, copies files into one of the user's folders
+选择此项，当其他用户从该用户目录内下载文件，或复制文件到该文件目录内时，该用户将得到通知
+
+Role
+角色
+
+- None -
+- 无 -
+
+The role defines the user's permission settings. The individual permission settings of the user cannot be changed if a role is selected.
+角色可以定义用户的权限设置. 用户被指定角色时，该用户独立的权限设定将无法修改.
+
+Home folder
+主目录
+
+Type the path to a folder on your server. This is the user's personal working space.<br><br>Examples: 	c:/users/group_name<br>/home/users/group_name
+输入一个服务器上的目录. 这将作为该用户的个人工作目录<BR><BR>例如: c:/users/group_name<br>/home/users/group_name
+
+Your personal home folder is:
+您的个人主目录为:
+
+Check path
+检查路径
+
+Create folder now
+创建目录
+
+The path is valid.
+路径正确.
+
+Please specify a path!
+请指定一个路径!
+
+Please type a home folder path or select a role for the user.
+请输入主目录地址或为用户选择一个角色。
+
+Invalid folder!
+路径非法!
+
+The folder "%1" does not exists or it is not accessible by PHP.
+目录 "%1" 不存在，或者PHP无法访问.
+
+Failed to create folder.
+创建目录失败.
+
+Folder successfuly created.
+创建目录成功.
+
+Permissions
+权限
+
+User can upload files
+用户可以上传文件
+
+User can download files
+用户可以下载文件
+
+User can publish files as "Web Links"
+用户可以发布文件为Web链接
+
+User can email files as attachments
+用户可以将文件以附件形式发送Email
+
+User cannot move, rename delete, etc..
+用户不允许移动, 重命名, 删除..
+
+User can share folders
+用户可以共享目录
+
+User can access metadata
+用户可以访问元数据
+
+User can change the password
+用户可以修改账户密码
+
+User can zip and download folders
+用户可以压缩并下载文件
+
+User can read file comments
+用户可以读取文件评论
+
+User can write file comments
+用户可以修改文件评论
+
+Space quota
+空间配额
+
+Traffic quota
+流量配额
+
+This month's traffic
+月流量
+
+MB/month
+MB/月
+
+User group(s)
+用户组
+
+Home folder<br>template path
+主目录<br>临时路径
+
+This folder will be automatically created in your home folder, if it doesn't exists already.
+如果该目录不存在，将自动在您的主目录生成
+
+Admin
+管理员
+
+Yes
+是
+
+Yes, Independent
+是, 唯一的
+
+- Can only see and manage users, groups, etc. created by himself.
+- 仅能查看并且管理他自己创建的用户和群组等.
+
+- He can assign space quotas within a total of his own space quota.
+- 可以分配整个空间配额.
+
+User can create new user accounts.
+可以创建新用户账户.
+
+User can manage groups.
+可以管理群组.
+
+User can manage roles.
+可以管理角色.
+
+User can manage notifications.
+可以管理通知.
+
+User can access the activity logs.
+可以访问活动日志.
+
+User can change the metadata settings.
+可以修改元数据设置.
+
+Can manage
+可以管理
+
+- All Groups -
+- 所有群组 -
+
+Max users
+最大用户数
+
+This is the maximum number of user accounts this independent admin user can create.
+这是此独立管理员可以创建的最大用户数.
+
+Example: /home/users/{USERNAME}
+示例: /home/users/{USERNAME}
+
+{USERNAME} will be automatically replaced with each user's login name.
+{USERNAME} 会自动被用户的登录名取代.
+
+{NAME} will be automatically replaced with this user's name.
+{NAME} 会自动被用户的姓名取代.
+
+{EMAIL} will be automatically replaced with this user's e-mail.
+{EMAIL} 会自动被用户的电子邮件取代.
+
+{COMPANY} will be automatically replaced with this user's company name.
+{COMPANY} 会自动被用户的公司名取代.
+
+The permission to manage roles cannot be granted if a "Home folder template path" is set.
+如果用户主目录被设置，管理角色的权限无法分配。
+
+If you wish to grant the permission to manage roles, please use the "Can manage" option to select at least one group of users.
+如果您希望授权管理角色权限，请使用看“可以管理”选项来选择至少一个组。
+
+If you wish to grant the permission to create new user accounts, please use the "Can manage" option to select at least one group.
+如果你希望授权创建用户权限，请使用“剋有管理”选项来选择至少一个组。
+
+Leave the field empty to allow the admin to set the paths manually.
+保持该项为空以便允许管理员手动设置路径.
+
+You need to allow the user to manage at least one group to be able to create new user accounts.
+你应该允许该用户管理至少一个群组，以便可以创建新的账户.
+
+You need to allow the user to manage at least one group to be able to manage roles.
+你应该允许该用户管理至少一个群组，以便可以管理角色.
+
+Note
+提示
+
+Send a notification now
+现在发送提醒。
+
+An e-mail message with the login information will be sent to the user's address.
+一封包含登陆信息的邮件已经被发送给用户。
+
+Submit
+提交
+
+Cancel
+取消
+
+This is the "superuser" account, and it cannot be deleted.
+这是超级用户账户，不能删除.
+
+Please confirm the deletion of the user
+确认删除用户
+
+Delete
+删除
+
+You can add %1 more users.
+不能添加 %1 用户.
+
+You have reached the maximum number of user account allowed.
+已达到最大用户数限制.
+
+Showing only users created by
+仅显示被谁创建的用户
+
+Click <a href="%1/?module=users&section=admin&page=index&filter_indep=1" style="text-decoration:underline">here</a> to show all "independent admin users".
+点击 <a href="%1/?module=users&section=admin&page=index&filter_indep=1" style="text-decoration:underline">这里</a> 显示所有独立管理员用户
+
+Show only "independent admin users"
+仅显示独立管理员用户
+
+Show only deactivated users
+仅显示未激活的用户。
+
+Filter users by group:
+以组别过滤用户
+
+- All -
+- 所有 -
+
+Users created:
+用户创建:
+
+Calculating space quota for users created by <strong>%1</strong>:
+计算被谁创建的所有用户的空间总配额 <strong>%1</strong>:
+
+There is no user account created by this user.
+该用户没有创建其他用户账户。
+
+Loading...
+加载中...
+
+Free space available:
+剩余有效空间:
+
+Edit User
+编辑用户
+
+Search users by name:
+以名称搜索用户:
+
+Search by company name:
+以公司名搜索用户:
+
+Toggle filtering options
+过滤选项
+
+Page:
+页码:
+
+Search
+搜索
+
+Deactivate user account
+锁定用户
+
+Activate user account
+激活账户
+
+This is the "superuser" account, and it cannot be deactivated.
+这是超级用户账户，不能锁定.
+
+Click to deactivate user account.
+点击以锁定账户.
+
+Click to activate user account.
+点击以激活账户.
+
+Browse users
+浏览用户
+
+Browse users created by this "independent admin user".
+查看这个独立管理员账户所创建的用户.
+
+Space quota info
+空间配额信息
+
+View space quota information with breakdown by users.
+查看空间配额详细信息.
+
+Delete user.
+删除用户.
+
+No
+否
+
+Total
+总共
+
+The users created by this administrator will have their home folders set depending on this template.
+由管理员创建的用户将会拥有基于本模板设定的主目录。
+
+{ADMUSERNAME} will be automatically replaced with this user's login name.
+{ADMUSERNAME} 将会自动被替换为用户的登录名。
+
+Last login
+上一次登陆
+
+User "%1" succcessfuly deleted!
+用户"%1"已被成功删除！
+
+Require user to change the password
+需要用户修改密码
+
+Registration date
+注册日期
+
+The user's home folder cannot be deleted as other users have home folders located inside!
+无法删除该用户的主文件夹，因为其中包含其他用户的主文件夹！
+
+Add User
+新建用户
+
+Basic Information
+基本信息
+
+Login Info
+登陆信息
+
+E-mail Options
+电子邮件选项
+
+Details
+明细
+
+Expiration date
+过期时间
+
+The user account will be automatically deactivated at the specified date.
+用户账户将会在过期日自动冻结。
+
+Please replace the back slashes (\) with forward slashes (/)!
+请使用正斜杠 (/) 替换这个反斜杠 (\)!
+
+The path should start with a drive letter! Example: C:/files/
+路径应该开始于盘符，例如C:/Files/
+
+The path should start with a forward slash! Example: /files/
+路径应该开始于反斜杠，例如/Files/
+
+User can access the files' activity logs
+用户可以访问文件活动日志
+
+Quotas
+容量
+
+The values are in megabytes. The value of 0 disables the limitation.
+值的单位是兆字节。值为0时取消限制。
+
+Permanently delete the user's home folder.
+用户删除用户的主目录。
+
+Delete User Account
+删除用户账户
+
+The account is deactivated
+该账户已被冻结
+
+Important: Changing this path will update the home folder paths of all user accounts using this role. It will results in the automatic removal of the users' folder sharing settings and weblinks.
+重要：更改本路径将会更新所有该用户组的主目录路径。将会自动删除这些用户的共享和WebLinks。
+
+User can sync folders with BitTorrent Sync
+用户可以使用BitTorrent同步本目录的文件。
+
+Important: Changing this path will update the home folder paths of all user accounts created by this admin. It will results in the automatic removal of these users' folder sharing settings and weblinks.
+重要：更改本路径将会更新由管理员创建的用户主目录路径。这将导致自动删除这些用户的共享和WebLinks。
+
+Important: Changing this path will update the home folder paths of all user accounts created by admins using this role. It will results in the automatic removal of the users' folder sharing settings and weblinks.
+重要：更改本路径将会更新所有由该管理员创建的用户的主目录路径。将会自动删除这些用户的共享和WebLinks。
+
++-- Admin: Groups --+
+
+You are not allowed to delete groups.
+您无权删除群组.
+
+You are not allowed to manage user groups.
+您无权管理用户组.
+
+You are not allowed to manage this group.
+您无权管理此群组.
+
+(%1 users)
+(%1 用户)
+
+Group succcessfuly created!
+群组创建成功!
+
+Add a new user groups.
+添加新用户组.
+
+Please type a name for the group!
+请输入群组名!
+
+Please don't use special characters for the group's name!
+请不要在组名称中使用特殊字符！
+
+Group name already used. Please choose another one.
+群组名已存在，请使用其他名称.
+
+Failed to create group!
+创建群组失败!
+
+Groups
+群组
+
+Create group
+创建群组
+
+Group name
+群组名
+
+Description
+群组描述
+
+Failed to edit group!
+编辑群组失败!
+
+Edit group
+编辑群组
+
+Delete group
+删除群组
+
+Failed to delete group!
+删除群组失败!
+
+Please confirm group deletion.
+确认删除群组.
+
+Delete
+删除
+
+Edit group.
+编辑群组.
+
+Delete group.
+删除群组.
+
+Group succcessfuly deleted!
+删除群组成功!
+
+Name
+姓名
+
+Created by
+创建者
+
+Users
+用户
+
+Add Group
+添加组
+
++-- Admin: Notifications --+
+
+Notifications
+通知
+
+Notification rule added.
+通知角色添加成功.
+
+Failed to add notification!
+通知角色添加失败!
+
+Please type an email address.
+请输入Email地址.
+
+Please select at least one action.
+请选择至少1个动作.
+
+Notification rule removed.
+通知角色删除成功.
+
+Failed to remove notification!
+通知角色删除失败!
+
+Action
+动作
+
+E-mail address
+Email地址
+
+Ungrouped users
+未分组用户
+
+File previewed
+文件已预览
+
+File uploaded
+文件上传完毕
+
+File received (via upload)
+文件已接收 (通过上传)
+
+File received (via copy)
+文件已接收 (通过复制)
+
+File received (via move)
+文件已接收 (通过移动)
+
+Upload failed
+上传失败
+
+File downloaded
+文件下载完毕
+
+WebLink download
+Web链接下载
+
+File received (via WebLink)
+文件已接收(通过WebLink)
+
+Folder shared
+目录共享完毕
+
+Folder unshared
+目录解除共享完毕
+
+New shared folder available
+新共享目录生效
+
+Login
+登录
+
+Logout
+注销
+
+File moved
+文件移动完毕
+
+Folder moved
+目录移动完毕
+
+Folder copied
+目录复制完毕
+
+Failed to copy folder
+目录复制失败
+
+File copied
+文件复制完毕
+
+File deleted
+文件删除完毕
+
+Folder deleted
+目录删除完毕
+
+File renamed
+文件重命名完毕
+
+Failed to rename file
+文件重命名失败
+
+Folder renamed
+目录重命名完毕
+
+New folder created
+新目录创建完毕
+
+WebLink upload failed
+文件上传失败
+
+Failed to move file
+文件移动失败
+
+Failed to copy file
+文件复制失败
+
+Failed to move folder
+目录移动失败
+
+Failed to delete file
+文件删除失败
+
+Failed to delete folder
+目录删除失败
+
+Failed to rename folder
+目录重命名失败
+
+Failed to create new folder
+目录创建失败
+
+File version restored
+文件版本还原完毕
+
+Failed to restore file version
+文件版本还原失败
+
+File version deleted
+文件版本删除完毕
+
+Failed to delete file version
+文件版本删除失败
+
+New user registration
+用户注册
+
+Folder zipped
+目录打包完毕
+
+Failed to zip folder
+目录打包失败
+
+Files zipped
+文件打包完毕
+
+Failed to zip files
+文件打包失败
+
+Restored deleted file
+还原已删除文件完毕
+
+Restored deleted folder
+还原已删除目录完毕
+
+File permanently deleted
+文件已永久删除
+
+Folder permanently deleted
+目录已永久删除
+
+File locked
+文件锁定完毕
+
+Failed to lock file
+文件锁定失败
+
+File unlocked
+文件解锁完毕
+
+Failed to unlock file
+文件解锁失败
+
+File comment added
+文件留言添加完毕
+
+Failed to add comment to file
+文件留言添加失败
+
+File comment removed
+文件留言移除完毕
+
+Failed to remove comment from file
+文件留言移除失败
+
+Files sent by email
+Email发送文件完毕
+
+Failed to send files by email
+Email发送文件失败
+
+You are not allowed to manage e-mail notifications.
+您无权管理Email通知.
+
+User added
+用户添加完毕
+
+User edited
+用户编辑完毕
+
+User deleted
+用户删除完毕
+
+User manual activation
+用户手动激活
+
+User manual deactivation
+用户手动锁定
+
+Space quota warning
+空间配额报警
+
+Password recovery
+密码恢复
+
+WebLink removed
+WebLink已删除
+
+WebLink modified
+WebLink已删除
+
+WebLink created
+WebLink已创建
+
+Metadata changed
+元数据已更改
+
+Role added
+角色已添加
+
+Role edited
+角色已编辑
+
+Role deleted
+角色已删除
+
+Add Notification Rule
+新增提醒规则
+
+Edit Notification Rule
+编辑提醒规则
+
+Delete Notification Rule
+删除提醒规则
+
+Please confirm notification rule deletion.
+请确认要删除提醒规则。
+
+User or group
+用户或组
+
+Users
+用户
+
+Notify e-mail address
+电子邮件通知
+
+Actions
+行动
+
+WebLink folder access
+WebLink文件夹地址
+
+File encrypted
+文件已加密
+
+File decrypted
+文件已解密
+
+Logs
+日志
+
+E-mail notifications logs
+电子邮件提醒日志
+
+Sent message (%1)
+发送消息 (%1)
+
+Date
+日期
+
+From
+从
+
+To
+到
+
+Subject
+主题
+
+Has errors
+发送错误
+
+File downloaded by another user
+文件已被其他用户下载
+
+Folder added to BitTorrent Sync
+文件已经添加到BitTorrent Sync
+
+Folder removed from BitTorrent Sync
+文件夹从BitTorreny Sync删除
+
++-- Admin: Logs --+
+
+Date Format: Grid - Date
+Y-m-d H:i
+
+Activity logs
+活动日志
+
+Toggle search options
+搜索选项
+
+User
+单用户
+
+Users
+多用户
+
+Actions
+动作
+
+Date start
+开始日期
+
+Date end
+截止日期
+
+Search
+搜索
+
+Loading data...
+加载数据...
+
+Date
+日期
+
+Details
+详细
+
+Keyword
+关键字
+
+The search results have been saved to your home folder as "%1"
+搜索结果已经作为"%1"保存到您的主目录
+
+Please confirm the archiving and deletion of the activity logs.
+请确认归档并删除活动日志.
+
+Activity log has been successfuly archived!
+活动日志归档完毕!
+
+Failed to retrieve log data!
+恢复日志数据失败!
+
+Failed to create archive file!
+创建归档文件失败!
+
+Failed to clear logs!
+清除日志失败!
+
+Failed to archive logs!
+归档日志失败!
+
+You are not allowed to access the activity logs.
+您无权访问活动日志.
+
+Export results to CSV
+到处结果到CSV
+
+Action
+行动
+
+Search Activity Logs
+搜索活动日志
+
+Export
+导出
+
++-- Admin: Metadata --+
+
+Metadata
+元数据
+
+Manage the different types of information that can be associated with classes of files.
+管理各种与文件关联的类型信息.
+
+You are not allowed to manage the metadata settings.
+您无权管理元数据设置.
+
+Fieldsets
+属性列
+
++-- Admin: Metadata: Filetypes --+
+
+File type
+文件类型
+
+File types
+文件类型
+
+File type succcessfuly created!
+文件类型创建成功!
+
+File type succcessfuly deleted!
+文件类型删除成功!
+
+Add File Type
+创建
+
+Please type a name for the file type!
+请输入文件类型名称!
+
+Please don't use weird characters for the file type's name!
+文件类型名称请勿使用特殊字符!
+
+File type name already in use. Please choose another one.
+文件类型名已存在，请选择其他名称.
+
+Failed to edit file type!
+编辑文件类型失败!
+
+Failed to add file type!
+添加文件类型失败!
+
+Edit File Type
+编辑文件类型
+
+Description
+描述
+
+Click here to manage fieldsets.
+点此管理属性列.
+
+Delete File Type
+删除
+
+File type succcessfuly updated!
+文件类型更新成功!
+
+Failed to delete file type!
+文件类型删除失败!
+
+Please confirm file type deletion.
+请确认删除文件类型.
+
+Cancel
+取消
+
+Field sets
+属性列
+
+Name
+名称
+
+Created by
+创建者
+
+File type name
+文件类型名称
+
++-- Admin: Metadata: Fieldsets --+
+
+Fieldset succcessfuly deleted!
+属性列删除失败!
+
+Add Field Set
+Edit Field Set
+
+Please type a name for the field set!
+请输入属性列名称!
+
+Field set name already in use. Please choose another one.
+属性列名称已存在，请使用其他名称.
+
+Failed to edit field set!
+属性列编辑失败!
+
+Failed to add field set!
+属性列添加失败!
+
+Failed to delete field set!
+属性列删除失败!
+
+Field set succcessfuly added
+属性列创建成功
+
+Field set succcessfuly updated
+属性列更新成功
+
+Field set name
+属性列名称
+
+Description
+描述
+
+Generic field set
+常规属性
+
+A generic field set is one that is available for every file by default.
+常规属性默认对于所有文件有效.
+
+Edit
+编辑
+
+Delete
+删除属性列
+
+Fieldsets
+属性列
+
+Name
+名称
+
+Fields
+字段
+
+Created by
+创建者
+
+Edit Field Set
+编辑字段集
+
+Delete Field Set
+删除字段集
+
+Field set successfuly deleted
+字段集成功删除
+
+Basic Info
+基础信息
+
+Fields can be added after creating the set.
+字段可以在创建集合后添加。
+
+Please confirm field set deletion.
+请确认删除字段集。
+
+Add
+新建
+
++-- Admin: Metadata: Fields --+
+
+Fields
+属性列
+
+Add Field
+创建
+
+Edit Field
+编辑
+
+Field succcessfuly deleted!
+属性列删除成功!
+
+Please type a name for the field!
+请输入属性列名称!
+
+Field name already in use. Please choose another one.
+属性列名称已存在，请选择其他名称.
+
+Failed to edit field!
+属性列编辑失败!
+
+Failed to delete field!
+属性列删除失败!
+
+Failed to add fieldset!
+属性列添加失败!
+
+Field succcessfuly added
+属性列添加成功
+
+Field succcessfuly updated
+属性列更新成功
+
+Field succcessfuly deleted
+属性列删除成功
+
+Delete Field
+删除
+
+Field name
+属性名称
+
+Show by default as column in file grid
+默认以列显示
+
+Description
+描述
+
+Hide fieldset name in column header
+列的头部隐藏属性名称
+
+Predefined values
+预定义值
+
+Separate values by commas. Example: one, two, three
+值用逗号分开. 例如: 1, 2, 3
+
+The already attached meta information will remained unchanged, even though you rename the values here.
+即时您重命名值，已经存在的元信息也将保持不变
+
+Please confirm field deletion.
+请确认属性删除.
+
++-- Admin: Licensing --+
+
+Software licensing
+软件许可信息
+
+You are using <b>%1 user accounts</b> out of <b>%2</b>.
+您已经创建<b>%1个用户</b>，授权共许可<b>%2个用户</b>。
+
+Update
+更新
+
+Invalid license file (invalid structure).
+非法授权文件 (结构非法).
+
+Invalid license data (invalid domain name).
+非法授权数据 (域名非法).
+
+Failed to upgrade license:
+升级许可失败:
+
+Failed to connect to licensing server!
+链接授权服务器失败！
+
+License successfully updated.
+授权升级成功！
+
+The license will expire on <b>%1</b>.
+授权将于<b>%1</b>过期。
+
+License upgraded.<br><span class="nowrap">You can now have <strong>%1</strong> user accounts.</span>
+许可升级成功.<br><span class="nowrap">您现在可以拥有 <strong>%1</strong> 用户.</span>
+
+License key in use: <b>%1</b>
+正在使用的授权：<b>%1</b>
+
+unlimited
+无限制
+
++-- Admin: Software update --+
+
+Software update
+软件升级
+
+Step 1:
+第1步:
+
+Check for updates
+检查更新
+
+Step 2:
+第2步:
+
+Download update
+下载更新
+
+Step 3:
+第3步:
+
+Install update
+安装更新
+
+Start over (to check for more updates)
+重新检查可用更新
+
+Step 4:
+第4步:
+
+Your current software version is %1
+当前软件版本为%1
+
++-- Admin: Roles --+
+
+Add a new user role.
+添加新用户角色
+
+Create role
+创建角色
+
+Role name
+角色名称
+
+Description
+描述
+
+Home folder<br> template
+主目录<br> 模板
+
+Automatically create the folder if it doesn't exists.
+如果不存在，自动创建目录.
+
+(%1 users)
+(%1 用户)
+
+Edit Role
+编辑角色
+
+Delete Role
+删除角色
+
+Please set a home folder template.
+请设置一个主目录模板
+
+Please confirm role deletion.
+请确认删除角色.
+
+Delete
+删除
+
+You are required to set a space quota for this role!
+您应为此角色设置空间配额!
+
+You are required to set a traffic quota for this role!
+您应为此角色设置流量配额!
+
+The maximum traffic quota you can assign to this role is %1MB!
+您能为此角色分配的最大流量配额是 %1MB!
+
+The maximum space quota you can assign to this role is %1MB!
+您能为此角色分配的最大空间配额是 %1MB!
+
+You are not allowed to manage this role.
+您无权管理此角色.
+
+You are not allowed to manage user roles.
+您无权管理用户角色.
+
+Role succcessfuly created!
+角色创建成功!
+
+Role successfully updated!
+角色更新成功!
+
+Roles
+角色
+
+Name
+姓名
+
+Created by
+创建者
+
+Users
+用户
+
+Home folder template
+主目录模板
+
+Add Role
+添加角色
+
+Save Changes
+保存更改
+
+You cannot delete this role because it is assigned to %1 users.
+你不能删除这个角色因为有%1个用户关联到该角色。
+
++-- Admin: WebLinks --+
+
+Path
+路径
+
+User
+用户
+
++-- Admin: Tools --+
+
+Name
+姓名
+
+Username
+用户名
+
+Quota
+配额
+
+Used
+已使用
+
+Usage
+使用率
+
+Calculating quota usage for "%1"...
+为 "%1" 计算空间配额使用率...
+
+The traffic usage is reset automatically once every %1 days.
+流量计数重置周期为%1天
+
+Last reset happened on %1.
+上一次重置发生于%1
+
+Reset now
+现在重置
+
+Id
+序号
+
++-- Admin: Tools: Import Users --+
+
+Comma
+逗号
+
+Semicolon
+分号
+
+Tab
+制表键
+
+Import Users
+导入用户
+
+Step 1: Upload CSV File
+步骤一：上传CSV文件
+
+Step 2: Map Fields
+步骤二：映射字段
+
+Step 3: Import Users
+步骤三：导入用户
+
+Select CSV file
+选择CSV文件
+
+Only CSV files are supported!
+仅支持CSV文件
+
+The CSV file should have at least two columns!
+CSV文件应该至少包含三列数据
+
+Fields are separated by
+字段分隔由
+
+Uploading...%1%
+上传中...%1%
+
+Upload starting...
+上传开始...
+
+%1 records were found
+已发现%1个记录
+
+Assign a role to the users
+为用户分配角色
+
+Add the users to groups
+为用户分配组
+
+Start with record number
+从记录数开始
+
+Failed to parse file contents!
+解析文件内容失败
+
+Only the first 10 records are being displayed here.
+这里只显示前十条记录
+
+Username
+用户名
+
+Password
+密码
+
+Name 1
+姓名 1
+
+Name 2
+姓名 2
+
+Name 3
+姓名 3
+
+E-mail
+电子邮件
+
+Company
+公司
+
+Website
+网站
+
+Note
+注释
+
+You need to map a column for the username!
+你需要为用户名映射一个字段
+
+You need to map a column for the password!
+你需要为密码映射一个字段
+
+You need to map at least one column for the name!
+你需要为姓名至少映射一个字段
+
+The selected role was not found!
+没有找到选定的角色
+
+Record %1: The username is missing! The record was skipped.
+记录%1：查找用户名失败，该记录被跳过。
+
+Record %1: The name is missing! The record was skipped.
+记录%1：查找姓名失败，该记录被跳过。
+
+Record %1: The password is missing! The record was skipped.
+记录%1：查找密码失败，该记录被跳过。
+
+Record %1: The username "%2" is already in use! The record was skipped.
+记录%1：用户名"%2"已经存在，该记录被跳过。
+
+Record %1: User "%2" has been added. Password: %3
+记录%1：用户“%2”已经被添加
+
++-- BitTorrent Sync --+
+
+API password
+API用户密码
+
+Test settings
+测试设置
+
+Settings successfully tested.<br>The server is running BitTorrent Sync version %1
+设置测试成功。<br>BitTorrent Sync服务器的版本为 %1
+
+The provided credentials are not valid
+用户凭据无效
+
+API username
+API用户名
+
+The default port number is 8888
+默认端口为8888
+
+API port
+API端口
+
+BitTorrent Sync needs to run on this server.
+BitTorrent Sync需要运行在这台服务器上.
+
+API host
+API主机
+
+Enable BitTorrent Sync API Integration
+启用BitTorrent Sync API集成
+
+BitTorrent Sync Integration
+BitTorrent Sync集成
+
+Read Only
+只读访问
+
+Full Access
+完全访问
+
+Scan this QR code with your mobile device to connect sync folders.
+用你的移动设备扫描QR码以连接到共享文件夹.
+
+QR Code
+QR码
+
+Start sharing
+开始共享
+
+Unsharing folder...
+取消共享文件夹...
+
+If you have a secret, paste it here
+如果你拥有密钥，请粘贴到这里
+
+Sharing folder...
+共享文件夹...
+
+Select your platform or visit the <a href="http://www.bittorrent.com/sync" target="_blank">BitTorrent Sync</a> website:
+选择软件平台或访问<a href="http://www.bittorrent.com/sync" target="_blank">BitTorrent Sync</a>网站:
+
+Download BitTorrent Sync
+下载BitTorrent Sync
+
+Connect mobile device
+连接移动设备
+
+Unshare
+取消共享
+
+Read-only secret
+只读访问密钥
+
+Full access secret
+完全访问密钥
+
+Secrets
+密钥
+
+Folder successfully unshared
+关闭文件夹共享成功
+
+Failed to unshare folder
+关闭文件夹共享失败
+
+Folder successfully shared
+开启文件夹共享成功
+
+This folder does not have a full-access secret
+此文件夹不包含完全访问密钥
+
+Initializing BitTorrent Sync panel...
+BitTorrent Sync 面板初始化中...
+
+Options
+选项
+
+Reload secrets
+重载密钥
+
+Full Access
+完全访问
+
+Read Only
+只读访问
+
+Updating secrets...
+更新密钥中...

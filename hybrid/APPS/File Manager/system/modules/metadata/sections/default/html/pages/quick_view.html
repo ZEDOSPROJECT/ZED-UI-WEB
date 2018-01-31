@@ -1,0 +1,66 @@
+{if $app.rating}
+<div>
+	<table cellspacing="1" width="100%">
+		<tr>
+			<td class="fieldName">{t s="Metadata: Custom"}Rating{/t}</td>
+			<td class="fieldValue">
+				<ul class="rating-star">
+					{for $v=0 to $app.rating-1}
+					<li class="fa fa-fw fa-star"></li>
+					{/for}
+				</ul>
+			</td>
+		</tr>
+	</table>
+</div>
+{/if}
+{if $app.metadata.fieldsets}
+{foreach from=$app.metadata.fieldsets item=fieldset}
+<div>
+	<div class="fieldsetname">
+		{$fieldset.name|forHTML|safeHTML}
+		<a href="javascript:;" onclick="FR.UI.infoPanel.tabs.detailsPanel.editMeta()"><li class="fa fa-edit"></li></a>
+	</div>
+	<table cellspacing="1" width="100%">
+	{foreach name=fields from=$fieldset.fields item=field}
+		<tr>
+			<td class="fieldName">{$field.name|forHTML|safeHTML}</td>
+			<td class="fieldValue">
+				{foreach name=values from=$field.values item=value}
+					<div>
+					{if $field.type == 'stars' && $value}
+						{for $v=0 to $value-1}
+							<li class="fa fa-fw fa-star rating-star"></li>
+						{/for}
+					{else}
+						{if $field.type != 'large'}<a href="javascript:;" onclick="FR.actions.filterMeta('{$field.id|forHTML|safeJS}', '{$value|forHTML|safeJS}')">{/if}{$value|forHTML|safeHTML}{if $field.type != 'large'}</a>{/if}
+					{/if}
+					</div>
+				{/foreach}
+			</td>
+		</tr>
+	{/foreach}
+	</table>
+</div>
+{/foreach}
+{/if}
+<div>
+	<div class="fieldsetname">
+		{t s="Metadata: Custom"}Tags{/t}
+		<a href="javascript:;" onclick="FR.UI.infoPanel.tabs.detailsPanel.editMeta()"><li class="fa fa-edit"></li></a>
+	</div>
+	<div>
+		{foreach name=tags from=$app.tags item=tag}
+		<a href="javascript:;" onclick="FR.actions.filterMeta('{$app.tagFieldId|forHTML|safeJS}', '{$tag.val|forHTML|safeJS}', 'exact')" class="tag">{$tag.val|forHTML}</a>
+		{/foreach}
+	</div>
+	<div style="clear:both;{if !$app.metadata.gps}height:20px;{/if}"></div>
+</div>
+{if $app.metadata.gps && $settings.google_static_maps_api_key}
+<div>
+    <div class="fieldsetname">{t s="Metadata: Custom"}Location{/t}</div>
+    <div style="text-align:center;margin-bottom:20px;">
+        <a href="https://www.google.com/maps/place/{$app.metadata.gps.x},{$app.metadata.gps.y}" target="_blank"><img src="https://maps.googleapis.com/maps/api/staticmap?size=300x300&zoom=11&scale=2&&markers=color:red|{$app.metadata.gps.x},{$app.metadata.gps.y}&key={$settings.google_static_maps_api_key|forURL}" width="97%" border="0" /></a>
+    </div>
+</div>
+{/if}

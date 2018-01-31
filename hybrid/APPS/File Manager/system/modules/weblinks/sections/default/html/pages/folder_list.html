@@ -1,0 +1,144 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>{if $app.breadCrumbs}{foreach key=key from=$app.breadCrumbs item=breadCrumb}{if $key > 0 && $key < count($app.breadCrumbs)} &raquo; {/if}{$breadCrumb.title}{/foreach}{else}{/if}</title>
+	<link rel="alternate" type="application/rss+xml" title="{if $app.breadCrumbs}{foreach key=key from=$app.breadCrumbs item=breadCrumb}{if $key > 0 && $key < count($app.breadCrumbs)} &raquo; {/if}{$breadCrumb.title}{/foreach}{else}{/if}" href="{$app.breadCrumbs[0].href}&mode=rss" />
+	<link rel="stylesheet" type="text/css" href="{$app.config.url.root}/css/weblink.css?v={$app.settings.currentVersion|forURL}" />
+	{if $app.config.misc.developmentMode}
+	<script type="text/javascript" src="{$app.config.url.root}/js/min.php?weblink_gallery=1&debug=1&v={$app.settings.currentVersion|forURL}"></script>
+	{else}
+	<script type="text/javascript" src="{$app.config.url.root}/js/min.php?weblink_gallery=1&v={$app.settings.currentVersion|forURL}"></script>
+	{/if}
+	{if $app.linkInfo.allow_uploads}
+	<script type="text/javascript" src="{$app.config.url.root}/js/min.php?flow-standalone=1&v={$app.settings.currentVersion|forURL}"></script>
+	{/if}
+	<script type="text/javascript">
+	var URLRoot = '{$app.config.url.root}';
+	var WebLinkId = '{$app.linkInfo.id_rnd}';
+	var WebLinkPass = {if $app.linkInfo.password}'{$app.linkInfo.password|md5}'{else}false{/if};
+	var UploadToPath = '{$app.path|safeJS}';
+	var UploadChunkSize = {$app.chunkSize};
+	var hasTerms = {if $app.linkInfo.download_terms}true{else}false{/if};
+	var downloadURL = '{$app.downloadURL}';
+	var allowsUploads = {if $app.linkInfo.allow_uploads}true{else}false{/if};
+	</script>
+	<style>
+		.main .item, .itemFolder {
+			width: 100%;
+		}
+		.main .filename, .main .item .filename {
+			width: 100%;
+		}
+		.main .icon {
+			width: 45px;
+		}
+		.main .item .icon a {
+			width: 45px;
+			height: 45px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="header" id="header">
+        <div style="margin:25px">
+            <div style="float: left">
+            {if $app.breadCrumbs}
+                {foreach key=key from=$app.breadCrumbs item=breadCrumb}
+                {if $key > 0 && $key < count($app.breadCrumbs)}<span class="bcSep">›</span>{/if}
+                {if $breadCrumb.href}<a href="{$breadCrumb.href}" class="breadCrumb">{/if}{$breadCrumb.title}{if $breadCrumb.href}</a>{/if}{/foreach}
+            {else}
+                &nbsp;
+            {/if}
+                <div class="itemCount">
+                    {if sizeof($app.list.all) == 1}
+                        One item
+                    {elseif sizeof($app.list.all) == 0}
+                        Empty folder
+                    {else}
+                        {$app.list.all|sizeof} items
+                    {/if}
+                </div>
+            </div>
+            <div style="float:right">
+                <span id="upStatus"></span>
+                <a href="javascript:FR.startUpload()" id="upbtn" class="actionBtn" style="display:none">{t}Upload{/t}</a>
+                <a href="{if $app.linkInfo.download_terms}javascript:FR.download(){else}{$app.downloadURL}{/if}" id="dnbtn" class="actionBtn">{t}Download All{/t}</a>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+	</div>
+
+	<div class="main" id="mainArea">
+		<div id="folderlist" style="max-width:600px">
+			{foreach from=$app.list.folders item=item}
+			<table cellspacing="0" cellpadding="0" class="itemFolder">
+				<tr>
+					<td class="icon">
+						<a href="{$item.url}"><img src="{$app.config.url.root}/images/fico/folder.png" alt="" border="0" width="45"></a>
+					</td>
+					<td>
+						<div class="filename"><a href="{$item.url}" class="filename" title="{$item.filename|safeHTML}">{$item.filename|safeHTML}</a></div>
+					</td>
+				</tr>
+			</table>
+			{/foreach}
+		</div>
+		<div style="clear:both;height:10px;"></div>
+		<div id="filelist" style="max-width:600px">
+			{foreach from=$app.list.files item=item}
+			<table cellspacing="0" cellpadding="0" class="item">
+			<tr>
+				{if $item.thumb}
+				<td class="icon" style="background-image:url('{$item.url}&thumbnail=1&width=200&height=200&g=cover')">
+				{else}
+				<td class="icon" style="background-image:url('{$app.config.url.root}/images/fico/{$item.typeInfo.icon}')">
+				{/if}
+	                <a href="{$item.url}"></a>
+				</td>
+				<td style="padding:5px">
+					<div class="filename"><a href="{$item.url}" class="filename" title="{$item.filename|safeHTML}">{$item.filename|safeHTML}</a></div>
+					<div class="filesize">{$item.nice_filesize}</div>
+				</td>
+			</tr>
+			{if $item.comments}
+			<tr>
+				<td colspan="2">
+	                <div class="comments">
+		                <div class="separator"></div>
+					{foreach $item.comments AS $p => $comment}
+						<div class="comment">
+							{$comment.val|forHTML}
+							{if $app.showNames}
+								{if $comment.uid != $item.comments[$p+1].uid}
+									<div class="author">{$comment.authorName}</div>
+								{/if}
+							{/if}
+						</div>
+						{if $comment.uid != $item.comments[$p+1].uid}
+							<div class="separator"></div>
+						{/if}
+					{/foreach}
+	                </div>
+				</td>
+			</tr>
+			{/if}
+			</table>
+			{/foreach}
+		</div>
+		<div style="clear:both"></div>
+	</div>
+
+
+{if $app.linkInfo.download_terms}
+<div id="terms">
+	<div id="terms-contents">
+		<div>{$app.linkInfo.download_terms|forHTML}</div>
+	</div>
+	<a class="actionBtn acceptBtn" href="{$app.downloadURL}" onclick="$('#terms').hide();">{t}Download{/t}</a>
+	<a class="actionBtn cancelBtn" href="javascript:FR.cancelTerms()">{t}Cancel{/t}</a>
+</div>
+{/if}
+
+{if $app.settings.tracker_codes}{$app.settings.tracker_codes}{/if}

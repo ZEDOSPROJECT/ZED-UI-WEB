@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{$app.settings.app_title} :: {t s="Main Interface"}Account settings{/t}</title>
+    <link rel="stylesheet" type="text/css" href="css/ext.php?v={$app.settings.currentVersion|forURL}" />
+    <link rel="stylesheet" type="text/css" href="css/style.css?v={$app.settings.currentVersion|forURL}" />
+    <link rel="stylesheet" type="text/css" href="js/jquery/croppie/croppie.css?v={$app.settings.currentVersion|forURL}" />
+	<script type="text/javascript" src="js/jquery/jquery.min.js?v={$app.settings.currentVersion|forURL}"></script>
+	<script type="text/javascript" src="js/jquery/croppie/croppie.min.js?v={$app.settings.currentVersion|forURL}"></script>
+	<script type="text/javascript" src="js/jquery/croppie/canvas.toBlob.js?v={$app.settings.currentVersion|forURL}"></script>
+	<script type="text/javascript" src="js/jquery/croppie/exif.js?v={$app.settings.currentVersion|forURL}"></script>
+    <script type="text/javascript" src="js/min.php?extjs=1&v={$app.settings.currentVersion|forURL}"></script>
+    <script type="text/javascript" src="js/user_settings.js?v={$app.settings.currentVersion|forURL}"></script>
+    <script src="?module=fileman&section=utils&sec=Account%20Settings&lang={$app.language|forURL}&v={$app.settings.currentVersion|forURL}&page=translation.js"></script>
+	<script type="text/javascript" src="js/min.php?flow-standalone=1&v={$app.settings.currentVersion|forURL}{if $app.config.misc.developmentMode}&debug=1{/if}"></script>
+    <script>
+        FR.URLRoot = '{$app.url.root}';
+        FR.system = {$app.system_json};
+        FR.userInfo = {$app.userInfo};
+        {if $app.system.showApps}
+        FR.apps = {$app.connectedApps};
+        {/if}
+    </script>
+    <style>.ext-el-mask { background-color: white; }</style>
+</head>
+<body></body>
+</html>

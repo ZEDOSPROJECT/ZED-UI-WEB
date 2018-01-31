@@ -1,0 +1,57 @@
+td.x-grid3-td-progress-cell {
+    padding: 0;
+}
+
+td.x-grid3-td-progress-cell div.x-grid3-cell-inner {
+    padding: 0;
+    position: relative;
+    height: 21px;
+}
+
+.ux-progress-cell-inner {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    color:white;
+}
+
+.ux-progress-cell-background {
+    background-color: #B0CFEF;
+    white-space: nowrap;
+}
+
+.ux-progress-cell-foreground {
+    background-color:#3B8AF3;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.ux-progress-cell-inner-right {
+    text-align: right;
+}
+
+.ux-progress-cell-inner-center {
+    text-align: center;
+}
+
+.ux-progress-cell .ux-progress-cell-inner div {
+    padding: 3px 0 0 4px;
+}
+
+.ux-progress-cell-inner-right div {
+    padding: 3px 4px 0 0;
+    position: relative;
+}
+
+.ux-progress-cell-inner-center div {
+    padding: 3px 0 0 0;
+    position: relative;
+}
+
+.ux-progress-cell-inner-left div {
+    padding: 3px 0 0 4px;
+    position: relative;
+}

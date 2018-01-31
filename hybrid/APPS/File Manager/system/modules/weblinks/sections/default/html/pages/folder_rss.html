@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="../css/weblink_rss.css" title="Default style"?>
+<rss version="2.0">
+	<channel>
+		<title>{if $app.breadCrumbs}{foreach key=key from=$app.breadCrumbs item=breadCrumb}{if $key > 0 && $key < count($app.breadCrumbs)} &amp;raquo; {/if}{$breadCrumb.title}{/foreach}{else}{/if}</title>
+{foreach from=$app.list item=item}
+		<item>
+			<title>{$item.filename|safeHTML}</title>
+			<link>{$item.url|safeHTML}</link>
+			<pubDate>{$item.created}</pubDate>
+			<description>{$item.nice_filesize}</description>
+		</item>
+{/foreach}
+	</channel>
+</rss>

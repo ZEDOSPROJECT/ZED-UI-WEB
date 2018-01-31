@@ -1,0 +1,9 @@
+{lang section="Admin: Tools"}
+<link type="text/css" href="js/ext/ux/statusbar/css/statusbar.css?v={$app.settings.currentVersion|forURL}" rel="stylesheet" rev="stylesheet">
+<script src="js/ext/ux/statusbar/StatusBar.js?v={$app.settings.currentVersion|forURL}" type="text/javascript"></script>
+<script>
+	FR.pusherAppKey = '{$app.pusherAppKey}';
+</script>
+<script src="?module=fileman&section=utils&page=translation.js&sec=Admin%3A%20Tools&lang={$app.language|forURL}"></script>
+<script src="js/cpanel/users_online.js?v={$app.settings.currentVersion|forURL}" type="text/javascript"></script>
+<div id="users-grid"></div>

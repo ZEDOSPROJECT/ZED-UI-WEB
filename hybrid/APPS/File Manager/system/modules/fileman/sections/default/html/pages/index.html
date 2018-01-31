@@ -1,0 +1,50 @@
+{lang section="Main Interface"}
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<title>{$app.settings.app_title|forHTML}</title>
+{if $app.config.app.ui.enable_favicon_ico}
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+{else}
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=" />
+{/if}
+<link rel="stylesheet" href="css/style.css?v={$app.settings.currentVersion|forURL}" />
+<link rel="stylesheet" href="css/ext.php?v={$app.settings.currentVersion|forURL}{if $app.config.misc.developmentMode}&debug=1{/if}" />
+{if $app.config.app.ui.custom_css_url}<link rel="stylesheet" href="{$app.config.app.ui.custom_css_url}?v={$app.settings.currentVersion|forURL}" />{/if}
+<style>
+	.tmbItem { height: {$app.settings.thumbnails_size}px;width: {$app.settings.thumbnails_size}px; }
+	.tmbInner { height: {$app.settings.thumbnails_size-30}px;width: {$app.settings.thumbnails_size}px; }
+	.tmbItem .thumbFolder { width: {$app.settings.thumbnails_size}px; }
+	.tmbItem.largeItem, .tmbItem.largeItem .tmbInner { height: {($app.settings.thumbnails_size*1.5)|round}px;width: {($app.settings.thumbnails_size*1.5)|round}px; }
+</style>
+</head>
+<body id="theBODY">
+<div id="loadMsg"><div>{t}Loading...{/t}</div></div>
+
+<script src="js/min.php?extjs=1{if $app.config.misc.developmentMode}&debug=1{/if}&v={$app.settings.currentVersion|forURL}"></script>
+<script src="js/min.php?v={$app.settings.currentVersion|forURL}{if $app.config.misc.developmentMode}&debug=1{/if}"></script>
+<script src="?module=fileman&section=utils&page=custom_actions.js&language={$app.language|forURL}&v={$app.settings.currentVersion|forURL}"></script>
+<script src="?module=fileman&section=utils&page=translation.js&sec=Main%20Interface&lang={$app.language|forURL}&v={$app.settings.currentVersion|forURL}"></script>
+{if $app.settings.pushercom_enable && !$app.settings.disable_file_history}
+<script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+{/if}
+<script>
+	var URLRoot = '{$app.url.root}';
+	var Settings = {$app.UISettings};
+	var User = {$app.UIUser};
+	var Sharing = {$app.usersWithShares};
+	var AnonShares = {$app.anonShares};
+	FR.UI.grid.customColumns = {$app.customColumns};
+	FR.searchMetaColumns = {$app.searchMetaColumns};
+	FR.specialMetaFields = {$app.specialMetaFields};
+	FR.homeFolderCfg = {$app.homeFolderCfg};
+	FR.language = '{$app.language}';
+	{if $app.labels}FR.labels.addAll({$app.labels});{/if}
+</script>
+
+	{include file="customizables/include.html" page="index"}
+	{if $app.settings.tracker_codes}{$app.settings.tracker_codes}{/if}
+</body>
+</html>
