@@ -1,4 +1,5 @@
 body{
+    padding: 0;
   overflow: hidden;
   margin:0px;
   -webkit-touch-callout: none; /* iOS Safari */
@@ -10,10 +11,174 @@ body{
                                   supported by Chrome and Opera */
 }
 
+
+.frame{
+	position: absolute;
+	border: 1px solid #333;
+	background: #e7e7e7;
+	box-shadow: 0 1px 10px #111;
+	border-radius: 3px;
+	z-index: 10;
+	overflow: hidden;
+}
+.topbar{
+	border-radius: 3px 3px 0 0;
+	padding: 5px;
+	text-align: right;
+	cursor: default;
+}
+.xbtn, .maxbtn{
+	padding: 2px 4px;
+	text-align: center;
+	border-radius: 2px;
+	color: #333;
+	display: inline-block;
+		*display: inline;
+		zoom: 1.0;
+	vertical-align: top;
+	font-family: 'Days One', sans-serif;
+	font-size: 16px;
+	margin-top: -3px;
+}
+.swatches{
+	float: left;
+	background: #333;
+}
+.swatches span{
+	display: block;
+	float: left;
+	width: 10px;
+	height: 10px;
+	cursor: pointer;
+	margin: 5px;
+}
+.red{
+	background: #d23c31;
+}
+.orange{
+	background: #f27937;
+}
+.yellow{
+	background: #ffcc33;
+}
+.green{
+	background: #22a86d;
+}
+.blue{
+	background: #37a2d6;
+}
+.maxbtn span{
+	display: block;
+	border: 1px solid #333;
+	border-top: 2px solid #333;
+	width: 9px;
+	height: 8px;
+	margin-top: 6px;
+}
+.maxbtn:hover span, .maximized .maxbtn span{
+	border-color: #e7e7e7;
+}
+.xbtn:hover{
+	color: #e7e7e7;
+}
+.content{
+	height: auto;
+	width: auto;
+	padding: 15px;
+}
+.content>div{
+	width: inherit;
+	height: inherit;
+}
+.content>iframe{
+	width: inherit;
+	height: inherit;
+}
+textarea{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	border: none;
+  	outline: none;
+  	-webkit-appearance: none;
+  	background: #e7e7e7;
+  	color: #333;
+  	font-size: 16px;
+  	font-weight: normal;
+  	font-family: 'Days One', sans-serif;
+  	text-shadow: 0 1px 0 #fff;
+  	resize: none;
+}
+.active{
+	z-index: 999999;
+}
+#video{
+	top: 10px;
+	left: 10px;
+}
+#website{
+	top: 10px;
+	left: 350px;
+}
+#custom{
+	top: 480px;
+	left: 350px;
+}
+#sticky{
+	top: 280px;
+	left: 10px;
+}
+#video .content{
+	width: 300px;
+	height: 200px;
+}
+#website .content{
+	width: 550px;
+	height: 400px;
+	right: 0;
+}
+#custom .content{
+	width: 550px;
+	height: 150px;
+}
+
+#sticky .content{
+	width: 300px;
+	height: 350px;
+}
+
+.frame.maximized{
+	top: 1% !important;
+	left: 1% !important;
+	width: 98% !important;
+	height: 98% !important;
+	-moz-transition: width .25s linear, height .25s linear, top .25s linear, left .25s linear;
+	-webkit-transition: width .25s linear, height .25s linear, top .25s linear, left .25s linear;
+	transition: width .25s linear, height .25s linear, top .25s linear, left .25s linear;
+}
+
+.frame.maximized .content{
+	margin: 0 auto !important;
+	width: 95% !important;
+	height: 95% !important;
+	-moz-transition: width .25s linear, height .25s linear, top .25s linear, left .25s linear;
+	-webkit-transition: width .25s linear, height .25s linear, top .25s linear, left .25s linear;
+	transition: width .25s linear, height .25s linear, top .25s linear, left .25s linear;
+}
+
 .__flowai_launcher__{
     position: absolute !important;
     bottom: 10px !important;
     right: 10px !important;
+}
+
+#Desktop{
+  position: absolute;
+  width:100%;
+  height: 89.97%;
+  top:3.05%;
+  z-index:0;
 }
 
 #MobileFrame{
