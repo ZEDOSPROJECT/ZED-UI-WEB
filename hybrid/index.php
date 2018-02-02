@@ -1,19 +1,18 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" http-equiv="Content-Type" content="width=device-width, initial-scale=1.0">
+<script>
+	if (location.protocol != 'http:')
+	{
+	 location.href = 'http:' + window.location.href.substring(window.location.protocol.length);
+	}
+</script>
 <script src="js/clock.js"></script>
 <script src="js/jquery.js"></script>
 <script src="js/zed.js" type="text/javascript"></script> 
 <!-- <script src='file:///android_asset/app.js'></script> -->
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
-<link rel='stylesheet prefetch' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
-<link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
-<link rel='stylesheet prefetch' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
-<script  src="js/index.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+<link rel='stylesheet prefetch' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
 
 <HTML>
@@ -23,7 +22,7 @@
   <body>
     <div id="walls">
       <img id="wallpaper" src="Wallpaper/ZED.jpg">
-      <!--<iframe id="wallpaper" src="https://www.youtube.com/embed/K-F4CeVsWHA?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1;mute=1" frameborder="0" allow="autoplay; encrypted-media"></iframe>-->
+      <!--<iframe id="wallpaper" src="http://www.youtube.com/embed/K-F4CeVsWHA?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1;mute=1" frameborder="0" allow="autoplay; encrypted-media"></iframe>-->
     </div>
     <div id="statusBar" hidden>
       <div id="clock"></div>	
@@ -57,23 +56,21 @@
         </center>
       </div>
       <iframe id="MobileFrame" frameBorder="0" src="" hidden></iframe>  
-      <div id="Desktop">
-
-	    <div class="frame"  id="website">
-		    <div class="topbar orange">
-			    <div class="swatches"><span class="red"></span><span class="orange"></span><span class="yellow"></span><span class="green"></span><span class="blue"></span></div>
-			    <div class="maxbtn"><span></span></div>
-			    <div class="xbtn">x</div>
-		    </div>
-		    <div class="content">
-			    <iframe src="//www.webdesignerdepot.com/" frameborder="0"></iframe>
-		    </div>
-	    </div>
+      <div class="Desktop">
+			
+		<div class="frame"  id="website">
+			<div class="topbar blue">
+				<div class="maxbtn"><span></span></div>
+				<div class="xbtn">x</div>
+			</div>
+			<div class="content">
+				<iframe src="//www.webdesignerdepot.com/" frameborder="0"></iframe>
+			</div>
+		</div>
 
      </div> 
       <div id="Alerts">
 	  </div>
-      <script src="https://widget.flow.ai/w/ZWVhMGQ5N2EtY2IwNS00OTUwLWI3MjAtOTg5YWFmOGVkNWNjfGZlMDgxMzUwLWU0YjUtNGY4YS04NWE5LTMzOWFhNmY2MTc3Zg==/flow-webclient-1.1.2.min.js"></script>
   </body>
 </HTML>
 <script>
@@ -198,3 +195,6 @@
         }
     }
 </script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+<script  src="js/index.js"></script>
