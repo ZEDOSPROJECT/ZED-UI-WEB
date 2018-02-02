@@ -56,18 +56,8 @@
         </center>
       </div>
       <iframe id="MobileFrame" frameBorder="0" src="" hidden></iframe>  
-      <div class="Desktop">
+      <div Id="Desktop" class="Desktop">
 			
-		<div class="frame"  id="website">
-			<div class="topbar blue">
-				<div class="maxbtn"><span></span></div>
-				<div class="xbtn">x</div>
-			</div>
-			<div class="content">
-				<iframe src="//www.webdesignerdepot.com/" frameborder="0"></iframe>
-			</div>
-		</div>
-
      </div> 
       <div id="Alerts">
 	  </div>
@@ -121,15 +111,30 @@
     var APPIDs=0;
     
     function OpenApp(id){
-      document.getElementById("MobileFrame").hidden=false;
-      document.getElementById("menuIcon").src="Icons/menu.png";
-      document.getElementById("MobileFrame").src=id+"/index.php";
-      $("#statusBar").css("background-color", "black")
-      $( "#mainMenu" ).fadeOut( "fast", function() {
-      });
-      menu=false;
-      $( "#dock" ).hide();
-      $("#bottomBar").show();
+		if(isMobile){
+		  document.getElementById("MobileFrame").hidden=false;
+		  document.getElementById("MobileFrame").src=id+"/index.php";
+		  $("#statusBar").css("background-color", "black")
+		  $("#bottomBar").show();
+		  $( "#dock" ).hide();
+		}else{
+		  var WindowModel = '<div class="frame"  id="website">'+
+		'<div class="topbar blue">'+
+		'<div class="maxbtn"><span></span></div>'+
+		'<div class="xbtn">x</div>'+
+		'</div>'+
+		'<div class="content">'+
+		'<iframe src="'+id+"/index.php"+'" frameborder="0"></iframe>'+
+		'</div>'+
+		'</div>';
+			var desktop=document.getElementById("Desktop");
+			Desktop.innerHTML=Desktop.innerHTML+WindowModel;
+
+		}
+		menu=false;
+		document.getElementById("menuIcon").src="Icons/menu.png";
+	  $( "#mainMenu" ).fadeOut( "fast", function() {
+	  });
     }
     
     startTime();
