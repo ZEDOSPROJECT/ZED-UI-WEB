@@ -9,11 +9,9 @@
 <script src="js/jquery.js"></script>
 <script src="js/zed.js" type="text/javascript"></script> 
 <!-- <script src='file:///android_asset/app.js'></script> -->
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<link href='http://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
 <link rel='stylesheet prefetch' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
+<link rel="stylesheet" href="css/style.css">
 
 <HTML>
   <HEAD>
@@ -58,13 +56,25 @@
       <iframe id="MobileFrame" frameBorder="0" src="" hidden></iframe>  
       <div Id="Desktop" class="Desktop">
 			
+<!--
+			<div class="frame"  id="website">
+		<div class="topbar orange">
+			<div class="swatches"><span class="red"></span><span class="orange"></span><span class="yellow"></span><span class="green"></span><span class="blue"></span></div>
+			<div class="maxbtn"><span></span></div>
+			<div class="xbtn">x</div>
+		</div>
+		<div class="content">
+			<iframe src="//www.webdesignerdepot.com/" frameborder="0"></iframe>
+		</div>
+	</div>
+-->
+			
      </div> 
       <div id="Alerts">
 	  </div>
   </body>
 </HTML>
 <script>
-
   function updateBatteryUI(battery) {
     var batterIcon=document.getElementById("battry_status");
   /*	if(0 = (battery.level * 100)>90){
@@ -118,17 +128,46 @@
 		  $("#bottomBar").show();
 		  $( "#dock" ).hide();
 		}else{
-		  var WindowModel = '<div class="frame"  id="website">'+
-		'<div class="topbar blue">'+
-		'<div class="maxbtn"><span></span></div>'+
-		'<div class="xbtn">x</div>'+
-		'</div>'+
-		'<div class="content">'+
-		'<iframe src="'+id+"/index.php"+'" frameborder="0"></iframe>'+
-		'</div>'+
-		'</div>';
+		  var WindowModel = '<div class="frame"  id="'+guid()+'">'+
+'<div class="topbar">'+
+'<img style="height:16px;margin:2px;float: left;" src="'+id+"/favicon.png"+'">'+
+'<p style="height:16px;margin:2px;float: left;">'+id.split("/")[1]+'</p>'+
+'<div class="maxbtn"><span></span></div>'+
+'<div class="xbtn">x</div>'+
+'</div>'+
+'<div class="content">'+
+'<iframe src="'+id+"/index.php"+'" frameborder="0"></iframe>'+
+'</div>'+
+'</div>';
 			var desktop=document.getElementById("Desktop");
-			Desktop.innerHTML=Desktop.innerHTML+WindowModel;
+				Desktop.innerHTML=Desktop.innerHTML+WindowModel;
+				$('.frame').mousedown(function(){
+				$(".active").removeClass("active");
+				$(this).addClass("active");
+			});
+			$('.frame').not(".maximized").resizable({
+				alsoResize: ".active .content",
+				minWidth: 200,
+				minHeight: 59
+			}).draggable({
+				handle: ".topbar"
+			});
+			
+			//COLOR CHANGNG
+			$('.swatches span').click(function(){
+				var color = $(this).attr("class");
+				$(this).parent().parent().attr("class", "topbar").addClass(color);
+			});
+			
+			//MAXIMIZED
+			$('.maxbtn').click(function(){
+				$(this).parent().parent().toggleClass("maximized");
+			});
+			
+			//CLOSE
+			$('.xbtn').click(function(){
+				$(this).parent().parent().remove();
+			});
 
 		}
 		menu=false;

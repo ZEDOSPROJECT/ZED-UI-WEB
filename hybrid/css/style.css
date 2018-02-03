@@ -24,16 +24,22 @@ body{
   height: 89.97%;
   top:3.05%;
   z-index:0;
-}.frame{
+}	.frame{
 		position: absolute;
 		border: 1px solid #333;
-		background: #e7e7e7;
+		background: #B2B2FF;
 		box-shadow: 0 1px 10px #111;
 		border-radius: 3px;
 		z-index: 10;
-		width:640px !important;
-		height:480px !important;
 		overflow: hidden;
+		opacity: 0.97;
+
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='svgMask'><feGaussianBlur stdDeviation='10' /></filter></svg>#svgMask");
 	}
 	.topbar{
 		border-radius: 3px 3px 0 0;
@@ -66,9 +72,6 @@ body{
 		cursor: pointer;
 		margin: 5px;
 	}
-	.blue{
-		background: #37a2d6;
-	}
 	.maxbtn span{
 		display: block;
 		border: 1px solid #333;
@@ -84,29 +87,17 @@ body{
 		color: #e7e7e7;
 	}
 	.content{
-		height: 90% !important;
-		width: 100% !important;
-		padding: 1px;
+		height: auto;
+		width: auto;
+		padding: 0px;
+	}
+	.content>div{
+		width: inherit;
+		height: inherit;
 	}
 	.content>iframe{
-		width: 100%;
-		height: 100%;
-	}
-	textarea{
-		width: 100%;
-		height: 100%;
-		margin: 0;
-		padding: 0;
-		border: none;
-		outline: none;
-		-webkit-appearance: none;
-		background: #e7e7e7;
-		color: #333;
-		font-size: 16px;
-		font-weight: normal;
-		font-family: 'Days One', sans-serif;
-		text-shadow: 0 1px 0 #fff;
-		resize: none;
+		width: inherit;
+		height: inherit;
 	}
 	.active{
 		z-index: 999999;
@@ -114,12 +105,14 @@ body{
 	#website{
 		top: 10px;
 		left: 350px;
+
 	}
 	#website .content{
-		width: 10%;
-		height: 10%;
+		width: 550px;
+		height: 400px;
 		right: 0;
 	}
+	
 	.frame.maximized{
 		top: 0px !important;
 		left: 0px !important;
@@ -129,17 +122,16 @@ body{
 		-webkit-transition: width .25s linear, height .25s linear, top .25s linear, left .25s linear;
 		transition: width .25s linear, height .25s linear, top .25s linear, left .25s linear;
 	}
-
+	
 	.frame.maximized .content{
 		margin: 0 auto !important;
-		width: 95% !important;
-		height: 95% !important;
+		width: 100% !important;
+		height: 100% !important;
 		-moz-transition: width .25s linear, height .25s linear, top .25s linear, left .25s linear;
 		-webkit-transition: width .25s linear, height .25s linear, top .25s linear, left .25s linear;
 		transition: width .25s linear, height .25s linear, top .25s linear, left .25s linear;
 	}
-
-
+	
 #MobileFrame{
   position: absolute;
   width:100%;
@@ -319,6 +311,7 @@ body{
 }
 
 #Alerts{
+	pointer-events:none;
 	z-index:90000;
 	position:absolute;
 	right:0px;
@@ -329,6 +322,7 @@ body{
 }
 
 .MSG_ERROR{
+	pointer-events:auto;
 	color:white;
 	padding:10px;
 	border-radius:5px;
@@ -336,9 +330,17 @@ body{
 	width:300px;
 	height:100px;
 	background-color:rgba(243,0,0,0.80);
+	border-style: solid;
+    border-color: rgba(0,0,0,0);
+    border-width:1px;
+}
+
+.MSG_ERROR:hover { 
+    border-color: white;
 }
 
 .MSG_ALERT{
+	pointer-events:auto;
 	color:white;
 	padding:10px;
 	border-radius:5px;
@@ -346,9 +348,17 @@ body{
 	width:300px;
 	height:100px;
 	background-color:rgba(204, 153, 0,0.80);
+	border-style: solid;
+    border-color: rgba(0,0,0,0);
+    border-width:1px;
+}
+
+.MSG_ALERT:hover { 
+    border-color: white;
 }
 
 .MSG_INFO{
+	pointer-events:auto;
 	color:white;
 	padding:10px;
 	border-radius:5px;
@@ -356,9 +366,17 @@ body{
 	width:300px;
 	height:100px;
 	background-color:rgba(0, 102, 255,0.80);
+	border-style: solid;
+    border-color: rgba(0,0,0,0);
+    border-width:1px;
+}
+
+.MSG_INFO:hover { 
+    border-color: white;
 }
 
 .MSG_SUCESS{
+	pointer-events:auto;
 	color:white;
 	padding:10px;
 	border-radius:5px;
@@ -366,5 +384,12 @@ body{
 	width:300px;
 	height:100px;
 	background-color:rgba(45, 179, 0,0.80);
+	border-style: solid;
+    border-color: rgba(0,0,0,0);
+    border-width:1px;
+}
+
+.MSG_SUCESS:hover { 
+    border-color: white;
 }
 
