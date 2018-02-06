@@ -140,7 +140,10 @@
 '</div>'+
 '</div>';
 			var desktop=document.getElementById("Desktop");
-				Desktop.innerHTML=Desktop.innerHTML+WindowModel;
+			
+				var win = document.createElement("div");
+				win.innerHTML=WindowModel;
+				Desktop.appendChild(win);
 				$('.frame').mousedown(function(){
 				$(".active").removeClass("active");
 				$(this).addClass("active");
