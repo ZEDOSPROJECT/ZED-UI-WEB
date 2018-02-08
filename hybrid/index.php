@@ -115,13 +115,11 @@
     ChromeSamples.setStatus('The Battery Status API is not supported on ' +
       'this platform.');
   }
-
-    var isMobile=detectmob();
     var menu=false;
     var APPIDs=0;
     
     function OpenApp(id){
-		if(isMobile){
+		if(getPlatform=="MOBILE"){
 		  document.getElementById("MobileFrame").hidden=false;
 		  document.getElementById("MobileFrame").src=id+"/index.php";
 		  $("#statusBar").css("background-color", "black")
@@ -180,7 +178,7 @@
     }
     
     startTime();
-    if(isMobile){
+    if(getPlatform()=="MOBILE"){
       $("#mainMenu").css("width", "90%");
       $("#menuContainer").css("width", "95%");
     }
@@ -226,7 +224,7 @@
       $("#bottomBar").hide();
     }
 
-    function detectmob() { 
+    function getPlatform) { 
         if( navigator.userAgent.match(/Android/i)
           || navigator.userAgent.match(/webOS/i)
           || navigator.userAgent.match(/ZEDOS/i)
@@ -234,12 +232,16 @@
           || navigator.userAgent.match(/iPad/i)
           || navigator.userAgent.match(/iPod/i)
           || navigator.userAgent.match(/BlackBerry/i)
-          || navigator.userAgent.match(/Windows Phone/i)
-        ){
-            return true;
-        }else {
-            return false;
-        }
+          || navigator.userAgent.match(/Windows Phone/i{
+            return "MOBILE"
+          })
+          if( navigator.userAgent.match(/Electron/i)
+         {
+           return "DESKTOP"
+         }else{
+          return "ONLINE"
+        } 
+      )
     }
 </script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
