@@ -10,12 +10,6 @@ $('.frame').mousedown(function(){
 			handle: ".topbar"
 		});
 		
-		//COLOR CHANGNG
-		$('.swatches span').click(function(){
-			var color = $(this).attr("class");
-			$(this).parent().parent().attr("class", "topbar").addClass(color);
-		});
-		
 		//MAXIMIZED
 		$('.maxbtn').click(function(){
 			$(this).parent().parent().toggleClass("maximized");

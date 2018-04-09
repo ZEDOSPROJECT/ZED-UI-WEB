@@ -34,13 +34,14 @@
   </HEAD>
   <body>
     <div id="walls">
-      <img id="wallpaper" src="Wallpaper/ZED.jpg">
+      <img id="wallpaper" src="https://wallpapercave.com/wp/x4q8JMl.jpg">
       <!--<iframe id="wallpaper" src="http://www.youtube.com/embed/K-F4CeVsWHA?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1;mute=1" frameborder="0" allow="autoplay; encrypted-media"></iframe>-->
     </div>
     <div id="statusBar" hidden>
       <div id="clock"></div>	
-		<img id="battry_status" src="battery/5.png" style="position:absolute;top:5px;right:5px;width:30px;">
-		<img id="battry_charging" src="battery/power.png" style="position:absolute;top:0px;right:20px;width:5px;">
+      <i class="material-icon battery" style="position: fixed;top: 0px;right: 8px;transform: rotate(90deg);">
+        <span class="percent-20"></span>
+      </i>
     </div>
     <div id="mainMenu" hidden>
       <div id="menuContainer">
@@ -55,7 +56,7 @@
     </div>
     <img id="menuIcon" src="Icons/menu.png" onclick="menuOpen()" hidden>
     <div id="dock" hidden>
-      <center>
+      <center id="taskBar">
         <img src="Icons/appstore.png" class="dockIcons">
         <img src="Icons/music.png" class="dockIcons">
         <img src="Icons/browser.png" class="dockIcons">
@@ -78,106 +79,71 @@
   </body>
 </HTML>
 <script>
-  function updateBatteryUI(battery) {
-    var batterIcon=document.getElementById("battry_status");
-  /*	if(0 = (battery.level * 100)>90){
-      batterIcon.src="battry/5.png";
-    }
-
-      dichargeTimeEl.textContent = battery.dischargingTime + ' Seconds';
-
-      if (battery.charging === true) {
-      chargingStateEl.textContent = 'Charging';
-      } else if (battery.charging === false) {
-      chargingStateEl.textContent = 'Discharging';
-      }*/
-  }
-  
   function GoBack(){
-	  ShowMSG("MSG_ERROR","FUNFOU");
   }
 
-  function monitorBattery(battery) {
-    // Update the initial UI.
-    updateBatteryUI(battery);
-
-    // Monitor for futher updates.
-    battery.addEventListener('levelchange',
-      updateBatteryUI.bind(null, battery));
-    battery.addEventListener('chargingchange',
-      updateBatteryUI.bind(null, battery));
-    battery.addEventListener('dischargingtimechange',
-      updateBatteryUI.bind(null, battery));
-    battery.addEventListener('chargingtimechange',
-      updateBatteryUI.bind(null, battery));
-  }
-
-  if ('getBattery' in navigator) {
-    navigator.getBattery().then(monitorBattery);
-  } else {
-    ChromeSamples.setStatus('The Battery Status API is not supported on ' +
-      'this platform.');
-  }
     var menu=false;
     var APPIDs=0;
     
     function OpenApp(id){
 		if(getPlatform=="MOBILE"){
-		  document.getElementById("MobileFrame").hidden=false;
-		  document.getElementById("MobileFrame").src=id+"/index.php";
-		  $("#statusBar").css("background-color", "black")
-		  $("#bottomBar").show();
-		  $( "#dock" ).hide();
-		}else{
-		  var WindowModel = '<div class="frame"  id="'+guid()+'">'+
-'<div class="topbar">'+
-'<img style="height:16px;margin:2px;float: left;" src="'+id+"/favicon.png"+'">'+
-'<p style="height:16px;margin:2px;float: left;">'+id.split("/")[1]+'</p>'+
-'<div class="maxbtn"><span></span></div>'+
-'<div class="xbtn">x</div>'+
-'</div>'+
-'<div class="content">'+
-'<iframe src="'+id+"/index.php"+'" frameborder="0"></iframe>'+
-'</div>'+
-'</div>';
-			var desktop=document.getElementById("Desktop");
-			
-				var win = document.createElement("div");
-				win.innerHTML=WindowModel;
-				Desktop.appendChild(win);
-				$('.frame').mousedown(function(){
-				$(".active").removeClass("active");
-				$(this).addClass("active");
-			});
-			$('.frame').not(".maximized").resizable({
-				alsoResize: ".active .content",
-				minWidth: 200,
-				minHeight: 59
-			}).draggable({
-				handle: ".topbar"
-			});
-			
-			//COLOR CHANGNG
-			$('.swatches span').click(function(){
-				var color = $(this).attr("class");
-				$(this).parent().parent().attr("class", "topbar").addClass(color);
-			});
-			
-			//MAXIMIZED
-			$('.maxbtn').click(function(){
-				$(this).parent().parent().toggleClass("maximized");
-			});
-			
-			//CLOSE
-			$('.xbtn').click(function(){
-				$(this).parent().parent().remove();
-			});
+        document.getElementById("MobileFrame").hidden=false;
+        document.getElementById("MobileFrame").src=id+"/index.php";
+        $("#statusBar").css("background-color", "black")
+        $("#bottomBar").show();
+        $( "#dock" ).hide();
+      }else{
+        var appID=guid();
+        document.getElementById("taskBar").innerHTML+="<img id='TASK_"+appID+"' src='"+id+"/favicon.png' onclick='swicthWindow(\""+appID+"\");' class='dockIcons'>";
+        var WindowModel = '<div class="frame"  id="WIN_'+appID+'">'+
+  '<div class="topbar">'+
+  '<img style="height:16px;margin:2px;float: left;" src="'+id+"/favicon.png"+'">'+
+  '<p style="height:16px;margin:2px;float: left;">'+id.split("/")[1]+'</p>'+
+  '<div class="maxbtn"><span></span></div>'+
+  '<div class="xbtn" onclick="inClose(\''+appID+'\')">x</div>'+
+  '</div>'+
+  '<div class="content">'+
+  '<iframe id="FRM_'+appID+'" src="'+id+"/index.php"+'" frameborder="0"></iframe>'+
+  '</div>'+
+  '</div>';
+        var desktop=document.getElementById("Desktop");
+        
+          var win = document.createElement("div");
+          win.innerHTML=WindowModel;
+          Desktop.appendChild(win);
+          $('.frame').mousedown(function(){
+          $(".active").removeClass("active");
+          $(this).addClass("active");
+        });
+        $('.frame').not(".maximized").resizable({
+          alsoResize: ".active .content",
+          minWidth: 200,
+          minHeight: 59
+        }).draggable({
+          handle: ".topbar"
+        });
+        
+        //COLOR CHANGNG
+        $('.swatches span').click(function(){
+          var color = $(this).attr("class");
+          $(this).parent().parent().attr("class", "topbar").addClass(color);
+        });
+        
+        //MAXIMIZED
+        $('.maxbtn').click(function(){
+          $(this).parent().parent().toggleClass("maximized");
+        });
+        
+        //CLOSE
+        $('.xbtn').click(function(){
+          $(this).parent().parent().remove();
+        });
 
-		}
-		menu=false;
-		document.getElementById("menuIcon").src="Icons/menu.png";
-	  $( "#mainMenu" ).fadeOut( "fast", function() {
-	  });
+      }
+      menu=false;
+      document.getElementById("menuIcon").src="Icons/menu.png";
+      $( "#mainMenu" ).fadeOut( "fast", function() {
+      });
     }
     
     startTime();
@@ -244,6 +210,106 @@
          }else{
           return "ONLINE"
         } 
+    }
+    var batteryElement = document.getElementsByClassName('battery')[0];
+
+    var battery;
+
+    function updateAllBatteryInfo(){
+      updateChargeInfo();
+      updateLevelInfo();
+      updateChargingInfo();
+      updateDischargingInfo();
+    }
+
+    function updateChargingInfo(){
+      console.log("Battery charging time: "
+                  + battery.chargingTime + " seconds");
+    }
+
+    function updateChargeInfo(){
+      console.log("Battery charging? "
+                  + (battery.charging ? "Yes" : "No"));
+      if (battery.charging) {
+        if (!batteryElement.classList.contains('charging')) {
+          batteryElement.classList.add('charging');
+        }
+      } else {
+        if (batteryElement.classList.contains('charging')) {
+          batteryElement.classList.remove('charging')
+        }
+      }
+    }
+
+    function updateDischargingInfo(){
+      console.log("Battery discharging time: "
+                  + battery.dischargingTime + " seconds");
+    }
+
+    function updateLevelInfo(){
+      console.log("Battery level: "
+                  + parseFloat(battery.level * 100).toPrecision(2) + "%");
+      var percent = batteryElement.getElementsByTagName('span')
+      [0];
+      var percentNumber = parseInt(battery.level * 100);
+      if (parseInt(percentNumber) > 100) {
+        percentNumber = 100;
+      }
+      percent.className = 'percent-' + percentNumber.toString();
+    }
+
+    if (!!navigator.getBattery) {
+      navigator.getBattery().then(function(bat) {
+        battery = bat;
+        updateAllBatteryInfo();
+
+        battery.addEventListener('chargingchange', function(){
+          updateChargeInfo();
+        });
+
+        battery.addEventListener('levelchange', function(){
+          updateLevelInfo();
+        });
+
+        battery.addEventListener('chargingtimechange', function(){
+          updateChargingInfo();
+        });
+
+        battery.addEventListener('dischargingtimechange', function(){
+          updateDischargingInfo();
+        });
+      }); 
+    } else {
+      battery = {
+        charging: false,
+        level: 1.0
+      };
+      updateChargeInfo();
+      updateLevelInfo();
+      setInterval(function() {
+        console.log(battery)
+        if (battery.level < 0.02 && !battery.charging) {
+          battery.charging = true;
+          battery.level = parseFloat(battery.level + .01).toPrecision(2);
+          updateChargeInfo();
+          updateLevelInfo();
+        }
+        if (battery.level >= 1.0 && battery.charging) {
+          battery.charging = false;
+          updateChargeInfo();
+        }
+        if (battery.charging) {
+          battery.level = parseFloat(battery.level) + parseFloat(.01);
+          updateLevelInfo();
+        } else {
+          if (battery.level <  .10) {
+            battery.level = parseFloat(battery.level - .01).toPrecision(1)
+          } else {
+            battery.level = parseFloat(battery.level - .01).toPrecision(2); 
+          }
+          updateLevelInfo();
+        }
+      }, 5000)
     }
 </script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
