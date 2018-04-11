@@ -11,6 +11,1206 @@ body{
                                   supported by Chrome and Opera */
 }
 
+.material-icon {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+  color: white;
+}
+
+.battery {
+	position: fixed;
+  top: 0px;
+  right: 5px;
+  transform: rotate(90deg);
+  background-color: rgba(255, 255, 255, 0.4);
+  mask-image: url("https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_battery_std_black_24px.svg");
+  -webkit-mask-image: url("https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_battery_std_black_24px.svg");
+  height: 24px;
+  width: 24px;
+}
+.battery.charging {
+  mask-image: url("https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_battery_charging_full_black_24px.svg");
+  -webkit-mask-image: url("https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_battery_charging_full_black_24px.svg");
+}
+.battery > .percent-0 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (0/100));
+  width: 24px;
+}
+.battery > .percent-1 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (1/100));
+  width: 24px;
+}
+.battery > .percent-2 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (2/100));
+  width: 24px;
+}
+.battery > .percent-3 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (3/100));
+  width: 24px;
+}
+.battery > .percent-4 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (4/100));
+  width: 24px;
+}
+.battery > .percent-5 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (5/100));
+  width: 24px;
+}
+.battery > .percent-6 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (6/100));
+  width: 24px;
+}
+.battery > .percent-7 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (7/100));
+  width: 24px;
+}
+.battery > .percent-8 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (8/100));
+  width: 24px;
+}
+.battery > .percent-9 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (9/100));
+  width: 24px;
+}
+.battery > .percent-10 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (10/100));
+  width: 24px;
+}
+.battery > .percent-11 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (11/100));
+  width: 24px;
+}
+.battery > .percent-12 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (12/100));
+  width: 24px;
+}
+.battery > .percent-13 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (13/100));
+  width: 24px;
+}
+.battery > .percent-14 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (14/100));
+  width: 24px;
+}
+.battery > .percent-15 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (15/100));
+  width: 24px;
+}
+.battery > .percent-16 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (16/100));
+  width: 24px;
+}
+.battery > .percent-17 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (17/100));
+  width: 24px;
+}
+.battery > .percent-18 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (18/100));
+  width: 24px;
+}
+.battery > .percent-19 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (19/100));
+  width: 24px;
+}
+.battery > .percent-20 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (20/100));
+  width: 24px;
+}
+.battery > .percent-21 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (21/100));
+  width: 24px;
+}
+.battery > .percent-22 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (22/100));
+  width: 24px;
+}
+.battery > .percent-23 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (23/100));
+  width: 24px;
+}
+.battery > .percent-24 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (24/100));
+  width: 24px;
+}
+.battery > .percent-25 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (25/100));
+  width: 24px;
+}
+.battery > .percent-26 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (26/100));
+  width: 24px;
+}
+.battery > .percent-27 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (27/100));
+  width: 24px;
+}
+.battery > .percent-28 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (28/100));
+  width: 24px;
+}
+.battery > .percent-29 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (29/100));
+  width: 24px;
+}
+.battery > .percent-30 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (30/100));
+  width: 24px;
+}
+.battery > .percent-31 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (31/100));
+  width: 24px;
+}
+.battery > .percent-32 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (32/100));
+  width: 24px;
+}
+.battery > .percent-33 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (33/100));
+  width: 24px;
+}
+.battery > .percent-34 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (34/100));
+  width: 24px;
+}
+.battery > .percent-35 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (35/100));
+  width: 24px;
+}
+.battery > .percent-36 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (36/100));
+  width: 24px;
+}
+.battery > .percent-37 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (37/100));
+  width: 24px;
+}
+.battery > .percent-38 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (38/100));
+  width: 24px;
+}
+.battery > .percent-39 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (39/100));
+  width: 24px;
+}
+.battery > .percent-40 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (40/100));
+  width: 24px;
+}
+.battery > .percent-41 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (41/100));
+  width: 24px;
+}
+.battery > .percent-42 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (42/100));
+  width: 24px;
+}
+.battery > .percent-43 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (43/100));
+  width: 24px;
+}
+.battery > .percent-44 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (44/100));
+  width: 24px;
+}
+.battery > .percent-45 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (45/100));
+  width: 24px;
+}
+.battery > .percent-46 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (46/100));
+  width: 24px;
+}
+.battery > .percent-47 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (47/100));
+  width: 24px;
+}
+.battery > .percent-48 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (48/100));
+  width: 24px;
+}
+.battery > .percent-49 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (49/100));
+  width: 24px;
+}
+.battery > .percent-50 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (50/100));
+  width: 24px;
+}
+.battery > .percent-51 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (51/100));
+  width: 24px;
+}
+.battery > .percent-52 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (52/100));
+  width: 24px;
+}
+.battery > .percent-53 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (53/100));
+  width: 24px;
+}
+.battery > .percent-54 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (54/100));
+  width: 24px;
+}
+.battery > .percent-55 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (55/100));
+  width: 24px;
+}
+.battery > .percent-56 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (56/100));
+  width: 24px;
+}
+.battery > .percent-57 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (57/100));
+  width: 24px;
+}
+.battery > .percent-58 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (58/100));
+  width: 24px;
+}
+.battery > .percent-59 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (59/100));
+  width: 24px;
+}
+.battery > .percent-60 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (60/100));
+  width: 24px;
+}
+.battery > .percent-61 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (61/100));
+  width: 24px;
+}
+.battery > .percent-62 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (62/100));
+  width: 24px;
+}
+.battery > .percent-63 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (63/100));
+  width: 24px;
+}
+.battery > .percent-64 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (64/100));
+  width: 24px;
+}
+.battery > .percent-65 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (65/100));
+  width: 24px;
+}
+.battery > .percent-66 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (66/100));
+  width: 24px;
+}
+.battery > .percent-67 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (67/100));
+  width: 24px;
+}
+.battery > .percent-68 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (68/100));
+  width: 24px;
+}
+.battery > .percent-69 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (69/100));
+  width: 24px;
+}
+.battery > .percent-70 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (70/100));
+  width: 24px;
+}
+.battery > .percent-71 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (71/100));
+  width: 24px;
+}
+.battery > .percent-72 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (72/100));
+  width: 24px;
+}
+.battery > .percent-73 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (73/100));
+  width: 24px;
+}
+.battery > .percent-74 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (74/100));
+  width: 24px;
+}
+.battery > .percent-75 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (75/100));
+  width: 24px;
+}
+.battery > .percent-76 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (76/100));
+  width: 24px;
+}
+.battery > .percent-77 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (77/100));
+  width: 24px;
+}
+.battery > .percent-78 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (78/100));
+  width: 24px;
+}
+.battery > .percent-79 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (79/100));
+  width: 24px;
+}
+.battery > .percent-80 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (80/100));
+  width: 24px;
+}
+.battery > .percent-81 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (81/100));
+  width: 24px;
+}
+.battery > .percent-82 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (82/100));
+  width: 24px;
+}
+.battery > .percent-83 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (83/100));
+  width: 24px;
+}
+.battery > .percent-84 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (84/100));
+  width: 24px;
+}
+.battery > .percent-85 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (85/100));
+  width: 24px;
+}
+.battery > .percent-86 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (86/100));
+  width: 24px;
+}
+.battery > .percent-87 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (87/100));
+  width: 24px;
+}
+.battery > .percent-88 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (88/100));
+  width: 24px;
+}
+.battery > .percent-89 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (89/100));
+  width: 24px;
+}
+.battery > .percent-90 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (90/100));
+  width: 24px;
+}
+.battery > .percent-91 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (91/100));
+  width: 24px;
+}
+.battery > .percent-92 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (92/100));
+  width: 24px;
+}
+.battery > .percent-93 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (93/100));
+  width: 24px;
+}
+.battery > .percent-94 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (94/100));
+  width: 24px;
+}
+.battery > .percent-95 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (95/100));
+  width: 24px;
+}
+.battery > .percent-96 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (96/100));
+  width: 24px;
+}
+.battery > .percent-97 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (97/100));
+  width: 24px;
+}
+.battery > .percent-98 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (98/100));
+  width: 24px;
+}
+.battery > .percent-99 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (99/100));
+  width: 24px;
+}
+.battery > .percent-100 {
+  background-color: white;
+  clip-path: rectangle(0, 0, 24px, 24px);
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  max-height: 20px;
+  height: calc(20px * (100/100));
+  width: 24px;
+}
+.battery > .percent-0 {
+  background-color: red;
+}
+.battery > .percent-1 {
+  background-color: red;
+}
+.battery > .percent-2 {
+  background-color: red;
+}
+.battery > .percent-3 {
+  background-color: red;
+}
+.battery > .percent-4 {
+  background-color: red;
+}
+.battery > .percent-5 {
+  background-color: red;
+}
+.battery > .percent-6 {
+  background-color: red;
+}
+.battery > .percent-7 {
+  background-color: red;
+}
+.battery > .percent-8 {
+  background-color: red;
+}
+.battery > .percent-9 {
+  background-color: red;
+}
+.battery > .percent-10 {
+  background-color: red;
+}
+.battery > .percent-11 {
+  background-color: red;
+}
+.battery > .percent-12 {
+  background-color: red;
+}
+.battery > .percent-13 {
+  background-color: red;
+}
+.battery > .percent-14 {
+  background-color: red;
+}
+.battery > .percent-15 {
+  background-color: red;
+}
+
+
 .__flowai_launcher__{
     position: absolute !important;
     bottom: 10px !important;
@@ -399,68 +1599,5 @@ body{
     border-color: white;
 }
 
-.material-icon {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
 
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
 
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-  
-  
-  color: white;
-}
-
-.battery {
-  background-color: rgba(255,255,255,.4);
-  mask-image: url('https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_battery_std_black_24px.svg');
-  -webkit-mask-image: url('https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_battery_std_black_24px.svg');
-  position: relative;
-  height: 24px;
-  width: 24px;
-  
-  &.charging {
-    mask-image: url('https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_battery_charging_full_black_24px.svg');
-    -webkit-mask-image: url('https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_battery_charging_full_black_24px.svg');
-  }
-  
-  @for $i from 0 through 100 {
-    &>.percent-#{$i} {
-      background-color: rgba(255, 255, 255, 1);
-      clip-path: rectangle(0, 0, 24px, 24px);
-      overflow: hidden;
-      position: absolute;
-      left: 0;
-      bottom: 2px;
-      //height: round(percentage($i/100));
-      max-height: 20px;
-      height: calc(20px * (#{$i}/100));
-      width: 24px;
-    } 
-  }
-  @for $i from 0 through 15 {
-    &>.percent-#{$i} {
-      background-color: rgba(255,0,0, 1);
-    }
-  }
-}
-
-body {
-  background-color: black;
-}

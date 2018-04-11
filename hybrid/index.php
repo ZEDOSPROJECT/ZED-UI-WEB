@@ -25,12 +25,15 @@
 <script src="js/zed.js" type="text/javascript"></script> 
 <!-- <script src='file:///android_asset/app.js'></script> -->
 <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js' rel='stylesheet' type='text/css'>
 <link rel='stylesheet prefetch' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
-<link rel="stylesheet" href="css/style.css">
 
 <HTML>
   <HEAD>
     <TITLE>ZED OS (WEBDEVELOPMENT)</TITLE>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+		<link rel="stylesheet" href="css/style.css">
   </HEAD>
   <body>
     <div id="walls">
@@ -39,9 +42,9 @@
     </div>
     <div id="statusBar" hidden>
       <div id="clock"></div>	
-      <i class="material-icon battery" style="position: fixed;top: 0px;right: 8px;transform: rotate(90deg);">
-        <span class="percent-20"></span>
-      </i>
+			<i class="material-icon battery">
+				<span class="percent-20"></span>
+			</i>
     </div>
     <div id="mainMenu" hidden>
       <div id="menuContainer">
@@ -210,107 +213,103 @@
          }else{
           return "ONLINE"
         } 
+    }	
+	
+	var batteryElement = document.getElementsByClassName('battery')[0];
+
+var battery;
+
+function updateAllBatteryInfo() {
+  updateChargeInfo();
+  updateLevelInfo();
+  updateChargingInfo();
+  updateDischargingInfo();
+}
+
+function updateChargingInfo() {
+  console.log("Battery charging time: " + battery.chargingTime + " seconds");
+}
+
+function updateChargeInfo() {
+  console.log("Battery charging? " + (battery.charging ? "Yes" : "No"));
+  if (battery.charging) {
+    if (!batteryElement.classList.contains('charging')) {
+      batteryElement.classList.add('charging');
     }
-    var batteryElement = document.getElementsByClassName('battery')[0];
+  } else {
+    if (batteryElement.classList.contains('charging')) {
+      batteryElement.classList.remove('charging');
+    }
+  }
+}
 
-    var battery;
+function updateDischargingInfo() {
+  console.log("Battery discharging time: " + battery.dischargingTime + " seconds");
+}
 
-    function updateAllBatteryInfo(){
+function updateLevelInfo() {
+  console.log("Battery level: " + parseFloat(battery.level * 100).toPrecision(2) + "%");
+  var percent = batteryElement.getElementsByTagName('span')[0];
+  var percentNumber = parseInt(battery.level * 100);
+  if (parseInt(percentNumber) > 100) {
+    percentNumber = 100;
+  }
+  percent.className = 'percent-' + percentNumber.toString();
+}
+
+if (!!navigator.getBattery) {
+  navigator.getBattery().then(function (bat) {
+    battery = bat;
+    updateAllBatteryInfo();
+
+    battery.addEventListener('chargingchange', function () {
       updateChargeInfo();
+    });
+
+    battery.addEventListener('levelchange', function () {
       updateLevelInfo();
+    });
+
+    battery.addEventListener('chargingtimechange', function () {
       updateChargingInfo();
+    });
+
+    battery.addEventListener('dischargingtimechange', function () {
       updateDischargingInfo();
-    }
-
-    function updateChargingInfo(){
-      console.log("Battery charging time: "
-                  + battery.chargingTime + " seconds");
-    }
-
-    function updateChargeInfo(){
-      console.log("Battery charging? "
-                  + (battery.charging ? "Yes" : "No"));
-      if (battery.charging) {
-        if (!batteryElement.classList.contains('charging')) {
-          batteryElement.classList.add('charging');
-        }
-      } else {
-        if (batteryElement.classList.contains('charging')) {
-          batteryElement.classList.remove('charging')
-        }
-      }
-    }
-
-    function updateDischargingInfo(){
-      console.log("Battery discharging time: "
-                  + battery.dischargingTime + " seconds");
-    }
-
-    function updateLevelInfo(){
-      console.log("Battery level: "
-                  + parseFloat(battery.level * 100).toPrecision(2) + "%");
-      var percent = batteryElement.getElementsByTagName('span')
-      [0];
-      var percentNumber = parseInt(battery.level * 100);
-      if (parseInt(percentNumber) > 100) {
-        percentNumber = 100;
-      }
-      percent.className = 'percent-' + percentNumber.toString();
-    }
-
-    if (!!navigator.getBattery) {
-      navigator.getBattery().then(function(bat) {
-        battery = bat;
-        updateAllBatteryInfo();
-
-        battery.addEventListener('chargingchange', function(){
-          updateChargeInfo();
-        });
-
-        battery.addEventListener('levelchange', function(){
-          updateLevelInfo();
-        });
-
-        battery.addEventListener('chargingtimechange', function(){
-          updateChargingInfo();
-        });
-
-        battery.addEventListener('dischargingtimechange', function(){
-          updateDischargingInfo();
-        });
-      }); 
-    } else {
-      battery = {
-        charging: false,
-        level: 1.0
-      };
+    });
+  });
+} else {
+  battery = {
+    charging: false,
+    level: 1.0
+  };
+  updateChargeInfo();
+  updateLevelInfo();
+  setInterval(function () {
+    console.log(battery);
+    if (battery.level < 0.02 && !battery.charging) {
+      battery.charging = true;
+      battery.level = parseFloat(battery.level + .01).toPrecision(2);
       updateChargeInfo();
       updateLevelInfo();
-      setInterval(function() {
-        console.log(battery)
-        if (battery.level < 0.02 && !battery.charging) {
-          battery.charging = true;
-          battery.level = parseFloat(battery.level + .01).toPrecision(2);
-          updateChargeInfo();
-          updateLevelInfo();
-        }
-        if (battery.level >= 1.0 && battery.charging) {
-          battery.charging = false;
-          updateChargeInfo();
-        }
-        if (battery.charging) {
-          battery.level = parseFloat(battery.level) + parseFloat(.01);
-          updateLevelInfo();
-        } else {
-          if (battery.level <  .10) {
-            battery.level = parseFloat(battery.level - .01).toPrecision(1)
-          } else {
-            battery.level = parseFloat(battery.level - .01).toPrecision(2); 
-          }
-          updateLevelInfo();
-        }
-      }, 5000)
     }
+    if (battery.level >= 1.0 && battery.charging) {
+      battery.charging = false;
+      updateChargeInfo();
+    }
+    if (battery.charging) {
+      battery.level = parseFloat(battery.level) + parseFloat(.01);
+      updateLevelInfo();
+    } else {
+      if (battery.level < .10) {
+        battery.level = parseFloat(battery.level - .01).toPrecision(1);
+      } else {
+        battery.level = parseFloat(battery.level - .01).toPrecision(2);
+      }
+      updateLevelInfo();
+    }
+  }, 5000);
+}
 </script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>

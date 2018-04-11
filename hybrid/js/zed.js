@@ -58,4 +58,4 @@ function swicthWindow(id){
 		win.style.display="none";
 	}
 }
-listPath("/home/alexandre");
+//listPath("/");
