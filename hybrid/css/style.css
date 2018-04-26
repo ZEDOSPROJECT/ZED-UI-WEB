@@ -1298,6 +1298,10 @@ body{
 		width: inherit;
 		height: inherit;
 	}
+	.content>webview{
+		width: inherit;
+		height: inherit;
+	}
 	.active{
     z-index: 999999;
     background-color: #237aea;;

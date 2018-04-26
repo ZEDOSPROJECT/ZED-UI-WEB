@@ -21,7 +21,7 @@
 	}
 </script>
 <script src="js/clock.js"></script>
-<script src="js/jquery.js"></script>
+<script src="js/jquery.js" onload="window.$ = window.jQuery = module.exports;"></script>
 <script src="js/zed.js" type="text/javascript"></script> 
 <!-- <script src='file:///android_asset/app.js'></script> -->
 <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
@@ -89,7 +89,7 @@
     var APPIDs=0;
     
     function OpenApp(id){
-		if(getPlatform=="MOBILE"){
+		if(getPlatform()=="MOBILE"){
         document.getElementById("MobileFrame").hidden=false;
         document.getElementById("MobileFrame").src=id+"/index.php";
         $("#statusBar").css("background-color", "black")
@@ -105,10 +105,15 @@
   '<div class="maxbtn"><span></span></div>'+
   '<div class="xbtn" onclick="inClose(\''+appID+'\')">x</div>'+
   '</div>'+
-  '<div class="content">'+
-  '<iframe id="FRM_'+appID+'" src="'+id+"/index.php"+'" frameborder="0"></iframe>'+
-  '</div>'+
-  '</div>';
+  '<div class="content">';
+	if(getPlatform()=="DESKTOP"){
+		WindowModel+='<webview useragent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.170 Safari/537.36 Viv/1.95.1077.50" disablewebsecurity plugins nodeintegration plugins nodeIntegration="false" webSecurity="false" allowRunningInsecureContent="true" id="FRM_'+appID+'" src="'+id+"/index.php"+'" frameborder="0"></webview>';
+	}
+	else{
+		WindowModel+='<iframe id="FRM_'+appID+'" src="'+id+"/index.php"+'" frameborder="0"></iframe>';
+	}
+	  WindowModel+='</div>'+
+	  '</div>';
         var desktop=document.getElementById("Desktop");
         
           var win = document.createElement("div");
