@@ -42,9 +42,10 @@
     </div>
     <div id="statusBar" hidden>
       <div id="clock"></div>	
-			<i class="material-icon battery">
-				<span class="percent-20"></span>
-			</i>
+		<i class="material-icon battery">
+			<span class="percent-20"></span>
+		</i>
+		<img class="lanStatus" src="Icons/lan.png" />
     </div>
     <div id="mainMenu" hidden>
       <div id="menuContainer">

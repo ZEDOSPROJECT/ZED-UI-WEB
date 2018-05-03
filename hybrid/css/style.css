@@ -35,8 +35,16 @@ body{
   color: white;
 }
 
+.lanStatus{
+  position: fixed;
+  top: 5px;
+  right: 40px;
+  height: 13px;
+  width: 18px;
+}
+
 .battery {
-	position: fixed;
+  position: fixed;
   top: 0px;
   right: 5px;
   transform: rotate(90deg);
