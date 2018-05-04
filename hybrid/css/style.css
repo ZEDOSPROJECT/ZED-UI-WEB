@@ -1236,17 +1236,9 @@ body{
 		border: 1px solid #333;
 		background: rgba(255, 255, 255, 0.41);
 		box-shadow: 0 1px 10px #111;
-		border-radius: 3px;
+		border-radius: 0px;
 		z-index: 10;
 		overflow: hidden;
-		opacity: 0.97;
-
-    filter: blur(10px);
-    -webkit-filter: blur(10px);
-    -moz-filter: blur(10px);
-    -o-filter: blur(10px);
-    -ms-filter: blur(10px);
-    filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='svgMask'><feGaussianBlur stdDeviation='10' /></filter></svg>#svgMask");
 	}
 	.topbar{
 		border-radius: 3px 3px 0 0;
