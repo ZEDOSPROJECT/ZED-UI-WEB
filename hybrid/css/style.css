@@ -1,4 +1,5 @@
 body{
+	background-color:black;
     padding: 0;
   overflow: hidden;
   margin:0px;
@@ -1491,6 +1492,9 @@ body{
 }
 
 #wallpaper{
+  -webkit-transform: scaleX(2); 
+  -moz-transform: scaleX(2);
+  background-color:black;
   z-index:-99990;
   top:0px;
   position:fixed;

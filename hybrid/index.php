@@ -37,15 +37,18 @@
   </HEAD>
   <body>
     <div id="walls">
-      <img id="wallpaper" src="Wallpaper/Night.jpg">
-      <!--<iframe id="wallpaper" src="http://www.youtube.com/embed/K-F4CeVsWHA?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1;mute=1" frameborder="0" allow="autoplay; encrypted-media"></iframe>-->
+      <!--<img id="wallpaper" src="Wallpaper/Night.jpg">-->
+      <!--<iframe id="wallpaper" src="https://www.youtube-nocookie.com/embed/AK-MUzWdpjU?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1;mute=1;loop=1;" frameborder="0" allow="autoplay; encrypted-media"></iframe>-->
+		<video id="wallpaper" autoplay="autoplay" muted loop>
+		  <source src="Wallpaper/nature.mp4" type="video/mp4" />
+		</video>
     </div>
     <div id="statusBar" hidden>
       <div id="clock"></div>	
 		<i class="material-icon battery">
 			<span class="percent-20"></span>
 		</i>
-		<img class="lanStatus" src="Icons/lan.png" />
+		<img id="lanStatus" style="position: fixed;top: 5px;right: 40px;height: 13px;width: 18px;" src="Icons/lan.png"> </img>
     </div>
     <div id="mainMenu" hidden>
       <div id="menuContainer">
