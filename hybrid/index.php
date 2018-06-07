@@ -37,11 +37,8 @@
   </HEAD>
   <body>
     <div id="walls">
-      <!--<img id="wallpaper" src="Wallpaper/Night.jpg">-->
-      <!--<iframe id="wallpaper" src="https://www.youtube-nocookie.com/embed/AK-MUzWdpjU?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1;mute=1;loop=1;" frameborder="0" allow="autoplay; encrypted-media"></iframe>-->
-		<video id="wallpaper" autoplay="autoplay" muted loop>
-		  <source src="Wallpaper/nature.mp4" type="video/mp4" />
-		</video>
+      	<img id="wallpaper_picture" class="wallpaper"></img>
+		<video id="wallpaper_video" class="wallpaper" autoplay muted loop></video>
     </div>
     <div id="statusBar" hidden>
       <div id="clock"></div>	
@@ -295,7 +292,7 @@ if (!!navigator.getBattery) {
   updateChargeInfo();
   updateLevelInfo();
   setInterval(function () {
-    console.log(battery);
+	// Battery
     if (battery.level < 0.02 && !battery.charging) {
       battery.charging = true;
       battery.level = parseFloat(battery.level + .01).toPrecision(2);
@@ -317,8 +314,31 @@ if (!!navigator.getBattery) {
       }
       updateLevelInfo();
     }
+	///////////////////////
   }, 5000);
 }
+
+setInterval(function(){
+	// get Settings
+	$.ajax({url: "/APPS/Settings/settings.json", success: function(result){
+		var settigns = JSON.parse(result);
+		var picture=document.getElementById("wallpaper_picture");
+		var video=document.getElementById("wallpaper_video");
+		if(settigns.wallpaper_PATH.toLowerCase().includes(".mp4")){
+			if(video.paused){
+				video.src=settigns.wallpaper_PATH;
+				$("#wallpaper_video").show();
+        		$( "#wallpaper_picture" ).hide();
+			}
+		}else{
+			$("#wallpaper_picture").show();
+        	$( "#wallpaper_video" ).hide();
+			picture.src=settigns.wallpaper_PATH;
+			video.pause();
+		}
+    }});
+	//////////////////////////
+},500)
 </script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>

@@ -1491,7 +1491,7 @@ body{
   z-index:0;
 }
 
-#wallpaper{
+.wallpaper{
   -webkit-transform: scaleX(2); 
   -moz-transform: scaleX(2);
   background-color:black;
