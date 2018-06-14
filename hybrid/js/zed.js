@@ -53,9 +53,13 @@ function inClose(id){
 function swicthWindow(id){
 	var win=document.getElementById("WIN_"+id);
 	if(win.style.display=="none"){
-		win.style.display="";
+		$( "#WIN_"+id ).fadeIn( "fast", function() {
+		});
+		$(".active").removeClass("active");
+		$("#WIN_"+id).addClass("active");
 	}else{
-		win.style.display="none";
+		$( "#WIN_"+id ).fadeOut( "fast", function() {
+		});
 	}
 }
 //listPath("/");

@@ -38,7 +38,7 @@
   <body>
     <div id="walls">
       	<img id="wallpaper_picture" class="wallpaper"></img>
-		<video id="wallpaper_video" class="wallpaper" autoplay muted loop></video>
+		    <video id="wallpaper_video" class="wallpaper" autoplay muted loop></video>
     </div>
     <div id="statusBar" hidden>
       <div id="clock"></div>	
