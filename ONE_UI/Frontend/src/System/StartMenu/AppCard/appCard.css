@@ -1,0 +1,15 @@
+.appCard{
+    background-color: rgba(0, 1, 65, 0.466);
+    width: 95%;
+    height: 32px;
+    margin: 5px;
+    padding: 5px;
+    color: white;
+} 
+
+.appCardIcon{
+    float: left;
+    margin-Right: 10px;
+    width: 32px;
+    height: 32px;
+}  
