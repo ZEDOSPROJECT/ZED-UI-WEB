@@ -7,6 +7,10 @@
     color: white;
 } 
 
+.appCard :hover{
+    color:rgb(223, 214, 255);
+} 
+
 .appCardIcon{
     float: left;
     margin-Right: 10px;

@@ -1,30 +1,26 @@
-import React from 'react';
-const WM = require('simple-window-manager');
+import React, {Component} from 'react';
+import Window from './Window/window';
+import './windowManager.css';
 
-class windowManager extends React.Component{
-    render(){
-        var WM = require('simple-window-manager');
-
-        // this is the window manager with one of the default options changed
-        var wm = new WM({ backgroundColorWindow: 'green' });
-
-        // enable window snapping to screen edges and other windows when moving
-        wm.snap()
-
-        // create a window    
-        var window = wm.createWindow({ width: 500, height: 500, title: 'Test Window' });
-
-        // set content of window
-        window.content.style.margin = '10px';
-        window.content.innerHTML = 'This is a nifty window.';
-
-        // open the window
-        window.open();
-
-        return(
-            <div></div>
-        );
+class WindowManager extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            openedWindows:  [] 
+        };
     } 
-} 
+    
+    render() {
+        return (
+            <div className="windowArea">
+                <Window 
+                    url="http://zedos.esy.es/"
+                    title="TESTE"
+                    icon="http://www.bluemed-project.eu/wp-content/uploads/2016/12/Logo-5.png"
+                />
+            </div>
+        );
+    }
+}
 
-export default windowManager;
+export default WindowManager;

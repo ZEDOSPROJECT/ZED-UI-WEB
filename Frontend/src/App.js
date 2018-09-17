@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TaskBar from './System/Taskbar/taskbar';
 import './App.css';
 import StartMenu from './System/StartMenu/startMenu';
+import WindowManager from './System/WindowManager/windowManager';
 
 class App extends Component {
   constructor(props){
@@ -22,6 +23,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <WindowManager />
         <TaskBar toggleMenu={this.toggleMenu}/>
         <StartMenu toggleMenu={this.toggleMenu} visible={this.state.showMenu}/>
       </div>

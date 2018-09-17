@@ -30,7 +30,6 @@ class Clock extends React.Component {
         return(
             <div className='Clock'>
                 <div>{h % 12}:{(mn < 10 ? '0' + mn : mn)}</div>
-                <div>{d}-{m}-{y}</div>
             </div>
         );
     }
