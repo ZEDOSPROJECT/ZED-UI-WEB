@@ -9,13 +9,13 @@ class Controls extends React.Component{
                 <div 
                     className="Buttons"
                     onClick={this.props.onClose}  
-                ></div>
+                >X</div>
                 <div
                     className="Buttons"
                 ></div>
                 <div 
                     className="Buttons"
-                ></div>
+                >-</div>
             </div>
         );
     } 

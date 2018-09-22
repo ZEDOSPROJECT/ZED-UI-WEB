@@ -24,6 +24,7 @@ class WindowManager extends Component {
         this.createWindow = this.createWindow.bind(this);
         this.uuidv4 = this.uuidv4.bind(this);
         this.sendToFront = this.sendToFront.bind(this);
+        this.onClose = this.onClose.bind(this);
     } 
 
     uuidv4() {
@@ -33,16 +34,26 @@ class WindowManager extends Component {
         });
     }
 
-    sendToFront(){
-        // let data=this.state.openedWindows;
-        // data.forEach(function(item,i){
-        // if(item.UUID === uuid ){
-        //         data.splice(i, 1);
-        //         data.unshift(item);
-        //     }
-        // });
-        // this.setState({ openedWindows:  data })
-        this.setState({ maxZIndex:  this.state.maxZIndex+10 })
+    sendToFront(i){
+        if(i<=this.state.maxZIndex){
+            return true;
+        } else {
+            this.setState({ maxZIndex:  i })
+            return false;
+        } 
+    } 
+
+    onClose(uuid){
+        let newData = this.state.openedWindows;
+        let i=0;
+        newData.forEach(element => {
+            if( element.UUID === uuid ){
+                console.log(i);
+                newData.splice(i, 1);
+            } 
+            i++;
+        });
+        this.setState({ openedWindows: newData });
     } 
 
     createWindow(url,title,icon){
@@ -54,21 +65,21 @@ class WindowManager extends Component {
                     title={title}  
                     icon={icon}
                     uuid={uuid}   
+                    onClose={this.onClose} 
                     sendToFront={this.sendToFront} 
-                    maxZIndex={this.state.maxZIndex} 
+                    maxZIndex={this.state.maxZIndex+1} 
             />
         )});
         this.setState({ openedWindows: newList });
-        this.setState({ maxZIndex:  this.state.maxZIndex+10 });
+        this.setState({ maxZIndex:  this.state.maxZIndex+1 });
     } 
     
     render() {
         const windowList=this.state.openedWindows.map((item) => {
             return(
-                <p>{item['WINDOW'] } </p>
+                item['WINDOW']
             );
         })
-        console.log(windowList);
         return (
             <div className="windowArea">
                 <button onClick={event => (this.createWindow("http://zedos.esy.es/","TESTE","http://www.bluemed-project.eu/wp-content/uploads/2016/12/Logo-5.png"))} >OK</button>

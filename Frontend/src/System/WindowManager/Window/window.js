@@ -15,22 +15,25 @@ class Window extends React.Component{
         };
 
         this.openModal = this.openModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
+        this.onClose = this.onClose.bind(this);
         this.sendToFront = this.sendToFront.bind(this);
     }
 
     sendToFront() {
-        this.props.sendToFront(this.state.uuid);
-        this.setState({ currentZIndex: this.props.maxZIndex })
+        let newIndex=this.state.currentZIndex;
+        while (this.props.sendToFront(newIndex)) {
+            newIndex++;
+        }
+        this.setState({ currentZIndex: newIndex+1 });
     } 
 
     openModal() {
         this.setState({modalIsOpen: true});
     }
-    closeModal() {
-        this.setState({modalIsOpen: false});
+    onClose() {
+        this.props.onClose(this.state.uuid);
     }
-
+    
     render(){
         return(
             <Rnd
@@ -40,7 +43,7 @@ class Window extends React.Component{
                     width: 320,
                     height: 200
                 }}
-                style={{ zIndex: 12 }} 
+                style={{ zIndex: this.state.currentZIndex }} 
             >
                 <div className="window" initWidth={800} initHeight={400} onRequestClose={this.closeModal}>
                     <div onClick={this.sendToFront} >
@@ -49,7 +52,7 @@ class Window extends React.Component{
                             {this.props.title}
                         </div>
                         <Controls
-                            onClose={this.closeModal} 
+                            onClose={this.onClose} 
                         />
                     </div>
                     <div className="body">
