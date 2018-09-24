@@ -89,7 +89,7 @@ class App extends Component {
         <div className="windowArea">
             {windowList}
         </div>
-        <TaskBar toggleMenu={this.toggleMenu}/>
+        <TaskBar openedWindows={this.state.openedWindows}  toggleMenu={this.toggleMenu}/>
         <StartMenu onClickApp={this.onClickApp} toggleMenu={this.toggleMenu} visible={this.state.showMenu}/>
       </div>
     );

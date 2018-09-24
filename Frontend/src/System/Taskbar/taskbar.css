@@ -1,7 +1,7 @@
 .Taskbar {
     width: 100%;
     height: 40px;
-    background-color: rgba(0, 0, 0, 0.822);
+    background-color: rgba(13, 8, 73, 0.815);
     position: fixed;
     left:0px;
     bottom: 0px;
@@ -23,4 +23,19 @@
 
 .StartMenu:hover {
     background-color: rgba(255, 255, 255, 0.685);
+}
+
+.buttonsArea{
+    position: absolute;
+    bottom: 0px;
+    height: 100%;
+    width: auto;
+    left: 50px;
+    right: 100px;
+} 
+
+
+.taskIcon {
+    height: auto;
+    width: 28px;
 }

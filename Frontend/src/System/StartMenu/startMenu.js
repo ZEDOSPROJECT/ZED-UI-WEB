@@ -32,7 +32,6 @@ class StartMenu extends React.Component {
         return(
             (this.props.visible ? (
                 <div>
-                    <div onClick={this.props.toggleMenu}  style={{ width: '100%' , height: '100%' , top: 0 , left: 0 , position: 'fixed' }} />
                     <div className="startMenu">
                         <div className="leftPanel">
                             <img style={{ position: 'absolute',  bottom: 5 }} alt="" className="menuIcon" src={UserIcon}  />
