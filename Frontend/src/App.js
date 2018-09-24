@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TaskBar from './System/Taskbar/taskbar';
 import Window from './System/Window/window';
 import StartMenu from './System/StartMenu/startMenu';
+import { REST_URL } from './REST_URL';
 import './App.css';
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
     this.sendToFront = this.sendToFront.bind(this);
     this.onClose = this.onClose.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
+    this.onClickApp = this.onClickApp.bind(this);
   } 
 
   uuidv4() {
@@ -65,6 +67,11 @@ class App extends Component {
       this.setState({ maxZIndex:  this.state.maxZIndex+1 });
   } 
 
+  onClickApp(e,name){
+      this.createWindow(REST_URL+"/APPS/"+name,name,REST_URL+"/APPS/"+name+"/favicon.png");
+      this.setState({ showMenu: false });
+  } 
+
   toggleMenu(){
       this.setState({
           showMenu: !this.state.showMenu,
@@ -83,7 +90,7 @@ class App extends Component {
             {windowList}
         </div>
         <TaskBar toggleMenu={this.toggleMenu}/>
-        <StartMenu toggleMenu={this.toggleMenu} visible={this.state.showMenu}/>
+        <StartMenu onClickApp={this.onClickApp} toggleMenu={this.toggleMenu} visible={this.state.showMenu}/>
       </div>
     );
   }

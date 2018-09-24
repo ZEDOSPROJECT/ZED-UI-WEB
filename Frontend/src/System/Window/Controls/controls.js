@@ -1,6 +1,5 @@
 import React from 'react';
 import './controls.css';
-import { throws } from 'assert';
 
 class Controls extends React.Component{
     render(){
@@ -12,7 +11,7 @@ class Controls extends React.Component{
                 >X</div>
                 <div
                     className="Buttons"
-                ></div>
+                >[-]</div>
                 <div 
                     className="Buttons"
                 >-</div>

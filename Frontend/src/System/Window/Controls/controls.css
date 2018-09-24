@@ -13,9 +13,10 @@
     width: 25px;
     height: 24px;
     z-index: 10;
+    text-align: center;
     cursor: default;
 } 
 
 .Buttons:hover{
-    background-color: rgba(255, 255, 255, 0.342);
+    background-color: rgb(150, 150, 150);
 } 

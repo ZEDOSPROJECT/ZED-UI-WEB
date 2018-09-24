@@ -38,10 +38,10 @@ class Window extends React.Component{
         return(
             <Rnd
                 default={{
-                    x: 0,
-                    y: 0,
-                    width: 320,
-                    height: 200
+                    x: 15,
+                    y: 15,
+                    width: 640,
+                    height: 480
                 }}
                 style={{ zIndex: this.state.currentZIndex }} 
             >

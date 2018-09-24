@@ -23,10 +23,6 @@ class Clock extends React.Component {
     render(){
 		const h = this.state.time.getHours()
         const mn = this.state.time.getMinutes()
-        
-        const d = this.state.time.getDay();
-        const m = this.state.time.getMonth();
-        const y = this.state.time.getFullYear();
         return(
             <div className='Clock'>
                 <div>{h % 12}:{(mn < 10 ? '0' + mn : mn)}</div>

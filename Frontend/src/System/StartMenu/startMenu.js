@@ -22,9 +22,11 @@ class StartMenu extends React.Component {
     }
     render(){
         const appList = this.state.Apps.map((app) =>{ 
-            if(app!="." && app!="..") {
-                return <AppCard appName={app} />
-            }
+            if(app !== "." && app !== "..") {
+                return <AppCard onClickApp={this.props.onClickApp} appName={app}  />
+            }else{
+                return null;
+            } 
         });
 
         return(
