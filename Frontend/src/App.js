@@ -50,22 +50,22 @@ class App extends Component {
   } 
 
   createWindow(url,title,icon){
-      const uuid = this.uuidv4();
-      var newList = this.state.openedWindows;
-      newList.push({ 'UUID'  : uuid, 'WINDOW' : (
-          <Window 
-                  url={url}  
-                  title={title}  
-                  icon={icon}
-                  uuid={uuid}   
-                  onClose={this.onClose} 
-                  sendToFront={this.sendToFront} 
-                  maxZIndex={this.state.maxZIndex+1} 
-          />
-      )});
-      this.setState({ openedWindows: newList });
-      this.setState({ maxZIndex:  this.state.maxZIndex+1 });
-  } 
+        const uuid = this.uuidv4();
+        var newList = this.state.openedWindows;
+        newList.push({ 'UUID'  : uuid, 'WINDOW' : (
+            <Window 
+                    url={url}  
+                    title={title}  
+                    icon={icon}
+                    uuid={uuid}   
+                    onClose={this.onClose} 
+                    sendToFront={this.sendToFront} 
+                    maxZIndex={this.state.maxZIndex+1} 
+            />
+        )});
+        this.setState({ openedWindows: newList });
+        this.setState({ maxZIndex:  this.state.maxZIndex+1 });
+    }  
 
   onClickApp(e,name){
       this.createWindow(REST_URL+"/APPS/"+name,name,REST_URL+"/APPS/"+name+"/favicon.png");
