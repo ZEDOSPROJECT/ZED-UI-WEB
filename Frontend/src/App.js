@@ -94,11 +94,10 @@ class App extends Component {
 
   render() {
     const windowList=this.state.openedWindows.map((item) => {
-        if(item.VISIBLE){
-            return(
-                item['WINDOW']
-            );
-        } 
+        const visible=item.VISIBLE ? "" : "hidden";
+        return(
+            <div style={{ visibility: visible }}  >{item['WINDOW']}</div>
+        );
     })
     return (
       <div className="App">
