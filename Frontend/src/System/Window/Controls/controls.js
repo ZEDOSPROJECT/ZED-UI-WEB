@@ -14,7 +14,7 @@ class Controls extends React.Component{
                     className="Buttons"
                 >[-]</div>
                 <div 
-                    // onClick={this.props.onMinimize} 
+                    onClick={this.props.onToggleMinimize} 
                     className="Buttons"
                 >-</div>
             </div>

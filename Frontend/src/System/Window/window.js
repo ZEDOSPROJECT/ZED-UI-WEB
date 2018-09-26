@@ -25,6 +25,7 @@ class Window extends React.Component{
         this.onDragStart = this.onDragStart.bind(this);
         this.onResizeStart = this.onResizeStart.bind(this);
         this.onToggleWindow = this.onToggleWindow.bind(this);
+        this.onToggleMinimize = this.onToggleMinimize.bind(this);
     }
 
     sendToFront() {
@@ -52,6 +53,10 @@ class Window extends React.Component{
 
     onToggleWindow(){
         this.setState({maximized: !this.state.maximized});
+    } 
+
+    onToggleMinimize(){
+        this.props.onToggleMinimize(this.state.uuid);
     } 
 
     render(){
@@ -97,7 +102,7 @@ class Window extends React.Component{
                         <Controls
                             onClose={this.onClose} 
                             onToggleWindow={this.onToggleWindow} 
-                            onMinimize={this.onMinimizeMaximize} 
+                            onToggleMinimize={this.onToggleMinimize} 
                         />
                     </div>
                     <div className="body">

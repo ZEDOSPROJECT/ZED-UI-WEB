@@ -19,6 +19,7 @@ class App extends Component {
     this.onClose = this.onClose.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
     this.onClickApp = this.onClickApp.bind(this);
+    this.onToggleMinimize = this.onToggleMinimize.bind(this);
   } 
 
   uuidv4() {
@@ -49,20 +50,33 @@ class App extends Component {
       this.setState({ openedWindows: newData });
   } 
 
+  onToggleMinimize(uuid){
+    let newData = this.state.openedWindows;
+    let i=0;
+    newData.forEach(element => {
+        if( element.UUID === uuid ){
+            newData[i]  .VISIBLE=!element.VISIBLE
+        } 
+        i++;
+    });
+    this.setState({ openedWindows: newData });
+  } 
+
   createWindow(url,title,icon){
         const uuid = this.uuidv4();
         var newList = this.state.openedWindows;
         newList.push({ 'UUID'  : uuid, 'WINDOW' : (
             <Window 
-                    url={url}  
-                    title={title}  
-                    icon={icon}
-                    uuid={uuid}   
-                    onClose={this.onClose} 
-                    sendToFront={this.sendToFront} 
-                    maxZIndex={this.state.maxZIndex+1} 
+                url={url}  
+                title={title}  
+                icon={icon}
+                uuid={uuid}   
+                onClose={this.onClose} 
+                sendToFront={this.sendToFront} 
+                maxZIndex={this.state.maxZIndex+1} 
+                onToggleMinimize={this.onToggleMinimize} 
             />
-        )});
+        ), 'VISIBLE' : true });
         this.setState({ openedWindows: newList });
         this.setState({ maxZIndex:  this.state.maxZIndex+1 });
     }  
@@ -80,16 +94,18 @@ class App extends Component {
 
   render() {
     const windowList=this.state.openedWindows.map((item) => {
-        return(
-            item['WINDOW']
-        );
+        if(item.VISIBLE){
+            return(
+                item['WINDOW']
+            );
+        } 
     })
     return (
       <div className="App">
         <div className="windowArea">
             {windowList}
         </div>
-        <TaskBar openedWindows={this.state.openedWindows}  toggleMenu={this.toggleMenu}/>
+        <TaskBar openedWindows={this.state.openedWindows} onToggleMinimize={this.onToggleMinimize} toggleMenu={this.toggleMenu}/>
         <StartMenu onClickApp={this.onClickApp} toggleMenu={this.toggleMenu} visible={this.state.showMenu}/>
       </div>
     );
