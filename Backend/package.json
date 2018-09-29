@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "ZED Backend",
   "scripts": {
-    "start": "node index.js"
+    "start": "php -S localhost:3031 -t SERVER/"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-php-server": "^0.1.2"
+    "shell-exec": "^1.0.2"
   }
 }
