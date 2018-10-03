@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "ZED Backend",
   "scripts": {
-    "start": "php -S localhost:3031 -t SERVER/"
+    "start": "php -S 0.0.0.0:3031 -t SERVER/"
   },
   "author": "",
   "license": "ISC",
