@@ -1,6 +1,7 @@
 import React from 'react';
 import Clock from '../Clock/clock';
 import TaskButton from './Task/taskButton';
+import NetworkStatus from './networkStatus/networkStatus';
 import './taskbar.css';
 
 class Taskbar extends React.Component {
@@ -14,6 +15,7 @@ class Taskbar extends React.Component {
                 <div className="buttonsArea">
                    {iconList} 
                 </div>
+                <NetworkStatus />
                 <Clock />
             </div>
         )
