@@ -1,4 +1,5 @@
 import React from 'react';
+import onClickOutside from 'react-onclickoutside'
 import UserIcon from '../../Icons/User.jpg';
 import AppCard from './AppCard/appCard';
 import { REST_URL } from './../../REST_URL';
@@ -10,6 +11,8 @@ class StartMenu extends React.Component {
         this.state = {
             Apps: []
         }
+        
+        this.handleClickOutside = this.handleClickOutside.bind(this);
     } 
     componentWillMount(){
         fetch(REST_URL+'/API/APPS/getAppsList.php')
@@ -20,6 +23,11 @@ class StartMenu extends React.Component {
                 });
             });
     }
+
+    handleClickOutside() {
+        this.props.toggleMenu();
+    }
+
     render(){
         const appList = this.state.Apps.map((app) =>{ 
             if(app !== "." && app !== "..") {
@@ -46,4 +54,4 @@ class StartMenu extends React.Component {
     }
 }
 
-export default StartMenu;
+export default onClickOutside(StartMenu)
