@@ -20,6 +20,7 @@ class App extends Component {
     this.toggleMenu = this.toggleMenu.bind(this);
     this.onClickApp = this.onClickApp.bind(this);
     this.onToggleMinimize = this.onToggleMinimize.bind(this);
+    
   } 
 
   uuidv4() {

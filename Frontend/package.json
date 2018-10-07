@@ -2,10 +2,13 @@
   "name": "one_ui",
   "version": "0.1.0",
   "private": true,
+  "main": "electron-starter.js",
   "dependencies": {
     "connected-react-router": "^4.4.1",
+    "electron": "^1.8.8",
     "fs": "0.0.1-security",
     "history": "^4.7.2",
+    "is-electron": "^2.1.0",
     "jquery": "^3.3.1",
     "jshint": "^2.9.6",
     "npm": "^6.3.0",
@@ -25,6 +28,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "electron ."
   }
 }

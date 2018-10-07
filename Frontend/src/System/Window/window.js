@@ -1,4 +1,5 @@
 import React from 'react';
+import isElectron from 'is-electron';
 import Controls from './Controls/controls'; 
 import { Rnd } from "react-rnd";
 import './window.css';
@@ -106,9 +107,11 @@ class Window extends React.Component{
                         />
                     </div>
                     <div className="body">
-                        <iframe className="frame" src={this.props.url} >
-
-                        </iframe>
+                    {!isElectron() ? (
+                        <iframe className="frame" src={this.props.url} />
+                     ):(
+                        <webview className="frame" src={this.props.url} plugins></webview>
+                    )}
                     </div>
                 </div>
             </Rnd>
