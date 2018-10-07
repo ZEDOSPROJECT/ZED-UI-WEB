@@ -26,12 +26,9 @@
 }
 
 .buttonsArea{
-    position: absolute;
     bottom: 0px;
     height: 100%;
-    width: auto;
-    left: 50px;
-    right: 110px;
+    width: 100%;
 } 
 
 

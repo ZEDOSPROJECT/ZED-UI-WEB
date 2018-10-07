@@ -10,14 +10,14 @@ class Taskbar extends React.Component {
             <TaskButton uuid={element.UUID} onToggleMinimize={this.props.onToggleMinimize} icon={element.WINDOW.props.icon} />
         );
         return(
-            <div className="Taskbar">
-                <div onClick={this.props.toggleMenu} className="StartMenu"></div>
-                <div className="buttonsArea">
-                   {iconList} 
-                </div>
-                <NetworkStatus />
-                <Clock />
-            </div>
+            <table className="Taskbar">
+                <tr>
+                    <td style={{ width: "32px" }}><div onClick={this.props.toggleMenu} className="StartMenu"></div></td>
+                    <td className="buttonsArea">{iconList}</td>
+                    <td><NetworkStatus /></td>
+                    <td><Clock /></td>
+                </tr>
+            </table>
         )
     }
 }
