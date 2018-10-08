@@ -21,12 +21,12 @@
 .windowArea{
   width: 100%;
     /* Firefox */
-  height: -moz-calc(100% - 40px);
+  height: -moz-calc(100% - 49px);
   /* WebKit */
-  height: -webkit-calc(100% - 40px);
+  height: -webkit-calc(100% - 49px);
   /* Opera */
-  height: -o-calc(100% - 40px);
+  height: -o-calc(100% - 49px);
   /* Standard */
-  height: calc(100% - 40px);
+  height: calc(100% - 49px);
   position: relative;
 } 
