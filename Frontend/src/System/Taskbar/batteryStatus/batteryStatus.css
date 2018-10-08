@@ -1,0 +1,22 @@
+
+.BatteryStatus{
+    width: 40px;
+    height: 40px;
+    position: relative;
+} 
+
+img{
+    margin: 5px;
+    width: 20px;
+    height: 25px;
+} 
+
+.batteryCharging{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: 5px;
+    width: 20px;
+    height: 25px;
+    z-index: 100;
+} 
