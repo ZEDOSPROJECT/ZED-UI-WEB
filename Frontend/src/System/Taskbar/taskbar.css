@@ -34,5 +34,6 @@
 
 .taskIcon {
     height: auto;
-    width: 28px;
+    width: 33px;
+    margin-bottom: 1px;
 }

@@ -1,11 +1,7 @@
-.taskButton{
+.taskButton {
     height: 100%;
     width: 45px;
-    background-color: rgba(0, 60, 255, 0.062);
+    background-color: rgba(0, 60, 255, 0.041);
     float: left;
     margin: 1px;
-} 
-
-.taskButton :hover {
-    background-color: rgba(0, 60, 255, 0.801);
 } 
