@@ -2,6 +2,7 @@ import React from 'react';
 import Clock from '../Clock/clock';
 import TaskButton from './Task/taskButton';
 import NetworkStatus from './networkStatus/networkStatus';
+import BatteryStatus from './batteryStatus/batteryStatus';
 import './taskbar.css';
 
 class Taskbar extends React.Component {
@@ -14,6 +15,7 @@ class Taskbar extends React.Component {
                 <tr>
                     <td style={{ width: "32px" }}><div onClick={this.props.toggleMenu} className="StartMenu"></div></td>
                     <td className="buttonsArea">{iconList}</td>
+                    <td><BatteryStatus /></td>
                     <td><NetworkStatus /></td>
                     <td><Clock /></td>
                 </tr>
