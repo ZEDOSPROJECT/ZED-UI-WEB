@@ -8,7 +8,7 @@ const {app, BrowserWindow} = require('electron')
   
   function createWindow () {
     // Create the browser window.
-    win = new BrowserWindow({width: 800, height: 600, fullscreen:true,kiosk:true})
+    win = new BrowserWindow({width: 800, height: 600, fullscreen:true,kiosk:true,'web-preferences': {'plugins': true}})
     win.setMenu(null);
     // Emitted when the window is closed.
     win.on('closed', () => {
