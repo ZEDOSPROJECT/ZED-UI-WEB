@@ -1,7 +1,10 @@
 import React from 'react';
 import isElectron from 'is-electron';
-import Controls from './Controls/controls'; 
 import { Rnd } from "react-rnd";
+import CCLOSE from './CLOSE.png';
+import CMAXIMIZE from './MAXIMIZE.png';
+import CRESTORE from './RESTORE.png';
+import CMINIMIZE from './MINIMIZE.png';
 import './window.css';
 
 class Window extends React.Component{
@@ -95,17 +98,17 @@ class Window extends React.Component{
                     }}
                 >
                 <div className="window" initWidth={800} initHeight={400} onRequestClose={this.closeModal}>
-                    <div onClick={this.sendToFront} >
-                        <img alt="" src={this.props.icon} className="icon" width="16" height="16" ></img>
-                        <div className="title">
-                            {this.props.title}
-                        </div>
-                        <Controls
-                            onClose={this.onClose} 
-                            onToggleWindow={this.onToggleWindow} 
-                            onToggleMinimize={this.onToggleMinimize} 
-                        />
-                    </div>
+                    <table onClick={this.sendToFront} class="titleBar">
+                        <tr>
+                            <td class="appIcon"><img class="appIcon" src={this.props.icon}></img></td>
+                            <td class="appTitle">{this.props.title}</td>
+                            <td class="appControls">
+                                <img class="btnXControl" onClick={this.onClose}  src={CCLOSE} ></img>
+                                <img class="btnControl" onClick={this.onToggleWindow} src={( this.state.maximized ? CRESTORE : CMAXIMIZE )}></img>
+                                <img class="btnControl" onClick={this.onToggleMinimize} src={CMINIMIZE}></img>
+                            </td>
+                        </tr>
+                    </table>
                     <div className="body">
                     {!isElectron() ? (
                         <iframe className="frame" src={this.props.url} />

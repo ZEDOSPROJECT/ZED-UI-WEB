@@ -53,14 +53,49 @@
     border: 0px;
   } 
 
-  .icon{
-    position: absolute;
-    left: 0px;
-    top:0px;
-    margin: 4px;
-  } 
-
-  .title{
-    margin-left:26px;
-    margin-top: 4px;
-  } 
+  .appTitle{
+    padding: left 5px;
+    padding-top:0px;
+    margin: 0;
+	}
+	.titleBar{
+		width:100%;
+    background-color:#dfdfdf;
+    border-style: none;
+    margin: 0;
+    padding: 0;
+	}
+	.appIcon{
+		width:18px;
+    height:18px;
+    margin: 0;
+    padding-left: 2px;
+    padding-top: 1px;
+	}
+	.appControls{
+    width:104px;
+    margin: 0;
+    padding: 0;
+	}
+	.btnControl{
+		width:18px;
+		height:18px;
+		float:right;
+    background-color:withe;
+    margin: 0;
+    padding: 0;
+	}
+	.btnControl:hover{
+		background-color:#ccccff;
+	}
+	.btnXControl{
+		width:18px;
+		height:18px;
+		float:right;
+    background-color:withe;
+    margin: 0;
+    padding: 0;
+	}
+	.btnXControl:hover{
+		background-color:red;
+	}
