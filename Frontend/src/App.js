@@ -12,9 +12,9 @@ class App extends Component {
         openedWindows:[],
         maxZIndex: 1,
         showMenu: false,
-        wallpaperURL: '',
-        wallpaperColor: '#004e98',
-        bingWallpaper: false
+        setting_wallpaperURL: '',
+        setting_wallpaperColor: '#004e98',
+        setting_bingWallpaper: true
     };
     this.createWindow = this.createWindow.bind(this);
     this.uuidv4 = this.uuidv4.bind(this);
@@ -103,7 +103,7 @@ class App extends Component {
     .then(json => {
         let url="https://www.bing.com/"+json.images[0].url;
         this.setState({
-            wallpaperURL: url
+            setting_wallpaperURL: url
         });
     });
   } 
@@ -115,16 +115,16 @@ class App extends Component {
             <div style={{ visibility: visible }}  >{item['WINDOW']}</div>
         );
     })
-    const wallpaperURL = this.state.wallpaperURL;
-    const wallpaperColor = this.state.wallpaperColor;
-    if(this.state.bingWallpaper){
+    const wallpaperURL = this.state.setting_wallpaperURL;
+    const wallpaperColor = this.state.setting_wallpaperColor;
+    if(this.state.setting_bingWallpaper){
         this.getBingPicture();
     } else {
         const settingWallpaperURL = require('./Wallpaper/wallpaper.jpg');
         
-        if(settingWallpaperURL!=this.state.wallpaperURL){
+        if(settingWallpaperURL!=this.state.setting_wallpaperURL){
             this.setState({
-                wallpaperURL: settingWallpaperURL
+                setting_wallpaperURL: settingWallpaperURL
             });
         } 
     } 
