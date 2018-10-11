@@ -12,6 +12,9 @@ class App extends Component {
         openedWindows:[],
         maxZIndex: 1,
         showMenu: false,
+        wallpaperURL: '',
+        wallpaperColor: '#004e98',
+        bingWallpaper: false
     };
     this.createWindow = this.createWindow.bind(this);
     this.uuidv4 = this.uuidv4.bind(this);
@@ -20,7 +23,7 @@ class App extends Component {
     this.toggleMenu = this.toggleMenu.bind(this);
     this.onClickApp = this.onClickApp.bind(this);
     this.onToggleMinimize = this.onToggleMinimize.bind(this);
-    
+    this.getBingPicture = this.getBingPicture.bind(this);
   } 
 
   uuidv4() {
@@ -78,6 +81,7 @@ class App extends Component {
                 onToggleMinimize={this.onToggleMinimize} 
             />
         ), 'VISIBLE' : true });
+
         this.setState({ openedWindows: newList });
         this.setState({ maxZIndex:  this.state.maxZIndex+1 });
     }  
@@ -93,6 +97,17 @@ class App extends Component {
       });
   }
 
+  getBingPicture(){
+    fetch('https://cors.io/?https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US')
+    .then(response => response.json())
+    .then(json => {
+        let url="https://www.bing.com/"+json.images[0].url;
+        this.setState({
+            wallpaperURL: url
+        });
+    });
+  } 
+
   render() {
     const windowList=this.state.openedWindows.map((item) => {
         const visible=item.VISIBLE ? "" : "hidden";
@@ -100,8 +115,21 @@ class App extends Component {
             <div style={{ visibility: visible }}  >{item['WINDOW']}</div>
         );
     })
+    const wallpaperURL = this.state.wallpaperURL;
+    const wallpaperColor = this.state.wallpaperColor;
+    if(this.state.bingWallpaper){
+        this.getBingPicture();
+    } else {
+        const settingWallpaperURL = require('./Wallpaper/wallpaper.jpg');
+        
+        if(settingWallpaperURL!=this.state.wallpaperURL){
+            this.setState({
+                wallpaperURL: settingWallpaperURL
+            });
+        } 
+    } 
     return (
-      <div className="App">
+      <div className="App" style={ { backgroundImage: 'url(' + wallpaperURL + ')', backgroundColor: wallpaperColor  } } >
         <div className="windowArea">
             {windowList}
         </div>
