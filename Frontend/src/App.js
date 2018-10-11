@@ -13,8 +13,7 @@ class App extends Component {
         maxZIndex: 1,
         showMenu: false,
         setting_wallpaperURL: '',
-        setting_wallpaperColor: '#004e98',
-        setting_bingWallpaper: true
+        setting_wallpaperColor: '#004e98'
     };
     this.createWindow = this.createWindow.bind(this);
     this.uuidv4 = this.uuidv4.bind(this);
@@ -24,6 +23,32 @@ class App extends Component {
     this.onClickApp = this.onClickApp.bind(this);
     this.onToggleMinimize = this.onToggleMinimize.bind(this);
     this.getBingPicture = this.getBingPicture.bind(this);
+    this.loadUserSettings = this.loadUserSettings.bind(this);
+
+    setInterval(() => {
+        this.loadUserSettings();
+    },1000);
+  } 
+
+  loadUserSettings(){
+    fetch(REST_URL+'/API/SYSTEM/SETTINGS/USER/getSettings.php')
+    .then(response => response.json())
+    .then(json => {
+        if(json.setting_wallpaperColor!=this.state.setting_wallpaperColor){
+            this.setState({
+                setting_wallpaperColor: json.setting_wallpaperColor
+            });
+        } 
+        if(json.setting_bingWallpaper){
+            this.getBingPicture();
+        } else {
+            if(json.setting_wallpaperURL!=this.state.setting_wallpaperURL){
+                this.setState({
+                    setting_wallpaperURL: json.setting_wallpaperURL
+                });
+            } 
+        } 
+    });
   } 
 
   uuidv4() {
@@ -117,17 +142,6 @@ class App extends Component {
     })
     const wallpaperURL = this.state.setting_wallpaperURL;
     const wallpaperColor = this.state.setting_wallpaperColor;
-    if(this.state.setting_bingWallpaper){
-        this.getBingPicture();
-    } else {
-        const settingWallpaperURL = require('./Wallpaper/wallpaper.jpg');
-        
-        if(settingWallpaperURL!=this.state.setting_wallpaperURL){
-            this.setState({
-                setting_wallpaperURL: settingWallpaperURL
-            });
-        } 
-    } 
     return (
       <div className="App" style={ { backgroundImage: 'url(' + wallpaperURL + ')', backgroundColor: wallpaperColor  } } >
         <div className="windowArea">
