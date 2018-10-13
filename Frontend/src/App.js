@@ -44,7 +44,7 @@ class App extends Component {
         } else {
             if(json.setting_wallpaperURL!=this.state.setting_wallpaperURL){
                 this.setState({
-                    setting_wallpaperURL: json.setting_wallpaperURL
+                    setting_wallpaperURL: REST_URL+'/Wallpapers/'+json.setting_wallpaperURL
                 });
             } 
         } 
