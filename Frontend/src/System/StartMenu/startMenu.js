@@ -29,9 +29,15 @@ class StartMenu extends React.Component {
     }
 
     render(){
+        let lastLeter="0";
         const appList = this.state.Apps.map((app) =>{ 
             if(app !== "." && app !== "..") {
-                return <AppCard onClickApp={this.props.onClickApp} appName={app}  />
+                let newDiv;
+                if(app.charAt(0).toUpperCase()!=lastLeter.toUpperCase()) {
+                    lastLeter=app.charAt(0);
+                    newDiv=<div className="startLeter"><b>{lastLeter}</b></div>
+                }
+                return <div>{newDiv}<AppCard onClickApp={this.props.onClickApp} appName={app}  /></div>
             }else{
                 return null;
             } 
