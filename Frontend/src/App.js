@@ -85,8 +85,10 @@ class App extends Component {
     let newData = this.state.openedWindows;
     let i=0;
     newData.forEach(element => {
-        if( element.UUID === uuid ){
-            newData[i]  .VISIBLE=!element.VISIBLE
+        if(element!=null){
+            if( element.UUID === uuid ){
+                newData[i].VISIBLE=!element.VISIBLE
+            } 
         } 
         i++;
     });
