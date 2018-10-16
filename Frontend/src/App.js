@@ -71,8 +71,10 @@ class App extends Component {
       let newData = this.state.openedWindows;
       let i=0;
       newData.forEach(element => {
-          if( element.UUID === uuid ){
-              newData.splice(i, 1);
+          if(element!=null){
+            if( element.UUID === uuid ){
+                newData[i]=null;
+            } 
           } 
           i++;
       });
@@ -135,10 +137,12 @@ class App extends Component {
 
   render() {
     const windowList=this.state.openedWindows.map((item) => {
-        const visible=item.VISIBLE ? "" : "hidden";
-        return(
-            <div style={{ visibility: visible }}  >{item['WINDOW']}</div>
-        );
+        if(item!=null){
+            const visible=item.VISIBLE ? "" : "hidden";
+            return(
+                <div style={{ visibility: visible }}  >{item['WINDOW']}</div>
+            );
+        } 
     })
     const wallpaperURL = this.state.setting_wallpaperURL;
     const wallpaperColor = this.state.setting_wallpaperColor;
