@@ -24,10 +24,29 @@ class App extends Component {
     this.onToggleMinimize = this.onToggleMinimize.bind(this);
     this.getBingPicture = this.getBingPicture.bind(this);
     this.loadUserSettings = this.loadUserSettings.bind(this);
+    this.clean = this.clean.bind(this);
 
     setInterval(() => {
         this.loadUserSettings();
+        this.clean();
     },1000);
+  } 
+
+  clean(){
+    let newData = this.state.openedWindows;
+    let i=0;
+    let iWindows=0;
+    newData.forEach(element => {
+        if(element!=null){
+            iWindows++;
+        }
+        i++;
+    });
+    if(iWindows==0){
+        this.setState({ maxZIndex: 1 });
+        newData = []; 
+    } 
+    this.setState({ openedWindows: newData });
   } 
 
   loadUserSettings(){
@@ -154,7 +173,7 @@ class App extends Component {
             {windowList}
         </div>
         <TaskBar openedWindows={this.state.openedWindows} onToggleMinimize={this.onToggleMinimize} toggleMenu={this.toggleMenu}/>
-        <StartMenu onClickApp={this.onClickApp} toggleMenu={this.toggleMenu} visible={this.state.showMenu}/>
+        <StartMenu maxZIndex={this.state.maxZIndex}  onClickApp={this.onClickApp} toggleMenu={this.toggleMenu} visible={this.state.showMenu}/>
       </div>
     );
   }
