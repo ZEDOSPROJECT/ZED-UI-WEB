@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Sound from 'react-sound';
+import startUpSound from './Sounds/startup.mp3';
 import TaskBar from './System/Taskbar/taskbar';
 import Window from './System/Window/window';
 import StartMenu from './System/StartMenu/startMenu';
@@ -13,7 +15,8 @@ class App extends Component {
         maxZIndex: 1,
         showMenu: false,
         setting_wallpaperURL: '',
-        setting_wallpaperColor: '#004e98'
+        setting_wallpaperColor: '#004e98',
+        sound: "PLAYING"
     };
     this.createWindow = this.createWindow.bind(this);
     this.uuidv4 = this.uuidv4.bind(this);
@@ -25,6 +28,7 @@ class App extends Component {
     this.getBingPicture = this.getBingPicture.bind(this);
     this.loadUserSettings = this.loadUserSettings.bind(this);
     this.clean = this.clean.bind(this);
+    this.handleSongFinishedPlaying = this.handleSongFinishedPlaying.bind(this);
 
     setInterval(() => {
         this.loadUserSettings();
@@ -156,6 +160,12 @@ class App extends Component {
     });
   } 
 
+  handleSongFinishedPlaying(){
+    this.setState({
+        sound: "stop"
+    });
+  } 
+
   render() {
     const windowList=this.state.openedWindows.map((item) => {
         if(item!=null){
@@ -172,6 +182,12 @@ class App extends Component {
         <div className="windowArea">
             {windowList}
         </div>
+        <Sound
+            url={startUpSound}
+            loop={false}
+            playStatus={this.state.sound} 
+            onFinishedPlaying={this.handleSongFinishedPlaying}
+        />
         <TaskBar openedWindows={this.state.openedWindows} onToggleMinimize={this.onToggleMinimize} toggleMenu={this.toggleMenu}/>
         <StartMenu maxZIndex={this.state.maxZIndex}  onClickApp={this.onClickApp} toggleMenu={this.toggleMenu} visible={this.state.showMenu}/>
       </div>
