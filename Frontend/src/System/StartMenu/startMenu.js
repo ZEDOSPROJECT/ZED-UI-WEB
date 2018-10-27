@@ -1,5 +1,5 @@
 import React from 'react';
-import onClickOutside from 'react-onclickoutside'
+import onClickOutside from 'react-onclickoutside';
 import UserIcon from '../../Icons/User.jpg';
 import AppCard from './AppCard/appCard';
 import { REST_URL } from './../../REST_URL';

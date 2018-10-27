@@ -202,6 +202,7 @@ class App extends Component {
             openedWindows={this.state.openedWindows}
             onToggleMinimize={this.onToggleMinimize}
             toggleMenu={this.toggleMenu}
+            maxZIndex={this.state.maxZIndex}
         />
         <StartMenu
             systemColor={this.state.setting_systemColor}

@@ -1,13 +1,16 @@
 import React from 'react';
 import './clock.css';
+import CalendarWindow from './Calendar/calendar';
 
 class Clock extends React.Component {
     constructor(props) {
         super(props)
         
         this.state = {
-            time: new Date()
+            time: new Date(),
+            calendarVisible: false
         }
+        this.switchCalendar = this.switchCalendar.bind(this);
     }
 
     componentDidMount() {
@@ -20,12 +23,23 @@ class Clock extends React.Component {
         })   
     };
 
+    switchCalendar(){
+        this.setState({
+            calendarVisible: !this.state.calendarVisible
+        })  
+    } 
+
     render(){
 		const h = this.state.time.getHours()
         const mn = this.state.time.getMinutes()
         return(
             <div className='Clock'>
-                <div>{h % 12}:{(mn < 10 ? '0' + mn : mn)}</div>
+                <CalendarWindow 
+                    visible={this.state.calendarVisible}
+                    toggleCalendar={this.switchCalendar} 
+                    maxZIndex={this.props.maxZIndex}
+                />
+                <div onClick={this.switchCalendar} >{h % 12}:{(mn < 10 ? '0' + mn : mn)}</div>
             </div>
         );
     }
