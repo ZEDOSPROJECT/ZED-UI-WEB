@@ -17,6 +17,7 @@ class App extends Component {
         setting_wallpaperURL: '',
         setting_wallpaperColor: '#004e98',
         setting_resolution: '100%',
+        setting_systemColor: '#06001E',
         sound: "PLAYING"
     };
     this.createWindow = this.createWindow.bind(this);
@@ -65,6 +66,9 @@ class App extends Component {
         } 
         this.setState({
             setting_resolution: json.setting_resolution
+        });
+        this.setState({
+            setting_systemColor: json.setting_systemColor
         });
         if(json.setting_bingWallpaper){
             this.getBingPicture();
@@ -135,6 +139,7 @@ class App extends Component {
                 sendToFront={this.sendToFront} 
                 maxZIndex={this.state.maxZIndex+1} 
                 onToggleMinimize={this.onToggleMinimize} 
+                systemColor={this.state.setting_systemColor} 
             />
         ), 'VISIBLE' : true });
 
@@ -192,8 +197,19 @@ class App extends Component {
             playStatus={this.state.sound} 
             onFinishedPlaying={this.handleSongFinishedPlaying}
         />
-        <TaskBar openedWindows={this.state.openedWindows} onToggleMinimize={this.onToggleMinimize} toggleMenu={this.toggleMenu}/>
-        <StartMenu maxZIndex={this.state.maxZIndex}  onClickApp={this.onClickApp} toggleMenu={this.toggleMenu} visible={this.state.showMenu}/>
+        <TaskBar
+            systemColor={this.state.setting_systemColor}
+            openedWindows={this.state.openedWindows}
+            onToggleMinimize={this.onToggleMinimize}
+            toggleMenu={this.toggleMenu}
+        />
+        <StartMenu
+            systemColor={this.state.setting_systemColor}
+            maxZIndex={this.state.maxZIndex}
+            onClickApp={this.onClickApp}
+            toggleMenu={this.toggleMenu}
+            visible={this.state.showMenu}
+        />
       </div>
     );
   }
