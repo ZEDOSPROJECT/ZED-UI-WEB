@@ -71,7 +71,6 @@ class Window extends React.Component{
     } 
 
     render(){
-        console.log(this.state.url);
         return(
             <div>
                 <Rnd
