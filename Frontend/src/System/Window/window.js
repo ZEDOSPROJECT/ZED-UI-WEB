@@ -5,6 +5,7 @@ import CCLOSE from './CLOSE.png';
 import CMAXIMIZE from './MAXIMIZE.png';
 import CRESTORE from './RESTORE.png';
 import CMINIMIZE from './MINIMIZE.png';
+import { REST_URL } from '../../REST_URL';
 import './window.css';
 
 class Window extends React.Component{
@@ -12,6 +13,7 @@ class Window extends React.Component{
         super(props);
 
         this.state = {
+            url: this.props.url,
             modalIsOpen: true,
             draggable: false,
             uuid: this.props.uuid,
@@ -30,6 +32,7 @@ class Window extends React.Component{
         this.onResizeStart = this.onResizeStart.bind(this);
         this.onToggleWindow = this.onToggleWindow.bind(this);
         this.onToggleMinimize = this.onToggleMinimize.bind(this);
+        this.onErrorFRAME = this.onErrorFRAME.bind(this);
     }
 
     sendToFront() {
@@ -63,7 +66,12 @@ class Window extends React.Component{
         this.props.onToggleMinimize(this.state.uuid);
     } 
 
+    onErrorFRAME(){
+        this.setState({url: REST_URL+'/API/APPS/onErrorLoad.html'});
+    } 
+
     render(){
+        console.log(this.state.url);
         return(
             <div>
                 <Rnd
@@ -113,9 +121,9 @@ class Window extends React.Component{
                     </table>
                     <div className="body">
                     {!isElectron() ? (
-                        <iframe className="frame" src={this.props.url} />
+                        <iframe className="frame" onError={this.onErrorFRAME} src={this.state.url} />
                      ):(
-                        <webview className="frame" src={this.props.url} plugins></webview>
+                        <webview className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins></webview>
                     )}
                     </div>
                 </div>
