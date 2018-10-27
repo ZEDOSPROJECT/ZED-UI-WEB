@@ -14,7 +14,7 @@ class Taskbar extends React.Component {
         }
         );
         return(
-            <table className="Taskbar">
+            <table className="Taskbar" style={{ backgroundColor: this.props.systemColor }}>
                 <tr>
                     <td style={{ width: "32px" }}><div onClick={this.props.toggleMenu} className="StartMenu"></div></td>
                     <td className="buttonsArea">{iconList}</td>

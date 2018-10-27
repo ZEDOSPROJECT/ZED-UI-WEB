@@ -7,6 +7,7 @@
     $data['setting_wallpaperURL'] = $_POST['setting_wallpaperURL'];
     $data['setting_wallpaperColor'] = $_POST['setting_wallpaperColor'];
     $data['setting_resolution'] = $_POST['setting_resolution'];
+    $data['setting_systemColor'] = $_POST['setting_systemColor'];
 
     $newJsonString = json_encode($data);
     file_put_contents('SETTINGS.json', $newJsonString);

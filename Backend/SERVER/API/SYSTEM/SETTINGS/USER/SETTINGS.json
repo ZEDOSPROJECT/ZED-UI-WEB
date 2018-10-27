@@ -1,5 +1,1 @@
-{
-    "setting_wallpaperURL" : "wallpaper.jpg",
-    "setting_wallpaperColor" : "#004e98",
-    "setting_bingWallpaper" : false
-}
+{"setting_bingWallpaper":false,"setting_wallpaperURL":"wallpaper.jpg","setting_wallpaperColor":"#004e98","setting_resolution":"100%","setting_systemColor":"#0e1e7c"}

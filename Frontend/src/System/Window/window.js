@@ -107,7 +107,7 @@ class Window extends React.Component{
                     }}
                 >
                 <div className="window" initWidth={800} initHeight={400} onRequestClose={this.closeModal}>
-                    <table onClick={this.sendToFront} class="titleBar">
+                    <table onClick={this.sendToFront} class="titleBar" style={{ backgroundColor: this.props.systemColor }} >
                         <tr>
                             <td class="appIcon"><img class="appIcon" src={this.props.icon}></img></td>
                             <td class="appTitle">{this.props.title}</td>

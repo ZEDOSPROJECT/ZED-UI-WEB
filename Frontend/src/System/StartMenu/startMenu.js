@@ -46,7 +46,7 @@ class StartMenu extends React.Component {
         return(
             (this.props.visible ? (
                 <div style={{ zIndex: this.props.maxZIndex+10 }} >
-                    <div className="startMenu">
+                    <div className="startMenu" style={{ backgroundColor: this.props.systemColor }}>
                         <div className="leftPanel">
                             <img style={{ position: 'absolute',  bottom: 5 }} alt="" className="menuIcon" src={UserIcon}  />
                         </div>
