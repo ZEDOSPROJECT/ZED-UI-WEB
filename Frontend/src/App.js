@@ -16,6 +16,7 @@ class App extends Component {
         showMenu: false,
         setting_wallpaperURL: '',
         setting_wallpaperColor: '#004e98',
+        setting_resolution: '100%',
         sound: "PLAYING"
     };
     this.createWindow = this.createWindow.bind(this);
@@ -62,6 +63,9 @@ class App extends Component {
                 setting_wallpaperColor: json.setting_wallpaperColor
             });
         } 
+        this.setState({
+            setting_resolution: json.setting_resolution
+        });
         if(json.setting_bingWallpaper){
             this.getBingPicture();
         } else {
@@ -178,7 +182,7 @@ class App extends Component {
     const wallpaperURL = this.state.setting_wallpaperURL;
     const wallpaperColor = this.state.setting_wallpaperColor;
     return (
-      <div className="App" style={ { backgroundImage: 'url(' + wallpaperURL + ')', backgroundColor: wallpaperColor  } } >
+      <div className="App" style={ { backgroundImage: 'url(' + wallpaperURL + ')', backgroundColor: wallpaperColor, zoom: this.state.setting_resolution  } } >
         <div className="windowArea">
             {windowList}
         </div>
