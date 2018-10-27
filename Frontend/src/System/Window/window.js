@@ -76,8 +76,7 @@ class Window extends React.Component{
                     minWidth="200"
                     minHeight="200"
                     cancel=".frame"
-                    disableDragging={this.state.maximized} 
-                    enableResizing={!this.state.maximized} 
+                    disableDragging={this.state.maximized}  
                     style={{ zIndex: this.state.currentZIndex }} 
                     size={{ width: ( this.state.maximized ? '100%' : this.state.width ),  height: ( this.state.maximized ? '100%' : this.state.height ) }}
                     position={{ x: ( this.state.maximized ? '0' : this.state.x ), y: ( this.state.maximized ? '0' : this.state.y ) }}
