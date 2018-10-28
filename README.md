@@ -1,5 +1,7 @@
 # ZED OS (ONE UI)
 
+![alt text](https://github.com/ZEDOSPROJECT/ZED-UI-WEB/blob/master/screenshot.png?raw=true)
+
 ONE UI is part of ZED OS Project (http://zedos.esy.es/), it's an User interface based on Web Tecnologies
 
 ### Prerequisites
