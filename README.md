@@ -15,7 +15,7 @@ ONE UI is part of ZED OS Project (http://zedos.esy.es/), it's an User interface 
 	1 - git clone https://github.com/ZEDOSPROJECT/ZED-UI-WEB.git
 
 	2a - Backend:
-	  cd Backend;npm install ;npm start
+	  cd Backend; ./startBackend.sh
 
 	2b - FrontEnd
 	 cd Frontend;npm install ;npm start
