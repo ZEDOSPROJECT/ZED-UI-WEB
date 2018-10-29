@@ -122,7 +122,7 @@ class Window extends React.Component{
                     {!isElectron() ? (
                         <iframe className="frame" onError={this.onErrorFRAME} src={this.state.url} />
                      ):(
-                        <webview className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins></webview>
+                        <webview className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>
                     )}
                     </div>
                 </div>
