@@ -127,8 +127,7 @@ class Window extends React.Component{
                     </div>
                 </div>
             </Rnd>
-            </div>
-            
+            </div>            
         );
     } 
 } 

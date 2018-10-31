@@ -20,7 +20,7 @@
   background-color: rgba(0, 0, 255, 0.24);
   margin-left: 10px;
   padding: 2px;
-  color:white
+  color:white;
 } 
 
 .menuIcon {
@@ -38,6 +38,7 @@
     top: 0px;
     overflow-y: scroll;
     position: absolute;
+    -webkit-text-stroke: 0.3px black;
 } 
 
 ::-webkit-scrollbar {
