@@ -1,5 +1,5 @@
 .appCard{
-    background-color: rgba(0, 1, 65, 0.103);
+    background-color: rgba(0, 1, 65, 0);
     width: 95%;
     height: 32px;
     margin: 5px;
@@ -7,8 +7,8 @@
     color: white;
 } 
 
-.appCard :hover{
-    color:rgb(223, 214, 255);
+.appCard:hover{
+    background-color: rgba(0, 1, 65, 0.103);
 } 
 
 .appCardIcon{
