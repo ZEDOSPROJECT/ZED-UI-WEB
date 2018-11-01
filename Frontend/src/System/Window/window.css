@@ -87,6 +87,7 @@
     background-color:withe;
     margin: 0;
     padding: 0;
+    border-radius: 50%;
 	}
 	.btnControl:hover{
 		background-color:#ccccff;
@@ -96,6 +97,7 @@
 		height:18px;
 		float:right;
     background-color:withe;
+    border-radius: 50%;
     margin: 0;
     padding: 0;
 	}
