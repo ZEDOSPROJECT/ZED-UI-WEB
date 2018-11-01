@@ -7,12 +7,29 @@
 			function save(){
 				document.getElementById("settings").submit();
 			}
+
+			function changeCurrentWallpaper(){
+				document.getElementById("setting_wallpaperURL").value=document.getElementById("currentSelectedWallpaper").value;
+			} 
 		</script>
 	</HEAD>
 	<BODY>
 		<form id="settings" method="post" action="/API/SYSTEM/SETTINGS/USER/setSettings.php">
 			<h2>Personalization:</h2>
-			<p>Wallpaper URL: <input onChange="save()" type="text" name="setting_wallpaperURL" id="setting_wallpaperURL" value="wallpaper.jpg"/></p>
+			<p>Wallpaper: 
+			<select onChange="save()"
+				name="setting_wallpaperURL"
+				id="setting_wallpaperURL"
+				>
+				<option value="">Without Wallpaper</option>
+				<?php
+					foreach (scandir($_SERVER['DOCUMENT_ROOT'].'/Wallpapers') as $value) {
+						if($value!="." && $value!=".."){
+							echo '<option value="'.$value.'">'.$value.'</option>';
+						} 
+					}
+				?>
+			</select></p>
 			<p>Bing Wallpaper: <input onChange="save()" type="checkbox" name="setting_bingWallpaper" id="setting_bingWallpaper"/></p>
 			<p>Background color: <input onChange="save()" type="color" name="setting_wallpaperColor" id="setting_wallpaperColor" value="#004e98"></p>
 			<p>System color: <input onChange="save()" type="color" name="setting_systemColor" id="setting_systemColor" value="#004e98"></p>
@@ -29,7 +46,6 @@
 			</p>
 			<br>
 			<hr>
-			<button type="reset">RESET DEFAULTS</button>
 		</form>
 	</BODY>
 </html>
