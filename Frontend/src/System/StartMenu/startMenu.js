@@ -13,6 +13,7 @@ class StartMenu extends React.Component {
         }
         
         this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.convertHex = this.convertHex.bind(this);
     } 
     componentWillMount(){
         fetch(REST_URL+'/API/APPS/getAppsList.php')
@@ -26,6 +27,16 @@ class StartMenu extends React.Component {
 
     handleClickOutside() {
         this.props.toggleMenu();
+    }
+
+    convertHex(hex,opacity){
+        hex = hex.replace('#','');
+        const r = parseInt(hex.substring(0,2), 16);
+        const g = parseInt(hex.substring(2,4), 16);
+        const b = parseInt(hex.substring(4,6), 16);
+    
+        const result = 'rgba('+r+','+g+','+b+','+opacity/100+')';
+        return result;
     }
 
     render(){
@@ -46,7 +57,7 @@ class StartMenu extends React.Component {
         return(
             (this.props.visible ? (
                 <div style={{ zIndex: this.props.maxZIndex+10 }} >
-                    <div className="startMenu" style={{ backgroundColor: this.props.systemColor }}>
+                    <div className="startMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,90) }}>
                         <div className="leftPanel">
                             <img style={{ position: 'absolute',  bottom: 5 }} alt="" className="menuIcon" src={UserIcon}  />
                         </div>
