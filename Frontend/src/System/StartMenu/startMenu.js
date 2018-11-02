@@ -57,12 +57,23 @@ class StartMenu extends React.Component {
         return(
             (this.props.visible ? (
                 <div style={{ zIndex: this.props.maxZIndex+10 }} >
-                    <div className="startMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,90) }}>
-                        <div className="leftPanel">
-                            <img style={{ position: 'absolute',  bottom: 5 }} alt="" className="menuIcon" src={UserIcon}  />
+                    <div className="startMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,80) }}>
+                        <div className="topMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,95) }}>
+                            <div>
+                                <img className="userPicture" width="32" src={UserIcon}></img>
+                                <div className="userName">User Name</div>
+                            </div>
                         </div>
-                        <div className="AppsList">
-                        {appList} 
+                        <div className="middleMenu">
+                            <div className="AppsList">
+                                {appList} 
+                            </div>
+                            <div className="systemMenu">
+
+                            </div>
+                        </div>
+                        <div className="bottomMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,95) }}>
+
                         </div>
                     </div>
                 </div>
