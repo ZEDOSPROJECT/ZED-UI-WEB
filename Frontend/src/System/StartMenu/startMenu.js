@@ -1,6 +1,15 @@
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
+// ICONS
 import UserIcon from '../../Icons/User.jpg';
+import myDocuments from '../../Icons/ModernXP (16).png';
+import myPictures from '../../Icons/ModernXP (62).png';
+import myMusic from '../../Icons/ModernXP (38).png';
+import myComputer from '../../Icons/ModernXP (10).png';
+import controlPanel from '../../Icons/ModernXP (41).png';
+import logoff from '../../Icons/ModernXP (3).png';
+import shutdown from '../../Icons/ModernXP (2).png';
+/////////////////////////////
 import AppCard from './AppCard/appCard';
 import { REST_URL } from './../../REST_URL';
 import './startMenu.css';
@@ -57,23 +66,45 @@ class StartMenu extends React.Component {
         return(
             (this.props.visible ? (
                 <div style={{ zIndex: this.props.maxZIndex+10 }} >
-                    <div className="startMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,80) }}>
+                    <div className="startMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,60) }}>
                         <div className="topMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,95) }}>
                             <div>
-                                <img className="userPicture" width="32" src={UserIcon}></img>
-                                <div className="userName">User Name</div>
+                                <img className="userPicture" height="32" src={UserIcon}></img>
+                                <div className="userName"><b>Administrator</b></div>
                             </div>
                         </div>
                         <div className="middleMenu">
                             <div className="AppsList">
                                 {appList} 
                             </div>
-                            <div className="systemMenu">
-
+                            <div className="systemMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,35) }}>
+                                <div class="systemItem">
+                                    <img src={myDocuments} ></img>
+                                    <div>My Documents</div>
+                                </div>
+                                <div class="systemItem">
+                                    <img src={myPictures} ></img>
+                                    <div>My Pictures</div>
+                                </div>
+                                <div class="systemItem">
+                                    <img src={myMusic} ></img>
+                                    <div>My Music</div>
+                                </div>
+                                <div class="systemItem">
+                                    <img src={myComputer} ></img>
+                                    <div>My Computer</div>
+                                </div>
+                                <hr></hr>
+                                <div class="systemItem">
+                                    <img src={controlPanel} ></img>
+                                    <div>Control Panel</div>
+                                </div>
                             </div>
                         </div>
                         <div className="bottomMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,95) }}>
-
+                            <input autoFocus placeholder="Type to search . . ." type="text"></input>
+                            <img className="logoff" src={logoff} width="32" height="32" ></img>
+                            <img className="shutdown" src={shutdown} width="32" height="32" ></img>
                         </div>
                     </div>
                 </div>

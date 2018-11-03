@@ -8,7 +8,7 @@
 } 
 
 .appCard:hover{
-    background-color: rgba(0, 1, 65, 0.103);
+    background-color: rgba(0, 1, 65, 0.37);
 } 
 
 .appCardIcon{
@@ -17,3 +17,13 @@
     width: 32px;
     height: 32px;
 }  
+
+.searchBox{
+    width: 80%;
+    padding-top: 15px;
+} 
+
+.searchBox input{
+    width: 270px;
+    margin-left: 10px;
+} 
