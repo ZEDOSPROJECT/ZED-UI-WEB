@@ -51,7 +51,7 @@ class StartMenu extends React.Component {
     render(){
         let lastLeter="0";
         const appList = this.state.Apps.map((app) =>{ 
-            if(app !== "." && app !== "..") {
+            if(app !== "." && app !== ".." && app != "Settings") {
                 let newDiv;
                 if(app.charAt(0).toUpperCase()!=lastLeter.toUpperCase()) {
                     lastLeter=app.charAt(0);
@@ -95,7 +95,7 @@ class StartMenu extends React.Component {
                                     <div>My Computer</div>
                                 </div>
                                 <hr></hr>
-                                <div class="systemItem">
+                                <div onClick={event => this.props.onClickApp(event,"Settings")}  class="systemItem">
                                     <img src={controlPanel} ></img>
                                     <div>Control Panel</div>
                                 </div>

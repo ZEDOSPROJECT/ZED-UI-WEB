@@ -7,7 +7,7 @@ class appCard extends React.Component{
         const appIcon=REST_URL+"/APPS/"+this.props.appName+"/favicon.png";
         return(
             <div onClick={(event) => (this.props.onClickApp(event,this.props.appName))}  className="appCard">
-                <img alt="" className="appCardIcon" src={appIcon}  /><div>{this.props.appName} </div>
+                <img alt="" className="appCardIcon" src={appIcon}  /><div className="appCardTitle">{this.props.appName} </div>
             </div>
         )
     }  
