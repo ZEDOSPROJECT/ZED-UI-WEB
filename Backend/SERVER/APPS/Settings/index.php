@@ -46,5 +46,22 @@
 			<br>
 			<hr>
 		</form>
+		<script>
+			function load(){  
+				<?php
+					$string=file_get_contents($_SERVER['DOCUMENT_ROOT']."/API/SYSTEM/SETTINGS/USER/SETTINGS.json");
+					$json_a = json_decode($string, true);
+					$bing=false;
+					if($json_a["setting_bingWallpaper"]!=""){
+						$bing=true;
+					}
+					echo 'document.getElementById("setting_wallpaperURL").value="'.$json_a["setting_wallpaperURL"].'";\n';
+					echo 'document.getElementById("setting_bingWallpaper").checked="false";\n';
+					echo 'document.getElementById("setting_wallpaperColor").value="'.$json_a["setting_wallpaperColor"].'";\n';
+					echo 'document.getElementById("setting_systemColor").value="'.$json_a["setting_systemColor"].'";\n';
+				?>
+			}
+			load();
+		</script>
 	</BODY>
 </html>
