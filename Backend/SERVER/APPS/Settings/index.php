@@ -8,8 +8,9 @@
 				document.getElementById("settings").submit();
 			}
 
-			function changeCurrentWallpaper(){
-				document.getElementById("setting_wallpaperURL").value=document.getElementById("currentSelectedWallpaper").value;
+			function ChangeWallpaper(img){
+				document.getElementById("setting_wallpaperURL").value=img;
+				save();
 			} 
 		</script>
 	</HEAD>
@@ -17,19 +18,17 @@
 		<form id="settings" method="post" action="/API/SYSTEM/SETTINGS/USER/setSettings.php">
 			<h2>Personalization:</h2>
 			<p>Wallpaper: 
-			<select onChange="save()"
-				name="setting_wallpaperURL"
-				id="setting_wallpaperURL"
-				>
-				<option value="">Without Wallpaper</option>
+			<input hidden type="text" name="setting_wallpaperURL" id="setting_wallpaperURL">
+			<div>
+				<div style="width:120px;height:80px;background-color:#004e98;float:left;" onClick="ChangeWallpaper('')"></div>
 				<?php
 					foreach (scandir($_SERVER['DOCUMENT_ROOT'].'/Wallpapers') as $value) {
 						if($value!="." && $value!=".."){
-							echo '<option value="'.$value.'">'.$value.'</option>';
+							echo '<img onClick="ChangeWallpaper(\''.$value.'\')" width="120" height="80" src="../../Wallpapers/'.$value.'"></img>';
 						} 
 					}
 				?>
-			</select></p>
+			</div></p>
 			<p>Bing Wallpaper: <input onChange="save()" type="checkbox" name="setting_bingWallpaper" id="setting_bingWallpaper"/></p>
 			<p>Background color: <input onChange="save()" type="color" name="setting_wallpaperColor" id="setting_wallpaperColor" value="#004e98"></p>
 			<p>System color: <input onChange="save()" type="color" name="setting_systemColor" id="setting_systemColor" value="#004e98"></p>
