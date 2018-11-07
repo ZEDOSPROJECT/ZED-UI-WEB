@@ -65,7 +65,7 @@ class StartMenu extends React.Component {
 
         return(
             (this.props.visible ? (
-                <div style={{ zIndex: this.props.maxZIndex+10 }} >
+                <div style={{ zIndex: window.maxZIndex+10 }} >
                     <div className="startMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,60) }}>
                         <div className="topMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,95) }}>
                             <div>

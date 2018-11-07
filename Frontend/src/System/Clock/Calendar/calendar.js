@@ -19,7 +19,7 @@ class CalendarWindow extends Component {
         (this.props.visible ? (
             <div>
                 <Calendar
-                    style={{ zIndex: this.props.maxZIndex+10 }}
+                    style={{ zIndex: window.maxZIndex+10 }}
                     className="Calendar"
                     onChange={this.onChange}
                     value={this.state.date}

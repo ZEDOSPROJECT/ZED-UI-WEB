@@ -12,7 +12,6 @@ class App extends Component {
     super(props)
     this.state = {
         openedWindows:[],
-        maxZIndex: 1,
         showMenu: false,
         setting_wallpaperURL: '',
         setting_wallpaperColor: '#004e98',
@@ -20,9 +19,9 @@ class App extends Component {
         setting_systemColor: '#06001E',
         sound: "PLAYING"
     };
+    window.maxZIndex=1;
     this.createWindow = this.createWindow.bind(this);
     this.uuidv4 = this.uuidv4.bind(this);
-    this.sendToFront = this.sendToFront.bind(this);
     this.onClose = this.onClose.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
     this.onClickApp = this.onClickApp.bind(this);
@@ -49,7 +48,7 @@ class App extends Component {
         i++;
     });
     if(iWindows==0){
-        this.setState({ maxZIndex: 1 });
+        window.maxZIndex=1;
         newData = []; 
     } 
     this.setState({ openedWindows: newData });
@@ -89,15 +88,6 @@ class App extends Component {
     });
   }
 
-  sendToFront(i){
-      if(i<=this.state.maxZIndex){
-          return true;
-      } else {
-          this.setState({ maxZIndex:  i })
-          return false;
-      } 
-  } 
-
   onClose(uuid){
       let newData = this.state.openedWindows;
       let i=0;
@@ -135,16 +125,14 @@ class App extends Component {
                 title={title}  
                 icon={icon}
                 uuid={uuid}   
-                onClose={this.onClose} 
-                sendToFront={this.sendToFront} 
-                maxZIndex={this.state.maxZIndex+1} 
+                onClose={this.onClose}   
                 onToggleMinimize={this.onToggleMinimize} 
                 systemColor={this.state.setting_systemColor} 
             />
         ), 'VISIBLE' : true });
 
         this.setState({ openedWindows: newList });
-        this.setState({ maxZIndex:  this.state.maxZIndex+1 });
+	window.maxZIndex=window.maxZIndex+1;
     }  
 
   onClickApp(e,name){
@@ -202,11 +190,9 @@ class App extends Component {
             openedWindows={this.state.openedWindows}
             onToggleMinimize={this.onToggleMinimize}
             toggleMenu={this.toggleMenu}
-            maxZIndex={this.state.maxZIndex}
         />
         <StartMenu
             systemColor={this.state.setting_systemColor}
-            maxZIndex={this.state.maxZIndex}
             onClickApp={this.onClickApp}
             toggleMenu={this.toggleMenu}
             visible={this.state.showMenu}

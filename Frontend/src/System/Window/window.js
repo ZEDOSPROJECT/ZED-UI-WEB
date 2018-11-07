@@ -18,7 +18,7 @@ class Window extends React.Component{
             modalIsOpen: true,
             draggable: false,
             uuid: this.props.uuid,
-            currentZIndex: this.props.maxZIndex,
+            currentZIndex: window.maxZIndex,
             maximized: false,
             x: 15,
             y: 15,
@@ -50,7 +50,7 @@ class Window extends React.Component{
     sendToFront() {
         this.handleClickInsideWindow();
         let newIndex=this.state.currentZIndex;
-        while (this.props.sendToFront(newIndex)) {
+        while (newIndex<window.maxZIndex) {
             newIndex++;
         }
         this.setState({ currentZIndex: newIndex+1 });
@@ -84,7 +84,6 @@ class Window extends React.Component{
     } 
 
     render(){
-        console.log(this.state.currentZIndex+" : "+this.props.maxZIndex);
         return(
             <div>
                 <Rnd

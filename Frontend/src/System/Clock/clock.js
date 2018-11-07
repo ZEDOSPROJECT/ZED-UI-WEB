@@ -37,7 +37,6 @@ class Clock extends React.Component {
                 <CalendarWindow 
                     visible={this.state.calendarVisible}
                     toggleCalendar={this.switchCalendar} 
-                    maxZIndex={this.props.maxZIndex}
                 />
                 <div onClick={this.switchCalendar} >{h % 12}:{(mn < 10 ? '0' + mn : mn)}</div>
             </div>

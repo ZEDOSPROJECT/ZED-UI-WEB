@@ -36,7 +36,7 @@ class Taskbar extends React.Component {
                     <td className="buttonsArea">{iconList}</td>
                     <td><BatteryStatus /></td>
                     <td><NetworkStatus /></td>
-                    <td><Clock maxZIndex={this.props.maxZIndex}/></td>
+                    <td><Clock /></td>
                 </tr>
             </table>
         )
