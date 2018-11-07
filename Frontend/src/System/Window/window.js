@@ -37,6 +37,20 @@ class Window extends React.Component{
         this.onErrorFRAME = this.onErrorFRAME.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.handleClickInsideWindow = this.handleClickInsideWindow.bind(this);
+        window.maxZIndex=window.maxZIndex+1;
+        setInterval(() => {
+            if(window.toFront){
+                if(window.toFront == this.props.uuid){
+                    let newIndex=this.state.currentZIndex;
+                    while (newIndex<=window.maxZIndex) {
+                        newIndex++;
+                    }
+                    window.maxZIndex=newIndex+1;
+                    this.setState({ currentZIndex: newIndex+1 });
+                    window.toFront=undefined;
+                } 
+            } 
+        },10);
     }
 
     handleClickOutside() {
@@ -53,6 +67,7 @@ class Window extends React.Component{
         while (newIndex<window.maxZIndex) {
             newIndex++;
         }
+        window.maxZIndex=newIndex+1;
         this.setState({ currentZIndex: newIndex+1 });
     } 
 

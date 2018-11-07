@@ -109,6 +109,9 @@ class App extends Component {
         if(element!=null){
             if( element.UUID === uuid ){
                 newData[i].VISIBLE=!element.VISIBLE
+                if(newData[i].VISIBLE){
+                    window.toFront=uuid;
+                } 
             } 
         } 
         i++;
@@ -132,7 +135,6 @@ class App extends Component {
         ), 'VISIBLE' : true });
 
         this.setState({ openedWindows: newList });
-	window.maxZIndex=window.maxZIndex+1;
     }  
 
   onClickApp(e,name){
