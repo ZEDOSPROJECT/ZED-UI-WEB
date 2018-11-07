@@ -5,12 +5,6 @@
     position: relative;
 } 
 
-img{
-    margin: 5px;
-    width: 20px;
-    height: 25px;
-} 
-
 .batteryCharging{
     position: absolute;
     top: 0px;
@@ -20,3 +14,31 @@ img{
     height: 25px;
     z-index: 100;
 } 
+
+
+.battery {
+	width:40px;
+    height:40px;
+    padding-top: 2.5px;
+	position: relative;
+}
+
+.batteryTop {
+	width:10px;
+	height:2px;
+	background-color: black;
+}
+
+.batteryContaimer {
+	border-style: solid;
+	position:relative;
+	width: 12px;
+	height: 20px;
+}
+
+.batteryCharge {
+	position:absolute;
+	bottom:0px;
+	width:100%;
+	background-color:grey;
+}
