@@ -12,6 +12,14 @@
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
   }
+
+  .overlay{
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    position:absolute;
+  }
   
   .flexible-modal-mask {
     position: fixed;

@@ -1,5 +1,6 @@
 import React from 'react';
 import isElectron from 'is-electron';
+import onClickOutside from 'react-onclickoutside';
 import { Rnd } from "react-rnd";
 import CCLOSE from './CLOSE.png';
 import CMAXIMIZE from './MAXIMIZE.png';
@@ -22,7 +23,8 @@ class Window extends React.Component{
             x: 15,
             y: 15,
             width: 640,
-            height: 480
+            height: 480,
+            active: true
         };
 
         this.openModal = this.openModal.bind(this);
@@ -33,9 +35,20 @@ class Window extends React.Component{
         this.onToggleWindow = this.onToggleWindow.bind(this);
         this.onToggleMinimize = this.onToggleMinimize.bind(this);
         this.onErrorFRAME = this.onErrorFRAME.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.handleClickInsideWindow = this.handleClickInsideWindow.bind(this);
     }
 
+    handleClickOutside() {
+        this.setState({ active: false });
+    }
+
+    handleClickInsideWindow(){
+        this.setState({ active: true });
+    } 
+
     sendToFront() {
+        this.handleClickInsideWindow();
         let newIndex=this.state.currentZIndex;
         while (this.props.sendToFront(newIndex)) {
             newIndex++;
@@ -71,6 +84,7 @@ class Window extends React.Component{
     } 
 
     render(){
+        console.log(this.state.currentZIndex+" : "+this.props.maxZIndex);
         return(
             <div>
                 <Rnd
@@ -119,11 +133,16 @@ class Window extends React.Component{
                         </tr>
                     </table>
                     <div className="body">
-                    {!isElectron() ? (
-                        <iframe className="frame" onError={this.onErrorFRAME} src={this.state.url} />
-                     ):(
-                        <webview className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>
-                    )}
+                        {!isElectron() ? (
+                            <iframe className="frame" onError={this.onErrorFRAME} src={this.state.url} />
+                        ):(
+                            <webview className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>
+                        )}
+                        {this.state.active ? 
+                            null
+                        :(
+                            <div onClick={this.sendToFront}  className="overlay"></div>
+                        )}
                     </div>
                 </div>
             </Rnd>
@@ -132,4 +151,5 @@ class Window extends React.Component{
     } 
 } 
 
-export default Window;
+
+export default onClickOutside(Window);
