@@ -66,8 +66,8 @@ class StartMenu extends React.Component {
         return(
             (this.props.visible ? (
                 <div style={{ zIndex: window.maxZIndex+10 }} >
-                    <div className="startMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,60) }}>
-                        <div className="topMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,95) }}>
+                    <div className="startMenu" style={{ backgroundColor: this.convertHex(window.systemColor,60) }}>
+                        <div className="topMenu" style={{ backgroundColor: this.convertHex(window.systemColor,95) }}>
                             <div>
                                 <img className="userPicture" height="32" src={UserIcon}></img>
                                 <div className="userName"><b>Administrator</b></div>
@@ -77,7 +77,7 @@ class StartMenu extends React.Component {
                             <div className="AppsList">
                                 {appList} 
                             </div>
-                            <div className="systemMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,35) }}>
+                            <div className="systemMenu" style={{ backgroundColor: this.convertHex(window.systemColor,35) }}>
                                 <div class="systemItem">
                                     <img src={myDocuments} ></img>
                                     <div>My Documents</div>
@@ -101,7 +101,7 @@ class StartMenu extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="bottomMenu" style={{ backgroundColor: this.convertHex(this.props.systemColor,95) }}>
+                        <div className="bottomMenu" style={{ backgroundColor: this.convertHex(window.systemColor,95) }}>
                             <input autoFocus placeholder="Type to search . . ." type="text"></input>
                             <img className="logoff" src={logoff} width="32" height="32" ></img>
                             <img className="shutdown" src={shutdown} width="32" height="32" ></img>

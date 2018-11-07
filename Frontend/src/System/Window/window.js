@@ -24,7 +24,8 @@ class Window extends React.Component{
             y: 15,
             width: 640,
             height: 480,
-            active: true
+            active: true,
+            systemColor: window.systemColor
         };
 
         this.openModal = this.openModal.bind(this);
@@ -50,6 +51,9 @@ class Window extends React.Component{
                     window.toFront=undefined;
                 } 
             } 
+            if(this.state.systemColor != window.systemColor){
+                this.setState({ systemColor: window.systemColor });
+            } 
         },10);
     }
 
@@ -62,7 +66,9 @@ class Window extends React.Component{
     } 
 
     sendToFront() {
-        this.handleClickInsideWindow();
+        setTimeout(() => {
+            this.handleClickInsideWindow();
+        }, 10);
         let newIndex=this.state.currentZIndex;
         while (newIndex<window.maxZIndex) {
             newIndex++;
@@ -135,7 +141,7 @@ class Window extends React.Component{
                     }}
                 >
                 <div className="window" initWidth={800} initHeight={400} onRequestClose={this.closeModal}>
-                    <table onClick={this.sendToFront} class="titleBar" style={{ backgroundColor: this.props.systemColor }} >
+                    <table onClick={this.sendToFront} class="titleBar" style={{ backgroundColor: this.state.systemColor }} >
                         <tr>
                             <td class="appIcon"><img class="appIcon" src={this.props.icon}></img></td>
                             <td class="appTitle">{this.props.title}</td>

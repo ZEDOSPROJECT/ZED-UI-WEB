@@ -30,7 +30,7 @@ class Taskbar extends React.Component {
         }
         );
         return(
-            <table className="Taskbar" style={{ backgroundColor: this.convertHex(this.props.systemColor,90) }}>
+            <table className="Taskbar" style={{ backgroundColor: this.convertHex(window.systemColor,90) }}>
                 <tr>
                     <td style={{ width: "32px" }}><div onClick={this.props.toggleMenu} className="StartMenu"></div></td>
                     <td className="buttonsArea">{iconList}</td>
