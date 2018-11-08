@@ -1,10 +1,11 @@
 .taskButton {
     height: 100%;
-    width: 150px;
+    width: auto;
     background-color: rgba(0, 60, 255, 0.041);
     -webkit-text-stroke: 0.3px rgb(255, 255, 255);
     float: left;
     margin: 1px;
+    padding-right: 8px;
     overflow: hidden;
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
