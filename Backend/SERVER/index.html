@@ -71,8 +71,23 @@
                 } 
         </STYLE>
         <script>
+            var loader=setInterval(function(){
+                var http = new XMLHttpRequest();
+                http.open('HEAD', "http://"+window.location.hostname+":3000/index.html");
+                http.send();
+                if (http.status != 404){
+                    document.getElementById("starting").hidden=true;
+                    document.getElementById("loginFields").hidden=false;
+                    clearInterval(loader);
+                } 
+            },500);
+
             function login(){
-                window.location.href="http://"+window.location.hostname+":3000";
+                document.getElementById("loginFields").hidden=true;
+                document.getElementById("welcome").hidden=false;
+                setTimeout(function(){
+                    window.location.href="http://"+window.location.hostname+":3000";
+                },1600);
             } 
         </script>
     </HEAD>
@@ -86,10 +101,20 @@
                     </table>
                     <div class="body">
                         <img src="logo.png" width="400" height="100"/>
-                        <div id="loginFields">
+                        <div hidden id="loginFields">
                             <p>User Name: <input id="username" style="width: 250px;" type="text"></p>
                             <p>Password: <input id="password" style="width: 250px;margin-left: 10px;" type="password"></p>
                             <button onclick="login()" style="position: absolute;right: 50px;">Enter</button>
+                        </div>
+                        <div id="starting">
+                            <center>
+                                <p>Starting ZED . . . </p>
+                            </center>
+                        </div>
+                        <div hidden id="welcome">
+                            <center>
+                                <h3>Welcome</h3>
+                            </center>
                         </div>
                     </div>
                 </div>
