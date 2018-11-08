@@ -1,0 +1,98 @@
+<HTML>
+    <HEAD>
+        <TITLE>Login</TITLE>
+        <STYLE>
+            BODY{
+                background-color:#004e98;
+            } 
+
+            .window {
+                position: absolute;
+                z-index: 1;
+                cursor: default;
+                top:0px;
+                left:0px;
+                width: 100%;
+                height: 100%;
+                border: 1px solid rgb(13, 8, 73);
+                background: rgb(13, 8, 73);
+                -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+                -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+                box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+            }
+            
+
+            .login{
+                width:400px;
+                height: 250px;
+                top: 50%;
+                left: 50%;
+                margin-top: -140px;
+                margin-left: -200px;
+                position: relative;
+            } 
+
+            .body{
+                position: absolute;
+                margin-top:26px;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgb(255, 255, 255);
+            } 
+
+            .frame{
+                width: 99.95%;
+                height: 99.95%;
+                border: 0px;
+                background-color: rgb(255, 255, 255);
+            } 
+
+            .appTitle{
+                padding: left 5px;
+                padding-top:0px;
+                margin: 0;
+                -webkit-text-stroke: 0.3px black;
+                }
+                .titleBar{
+                    width:100%;
+                border-style: none;
+                align-content: center;
+                color: white;
+                margin: 0;
+                padding: 0;
+                }
+
+                p{
+                    margin: 20px;
+                } 
+        </STYLE>
+        <script>
+            function login(){
+                window.location.href="http://"+window.location.hostname+":3000";
+            } 
+        </script>
+    </HEAD>
+    <BODY>
+        <div class="login">
+            <div class="window">
+                    <table class="titleBar">
+                        <tr>
+                            <td class="appTitle">Login on ZED</td>
+                        </tr>
+                    </table>
+                    <div class="body">
+                        <img src="logo.png" width="400" height="100"/>
+                        <div id="loginFields">
+                            <p>User Name: <input id="username" style="width: 250px;" type="text"></p>
+                            <p>Password: <input id="password" style="width: 250px;margin-left: 10px;" type="password"></p>
+                            <button onclick="login()" style="position: absolute;right: 50px;">Enter</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </BODY>
+</HTML>

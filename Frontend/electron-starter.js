@@ -19,7 +19,7 @@ const {app, BrowserWindow} = require('electron')
     })
 
     // and load the index.html of the app.
-    win.loadURL('http://localhost:3000');
+    win.loadURL('http://localhost:3031');
   }
   
   // This method will be called when Electron has finished
