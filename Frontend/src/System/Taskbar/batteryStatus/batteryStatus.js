@@ -2,6 +2,7 @@ import React from 'react';
 import Battery from 'react-device-battery';
 import './batteryStatus.css';
 import charging from './charging.png';
+import lowBattery from './lb.png';
 
 let batteryLevel=0;
 
@@ -13,6 +14,7 @@ class BatteryStatus extends React.Component{
         });
 
         this.updateChargeInfo = this.updateChargeInfo.bind(this);
+        this.isLowerBattery = this.isLowerBattery.bind(this);
 
         navigator.getBattery().then((battery) => {
             this.updateChargeInfo(battery);
@@ -20,6 +22,18 @@ class BatteryStatus extends React.Component{
                 this.updateChargeInfo(battery);
             });
         }); 
+    } 
+
+    isLowerBattery(lvl){
+        if(!this.state.charging){
+            if(lvl<16){
+                return true;
+            }else{
+                return false;
+            } 
+        } else {
+            return false;
+        } 
     } 
 
     updateChargeInfo(battery){
@@ -44,11 +58,12 @@ class BatteryStatus extends React.Component{
                                 <div className="batteryCharge" style={{ height: battery+'%'}}>
                                 </div>
                             </div>
+                            { this.state.charging ? (<img className="batteryCharging" src={charging} ></img>) : null } 
+                            { this.isLowerBattery(battery) ? (<img className="lowBattery" src={lowBattery} ></img>) : null } 
                         </center>
                     </div>
                     } 
                 />
-               { this.state.charging ? (<img className="batteryCharging" src={charging} ></img>) : null }
             </div>
         );
     } 
