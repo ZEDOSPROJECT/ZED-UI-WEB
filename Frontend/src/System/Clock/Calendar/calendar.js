@@ -6,6 +6,7 @@ import './calendar.css';
 class CalendarWindow extends Component {
   state = {
     date: new Date(),
+    
   }
  
   onChange = date => this.setState({ date })

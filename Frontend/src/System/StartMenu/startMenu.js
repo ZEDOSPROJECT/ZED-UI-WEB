@@ -1,5 +1,6 @@
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
+import invert from 'invert-color';
 // ICONS
 import UserIcon from '../../Icons/User.jpg';
 import myDocuments from '../../Icons/ModernXP (16).png';
@@ -55,7 +56,7 @@ class StartMenu extends React.Component {
                 let newDiv;
                 if(app.charAt(0).toUpperCase()!=lastLeter.toUpperCase()) {
                     lastLeter=app.charAt(0);
-                    newDiv=<div className="startLeter"><b>{lastLeter}</b></div>
+                    newDiv=<div style={{ color: invert(window.systemColor, true)}} className="startLeter"><b>{lastLeter}</b></div>
                 }
                 return <div>{newDiv}<AppCard onClickApp={this.props.onClickApp} appName={app}  /></div>
             }else{
@@ -70,32 +71,32 @@ class StartMenu extends React.Component {
                         <div className="topMenu" style={{ backgroundColor: this.convertHex(window.systemColor,95) }}>
                             <div>
                                 <img className="userPicture" height="32" src={UserIcon}></img>
-                                <div className="userName"><b>Administrator</b></div>
+                                <div style={{ color: invert(window.systemColor, true)}} className="userName"><b>Administrator</b></div>
                             </div>
                         </div>
                         <div className="middleMenu">
-                            <div className="AppsList">
+                            <div className="AppsList" style={{ color: invert(window.systemColor, true)}}>
                                 {appList} 
                             </div>
-                            <div className="systemMenu" style={{ backgroundColor: this.convertHex(window.systemColor,35) }}>
-                                <div class="systemItem">
+                            <div className="systemMenu" style={{ backgroundColor: this.convertHex(window.systemColor,35), color: invert(window.systemColor, true)}}>
+                                <div style={{ color: invert(window.systemColor, true)}} class="systemItem">
                                     <img src={myDocuments} ></img>
                                     <div>My Documents</div>
                                 </div>
-                                <div class="systemItem">
+                                <div style={{ color: invert(window.systemColor, true)}} class="systemItem">
                                     <img src={myPictures} ></img>
                                     <div>My Pictures</div>
                                 </div>
-                                <div class="systemItem">
+                                <div style={{ color: invert(window.systemColor, true)}} class="systemItem">
                                     <img src={myMusic} ></img>
                                     <div>My Music</div>
                                 </div>
-                                <div class="systemItem">
+                                <div style={{ color: invert(window.systemColor, true)}} class="systemItem">
                                     <img src={myComputer} ></img>
                                     <div>My Computer</div>
                                 </div>
                                 <hr></hr>
-                                <div onClick={event => this.props.onClickApp(event,"Settings")}  class="systemItem">
+                                <div onClick={event => this.props.onClickApp(event,"Settings")} style={{ color: invert(window.systemColor, true)}} class="systemItem">
                                     <img src={controlPanel} ></img>
                                     <div>Control Panel</div>
                                 </div>

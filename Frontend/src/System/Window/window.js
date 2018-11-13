@@ -1,4 +1,5 @@
 import React from 'react';
+import invert from 'invert-color';
 import isElectron from 'is-electron';
 import onClickOutside from 'react-onclickoutside';
 import { Rnd } from "react-rnd";
@@ -144,7 +145,7 @@ class Window extends React.Component{
                     <table onClick={this.sendToFront} class="titleBar" style={{ backgroundColor: this.state.systemColor }} >
                         <tr>
                             <td class="appIcon"><img class="appIcon" src={this.props.icon}></img></td>
-                            <td class="appTitle">{this.props.title}</td>
+                            <td class="appTitle" style={{ color: invert(window.systemColor, true)}}>{this.props.title}</td>
                             <td class="appControls">
                                 <img class="btnXControl" onClick={this.onClose}  src={CCLOSE} ></img>
                                 <img class="btnControl" onClick={this.onToggleWindow} src={( this.state.maximized ? CRESTORE : CMAXIMIZE )}></img>
