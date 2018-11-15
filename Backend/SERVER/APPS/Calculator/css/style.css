@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400');
+
+body {
+  background: #000;
+}
+
+.container {
+  margin-top: 100px;
+  margin-bottom: 25px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Fixed px on height and width. Position buttons within using flexbox */
+
+.calculator {
+  align-content: flex-start;
+  align-items: flex-start;
+  background-color: #202020;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-family: 'Roboto', sans-serif;
+  height: 550px;
+  justify-content: flex-start;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 340px;
+}
+
+/* Button defaults */
+
+.calculator button {
+  border: 0;
+  cursor: pointer;
+  display: block;
+  font-size: 32px;
+  font-weight: 300;
+  height: 85px;
+  line-height: 85px;
+  margin-left: 0;
+  padding: 0;
+  text-align: center;
+  width: 85px;
+  transition: opacity .2s ease-out;
+  font-family: 'Roboto', sans-serif;
+}
+
+.calculator button:hover{
+  opacity: .9;
+}
+
+.calculator button:active, .calculator button.active{
+  opacity: .8;
+}
+
+/* Display area */
+
+.calculator-display {
+  color: white;
+  flex-grow: 1;
+  font-size: 87px;
+  font-weight: 100;
+  height: 85px;
+  line-height: 67px;
+  padding-right: 10px;
+  padding-top: 40px;
+  text-align: right;
+}
+
+/* Brief blink animation */
+
+.blink {
+  animation: blinker .1s linear 1;
+}
+
+@keyframes blinker {  
+  50% { 
+    opacity: 0; 
+  }
+}
+
+/* Flex keyboard layout */
+
+.calculator-keyboard {
+  align-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+/* Number keys (0-9, C, +/-, %) */
+
+.calculator-keyboard_container_numbers {
+  align-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+  flex-basis: 75%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+button.calculator-keyboard_number_key {
+  background-color: #c7c7c7;
+  color: #424346;
+  outline: 1px solid #949599;
+}
+
+/* Specific alignment for "0" key */
+
+button.calculator-keyboard_number_key[value="0"]{
+  margin-left: none;
+  padding-left: 1.05em;
+  text-align: left;
+}
+
+/* C, +/- and % */
+
+button.calculator-keyboard_number_key:nth-child(-n+3) {
+   background-color: #afb0b5;
+   font-size: 26px;
+}
+
+/* Operator (orange) keys */
+
+.calculator-keyboard_container_operators {
+  flex-basis: 25%;
+}
+
+button.calculator-keyboard_operator_key {
+  background-color: #f98410; 
+  color: #fff6f9;
+  flex-grow: 1;
+  font-size: 36px;
+  outline: 1px solid #ca5200;
+  font-weight: 100;
+}
+
+/* Fix for uncentered 'x' char (due to font selection) */
+button.calculator-keyboard_operator_key span{
+ position: relative;
+ top: -5px;
+}
+
+/* Button order */
+
+.calculator-keyboard button[value="."] {
+  order: 11;
+}
+.calculator-keyboard button[value="0"] {
+  order: 10;
+  flex-grow: 2;
+}
+.calculator-keyboard button[value="1"] {
+  order: 7;
+}
+.calculator-keyboard button[value="2"] {
+  order: 8;
+}
+.calculator-keyboard button[value="3"] {
+  order: 9;
+}
+.calculator-keyboard button[value="4"] {
+  order: 4;
+}
+.calculator-keyboard button[value="5"] {
+  order: 5;
+}
+.calculator-keyboard button[value="6"] {
+  order: 6;
+}
+.calculator-keyboard button[value="7"] {
+  order: 1;
+}
+.calculator-keyboard button[value="8"] {
+  order: 2; 
+}
+.calculator-keyboard button[value="9"] {
+  order: 3;
+}
