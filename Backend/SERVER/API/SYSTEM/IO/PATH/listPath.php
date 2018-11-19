@@ -3,7 +3,7 @@
     $PATH=$_GET['path'];
 	$RESPONSE='{ "data" :[';
 	foreach (scandir($PATH) as $value) {
-        if( $value!="." and $value!=".." ){
+        if( $value != "." and $value != ".." and substr( $value , 0, 1) != "."){
             if(is_dir($PATH.$value) == 1) {
                 $TYPE = 'folder';
             } else {
