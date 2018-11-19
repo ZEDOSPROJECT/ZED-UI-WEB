@@ -156,7 +156,7 @@ class Window extends React.Component{
                     }}
                 >
                 <div className="window" initWidth={800} initHeight={400} onRequestClose={this.closeModal}>
-                    <table onClick={this.sendToFront} class="titleBar" style={{ backgroundColor: this.state.systemColor }} >
+                    <table onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} class="titleBar" style={{ backgroundColor: this.state.systemColor }} >
                         <tr>
                             <td class="appIcon"><img class="appIcon" src={this.props.icon}></img></td>
                             <td class="appTitle" style={{ color: invert(window.systemColor, true)}}>{this.props.title}</td>
