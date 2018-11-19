@@ -7,6 +7,7 @@ import CCLOSE from './CLOSE.png';
 import CMAXIMIZE from './MAXIMIZE.png';
 import CRESTORE from './RESTORE.png';
 import CMINIMIZE from './MINIMIZE.png';
+import FileManager from '../FileManager/fileManager';
 import { REST_URL } from '../../REST_URL';
 import './window.css';
 
@@ -106,6 +107,19 @@ class Window extends React.Component{
     } 
 
     render(){
+
+        let WindowContent;
+
+        if(this.state.url!="MyComputer"){
+            if(!isElectron()){  
+                WindowContent=(<iframe className="frame" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
+            } else {  
+                WindowContent=(<webview className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>);
+            }
+        }else{
+            WindowContent=<FileManager />
+        } 
+
         return(
             <div>
                 <Rnd
@@ -154,11 +168,7 @@ class Window extends React.Component{
                         </tr>
                     </table>
                     <div className="body">
-                        {!isElectron() ? (
-                            <iframe className="frame" onError={this.onErrorFRAME} src={this.state.url} />
-                        ):(
-                            <webview className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>
-                        )}
+                        {WindowContent}  
                         {this.state.active ? 
                             null
                         :(

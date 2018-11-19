@@ -91,7 +91,7 @@ class StartMenu extends React.Component {
                                     <img src={myMusic} ></img>
                                     <div>My Music</div>
                                 </div>
-                                <div style={{ color: invert(window.systemColor, true)}} class="systemItem">
+                                <div onClick={event => this.props.onClickApp(event,"MyComputer")} style={{ color: invert(window.systemColor, true)}} class="systemItem">
                                     <img src={myComputer} ></img>
                                     <div>My Computer</div>
                                 </div>

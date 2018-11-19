@@ -135,8 +135,15 @@ class App extends Component {
     }  
 
   onClickApp(e,name){
-      this.createWindow(REST_URL+"/APPS/"+name,name,REST_URL+"/APPS/"+name+"/favicon.png");
-      this.setState({ showMenu: false });
+      if(name!="MyComputer"){
+        this.createWindow(REST_URL+"/APPS/"+name,name,REST_URL+"/APPS/"+name+"/favicon.png");
+        this.setState({ showMenu: false });
+      }else{
+        if(name=="MyComputer"){
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png");
+            this.setState({ showMenu: false });
+        } 
+      } 
   } 
 
   toggleMenu(){

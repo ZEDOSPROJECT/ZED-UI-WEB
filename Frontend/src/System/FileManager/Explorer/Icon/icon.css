@@ -1,0 +1,20 @@
+.icon {
+  position: relative;
+  width: 170px;
+  height: auto;
+  margin: 5px;
+  padding: 1px;
+  float: left;
+}
+
+.img {
+  width: 45px;
+  height: 45px;
+  padding: px;
+}
+
+.label {
+  position: absolute;
+  left: 58px;
+  top: 12px;
+}

@@ -1,0 +1,26 @@
+.explorer_topBar {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  top: 0;
+  left: 0;
+  background-color: #f0efdd;
+  box-shadow: 0 1.2px 1px -1px gray;
+}
+
+.btn {
+  width: 30px;
+  height: 100%;
+  float: left;
+  background-color: #f0efdd;
+}
+
+.btn:hover {
+  background: #dfdecb;
+}
+
+.addrBar {
+  margin: 5px;
+  width: 65%;
+  float: left;
+}
