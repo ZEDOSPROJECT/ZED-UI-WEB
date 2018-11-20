@@ -117,7 +117,7 @@ class Window extends React.Component{
                 WindowContent=(<webview className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>);
             }
         }else{
-            WindowContent=<FileManager />
+            WindowContent=<FileManager className="frame"/>
         } 
 
         return(
