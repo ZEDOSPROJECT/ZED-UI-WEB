@@ -26,7 +26,7 @@ ONE UI is part of ZED OS Project (http://zedos.esy.es/), it's an User interface 
 
 * [ReactJS](https://reactjs.org) - The web framework used
 * [ElectronJS](https://electronjs.org) - to build desktop app
-* [PHP] (http://php.net) - Used as Backend API
+* [PHP](http://php.net) - Used as Backend API
 
 ## Authors
 
