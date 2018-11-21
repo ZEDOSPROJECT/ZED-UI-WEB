@@ -19,8 +19,7 @@ const {app, BrowserWindow} = require('electron')
     })
 
     // and load the index.html of the app.
-    win.webContents.setUserAgent("DESKTOP");
-    win.loadURL('http://localhost:3031');
+    win.loadURL('http://localhost:3031',{userAgent: 'DESKTOP'});
   }
   
   // This method will be called when Electron has finished
