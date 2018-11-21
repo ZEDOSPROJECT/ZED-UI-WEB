@@ -21,7 +21,7 @@ class ToolBar extends React.Component {
           <img style={{ width: 20, margin: 5 }} src={refresh} />
         </div>
         <input className="addrBar" disabled value={this.props.currentPath} />
-        <div className="btn">
+        <div className="btn" hidden>
           <img style={{ width: 20, margin: 5 }} src={go} />
         </div>
       </div>

@@ -5,6 +5,7 @@
   margin: 5px;
   padding: 1px;
   float: left;
+  overflow:hidden;
 }
 
 .img {

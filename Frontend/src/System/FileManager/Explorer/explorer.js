@@ -9,17 +9,21 @@ class Explorer extends React.Component {
   render() {
     let indents 
     if(this.props.listDir!=undefined){
-      indents=this.props.listDir.map(data => {
-        return (
-          <Icon
-            onIClick={this.props.onIClick}
-            onDBClick={this.props.onDBClick}
-            selected={this.props.selected}
-            key={data.name}
-            data={data}
-          />
-        );
-      });  
+      if(this.props.listDir.length!=0){
+        indents=this.props.listDir.map(data => {
+          return (
+            <Icon
+              onIClick={this.props.onIClick}
+              onDBClick={this.props.onDBClick}
+              selected={this.props.selected}
+              key={data.name}
+              data={data}
+            />
+          );
+        }); 
+      }else{
+        indents=<div style={{ color: 'black', marginTop: 20 }}><center>This folder is empty</center></div>
+      } 
     }else {
       indents=<div>Loading . . .</div>;
     } 
