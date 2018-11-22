@@ -15,6 +15,8 @@ import AppCard from './AppCard/appCard';
 import { REST_URL } from './../../REST_URL';
 import './startMenu.css';
 
+let searchTimer=null;
+
 class StartMenu extends React.Component {
     constructor(props){
         super(props);
@@ -29,14 +31,14 @@ class StartMenu extends React.Component {
         this.handleSearchChange = this.handleSearchChange.bind(this);
 
         this.refreshApps("");
-        setInterval(() => {
-            if(this.props.visible){
-                this.refreshApps(this.state.searchBox);
-            } 
-	    else
-	    {
-		this.setState({searchBox: ''});
-	    }
+            setInterval(() => {
+                if(this.props.visible){
+                    this.refreshApps(this.state.searchBox);
+                } 
+            else
+            {
+                this.setState({searchBox: ''});
+            }
         },100);
     } 
 
@@ -51,10 +53,17 @@ class StartMenu extends React.Component {
     } 
 
     handleSearchChange(e){
-        this.setState({
-            searchBox: e.target.value
-        });
-        this.refreshApps(e.target.value);
+        const query=e.target.value;
+        if (searchTimer) {
+            clearTimeout(searchTimer);
+        }
+        searchTimer = setTimeout(() => {
+            this.setState({
+                searchBox:query
+            });
+            this.refreshApps(query);
+            searchTimer = undefined;
+        }, 200);
     } 
 
     handleClickOutside() {
@@ -75,11 +84,13 @@ class StartMenu extends React.Component {
         let lastLeter="0";
         const appList = this.state.Apps.map((app) =>{ 
             if(app !== "." && app !== ".." && app != "Settings") {
-                let newDiv;
-                if(app.charAt(0).toUpperCase()!=lastLeter.toUpperCase()) {
-                    lastLeter=app.charAt(0);
-                    newDiv=<div style={{ color: invert(window.systemColor, true)}} className="startLeter"><b>{lastLeter}</b></div>
-                }
+                let newDiv=<div></div>;
+                if(this.state.searchBox.length == ""){
+                    if(app.charAt(0).toUpperCase()!=lastLeter.toUpperCase()) {
+                        lastLeter=app.charAt(0);
+                        newDiv=<div style={{ color: invert(window.systemColor, true)}} className="startLeter"><b>{lastLeter}</b></div>
+                    }
+                } 
                 return <div>{newDiv}<AppCard onClickApp={this.props.onClickApp} appName={app}  /></div>
             }else{
                 return null;
