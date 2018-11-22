@@ -1,3 +1,3 @@
 #!/bin/bash
 
-php -S 0.0.0.0:3031 -t SERVER/ -c php.ini
+php -S 0.0.0.0:3031 -t SERVER/
