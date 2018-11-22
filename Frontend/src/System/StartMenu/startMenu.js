@@ -19,21 +19,43 @@ class StartMenu extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            Apps: []
+            Apps: [],
+            searchBox: ''
         }
         
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.convertHex = this.convertHex.bind(this);
+        this.refreshApps = this.refreshApps.bind(this);
+        this.handleSearchChange = this.handleSearchChange.bind(this);
+
+        this.refreshApps("");
+        setInterval(() => {
+            if(this.props.visible){
+                this.refreshApps(this.state.searchBox);
+            } 
+	    else
+	    {
+		this.setState({searchBox: ''});
+	    }
+        },100);
     } 
-    componentWillMount(){
-        fetch(REST_URL+'/API/APPS/getAppsList.php')
-            .then(response => response.json())
-            .then(json => {
-                this.setState({
-                    Apps: json,
-                });
+
+    refreshApps(query){
+        fetch(REST_URL+'/API/APPS/getAppsList.php?query='+query)
+        .then(response => response.json())
+        .then(json => {
+            this.setState({
+                Apps: json,
             });
-    }
+        });
+    } 
+
+    handleSearchChange(e){
+        this.setState({
+            searchBox: e.target.value
+        });
+        this.refreshApps(e.target.value);
+    } 
 
     handleClickOutside() {
         this.props.toggleMenu();
@@ -103,7 +125,7 @@ class StartMenu extends React.Component {
                             </div>
                         </div>
                         <div className="bottomMenu" style={{ backgroundColor: this.convertHex(window.systemColor,95) }}>
-                            <input autoFocus placeholder="Type to search . . ." type="text"></input>
+                            <input autoFocus onChange={this.handleSearchChange} placeholder="Type to search . . ." type="text"></input>
                             <img className="logoff" src={logoff} width="32" height="32" ></img>
                             <img className="shutdown" src={shutdown} width="32" height="32" ></img>
                         </div>
