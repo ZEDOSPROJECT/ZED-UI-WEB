@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Sound from 'react-sound';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import startUpSound from './Sounds/startup.mp3';
 import TaskBar from './System/Taskbar/taskbar';
 import Window from './System/Window/window';
@@ -30,12 +32,15 @@ class App extends Component {
     this.loadUserSettings = this.loadUserSettings.bind(this);
     this.clean = this.clean.bind(this);
     this.handleSongFinishedPlaying = this.handleSongFinishedPlaying.bind(this);
-
     setInterval(() => {
         this.loadUserSettings();
         this.clean();
     },1000);
+    console.info = data => toast.info(data);
+    console.error = data => toast.error(data);
+    console.warn = data => toast.warn(data);
   } 
+
 
   clean(){
     let newData = this.state.openedWindows;
@@ -201,6 +206,7 @@ class App extends Component {
             toggleMenu={this.toggleMenu}
             visible={this.state.showMenu}
         />
+        <ToastContainer />
       </div>
     );
   }
