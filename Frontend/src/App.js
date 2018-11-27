@@ -21,7 +21,8 @@ class App extends Component {
         setting_resolution: '100%',
         sound: "PLAYING"
     };
-    window.systemColor="#06001E";
+    window.systemColor0="#06001E";
+    window.systemColor1="#06001E";
     window.maxZIndex=1;
     this.createWindow = this.createWindow.bind(this);
     this.uuidv4 = this.uuidv4.bind(this);
@@ -72,7 +73,9 @@ class App extends Component {
         this.setState({
             setting_resolution: json.setting_resolution
         });
-        window.systemColor=json.setting_systemColor;
+        window.systemColor0=json.setting_systemColor0;
+        window.systemColor1=json.setting_systemColor1;
+        window.gradientEffect=json.setting_gradientEffect;
         if(json.setting_bingWallpaper){
             this.getBingPicture();
         } else {

@@ -34,7 +34,7 @@ class Clock extends React.Component {
 		const h = this.state.time.getHours()
         const mn = this.state.time.getMinutes()
         return(
-            <div className='Clock' style={{ color: invert(window.systemColor, true)}}>
+            <div className='Clock' style={{ color: invert(window.systemColor0, true)}}>
                 <CalendarWindow 
                     visible={this.state.calendarVisible}
                     toggleCalendar={this.switchCalendar} 

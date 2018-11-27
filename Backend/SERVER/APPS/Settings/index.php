@@ -32,13 +32,19 @@
 					$string=file_get_contents($_SERVER['DOCUMENT_ROOT']."/API/SYSTEM/SETTINGS/USER/SETTINGS.json");
 					$json_a = json_decode($string, true);
 					$bing="";
+					$gradient="";
 					if($json_a["setting_bingWallpaper"]){
 						$bing="checked";
 					}
+					if($json_a["setting_gradientEffect"]){
+						$gradient="checked";
+					}
 					echo '<input hidden type="text" name="setting_wallpaperURL" value="'.$json_a["setting_wallpaperURL"].'" id="setting_wallpaperURL">';
 					echo '<p>Bing Wallpaper: <input onChange="save()" '.$bing.' type="checkbox" name="setting_bingWallpaper" id="setting_bingWallpaper"/></p>';
-					echo '<p>Background color: <input onChange="save()" type="color" name="setting_wallpaperColor" id="setting_wallpaperColor" value="'.$json_a["setting_wallpaperColor"].'"></p>';
-					echo '<p>System color: <input onChange="save()" type="color" name="setting_systemColor" id="setting_systemColor" value="'.$json_a["setting_systemColor"].'"></p>';
+					echo '<p>Background color: <input onChange="save()" type="color" name="setting_wallpaperColor" id="setting_wallpaperColor" value="'.$json_a["setting_wallpaperColor"].'"></p></br>';
+					echo '<p>System color top: <input onChange="save()" type="color" name="setting_systemColor1" id="setting_systemColor1" value="'.$json_a["setting_systemColor1"].'"></p>';
+					echo '<p>System color bottom: <input onChange="save()" type="color" name="setting_systemColor0" id="setting_systemColor0" value="'.$json_a["setting_systemColor0"].'"></p>';
+					echo '<p>Use Gradient Effect: <input onChange="save()" '.$gradient.' type="checkbox" name="setting_gradientEffect" id="setting_gradientEffect"/></p>';
 				?>
 
 			<br>

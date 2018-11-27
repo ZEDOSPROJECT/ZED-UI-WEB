@@ -27,7 +27,9 @@ class Window extends React.Component{
             width: 640,
             height: 480,
             active: true,
-            systemColor: window.systemColor
+            systemColor0: window.systemColor0,
+            systemColor1: window.systemColor1,
+            gradient: 'on'
         };
 
         this.openModal = this.openModal.bind(this);
@@ -53,9 +55,17 @@ class Window extends React.Component{
                     window.toFront=undefined;
                 } 
             } 
-            if(this.state.systemColor !== window.systemColor){
-                this.setState({ systemColor: window.systemColor });
+            if(this.state.systemColor0 !== window.systemColor0){
+                this.setState({ systemColor0: window.systemColor0 });
             } 
+            if(this.state.gradient != window.gradientEffect){
+                this.setState({ gradient: window.gradientEffect });
+            } 
+            if(window.gradientEffect=="on"){
+                if(this.state.systemColor1 !== window.systemColor1){
+                    this.setState({ systemColor1: window.systemColor1 });
+                } 
+            }
         },10);
     }
 
@@ -120,6 +130,15 @@ class Window extends React.Component{
             WindowContent=<FileManager className="frame"/>
         } 
 
+        let finalStyle={};
+
+        if(window.gradientEffect!="on"){
+            finalStyle={ backgroundColor: this.state.systemColor0 };
+        }else{
+            finalStyle={ background: 'linear-gradient('+this.state.systemColor1+', '+this.state.systemColor0,} 
+        } 
+        console.log(finalStyle);
+
         return(
             <div>
                 <Rnd
@@ -155,11 +174,11 @@ class Window extends React.Component{
                         } 
                     }}
                 >
-                <div className="window" initWidth={800} initHeight={400} onRequestClose={this.closeModal}>
-                    <table onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} class="titleBar" style={{ backgroundColor: this.state.systemColor }} >
+                <div className="window" initWidth={800} initHeight={400} onRequestClose={this.closeModal} style={finalStyle}>
+                    <table onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} class="titleBar" >
                         <tr>
                             <td class="appIcon"><img alt="" class="appIcon" src={this.props.icon}></img></td>
-                            <td class="appTitle" style={{ color: invert(window.systemColor, true)}}>{this.props.title}</td>
+                            <td class="appTitle" style={{ color: invert(window.systemColor1, true)}}>{this.props.title}</td>
                             <td class="appControls">
                                 <img alt="" class="btnXControl" onClick={this.onClose}  src={CCLOSE} ></img>
                                 <img alt="" class="btnControl" onClick={this.onToggleWindow} src={( this.state.maximized ? CRESTORE : CMAXIMIZE )}></img>
