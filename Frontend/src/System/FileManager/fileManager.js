@@ -98,7 +98,6 @@ class FileManager extends React.Component {
           goBack={this.goBack}
           goForward={this.goForward} 
           currentPath={this.state.currentPath}
-          refresh={this.refresh} 
         />
         <Explorer
           onIClick={this.onIClick}

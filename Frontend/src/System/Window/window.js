@@ -43,7 +43,7 @@ class Window extends React.Component{
         window.maxZIndex=window.maxZIndex+1;
         setInterval(() => {
             if(window.toFront){
-                if(window.toFront == this.props.uuid){
+                if(window.toFront === this.props.uuid){
                     let newIndex=this.state.currentZIndex;
                     while (newIndex<=window.maxZIndex) {
                         newIndex++;
@@ -53,7 +53,7 @@ class Window extends React.Component{
                     window.toFront=undefined;
                 } 
             } 
-            if(this.state.systemColor != window.systemColor){
+            if(this.state.systemColor !== window.systemColor){
                 this.setState({ systemColor: window.systemColor });
             } 
         },10);
@@ -110,9 +110,9 @@ class Window extends React.Component{
 
         let WindowContent;
 
-        if(this.state.url!="MyComputer"){
+        if(this.state.url !== "MyComputer"){
             if(!isElectron()){  
-                WindowContent=(<iframe className="frame" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
+                WindowContent=(<iframe title="" className="frame" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
             } else {  
                 WindowContent=(<webview useragent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36" className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>);
             }
@@ -158,12 +158,12 @@ class Window extends React.Component{
                 <div className="window" initWidth={800} initHeight={400} onRequestClose={this.closeModal}>
                     <table onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} class="titleBar" style={{ backgroundColor: this.state.systemColor }} >
                         <tr>
-                            <td class="appIcon"><img class="appIcon" src={this.props.icon}></img></td>
+                            <td class="appIcon"><img alt="" class="appIcon" src={this.props.icon}></img></td>
                             <td class="appTitle" style={{ color: invert(window.systemColor, true)}}>{this.props.title}</td>
                             <td class="appControls">
-                                <img class="btnXControl" onClick={this.onClose}  src={CCLOSE} ></img>
-                                <img class="btnControl" onClick={this.onToggleWindow} src={( this.state.maximized ? CRESTORE : CMAXIMIZE )}></img>
-                                <img class="btnControl" onClick={this.onToggleMinimize} src={CMINIMIZE}></img>
+                                <img alt="" class="btnXControl" onClick={this.onClose}  src={CCLOSE} ></img>
+                                <img alt="" class="btnControl" onClick={this.onToggleWindow} src={( this.state.maximized ? CRESTORE : CMAXIMIZE )}></img>
+                                <img alt="" class="btnControl" onClick={this.onToggleMinimize} src={CMINIMIZE}></img>
                             </td>
                         </tr>
                     </table>

@@ -27,6 +27,7 @@ class Taskbar extends React.Component {
             if(element!=null){
                 return(<TaskButton uuid={element.UUID} onToggleMinimize={this.props.onToggleMinimize} title={element.WINDOW.props.title} icon={element.WINDOW.props.icon} />);
             } 
+            return false;
         }
         );
         return(

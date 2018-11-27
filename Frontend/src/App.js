@@ -8,6 +8,7 @@ import Window from './System/Window/window';
 import StartMenu from './System/StartMenu/startMenu';
 import { REST_URL } from './REST_URL';
 import './App.css';
+import { setTimeout } from 'timers';
 
 class App extends Component {
   constructor(props){
@@ -36,23 +37,23 @@ class App extends Component {
         this.loadUserSettings();
         this.clean();
     },1000);
-    console.info = data => toast.info(data);
-    console.error = data => toast.error(data);
-    console.warn = data => toast.warn(data);
+    setTimeout(function(){
+        console.info = data => toast.info(data);
+        console.error = data => toast.error(data);
+        console.warn = data => toast.warn(data);
+    },1000 );
   } 
 
 
   clean(){
     let newData = this.state.openedWindows;
-    let i=0;
     let iWindows=0;
     newData.forEach(element => {
         if(element!=null){
             iWindows++;
         }
-        i++;
     });
-    if(iWindows==0){
+    if(iWindows === 0){
         window.maxZIndex=1;
         newData = []; 
     } 
@@ -63,7 +64,7 @@ class App extends Component {
     fetch(REST_URL+'/API/SYSTEM/SETTINGS/USER/getSettings.php')
     .then(response => response.json())
     .then(json => {
-        if(json.setting_wallpaperColor!=this.state.setting_wallpaperColor){
+        if(json.setting_wallpaperColor !== this.state.setting_wallpaperColor){
             this.setState({
                 setting_wallpaperColor: json.setting_wallpaperColor
             });
@@ -75,7 +76,7 @@ class App extends Component {
         if(json.setting_bingWallpaper){
             this.getBingPicture();
         } else {
-            if(json.setting_wallpaperURL!=this.state.setting_wallpaperURL){
+            if(json.setting_wallpaperURL !== this.state.setting_wallpaperURL){
                 this.setState({
                     setting_wallpaperURL: REST_URL+'/Wallpapers/'+json.setting_wallpaperURL
                 });
@@ -140,11 +141,11 @@ class App extends Component {
     }  
 
   onClickApp(e,name){
-      if(name!="MyComputer"){
+      if(name !== "MyComputer"){
         this.createWindow(REST_URL+"/APPS/"+name,name,REST_URL+"/APPS/"+name+"/favicon.png");
         this.setState({ showMenu: false });
       }else{
-        if(name=="MyComputer"){
+        if(name === "MyComputer"){
             this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png");
             this.setState({ showMenu: false });
         } 
@@ -170,9 +171,9 @@ class App extends Component {
 
   handleSongFinishedPlaying(){
     this.setState({
-        sound: "stop"
+        sound: "STOPPED"
     });
-  } 
+  }
 
   render() {
     const windowList=this.state.openedWindows.map((item) => {

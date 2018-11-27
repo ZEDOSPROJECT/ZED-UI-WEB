@@ -9,20 +9,21 @@ class ToolBar extends React.Component {
     return (
       <div className="explorer_topBar">
         <div className="btn" onClick={this.props.goBack}>
-          <img style={{ width: 20, margin: 5 }} src={arrow} />
+          <img alt="" style={{ width: 20, margin: 5 }} src={arrow} />
         </div>
         <div className="btn" onClick={this.props.goForward} >
           <img
+            alt=""
             style={{ transform: "scaleX(-1)", width: 20, margin: 5 }}
             src={arrow}
           />
         </div>
         <div className="btn" onClick={this.props.refresh} >
-          <img style={{ width: 20, margin: 5 }} src={refresh} />
+          <img alt="" style={{ width: 20, margin: 5 }} src={refresh} />
         </div>
         <input className="addrBar" disabled value={this.props.currentPath} />
         <div className="btn" hidden>
-          <img style={{ width: 20, margin: 5 }} src={go} />
+          <img alt="" style={{ width: 20, margin: 5 }} src={go} />
         </div>
       </div>
     );

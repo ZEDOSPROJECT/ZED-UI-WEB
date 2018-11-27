@@ -1,0 +1,114 @@
+.flexible-modal {
+  position: absolute;
+  z-index: 1;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+/* Animation */
+
+.modal-anim-enter {
+  opacity: 0.00;
+  transform: scale(0.7);
+  transition: all 0.2s;
+}
+
+.modal-anim-enter.modal-anim-enter-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal-anim-leave {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.2s;
+}
+
+.modal-anim-leave.modal-anim-leave-active {
+  opacity: 0.00;
+  transform: scale(0.7);
+}
+
+.flexible-modal-mask {
+  position: fixed;
+  height: 100%;
+  background: rgba(55, 55, 55, 0.6);
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+
+.flexible-modal-resizer {
+  position:absolute;
+  right:0;
+  bottom:0;
+  cursor:se-resize;
+  margin:5px;
+  border-bottom: solid 2px #333;
+  border-right: solid 2px #333;
+}
+
+.flexible-modal-drag-area{
+  background: rgba(22, 22, 333, 0.2);
+  height: 50px;
+  position:absolute;
+  right:0;
+  top:0;
+  cursor:move;
+}
+
+.flexible-modal-rebound-btn{
+    position: absolute;
+    z-index: 1000;
+    bottom: 0;
+    width: 50px;
+    height: 30px;
+}
+
+.flexible-modal-hidden{
+    position: absolute;
+    z-index: 1;
+    border: 1px solid #ccc;
+    background: white;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: modalHidden; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+    animation-name: modalHidden;
+    animation-duration: 1s;
+}
+
+.flexible-modal-rebound-btn-hidden{
+    display: none
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes modalHidden {
+    from   {}
+    to  {left:0; top:800px; width: 50px; visibility: hidden}
+}
+
+/* Standard syntax */
+@keyframes modalHidden {
+    from   {}
+    to  {left:0; top:800px; width: 50px; visibility: hidden}
+}
+
+.minimise-enter {
+    opacity: 0.01;
+    transform: scale(0.9) translateY(50%);
+}
+.minimise-enter-active {
+    opacity: 1;
+    transform: scale(1) translateY(0%);
+    transition: all 300ms ease-out;
+}
+.minimise-exit {
+    opacity: 1;
+    transform: scale(1) translateY(0%);
+}
+.minimise-exit-active {
+    opacity: 0.01;
+    transform: scale(0.9) translateY(50%);
+    transition: all 300ms ease-out;
+}
