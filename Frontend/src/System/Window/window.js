@@ -137,8 +137,6 @@ class Window extends React.Component{
         }else{
             finalStyle={ background: 'linear-gradient('+this.state.systemColor1+', '+this.state.systemColor0,} 
         } 
-        console.log(finalStyle);
-
         return(
             <div>
                 <Rnd

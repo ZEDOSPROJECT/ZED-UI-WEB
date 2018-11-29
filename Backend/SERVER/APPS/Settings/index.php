@@ -12,6 +12,36 @@
 				document.getElementById("setting_wallpaperURL").value=img;
 				save();
 			} 
+
+			function componentToHex(c) {
+				var hex = c.toString(16);
+				return hex.length == 1 ? "0" + hex : hex;
+			}
+			
+			function rgbToHex(r, g, b) {
+				return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+			}
+
+			function getGradient(){
+				var img = new Image;
+				img.onload = function(){
+					var myCanvas = document.createElement('canvas');
+					myCanvas.width = img.width;
+					myCanvas.height = img.height;
+					var ctx = myCanvas.getContext('2d');
+					ctx.drawImage(img,0,0,img.width,img.height); // Or at whatever offset you like
+					const colorTOP=myCanvas.getContext('2d').getImageData(img.width/2, 20, 1, 1).data;
+					const colorBOTTOM=myCanvas.getContext('2d').getImageData(img.width/2,img.height-40, 1, 1).data;
+					const finalColorTOP=rgbToHex(colorTOP[0],colorTOP[1],colorTOP[2]);
+					const finalColorBOTTOM=rgbToHex(colorBOTTOM[0],colorBOTTOM[1],colorBOTTOM[2]);
+					console.log(finalColorTOP);
+					console.log(finalColorBOTTOM);
+					document.getElementById("setting_systemColor1").value = finalColorTOP;
+					document.getElementById("setting_systemColor0").value = finalColorBOTTOM;
+					save();
+				};
+				img.src = "../../Wallpapers/"+document.getElementById("setting_wallpaperURL").value;;
+			} 
 		</script>
 	</HEAD>
 	<BODY>
@@ -39,14 +69,14 @@
 					if($json_a["setting_gradientEffect"]){
 						$gradient="checked";
 					}
-					echo '<input hidden type="text" name="setting_wallpaperURL" value="'.$json_a["setting_wallpaperURL"].'" id="setting_wallpaperURL">';
+					echo '<br><br><input hidden type="text" name="setting_wallpaperURL" value="'.$json_a["setting_wallpaperURL"].'" id="setting_wallpaperURL">';
 					echo '<p>Bing Wallpaper: <input onChange="save()" '.$bing.' type="checkbox" name="setting_bingWallpaper" id="setting_bingWallpaper"/></p>';
 					echo '<p>Background color: <input onChange="save()" type="color" name="setting_wallpaperColor" id="setting_wallpaperColor" value="'.$json_a["setting_wallpaperColor"].'"></p></br>';
 					echo '<p>System color top: <input onChange="save()" type="color" name="setting_systemColor1" id="setting_systemColor1" value="'.$json_a["setting_systemColor1"].'"></p>';
 					echo '<p>System color bottom: <input onChange="save()" type="color" name="setting_systemColor0" id="setting_systemColor0" value="'.$json_a["setting_systemColor0"].'"></p>';
 					echo '<p>Use Gradient Effect: <input onChange="save()" '.$gradient.' type="checkbox" name="setting_gradientEffect" id="setting_gradientEffect"/></p>';
 				?>
-
+				<button onclick="getGradient()">Get gradient to windows</button>
 			<br>
 			<hr>
 			<h2>Display Settings</h2>
