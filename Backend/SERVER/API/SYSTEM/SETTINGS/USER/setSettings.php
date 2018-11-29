@@ -10,6 +10,7 @@
     $data['setting_systemColor0']   = $_POST['setting_systemColor0'];
     $data['setting_systemColor1']   = $_POST['setting_systemColor1'];
     $data['setting_gradientEffect']  = $_POST['setting_gradientEffect'];
+    $data['setting_autoGradient']  = $_POST['setting_autoGradient'];
 
     $newJsonString = json_encode($data);
     file_put_contents('SETTINGS.json', $newJsonString);
