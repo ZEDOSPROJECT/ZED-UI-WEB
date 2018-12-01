@@ -31,3 +31,11 @@
   height: calc(100% - 39px);
   position: relative;
 } 
+
+.winItem {
+  opacity: 1;
+  transition: all .2s;
+} 
+.winItem.hidden{
+  opacity: 0;
+} 

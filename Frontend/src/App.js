@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Sound from 'react-sound';
 import { ToastContainer, toast } from 'react-toastify';
+import {Animated} from "react-animated-css";
 import 'react-toastify/dist/ReactToastify.css';
 import startUpSound from './Sounds/startup.mp3';
 import TaskBar from './System/Taskbar/taskbar';
@@ -181,9 +182,9 @@ class App extends Component {
   render() {
     const windowList=this.state.openedWindows.map((item) => {
         if(item!=null){
-            const visible=item.VISIBLE ? "" : "hidden";
+            const visible=item.VISIBLE ? "winItem" : "winItem hidden";
             return(
-                <div style={{ visibility: visible }}  >{item['WINDOW']}</div>
+                <div className={visible} >{item['WINDOW']}</div>
             );
         } 
     })

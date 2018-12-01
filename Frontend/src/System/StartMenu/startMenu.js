@@ -22,7 +22,8 @@ class StartMenu extends React.Component {
         super(props);
         this.state = {
             Apps: [],
-            searchBox: ''
+            searchBox: '',
+            visible: false
         }
         
         this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -39,6 +40,7 @@ class StartMenu extends React.Component {
             {
                 this.setState({searchBox: ''});
             }
+            this.setState({visible: this.props.visible });
         },100);
     } 
 
@@ -67,7 +69,8 @@ class StartMenu extends React.Component {
     } 
 
     handleClickOutside() {
-        this.props.toggleMenu();
+        if(this.props.visible)
+            this.props.toggleMenu();
     }
 
     convertHex(hex,opacity){
@@ -96,53 +99,51 @@ class StartMenu extends React.Component {
                 return null;
             } 
         });
-
+        const visible=this.state.visible ? "startMenu" : "startMenu hidden";
         return(
-            (this.props.visible ? (
-                <div style={{ zIndex: window.maxZIndex+10 }} >
-                    <div className="startMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,60) }}>
-                        <div className="topMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,95) }}>
-                            <div>
-                                <img className="userPicture" height="32" src={UserIcon}></img>
-                                <div style={{ color: invert(window.systemColor0, true)}} className="userName"><b>Administrator</b></div>
-                            </div>
-                        </div>
-                        <div className="middleMenu">
-                            <div className="AppsList" style={{ color: invert(window.systemColor0, true)}}>
-                                {appList} 
-                            </div>
-                            <div className="systemMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,35), color: invert(window.systemColor0, true)}}>
-                                <div style={{ color: invert(window.systemColor0, true)}} class="systemItem">
-                                    <img src={myDocuments} ></img>
-                                    <div>My Documents</div>
-                                </div>
-                                <div style={{ color: invert(window.systemColor0, true)}} class="systemItem">
-                                    <img src={myPictures} ></img>
-                                    <div>My Pictures</div>
-                                </div>
-                                <div style={{ color: invert(window.systemColor0, true)}} class="systemItem">
-                                    <img src={myMusic} ></img>
-                                    <div>My Music</div>
-                                </div>
-                                <div onClick={event => this.props.onClickApp(event,"MyComputer")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
-                                    <img src={myComputer} ></img>
-                                    <div>My Computer</div>
-                                </div>
-                                <hr></hr>
-                                <div onClick={event => this.props.onClickApp(event,"Settings")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
-                                    <img src={controlPanel} ></img>
-                                    <div>Control Panel</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="bottomMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,95) }}>
-                            <input autoFocus onChange={this.handleSearchChange} placeholder="Type to search . . ." type="text"></input>
-                            <img className="logoff" src={logoff} width="32" height="32" ></img>
-                            <img className="shutdown" src={shutdown} width="32" height="32" ></img>
+            <div>
+                <div className={visible} style={{ zIndex: window.maxZIndex+10,backgroundColor: this.convertHex(window.systemColor0,60) }}>
+                    <div className="topMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,95) }}>
+                        <div>
+                            <img className="userPicture" height="32" src={UserIcon}></img>
+                            <div style={{ color: invert(window.systemColor0, true)}} className="userName"><b>Administrator</b></div>
                         </div>
                     </div>
+                    <div className="middleMenu">
+                        <div className="AppsList" style={{ color: invert(window.systemColor0, true)}}>
+                            {appList} 
+                        </div>
+                        <div className="systemMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,35), color: invert(window.systemColor0, true)}}>
+                            <div style={{ color: invert(window.systemColor0, true)}} class="systemItem">
+                                <img src={myDocuments} ></img>
+                                <div>My Documents</div>
+                            </div>
+                            <div style={{ color: invert(window.systemColor0, true)}} class="systemItem">
+                                <img src={myPictures} ></img>
+                                <div>My Pictures</div>
+                            </div>
+                            <div style={{ color: invert(window.systemColor0, true)}} class="systemItem">
+                                <img src={myMusic} ></img>
+                                <div>My Music</div>
+                            </div>
+                            <div onClick={event => this.props.onClickApp(event,"MyComputer")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
+                                <img src={myComputer} ></img>
+                                <div>My Computer</div>
+                            </div>
+                            <hr></hr>
+                            <div onClick={event => this.props.onClickApp(event,"Settings")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
+                                <img src={controlPanel} ></img>
+                                <div>Control Panel</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bottomMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,95) }}>
+                        <input autoFocus onChange={this.handleSearchChange} placeholder="Type to search . . ." type="text"></input>
+                        <img className="logoff" src={logoff} width="32" height="32" ></img>
+                        <img className="shutdown" src={shutdown} width="32" height="32" ></img>
+                    </div>
                 </div>
-            ) : null)
+            </div>
         );
     }
 }
