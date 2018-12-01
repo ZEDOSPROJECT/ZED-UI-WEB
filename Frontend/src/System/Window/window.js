@@ -124,7 +124,7 @@ class Window extends React.Component{
             if(!isElectron()){  
                 WindowContent=(<iframe title="" className="frame" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
             } else {  
-                WindowContent=(<webview useragent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36" className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>);
+                WindowContent=(<webview useragent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/70.0.3538.77 Chrome/70.0.3538.77 Safari/537.36" className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>);
             }
         }else{
             WindowContent=<FileManager className="frame"/>
