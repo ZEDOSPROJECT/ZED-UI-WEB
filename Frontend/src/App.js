@@ -145,7 +145,7 @@ class App extends Component {
 
   onClickApp(e,name){
       if(name !== "MyComputer"){
-        this.createWindow(REST_URL+"/APPS/"+name,name,REST_URL+"/APPS/"+name+"/favicon.png");
+        this.createWindow(REST_URL+"/APPS/"+name+"/",name,REST_URL+"/APPS/"+name+"/favicon.png");
         this.setState({ showMenu: false });
       }else{
         if(name === "MyComputer"){
