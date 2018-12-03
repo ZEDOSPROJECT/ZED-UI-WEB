@@ -1,144 +1,139 @@
-<HTML>
-    <HEAD>
-        <TITLE>Login</TITLE>
-        <STYLE>
-            BODY{
-                background-color:#004e98;
-            } 
+<!DOCTYPE html>
+<html lang="en">
 
-            .window {
-                position: absolute;
-                z-index: 1;
-                cursor: default;
-                top:0px;
-                left:0px;
-                width: 100%;
-                height: 100%;
-                border: 1px solid rgb(13, 8, 73);
-                background: rgb(13, 8, 73);
-                -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-                -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-                box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-            }
-            
+<head>
+	<meta charset="UTF-8">
+	<title>ZED LOGIN</title>
 
-            .login{
-                width:400px;
-                height: 250px;
-                top: 50%;
-                left: 50%;
-                margin-top: -140px;
-                margin-left: -200px;
-                position: relative;
-            } 
-
-            .body{
-                position: absolute;
-                margin-top:26px;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                width: 100%;
-                height: 100%;
-                background-color: #efebde;
-            } 
-
-            .frame{
-                width: 99.95%;
-                height: 99.95%;
-                border: 0px;
-                background-color: #efebde;
-            } 
-
-            .appTitle{
-                padding: left 5px;
-                padding-top:0px;
-                margin: 0;
-                -webkit-text-stroke: 0.3px black;
-                }
-                .titleBar{
-                    width:100%;
-                border-style: none;
-                align-content: center;
-                color: #efebde;
-                margin: 0;
-                padding: 0;
-                }
-
-                p{
-                    margin: 20px;
-                } 
-        </STYLE>
-        <script>
-            var loader=setInterval(function(){
-                isSiteOnline("http://"+window.location.hostname+":3000",function(found){
-                    if(found) {
-                        document.getElementById("starting").hidden=true;
-                        document.getElementById("loginFields").hidden=false;
-                        clearInterval(loader);
-                    }
-                })
-            },500);
+	<script>
+		var loader = setInterval(function () {
+			isSiteOnline("http://" + window.location.hostname + ":3000", function (found) {
+				if (found) {
+					document.getElementById("starting").hidden = true;
+					document.getElementById("loginFields").hidden = false;
+					clearInterval(loader);
+				}
+			})
+		}, 500);
 
 
-            function isSiteOnline(url,callback) {
-                // try to load favicon
-                var timer = setTimeout(function(){
-                    // timeout after 5 seconds
-                    callback(false);
-                },5000)
+		function isSiteOnline(url, callback) {
+			// try to load favicon
+			var timer = setTimeout(function () {
+				// timeout after 5 seconds
+				callback(false);
+			}, 5000)
 
-                var img = document.createElement("img");
-                img.onload = function() {
-                    clearTimeout(timer);
-                    callback(true);
-                }
+			var img = document.createElement("img");
+			img.onload = function () {
+				clearTimeout(timer);
+				callback(true);
+			}
 
-                img.onerror = function() {
-                    clearTimeout(timer);
-                    callback(false);
-                }
+			img.onerror = function () {
+				clearTimeout(timer);
+				callback(false);
+			}
 
-                img.src = url+"/favicon.ico";
-            }
+			img.src = url + "/favicon.ico";
+		}
 
-            function login(){
-                document.getElementById("loginFields").hidden=true;
-                document.getElementById("welcome").hidden=false;
-                setTimeout(function(){
-                    window.location.href="http://"+window.location.hostname+":3000";
-                },1600);
-            } 
-        </script>
-    </HEAD>
-    <BODY>
-        <div class="login">
-            <div class="window">
-                    <table class="titleBar">
-                        <tr>
-                            <td class="appTitle">Login on ZED</td>
-                        </tr>
-                    </table>
-                    <div class="body">
-                        <img src="logo.png" width="400" height="100"/>
-                        <div hidden id="loginFields">
-                            <p>User Name: <input id="username" style="width: 250px;" type="text"></p>
-                            <p>Password: <input id="password" style="width: 250px;margin-left: 10px;" type="password"></p>
-                            <button onclick="login()" style="position: absolute;right: 50px;">Login</button>
-                        </div>
-                        <div id="starting">
-                            <center>
-                                <p>Starting ZED . . . </p>
-                            </center>
-                        </div>
-                        <div hidden id="welcome">
-                            <center>
-                                <h3>Welcome</h3>
-                            </center>
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </BODY>
-</HTML>
+		function login() {
+			document.getElementById("loginFields").hidden = true;
+			document.getElementById("welcome").hidden = false;
+			setTimeout(function () {
+				window.location.href = "http://" + window.location.hostname + ":3000";
+			}, 1600);
+		}
+	</script>
+
+	<link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+	<div id="screen">
+		<table id="starting" border="0" style="border-collapse: collapse; width: 100%; height: 100%;" border="1">
+			<tbody>
+				<tr class="bar" style="height: 45px;">
+					<td style="width: 50%; height: 45px;">&nbsp;</td>
+					<td style="width: 50%; height: 45px;">&nbsp;</td>
+				</tr>
+				<tr style="height: 100%;">
+					<td style="width: 100%; text-align: right; height: 100%;">
+						<div>
+							<center><img height="80" src="loading.gif"></img><h2><font color="white">Starting ZED OS  . . .</font></h2></center>
+						</div>
+					</td>
+				</tr>
+				<tr class="bar" style="height: 45px;">
+					<td style="width: 50%; height: 45px;">&nbsp;</td>
+					<td style="width: 50%; height: 45px;">&nbsp;</td>
+				</tr>
+			</tbody>
+
+		</table>
+		<table hidden id="welcome" border="0" style="border-collapse: collapse; width: 100%; height: 100%;" border="1">
+			<tbody>
+				<tr class="bar" style="height: 45px;">
+					<td style="width: 50%; height: 45px;">&nbsp;</td>
+					<td style="width: 50%; height: 45px;">&nbsp;</td>
+				</tr>
+				<tr style="height: 100%;">
+					<td style="width: 100%; text-align: right; height: 100%;">
+						<div>
+							<center><h1><font color="white"><b><i>WELCOME</i></b></font></h1></center>
+						</div>
+					</td>
+				</tr>
+				<tr class="bar" style="height: 45px;">
+					<td style="width: 50%; height: 45px;">&nbsp;</td>
+					<td style="width: 50%; height: 45px;">&nbsp;</td>
+				</tr>
+			</tbody>
+
+		</table>
+		<table id="loginFields" hidden border="0" style="border-collapse: collapse; width: 100%; height: 100%;" border="1">
+			<tbody>
+				<tr class="bar" style="height: 45px;">
+					<td style="width: 50%; height: 45px;">&nbsp;</td>
+					<td style="width: 50%; height: 45px;">&nbsp;</td>
+				</tr>
+				<tr style="height: 100%;">
+					<td style="width: 50%; text-align: right; height: 100%;">
+						<img src="logo.png" style="position:absolute;width: 200px;height: 120px;top:calc(50% - 25px);left:calc(50% - 210px);"></img>
+					</td>
+					<td style="width: 50%; height: auto;">
+						<div class="usersList">
+							<div onclick="login()" class="user">
+								<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH78GJB9NMG_yyFQRTlyuSHYVsaYORXYGaT1ImzDwN5mWarGzGCA"
+								 class="userPicture" />
+								<div class="userName">Administrator</div>
+							</div>
+							<div class="user">
+								<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH78GJB9NMG_yyFQRTlyuSHYVsaYORXYGaT1ImzDwN5mWarGzGCA"
+								 class="userPicture" />
+								<div class="userName">User A</div>
+							</div>
+							<div class="user">
+								<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH78GJB9NMG_yyFQRTlyuSHYVsaYORXYGaT1ImzDwN5mWarGzGCA"
+								 class="userPicture" />
+								<div class="userName">User B</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr class="bar" style="height: 45px;">
+					<td style="width: 50%; height: 45px;">&nbsp;</td>
+					<td style="width: 50%; height: 45px;">&nbsp;</td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+
+
+</body>
+
+</html>

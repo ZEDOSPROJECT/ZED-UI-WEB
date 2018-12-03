@@ -1,0 +1,53 @@
+#screen {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border: none;
+}
+
+.usersList {
+	width:400px;
+	height:calc( 100% - 25px);
+	overflow-y:auto;
+}
+
+.user {
+	position:relative;
+	width: 200px;
+	height:47px;
+	padding:2px;
+	margin:10px;
+	border-radius:2px;
+	background-color:#12387f;
+}
+
+.user:hover {
+	background-image: linear-gradient(to right, #638ed3 , #12387f);
+}
+
+.userPicture {
+	width:46px;
+	height:46px;
+	margin-right:12px;
+	margin-left:4px;
+	float:left;
+	border-radius:2px;
+	box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.75);
+}
+
+.userName {
+		color:white;
+		margin-top:12px;
+}	
+
+body {
+	user-select:none;
+	background-color: #12387f;
+}
+
+.bar {
+	box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.75);
+	background-color: #638ed3;
+}
