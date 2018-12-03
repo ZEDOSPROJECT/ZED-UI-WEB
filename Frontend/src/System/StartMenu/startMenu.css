@@ -13,7 +13,7 @@
 }
 .startMenu.hidden{
   opacity: 0;
-  height: 50%;
+  height: 20%;
   pointer-events: none;
 }
 

@@ -29,8 +29,12 @@ class Window extends React.Component{
             active: true,
             systemColor0: window.systemColor0,
             systemColor1: window.systemColor1,
-            gradient: 'on'
+            gradient: 'on',
+            myStyle: "window hidden"
         };
+        setTimeout(() => {
+            this.setState({myStyle: "window"});
+        }, 40);
 
         this.openModal = this.openModal.bind(this);
         this.onClose = this.onClose.bind(this);
@@ -93,7 +97,10 @@ class Window extends React.Component{
         this.setState({modalIsOpen: true});
     }
     onClose() {
-        this.props.onClose(this.state.uuid);
+        setTimeout(() => {
+            this.props.onClose(this.state.uuid);
+        }, 240);
+        this.setState({myStyle: "window hidden"});
     }
 
     onDragStart(){
@@ -172,7 +179,7 @@ class Window extends React.Component{
                         } 
                     }}
                 >
-                <div className="window" initWidth={800} initHeight={400} onRequestClose={this.closeModal} style={finalStyle}>
+                <div className={this.state.myStyle}  initWidth={800} initHeight={400} onRequestClose={this.closeModal} style={finalStyle}>
                     <table onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} class="titleBar" >
                         <tr>
                             <td class="appIcon"><img alt="" class="appIcon" src={this.props.icon}></img></td>
