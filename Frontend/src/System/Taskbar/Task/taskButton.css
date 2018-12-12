@@ -18,6 +18,7 @@
 .taskIcon {
     float: left;
     margin-top: 1%;
+    padding-right: 10px;
 } 
 
 .taskTitle {
