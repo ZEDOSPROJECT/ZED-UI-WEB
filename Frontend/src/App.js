@@ -25,6 +25,7 @@ class App extends Component {
     window.systemColor0="#06001E";
     window.systemColor1="#06001E";
     window.maxZIndex=1;
+    window.winTitle=new Array();
     this.createWindow = this.createWindow.bind(this);
     this.uuidv4 = this.uuidv4.bind(this);
     this.onClose = this.onClose.bind(this);
@@ -107,6 +108,7 @@ class App extends Component {
           } 
           i++;
       });
+      delete window.winTitle[uuid]; 
       this.setState({ openedWindows: newData });
   } 
 
@@ -133,14 +135,13 @@ class App extends Component {
         newList.push({ 'UUID'  : uuid, 'WINDOW' : (
             <Window 
                 url={url}  
-                title={title}  
                 icon={icon}
                 uuid={uuid}   
                 onClose={this.onClose}   
                 onToggleMinimize={this.onToggleMinimize} 
             />
         ), 'VISIBLE' : true });
-
+        window.winTitle[uuid]=title;
         this.setState({ openedWindows: newList });
     }  
 

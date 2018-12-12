@@ -1,8 +1,9 @@
 .taskButton {
     height: 100%;
-    width: auto;
+    width: 150px;
     float: left;
     margin: 1px;
+    padding: 2px;
     padding-right: 8px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -16,9 +17,10 @@
 
 .taskIcon {
     float: left;
+    margin-top: 1%;
 } 
 
 .taskTitle {
     float: left;
-    margin-top: 5px;
+    margin-top: 1%;
 } 

@@ -43,6 +43,7 @@ class Window extends React.Component{
         this.onResizeStart = this.onResizeStart.bind(this);
         this.onToggleWindow = this.onToggleWindow.bind(this);
         this.onToggleMinimize = this.onToggleMinimize.bind(this);
+        this.onTitleChange = this.onTitleChange.bind(this);
         this.onErrorFRAME = this.onErrorFRAME.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.handleClickInsideWindow = this.handleClickInsideWindow.bind(this);
@@ -103,6 +104,13 @@ class Window extends React.Component{
         this.setState({myStyle: "window hidden"});
     }
 
+    onTitleChange(e){
+        const newTitle=e.target.title;
+        if(newTitle!=""){
+            window.winTitle[this.state.uuid]=e.target.title; 
+        } 
+    } 
+
     onDragStart(){
         this.sendToFront();
     } 
@@ -129,9 +137,9 @@ class Window extends React.Component{
 
         if(this.state.url !== "MyComputer"){
             if(!isElectron()){  
-                WindowContent=(<iframe title="" className="frame" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
+                WindowContent=(<iframe onLoad={this.onTitleChange} title="" className="frame" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
             } else {  
-                WindowContent=(<webview useragent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/70.0.3538.77 Chrome/70.0.3538.77 Safari/537.36" className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>);
+                WindowContent=(<webview onLoad={this.onTitleChange} useragent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/70.0.3538.77 Chrome/70.0.3538.77 Safari/537.36" className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>);
             }
         }else{
             WindowContent=<FileManager className="frame"/>
@@ -183,7 +191,7 @@ class Window extends React.Component{
                     <table onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} class="titleBar" >
                         <tr>
                             <td class="appIcon"><img alt="" class="appIcon" src={this.props.icon}></img></td>
-                            <td class="appTitle" style={{ color: invert(window.systemColor1, true)}}>{this.props.title}</td>
+                            <td class="appTitle" style={{ color: invert(window.systemColor1, true)}}>{window.winTitle[this.state.uuid]}</td>
                             <td class="appControls">
                                 <img alt="" class="btnXControl" onClick={this.onClose}  src={CCLOSE} ></img>
                                 <img alt="" class="btnControl" onClick={this.onToggleWindow} src={( this.state.maximized ? CRESTORE : CMAXIMIZE )}></img>
