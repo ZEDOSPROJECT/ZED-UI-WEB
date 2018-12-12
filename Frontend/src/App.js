@@ -161,6 +161,10 @@ class App extends Component {
       this.setState({
           showMenu: !this.state.showMenu,
       });
+      if(!this.state.showMenu){
+        document.getElementById("searchBox").value="";
+        document.getElementById("searchBox").focus();
+      } 
   }
 
   getBingPicture(){
