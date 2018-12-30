@@ -28,14 +28,17 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#7db9e8',GradientType=1 );
   color: #215dc6;
   width: 100%;
-  padding-left: 2px;
+  font-size: 12px;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .comboSwitch {
   background-color: #003ca5;
-  width: 10px;
-  height: 10px;
-  margin: 4px;
+  width: 13px;
+  height: 13px;
+  margin: 5px;
   border-radius: 50%;
   position: absolute;
   right: 0;
@@ -47,6 +50,9 @@
 }
 
 .innerCombo {
-  padding: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 97%;
   background-color: #d6dff7;
 }

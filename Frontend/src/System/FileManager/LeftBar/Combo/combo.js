@@ -18,7 +18,7 @@ class Combo extends React.Component {
     return (
       <div className="comboContainer">
         <div className="comboTitle" onClick={this.switchCombo}>
-          <div>{this.props.title}</div>
+          <div><b>{this.props.title}</b></div>
           <div className="comboSwitch" />
         </div>
         {this.state.open ? (
