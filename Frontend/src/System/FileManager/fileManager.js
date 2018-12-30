@@ -1,6 +1,8 @@
 import React from "react";
 import ToolBar from "./ToolBar/toolBar";
 import Explorer from "./Explorer/explorer";
+import LeftBar from "./LeftBar/leftBar";
+import StatusBar from "./StatusBar/statusBar";
 import { REST_URL } from './../../REST_URL';
 import "./fileManager.css";
 
@@ -14,6 +16,15 @@ class FileManager extends React.Component {
       history:["/"],
       historyIndex: 0
     };
+
+    setTimeout(() => {
+      if(window.explorer_open !== undefined){
+        const path=window.explorer_open.slice();
+        this.setState({currentPath: path});
+        window.explorer_open="";
+        this.refresh();
+      } 
+    }, 10);
 
     this.onIClick = this.onIClick.bind(this);
     this.onDBClick = this.onDBClick.bind(this);
@@ -99,11 +110,15 @@ class FileManager extends React.Component {
           goForward={this.goForward} 
           currentPath={this.state.currentPath}
         />
+        <LeftBar/> 
         <Explorer
           onIClick={this.onIClick}
           onDBClick={this.onDBClick}
           selected={this.state.selected}
           listDir={this.state.listDir}
+        />
+        <StatusBar 
+          items={this.state.listDir}
         />
       </div>
     );

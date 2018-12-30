@@ -1,0 +1,52 @@
+.comboContainer {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 12px;
+}
+
+.comboTitle {
+  background: rgb(255, 255, 255);
+  background: -moz-linear-gradient(
+    left,
+    rgb(255, 255, 255) 62%,
+    rgb(255, 255, 255) 62%,
+    #c6d3f7 100%
+  );
+  background: -webkit-linear-gradient(
+    left,
+    rgb(255, 255, 255) 62%,
+    rgb(255, 255, 255) 62%,
+    #c6d3f7 100%
+  );
+  background: linear-gradient(
+    to right,
+    rgb(255, 255, 255) 62%,
+    rgb(255, 255, 255) 62%,
+    #c6d3f7 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#7db9e8',GradientType=1 );
+  color: #215dc6;
+  width: 100%;
+  padding-left: 2px;
+}
+
+.comboSwitch {
+  background-color: #003ca5;
+  width: 10px;
+  height: 10px;
+  margin: 4px;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.comboSwitch:hover {
+  background-color: #002c79;
+}
+
+.innerCombo {
+  padding: 10px;
+  background-color: #d6dff7;
+}

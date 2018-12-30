@@ -1,9 +1,9 @@
 .fExplorer {
   position: absolute;
   top: 30px;
-  left: 0;
+  left: 205px;
   right: 0;
-  bottom: 0;
-  padding: 4px;
+  bottom: 20px;
+  padding: 2px;
   overflow-y: scroll;
 }

@@ -1,0 +1,10 @@
+.leftBar{
+    background-color: rgb(68, 97, 226);
+    position: absolute;
+    left: 0;
+    top:30px;
+    bottom: 20px;
+    width: 180px;
+    padding-left: 12px;
+    padding-right: 12px;
+} 

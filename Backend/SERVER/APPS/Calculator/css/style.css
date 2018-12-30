@@ -5,12 +5,11 @@ body {
 }
 
 .container {
-  margin-top: 100px;
-  margin-bottom: 25px;
-  left: 50%;
   position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 100%;
 }
 
 /* Fixed px on height and width. Position buttons within using flexbox */

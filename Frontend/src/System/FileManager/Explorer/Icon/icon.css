@@ -18,4 +18,8 @@
   position: absolute;
   left: 58px;
   top: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width:100px;
 }
