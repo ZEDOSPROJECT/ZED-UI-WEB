@@ -1,7 +1,10 @@
 import React from "react";
 import Folder from "./folder.png";
 import File from "./file.png";
+import { REST_URL } from './../../../../REST_URL';
 import "./icon.css";
+
+let theIcon;
 
 class Icon extends React.Component {
   constructor(props) {
@@ -9,11 +12,14 @@ class Icon extends React.Component {
   }
 
   render() {
-    let theIcon;
     if (this.props.data.type === "folder") {
       theIcon = Folder;
     } else {
-      theIcon = File;
+      if(this.props.data.name.toLowerCase().includes(".jpg") || this.props.data.name.toLowerCase().includes(".gif") || this.props.data.name.toLowerCase().includes(".png")){
+        theIcon=REST_URL+'/API/SYSTEM/IO/FILE/read.php?path='+this.props.currentPath+this.props.data.name;
+      }else{
+        theIcon = File;
+      } 
     }
     return (
       <div

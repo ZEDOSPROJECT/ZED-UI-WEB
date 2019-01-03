@@ -114,15 +114,15 @@ class StartMenu extends React.Component {
                             {appList} 
                         </div>
                         <div className="systemMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,35), color: invert(window.systemColor0, true)}}>
-                            <div style={{ color: invert(window.systemColor0, true)}} class="systemItem">
+                            <div onClick={event => this.props.onClickApp(event,"MyDocuments")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
                                 <img src={myDocuments} ></img>
                                 <div>My Documents</div>
                             </div>
-                            <div style={{ color: invert(window.systemColor0, true)}} class="systemItem">
+                            <div onClick={event => this.props.onClickApp(event,"MyPictures")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
                                 <img src={myPictures} ></img>
                                 <div>My Pictures</div>
                             </div>
-                            <div style={{ color: invert(window.systemColor0, true)}} class="systemItem">
+                            <div onClick={event => this.props.onClickApp(event,"MyMusic")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
                                 <img src={myMusic} ></img>
                                 <div>My Music</div>
                             </div>

@@ -13,6 +13,7 @@ class Explorer extends React.Component {
         indents=this.props.listDir.map(data => {
           return (
             <Icon
+              currentPath={this.props.currentPath} 
               onIClick={this.props.onIClick}
               onDBClick={this.props.onDBClick}
               selected={this.props.selected}

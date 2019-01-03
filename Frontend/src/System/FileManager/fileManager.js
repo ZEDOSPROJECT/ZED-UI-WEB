@@ -112,6 +112,7 @@ class FileManager extends React.Component {
         />
         <LeftBar/> 
         <Explorer
+          currentPath={this.state.currentPath} 
           onIClick={this.onIClick}
           onDBClick={this.onDBClick}
           selected={this.state.selected}

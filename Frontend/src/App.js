@@ -20,7 +20,8 @@ class App extends Component {
         setting_wallpaperURL: '',
         setting_wallpaperColor: '#004e98',
         setting_resolution: '100%',
-        sound: "PLAYING"
+        sound: "PLAYING",
+        userPaths: null
     };
     window.systemColor0="#06001E";
     window.systemColor1="#06001E";
@@ -40,10 +41,17 @@ class App extends Component {
         this.loadUserSettings();
         this.clean();
     },1000);
-    setTimeout(function(){
+    setTimeout(() => {
         console.info = data => toast.info(data);
         console.error = data => toast.error(data);
         console.warn = data => toast.warn(data);
+        fetch(REST_URL+'/API/SYSTEM/SETTINGS/USER/getPaths.php')
+        .then(response => response.json())
+        .then(json => {
+            this.setState({
+                userPaths: json
+            });
+        });
     },1000 );
   } 
 
@@ -146,12 +154,27 @@ class App extends Component {
     }  
 
   onClickApp(e,name){
-      if(name !== "MyComputer"){
+      if(name !== "MyComputer" && name !== "MyMusic" && name !== "MyPictures" && name !== "MyDocuments"){
         this.createWindow(REST_URL+"/APPS/"+name+"/",name,REST_URL+"/APPS/"+name+"/favicon.png");
         this.setState({ showMenu: false });
       }else{
         if(name === "MyComputer"){
-            window.explorer_open="/home/";
+            window.explorer_open="/";
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png");
+            this.setState({ showMenu: false });
+        }
+        if(name === "MyMusic"){
+            window.explorer_open=this.state.userPaths['music'];
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png");
+            this.setState({ showMenu: false });
+        }
+        if(name === "MyPictures"){
+            window.explorer_open=this.state.userPaths['picture'];
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png");
+            this.setState({ showMenu: false });
+        }
+        if(name === "MyDocuments"){
+            window.explorer_open=this.state.userPaths['documents'];
             this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png");
             this.setState({ showMenu: false });
         }

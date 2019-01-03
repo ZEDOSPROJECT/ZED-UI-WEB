@@ -134,8 +134,8 @@ class Window extends React.Component{
     render(){
 
         let WindowContent;
-
-        if(this.state.url !== "MyComputer"){
+        
+        if(this.state.url !== "MyComputer" && this.state.url !== "MyMusic" && this.state.url !== "MyPictures" && this.state.url !== "MyDocuments"){
             if(!isElectron()){  
                 WindowContent=(<iframe onLoad={this.onTitleChange} title="" className="frame" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
             } else {  
