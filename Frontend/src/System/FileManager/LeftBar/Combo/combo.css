@@ -56,3 +56,17 @@
   width: 97%;
   background-color: #d6dff7;
 }
+
+.link{
+  color: black;
+  cursor: pointer;
+} 
+
+.link:hover{
+  color: #003ca5;
+} 
+
+.miniIcon{
+  width: 15px;
+  height: 15px;
+} 

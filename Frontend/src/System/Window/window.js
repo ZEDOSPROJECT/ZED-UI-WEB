@@ -142,7 +142,7 @@ class Window extends React.Component{
                 WindowContent=(<webview onLoad={this.onTitleChange} useragent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/70.0.3538.77 Chrome/70.0.3538.77 Safari/537.36" className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>);
             }
         }else{
-            WindowContent=<FileManager className="frame"/>
+            WindowContent=<FileManager userDirs={this.props.userDirs} className="frame"/>
         } 
 
         let finalStyle={};

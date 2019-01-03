@@ -61,6 +61,10 @@ class FileManager extends React.Component {
   } 
 
   listFolder(path){
+    this.setState({
+      currentPath: path,
+      historyIndex: this.state.historyIndex-1
+    });
     fetch(REST_URL+'/API/SYSTEM/IO/PATH/listPath.php?path='+path)
     .then(response => response.json())
     .then(json => {
@@ -110,7 +114,10 @@ class FileManager extends React.Component {
           goForward={this.goForward} 
           currentPath={this.state.currentPath}
         />
-        <LeftBar/> 
+        <LeftBar
+          listFolder={this.listFolder} 
+          userDirs={this.props.userDirs}
+        /> 
         <Explorer
           currentPath={this.state.currentPath} 
           onIClick={this.onIClick}

@@ -142,6 +142,7 @@ class App extends Component {
         var newList = this.state.openedWindows;
         newList.push({ 'UUID'  : uuid, 'WINDOW' : (
             <Window 
+                userDirs={this.state.userPaths}  
                 url={url}  
                 icon={icon}
                 uuid={uuid}   
