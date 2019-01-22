@@ -114,24 +114,24 @@ class StartMenu extends React.Component {
                             {appList} 
                         </div>
                         <div className="systemMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,35), color: invert(window.systemColor0, true)}}>
-                            <div onClick={event => this.props.onClickApp(event,"MyDocuments")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
+                            <div onClick={event => this.props.onClickApp(event,"","MyDocuments",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
                                 <img src={myDocuments} ></img>
                                 <div>My Documents</div>
                             </div>
-                            <div onClick={event => this.props.onClickApp(event,"MyPictures")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
+                            <div onClick={event => this.props.onClickApp(event,"","MyPictures",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
                                 <img src={myPictures} ></img>
                                 <div>My Pictures</div>
                             </div>
-                            <div onClick={event => this.props.onClickApp(event,"MyMusic")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
+                            <div onClick={event => this.props.onClickApp(event,"","MyMusic",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
                                 <img src={myMusic} ></img>
                                 <div>My Music</div>
                             </div>
-                            <div onClick={event => this.props.onClickApp(event,"MyComputer")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
+                            <div onClick={event => this.props.onClickApp(event,"","MyComputer",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
                                 <img src={myComputer} ></img>
                                 <div>My Computer</div>
                             </div>
                             <hr></hr>
-                            <div onClick={event => this.props.onClickApp(event,"Settings")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
+                            <div onClick={event => this.props.onClickApp(event,REST_URL+"/APPS/Settings/index.php","Settings",REST_URL+"/Icons/ModernXP (41).png")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
                                 <img src={controlPanel} ></img>
                                 <div>Control Panel</div>
                             </div>

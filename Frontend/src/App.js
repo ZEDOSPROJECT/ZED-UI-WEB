@@ -27,6 +27,7 @@ class App extends Component {
     window.systemColor1="#06001E";
     window.maxZIndex=1;
     window.winTitle=new Array();
+    window.ZED_RUN=null;
     this.createWindow = this.createWindow.bind(this);
     this.uuidv4 = this.uuidv4.bind(this);
     this.onClose = this.onClose.bind(this);
@@ -40,6 +41,11 @@ class App extends Component {
     setInterval(() => {
         this.loadUserSettings();
         this.clean();
+        if(window.ZED_RUN !== null){
+            const AppMetadata=Object.assign({}, window.ZED_RUN);
+            this.onClickApp(null,AppMetadata.Url,AppMetadata.Label,AppMetadata.Icon);
+            window.ZED_RUN=null;
+        } 
     },1000);
     setTimeout(() => {
         console.info = data => toast.info(data);
@@ -154,9 +160,9 @@ class App extends Component {
         this.setState({ openedWindows: newList });
     }  
 
-  onClickApp(e,name){
+  onClickApp(e,url,name,icon){
       if(name !== "MyComputer" && name !== "MyMusic" && name !== "MyPictures" && name !== "MyDocuments"){
-        this.createWindow(REST_URL+"/APPS/"+name+"/",name,REST_URL+"/APPS/"+name+"/favicon.png");
+        this.createWindow(url,name,icon);
         this.setState({ showMenu: false });
       }else{
         if(name === "MyComputer"){

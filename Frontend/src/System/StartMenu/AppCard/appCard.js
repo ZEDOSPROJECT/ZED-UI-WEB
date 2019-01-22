@@ -6,9 +6,10 @@ import './appCard.css';
 class appCard extends React.Component{
     render(){
         const appIcon=REST_URL+"/APPS/"+this.props.appName+"/favicon.png";
+        const appName=this.props.appName;
         return(
-            <div onClick={(event) => (this.props.onClickApp(event,this.props.appName))}  className="appCard">
-                <img alt="" style={{ color: invert(window.systemColor0, true)}} className="appCardIcon" src={appIcon}  /><div className="appCardTitle">{this.props.appName} </div>
+            <div onClick={(event) => (this.props.onClickApp(event,REST_URL+"/APPS/"+appName+"/",appName,REST_URL+"/APPS/"+appName+"/favicon.png"))}  className="appCard">
+                <img alt="" style={{ color: invert(window.systemColor0, true)}} className="appCardIcon" src={appIcon}  /><div className="appCardTitle">{appName} </div>
             </div>
         )
     }  

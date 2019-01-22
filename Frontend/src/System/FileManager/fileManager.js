@@ -1,4 +1,5 @@
 import React from "react";
+import mime from 'mime-types';
 import ToolBar from "./ToolBar/toolBar";
 import Explorer from "./Explorer/explorer";
 import LeftBar from "./LeftBar/leftBar";
@@ -101,7 +102,15 @@ class FileManager extends React.Component {
         });
       }, 10);
     } else {
-      alert("Open File " + this.state.currentPath + data.name);
+      const file=this.state.currentPath + data.name;
+      const mimeType=mime.lookup(file);
+      if(mimeType.includes("image/")){
+        window.ZED_RUN={
+          Label: 'Picture View',
+          Url: REST_URL+'/APPS/Picture Visualizer/index.php?path='+file,
+          Icon: REST_URL+"/API/SYSTEM/ICONS/ModernXP (27).png"
+        } 
+      } 
     }
   }
 
