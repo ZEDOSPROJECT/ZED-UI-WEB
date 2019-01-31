@@ -15,7 +15,7 @@ class FileManager extends React.Component {
       currentPath: "/",
       listDir:[],
       history:["/"],
-      historyIndex: -2
+      historyIndex: 0
     };
 
     setTimeout(() => {
@@ -64,7 +64,7 @@ class FileManager extends React.Component {
   listFolder(path){
     this.setState({
       currentPath: path,
-      historyIndex: this.state.historyIndex+1
+      historyIndex: this.state.historyIndex
     });
     fetch(REST_URL+'/API/SYSTEM/IO/PATH/listPath.php?path='+path)
     .then(response => response.json())

@@ -7,7 +7,7 @@ class Explorer extends React.Component {
     super(props);
   }
   render() {
-    let indents 
+    let indents;
     if(this.props.listDir!=undefined){
       if(this.props.listDir.length!=0){
         indents=this.props.listDir.map(data => {
