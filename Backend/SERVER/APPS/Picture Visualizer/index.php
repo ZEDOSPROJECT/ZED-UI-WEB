@@ -11,7 +11,6 @@
     <table class="tb">
       <tr>
         <td class="imageCntainer">
-          <center>Loading picture . . .</center>
           <img id="theImage" class="image" src="" />
         </td>
       </tr>
@@ -42,19 +41,22 @@
           let index=0;
           JSONdata.data.forEach(element => {
             if(element.type=="file" && (element.name !== "." && (element.name !== ".."))){
-              const extension = element.name.split('.')[1].toLowerCase();
-
-              if(extension=="jpg" || extension=="jpeg" || extension=="png" || extension=="gif" ){
-                fileList.push(url+"/"+element.name);
-                if(getUrlVars()["path"].includes(element.name)){
-                  currentIndex=index;
-                  document.getElementById("theImage").src =
-                    "http://"+window.location.hostname +
-                    ":3031/API/SYSTEM/IO/FILE/read.php?path=" +
-                    fileList[index].split('=')[1];
-                } 
-                index++;
+              const nameArr=element.name.split('.');
+              if(nameArr.length>=2){
+                const extension = nameArr[1].toLowerCase();
+                if(extension=="jpg" || extension=="jpeg" || extension=="png" || extension=="gif" ){
+                  fileList.push(url+"/"+element.name);
+                  if(getUrlVars()["path"].includes(element.name)){
+                    currentIndex=index;
+                    document.getElementById("theImage").src =
+                      "http://"+window.location.hostname +
+                      ":3031/API/SYSTEM/IO/FILE/read.php?path=" +
+                      fileList[index].split('=')[1];
+                  } 
+                  index++;
+                }   
               } 
+              
             } 
           });
       });
