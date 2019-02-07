@@ -63,10 +63,10 @@ class Window extends React.Component{
             if(this.state.systemColor0 !== window.systemColor0){
                 this.setState({ systemColor0: window.systemColor0 });
             } 
-            if(this.state.gradient != window.gradientEffect){
+            if(this.state.gradient !== window.gradientEffect){
                 this.setState({ gradient: window.gradientEffect });
             } 
-            if(window.gradientEffect=="on"){
+            if(window.gradientEffect === "on"){
                 if(this.state.systemColor1 !== window.systemColor1){
                     this.setState({ systemColor1: window.systemColor1 });
                 } 
@@ -106,7 +106,7 @@ class Window extends React.Component{
 
     onTitleChange(e){
         const newTitle=e.target.title;
-        if(newTitle!=""){
+        if(newTitle !== ""){
             window.winTitle[this.state.uuid]=e.target.title; 
         } 
     } 
@@ -137,7 +137,7 @@ class Window extends React.Component{
         
         if(this.state.url !== "MyComputer" && this.state.url !== "MyMusic" && this.state.url !== "MyPictures" && this.state.url !== "MyDocuments"){
             if(!isElectron()){  
-                WindowContent=(<iframe onLoad={this.onTitleChange} title="" className="frame" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
+                WindowContent=(<iframe title={window.winTitle[this.state.uuid]}  onLoad={this.onTitleChange} className="frame" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
             } else {  
                 WindowContent=(<webview onLoad={this.onTitleChange} useragent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/70.0.3538.77 Chrome/70.0.3538.77 Safari/537.36" className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>);
             }
@@ -147,7 +147,7 @@ class Window extends React.Component{
 
         let finalStyle={};
 
-        if(window.gradientEffect!="on"){
+        if(window.gradientEffect !== "on"){
             finalStyle={ backgroundColor: this.state.systemColor0 };
         }else{
             finalStyle={ background: 'linear-gradient('+this.state.systemColor1+', '+this.state.systemColor0,} 
@@ -187,17 +187,19 @@ class Window extends React.Component{
                         } 
                     }}
                 >
-                <div className={this.state.myStyle}  initWidth={800} initHeight={400} onRequestClose={this.closeModal} style={finalStyle}>
-                    <table onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} class="titleBar" >
-                        <tr>
-                            <td class="appIcon"><img alt="" class="appIcon" src={this.props.icon}></img></td>
-                            <td class="appTitle" style={{ color: invert(window.systemColor1, true)}}>{window.winTitle[this.state.uuid]}</td>
-                            <td class="appControls">
-                                <img alt="" class="btnXControl" onClick={this.onClose}  src={CCLOSE} ></img>
-                                <img alt="" class="btnControl" onClick={this.onToggleWindow} src={( this.state.maximized ? CRESTORE : CMAXIMIZE )}></img>
-                                <img alt="" class="btnControl" onClick={this.onToggleMinimize} src={CMINIMIZE}></img>
-                            </td>
-                        </tr>
+                <div className={this.state.myStyle}  initwidth={800} initheight={400} style={finalStyle}>
+                    <table onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} className="titleBar" >
+                        <tbody>
+                            <tr>
+                                <td className="appIcon"><img alt="" className="appIcon" src={this.props.icon}></img></td>
+                                <td className="appTitle" style={{ color: invert(window.systemColor1, true)}}>{window.winTitle[this.state.uuid]}</td>
+                                <td className="appControls">
+                                    <img alt="" className="btnXControl" onClick={this.onClose}  src={CCLOSE} ></img>
+                                    <img alt="" className="btnControl" onClick={this.onToggleWindow} src={( this.state.maximized ? CRESTORE : CMAXIMIZE )}></img>
+                                    <img alt="" className="btnControl" onClick={this.onToggleMinimize} src={CMINIMIZE}></img>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                     <div className="body">
                         {WindowContent}  

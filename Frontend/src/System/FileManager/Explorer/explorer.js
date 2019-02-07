@@ -3,13 +3,10 @@ import Icon from "./Icon/icon";
 import "./explorer.css";
 
 class Explorer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     let indents;
-    if(this.props.listDir!=undefined){
-      if(this.props.listDir.length!=0){
+    if(this.props.listDir !== undefined){
+      if(this.props.listDir.length !== 0){
         indents=this.props.listDir.map(data => {
           return (
             <Icon

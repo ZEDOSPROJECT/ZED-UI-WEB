@@ -4,8 +4,6 @@ import './batteryStatus.css';
 import charging from './charging.png';
 import lowBattery from './lb.png';
 
-let batteryLevel=0;
-
 class BatteryStatus extends React.Component{
     constructor(props){
         super(props);
@@ -58,8 +56,8 @@ class BatteryStatus extends React.Component{
                                 <div className="batteryCharge" style={{ height: battery+'%'}}>
                                 </div>
                             </div>
-                            { this.state.charging ? (<img className="batteryCharging" src={charging} ></img>) : null } 
-                            { this.isLowerBattery(battery) ? (<img className="lowBattery" src={lowBattery} ></img>) : null } 
+                            { this.state.charging ? (<img alt="" className="batteryCharging" src={charging} ></img>) : null } 
+                            { this.isLowerBattery(battery) ? (<img alt="" className="lowBattery" src={lowBattery} ></img>) : null } 
                         </center>
                     </div>
                     } 

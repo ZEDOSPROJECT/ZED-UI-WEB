@@ -25,20 +25,22 @@ class Taskbar extends React.Component {
     render(){
         const iconList = this.props.openedWindows.map((element) =>{
             if(element!=null){
-                return(<TaskButton uuid={element.UUID} onToggleMinimize={this.props.onToggleMinimize} title={element.WINDOW.props.title} icon={element.WINDOW.props.icon} />);
+                return(<TaskButton  key={"taskbtn_"+element.UUID} uuid={element.UUID} onToggleMinimize={this.props.onToggleMinimize} title={element.WINDOW.props.title} icon={element.WINDOW.props.icon} />);
             } 
             return false;
         }
         );
         return(
             <table className="Taskbar" style={{ backgroundColor: this.convertHex(window.systemColor0,90) }}>
-                <tr style={{ border: 'none' }} >
-                    <td style={{ width: "32px" }}><div onClick={this.props.toggleMenu} className="StartMenu"></div></td>
-                    <td className="buttonsArea">{iconList}</td>
-                    <td><BatteryStatus /></td>
-                    <td><NetworkStatus /></td>
-                    <td><Clock /></td>
-                </tr>
+                <tbody>
+                    <tr style={{ border: 'none' }} >
+                        <td style={{ width: "32px" }}><div onClick={this.props.toggleMenu} className="StartMenu"></div></td>
+                        <td className="buttonsArea">{iconList}</td>
+                        <td><BatteryStatus /></td>
+                        <td><NetworkStatus /></td>
+                        <td><Clock /></td>
+                    </tr>
+                </tbody>
             </table>
         )
     }

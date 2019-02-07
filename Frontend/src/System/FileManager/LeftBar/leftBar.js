@@ -14,11 +14,11 @@ class LeftBar extends React.Component {
         return(<div className="leftBar">
             <Combo title="Tasks" open >Hello World</Combo>
             <Combo title="Other Places" open >
-                <div className="link" onClick={data => this.props.listFolder("/")}><img src={myComputer} className="miniIcon"></img>My Computer</div>
-                <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["music"])}><img src={myMusic} className="miniIcon"></img>My Music</div>
-                <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["picture"])}><img src={myPictures} className="miniIcon"></img>My Picture</div>
-                <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["videos"])}><img src={myVideos} className="miniIcon"></img>My Videos</div>
-                <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["documents"])}><img src={myDocuments} className="miniIcon"></img>My Documents</div>
+                <div className="link" onClick={data => this.props.listFolder("/")}><img alt="" src={myComputer} className="miniIcon"></img>My Computer</div>
+                <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["music"])}><img alt="" src={myMusic} className="miniIcon"></img>My Music</div>
+                <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["picture"])}><img alt="" src={myPictures} className="miniIcon"></img>My Picture</div>
+                <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["videos"])}><img alt="" src={myVideos} className="miniIcon"></img>My Videos</div>
+                <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["documents"])}><img alt="" src={myDocuments} className="miniIcon"></img>My Documents</div>
             </Combo>
             <Combo title="Details" >Hello World</Combo>
         </div>);

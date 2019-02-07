@@ -7,10 +7,6 @@ import "./icon.css";
 let theIcon;
 
 class Icon extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     if (this.props.data.type === "folder") {
       theIcon = Folder;
@@ -24,7 +20,7 @@ class Icon extends React.Component {
     return (
       <div
         style={
-          this.props.data.name == this.props.selected
+          this.props.data.name === this.props.selected
             ? { backgroundColor: "#3191ef", color: "white" }
             : null
         }
@@ -32,7 +28,7 @@ class Icon extends React.Component {
         onDoubleClick={data => this.props.onDBClick(this.props.data)}
         className="icon"
       >
-        <img src={theIcon} className="img" />
+        <img alt="" src={theIcon} className="img" />
         <div className="label">{this.props.data.name}</div>
       </div>
     );

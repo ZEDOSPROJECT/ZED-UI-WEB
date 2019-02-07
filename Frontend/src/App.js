@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Sound from 'react-sound';
 import { ToastContainer, toast } from 'react-toastify';
-import {Animated} from "react-animated-css";
 import 'react-toastify/dist/ReactToastify.css';
+import getUUID from 'uuid';
 import startUpSound from './Sounds/startup.mp3';
 import TaskBar from './System/Taskbar/taskbar';
 import Window from './System/Window/window';
@@ -26,10 +26,9 @@ class App extends Component {
     window.systemColor0="#06001E";
     window.systemColor1="#06001E";
     window.maxZIndex=1;
-    window.winTitle=new Array();
+    window.winTitle=[];
     window.ZED_RUN=null;
     this.createWindow = this.createWindow.bind(this);
-    this.uuidv4 = this.uuidv4.bind(this);
     this.onClose = this.onClose.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
     this.onClickApp = this.onClickApp.bind(this);
@@ -104,13 +103,6 @@ class App extends Component {
     });
   } 
 
-  uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    });
-  }
-
   onClose(uuid){
       let newData = this.state.openedWindows;
       let i=0;
@@ -144,7 +136,7 @@ class App extends Component {
   } 
 
   createWindow(url,title,icon){
-        const uuid = this.uuidv4();
+        const uuid = getUUID();
         var newList = this.state.openedWindows;
         newList.push({ 'UUID'  : uuid, 'WINDOW' : (
             <Window 
@@ -220,8 +212,10 @@ class App extends Component {
         if(item!=null){
             const visible=item.VISIBLE ? "winItem" : "winItem hidden";
             return(
-                <div className={visible} >{item['WINDOW']}</div>
+                <div key={"winkey_"+item.UUID}  className={visible} >{item['WINDOW']}</div>
             );
+        } else {
+            return null;
         } 
     })
     const wallpaperURL = this.state.setting_wallpaperURL;

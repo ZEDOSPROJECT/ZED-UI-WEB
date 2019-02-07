@@ -86,15 +86,15 @@ class StartMenu extends React.Component {
     render(){
         let lastLeter="0";
         const appList = this.state.Apps.map((app) =>{ 
-            if(app !== "." && app !== ".." && app != "Settings") {
+            if(app !== "." && app !== ".." && app !== "Settings") {
                 let newDiv=<div></div>;
-                if(this.state.searchBox.length == ""){
-                    if(app.charAt(0).toUpperCase()!=lastLeter.toUpperCase()) {
+                if(this.state.searchBox.length === ""){
+                    if(app.charAt(0).toUpperCase() !== lastLeter.toUpperCase()) {
                         lastLeter=app.charAt(0);
-                        newDiv=<div style={{ color: invert(window.systemColor0, true)}} className="startLeter"><b>{lastLeter}</b></div>
+                        newDiv=<div key={"stmenu_"+lastLeter} style={{ color: invert(window.systemColor0, true)}} className="startLeter"><b>{lastLeter}</b></div>
                     }
                 } 
-                return <div>{newDiv}<AppCard onClickApp={this.props.onClickApp} appName={app}  /></div>
+                return <div key={"stmenu_"+app}>{newDiv}<AppCard onClickApp={this.props.onClickApp} appName={app}  /></div>
             }else{
                 return null;
             } 
@@ -105,7 +105,7 @@ class StartMenu extends React.Component {
                 <div className={visible} style={{ zIndex: window.maxZIndex+10,backgroundColor: this.convertHex(window.systemColor0,60) }}>
                     <div className="topMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,95) }}>
                         <div>
-                            <img className="userPicture" height="32" src={UserIcon}></img>
+                            <img alt="" className="userPicture" height="32" src={UserIcon}></img>
                             <div style={{ color: invert(window.systemColor0, true)}} className="userName"><b>Administrator</b></div>
                         </div>
                     </div>
@@ -114,33 +114,33 @@ class StartMenu extends React.Component {
                             {appList} 
                         </div>
                         <div className="systemMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,35), color: invert(window.systemColor0, true)}}>
-                            <div onClick={event => this.props.onClickApp(event,"","MyDocuments",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
-                                <img src={myDocuments} ></img>
+                            <div onClick={event => this.props.onClickApp(event,"","MyDocuments",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
+                                <img alt="" src={myDocuments} ></img>
                                 <div>My Documents</div>
                             </div>
-                            <div onClick={event => this.props.onClickApp(event,"","MyPictures",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
-                                <img src={myPictures} ></img>
+                            <div onClick={event => this.props.onClickApp(event,"","MyPictures",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
+                                <img alt="" src={myPictures} ></img>
                                 <div>My Pictures</div>
                             </div>
-                            <div onClick={event => this.props.onClickApp(event,"","MyMusic",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
-                                <img src={myMusic} ></img>
+                            <div onClick={event => this.props.onClickApp(event,"","MyMusic",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
+                                <img alt="" src={myMusic} ></img>
                                 <div>My Music</div>
                             </div>
-                            <div onClick={event => this.props.onClickApp(event,"","MyComputer",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
-                                <img src={myComputer} ></img>
+                            <div onClick={event => this.props.onClickApp(event,"","MyComputer",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
+                                <img alt="" src={myComputer} ></img>
                                 <div>My Computer</div>
                             </div>
                             <hr></hr>
-                            <div onClick={event => this.props.onClickApp(event,REST_URL+"/APPS/Settings/index.php","Settings",REST_URL+"/Icons/ModernXP (41).png")} style={{ color: invert(window.systemColor0, true)}} class="systemItem">
-                                <img src={controlPanel} ></img>
+                            <div onClick={event => this.props.onClickApp(event,REST_URL+"/APPS/Settings/index.php","Settings",REST_URL+"/Icons/ModernXP (41).png")} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
+                                <img alt="" src={controlPanel} ></img>
                                 <div>Control Panel</div>
                             </div>
                         </div>
                     </div>
                     <div className="bottomMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,95) }}>
                         <input id="searchBox" autoFocus onChange={this.handleSearchChange} placeholder="Type to search . . ." type="text"></input>
-                        <img className="logoff" src={logoff} width="32" height="32" ></img>
-                        <img className="shutdown" src={shutdown} width="32" height="32" ></img>
+                        <img alt="" className="logoff" src={logoff} width="32" height="32" ></img>
+                        <img alt="" className="shutdown" src={shutdown} width="32" height="32" ></img>
                     </div>
                 </div>
             </div>
