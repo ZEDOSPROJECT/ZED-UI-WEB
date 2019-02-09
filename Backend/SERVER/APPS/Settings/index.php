@@ -13,41 +13,6 @@
 				save();
 			} 
 
-			function componentToHex(c) {
-				var hex = c.toString(16);
-				return hex.length == 1 ? "0" + hex : hex;
-			}
-			
-			function rgbToHex(r, g, b) {
-				return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-			}
-
-			function getGradient(){
-				var img = new Image;
-				img.onload = function(){
-					var myCanvas = document.createElement('canvas');
-					myCanvas.width = img.width;
-					myCanvas.height = img.height;
-					var ctx = myCanvas.getContext('2d');
-					ctx.drawImage(img,0,0,img.width,img.height); // Or at whatever offset you like
-					const colorTOP=myCanvas.getContext('2d').getImageData(img.width/2, 20, 1, 1).data;
-					const colorBOTTOM=myCanvas.getContext('2d').getImageData(img.width/2,img.height-40, 1, 1).data;
-					const finalColorTOP=rgbToHex(colorTOP[0],colorTOP[1],colorTOP[2]);
-					const finalColorBOTTOM=rgbToHex(colorBOTTOM[0],colorBOTTOM[1],colorBOTTOM[2]);
-					if(document.getElementById("setting_autoGradient").checked && document.getElementById("setting_systemColor1").value !== finalColorTOP && document.getElementById("setting_systemColor0").value !== finalColorBOTTOM){
-						document.getElementById("setting_systemColor1").value = finalColorTOP;
-						document.getElementById("setting_systemColor0").value = finalColorBOTTOM;
-						save();
-					} 
-				};
-				img.src = "../../Wallpapers/"+document.getElementById("setting_wallpaperURL").value;;
-			} 
-
-			setInterval(() => {
-				if(document.getElementById("setting_autoGradient").checked && document.getElementById("setting_gradientEffect").checked){
-					getGradient();
-				} 
-			}, 1200);
 		</script>
 	</HEAD>
 	<BODY>
@@ -59,6 +24,7 @@
 				<?php
 					foreach (scandir($_SERVER['DOCUMENT_ROOT'].'/Wallpapers') as $value) {
 						if($value!="." && $value!=".."){
+						
 							echo '<img onClick="ChangeWallpaper(\''.$value.'\')" width="120" height="80" src="../../Wallpapers/'.$value.'"></img>';
 						} 
 					}

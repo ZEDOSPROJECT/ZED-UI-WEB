@@ -28,6 +28,9 @@ class App extends Component {
     window.maxZIndex=1;
     window.winTitle=[];
     window.ZED_RUN=null;
+    window.autoGradient = false;
+    window.gradientEffect = false;
+    this.getGradient = this.getGradient.bind(this);
     this.createWindow = this.createWindow.bind(this);
     this.onClose = this.onClose.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
@@ -35,6 +38,8 @@ class App extends Component {
     this.onToggleMinimize = this.onToggleMinimize.bind(this);
     this.getBingPicture = this.getBingPicture.bind(this);
     this.loadUserSettings = this.loadUserSettings.bind(this);
+    this.componentToHex = this.componentToHex.bind(this);
+    this.rgbToHex = this.rgbToHex.bind(this);
     this.clean = this.clean.bind(this);
     this.handleSongFinishedPlaying = this.handleSongFinishedPlaying.bind(this);
     setInterval(() => {
@@ -44,6 +49,12 @@ class App extends Component {
             const AppMetadata=Object.assign({}, window.ZED_RUN);
             this.onClickApp(null,AppMetadata.Url,AppMetadata.Label,AppMetadata.Icon);
             window.ZED_RUN=null;
+        } 
+        if(window.setting_bingWallpaper){
+            this.getBingPicture();
+        } 
+        if(window.autoGradient === "on" && window.gradientEffect === "on"){
+            this.getGradient();
         } 
     },1000);
     setTimeout(() => {
@@ -60,6 +71,35 @@ class App extends Component {
     },1000 );
   } 
 
+    componentToHex(c) {
+        var hex = c.toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+    }
+
+    rgbToHex(r, g, b) {
+        return "#" + this.componentToHex(r) + this.componentToHex(g) + this.componentToHex(b);
+    }
+
+  getGradient(){
+        var img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = (() => {
+            var myCanvas = document.createElement('canvas');
+            myCanvas.width = img.width;
+            myCanvas.height = img.height;
+            var ctx = myCanvas.getContext('2d');
+            ctx.drawImage(img,0,0,img.width,img.height); // Or at whatever offset you like
+            const colorTOP=myCanvas.getContext('2d').getImageData(img.width/2, 20, 1, 1).data;
+            const colorBOTTOM=myCanvas.getContext('2d').getImageData(img.width/2,img.height-40, 1, 1).data;
+            const finalColorTOP=this.rgbToHex(colorTOP[0],colorTOP[1],colorTOP[2]);
+            const finalColorBOTTOM=this.rgbToHex(colorBOTTOM[0],colorBOTTOM[1],colorBOTTOM[2]); 
+            if(window.autoGradient && window.setting_systemColor1 !== finalColorTOP && window.setting_systemColor0 !== finalColorBOTTOM){
+                window.systemColor1 = finalColorTOP;
+                window.systemColor0 = finalColorBOTTOM;
+            } 
+        });
+        img.src = REST_URL+'/API/SYSTEM/SETTINGS/USER/SETTING/getCurrentBackground.php?file='+this.state.setting_wallpaperURL;
+    } 
 
   clean(){
     let newData = this.state.openedWindows;
@@ -88,17 +128,17 @@ class App extends Component {
         this.setState({
             setting_resolution: json.setting_resolution
         });
-        window.systemColor0=json.setting_systemColor0;
-        window.systemColor1=json.setting_systemColor1;
+        if(!json.setting_autoGradient){
+            window.systemColor0=json.setting_systemColor0;
+            window.systemColor1=json.setting_systemColor1;
+        } 
         window.gradientEffect=json.setting_gradientEffect;
-        if(json.setting_bingWallpaper){
-            this.getBingPicture();
-        } else {
-            if(json.setting_wallpaperURL !== this.state.setting_wallpaperURL){
-                this.setState({
-                    setting_wallpaperURL: REST_URL+'/Wallpapers/'+json.setting_wallpaperURL
-                });
-            } 
+        window.autoGradient=json.setting_autoGradient;
+        window.setting_bingWallpaper=json.setting_bingWallpaper;
+        if(json.setting_wallpaperURL !== this.state.setting_wallpaperURL){
+            this.setState({
+                setting_wallpaperURL: json.setting_wallpaperURL
+            });
         } 
     });
   } 
@@ -195,9 +235,7 @@ class App extends Component {
     .then(response => response.json())
     .then(json => {
         let url="https://www.bing.com/"+json.images[0].url;
-        this.setState({
-            setting_wallpaperURL: url
-        });
+        fetch(REST_URL+'/API//SYSTEM/SETTINGS/USER/SETTING/getOnlineWallpaper.php?url='+url);
     });
   } 
 
@@ -218,10 +256,10 @@ class App extends Component {
             return null;
         } 
     })
-    const wallpaperURL = this.state.setting_wallpaperURL;
+    const wallpaperURL = REST_URL+'/Wallpapers/'+this.state.setting_wallpaperURL;
     const wallpaperColor = this.state.setting_wallpaperColor;
     return (
-      <div className="App" style={ { backgroundImage: 'url(' + wallpaperURL + ')', backgroundColor: wallpaperColor, zoom: this.state.setting_resolution  } } >
+      <div className="App" style={ { backgroundImage: 'url('+ wallpaperURL + ')', backgroundColor: wallpaperColor, zoom: this.state.setting_resolution  } } >
         <div className="windowArea">
             {windowList}
         </div>
