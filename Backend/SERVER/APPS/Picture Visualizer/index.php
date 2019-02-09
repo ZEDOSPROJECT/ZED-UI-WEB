@@ -20,7 +20,7 @@
             <img class="button" onclick="goBack()" src="icons/back.png" />
             <img class="button" onclick="goNext()" src="icons/next.png" />
             <img class="button" src="icons/print.png" />
-            <img class="button" src="icons/setAsWallpaper.png" />
+            <img class="button" onclick="setAsWallpaper()" src="icons/setAsWallpaper.png" />
           </div>
         </td>
       </tr>
@@ -31,7 +31,8 @@
       let currentIndex=0;
       
       const Http = new XMLHttpRequest();
-      let url="http://"+window.location.hostname + ":3031/API/SYSTEM/IO/PATH/listPath.php?path=" + getUrlVars()["path"];
+      const localFile = getUrlVars()["path"];
+      let url = "http://"+window.location.hostname + ":3031/API/SYSTEM/IO/PATH/listPath.php?path=" + localFile;
       url = url.substr(0, url.lastIndexOf("/"));
 
       fetch(url)
@@ -46,7 +47,7 @@
                 const extension = nameArr[1].toLowerCase();
                 if(extension=="jpg" || extension=="jpeg" || extension=="png" || extension=="gif" ){
                   fileList.push(url+"/"+element.name);
-                  if(getUrlVars()["path"].includes(element.name)){
+                  if(localFile.includes(element.name)){
                     currentIndex=index;
                     document.getElementById("theImage").src =
                       "http://"+window.location.hostname +
@@ -60,6 +61,12 @@
             } 
           });
       });
+
+      function setAsWallpaper(){
+        fetch("http://"+window.location.hostname +
+          ":3031/API/SYSTEM/SETTINGS/USER/SETTING/setWallpaper.php?path=" +
+          localFile);
+      } 
 
       function goNext(){
         if(currentIndex==fileList.length-1){
