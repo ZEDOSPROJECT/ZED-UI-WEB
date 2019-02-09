@@ -63,9 +63,10 @@
       });
 
       function setAsWallpaper(){
+        arrayPath=document.getElementById("theImage").src.split("/");
         fetch("http://"+window.location.hostname +
           ":3031/API/SYSTEM/SETTINGS/USER/SETTING/setWallpaper.php?path=" +
-          localFile);
+          arrayPath[arrayPath.length-1]);
       } 
 
       function goNext(){
