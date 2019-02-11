@@ -50,17 +50,11 @@ class App extends Component {
             this.onClickApp(null,AppMetadata.Url,AppMetadata.Label,AppMetadata.Icon);
             window.ZED_RUN=null;
         } 
-        if(window.setting_bingWallpaper){
-            this.getBingPicture();
-        } 
-        if(window.autoGradient === "on" && window.gradientEffect === "on"){
-            this.getGradient();
-        } 
-    },1000);
+    },2000);
     setTimeout(() => {
         console.info = data => toast.info(data);
         console.error = data => toast.error(data);
-        console.warn = data => toast.warn(data);
+        console.warn = data => toast.warn(data); 
         fetch(REST_URL+'/API/SYSTEM/SETTINGS/USER/getPaths.php')
         .then(response => response.json())
         .then(json => {
@@ -68,7 +62,7 @@ class App extends Component {
                 userPaths: json
             });
         });
-    },1000 );
+    },50 );
   } 
 
     componentToHex(c) {
@@ -134,11 +128,19 @@ class App extends Component {
         } 
         window.gradientEffect=json.setting_gradientEffect;
         window.autoGradient=json.setting_autoGradient;
-        window.setting_bingWallpaper=json.setting_bingWallpaper;
+        if(window.setting_bingWallpaper != json.setting_bingWallpaper){
+            window.setting_bingWallpaper=json.setting_bingWallpaper;
+            if(window.setting_bingWallpaper){
+                this.getBingPicture();
+            } 
+        } 
         if(json.setting_wallpaperURL !== this.state.setting_wallpaperURL){
             this.setState({
                 setting_wallpaperURL: json.setting_wallpaperURL
             });
+            if(window.autoGradient === "on" && window.gradientEffect === "on"){
+                this.getGradient();
+            } 
         } 
     });
   } 

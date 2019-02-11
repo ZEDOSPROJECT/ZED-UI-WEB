@@ -15,7 +15,7 @@ class Clock extends React.Component {
     }
 
     componentDidMount() {
-        setInterval(this.update, 1000)       
+        setInterval(this.update, 5000);  
     }
 
     update = () => { 
