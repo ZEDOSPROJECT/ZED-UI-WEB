@@ -5,6 +5,11 @@ import go from "./go.png";
 import "./toolBar.css";
 
 class ToolBar extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextProps !== this.props || nextState !== this.state ){
+        return true;
+    }
+  }
   render() {
     return (
       <div className="explorer_topBar">

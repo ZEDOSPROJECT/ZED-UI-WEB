@@ -74,6 +74,12 @@ class Window extends React.Component{
         },10);
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if(nextProps !== this.props || nextState !== this.state ){
+            return true;
+        }
+    }
+
     handleClickOutside() {
         this.setState({ active: false });
     }

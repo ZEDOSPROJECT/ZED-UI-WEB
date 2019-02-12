@@ -3,6 +3,12 @@ import Icon from "./Icon/icon";
 import "./explorer.css";
 
 class Explorer extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextProps !== this.props || nextState !== this.state ){
+        return true;
+    }
+  }
+
   render() {
     let indents;
     if(this.props.listDir !== undefined){

@@ -128,7 +128,7 @@ class App extends Component {
         } 
         window.gradientEffect=json.setting_gradientEffect;
         window.autoGradient=json.setting_autoGradient;
-        if(window.setting_bingWallpaper != json.setting_bingWallpaper){
+        if(window.setting_bingWallpaper !== json.setting_bingWallpaper){
             window.setting_bingWallpaper=json.setting_bingWallpaper;
             if(window.setting_bingWallpaper){
                 this.getBingPicture();

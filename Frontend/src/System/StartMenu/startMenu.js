@@ -44,6 +44,12 @@ class StartMenu extends React.Component {
         },100);
     } 
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if(nextProps !== this.props || nextState !== this.state ){
+            return true;
+        }
+    }
+
     refreshApps(query){
         fetch(REST_URL+'/API/APPS/getAppsList.php?query='+query)
         .then(response => response.json())

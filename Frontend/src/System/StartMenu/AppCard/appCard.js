@@ -4,6 +4,10 @@ import { REST_URL } from './../../../REST_URL';
 import './appCard.css';
 
 class appCard extends React.Component{
+    shouldComponentUpdate(nextProps, nextState) {
+        return false;
+    }
+
     render(){
         const appIcon=REST_URL+"/APPS/"+this.props.appName+"/favicon.png";
         const appName=this.props.appName;

@@ -6,6 +6,13 @@ import C1 from "./CONNECTED_1.png";
 
 
 class NetworkStatus extends React.Component {
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextProps !== this.props || nextState !== this.state ){
+        return true;
+    }
+  } 
+
   render() {
     return (
       <div className="NetworkStatus">

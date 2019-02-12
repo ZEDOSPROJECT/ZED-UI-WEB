@@ -30,6 +30,12 @@ class Clock extends React.Component {
         })  
     } 
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if(nextProps !== this.props || nextState !== this.state ){
+            return true;
+        }
+    }
+
     render(){
 		const h = this.state.time.getHours()
         const mn = this.state.time.getMinutes()

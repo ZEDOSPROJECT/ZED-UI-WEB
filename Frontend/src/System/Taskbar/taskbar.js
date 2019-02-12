@@ -22,6 +22,12 @@ class Taskbar extends React.Component {
         return result;
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if(nextProps !== this.props || nextState !== this.state ){
+            return true;
+        }
+    }
+
     render(){
         const iconList = this.props.openedWindows.map((element) =>{
             if(element!=null){

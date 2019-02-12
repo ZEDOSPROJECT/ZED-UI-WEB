@@ -22,6 +22,12 @@ class BatteryStatus extends React.Component{
         }); 
     } 
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if(nextProps !== this.props || nextState !== this.state ){
+            return true;
+        }
+    }
+
     isLowerBattery(lvl){
         if(!this.state.charging){
             if(lvl<16){
