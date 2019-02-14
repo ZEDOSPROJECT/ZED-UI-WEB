@@ -94,10 +94,10 @@ class StartMenu extends React.Component {
         const appList = this.state.Apps.map((app) =>{ 
             if(app !== "." && app !== ".." && app !== "Settings") {
                 let newDiv=<div></div>;
-                if(this.state.searchBox.length === ""){
+                if(this.state.searchBox === ""){
                     if(app.charAt(0).toUpperCase() !== lastLeter.toUpperCase()) {
                         lastLeter=app.charAt(0);
-                        newDiv=<div key={"stmenu_"+lastLeter} style={{ color: invert(window.systemColor0, true)}} className="startLeter"><b>{lastLeter}</b></div>
+                        newDiv=<div key={"stmenu_"+app} style={{ color: invert(window.systemColor0, true)}} className="startLeter"><b>{lastLeter}</b></div>
                     }
                 } 
                 return <div key={"stmenu_"+app}>{newDiv}<AppCard onClickApp={this.props.onClickApp} appName={app}  /></div>
