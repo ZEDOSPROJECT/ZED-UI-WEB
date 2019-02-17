@@ -7,6 +7,7 @@ import startUpSound from './Sounds/startup.mp3';
 import TaskBar from './System/Taskbar/taskbar';
 import Window from './System/Window/window';
 import StartMenu from './System/StartMenu/startMenu';
+import BlueLightFilter from './System/BlueFilter/blueFilter';
 import { REST_URL } from './REST_URL';
 import './App.css';
 import { setTimeout } from 'timers';
@@ -282,6 +283,7 @@ class App extends Component {
             visible={this.state.showMenu}
         />
         <ToastContainer />
+        <BlueLightFilter />
       </div>
     );
   }
