@@ -18,6 +18,7 @@ class App extends Component {
     this.state = {
         openedWindows:[],
         showMenu: false,
+        setting_blueFilter: false,
         setting_wallpaperURL: '',
         setting_wallpaperColor: '#004e98',
         setting_resolution: '100%',
@@ -120,6 +121,9 @@ class App extends Component {
                 setting_wallpaperColor: json.setting_wallpaperColor
             });
         } 
+        this.setState({
+            setting_blueFilter: json.setting_blueFilter
+        });
         this.setState({
             setting_resolution: json.setting_resolution
         });
@@ -283,7 +287,7 @@ class App extends Component {
             visible={this.state.showMenu}
         />
         <ToastContainer />
-        <BlueLightFilter />
+       { this.state.setting_blueFilter ? (<BlueLightFilter />) : null }
       </div>
     );
   }

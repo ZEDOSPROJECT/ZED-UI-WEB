@@ -36,8 +36,12 @@
 					$bing="";
 					$gradient="";
 					$autoGradient="";
+					$blueFilter="";
 					if($json_a["setting_bingWallpaper"]){
 						$bing="checked";
+					}
+					if($json_a["setting_blueFilter"]){
+						$blueFilter="checked";
 					}
 					if($json_a["setting_gradientEffect"]){
 						$gradient="checked";
@@ -52,6 +56,7 @@
 					echo '<p>System color bottom: <input onChange="save()" type="color" name="setting_systemColor0" id="setting_systemColor0" value="'.$json_a["setting_systemColor0"].'"></p>';
 					echo '<p>Use Gradient Effect: <input onChange="save()" '.$gradient.' type="checkbox" name="setting_gradientEffect" id="setting_gradientEffect"/></p>';
 					echo '<p>Use Gradient Effect by background: <input onChange="save()" '.$autoGradient.' type="checkbox" name="setting_autoGradient" id="setting_autoGradient"/></p>';
+					echo '<p>Blue Filter: <input onChange="save()" '.$blueFilter.' type="checkbox" name="setting_blueFilter" id="setting_blueFilter"/></p>';
 				?>
 			<br>
 			<hr>
