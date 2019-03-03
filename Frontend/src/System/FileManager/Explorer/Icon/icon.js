@@ -2,6 +2,8 @@ import React from "react";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Folder from "./folder.png";
 import File from "./file.png";
+import AudioFile from "./audio.png";
+import VideoFile from './video.png';
 import { REST_URL } from './../../../../REST_URL';
 import "./icon.css";
 
@@ -27,6 +29,10 @@ class Icon extends React.Component {
     } else {
       if(this.props.data.name.toLowerCase().includes(".jpg") || this.props.data.name.toLowerCase().includes(".gif") || this.props.data.name.toLowerCase().includes(".png")){
         theIcon=REST_URL+'/API/SYSTEM/IO/FILE/read.php?path='+this.props.currentPath+this.props.data.name;
+      }else if(this.props.data.name.toLowerCase().includes(".ogg") || this.props.data.name.toLowerCase().includes(".mp3") || this.props.data.name.toLowerCase().includes(".wav")){
+        theIcon = AudioFile;
+      }else if(this.props.data.name.toLowerCase().includes(".ogv") || this.props.data.name.toLowerCase().includes(".avi") || this.props.data.name.toLowerCase().includes(".mp4")){
+        theIcon = VideoFile;
       }else{
         theIcon = File;
       } 

@@ -1,0 +1,10 @@
+body {
+  background-color: black;
+  color: white;
+  margin:0;
+}
+
+video {
+  height: 100%;
+  width: 100%;
+}

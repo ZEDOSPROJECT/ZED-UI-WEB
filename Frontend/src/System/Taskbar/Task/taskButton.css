@@ -24,4 +24,8 @@
 .taskTitle {
     float: left;
     margin-top: 1%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 116px;
 } 
