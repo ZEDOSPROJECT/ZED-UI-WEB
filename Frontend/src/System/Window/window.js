@@ -36,6 +36,7 @@ class Window extends React.Component{
             this.setState({myStyle: "window"});
         }, 40);
 
+        this.convertHex = this.convertHex.bind(this);
         this.openModal = this.openModal.bind(this);
         this.onClose = this.onClose.bind(this);
         this.sendToFront = this.sendToFront.bind(this);
@@ -72,6 +73,16 @@ class Window extends React.Component{
                 } 
             }
         },10);
+    }
+
+    convertHex(hex,opacity){
+        hex = hex.replace('#','');
+        const r = parseInt(hex.substring(0,2), 16);
+        const g = parseInt(hex.substring(2,4), 16);
+        const b = parseInt(hex.substring(4,6), 16);
+    
+        const result = 'rgba('+r+','+g+','+b+','+opacity/100+')';
+        return result;
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -154,9 +165,9 @@ class Window extends React.Component{
         let finalStyle={};
 
         if(window.gradientEffect !== "on"){
-            finalStyle={ backgroundColor: this.state.systemColor0 };
+            finalStyle={ backgroundColor: this.convertHex(this.state.systemColor0,80) };
         }else{
-            finalStyle={ background: 'linear-gradient('+this.state.systemColor1+', '+this.state.systemColor0,} 
+            finalStyle={ background: 'linear-gradient('+this.convertHex(this.state.systemColor1,80)+', '+this.convertHex(this.state.systemColor0,80)} 
         } 
         return(
             <div>
