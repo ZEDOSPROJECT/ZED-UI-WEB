@@ -102,8 +102,7 @@
     background-color:rgba(255, 255, 255, 0.171);
     margin: 0;
     padding: 0;
-    border-radius: 50%;
-    margin-left: 2px;
+    margin-right: 5px;
 	}
 	.btnControl:hover{
 		background-color:#00005f;
@@ -113,10 +112,9 @@
 		height:18px;
 		float:right;
     background-color:rgba(255, 255, 255, 0.171);
-    border-radius: 50%;
     margin: 0;
     padding: 0;
-    margin-left: 2px;
+    margin-right: 5px;
 	}
 	.btnXControl:hover{
 		background-color:red;

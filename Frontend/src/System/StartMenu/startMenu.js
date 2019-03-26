@@ -25,7 +25,7 @@ class StartMenu extends React.Component {
             searchBox: '',
             visible: false
         }
-        
+ 
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.convertHex = this.convertHex.bind(this);
         this.refreshApps = this.refreshApps.bind(this);
@@ -137,7 +137,7 @@ class StartMenu extends React.Component {
                                 <div>My Computer</div>
                             </div>
                             <hr></hr>
-                            <div onClick={event => this.props.onClickApp(event,REST_URL+"/APPS/Settings/index.php","Settings",REST_URL+"/Icons/ModernXP (41).png")} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
+                            <div onClick={event => this.props.onClickApp(event,REST_URL+"/APPS/Settings/index.php","Settings",REST_URL+"/API/SYSTEM/ICONS/ModernXP (41).png")} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
                                 <img alt="" src={controlPanel} ></img>
                                 <div>Control Panel</div>
                             </div>
