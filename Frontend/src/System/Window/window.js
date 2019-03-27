@@ -14,7 +14,6 @@ import './window.css';
 class Window extends React.Component{
     constructor(props) {
         super(props);
-
         this.state = {
             url: this.props.url,
             modalIsOpen: true,
@@ -24,8 +23,8 @@ class Window extends React.Component{
             maximized: false,
             x: 15,
             y: 15,
-            width: 640,
-            height: 480,
+            width: this.props.windowSize.Width,
+            height: this.props.windowSize.Height,
             active: true,
             systemColor0: window.systemColor0,
             systemColor1: window.systemColor1,
@@ -149,9 +148,7 @@ class Window extends React.Component{
     } 
 
     render(){
-
         let WindowContent;
-        
         if(this.state.url !== "MyComputer" && this.state.url !== "MyMusic" && this.state.url !== "MyPictures" && this.state.url !== "MyDocuments"){
             if(!isElectron()){  
                 WindowContent=(<iframe title={window.winTitle[this.state.uuid]}  onLoad={this.onTitleChange} className="frame" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);

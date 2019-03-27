@@ -8,10 +8,10 @@
     } 
     foreach (scandir($_SERVER["DOCUMENT_ROOT"]."/APPS") as $app) {
         if($app != ".." and $app != "."){
-            $content=file_get_contents($_SERVER["DOCUMENT_ROOT"]."/APPS/".$app."/PLATFORMS");
+            $content=file_get_contents($_SERVER["DOCUMENT_ROOT"]."/APPS/".$app."/manifest.json");
             if($content !== "INVISIBLE"){
                 $FIANL_OBJ['Name']=$app;
-                $FIANL_OBJ['Platforms']=$content;
+                $FIANL_OBJ['manifest']=json_decode($content,true);
                 if($query == ""){
                     array_push($FINAL_LIST,$FIANL_OBJ);
                 }else{

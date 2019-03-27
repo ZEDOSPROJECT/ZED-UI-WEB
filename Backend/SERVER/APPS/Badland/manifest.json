@@ -1,0 +1,10 @@
+{
+    "Name":"Badland",
+    "Version":"1.0.0",
+    "Website":"https://www.gamepix.com/",
+    "Platforms":"MOBILE|DESKTOP|WEB",
+    "Window":{
+        "Width":640,
+        "Height":480
+    }
+}

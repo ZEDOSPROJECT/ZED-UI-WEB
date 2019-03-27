@@ -1,0 +1,10 @@
+{
+    "Name":"Calculator",
+    "Version":"1.0.0",
+    "Website":"",
+    "Platforms":"MOBILE|DESKTOP|WEB",
+    "Window":{
+        "Width":370,
+        "Height":590
+    }
+}

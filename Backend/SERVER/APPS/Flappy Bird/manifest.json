@@ -1,0 +1,10 @@
+{
+    "Name":"Flappy Bird",
+    "Version":"1.0.0",
+    "Website":"http://nebezb.com/",
+    "Platforms":"MOBILE|DESKTOP|WEB",
+    "Window":{
+        "Width":640,
+        "Height":480
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "Name":"Photoshop",
+    "Version":"1.0.0",
+    "Website":"",
+    "Platforms":"MOBILE|DESKTOP|WEB",
+    "Window":{
+        "Width":640,
+        "Height":480
+    }
+}

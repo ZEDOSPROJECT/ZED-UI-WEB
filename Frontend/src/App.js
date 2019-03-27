@@ -182,7 +182,7 @@ class App extends Component {
     this.setState({ openedWindows: newData });
   } 
 
-  createWindow(url,title,icon){
+  createWindow(url,title,icon,windowSize){
         const uuid = getUUID();
         var newList = this.state.openedWindows;
         newList.push({ 'UUID'  : uuid, 'WINDOW' : (
@@ -190,6 +190,7 @@ class App extends Component {
                 userDirs={this.state.userPaths}  
                 url={url}  
                 icon={icon}
+                windowSize={windowSize}
                 uuid={uuid}   
                 onClose={this.onClose}   
                 onToggleMinimize={this.onToggleMinimize} 
@@ -199,29 +200,34 @@ class App extends Component {
         this.setState({ openedWindows: newList });
     }  
 
-  onClickApp(e,url,name,icon){
+  onClickApp(e,url,name,icon,windowSize){
+      if(!windowSize){
+          windowSize={};
+          windowSize['Width']=640;
+          windowSize['Height']=480;
+     }
       if(name !== "MyComputer" && name !== "MyMusic" && name !== "MyPictures" && name !== "MyDocuments"){
-        this.createWindow(url,name,icon);
+        this.createWindow(url,name,icon,windowSize);
         this.setState({ showMenu: false });
       }else{
         if(name === "MyComputer"){
             window.explorer_open="/";
-            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png");
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize);
             this.setState({ showMenu: false });
         }
         if(name === "MyMusic"){
             window.explorer_open=this.state.userPaths['music'];
-            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png");
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize);
             this.setState({ showMenu: false });
         }
         if(name === "MyPictures"){
             window.explorer_open=this.state.userPaths['picture'];
-            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png");
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize);
             this.setState({ showMenu: false });
         }
         if(name === "MyDocuments"){
             window.explorer_open=this.state.userPaths['documents'];
-            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png");
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize);
             this.setState({ showMenu: false });
         }
       } 

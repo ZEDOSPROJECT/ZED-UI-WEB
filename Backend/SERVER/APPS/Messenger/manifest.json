@@ -1,0 +1,10 @@
+{
+    "Name":"Messenger",
+    "Version":"1.0.0",
+    "Website":"https://facebook.com/",
+    "Platforms":"MOBILE|DESKTOP",
+    "Window":{
+        "Width":640,
+        "Height":480
+    }
+}

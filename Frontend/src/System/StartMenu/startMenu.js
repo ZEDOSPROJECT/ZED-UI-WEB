@@ -95,11 +95,11 @@ class StartMenu extends React.Component {
         const appList = this.state.Apps.map((app) =>{ 
             let show=true;
             if(isElectron()){
-                if(!app.Platforms.includes("DESKTOP")){
+                if(!app.manifest.Platforms.includes("DESKTOP")){
                     show=false;
                 }
             }else{
-                if(!app.Platforms.includes("WEB")){
+                if(!app.manifest.Platforms.includes("WEB")){
                     show=false;
                 }
             }
@@ -111,7 +111,7 @@ class StartMenu extends React.Component {
                         newDiv=<div key={"stmenu_"+app.Name} style={{ color: invert(window.systemColor0, true)}} className="startLeter"><b>{lastLeter}</b></div>
                     }
                 } 
-                return <div key={"stmenu_"+app.Name}>{newDiv}<AppCard onClickApp={this.props.onClickApp} appName={app.Name}  /></div>
+                return <div key={"stmenu_"+app.Name}>{newDiv}<AppCard windowSize={app.manifest.Window} onClickApp={this.props.onClickApp} appName={app.Name}  /></div>
             }else{
                 return null;
             } 
