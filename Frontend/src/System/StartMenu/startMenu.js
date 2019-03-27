@@ -1,5 +1,6 @@
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
+import isElectron from 'is-electron';
 import invert from 'invert-color';
 // ICONS
 import UserIcon from '../../Icons/User.jpg';
@@ -92,15 +93,25 @@ class StartMenu extends React.Component {
     render(){
         let lastLeter="0";
         const appList = this.state.Apps.map((app) =>{ 
-            if(app !== "." && app !== ".." && app !== "Settings") {
+            let show=true;
+            if(isElectron()){
+                if(!app.Platforms.includes("DESKTOP")){
+                    show=false;
+                }
+            }else{
+                if(!app.Platforms.includes("WEB")){
+                    show=false;
+                }
+            }
+            if(app.Name !== "Settings" && show) {
                 let newDiv=<div></div>;
                 if(this.state.searchBox === ""){
-                    if(app.charAt(0).toUpperCase() !== lastLeter.toUpperCase()) {
-                        lastLeter=app.charAt(0);
-                        newDiv=<div key={"stmenu_"+app} style={{ color: invert(window.systemColor0, true)}} className="startLeter"><b>{lastLeter}</b></div>
+                    if(app.Name.charAt(0).toUpperCase() !== lastLeter.toUpperCase()) {
+                        lastLeter=app.Name.charAt(0);
+                        newDiv=<div key={"stmenu_"+app.Name} style={{ color: invert(window.systemColor0, true)}} className="startLeter"><b>{lastLeter}</b></div>
                     }
                 } 
-                return <div key={"stmenu_"+app}>{newDiv}<AppCard onClickApp={this.props.onClickApp} appName={app}  /></div>
+                return <div key={"stmenu_"+app.Name}>{newDiv}<AppCard onClickApp={this.props.onClickApp} appName={app.Name}  /></div>
             }else{
                 return null;
             } 

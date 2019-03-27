@@ -37,6 +37,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "electron": "electron . --disable-gpu --force-cpu-draw"
+    "electron": "electron . --disable-gpu"
   }
 }
