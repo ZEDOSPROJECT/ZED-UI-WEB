@@ -66,7 +66,7 @@ class Window extends React.Component{
             if(this.state.gradient !== window.gradientEffect){
                 this.setState({ gradient: window.gradientEffect });
             } 
-            if(window.gradientEffect === "on"){
+            if(window.gradientEffect){
                 if(this.state.systemColor1 !== window.systemColor1){
                     this.setState({ systemColor1: window.systemColor1 });
                 } 
@@ -160,8 +160,7 @@ class Window extends React.Component{
         } 
 
         let finalStyle={};
-
-        if(window.gradientEffect !== "on"){
+        if(!window.gradientEffect){
             finalStyle={ backgroundColor: this.convertHex(this.state.systemColor0,80) };
         }else{
             finalStyle={ background: 'linear-gradient('+this.convertHex(this.state.systemColor1,80)+', '+this.convertHex(this.state.systemColor0,80)} 

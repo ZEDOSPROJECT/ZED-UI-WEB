@@ -127,12 +127,16 @@ class App extends Component {
         this.setState({
             setting_resolution: json.setting_resolution
         });
-        if(!json.setting_autoGradient){
+        if(!json.setting_autoGradientEffect){
             window.systemColor0=json.setting_systemColor0;
             window.systemColor1=json.setting_systemColor1;
-        } 
+        }else{
+            if(window.gradientEffect){
+                this.getGradient();
+            } 
+        }
         window.gradientEffect=json.setting_gradientEffect;
-        window.autoGradient=json.setting_autoGradient;
+        window.autoGradient=json.setting_autoGradientEffect;
         if(window.setting_bingWallpaper !== json.setting_bingWallpaper){
             window.setting_bingWallpaper=json.setting_bingWallpaper;
             if(window.setting_bingWallpaper){
@@ -143,9 +147,6 @@ class App extends Component {
             this.setState({
                 setting_wallpaperURL: json.setting_wallpaperURL
             });
-            if(window.autoGradient === "on" && window.gradientEffect === "on"){
-                this.getGradient();
-            } 
         } 
     });
   } 

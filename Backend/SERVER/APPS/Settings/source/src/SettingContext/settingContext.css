@@ -1,0 +1,16 @@
+.settingTitle {
+  position: relative;
+  text-align: left;
+  margin-left: 220px;
+}
+
+.SettingArea {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 60px;
+  left: 200px;
+  text-align: left;
+  padding: 12px;
+  overflow: auto;
+}

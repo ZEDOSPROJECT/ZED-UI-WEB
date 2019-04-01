@@ -1,0 +1,21 @@
+.App {
+  position: fixed;
+  font-family: sans-serif;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  user-select: none;
+}
+
+.settingTable {
+  text-anchor: top;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background-color: rgb(24, 23, 23);
+}
