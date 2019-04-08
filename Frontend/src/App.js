@@ -23,7 +23,9 @@ class App extends Component {
         setting_wallpaperColor: '#004e98',
         setting_resolution: '100%',
         sound: "PLAYING",
-        userPaths: null
+        userPaths: null,
+        nextWindowX: 15,
+        nextWindowY: 15
     };
     window.systemColor0="#06001E";
     window.systemColor1="#06001E";
@@ -192,13 +194,32 @@ class App extends Component {
                 url={url}  
                 icon={icon}
                 windowSize={windowSize}
+                nextWindowX={this.state.nextWindowX}
+                nextWindowY={this.state.nextWindowY}
                 uuid={uuid}   
                 onClose={this.onClose}   
                 onToggleMinimize={this.onToggleMinimize} 
             />
         ), 'VISIBLE' : true });
         window.winTitle[uuid]=title;
-        this.setState({ openedWindows: newList });
+        let newX = this.state.nextWindowX;
+        let newY = this.state.nextWindowY;
+        const plusNewPosition=35;
+        if(newX>150){
+            newX=15;
+        }else{
+            newX+=plusNewPosition;
+        }
+        if(newY>150){
+            newY=15;
+        }else{
+            newY+=plusNewPosition;
+        }
+        this.setState({
+            openedWindows: newList,
+            nextWindowX: newX,
+            nextWindowY: newY    
+        });
     }  
 
   onClickApp(e,url,name,icon,windowSize){
