@@ -32,7 +32,7 @@ class Window extends React.Component{
             myStyle: "window hidden"
         };
         setTimeout(() => {
-            this.setState({myStyle: "window"});
+            this.setState({myStyle: "window shadow"});
         }, 40);
 
         this.convertHex = this.convertHex.bind(this);
@@ -136,7 +136,14 @@ class Window extends React.Component{
     } 
 
     onToggleWindow(){
-        this.setState({maximized: !this.state.maximized});
+        let tmpStyle="window";
+        if(this.state.maximized){
+            tmpStyle="window shadow";
+        }
+        this.setState({
+            maximized: !this.state.maximized,
+            myStyle: tmpStyle
+        });
     } 
 
     onToggleMinimize(){
@@ -160,6 +167,10 @@ class Window extends React.Component{
         } 
 
         let finalStyle={};
+        let finalBodyStyle="body";
+        if(this.state.maximized){
+            finalBodyStyle="body maximizedBody";
+        }
         if(!window.gradientEffect){
             finalStyle={ backgroundColor: this.convertHex(this.state.systemColor0,80) };
         }else{
@@ -214,7 +225,7 @@ class Window extends React.Component{
                             </tr>
                         </tbody>
                     </table>
-                    <div className="body">
+                    <div className={finalBodyStyle}>
                         {WindowContent}  
                         {this.state.active ? 
                             null
