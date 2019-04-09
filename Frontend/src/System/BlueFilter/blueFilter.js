@@ -2,10 +2,13 @@ import React from 'react';
 import './blueFilter.css'
 
 class BlueLightFilter extends React.Component {
-    render(){
+    constructor(props){
+        super(props);
         setInterval(() => {
             this.render();
-        }, 300);
+        }, 3000);
+    }
+    render(){
         const time = new Date();
         let showFilter=false;
         if(time.getHours()<=6 || time.getHours()>20){

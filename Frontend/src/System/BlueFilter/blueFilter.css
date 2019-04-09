@@ -12,12 +12,6 @@
 
 .blueFilterOff{
     background-color: rgba(255, 0, 0, 0);
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
     transition-duration: 200s;
     transition-property: background-color;
 } 
