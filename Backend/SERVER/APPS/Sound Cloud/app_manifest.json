@@ -1,0 +1,10 @@
+{
+    "Name":"Sound Cloud",
+    "Version":"1.0.0",
+    "Website":"https://soundcloud.com",
+    "Platforms":"MOBILE|DESKTOP",
+    "Window":{
+        "Width":640,
+        "Height":480
+    }
+}

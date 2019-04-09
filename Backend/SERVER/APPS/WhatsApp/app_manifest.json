@@ -1,0 +1,10 @@
+{
+    "Name":"Whatsapp",
+    "Version":"1.0.0",
+    "Website":"https://web.whatsapp.com/",
+    "Platforms":"MOBILE|DESKTOP",
+    "Window":{
+        "Width":640,
+        "Height":480
+    }
+}

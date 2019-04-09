@@ -1,0 +1,10 @@
+{
+    "Name":"Feedback",
+    "Version":"1.0.0",
+    "Website":"https://zed-os.tk/",
+    "Platforms":"MOBILE|DESKTOP|WEB",
+    "Window":{
+        "Width":640,
+        "Height":480
+    }
+}

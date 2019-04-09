@@ -6,6 +6,7 @@
   "dependencies": {
     "connected-react-router": "^4.4.1",
     "electron": "^1.8.8",
+    "flash-player-loader": "^1.2.0",
     "fs": "0.0.1-security",
     "history": "^4.7.2",
     "invert-color": "^2.0.0",

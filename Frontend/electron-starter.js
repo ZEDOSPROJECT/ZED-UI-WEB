@@ -1,15 +1,31 @@
 const {app, BrowserWindow} = require('electron')
   const path = require('path')
   const url = require('url')
+  let pluginName = '/PepperFlashPlayer-linux.so';
+  require('flash-player-loader').addSource(__dirname + pluginName).load();
   
   // Keep a global reference of the window object, if you don't, the window will
   // be closed automatically when the JavaScript object is garbage collected.
   let win
-  
+
   function createWindow () {
     // Create the browser window.
-    win = new BrowserWindow({width: 800, height: 600, fullscreen:true,kiosk:true,'web-preferences': {'plugins': true,'web-security': false,"webgl": true}})
+    win = new BrowserWindow({
+      width: 800,
+      height: 600,
+      fullscreen:true,
+      kiosk:true,
+      'webPreferences': {
+        "plugins": true,
+        "webSecurity": true,
+        "webgl": true,
+        "nodeIntegration": true,
+        "allowDisplayingInsecureContent": true,
+        "scrollBounce": false
+      }
+    })
     win.setMenu(null);
+    // win.webContents.openDevTools()
     // Emitted when the window is closed.
     win.on('closed', () => {
       // Dereference the window object, usually you would store windows
@@ -18,8 +34,10 @@ const {app, BrowserWindow} = require('electron')
       win = null
     })
 
+    setTimeout(() => {
+      win.loadURL('http://localhost:3031',{userAgent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.120 Safari/537.36'});
+    }, 200);
     // and load the index.html of the app.
-    win.loadURL('http://localhost:3031',{userAgent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.120 Safari/537.36'});
   }
   
   // This method will be called when Electron has finished

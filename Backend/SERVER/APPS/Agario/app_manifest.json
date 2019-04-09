@@ -1,0 +1,10 @@
+{
+    "Name":"Agario",
+    "Version":"1.0.0",
+    "Website":"https://agar.io/",
+    "Platforms":"MOBILE|DESKTOP|WEB",
+    "Window":{
+        "Width":640,
+        "Height":480
+    }
+}
