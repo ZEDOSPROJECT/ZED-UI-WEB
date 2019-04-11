@@ -7,10 +7,12 @@ import startUpSound from './Sounds/startup.mp3';
 import TaskBar from './System/Taskbar/taskbar';
 import Window from './System/Window/window';
 import StartMenu from './System/StartMenu/startMenu';
+import DesktopIcons from './System/DesktopIcons/desktopIcons';
 import BlueLightFilter from './System/BlueFilter/blueFilter';
 import { REST_URL } from './REST_URL';
 import './App.css';
 import { setTimeout } from 'timers';
+
 
 class App extends Component {
   constructor(props){
@@ -298,6 +300,7 @@ class App extends Component {
         <div className="windowArea">
             {windowList}
         </div>
+        <DesktopIcons onClickApp={this.onClickApp}/>
         <Sound
             url={startUpSound}
             loop={false}
@@ -315,7 +318,7 @@ class App extends Component {
             visible={this.state.showMenu}
         />
         <ToastContainer />
-       { this.state.setting_blueFilter ? (<BlueLightFilter />) : null }
+        <BlueLightFilter enabled={this.state.setting_blueFilter}/>
       </div>
     );
   }

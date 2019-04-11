@@ -30,3 +30,23 @@
     width: 270px;
     margin-left: 10px;
 } 
+
+.addToDeskop {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: -55px;
+    left: 180px;
+    cursor: pointer;
+}
+
+.isAppFavorite{
+    width: 10px;
+    height: 10px;
+}
+
+.isAppNotFavorite{
+    width: 10px;
+    height: 10px;
+    filter: grayscale(1);
+}

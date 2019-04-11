@@ -1,20 +1,82 @@
 import React from 'react'
 import invert from 'invert-color';
+import _ from 'lodash';
+import favorite from '../../../Icons/ModernXP (8).png';
 import { REST_URL } from './../../../REST_URL';
 import './appCard.css';
 
 class appCard extends React.Component{
+    constructor(props){
+        super(props);
+        this.addToFavorites = this.addToFavorites.bind(this);
+        this.findIfIsFavorite = this.findIfIsFavorite.bind(this);
+    }
     shouldComponentUpdate(nextProps, nextState) {
         return false;
+    }
+
+    findIfIsFavorite(newObj,list){
+        let found=-1;
+        let id=0;
+        list.forEach(element => {
+            if(_.isEqual(element, newObj)){
+                found=id;
+            }
+            id++;
+        });
+        return found;
+    }
+
+    addToFavorites(){
+        var tmpFavorites = [];
+        let tmpFinalFav={};
+        var tmpObject={};
+
+        if(localStorage.favoriteIcons){
+            tmpFavorites=JSON.parse(localStorage.favoriteIcons).favorites;
+        }
+        
+        tmpObject['WindowSize']=this.props.windowSize;
+        tmpObject['Icon']=REST_URL+"/APPS/"+this.props.appName+"/favicon.png";
+        tmpObject['Name']=this.props.appName;
+
+        let favoriteID=this.findIfIsFavorite(tmpObject,tmpFavorites);
+        if(favoriteID<0){
+            tmpFavorites.push(tmpObject);
+            tmpFinalFav["favorites"]=tmpFavorites;
+            localStorage.favoriteIcons=JSON.stringify(tmpFinalFav);
+        }else{
+            tmpFavorites.splice(favoriteID, 1);
+            tmpFinalFav["favorites"]=tmpFavorites;
+            localStorage.favoriteIcons=JSON.stringify(tmpFinalFav);
+        }
+        this.props.forceRefreshApps();
     }
 
     render(){
         const appIcon=REST_URL+"/APPS/"+this.props.appName+"/favicon.png";
         const appName=this.props.appName;
         const windowSize=this.props.windowSize;
+        let style="isAppNotFavorite";
+
+        if(localStorage.favoriteIcons){
+            var tmpFavorites=JSON.parse(localStorage.favoriteIcons).favorites;
+            var tmpObject={};
+            tmpObject['WindowSize']=this.props.windowSize;
+            tmpObject['Icon']=REST_URL+"/APPS/"+this.props.appName+"/favicon.png";
+            tmpObject['Name']=this.props.appName;
+
+            if(this.findIfIsFavorite(tmpObject,tmpFavorites)>=0){
+                style="isAppFavorite";
+            }
+        }
+
         return(
-            <div onClick={(event) => (this.props.onClickApp(event,REST_URL+"/APPS/"+appName+"/",appName,REST_URL+"/APPS/"+appName+"/favicon.png",windowSize))}  className="appCard">
-                <img alt="" style={{ color: invert(window.systemColor0, true)}} className="appCardIcon" src={appIcon}  /><div className="appCardTitle">{appName} </div>
+            <div>
+                <div onClick={(event) => (this.props.onClickApp(event,REST_URL+"/APPS/"+appName+"/",appName,REST_URL+"/APPS/"+appName+"/favicon.png",windowSize))}  className="appCard">
+                    <img alt="" style={{ color: invert(window.systemColor0, true)}} className="appCardIcon" src={appIcon}  /><div className="appCardTitle">{appName} </div>
+                </div>
+                <div onClick={this.addToFavorites} className="addToDeskop"><img className={style} src={favorite}/></div>
             </div>
         )
     }  

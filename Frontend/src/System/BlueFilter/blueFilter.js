@@ -12,6 +12,7 @@ class BlueLightFilter extends React.Component {
         const time = new Date();
         let showFilter=false;
         if(time.getHours()<=6 || time.getHours()>20){
+            if(this.props.enabled)
             showFilter=true;
         } 
         return(

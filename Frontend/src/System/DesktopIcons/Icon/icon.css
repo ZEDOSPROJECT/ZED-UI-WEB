@@ -1,0 +1,27 @@
+.desktopIcon {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    margin: 10px;
+    padding: 3px;
+    background-color: rgba(255, 255, 255, 0);
+    float:left;
+    border-radius: 5px;
+}
+
+.desktopIcon:hover {
+    background-color: rgba(255, 255, 255, 0.246);
+}
+
+.desktopIconImage{
+    width: 37px;
+    height: 37px;
+}
+
+.desktopIconLabel{
+    width: 61px;
+    height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
