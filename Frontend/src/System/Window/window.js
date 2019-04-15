@@ -182,8 +182,9 @@ class Window extends React.Component{
                        id=i;
                     i++;
                 });
-                if(id>=0)
-                    window.soundsEmitter=window.soundsEmitter.splice(id, 1);
+                if(id !== -1){
+                    window.soundsEmitter.splice(id, 1);
+                }
             })
         }
     }
