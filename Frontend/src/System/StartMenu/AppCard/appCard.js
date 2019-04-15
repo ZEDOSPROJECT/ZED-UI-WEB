@@ -76,7 +76,7 @@ class appCard extends React.Component{
                 <div onClick={(event) => (this.props.onClickApp(event,REST_URL+"/APPS/"+appName+"/",appName,REST_URL+"/APPS/"+appName+"/favicon.png",windowSize))}  className="appCard">
                     <img alt="" style={{ color: invert(window.systemColor0, true)}} className="appCardIcon" src={appIcon}  /><div className="appCardTitle">{appName} </div>
                 </div>
-                <div onClick={this.addToFavorites} className="addToDeskop"><img className={style} src={favorite}/></div>
+                <div onClick={this.addToFavorites} className="addToDeskop"><img alt="" className={style} src={favorite}/></div>
             </div>
         )
     }  

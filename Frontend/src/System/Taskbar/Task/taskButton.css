@@ -21,6 +21,12 @@
     padding-right: 10px;
 } 
 
+.taskSound {
+    position: absolute;
+    z-index:-1;
+    width: 150px;
+}
+
 .taskTitle {
     float: left;
     margin-top: 1%;

@@ -17,7 +17,7 @@ class Icon extends React.Component {
         return(
             <div onClick={this.processClick} title={this.props.Name} className="desktopIcon" style={{ color: invert(window.systemColor1, true)}}>
                 <center>
-                    <img className="desktopIconImage" src={this.props.Icon} />
+                    <img alt="" className="desktopIconImage" src={this.props.Icon} />
                 </center>
                 <center><div className="desktopIconLabel">{this.props.Name}</div></center>
             </div>

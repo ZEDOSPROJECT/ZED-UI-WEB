@@ -36,6 +36,7 @@ class App extends Component {
     window.ZED_RUN=null;
     window.autoGradient = false;
     window.gradientEffect = false;
+    window.soundsEmitter=[];
     this.getGradient = this.getGradient.bind(this);
     this.createWindow = this.createWindow.bind(this);
     this.onClose = this.onClose.bind(this);

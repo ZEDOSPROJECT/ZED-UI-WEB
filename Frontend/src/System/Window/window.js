@@ -71,7 +71,7 @@ class Window extends React.Component{
                     this.setState({ systemColor1: window.systemColor1 });
                 } 
             }
-        },10);
+        },800);
     }
 
     convertHex(hex,opacity){
@@ -118,6 +118,15 @@ class Window extends React.Component{
             this.props.onClose(this.state.uuid);
         }, 240);
         this.setState({myStyle: "window hidden"});
+        let id=-1;
+        let i=0
+        window.soundsEmitter.forEach(element => {
+            if(element === this.state.uuid)
+                id=i;
+            i++;
+        });
+        if(id>=0)
+            window.soundsEmitter=window.soundsEmitter.splice(id, 1);
     }
 
     onTitleChange(e){
@@ -154,13 +163,38 @@ class Window extends React.Component{
         this.setState({url: REST_URL+'/API/APPS/onErrorLoad.html'});
     } 
 
+    componentDidMount(){
+        if(this.webview){
+            this.webview.addEventListener('media-started-playing',() => {
+                let found=false;
+                window.soundsEmitter.forEach(element => {
+                    if(element === this.state.uuid)
+                        found=true;
+                });
+                if(!found)
+                    window.soundsEmitter.push(this.state.uuid);
+            })
+            this.webview.addEventListener('media-paused', () => {
+                let id=-1;
+                let i=0
+                window.soundsEmitter.forEach(element => {
+                    if(element === this.state.uuid)
+                       id=i;
+                    i++;
+                });
+                if(id>=0)
+                    window.soundsEmitter=window.soundsEmitter.splice(id, 1);
+            })
+        }
+    }
+
     render(){
         let WindowContent;
         if(this.state.url !== "MyComputer" && this.state.url !== "MyMusic" && this.state.url !== "MyPictures" && this.state.url !== "MyDocuments"){
             if(!isElectron()){  
                 WindowContent=(<iframe title={window.winTitle[this.state.uuid]}  onLoad={this.onTitleChange} className="frame" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
             } else {  
-                WindowContent=(<webview onLoad={this.onTitleChange} useragent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.120 Safari/537.36" className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>);
+                WindowContent=(<webview ref={(input) => { this.webview = input; }} onLoad={this.onTitleChange} useragent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.120 Safari/537.36" className="frame" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>);
             }
         }else{
             WindowContent=<FileManager userDirs={this.props.userDirs} className="frame"/>
