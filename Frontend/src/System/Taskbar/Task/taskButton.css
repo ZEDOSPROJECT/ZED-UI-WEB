@@ -1,24 +1,26 @@
 .taskButton {
-    height: 100%;
+    height: 30px;
     width: 150px;
     float: left;
-    margin: 1px;
-    padding: 2px;
     padding-right: 8px;
+    margin: 2.5px;
+    border: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
 } 
 
 .taskButton:hover {
-    height: 100%;
     background-color: rgba(0, 60, 255, 0.281);
 } 
 
 .taskIcon {
     float: left;
-    margin-top: 1%;
-    padding-right: 10px;
+    margin-top: 6px;
+    width: 30px;
+    height: 30px;
+    padding-left: 5px;
+    padding-right: 2px;
 } 
 
 .taskSound {
@@ -29,9 +31,9 @@
 
 .taskTitle {
     float: left;
-    margin-top: 1%;
+    margin-top: 6.5px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    width: 116px;
+    width: 112px;
 } 
