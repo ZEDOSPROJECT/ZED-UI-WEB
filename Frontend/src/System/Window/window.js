@@ -71,6 +71,7 @@ class Window extends React.Component{
                     this.setState({ systemColor1: window.systemColor1 });
                 } 
             }
+            this.render();
         },800);
     }
 
@@ -173,7 +174,11 @@ class Window extends React.Component{
                 });
                 if(!found)
                     window.soundsEmitter.push(this.state.uuid);
-            })
+            });
+            this.webview.addEventListener('page-title-updated', (e) => {
+                window.winTitle[this.state.uuid]=e.title;
+                this.forceUpdate();
+            });
             this.webview.addEventListener('media-paused', () => {
                 let id=-1;
                 let i=0
@@ -185,7 +190,7 @@ class Window extends React.Component{
                 if(id !== -1){
                     window.soundsEmitter.splice(id, 1);
                 }
-            })
+            });
         }
     }
 
@@ -247,19 +252,15 @@ class Window extends React.Component{
                     }}
                 >
                 <div className={this.state.myStyle}  initwidth={800} initheight={400} style={finalStyle}>
-                    <table onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} className="titleBar" >
-                        <tbody>
-                            <tr>
-                                <td className="appIcon"><img alt="" className="appIcon" src={this.props.icon}></img></td>
-                                <td className="appTitle" style={{ color: invert(window.systemColor1, true)}}>{window.winTitle[this.state.uuid]}</td>
-                                <td className="appControls">
-                                    <img alt="" className="btnXControl" onClick={this.onClose}  src={CCLOSE} ></img>
-                                    <img alt="" className="btnControl" onClick={this.onToggleWindow} src={( this.state.maximized ? CRESTORE : CMAXIMIZE )}></img>
-                                    <img alt="" className="btnControl" onClick={this.onToggleMinimize} src={CMINIMIZE}></img>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} className="titleBar" >
+                        <div style={{ maxHeight: 20,width: 20 }} className="appIcon"><img alt="" className="appIcon" src={this.props.icon}></img></div>
+                        <div style={{ maxHeight: 20 }} className="appTitle" style={{ color: invert(window.systemColor1, true)}}>{window.winTitle[this.state.uuid]}</div>
+                        <div style={{ width: 150 }} className="appControls">
+                            <img alt="" className="btnXControl" onClick={this.onClose}  src={CCLOSE} ></img>
+                            <img alt="" className="btnControl" onClick={this.onToggleWindow} src={( this.state.maximized ? CRESTORE : CMAXIMIZE )}></img>
+                            <img alt="" className="btnControl" onClick={this.onToggleMinimize} src={CMINIMIZE}></img>
+                        </div>
+                    </div>
                     <div className={finalBodyStyle}>
                         {WindowContent}  
                         {this.state.active ? 

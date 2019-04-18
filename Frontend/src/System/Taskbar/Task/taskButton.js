@@ -8,7 +8,7 @@ class TaskButton extends React.Component {
         super(props);
         setInterval(() => {
             this.render();
-        }, 200);
+        }, 800);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -23,7 +23,7 @@ class TaskButton extends React.Component {
             isPlaying=true;
         }
         return(
-            <div onClick={ e => this.props.onToggleMinimize(this.props.uuid)} style={{ color: invert(window.systemColor0, true)}}   className="taskButton">
+            <div title={window.winTitle[this.props.uuid]} onClick={ e => this.props.onToggleMinimize(this.props.uuid)} style={{ color: invert(window.systemColor0, true)}}   className="taskButton">
                 { isPlaying ? (<img alt="" className="taskSound" src={VUGif} />) : null }
                 <img alt="" className="taskIcon" src={this.props.icon}  />
                 <div className="taskTitle">{window.winTitle[this.props.uuid]}</div>

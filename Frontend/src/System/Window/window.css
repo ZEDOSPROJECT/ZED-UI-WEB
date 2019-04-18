@@ -82,28 +82,35 @@
   } 
 
   .appTitle{
-    padding: left 5px;
-    padding-top:0px;
-    margin: 0;
+    position: absolute;
+    left: 30px;
+    right: 80px;
+    top: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
 	}
 	.titleBar{
-		width:100%;
-    border-style: none;
-    align-content: center;
-    margin: 0;
-    padding: 0;
+    float: left;
+    margin-top: 6.5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 112px;
 	}
 	.appIcon{
+    position: absolute;
 		width:18px;
     height:18px;
-    margin: 0;
-    padding-left: 2px;
-    padding-top: 1px;
+    left: 2px;
+    top: 1px;
 	}
 	.appControls{
-    width:104px;
-    margin: 0;
-    padding: 0;
+    width:72px;
+    height: 20px;
+    position: absolute;
+    right: 2px;
+    top: 4px;
 	}
 	.btnControl{
 		width:18px;
