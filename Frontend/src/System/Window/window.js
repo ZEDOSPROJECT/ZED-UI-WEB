@@ -254,7 +254,7 @@ class Window extends React.Component{
                 <div className={this.state.myStyle}  initwidth={800} initheight={400} style={finalStyle}>
                     <div onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} className="titleBar" >
                         <div style={{ maxHeight: 20,width: 20 }} className="appIcon"><img alt="" className="appIcon" src={this.props.icon}></img></div>
-                        <div style={{ maxHeight: 20 }} className="appTitle" style={{ color: invert(window.systemColor1, true)}}>{window.winTitle[this.state.uuid]}</div>
+                        <div className="appTitle" style={{ color: invert(window.systemColor1, true)}}>{window.winTitle[this.state.uuid]}</div>
                         <div style={{ width: 150 }} className="appControls">
                             <img alt="" className="btnXControl" onClick={this.onClose}  src={CCLOSE} ></img>
                             <img alt="" className="btnControl" onClick={this.onToggleWindow} src={( this.state.maximized ? CRESTORE : CMAXIMIZE )}></img>

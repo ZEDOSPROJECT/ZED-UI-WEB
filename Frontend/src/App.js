@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Sound from 'react-sound';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import getUUID from 'uuid';
@@ -24,7 +23,6 @@ class App extends Component {
         setting_wallpaperURL: '',
         setting_wallpaperColor: '#004e98',
         setting_resolution: '100%',
-        sound: "PLAYING",
         userPaths: null,
         nextWindowX: 15,
         nextWindowY: 15
@@ -37,6 +35,8 @@ class App extends Component {
     window.autoGradient = false;
     window.gradientEffect = false;
     window.soundsEmitter=[];
+    let startupSoundPlayer = new Audio(startUpSound);
+    startupSoundPlayer.play();
     this.getGradient = this.getGradient.bind(this);
     this.createWindow = this.createWindow.bind(this);
     this.onClose = this.onClose.bind(this);
@@ -48,7 +48,6 @@ class App extends Component {
     this.componentToHex = this.componentToHex.bind(this);
     this.rgbToHex = this.rgbToHex.bind(this);
     this.clean = this.clean.bind(this);
-    this.handleSongFinishedPlaying = this.handleSongFinishedPlaying.bind(this);
     setInterval(() => {
         this.loadUserSettings();
         this.clean();
@@ -277,12 +276,6 @@ class App extends Component {
     });
   } 
 
-  handleSongFinishedPlaying(){
-    this.setState({
-        sound: "STOPPED"
-    });
-  }
-
   render() {
     const windowList=this.state.openedWindows.map((item) => {
         if(item!=null){
@@ -302,12 +295,6 @@ class App extends Component {
             {windowList}
         </div>
         <DesktopIcons onClickApp={this.onClickApp}/>
-        <Sound
-            url={startUpSound}
-            loop={false}
-            playStatus={this.state.sound} 
-            onFinishedPlaying={this.handleSongFinishedPlaying}
-        />
         <TaskBar
             openedWindows={this.state.openedWindows}
             onToggleMinimize={this.onToggleMinimize}
