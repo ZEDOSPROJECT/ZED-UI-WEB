@@ -7,7 +7,7 @@ class TaskButton extends React.Component {
     constructor(props){
         super(props);
         setInterval(() => {
-            this.render();
+            this.forceUpdate();
         }, 800);
     }
 

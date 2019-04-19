@@ -71,7 +71,6 @@ class Window extends React.Component{
                     this.setState({ systemColor1: window.systemColor1 });
                 } 
             }
-            this.render();
         },800);
     }
 
