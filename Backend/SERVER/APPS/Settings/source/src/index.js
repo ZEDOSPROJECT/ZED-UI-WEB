@@ -12,6 +12,7 @@ class App extends React.Component {
       CurrentSettingID: 0,
       SettingJSON: {},
       Wallpapers: [],
+      Videos: [],
       SystemInfo: {
         OperatingSystem: "ZED",
         CPU: "Intel Core i3 2.2GHz",
@@ -32,6 +33,7 @@ class App extends React.Component {
     this.changeColor1 = this.changeColor1.bind(this);
     this.changeWallpaper = this.changeWallpaper.bind(this);
     this.switchSetting = this.switchSetting.bind(this);
+    this.onChangeVideoWallpaper = this.onChangeVideoWallpaper.bind(this);
 
     this.getSettingsData();
   }
@@ -68,7 +70,7 @@ class App extends React.Component {
         fetch(
           "http://" +
             window.location.hostname +
-            ":3031/API/SYSTEM/SETTINGS/USER/SETTING/getWallpapers.php"
+            ":3031/API/SYSTEM/SETTINGS/USER/SETTING/getWallpapersImages.php"
         )
           .then(response => response.json())
           .then(jsonWallpapers => {
@@ -78,12 +80,21 @@ class App extends React.Component {
                 newWallpapers.push(
                   "http://" +
                     window.location.hostname +
-                    ":3031/Wallpapers/" +
+                    ":3031/Wallpapers/Images/" +
                     element
                 );
               }
             });
             this.setState({ Wallpapers: newWallpapers });
+            fetch(
+              "http://" +
+                window.location.hostname +
+                ":3031/API/SYSTEM/SETTINGS/USER/SETTING/getWallpapersVideos.php"
+            )
+              .then(response => response.json())
+              .then(jsonWallpapers => {
+                this.setState({ Videos: jsonWallpapers.WALLPAPERS });
+              });
           });
       });
   }
@@ -124,6 +135,17 @@ class App extends React.Component {
   changeAutoGradient(event) {
     let obj = this.state.SettingJSON;
     obj["setting_autoGradientEffect"] = event.target.checked;
+    this.setState({ SettingJSON: obj });
+    this.save();
+  }
+
+  onChangeVideoWallpaper(event){
+    let obj = this.state.SettingJSON;
+    if(event.target.value!=="Disabled"){
+      obj["videoWallpaperURL"] = event.target.value;
+    }else{
+      obj["videoWallpaperURL"] = "";
+    }
     this.setState({ SettingJSON: obj });
     this.save();
   }
@@ -201,6 +223,16 @@ class App extends React.Component {
               );
             }
           })}
+          <p>Video Wallpaper: 
+            <select value={this.state.SettingJSON.videoWallpaperURL} name="video" onChange={this.onChangeVideoWallpaper}>
+              <option value="Disabled">Disabled</option>
+              {this.state.Videos.map((video, index) => {
+                if(video!==""){
+                  return (<option id={index} value={video}>{video}</option>);
+                }
+              })}
+            </select>
+          </p>
           <p>
             Use Bing wallpaper{" "}
             <input

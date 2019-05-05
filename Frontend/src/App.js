@@ -25,7 +25,8 @@ class App extends Component {
         setting_resolution: '100%',
         userPaths: null,
         nextWindowX: 15,
-        nextWindowY: 15
+        nextWindowY: 15,
+        videoWallpaperURL: ""
     };
     window.systemColor0="#06001E";
     window.systemColor1="#06001E";
@@ -130,6 +131,9 @@ class App extends Component {
         });
         this.setState({
             setting_resolution: json.setting_resolution
+        });
+        this.setState({
+            videoWallpaperURL: json.videoWallpaperURL
         });
         if(!json.setting_autoGradientEffect){
             window.systemColor0=json.setting_systemColor0;
@@ -287,10 +291,17 @@ class App extends Component {
             return null;
         } 
     })
-    const wallpaperURL = REST_URL+'/Wallpapers/'+this.state.setting_wallpaperURL;
+    const wallpaperURL = REST_URL+'/Wallpapers/Images/'+this.state.setting_wallpaperURL;
     const wallpaperColor = this.state.setting_wallpaperColor;
     return (
-      <div className="App" style={ { backgroundImage: 'url('+ wallpaperURL + ')', backgroundColor: wallpaperColor, zoom: this.state.setting_resolution  } } >
+      <div className="App" style={{zoom: this.state.setting_resolution}} >
+        { this.state.videoWallpaperURL !== "" ? (
+            <video className="backgroundVideo" src={REST_URL+"/Wallpapers/Videos/"+this.state.videoWallpaperURL} loop autoPlay muted></video>
+        ):(
+            <div className="backgroundImage" style={ { backgroundImage: 'url('+ wallpaperURL + ')', backgroundColor: wallpaperColor }} >
+            
+            </div>
+        )}
         <div className="windowArea">
             {windowList}
         </div>

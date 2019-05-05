@@ -19,6 +19,47 @@
   min-height: 100%;
 }
 
+
+.backgroundVideo {
+  position: fixed;
+  top:0;
+  /* Span the full grid */
+  grid-area: var(--fullGrid);
+
+  /* Re-size video to cover full screen while maintaining aspect ratio */
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+
+  /* Display video below overlay */
+  z-index: -1;
+}
+
+.backgroundVideo::-webkit-media-controls {
+  display: none !important;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  background: no-repeat center center fixed; 
+  background-color: #004e98;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  zoom: 1;
+  cursor: default;
+  user-select: none;
+	
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
 .windowArea{
   width: 100%;
     /* Firefox */

@@ -3,12 +3,12 @@
     $path_info = pathinfo($_GET['path']);
     $finalFile = uniqid()."_EXTERNAL.".$path_info['extension'];
    
-    foreach (scandir($_SERVER['DOCUMENT_ROOT']."/Wallpapers/") as $filename) {
+    foreach (scandir($_SERVER['DOCUMENT_ROOT']."/Wallpapers/Images/") as $filename) {
         if (strpos($filename, '_EXTERNAL.') !== false) {
-            unlink($_SERVER['DOCUMENT_ROOT']."/Wallpapers/".$filename);
+            unlink($_SERVER['DOCUMENT_ROOT']."/Wallpapers/Images/".$filename);
         }
     }
-    copy($_GET['path'] , $_SERVER['DOCUMENT_ROOT']."/Wallpapers/".$finalFile);
+    copy($_GET['path'] , $_SERVER['DOCUMENT_ROOT']."/Wallpapers/Images/".$finalFile);
     $settings = json_decode(file_get_contents('../SETTINGS.json'),true);
     $settings['setting_wallpaperURL']=$finalFile;
     $newJsonString = json_encode($settings);
