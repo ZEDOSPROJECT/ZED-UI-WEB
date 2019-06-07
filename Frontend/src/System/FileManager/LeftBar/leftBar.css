@@ -7,4 +7,6 @@
     width: 180px;
     padding-left: 12px;
     padding-right: 12px;
+    overflow-x: auto;
+    padding-bottom:20px;
 } 

@@ -20,7 +20,9 @@ class LeftBar extends React.Component {
                 <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["videos"])}><img alt="" src={myVideos} className="miniIcon"></img>My Videos</div>
                 <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["documents"])}><img alt="" src={myDocuments} className="miniIcon"></img>My Documents</div>
             </Combo>
-            <Combo title="Details" >Hello World</Combo>
+            {this.props.details ? (
+                <Combo title="Details" open>{this.props.details}</Combo>
+            ) : null }
         </div>);
     } 
 } 

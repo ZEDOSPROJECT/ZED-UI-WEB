@@ -15,7 +15,8 @@ class FileManager extends React.Component {
       currentPath: "/",
       listDir:[],
       history:["/"],
-      historyIndex: 0
+      historyIndex: 0,
+      details:undefined
     };
 
     setTimeout(() => {
@@ -33,6 +34,7 @@ class FileManager extends React.Component {
     this.goBack = this.goBack.bind(this);
     this.goForward = this.goForward.bind(this);
     this.refresh = this.refresh.bind(this);
+    this.getDetails = this.getDetails.bind(this);
   }
 
   refresh(){
@@ -61,6 +63,21 @@ class FileManager extends React.Component {
     } 
   } 
 
+  getDetails(path){
+    fetch(REST_URL+'/API/SYSTEM/IO/getInfo.php?path='+path)
+    .then(response => response.json())
+    .then(json => {
+        let final=<div style={{ fontSize: 12, overflow: "hidden" }}>
+          <b>Type:</b> {json.MIME}<br/>
+          <p><b>Size:</b> {json.SIZE}<br/></p>
+          <b>Last Change</b> {json.LASTE_DATE}
+        </div>
+        this.setState({
+          details: final,
+        });
+    });
+  }
+
   listFolder(path){
     this.setState({
       currentPath: path,
@@ -82,6 +99,7 @@ class FileManager extends React.Component {
 
   onIClick(data) {
     this.setState({ selected: data.name });
+    this.getDetails(this.state.currentPath+data.name);
   }
 
   onDBClick(data) {
@@ -98,7 +116,8 @@ class FileManager extends React.Component {
         this.setState({ 
           currentPath: newPath,
           historyIndex: this.state.historyIndex+1,
-          history: newHistory 
+          history: newHistory,
+          details: undefined,
         });
       }, 10);
     } else {
@@ -117,7 +136,7 @@ class FileManager extends React.Component {
           Url: REST_URL+'/APPS/ZED Media Player/index.php?path='+file,
           Icon: REST_URL+"/APPS/ZED Media Player/favicon.png"
         } 
-      } 
+      }
     }
   }
 
@@ -133,6 +152,7 @@ class FileManager extends React.Component {
         <LeftBar
           listFolder={this.listFolder} 
           userDirs={this.props.userDirs}
+          details={this.state.details}
         /> 
         <Explorer
           currentPath={this.state.currentPath} 
