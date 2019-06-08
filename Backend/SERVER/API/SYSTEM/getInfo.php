@@ -1,8 +1,8 @@
 <?php
     header("Access-Control-Allow-Origin: *");
-    $data['OS'] = "ZED OS";
-    $data['VERSION'] = "2019.0";
-    $data['LINUX KERNEL'] = php_uname("r");
+    $data['OperatingSystem'] = "ZED OS";
+    $data['Version'] = "2019.0";
+    $data['Kernel'] = php_uname("r");
 
     $cpuinfo = file('/proc/cpuinfo');
     

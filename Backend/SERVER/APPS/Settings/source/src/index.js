@@ -95,6 +95,15 @@ class App extends React.Component {
               .then(jsonWallpapers => {
                 this.setState({ Videos: jsonWallpapers.WALLPAPERS });
               });
+              fetch(
+                "http://" +
+                  window.location.hostname +
+                  ":3031/API/SYSTEM/getInfo.php"
+              )
+                .then(response => response.json())
+                .then(SystemInfo => {
+                  this.setState({ SystemInfo: SystemInfo });
+                });
           });
       });
   }
