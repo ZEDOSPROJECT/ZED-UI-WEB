@@ -1,0 +1,14 @@
+.Tab {
+  width: 200px;
+  height: 32px;
+  background-color: rgb(234, 237, 255);
+  border-radius: 5px 5px 0 0;
+  text-align: left;
+  padding: 5px;
+  padding-left: 10px;
+  position: relative;
+  user-select: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
