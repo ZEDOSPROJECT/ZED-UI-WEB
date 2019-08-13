@@ -17,12 +17,24 @@ class WebBrowser extends React.Component {
 
     this.switchTab = this.switchTab.bind(this);
     this.newTab = this.newTab.bind(this);
+    this.closeTab = this.closeTab.bind(this);
   }
 
   switchTab(i){
     this.setState({
       currentTab: i
     })
+  }
+
+  closeTab(i){
+    let newData = this.state.tabs;
+    delete newData[i];
+    this.setState({ tabs: newData });
+    setTimeout(() => {
+      this.setState({
+        currentTab: 0
+      });
+    }, 12);
   }
 
   newTab(){
@@ -40,9 +52,9 @@ class WebBrowser extends React.Component {
   render() { 
     let finalTabs=this.state.tabs.map((item, i) => {
       if(i===this.state.currentTab){
-        return <Tab selected={true} key={i} id={i} switchTab={this.switchTab} title={item.title} />
+        return <Tab closeTab={this.closeTab} selected={true} key={i} id={i} switchTab={this.switchTab} title={item.title} />
       }else{
-        return <Tab selected={false} key={i} id={i} switchTab={this.switchTab} title={item.title} />
+        return <Tab closeTab={this.closeTab} selected={false} key={i} id={i} switchTab={this.switchTab} title={item.title} />
       }
     }) 
 

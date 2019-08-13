@@ -11,4 +11,5 @@
 
 .NewTab:hover{
     background-color: rgb(251, 251, 251);
+    cursor: pointer;
 }

@@ -16,6 +16,19 @@
   transition-property: all;
 }
 
+.closeBTN {
+  position: absolute;
+  color: rgb(0, 0, 0);
+  right: 6px;
+  top: 6px;
+  font-size: 12px;
+}
+
+.closeBTN:hover{
+  color: rgb(255, 0, 0);
+  cursor: pointer;
+}
+
 .TabSelected {
   width: 200px;
   height: 32px;
