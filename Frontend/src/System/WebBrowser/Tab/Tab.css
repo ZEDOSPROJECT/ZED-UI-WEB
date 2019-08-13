@@ -1,0 +1,40 @@
+.Tab {
+  width: 200px;
+  height: 32px;
+  background-color: rgb(203, 200, 221);
+  border-radius: 5px 5px 0 0;
+  text-align: left;
+  padding: 5px;
+  padding-left: 10px;
+  float: left;
+  position: relative;
+  user-select: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition-duration: .2s;
+  transition-property: all;
+}
+
+.TabSelected {
+  width: 200px;
+  height: 32px;
+  background-color: rgb(234, 237, 255);
+  border-radius: 5px 5px 0 0;
+  text-align: left;
+  padding: 5px;
+  padding-left: 10px;
+  float: left;
+  position: relative;
+  user-select: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition-duration: .2s;
+  transition-property: all;
+}
+
+.Tab:hover{
+  background-color: rgb(214, 214, 214);
+  transition-duration: .2s;
+}

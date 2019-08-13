@@ -55,6 +55,7 @@ class BrowserContainer extends React.Component {
 }
 
   render() {
+    console.log(this.props.x);
     return (
       <div className="BrowserContainer">
         <table className="ToolBox">

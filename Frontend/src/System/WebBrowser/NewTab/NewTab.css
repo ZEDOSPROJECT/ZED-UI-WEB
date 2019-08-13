@@ -1,0 +1,14 @@
+.NewTab{
+    float: left;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    border-radius: 100%;
+    background-color: rgba(251, 251, 251, 0.315);
+    user-select: none;
+}
+
+.NewTab:hover{
+    background-color: rgb(251, 251, 251);
+}
