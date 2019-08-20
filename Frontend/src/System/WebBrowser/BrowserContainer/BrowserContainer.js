@@ -7,11 +7,18 @@ import "../ToolBox/ToolBox.css";
 import "./BrowserContainer.css";
 
 class BrowserContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    let URL="";
+    if(this.props.URL!=="" && this.props.URL!==undefined){
+      URL=this.props.URL;
+    }else{
+      URL="https://google.com/";
+    }
     this.state = {
-      currentURL: "https://google.com",
-      inputURL: "https://google.com"
+      currentURL: URL,
+      inputURL: URL,
+      uuid: this.props.id
     };
   }
 
@@ -22,7 +29,7 @@ class BrowserContainer extends React.Component {
   _handleKeyDown = e => {
     if (e.key === "Enter") {
       let tmpURL = this.state.inputURL;
-      if (!tmpURL.includes("https://")) {
+      if (!tmpURL.includes("https://") || !tmpURL.includes("http://")) {
         tmpURL = "https://" + tmpURL;
       }
       this.setState({ currentURL: tmpURL, inputURL: tmpURL });
@@ -51,11 +58,29 @@ class BrowserContainer extends React.Component {
             this.setState({ currentURL: this.webview.getURL()})
             this.forceUpdate();
         });
+
+        this.webview.addEventListener('page-title-updated', (e) => {
+            this.props.OnTitleChange(this.state.uuid,e.title);
+            this.forceUpdate();
+        });
+
+        this.webview.addEventListener('did-navigate', (e) => {
+          let newUrl=e.url.toString();
+          this.setState(
+            {
+              inputURL: newUrl
+            }
+          );
+        });
+
+        this.webview.addEventListener('new-window', (e) => {
+          this.props.newTab(e.url);
+        });
+        
     }
-}
+  }
 
   render() {
-    console.log(this.props.x);
     return (
       <div className="BrowserContainer">
         <table className="ToolBox">
@@ -73,7 +98,7 @@ class BrowserContainer extends React.Component {
                 type="text"
                 defaultValue="https://google.com"
                 onClick={this.select}
-                value={this.inputURL}
+                value={this.state.inputURL}
                 onChange={this.handleUrlChange}
                 onKeyDown={this._handleKeyDown}
               />

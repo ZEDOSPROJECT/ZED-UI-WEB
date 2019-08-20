@@ -23,9 +23,9 @@ class Tab extends React.Component {
 
   render() {
     if(this.props.selected)
-      return <div onClick={this.handleClick} className="TabSelected">{this.props.title}</div>;
+      return <div title={this.props.title} onClick={this.handleClick} className="TabSelected">{this.props.title}</div>;
     else
-      return <div onClick={this.handleClick} className="Tab">
+      return <div title={this.props.title} onClick={this.handleClick} className="Tab">
                 {this.props.title}
                 <div className="closeBTN" onClick={this.onClose}>X</div>
               </div>;
