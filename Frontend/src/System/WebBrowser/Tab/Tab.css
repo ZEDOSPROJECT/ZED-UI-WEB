@@ -51,3 +51,10 @@
   background-color: rgb(214, 214, 214);
   transition-duration: .2s;
 }
+
+.favIcon {
+  float: left;
+  width: 15px;
+  margin-right: 5px;
+  height: auto;
+}

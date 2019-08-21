@@ -11,16 +11,27 @@ class WebBrowser extends React.Component {
     super(props);
     let startUUID=getUUID();
     let startTitles=[];
+    let startIcons=[];
 
     this.switchTab = this.switchTab.bind(this);
     this.newTab = this.newTab.bind(this);
     this.closeTab = this.closeTab.bind(this);
     this.OnTitleChange = this.OnTitleChange.bind(this);
+    this.onFavChange = this.onFavChange.bind(this);
 
     startTitles[startUUID]="Starting";
+    startIcons[startUUID]=undefined;
+
     this.state = {
-      tabs: [{obj:<BrowserContainer newTab={this.newTab} OnTitleChange={this.OnTitleChange} id={startUUID} key={startUUID}/>}],
+      tabs: [{obj:<BrowserContainer
+                     newTab={this.newTab}
+                     onFavChange={this.onFavChange}
+                     OnTitleChange={this.OnTitleChange}
+                     id={startUUID}
+                     key={startUUID}
+                  />}],
       titles: startTitles,
+      icons: startIcons,
       currentTab: 0,
     }
   }
@@ -31,6 +42,16 @@ class WebBrowser extends React.Component {
     })
   }
   
+  onFavChange(uuid,newIcon){
+    if(this.state !== undefined){
+      let newIcones = this.state.icons;
+      newIcones[uuid.toString()]=newIcon;
+      this.setState({
+        icons: newIcones
+      });
+    }
+  }
+
   OnTitleChange(uuid,newTitle){
     if(this.state !== undefined){
       let newTitiles = this.state.titles;
@@ -55,7 +76,14 @@ class WebBrowser extends React.Component {
 
   newTab(url){
     let newUUID=getUUID();
-    let NewWB=<BrowserContainer newTab={this.newTab} URL={url} OnTitleChange={this.OnTitleChange} id={newUUID} key={newUUID}/>;
+    let NewWB=<BrowserContainer
+                newTab={this.newTab}
+                URL={url}
+                onFavChange={this.onFavChange}
+                OnTitleChange={this.OnTitleChange}
+                id={newUUID}
+                key={newUUID}
+              />;
     let newTitiles=this.state.titles;
     newTitiles[newUUID.toString()]="New Tab";
     this.setState({
@@ -72,9 +100,25 @@ class WebBrowser extends React.Component {
   render() { 
     let finalTabs=this.state.tabs.map((item, i) => {
       if(i===this.state.currentTab){
-        return <Tab closeTab={this.closeTab} selected={true} key={i} id={i} switchTab={this.switchTab} title={this.state.titles[item.obj.key]} />
+        return <Tab
+                  closeTab={this.closeTab}
+                  selected={true}
+                  key={i}
+                  id={i}
+                  switchTab={this.switchTab}
+                  favIcoURL={this.state.icons[item.obj.key]} 
+                  title={this.state.titles[item.obj.key]} 
+              />
       }else{
-        return <Tab closeTab={this.closeTab} selected={false} key={i} id={i} switchTab={this.switchTab} title={this.state.titles[item.obj.key]} />
+        return <Tab
+                  closeTab={this.closeTab}
+                  selected={false}
+                  key={i}
+                  id={i}
+                  switchTab={this.switchTab}
+                  favIcoURL={this.state.icons[item.obj.key]} 
+                  title={this.state.titles[item.obj.key]}
+                />
       }
     }) 
 

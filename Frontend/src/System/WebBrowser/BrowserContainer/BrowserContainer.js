@@ -64,6 +64,11 @@ class BrowserContainer extends React.Component {
             this.forceUpdate();
         });
 
+        this.webview.addEventListener('page-favicon-updated', (e) => {
+          this.props.onFavChange(this.state.uuid,e.favicons[0]);
+          this.forceUpdate();
+      });
+
         this.webview.addEventListener('did-navigate', (e) => {
           let newUrl=e.url.toString();
           this.setState(
