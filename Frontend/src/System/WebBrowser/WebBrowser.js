@@ -18,6 +18,7 @@ class WebBrowser extends React.Component {
     this.closeTab = this.closeTab.bind(this);
     this.OnTitleChange = this.OnTitleChange.bind(this);
     this.onFavChange = this.onFavChange.bind(this);
+    this.convertHex = this.convertHex.bind(this);
 
     startTitles[startUUID]="Starting";
     startIcons[startUUID]=undefined;
@@ -46,6 +47,7 @@ class WebBrowser extends React.Component {
     if(this.state !== undefined){
       let newIcones = this.state.icons;
       newIcones[uuid.toString()]=newIcon;
+
       this.setState({
         icons: newIcones
       });
@@ -97,6 +99,17 @@ class WebBrowser extends React.Component {
     }, 12);
   }
 
+  convertHex(hex,opacity){
+    hex = hex.replace('#','');
+    const r = parseInt(hex.substring(0,2), 16);
+    const g = parseInt(hex.substring(2,4), 16);
+    const b = parseInt(hex.substring(4,6), 16);
+
+    const result = 'rgba('+r+','+g+','+b+','+opacity/100+')';
+    return result;
+  }
+
+
   render() { 
     let finalTabs=this.state.tabs.map((item, i) => {
       if(i===this.state.currentTab){
@@ -132,7 +145,8 @@ class WebBrowser extends React.Component {
 
     return (
       <div className="WebBrowser dontMove">
-        <div className="TabManager">
+        <div className="TabManager" style={{ "background":"linear-gradient(to bottom,"+this.convertHex(window.systemColor1,80)+",rgb(234, 237, 255) 100%"}}>
+        {/* <div className="TabManager" style={{ "background":"linear-gradient(to bottom,rgba(9, 2, 49, 1),51%,rgba(234, 237, 255, 1) 100%"}}> */}
           {finalTabs}
           <NewTab newTab={this.newTab}/>
         </div>
