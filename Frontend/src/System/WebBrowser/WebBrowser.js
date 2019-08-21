@@ -146,7 +146,6 @@ class WebBrowser extends React.Component {
     return (
       <div className="WebBrowser dontMove">
         <div className="TabManager" style={{ "background":"linear-gradient(to bottom,"+this.convertHex(window.systemColor1,80)+",rgb(234, 237, 255) 100%"}}>
-        {/* <div className="TabManager" style={{ "background":"linear-gradient(to bottom,rgba(9, 2, 49, 1),51%,rgba(234, 237, 255, 1) 100%"}}> */}
           {finalTabs}
           <NewTab newTab={this.newTab}/>
         </div>
