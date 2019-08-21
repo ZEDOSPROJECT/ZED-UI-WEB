@@ -1,0 +1,15 @@
+.ReactButton {
+  width: 25px;
+  height: 25px;
+  background-color: rgba(118, 122, 122, 0);
+  float: left;
+  margin: 2px;
+  transition: background-color 0.5s ease;
+  border-radius: 100%;
+}
+
+.ReactButton:hover {
+  background-color: rgb(118, 122, 122);
+  cursor: pointer;
+  float: left;
+}

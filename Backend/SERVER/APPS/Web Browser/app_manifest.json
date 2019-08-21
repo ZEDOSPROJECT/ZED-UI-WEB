@@ -1,0 +1,10 @@
+{
+    "Name":"Web Browser",
+    "Version":"1.0.0",
+    "Website":"",
+    "Platforms":"DESKTOP",
+    "Window":{
+        "Width":640,
+        "Height":480
+    }
+}

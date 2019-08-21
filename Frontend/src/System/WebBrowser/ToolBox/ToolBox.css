@@ -1,0 +1,12 @@
+.ToolBox {
+  position: absolute;
+  background-color: rgb(234, 237, 255);
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0px;
+}
+
+.WebAdress {
+  width: 100%;
+}

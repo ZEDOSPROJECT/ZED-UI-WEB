@@ -75,6 +75,7 @@
   }
 
   .frame{
+    position: relative;
     width: 99.95%;
     height: 99.95%;
     border: 0px;

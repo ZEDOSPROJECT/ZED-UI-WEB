@@ -234,10 +234,14 @@ class App extends Component {
           windowSize['Width']=640;
           windowSize['Height']=480;
      }
-      if(name !== "MyComputer" && name !== "MyMusic" && name !== "MyPictures" && name !== "MyDocuments"){
+      if( name !== "Web Browser" && name !== "MyComputer" && name !== "MyMusic" && name !== "MyPictures" && name !== "MyDocuments"){
         this.createWindow(url,name,icon,windowSize);
         this.setState({ showMenu: false });
       }else{
+        if(name === "Web Browser"){
+            this.createWindow("Web Browser","Web Browser",REST_URL+"/APPS/Web Browser/favicon.png",windowSize);
+            this.setState({ showMenu: false });
+        }
         if(name === "MyComputer"){
             window.explorer_open="/";
             this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize);
