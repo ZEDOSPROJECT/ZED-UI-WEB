@@ -26,7 +26,7 @@
     background-color:rgba(0, 0, 0, 0.356);
     left:-5px;
     width:calc( 100% + 10px);
-    height:calc( 100% + 40px);
+    height:calc( 100% + 30px);
     position:absolute;
     transition-duration: .6s;
     transition-property: all;
