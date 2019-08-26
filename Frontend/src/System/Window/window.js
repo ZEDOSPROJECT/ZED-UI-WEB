@@ -204,6 +204,21 @@ class Window extends React.Component{
                     window.soundsEmitter.splice(id, 1);
                 }
             });
+
+            this.webview.addEventListener('crashed', (e) => {
+                this.setState({url: REST_URL+'/API/APPS/onErrorLoad.html'});
+                this.forceUpdate();
+            });
+
+            this.webview.addEventListener('plugin-crashed', (e) => {
+                this.setState({url: REST_URL+'/API/APPS/onErrorLoad.html'});
+                this.forceUpdate();
+            });
+
+            this.webview.addEventListener('did-fail-load', (e) => {
+                this.setState({url: REST_URL+'/API/APPS/onErrorLoad.html'});
+                this.forceUpdate();
+            });
         }
     }
 
