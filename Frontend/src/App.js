@@ -3,6 +3,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import getUUID from 'uuid';
 import startUpSound from './Sounds/startup.mp3';
+import errorSound from './Sounds/error.mp3';
+import warningSound from './Sounds/warning.mp3';
+import infoSound from './Sounds/info.mp3';
 import TaskBar from './System/Taskbar/taskbar';
 import Window from './System/Window/window';
 import StartMenu from './System/StartMenu/startMenu';
@@ -76,14 +79,20 @@ class App extends Component {
 
     msgInfo(data){
         toast.info(data);
+        let infoSoundPlayer = new Audio(infoSound);
+        infoSoundPlayer.play();
     }
 
     msgError(data){
+        let errorSoundPlayer = new Audio(errorSound);
+        errorSoundPlayer.play();
         toast.error(data);
     }
 
 
     msgWarn(data){
+        let warningSoundPlayer = new Audio(warningSound);
+        warningSoundPlayer.play();
         toast.warn(data);
     }
 
