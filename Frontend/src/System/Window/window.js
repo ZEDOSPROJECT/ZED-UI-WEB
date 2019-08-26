@@ -181,13 +181,13 @@ class Window extends React.Component{
             });
 
             this.webview.addEventListener('console-message', (e) => {
-                if(e.level==0){
+                if(e.level===0){
                     this.props.onInfo(e.message);
                 }
-                if(e.level==1){
+                if(e.level===1){
                     this.props.onWarn(e.message);
                 }
-                if(e.level==2){
+                if(e.level===2){
                     this.props.onError(e.message);
                 }
             });
