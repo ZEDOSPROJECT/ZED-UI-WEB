@@ -49,6 +49,11 @@ class App extends Component {
     this.componentToHex = this.componentToHex.bind(this);
     this.rgbToHex = this.rgbToHex.bind(this);
     this.clean = this.clean.bind(this);
+
+    this.msgInfo = this.msgInfo.bind(this);
+    this.msgError = this.msgError.bind(this);
+    this.msgWarn = this.msgWarn.bind(this);
+
     setInterval(() => {
         this.loadUserSettings();
         this.clean();
@@ -59,9 +64,6 @@ class App extends Component {
         } 
     },2000);
     setTimeout(() => {
-        console.info = data => toast.info(data);
-        console.error = data => toast.error(data);
-        console.warn = data => toast.warn(data); 
         fetch(REST_URL+'/API/SYSTEM/SETTINGS/USER/getPaths.php')
         .then(response => response.json())
         .then(json => {
@@ -71,6 +73,19 @@ class App extends Component {
         });
     },50 );
   } 
+
+    msgInfo(data){
+        toast.info(data);
+    }
+
+    msgError(data){
+        toast.error(data);
+    }
+
+
+    msgWarn(data){
+        toast.warn(data);
+    }
 
     componentToHex(c) {
         var hex = c.toString(16);
@@ -200,6 +215,9 @@ class App extends Component {
                 url={url}  
                 icon={icon}
                 windowSize={windowSize}
+                onError={this.msgError}
+                onWarn={this.msgWarn}
+                onInfo={this.msgInfo}
                 nextWindowX={this.state.nextWindowX}
                 nextWindowY={this.state.nextWindowY}
                 uuid={uuid}   

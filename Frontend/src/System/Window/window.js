@@ -179,6 +179,19 @@ class Window extends React.Component{
                 window.winTitle[this.state.uuid]=e.title;
                 this.forceUpdate();
             });
+
+            this.webview.addEventListener('console-message', (e) => {
+                if(e.level==0){
+                    this.props.onInfo(e.message);
+                }
+                if(e.level==1){
+                    this.props.onWarn(e.message);
+                }
+                if(e.level==2){
+                    this.props.onError(e.message);
+                }
+            });
+
             this.webview.addEventListener('media-paused', () => {
                 let id=-1;
                 let i=0
