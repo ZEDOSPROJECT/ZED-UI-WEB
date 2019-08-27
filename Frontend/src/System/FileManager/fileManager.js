@@ -4,6 +4,7 @@ import ToolBar from "./ToolBar/toolBar";
 import Explorer from "./Explorer/explorer";
 import LeftBar from "./LeftBar/leftBar";
 import StatusBar from "./StatusBar/statusBar";
+import NewFolderDialog from './NewFolderDIalog/NewFolderDialog';
 import { REST_URL } from './../../REST_URL';
 import "./fileManager.css";
 
@@ -16,7 +17,8 @@ class FileManager extends React.Component {
       listDir:[],
       history:["/"],
       historyIndex: 0,
-      details:undefined
+      details:undefined,
+      createFolderVisible: false
     };
 
     setTimeout(() => {
@@ -35,6 +37,36 @@ class FileManager extends React.Component {
     this.goForward = this.goForward.bind(this);
     this.refresh = this.refresh.bind(this);
     this.getDetails = this.getDetails.bind(this);
+    this.onCreateFolderCancel = this.onCreateFolderCancel.bind(this);
+    this.onCreateFolderReady = this.onCreateFolderReady.bind(this);
+    this.onCreateFolderOpen = this.onCreateFolderOpen.bind(this);
+  }
+
+  onCreateFolderCancel(){
+    this.setState({
+      createFolderVisible: false
+    });
+  }
+
+  onCreateFolderReady(name){
+    fetch(REST_URL+'/API/SYSTEM/IO/PATH/createPath.php?path='+this.state.currentPath+name)
+    .then(response => response.text())
+    .then(text => {
+      if(text!=="1"){
+        console.log("ERROR");
+      }else{
+        this.listFolder(this.state.currentPath);
+      }
+    });
+    this.setState({
+      createFolderVisible: false
+    });
+  }
+
+  onCreateFolderOpen(){
+    this.setState({
+      createFolderVisible: true
+    });
   }
 
   refresh(){
@@ -67,11 +99,21 @@ class FileManager extends React.Component {
     fetch(REST_URL+'/API/SYSTEM/IO/getInfo.php?path='+path)
     .then(response => response.json())
     .then(json => {
-        let final=<div style={{ fontSize: 12, overflow: "hidden" }}>
-          <b>Type:</b> {json.MIME}<br/>
-          <p><b>Size:</b> {json.SIZE}<br/></p>
-          <b>Last Change</b> {json.LASTE_DATE}
-        </div>
+        let final;
+        if(json.MIME==="directory"){
+          final=<div style={{ fontSize: 12, overflow: "hidden" }}>
+            <b>Type:</b> Folder <br/><br/>
+            <b>Last Change</b> {json.LASTE_DATE}
+          </div>
+        }
+        else{
+          final=<div style={{ fontSize: 12, overflow: "hidden" }}>
+            <b>Type:</b> {json.MIME}<br/>
+            <p><b>Size:</b> {json.SIZE}<br/></p>
+            <b>Last Change</b> {json.LASTE_DATE}
+          </div>
+        }
+
         this.setState({
           details: final,
         });
@@ -113,7 +155,7 @@ class FileManager extends React.Component {
       }
       newHistory.push(newPath);
       setTimeout(() => {
-        this.setState({ 
+        this.setState({
           currentPath: newPath,
           historyIndex: this.state.historyIndex+1,
           history: newHistory,
@@ -153,6 +195,7 @@ class FileManager extends React.Component {
           listFolder={this.listFolder} 
           userDirs={this.props.userDirs}
           details={this.state.details}
+          onCreateFolderOpen={this.onCreateFolderOpen}
         /> 
         <Explorer
           currentPath={this.state.currentPath} 
@@ -163,6 +206,11 @@ class FileManager extends React.Component {
         />
         <StatusBar 
           items={this.state.listDir}
+        />
+        <NewFolderDialog 
+          visible={this.state.createFolderVisible}
+          onESQ={this.onCreateFolderCancel}
+          onENTER={this.onCreateFolderReady}
         />
       </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import Icon from './Icon/icon';
+import getUUID from 'uuid';
 import './desktopIcons.css';
 
 class DesktopIcons extends React.Component {
@@ -15,7 +16,8 @@ class DesktopIcons extends React.Component {
         if(localStorage.favoriteIcons){
             storedIcons=JSON.parse(localStorage.favoriteIcons).favorites;
             fianlRender = storedIcons.map((element) => {
-                return <Icon 
+                return <Icon
+                    key={getUUID()}
                     onClickApp = {this.props.onClickApp}
                     Exec = ""
                     WindowSize = {element.WindowSize}

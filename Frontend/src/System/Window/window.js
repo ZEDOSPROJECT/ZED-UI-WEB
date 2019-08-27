@@ -228,7 +228,7 @@ class Window extends React.Component{
             if(!isElectron()){  
                 WindowContent=(<iframe title={window.winTitle[this.state.uuid]}  onLoad={this.onTitleChange} className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
             } else {  
-                WindowContent=(<webview ref={(input) => { this.webview = input; }} onLoad={this.onTitleChange} useragent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.120 Safari/537.36" className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url} plugins allowpopups></webview>);
+                WindowContent=(<webview ref={(input) => { this.webview = input; }} onLoad={this.onTitleChange} useragent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.120 Safari/537.36" className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url} plugins="true" allowpopups="true"></webview>);
             }
         }else{
             if(this.state.url !== "Web Browser"){
@@ -293,7 +293,7 @@ class Window extends React.Component{
                             <img alt="" className="btnControl" onClick={this.onToggleMinimize} src={CMINIMIZE}></img>
                         </div>
                     </div>
-                    <div className={finalBodyStyle}>
+                    <div onMouseDown={e => e.stopPropagation()} className={finalBodyStyle}>
                         {WindowContent}  
                         {this.state.active ? 
                             null

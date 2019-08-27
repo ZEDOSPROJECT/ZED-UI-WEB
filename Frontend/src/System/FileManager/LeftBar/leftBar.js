@@ -5,6 +5,12 @@ import myPictures from '../../../Icons/ModernXP (62).png';
 import myMusic from '../../../Icons/ModernXP (38).png';
 import myVideos from '../../../Icons/ModernXP (66).png';
 import myComputer from '../../../Icons/ModernXP (10).png';
+import createFolder from '../../../Icons/ModernXP (35).png';
+import find from '../../../Icons/ModernXP (20).png';
+import copy from '../../../Icons/243.ico';
+import paste from '../../../Icons/256.ico';
+import remove from '../../../Icons/240.ico';
+import rename from '../../../Icons/242.ico';
 /////////////////////////////
 import Combo from './Combo/combo';
 import './leftBar.css';
@@ -12,7 +18,18 @@ import './leftBar.css';
 class LeftBar extends React.Component {
     render(){
         return(<div className="leftBar">
-            <Combo title="Tasks" open >Hello World</Combo>
+            <Combo title="Tasks" open >
+                <div className="link" onClick={this.props.onCreateFolderOpen}><img alt="" src={createFolder} className="miniIcon"></img>New folder</div>
+                <div className="link"><img alt="" src={find} className="miniIcon"></img>Find files and folders</div>
+                {this.props.details ? (
+                    <div>
+                        <div className="link"><img alt="" src={rename} className="miniIcon"></img>Rename</div>
+                        <div className="link"><img alt="" src={copy} className="miniIcon"></img>Copy</div>
+                        <div className="link"><img alt="" src={paste} className="miniIcon"></img>Paste</div>
+                        <div className="link"><img alt="" src={remove} className="miniIcon"></img>Remove</div>
+                    </div>
+                ) : null }
+            </Combo>
             <Combo title="Other Places" open >
                 <div className="link" onClick={data => this.props.listFolder("/")}><img alt="" src={myComputer} className="miniIcon"></img>My Computer</div>
                 <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["music"])}><img alt="" src={myMusic} className="miniIcon"></img>My Music</div>

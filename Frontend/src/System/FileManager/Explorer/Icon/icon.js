@@ -4,6 +4,8 @@ import Folder from "./folder.png";
 import File from "./file.png";
 import AudioFile from "./audio.png";
 import VideoFile from './video.png';
+import TextFile from './text.png';
+import mime from 'mime-types';
 import { REST_URL } from './../../../../REST_URL';
 import "./icon.css";
 
@@ -27,16 +29,34 @@ class Icon extends React.Component {
     if (this.props.data.type === "folder") {
       theIcon = Folder;
     } else {
-      if(this.props.data.name.toLowerCase().includes(".jpg") || this.props.data.name.toLowerCase().includes(".gif") || this.props.data.name.toLowerCase().includes(".png")){
-        theIcon=REST_URL+'/API/SYSTEM/IO/FILE/read.php?path='+this.props.currentPath+this.props.data.name;
-      }else if(this.props.data.name.toLowerCase().includes(".ogg") || this.props.data.name.toLowerCase().includes(".mp3") || this.props.data.name.toLowerCase().includes(".wav")){
-        theIcon = AudioFile;
-      }else if(this.props.data.name.toLowerCase().includes(".ogv") || this.props.data.name.toLowerCase().includes(".avi") || this.props.data.name.toLowerCase().includes(".mp4")){
-        theIcon = VideoFile;
+      let file=this.props.currentPath+this.props.data.name;
+      const mimeType=mime.lookup(file);
+      if(mimeType!==false){
+        let hasIcon=false;
+        if(mimeType.includes("image/")){
+          theIcon=REST_URL+'/API/SYSTEM/IO/FILE/read.php?path='+this.props.currentPath+this.props.data.name;
+          hasIcon=true;
+        }
+        if(mimeType.includes("audio/")){
+          theIcon = AudioFile;
+          hasIcon=true;
+        }
+        if(mimeType==="text/plain" || mimeType==="text/xml"){
+          theIcon = TextFile;
+          hasIcon=true;
+        }
+        if(mimeType.includes("video/")){
+          theIcon = VideoFile;
+          hasIcon=true;
+        }
+        if(!hasIcon){
+          theIcon = File;
+        }
       }else{
         theIcon = File;
-      } 
+      }
     }
+
     return (
       (this.state.ready ? (
         <div
@@ -45,6 +65,7 @@ class Icon extends React.Component {
               ? { backgroundColor: "#3191ef", color: "white" }
               : null
           }
+          title={this.props.data.name}
           onClick={data => this.props.onIClick(this.props.data)}
           onDoubleClick={data => this.props.onDBClick(this.props.data)}
           className="icon"

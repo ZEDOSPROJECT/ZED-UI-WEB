@@ -1,5 +1,7 @@
 <?php
+
     header("Access-Control-Allow-Origin: *");
-    mkdir($_GET["path"]),true);
-	return null;
+    $path=$_GET["path"];
+    echo(mkdir($path));
+    
 ?>

@@ -1,0 +1,25 @@
+.NewFolderDialog {
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.335);
+}
+
+.NewFolderDialogModal {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    width:400px;
+    height:35px;
+    margin-top: -20px; /*set to a negative number 1/2 of your height*/
+    margin-left: -200px; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+    padding: 20px;
+}
+
+.NewFolderDialogInput {
+    width: 100%;
+}
