@@ -11,6 +11,7 @@ import Window from './System/Window/window';
 import StartMenu from './System/StartMenu/startMenu';
 import DesktopIcons from './System/DesktopIcons/desktopIcons';
 import BlueLightFilter from './System/BlueFilter/blueFilter';
+import ScreenSaver from './System/ScreenSaver/ScreenSaver';
 import { REST_URL } from './REST_URL';
 import './App.css';
 import { setTimeout } from 'timers';
@@ -29,7 +30,8 @@ class App extends Component {
         userPaths: null,
         nextWindowX: 15,
         nextWindowY: 15,
-        videoWallpaperURL: ""
+        videoWallpaperURL: "",
+        ScreenSaverTimer: 0
     };
     window.systemColor0="#06001E";
     window.systemColor1="#06001E";
@@ -57,6 +59,8 @@ class App extends Component {
     this.msgError = this.msgError.bind(this);
     this.msgWarn = this.msgWarn.bind(this);
 
+    this.onMouseMove = this.onMouseMove.bind(this);
+
     setInterval(() => {
         this.loadUserSettings();
         this.clean();
@@ -75,7 +79,14 @@ class App extends Component {
             });
         });
     },50 );
+    setInterval(() => {
+        this.setState({ScreenSaverTimer: this.state.ScreenSaverTimer+1});
+    }, 60000);
   } 
+
+  onMouseMove(){
+    this.setState({ScreenSaverTimer: 0});
+  }
 
     msgInfo(data){
         toast.info(data);
@@ -325,7 +336,7 @@ class App extends Component {
     const wallpaperURL = REST_URL+'/Wallpapers/Images/'+this.state.setting_wallpaperURL;
     const wallpaperColor = this.state.setting_wallpaperColor;
     return (
-      <div className="App" style={{zoom: this.state.setting_resolution}} >
+      <div onMouseMove={this.onMouseMove} className="App" style={{zoom: this.state.setting_resolution}} >
         { this.state.videoWallpaperURL !== "" ? (
             <video className="backgroundVideo" src={REST_URL+"/Wallpapers/Videos/"+this.state.videoWallpaperURL} loop autoPlay muted></video>
         ):(
@@ -349,6 +360,7 @@ class App extends Component {
         />
         <ToastContainer />
         <BlueLightFilter enabled={this.state.setting_blueFilter}/>
+        <ScreenSaver timer={this.state.ScreenSaverTimer}/>
       </div>
     );
   }
