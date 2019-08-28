@@ -123,7 +123,8 @@ class FileManager extends React.Component {
   listFolder(path){
     this.setState({
       currentPath: path,
-      historyIndex: this.state.historyIndex
+      historyIndex: this.state.historyIndex,
+      details:undefined
     });
     fetch(REST_URL+'/API/SYSTEM/IO/PATH/listPath.php?path='+path)
     .then(response => response.json())
