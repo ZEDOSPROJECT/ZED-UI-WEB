@@ -84,7 +84,7 @@
 }
 
 .systemMenu{
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   width: 100%;
   height: 95%;
@@ -99,7 +99,7 @@
   width: 95%;
   height: 40px;
   padding-left: 10px;
-  background-color: rgba(0, 0, 139, 0)
+  background-color: rgba(0, 0, 139, 0);
 } 
 
 .systemItem:hover{
@@ -145,34 +145,34 @@ hr{
 } 
 
 ::-webkit-scrollbar {
-  width: 2px;
-  height: 2px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-button {
   width: 0px;
   height: 0px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #e1e1e1;
+  background: #68b8ff;
   border: 0px none #ffffff;
   border-radius: 50px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffffff;
+  background: #68b8ff;
 }
 ::-webkit-scrollbar-thumb:active {
-  background: #000000;
+  background: #0088ff;
 }
 ::-webkit-scrollbar-track {
-  background: #666666;
+  background: #e5e5e5;
   border: 0px none #ffffff;
   border-radius: 50px;
 }
 ::-webkit-scrollbar-track:hover {
-  background: #666666;
+  background: #e5e5e5;
 }
 ::-webkit-scrollbar-track:active {
-  background: #333333;
+  background: #c8c8c8;
 }
 ::-webkit-scrollbar-corner {
   background: transparent;
