@@ -121,6 +121,12 @@ class FileManager extends React.Component {
   }
 
   listFolder(path){
+    let tempArray=path.split("/");
+    let currentTitle=tempArray[tempArray.length-2];
+    if(currentTitle === ""){
+      currentTitle="/";
+    }
+    this.props.onTitleChange(currentTitle);
     this.setState({
       currentPath: path,
       historyIndex: this.state.historyIndex,

@@ -48,6 +48,7 @@ class Window extends React.Component{
         this.onErrorFRAME = this.onErrorFRAME.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.handleClickInsideWindow = this.handleClickInsideWindow.bind(this);
+        this.onTitleChange = this.onTitleChange.bind(this);
         window.maxZIndex=window.maxZIndex+1;
         setInterval(() => {
             if(window.toFront){
@@ -164,6 +165,11 @@ class Window extends React.Component{
         this.setState({url: REST_URL+'/API/APPS/onErrorLoad.html'});
     } 
 
+    onTitleChange(newTitle){
+        window.winTitle[this.state.uuid]=newTitle;
+        this.forceUpdate();
+    }
+
     componentDidMount(){
         if(this.webview){
             this.webview.addEventListener('media-started-playing',() => {
@@ -176,7 +182,7 @@ class Window extends React.Component{
                     window.soundsEmitter.push(this.state.uuid);
             });
             this.webview.addEventListener('page-title-updated', (e) => {
-                window.winTitle[this.state.uuid]=e.title;
+                this.onTitleChange(e.title);
                 this.forceUpdate();
             });
 
@@ -232,9 +238,9 @@ class Window extends React.Component{
             }
         }else{
             if(this.state.url !== "Web Browser"){
-                WindowContent=<FileManager userDirs={this.props.userDirs} className="frame dontMove"/>
+                WindowContent=<FileManager onTitleChange={this.onTitleChange} userDirs={this.props.userDirs} className="frame dontMove"/>
             }else{
-                WindowContent=<WebBrowser className="frame dontMove"/>
+                WindowContent=<WebBrowser onTitleChange={this.onTitleChange} className="frame dontMove"/>
             }
         } 
 
