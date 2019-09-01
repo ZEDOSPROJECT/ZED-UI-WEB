@@ -5,7 +5,7 @@ class ReactButton extends React.Component {
   render() {
     return (
       <div onClick={this.props.onClick} className="ReactButton">
-        <img src={this.props.icon} width="25" alt="" />
+        <img draggable="false" src={this.props.icon} width="25" alt="" />
       </div>
     );
   }

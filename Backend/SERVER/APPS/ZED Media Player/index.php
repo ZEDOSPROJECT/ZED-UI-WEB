@@ -181,11 +181,11 @@
     <center>
       <input min="0" max="100" value="0" type="range" id="timeLine" class="timeLine" onchange="setTime()">
       <div class="gwd-div-6nvh" style="border-radius: 50%;" id="btn_play" onclick="playPause()">
-        <img width="40" src="./assets/pause.png">
+        <img draggable="false" width="40" src="./assets/pause.png">
         <img>
       </div>
       <div hidden="" class="gwd-div-6nvh" style="border-radius: 50%;" id="btn_pause" onclick="playPause()">
-        <img width="40" src="./assets/play.png">
+        <img draggable="false" width="40" src="./assets/play.png">
         <img>
       </div>
     </center>

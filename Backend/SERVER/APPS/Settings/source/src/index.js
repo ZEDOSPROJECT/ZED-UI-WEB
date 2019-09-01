@@ -193,6 +193,7 @@ class App extends React.Component {
             if (wallpaper !== "") {
               return (
                 <img
+                  draggable="false"
                   onClick={this.changeWallpaper}
                   style={
                     wallpaper
@@ -309,6 +310,7 @@ class App extends React.Component {
       <div>Not implemented</div>,
       <div>
         <img
+          draggable="false"
           src={ZED_LOGO}
           width="54"
           height="54"

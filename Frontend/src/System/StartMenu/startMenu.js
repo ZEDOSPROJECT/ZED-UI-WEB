@@ -122,7 +122,7 @@ class StartMenu extends React.Component {
                 <div className={visible} style={{ zIndex: window.maxZIndex+10,backgroundColor: this.convertHex(window.systemColor0,60) }}>
                     <div className="topMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,95) }}>
                         <div>
-                            <img alt="" className="userPicture" height="32" src={UserIcon}></img>
+                            <img draggable="false" alt="" className="userPicture" height="32" src={UserIcon}></img>
                             <div style={{ color: invert(window.systemColor0, true)}} className="userName"><b>Administrator</b></div>
                         </div>
                     </div>
@@ -132,32 +132,32 @@ class StartMenu extends React.Component {
                         </div>
                         <div className="systemMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,35), color: invert(window.systemColor0, true)}}>
                             <div onClick={event => this.props.onClickApp(event,"","MyDocuments",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
-                                <img alt="" src={myDocuments} ></img>
+                                <img draggable="false" alt="" src={myDocuments} ></img>
                                 <div>My Documents</div>
                             </div>
                             <div onClick={event => this.props.onClickApp(event,"","MyPictures",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
-                                <img alt="" src={myPictures} ></img>
+                                <img draggable="false" alt="" src={myPictures} ></img>
                                 <div>My Pictures</div>
                             </div>
                             <div onClick={event => this.props.onClickApp(event,"","MyMusic",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
-                                <img alt="" src={myMusic} ></img>
+                                <img draggable="false" alt="" src={myMusic} ></img>
                                 <div>My Music</div>
                             </div>
                             <div onClick={event => this.props.onClickApp(event,"","MyComputer",REST_URL+"/Icons/ModernXP (35).png")} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
-                                <img alt="" src={myComputer} ></img>
+                                <img draggable="false" alt="" src={myComputer} ></img>
                                 <div>My Computer</div>
                             </div>
                             <hr></hr>
                             <div onClick={event => this.props.onClickApp(event,REST_URL+"/APPS/Settings/index.php","Settings",REST_URL+"/API/SYSTEM/ICONS/ModernXP (41).png")} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
-                                <img alt="" src={controlPanel} ></img>
+                                <img draggable="false" alt="" src={controlPanel} ></img>
                                 <div>Control Panel</div>
                             </div>
                         </div>
                     </div>
                     <div className="bottomMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,95) }}>
                         <input id="searchBox" autoFocus={this.state.visible} onChange={this.handleSearchChange} placeholder="Type to search . . ." type="text"></input>
-                        <img alt="" className="logoff" src={logoff} width="32" height="32" ></img>
-                        <img alt="" className="shutdown" src={shutdown} width="32" height="32" ></img>
+                        <img draggable="false" alt="" className="logoff" src={logoff} width="32" height="32" ></img>
+                        <img draggable="false" alt="" className="shutdown" src={shutdown} width="32" height="32" ></img>
                     </div>
                 </div>
             </div>

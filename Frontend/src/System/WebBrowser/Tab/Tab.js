@@ -32,12 +32,12 @@ class Tab extends React.Component {
     }
     if(this.props.selected)
       return <div title={this.props.title} onClick={this.handleClick} className="TabSelected">
-              <img alt="" className="favIcon" src={favIcoURL} />
+              <img draggable="false" alt="" className="favIcon" src={favIcoURL} />
               {this.props.title}
             </div>;
     else
       return <div title={this.props.title} onClick={this.handleClick} className="Tab">
-                <img alt="" className="favIcon" src={favIcoURL} />
+                <img draggable="false" alt="" className="favIcon" src={favIcoURL} />
                 {this.props.title}
                 <div className="closeBTN" onClick={this.onClose}>X</div>
               </div>;

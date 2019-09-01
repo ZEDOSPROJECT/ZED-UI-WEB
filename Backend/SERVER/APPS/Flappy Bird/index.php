@@ -54,7 +54,7 @@
                      <div id="medal"></div>
                      <div id="currentscore"></div>
                      <div id="highscore"></div>
-                     <div id="replay"><img src="assets/replay.png" alt="replay"></div>
+                     <div id="replay"><img draggable="false" src="assets/replay.png" alt="replay"></div>
                   </div>
                   
                   <!-- Pipes go here! -->

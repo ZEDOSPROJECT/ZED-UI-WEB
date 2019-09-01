@@ -24,8 +24,8 @@ class TaskButton extends React.Component {
         }
         return(
             <div title={window.winTitle[this.props.uuid]} onClick={ e => this.props.onToggleMinimize(this.props.uuid)} style={{ color: invert(window.systemColor0, true)}}   className="taskButton">
-                { isPlaying ? (<img alt="" className="taskSound" src={VUGif} />) : null }
-                <img alt="" className="taskIcon" src={this.props.icon}  />
+                { isPlaying ? (<img draggable="false" alt="" className="taskSound" src={VUGif} />) : null }
+                <img draggable="false" alt="" className="taskIcon" src={this.props.icon}  />
                 <div className="taskTitle">{window.winTitle[this.props.uuid]}</div>
             </div>
         );

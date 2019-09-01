@@ -62,8 +62,8 @@ class BatteryStatus extends React.Component{
                                 <div className="batteryCharge" style={{ height: battery+'%'}}>
                                 </div>
                             </div>
-                            { this.state.charging ? (<img alt="" className="batteryCharging" src={charging} ></img>) : null } 
-                            { this.isLowerBattery(battery) ? (<img alt="" className="lowBattery" src={lowBattery} ></img>) : null } 
+                            { this.state.charging ? (<img draggable="false" alt="" className="batteryCharging" src={charging} ></img>) : null } 
+                            { this.isLowerBattery(battery) ? (<img draggable="false" alt="" className="lowBattery" src={lowBattery} ></img>) : null } 
                         </center>
                     </div>
                     } 

@@ -16,8 +16,8 @@ class NetworkStatus extends React.Component {
   render() {
     return (
       <div className="NetworkStatus">
-        <Online><img alt="" src={C1}/></Online>
-        <Offline><img alt="" src={C0}/></Offline>
+        <Online><img draggable="false" alt="" src={C1}/></Online>
+        <Offline><img draggable="false" alt="" src={C0}/></Offline>
       </div>
     );
   }

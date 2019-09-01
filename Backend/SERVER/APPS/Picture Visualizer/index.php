@@ -11,16 +11,16 @@
     <table class="tb">
       <tr>
         <td class="imageCntainer">
-          <img id="theImage" class="image" src="" />
+          <img draggable="false" id="theImage" class="image" src="" />
         </td>
       </tr>
       <tr>
         <td class="toolbarContainer" align="center">
           <div class="toolbar">
-            <img class="button" onclick="goBack()" src="icons/back.png" />
-            <img class="button" onclick="goNext()" src="icons/next.png" />
-            <img class="button" src="icons/print.png" />
-            <img class="button" onclick="setAsWallpaper()" src="icons/setAsWallpaper.png" />
+            <img draggable="false" class="button" onclick="goBack()" src="icons/back.png" />
+            <img draggable="false" class="button" onclick="goNext()" src="icons/next.png" />
+            <img draggable="false" class="button" src="icons/print.png" />
+            <img draggable="false" class="button" onclick="setAsWallpaper()" src="icons/setAsWallpaper.png" />
           </div>
         </td>
       </tr>
