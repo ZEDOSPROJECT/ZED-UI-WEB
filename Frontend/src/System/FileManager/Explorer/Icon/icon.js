@@ -70,7 +70,12 @@ class Icon extends React.Component {
           onDoubleClick={data => this.props.onDBClick(this.props.data)}
           className="icon"
         >
-          <LazyLoadImage alt="" src={theIcon} className="img" />
+          <LazyLoadImage
+            draggable="false"
+            alt=""
+            src={theIcon}
+            className="img"
+          />
           <div className="label">{this.props.data.name}</div>
         </div>
       ) : null)
