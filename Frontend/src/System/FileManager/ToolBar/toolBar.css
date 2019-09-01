@@ -6,6 +6,7 @@
   left: 0;
   background-color: #f0efdd;
   box-shadow: 0 1.2px 1px -1px gray;
+  z-index: 2;
 }
 
 .btn {

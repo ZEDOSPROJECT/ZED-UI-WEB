@@ -5,6 +5,7 @@ import Explorer from "./Explorer/explorer";
 import LeftBar from "./LeftBar/leftBar";
 import StatusBar from "./StatusBar/statusBar";
 import NewFolderDialog from './NewFolderDIalog/NewFolderDialog';
+import clickSound from './click.mp3';
 import { REST_URL } from './../../REST_URL';
 import "./fileManager.css";
 
@@ -18,7 +19,8 @@ class FileManager extends React.Component {
       history:["/"],
       historyIndex: 0,
       details:undefined,
-      createFolderVisible: false
+      createFolderVisible: false,
+      mainType:""
     };
 
     setTimeout(() => {
@@ -136,8 +138,34 @@ class FileManager extends React.Component {
     .then(response => response.json())
     .then(json => {
         const JSONdata=JSON.parse(json);
+        let mimeTypes=[];
+
+        JSONdata.data.forEach(file => {
+          if(file.type!=="folder"){
+            mimeTypes.push(mime.lookup(file.name));
+          }
+        });
+
+        var mf = 1;
+        var m = 0;
+        var item;
+        for (var i=0; i<mimeTypes.length; i++)
+        {
+            for (var j=i; j<mimeTypes.length; j++)
+            {
+                    if (mimeTypes[i] == mimeTypes[j])
+                    m++;
+                    if (mf<m)
+                    {
+                      mf=m; 
+                      item = mimeTypes[i];
+                    }
+            }
+            m=0;
+        }
         this.setState({
           listDir: JSONdata.data,
+          mainType: item
         });
     });
   } 
@@ -168,6 +196,8 @@ class FileManager extends React.Component {
           history: newHistory,
           details: undefined,
         });
+        let startupSoundPlayer = new Audio(clickSound);
+        startupSoundPlayer.play();
       }, 10);
     } else {
       const file=this.state.currentPath + data.name;
@@ -205,6 +235,7 @@ class FileManager extends React.Component {
           onCreateFolderOpen={this.onCreateFolderOpen}
         /> 
         <Explorer
+          mainType={this.state.mainType}
           currentPath={this.state.currentPath} 
           onIClick={this.onIClick}
           onDBClick={this.onDBClick}

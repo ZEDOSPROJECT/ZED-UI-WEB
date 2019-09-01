@@ -7,3 +7,12 @@
   padding: 2px;
   overflow-y: scroll;
 }
+
+.typeF {
+  position: fixed !important;
+  bottom: +55px;
+  right: +55px;
+  width: 120px;
+  height: auto;
+  z-index: 0;
+}
