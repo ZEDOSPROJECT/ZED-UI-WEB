@@ -4,7 +4,7 @@
     "Website":"https://soundcloud.com",
     "Platforms":"MOBILE|DESKTOP",
     "Window":{
-        "Width":640,
-        "Height":480
+        "Width":0,
+        "Height":0
     }
 }

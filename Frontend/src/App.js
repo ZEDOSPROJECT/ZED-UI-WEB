@@ -269,8 +269,8 @@ class App extends Component {
   onClickApp(e,url,name,icon,windowSize){
       if(!windowSize){
           windowSize={};
-          windowSize['Width']=640;
-          windowSize['Height']=480;
+          windowSize['Width']=0;
+          windowSize['Height']=0;
      }
       if( name !== "Web Browser" && name !== "MyComputer" && name !== "MyMusic" && name !== "MyPictures" && name !== "MyDocuments"){
         this.createWindow(url,name,icon,windowSize);
