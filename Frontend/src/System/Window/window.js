@@ -20,20 +20,21 @@ class Window extends React.Component{
         let positionX=this.props.nextWindowX;
         let positionY=this.props.nextWindowY;
 
-        let winName="";
-        if(this.props.url === "MyComputer" || this.props.url === "MyMusic" || this.props.url === "MyPictures" || this.props.url === "MyDocuments"){
-            winName=this.props.url;
+        let appID=this.props.url.split("/");
+        if(appID[4]==undefined){
+            appID=this.props.url;
         }else{
-            winName=window.winTitle[this.props.uuid];
+            appID=appID[4];
         }
+        console.log(appID);
 
         // If WindowSize in width and Height is equal ZERO has no manifest file
         if(windowSize.Width === 0 && windowSize.Height === 0){
-            if(localStorage["WINDOW_"+winName+"_X"]){
-                positionX=localStorage["WINDOW_"+winName+"_X"];
-                positionY=localStorage["WINDOW_"+winName+"_Y"];
-                windowSize.Width=localStorage["WINDOW_"+winName+"_W"];
-                windowSize.Height=localStorage["WINDOW_"+winName+"_H"];
+            if(localStorage["WINDOW_"+appID+"_X"]){
+                positionX=localStorage["WINDOW_"+appID+"_X"];
+                positionY=localStorage["WINDOW_"+appID+"_Y"];
+                windowSize.Width=localStorage["WINDOW_"+appID+"_W"];
+                windowSize.Height=localStorage["WINDOW_"+appID+"_H"];
             }else{
                 windowSize.Width=640;
                 windowSize.Height=480;
@@ -145,16 +146,17 @@ class Window extends React.Component{
             this.props.onClose(this.state.uuid);
         }, 240);
         this.setState({myStyle: "window hidden"});
-        let winName="";
-        if(this.state.url === "MyComputer" || this.state.url === "MyMusic" || this.state.url === "MyPictures" || this.state.url === "MyDocuments"){
-            winName=this.state.url;
+
+        let appID=this.state.url.split("/");
+        if(appID[4]==undefined){
+            appID=this.state.url;
         }else{
-            winName=window.winTitle[this.state.uuid];
+            appID=appID[4];
         }
-        localStorage["WINDOW_"+winName+"_X"]=this.state.x;
-        localStorage["WINDOW_"+winName+"_Y"]=this.state.y;
-        localStorage["WINDOW_"+winName+"_W"]=this.state.width;
-        localStorage["WINDOW_"+winName+"_H"]=this.state.height;
+        localStorage["WINDOW_"+appID+"_X"]=this.state.x;
+        localStorage["WINDOW_"+appID+"_Y"]=this.state.y;
+        localStorage["WINDOW_"+appID+"_W"]=this.state.width;
+        localStorage["WINDOW_"+appID+"_H"]=this.state.height;
         let id=-1;
         let i=0
         window.soundsEmitter.forEach(element => {
