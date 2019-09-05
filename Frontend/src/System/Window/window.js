@@ -26,8 +26,7 @@ class Window extends React.Component{
         }else{
             appID=appID[4];
         }
-        console.log(appID);
-
+ 
         // If WindowSize in width and Height is equal ZERO has no manifest file
         if(windowSize.Width === 0 && windowSize.Height === 0){
             if(localStorage["WINDOW_"+appID+"_X"]){
