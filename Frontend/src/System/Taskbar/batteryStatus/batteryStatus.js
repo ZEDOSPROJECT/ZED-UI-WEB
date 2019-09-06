@@ -1,5 +1,4 @@
 import React from 'react';
-import Battery from 'react-device-battery';
 import './batteryStatus.css';
 import charging from './charging.png';
 import lowBattery from './lb.png';
@@ -8,11 +7,15 @@ class BatteryStatus extends React.Component{
     constructor(props){
         super(props);
         this.state = ({
-            charging: false
+            charging: false,
+            chargingTime: undefined,
+            dischargingTime: undefined,
+            level: undefined
         });
 
         this.updateChargeInfo = this.updateChargeInfo.bind(this);
         this.isLowerBattery = this.isLowerBattery.bind(this);
+        this.timeConvert = this.timeConvert.bind(this);
 
         navigator.getBattery().then((battery) => {
             this.updateChargeInfo(battery);
@@ -42,32 +45,47 @@ class BatteryStatus extends React.Component{
 
     updateChargeInfo(battery){
         this.setState({
-            charging: battery.charging
+            charging: battery.charging,
+            chargingTime: battery.chargingTime,
+            dischargingTime: battery.dischargingTime,
+            level: battery.level*100
         });
     }
 
+    timeConvert(n) {
+        let hoursString="";
+        var num = n;
+        var hours = (num / 60);
+        var rhours = Math.floor(hours);
+        var minutes = (hours - rhours) * 60;
+        var rminutes = Math.round(minutes);
+        if(rhours !== 0){
+            hoursString = rhours + " hour(s) and ";
+        }
+        return hoursString+rminutes+" minute(s)"
+    }
+
     render(){
+        let label="";
+        if(this.state.charging){
+            label="Charging ("+Math.round(this.state.level)+"%), "+this.timeConvert((this.state.chargingTime/60))+" remaning";
+        }else{
+            label="Discharging ("+Math.round(this.state.level)+"%), "+this.timeConvert((this.state.dischargingTime/60))+" remaning";
+        }
         return(
             <div className="BatteryStatus">
-                <Battery 
-                    onChange={(battery ) => {
-                        this.render();
-                    }}
-                    render={({ battery }) =>
-                    <div className="battery">
-                        <center>
-                            <div className="batteryTop">
+                <div title={label} className="battery">
+                    <center>
+                        <div className="batteryTop">
+                        </div>
+                        <div className="batteryContaimer">
+                            <div className="batteryCharge" style={{ height: this.state.level+'%'}}>
                             </div>
-                            <div className="batteryContaimer">
-                                <div className="batteryCharge" style={{ height: battery+'%'}}>
-                                </div>
-                            </div>
-                            { this.state.charging ? (<img draggable="false" alt="" className="batteryCharging" src={charging} ></img>) : null } 
-                            { this.isLowerBattery(battery) ? (<img draggable="false" alt="" className="lowBattery" src={lowBattery} ></img>) : null } 
-                        </center>
-                    </div>
-                    } 
-                />
+                        </div>
+                        { this.state.charging ? (<img draggable="false" alt="" className="batteryCharging" src={charging} ></img>) : null } 
+                        { this.isLowerBattery(this.state.level) ? (<img draggable="false" alt="" className="lowBattery" src={lowBattery} ></img>) : null } 
+                    </center>
+                </div>
             </div>
         );
     } 
