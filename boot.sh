@@ -1,5 +1,7 @@
 #!/bin/bash
-
+git stash
+git pull
+git stash pop
 cd Backend
 ./startBackend.sh&
 cd ..
