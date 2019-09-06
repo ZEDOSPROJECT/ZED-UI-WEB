@@ -21,7 +21,7 @@ class Window extends React.Component{
         let positionY=this.props.nextWindowY;
 
         let appID=this.props.url.split("/");
-        if(appID[4]==undefined){
+        if(appID[4] === undefined){
             appID=this.props.url;
         }else{
             appID=appID[4];
@@ -147,7 +147,7 @@ class Window extends React.Component{
         this.setState({myStyle: "window hidden"});
 
         let appID=this.state.url.split("/");
-        if(appID[4]==undefined){
+        if(appID[4] === undefined){
             appID=this.state.url;
         }else{
             appID=appID[4];
@@ -166,13 +166,6 @@ class Window extends React.Component{
         if(id>=0)
             window.soundsEmitter=window.soundsEmitter.splice(id, 1);
     }
-
-    onTitleChange(e){
-        const newTitle=e.target.title;
-        if(newTitle !== ""){
-            window.winTitle[this.state.uuid]=e.target.title; 
-        } 
-    } 
 
     onDragStart(){
         this.sendToFront();

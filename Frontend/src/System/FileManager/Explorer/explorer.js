@@ -47,7 +47,7 @@ class Explorer extends React.Component {
       indents=<div>Loading . . .</div>;
     } 
     return( <div className="fExplorer">
-            <img className="typeF" draggable="false" src={currentType} />
+            <img className="typeF" draggable="false" alt="" src={currentType} />
             {indents}
           </div>
           );

@@ -153,7 +153,7 @@ class FileManager extends React.Component {
         {
             for (var j=i; j<mimeTypes.length; j++)
             {
-                    if (mimeTypes[i] == mimeTypes[j])
+                    if (mimeTypes[i] === mimeTypes[j])
                     m++;
                     if (mf<m)
                     {

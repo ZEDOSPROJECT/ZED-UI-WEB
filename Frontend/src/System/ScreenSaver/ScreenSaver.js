@@ -3,9 +3,6 @@ import { REST_URL } from '../../REST_URL';
 import './ScreenSaver.css';
 
 export default class ScreenSaver extends Component {
-    constructor(props){
-        super(props);
-    }
     render() {
         if(this.props.timer>5){
             return(
