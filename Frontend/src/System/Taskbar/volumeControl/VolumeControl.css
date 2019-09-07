@@ -1,0 +1,27 @@
+.VolumeControl{
+    height: 32px;
+}
+
+.volumeScreen {
+    position: fixed;
+    bottom: 43px;
+    right: 0px;
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    background-color: rgba(179, 179, 179, 0.575);
+    border-radius: 10px;
+    margin: 10px;
+    transition-duration: 0.8s;
+    transition-property: all;
+}
+
+.volumeScreen:hover {
+    background-color: rgba(179, 179, 179, 0.945);
+    transition-duration: 0.2s;
+    transition-property: all;
+}
+
+.volumeScreenSlider {
+    width: 100%
+}

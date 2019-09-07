@@ -3,6 +3,7 @@ import Clock from '../Clock/clock';
 import TaskButton from './Task/taskButton';
 import NetworkStatus from './networkStatus/networkStatus';
 import BatteryStatus from './batteryStatus/batteryStatus';
+import VolumeControl from './volumeControl/VolumeControl';
 import './taskbar.css';
 
 class Taskbar extends React.Component {
@@ -42,6 +43,7 @@ class Taskbar extends React.Component {
                     <tr style={{ border: 'none' }} >
                         <td style={{ width: 32 }}><div title="Click to Start" onClick={this.props.toggleMenu} className="StartMenu"></div></td>
                         <td className="buttonsArea">{iconList}</td>
+                        <td style={{ width: 32 }}><VolumeControl /></td>
                         <td style={{ width: 32 }}><BatteryStatus /></td>
                         <td style={{ width: 32 }}><NetworkStatus /></td>
                         <td style={{ width: 32 }}><Clock /></td>
