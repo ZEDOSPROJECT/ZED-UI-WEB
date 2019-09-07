@@ -9,6 +9,7 @@
     border: 1px solid rgb(13, 8, 73);
     user-select: none;
     opacity: 1;
+    padding: 0px;
     transition-duration: 0.3s;
   }
 
@@ -24,6 +25,7 @@
 
   .window.hidden {
     opacity: 0;
+    margin: 30px;
   }
 
   .overlay{
