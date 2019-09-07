@@ -12,12 +12,14 @@ class NetworkManager extends Component {
         }
 
         setInterval(() => {
-            fetch(REST_URL+'/API/SYSTEM/NETWORK/WIFI/getWifiList.php')
-            .then(response => response.json())
-            .then(json => {
-                this.setState({ networksJson: json['data'] });
-                this.forceUpdate();
-            });
+            if(this.props.visible){
+                fetch(REST_URL+'/API/SYSTEM/NETWORK/WIFI/getWifiList.php')
+                .then(response => response.json())
+                .then(json => {
+                    this.setState({ networksJson: json['data'] });
+                    this.forceUpdate();
+                });
+            }
         }, 2000);
     }
     render() {

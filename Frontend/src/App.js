@@ -62,14 +62,19 @@ class App extends Component {
     this.onMouseMove = this.onMouseMove.bind(this);
 
     setInterval(() => {
-        this.loadUserSettings();
+        for (var key in window.winTitle) {
+            if(window.winTitle[key] === "Control Panel"){
+                this.loadUserSettings();
+            }
+        }
+
         this.clean();
         if(window.ZED_RUN !== null){
             const AppMetadata=Object.assign({}, window.ZED_RUN);
             this.onClickApp(null,AppMetadata.Url,AppMetadata.Label,AppMetadata.Icon);
             window.ZED_RUN=null;
         } 
-    },2000);
+    },200);
     setTimeout(() => {
         fetch(REST_URL+'/API/SYSTEM/SETTINGS/USER/getPaths.php')
         .then(response => response.json())
@@ -78,7 +83,13 @@ class App extends Component {
                 userPaths: json
             });
         });
-    },50 );
+        this.loadUserSettings();
+        setTimeout(() => {
+            if(window.gradientEffect){
+                this.getGradient();
+            } 
+        }, 200);
+    },150 );
     setInterval(() => {
         this.setState({ScreenSaverTimer: this.state.ScreenSaverTimer+1});
     }, 60000);
@@ -320,7 +331,7 @@ class App extends Component {
         let url="https://www.bing.com/"+json.images[0].url;
         fetch(REST_URL+'/API//SYSTEM/SETTINGS/USER/SETTING/getOnlineWallpaper.php?url='+url);
     });
-  } 
+  }
 
   render() {
     const windowList=this.state.openedWindows.map((item) => {
