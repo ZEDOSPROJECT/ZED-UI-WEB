@@ -6,15 +6,15 @@
     $securitys=explode("\n", shell_exec("nmcli -t -f SECURITY device wifi"));
 
     $wifiArraySize=count($ssids);
-    $finalJSON="{";
+    $finalJSON='{"data":[';
     for ($i=0; $i <= $wifiArraySize-2; $i++) { 
         if($i==$wifiArraySize-2){
-            $finalLine='"'.$i.'":{"inUse":"'.$inUse[$i].'","ssid":"'.$ssids[$i].'","signal":'.$signals[$i].',"security":"'.$securitys[$i].'"}';
+            $finalLine='{"inUse":"'.$inUse[$i].'","ssid":"'.$ssids[$i].'","signal":'.$signals[$i].',"security":"'.$securitys[$i].'"}';
         }else{
-            $finalLine='"'.$i.'":{"inUse":"'.$inUse[$i].'","ssid":"'.$ssids[$i].'","signal":'.$signals[$i].',"security":"'.$securitys[$i].'"},';
+            $finalLine='{"inUse":"'.$inUse[$i].'","ssid":"'.$ssids[$i].'","signal":'.$signals[$i].',"security":"'.$securitys[$i].'"},';
         }
         $finalJSON=$finalJSON.$finalLine;
     }
-    $finalJSON=$finalJSON."}";
+    $finalJSON=$finalJSON."]}";
     echo($finalJSON);
 ?>

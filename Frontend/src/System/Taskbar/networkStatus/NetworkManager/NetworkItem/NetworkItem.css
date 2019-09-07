@@ -1,0 +1,11 @@
+.NetworkItem {
+    height: 40px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.inUse {
+    background-color: rgb(213, 212, 255);
+    height: 40px;
+    margin: 5px;
+}
