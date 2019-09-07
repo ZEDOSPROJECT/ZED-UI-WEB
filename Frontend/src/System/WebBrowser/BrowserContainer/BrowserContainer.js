@@ -113,6 +113,7 @@ class BrowserContainer extends React.Component {
         </tbody>
       </table>
         <webview
+          useragent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3626.120 Safari/537.36"
           src={this.state.currentURL}
           className="WebFrame"
           ref={input => {
