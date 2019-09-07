@@ -35,7 +35,7 @@ const {app, BrowserWindow} = require('electron')
     })
 
     setTimeout(() => {
-      win.loadURL('http://localhost:3031',{userAgent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.120 Safari/537.36'});
+      win.loadURL('http://localhost:3031',{userAgent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3626.120 Safari/537.36'});
     }, 200);
     // and load the index.html of the app.
   }
