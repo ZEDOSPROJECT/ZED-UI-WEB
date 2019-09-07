@@ -74,6 +74,9 @@ class Window extends React.Component{
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.handleClickInsideWindow = this.handleClickInsideWindow.bind(this);
         this.onTitleChange = this.onTitleChange.bind(this);
+        this.onDrag = this.onDrag.bind(this);
+        this.onResizeStop = this.onResizeStop.bind(this);
+
         window.maxZIndex=window.maxZIndex+1;
         setInterval(() => {
             if(window.toFront){
@@ -175,6 +178,20 @@ class Window extends React.Component{
         this.sendToFront();
     } 
 
+    onDrag(e){
+    }
+
+    onResizeStop(e){
+        setTimeout(() => {
+            if(e.x>window.innerWidth){
+                this.setState({ x:0 });
+            }
+            if(e.y>window.innerWidth){
+                this.setState({ y:0 });
+            }
+        }, 40);
+    }
+
     onToggleWindow(){
         let tmpStyle="window";
         if(this.state.maximized){
@@ -259,6 +276,10 @@ class Window extends React.Component{
 
     render(){
         let WindowContent;
+        let finalStyle={};
+        let finalBodyStyle="body";
+        let screenX=window.innerWidth;
+        let screenY=window.innerHeight;
         if(this.state.url !== "Web Browser" && this.state.url !== "MyComputer" && this.state.url !== "MyMusic" && this.state.url !== "MyPictures" && this.state.url !== "MyDocuments"){
             if(!isElectron()){  
                 WindowContent=(<iframe title={window.winTitle[this.state.uuid]}  onLoad={this.onTitleChange} className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
@@ -273,8 +294,6 @@ class Window extends React.Component{
             }
         } 
 
-        let finalStyle={};
-        let finalBodyStyle="body";
         if(this.state.maximized){
             finalBodyStyle="body maximizedBody";
         }
@@ -283,6 +302,7 @@ class Window extends React.Component{
         }else{
             finalStyle={ background: 'linear-gradient('+this.convertHex(this.state.systemColor1,80)+', '+this.convertHex(this.state.systemColor0,80)} 
         } 
+        
         return(
             <div>
                 <Rnd
@@ -301,21 +321,46 @@ class Window extends React.Component{
                     position={{ x: ( this.state.maximized ? '0' : this.state.x ), y: ( this.state.maximized ? '0' : this.state.y ) }}
                     onDragStart={this.onDragStart} 
                     onResizeStart={this.onResizeStart} 
+                    onResizeStop={this.onResizeStop}
+                    onDrag={this.onDrag}
                     onDragStop={(e, d) => { 
+                        if(e.y === 0){
+                            setTimeout(() => {
+                                this.setState({ maximized: true });
+                            }, 20);
+                        }
+                        if(e.x < 10 ){
+                            setTimeout(() => {
+                                this.setState({ x:0, y:0, width: "50%",height: "99.5%" });
+                            }, 20);
+                        }
+                        if(e.x > screenX-10 ){
+                            setTimeout(() => {
+                                this.setState({ x: screenX/2 , y:0, width: "50%",height: "99.5%" });
+                            }, 20);
+                        }
+                        if(e.y > screenY-45){
+                            setTimeout(() => {
+                                this.setState({ y: (screenY-49) });
+                            }, 20);
+                        }
                         if(!this.state.maximized){
                             this.setState({
                                 x: d.x, y: d.y 
-                            }
-                        ) 
-                    }}}
+                            });  
+                        }
+                    }}
                     onResize={(e, direction, ref, delta, position) => {
+                        if(e.y<0){
+                            this.setState({ y: 1 });
+                        }
                         if(!this.state.maximized){
                             this.setState({
                                 width: ref.offsetWidth,
                                 height: ref.offsetHeight,
                                 ...position,
                             });
-                        } 
+                        }                  
                     }}
                 >
                 <div className={this.state.myStyle}  initwidth={800} initheight={400} style={finalStyle}>
