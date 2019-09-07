@@ -4,6 +4,8 @@
 
 ONE UI is part of ZED OS Project (http://zed-os.tk/), it's an User interface based on Web Tecnologies
 
+[Tasks](https://trello.com/b/Kl8SVAQX/zed-os-ui-web)
+
 ### Prerequisites
 
 	-NODEJS 10 or superior
@@ -19,8 +21,9 @@ ONE UI is part of ZED OS Project (http://zed-os.tk/), it's an User interface bas
 
 	2b - FrontEnd
 	 cd Frontend;npm install ;npm start
- 
-	3 - Open your browser and navigate to http://localhost:3000
+
+	3b - FrontEnd Electron
+	 cd Frontend;npm run electron
  
 ## Built With
 
