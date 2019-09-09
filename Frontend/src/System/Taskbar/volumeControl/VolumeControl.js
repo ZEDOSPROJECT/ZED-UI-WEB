@@ -20,7 +20,7 @@ class VolumeControl extends Component {
         fetch(REST_URL+'/API/SYSTEM/SETTINGS/getAudioVolume.php')
         .then(response => response.text())
         .then(text => {
-            this.setState({volumeLevel: parseInt(text)});
+            this.setState({volumeLevel: text});
         });
     }
 
