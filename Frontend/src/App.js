@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import getUUID from 'uuid';
-import startUpSound from './Sounds/startup.mp3';
 import errorSound from './Sounds/error.mp3';
 import warningSound from './Sounds/warning.mp3';
 import infoSound from './Sounds/info.mp3';
@@ -41,8 +40,6 @@ class App extends Component {
     window.autoGradient = false;
     window.gradientEffect = false;
     window.soundsEmitter=[];
-    let startupSoundPlayer = new Audio(startUpSound);
-    startupSoundPlayer.play();
     this.getGradient = this.getGradient.bind(this);
     this.createWindow = this.createWindow.bind(this);
     this.onClose = this.onClose.bind(this);

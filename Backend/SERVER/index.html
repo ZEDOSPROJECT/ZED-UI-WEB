@@ -10,8 +10,13 @@
 			isSiteOnline("http://" + window.location.hostname + ":3000", function (found) {
 				if (found) {
 					document.getElementById("starting").hidden = true;
-					document.getElementById("loginFields").hidden = false;
+					document.getElementById("welcome").hidden = false;
 					clearInterval(loader);
+					let startupSoundPlayer = new Audio("startup.mp3");
+					startupSoundPlayer.onpause = function() {
+						window.location.href = "http://" + window.location.hostname + ":3000";
+					}
+    				startupSoundPlayer.play();
 				}
 			})
 		}, 500);
@@ -36,14 +41,6 @@
 			}
 
 			img.src = url + "/favicon.ico";
-		}
-
-		function login() {
-			document.getElementById("loginFields").hidden = true;
-			document.getElementById("welcome").hidden = false;
-			setTimeout(function () {
-				window.location.href = "http://" + window.location.hostname + ":3000";
-			}, 1600);
 		}
 	</script>
 
