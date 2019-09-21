@@ -1,4 +1,4 @@
-.NewFolderDialog {
+.promptDialog {
     position: absolute;
     top:0px;
     left: 0px;
@@ -8,7 +8,7 @@
     z-index: 10;
 }
 
-.NewFolderDialogModal {
+.promptDialogModal {
     position:fixed;
     top: 50%;
     left: 50%;
@@ -21,6 +21,6 @@
     padding: 20px;
 }
 
-.NewFolderDialogInput {
+.promptDialogInput {
     width: 100%;
 }

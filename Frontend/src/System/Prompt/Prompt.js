@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './NewFolderDialog.css';
+import './Prompt.css';
 
 export default class NewFolderDialog extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            newFolder: 'New Folder',
+            newPrompt: this.props.placeholder,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -22,14 +22,14 @@ export default class NewFolderDialog extends Component {
         if(e.key === "Escape"){
             this.props.onESQ();
             this.setState({
-                newFolder: 'New Folder'
+                newPrompt: this.props.placeholder,
             });
         }
         if(e.key === "Enter"){
-            let newFolderName=this.state.newFolder.slice();
-            this.props.onENTER(newFolderName);
+            let newPrompt=this.state.newPrompt.slice();
+            this.props.onENTER(newPrompt);
             this.setState({
-                newFolder: 'New Folder'
+                newPrompt: this.props.placeholder,
             });
         }
     }
@@ -37,14 +37,14 @@ export default class NewFolderDialog extends Component {
     render() {
         if(this.props.visible){
             return (
-                <div onClick={this.props.onESQ} className="NewFolderDialog">
-                    <div className="NewFolderDialogModal">
-                        Name of new folder: 
+                <div onClick={this.props.onESQ} className="promptDialog">
+                    <div className="promptDialogModal">
+                        {this.props.label}
                         <input 
-                            className="NewFolderDialogInput"
+                            className="promptDialogInput"
                             type="text"
                             autoFocus
-                            value={this.state.newFolder}
+                            value={this.state.newPrompt}
                             onChange={this.handleChange}
                             onKeyDown={this.handleKeyDown}
                         />

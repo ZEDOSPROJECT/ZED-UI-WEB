@@ -4,7 +4,7 @@ import ToolBar from "./ToolBar/toolBar";
 import Explorer from "./Explorer/explorer";
 import LeftBar from "./LeftBar/leftBar";
 import StatusBar from "./StatusBar/statusBar";
-import NewFolderDialog from './NewFolderDIalog/NewFolderDialog';
+import NewFolderDialog from '../Prompt/Prompt';
 import clickSound from './click.mp3';
 import { REST_URL } from './../../REST_URL';
 import "./fileManager.css";
@@ -249,6 +249,8 @@ class FileManager extends React.Component {
           visible={this.state.createFolderVisible}
           onESQ={this.onCreateFolderCancel}
           onENTER={this.onCreateFolderReady}
+          placeholder="New Folder"
+          label="Name of new folder: "
         />
       </div>
     );
