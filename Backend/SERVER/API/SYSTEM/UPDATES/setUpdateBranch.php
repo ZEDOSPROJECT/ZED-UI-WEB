@@ -18,7 +18,6 @@
             }
         }
     }
-    echo($path);
-    putenv('PATH='.$path);
-    shell_exec('git checkout '.$branch);
+    
+    shell_exec('git --git-dir='.$path.'/.git checkout '.$branch);
 ?>
