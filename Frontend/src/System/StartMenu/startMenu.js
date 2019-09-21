@@ -3,7 +3,6 @@ import onClickOutside from 'react-onclickoutside';
 import isElectron from 'is-electron';
 import invert from 'invert-color';
 // ICONS
-import UserIcon from '../../Icons/User.jpg';
 import myDocuments from '../../Icons/ModernXP (16).png';
 import myPictures from '../../Icons/ModernXP (62).png';
 import myMusic from '../../Icons/ModernXP (38).png';
@@ -24,13 +23,23 @@ class StartMenu extends React.Component {
         this.state = {
             Apps: [],
             searchBox: '',
-            visible: false
+            visible: false,
+            userName: ''
         }
  
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.convertHex = this.convertHex.bind(this);
         this.refreshApps = this.refreshApps.bind(this);
         this.handleSearchChange = this.handleSearchChange.bind(this);
+
+
+        fetch(REST_URL+'/API/SYSTEM/SETTINGS/USER/getUserName.php')
+        .then(response => response.text())
+        .then(text => {
+            this.setState({
+                userName: text.charAt(0).toUpperCase() + text.slice(1),
+            });
+        });
 
         this.refreshApps("");
             setInterval(() => {
@@ -120,13 +129,14 @@ class StartMenu extends React.Component {
         let windowSystemSize={};
         windowSystemSize['Width']=0;
         windowSystemSize['Height']=0;
+
         return(
             <div>
                 <div className={visible} style={{ zIndex: window.maxZIndex+10,backgroundColor: this.convertHex(window.systemColor0,60) }}>
                     <div className="topMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,95) }}>
                         <div>
-                            <img draggable="false" alt="" className="userPicture" height="32" src={UserIcon}></img>
-                            <div style={{ color: invert(window.systemColor0, true)}} className="userName"><b>Administrator</b></div>
+                            <img draggable="false" alt="" className="userPicture" height="32" src={REST_URL+'/API/SYSTEM/SETTINGS/USER/getUserPicture.php'}></img>
+                            <div style={{ color: invert(window.systemColor0, true)}} className="userName"><b>{this,this.state.userName}</b></div>
                         </div>
                     </div>
                     <div className="middleMenu">
