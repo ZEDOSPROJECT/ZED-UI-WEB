@@ -1,10 +1,9 @@
 #!/bin/bash
 
-
-if [ -f "branch" ]
+if [ -e ".branch" ]
 then
-   value="git checkout $(<.branch)"
-   bash -c $value
+   git checkout "$(<.branch)"
+   rm .branch
 fi
 git stash
 git pull
