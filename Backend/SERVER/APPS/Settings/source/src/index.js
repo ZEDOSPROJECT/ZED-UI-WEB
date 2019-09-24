@@ -43,7 +43,7 @@ class App extends React.Component {
     fetch(
       "http://" +
         window.location.hostname +
-        ":3031/API/SYSTEM/UPDATES/setUpdateBranch.php?id=e.target.value",
+        ":3031/API/SYSTEM/UPDATES/setUpdateBranch.php?id="+e.target.value,
       {
         method: "post",
         body: JSON.stringify(this.state.SettingJSON)
