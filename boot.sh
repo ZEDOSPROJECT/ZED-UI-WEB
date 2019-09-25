@@ -1,4 +1,10 @@
 #!/bin/bash
+
+if [ -e ".branch" ]
+then
+   git checkout "$(<.branch)"
+   rm .branch
+fi
 git stash
 git pull
 git stash pop

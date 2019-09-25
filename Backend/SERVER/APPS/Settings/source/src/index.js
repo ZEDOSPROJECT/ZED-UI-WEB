@@ -34,8 +34,21 @@ class App extends React.Component {
     this.changeWallpaper = this.changeWallpaper.bind(this);
     this.switchSetting = this.switchSetting.bind(this);
     this.onChangeVideoWallpaper = this.onChangeVideoWallpaper.bind(this);
+    this.setBranch = this.setBranch.bind(this);
 
     this.getSettingsData();
+  }
+
+  setBranch(e){
+    fetch(
+      "http://" +
+        window.location.hostname +
+        ":3031/API/SYSTEM/UPDATES/setUpdateBranch.php?id="+e.target.value,
+      {
+        method: "post",
+        body: JSON.stringify(this.state.SettingJSON)
+      }
+    );
   }
 
   save() {
@@ -355,7 +368,11 @@ class App extends React.Component {
           <br />
           <div>
             <h2>System Updates</h2>
-            <button disabled>Check and install Updates</button>
+            Which development branch would you like to use? <br/><br/>
+            <select id="branch" onChange={this.setBranch}>
+              <option>master</option>
+              <option>develop</option>
+            </select>
           </div>
         </div>
       </div>
