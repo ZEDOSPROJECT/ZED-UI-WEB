@@ -19,11 +19,15 @@ class TaskButton extends React.Component {
 
     render(){
         let isPlaying=false;
+        let isTOP=true;
+        if(window.topUUID !== this.props.uuid){
+            isTOP=false;
+        }
         if(window.soundsEmitter.indexOf(this.props.uuid) !== -1){
             isPlaying=true;
         }
         return(
-            <div title={window.winTitle[this.props.uuid]} onClick={ e => this.props.onToggleMinimize(this.props.uuid)} style={{ color: invert(window.systemColor0, true)}}   className="taskButton">
+            <div title={window.winTitle[this.props.uuid]} onClick={ e => this.props.onToggleMinimize(this.props.uuid)} style={{ color: invert(window.systemColor0, true), backgroundColor: ( isTOP ? "rgba(0,0,0,0.2)" : "" ) }}   className="taskButton">
                 { isPlaying ? (<img draggable="false" alt="" className="taskSound" src={VUGif} />) : null }
                 <img draggable="false" alt="" className="taskIcon" src={this.props.icon}  />
                 <div className="taskTitle">{window.winTitle[this.props.uuid]}</div>
