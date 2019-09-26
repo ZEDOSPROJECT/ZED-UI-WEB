@@ -301,9 +301,9 @@ class Window extends React.Component{
             finalBodyStyle="body maximizedBody";
         }
         if(!window.gradientEffect){
-            finalStyle={ backgroundColor: this.convertHex(this.state.systemColor0,80) };
+            finalStyle={ backgroundColor: this.convertHex(this.state.systemColor0,90) };
         }else{
-            finalStyle={ background: 'linear-gradient('+this.convertHex(this.state.systemColor1,80)+', '+this.convertHex(this.state.systemColor0,80)} 
+            finalStyle={ background: 'linear-gradient('+this.convertHex(this.state.systemColor1,95)+', '+this.convertHex(this.state.systemColor0,95)} 
         } 
         
         return(
