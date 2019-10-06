@@ -20,6 +20,10 @@ class TaskButton extends React.Component {
     render(){
         let isPlaying=false;
         let isTOP=true;
+        let currentTitle=window.winTitle[this.props.uuid];
+        let notifys=currentTitle.replace(/[^0-9]/g,'');
+        currentTitle=currentTitle.replace(/[0-9]/g, '').replace('(','').replace(')','');
+
         if(window.topUUID !== this.props.uuid){
             isTOP=false;
         }
@@ -27,10 +31,20 @@ class TaskButton extends React.Component {
             isPlaying=true;
         }
         return(
-            <div title={window.winTitle[this.props.uuid]} onClick={ e => this.props.onToggleMinimize(this.props.uuid)} style={{ color: invert(window.systemColor0, true), backgroundColor: ( isTOP ? "rgba(0,0,0,0.2)" : "" ) }}   className="taskButton">
+            <div title={currentTitle} onClick={ e => this.props.onToggleMinimize(this.props.uuid)} style={{ color: invert(window.systemColor0, true), backgroundColor: ( isTOP ? "rgba(0,0,0,0.2)" : "" ) }}   className="taskButton">
+                {notifys !== '' ? (
+                    <div>
+                        <div className="notifyAnimation"></div>
+                    </div>
+                ) : null }
                 { isPlaying ? (<img draggable="false" alt="" className="taskSound" src={VUGif} />) : null }
                 <img draggable="false" alt="" className="taskIcon" src={this.props.icon}  />
-                <div className="taskTitle">{window.winTitle[this.props.uuid]}</div>
+                <div className="taskTitle">{currentTitle}</div>
+                {notifys !== '' ? (
+                    <div>
+                        <div className="notifys">{notifys}</div>
+                    </div>
+                ) : null }
             </div>
         );
     } 
