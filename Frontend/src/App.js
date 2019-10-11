@@ -289,7 +289,7 @@ class App extends Component {
             this.setState({ showMenu: false });
         }
         if(name === "MyComputer"){
-            window.explorer_open="/";
+            window.explorer_open="My Computer";
             this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize);
             this.setState({ showMenu: false });
         }
