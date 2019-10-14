@@ -51,7 +51,7 @@ class App extends Component {
     this.componentToHex = this.componentToHex.bind(this);
     this.rgbToHex = this.rgbToHex.bind(this);
     this.clean = this.clean.bind(this);
-
+    this.processSysCalls = this.processSysCalls.bind(this);
     this.msgInfo = this.msgInfo.bind(this);
     this.msgError = this.msgError.bind(this);
     this.msgWarn = this.msgWarn.bind(this);
@@ -92,14 +92,27 @@ class App extends Component {
     }, 60000);
   } 
 
+  processSysCalls(call){
+    let calls=call.split(":");
+    if(calls[0]==="SYSCALL"){
+        
+    }else{
+        this.msgError("Invalid SYSCALL");
+    }
+  }
+
   onMouseMove(){
     this.setState({ScreenSaverTimer: 0});
   }
 
     msgInfo(data){
-        toast.info(data);
-        let infoSoundPlayer = new Audio(infoSound);
-        infoSoundPlayer.play();
+        if(!data.includes("SYSCALL")){
+            toast.info(data);
+            let infoSoundPlayer = new Audio(infoSound);
+            infoSoundPlayer.play();
+        }else{
+            this.processSysCalls(data);
+        }
     }
 
     msgError(data){
