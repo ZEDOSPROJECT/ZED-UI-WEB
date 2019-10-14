@@ -78,6 +78,7 @@ class Window extends React.Component{
         this.onResizeStop = this.onResizeStop.bind(this);
 
         window.maxZIndex=window.maxZIndex+1;
+        window.topUUID=this.state.uuid;
         setInterval(() => {
             if(window.toFront){
                 if(window.toFront === this.props.uuid){
@@ -86,6 +87,7 @@ class Window extends React.Component{
                         newIndex++;
                     }
                     window.maxZIndex=newIndex+1;
+                    window.topUUID=this.state.uuid;
                     this.setState({ currentZIndex: newIndex+1 });
                     window.toFront=undefined;
                 } 
@@ -137,6 +139,7 @@ class Window extends React.Component{
             newIndex++;
         }
         window.maxZIndex=newIndex+1;
+        window.topUUID=this.state.uuid;
         this.setState({ currentZIndex: newIndex+1 });
     } 
 
@@ -298,9 +301,9 @@ class Window extends React.Component{
             finalBodyStyle="body maximizedBody";
         }
         if(!window.gradientEffect){
-            finalStyle={ backgroundColor: this.convertHex(this.state.systemColor0,80) };
+            finalStyle={ backgroundColor: this.convertHex(this.state.systemColor0,90) };
         }else{
-            finalStyle={ background: 'linear-gradient('+this.convertHex(this.state.systemColor1,80)+', '+this.convertHex(this.state.systemColor0,80)} 
+            finalStyle={ background: 'linear-gradient('+this.convertHex(this.state.systemColor1,95)+', '+this.convertHex(this.state.systemColor0,95)} 
         } 
         
         return(

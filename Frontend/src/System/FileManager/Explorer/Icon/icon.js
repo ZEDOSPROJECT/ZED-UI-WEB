@@ -1,10 +1,12 @@
 import React from "react";
+import Progress from 'react-progressbar';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Folder from "./folder.png";
 import File from "./file.png";
 import AudioFile from "./audio.png";
 import VideoFile from './video.png';
 import TextFile from './text.png';
+import HDD from './hdd.png';
 import mime from 'mime-types';
 import { REST_URL } from './../../../../REST_URL';
 import "./icon.css";
@@ -26,9 +28,13 @@ class Icon extends React.Component {
   } 
 
   render() {
+    let usage=null;
+
     if (this.props.data.type === "folder") {
       theIcon = Folder;
-    } else {
+    }else if(this.props.data.type === "hdd") {
+      theIcon = HDD;
+    }else{
       let file=this.props.currentPath+this.props.data.name;
       const mimeType=mime.lookup(file);
       if(mimeType!==false){
@@ -77,6 +83,11 @@ class Icon extends React.Component {
             className="img"
           />
           <div className="label">{this.props.data.name}</div>
+          {
+            this.props.data.type === "hdd"
+              ? ( <div className="usage"><Progress color="midnightblue" completed={this.props.data.fsuse} /></div> )
+              : null
+          }
         </div>
       ) : null)
     );

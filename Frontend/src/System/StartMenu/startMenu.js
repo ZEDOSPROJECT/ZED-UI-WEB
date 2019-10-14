@@ -132,7 +132,7 @@ class StartMenu extends React.Component {
 
         return(
             <div>
-                <div className={visible} style={{ zIndex: window.maxZIndex+10,backgroundColor: this.convertHex(window.systemColor0,60) }}>
+                <div className={visible} style={{ zIndex: window.maxZIndex+10,backgroundColor: this.convertHex(window.systemColor0,90) }}>
                     <div className="topMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,95) }}>
                         <div>
                             <img draggable="false" alt="" className="userPicture" height="32" src={REST_URL+'/API/SYSTEM/SETTINGS/USER/getUserPicture.php'}></img>
@@ -143,7 +143,7 @@ class StartMenu extends React.Component {
                         <div className="AppsList" style={{ color: invert(window.systemColor0, true)}}>
                             {appList} 
                         </div>
-                        <div className="systemMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,35), color: invert(window.systemColor0, true)}}>
+                        <div className="systemMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,80), color: invert(window.systemColor0, true)}}>
                             <div onClick={event => this.props.onClickApp(event,"","MyDocuments",REST_URL+"/Icons/ModernXP (35).png",windowSystemSize)} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
                                 <img draggable="false" alt="" src={myDocuments} ></img>
                                 <div>My Documents</div>

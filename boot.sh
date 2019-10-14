@@ -4,6 +4,9 @@ if [ -e ".branch" ]
 then
    git checkout "$(<.branch)"
    rm .branch
+   cd Frontend
+   npm install
+   cd ..
 fi
 git stash
 git pull

@@ -31,7 +31,7 @@ class LeftBar extends React.Component {
                 ) : null }
             </Combo>
             <Combo title="Other Places" open >
-                <div className="link" onClick={data => this.props.listFolder("/")}><img draggable="false" alt="" src={myComputer} className="miniIcon"></img>My Computer</div>
+                <div className="link" onClick={data => this.props.listFolder("My Computer")}><img draggable="false" alt="" src={myComputer} className="miniIcon"></img>My Computer</div>
                 <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["music"])}><img draggable="false" alt="" src={myMusic} className="miniIcon"></img>My Music</div>
                 <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["picture"])}><img draggable="false" alt="" src={myPictures} className="miniIcon"></img>My Picture</div>
                 <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["videos"])}><img draggable="false" alt="" src={myVideos} className="miniIcon"></img>My Videos</div>

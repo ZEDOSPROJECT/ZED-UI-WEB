@@ -20,7 +20,8 @@ class FileManager extends React.Component {
       historyIndex: 0,
       details:undefined,
       createFolderVisible: false,
-      mainType:""
+      mainType:"",
+      devices:undefined
     };
 
     setTimeout(() => {
@@ -123,55 +124,70 @@ class FileManager extends React.Component {
   }
 
   listFolder(path){
-    let tempArray=path.split("/");
-    let currentTitle=tempArray[tempArray.length-2];
-    if(currentTitle === ""){
-      currentTitle="Root";
-    }
-    this.props.onTitleChange(currentTitle);
-    this.setState({
-      currentPath: path,
-      historyIndex: this.state.historyIndex,
-      details:undefined
-    });
-    fetch(REST_URL+'/API/SYSTEM/IO/PATH/listPath.php?path='+path)
-    .then(response => response.json())
-    .then(json => {
-        const JSONdata=JSON.parse(json);
-        let mimeTypes=[];
-
-        JSONdata.data.forEach(file => {
-          if(file.type!=="folder"){
-            mimeTypes.push(mime.lookup(file.name));
-          }
-        });
-
-        var mf = 1;
-        var m = 0;
-        var item;
-        for (var i=0; i<mimeTypes.length; i++)
-        {
-            for (var j=i; j<mimeTypes.length; j++)
-            {
-                    if (mimeTypes[i] === mimeTypes[j])
-                    m++;
-                    if (mf<m)
-                    {
-                      mf=m; 
-                      item = mimeTypes[i];
-                    }
+    if(path !== "My Computer"){
+      let tempArray=path.split("/");
+      let currentTitle=tempArray[tempArray.length-2];
+      if(currentTitle === ""){
+        currentTitle="File System";
+      }
+      this.props.onTitleChange(currentTitle);
+      this.setState({
+        currentPath: path,
+        historyIndex: this.state.historyIndex,
+        details:undefined
+      });
+      fetch(REST_URL+'/API/SYSTEM/IO/PATH/listPath.php?path='+path)
+      .then(response => response.json())
+      .then(json => {
+          const JSONdata=JSON.parse(json);
+          let mimeTypes=[];
+  
+          JSONdata.data.forEach(file => {
+            if(file.type!=="folder"){
+              mimeTypes.push(mime.lookup(file.name));
             }
-            m=0;
-        }
-        this.setState({
-          listDir: JSONdata.data,
-          mainType: item
-        });
-    });
+          });
+  
+          var mf = 1;
+          var m = 0;
+          var item;
+          for (var i=0; i<mimeTypes.length; i++)
+          {
+              for (var j=i; j<mimeTypes.length; j++)
+              {
+                      if (mimeTypes[i] === mimeTypes[j])
+                      m++;
+                      if (mf<m)
+                      {
+                        mf=m; 
+                        item = mimeTypes[i];
+                      }
+              }
+              m=0;
+          }
+          this.setState({
+            listDir: JSONdata.data,
+            mainType: item
+          });
+      });
+    }else{
+      this.props.onTitleChange(path);
+      this.setState({
+        currentPath: path,
+        historyIndex: this.state.historyIndex,
+        details:undefined
+      });
+    }
   } 
 
   componentWillMount(){
     this.listFolder(this.state.currentPath);
+
+    fetch(REST_URL+'/API/SYSTEM/IO/getDriveDevices.php')
+    .then(response => response.json())
+    .then(json => {
+      this.setState({ devices: json });
+    });
   }
 
   onIClick(data) {
@@ -196,10 +212,28 @@ class FileManager extends React.Component {
           history: newHistory,
           details: undefined,
         });
-        let startupSoundPlayer = new Audio(clickSound);
-        startupSoundPlayer.play();
+        let clickSoundPlayer = new Audio(clickSound);
+        clickSoundPlayer.play();
       }, 10);
-    } else {
+    } else if(data.type === "hdd"){
+      const newPath=data.mountpoint;
+      this.listFolder(newPath);
+      let newHistory=[];
+      for (let index = 0; index <= this.state.historyIndex; index++) {
+        newHistory.push(this.state.history[index]);
+      }
+      newHistory.push(newPath);
+      setTimeout(() => {
+        this.setState({
+          currentPath: newPath,
+          historyIndex: this.state.historyIndex+1,
+          history: newHistory,
+          details: undefined,
+        });
+        let clickSoundPlayer = new Audio(clickSound);
+        clickSoundPlayer.play();
+      }, 10);
+    }else{
       const file=this.state.currentPath + data.name;
       const mimeType=mime.lookup(file);
       if(mimeType.includes("image/")){
@@ -241,6 +275,7 @@ class FileManager extends React.Component {
           onDBClick={this.onDBClick}
           selected={this.state.selected}
           listDir={this.state.listDir}
+          devices={this.state.devices}
         />
         <StatusBar 
           items={this.state.listDir}

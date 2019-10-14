@@ -24,3 +24,9 @@
   overflow: hidden;
   width:100px;
 }
+
+.usage{
+  width: auto;
+  border-radius: 15px;
+  background-color: rgb(200, 200, 200);
+}

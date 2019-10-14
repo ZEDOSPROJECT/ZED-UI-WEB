@@ -38,3 +38,35 @@
     overflow: hidden;
     width: 112px;
 } 
+
+.notifys {
+    position: absolute;
+    background-color: rgba(1, 0, 78, 0.746);
+    border-radius: 50%;
+    padding: 5px;
+    right: 0;
+    font-size: 10px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+.notifyAnimation {
+    position: absolute;
+    z-index:-1;
+    width: 110%;
+    height: 100%;
+    -webkit-animation: notifyAnimation 1s infinite;  /* Safari 4+ */
+    -moz-animation: notifyAnimation 1s infinite;  /* Fx 5+ */
+    -o-animation: notifyAnimation 1s infinite;  /* Opera 12+ */
+    animation: notifyAnimation 1s infinite;  /* IE 10+, Fx 29+ */
+  }
+  
+  @-webkit-keyframes notifyAnimation {
+    0%, 49% {
+      background-color: rgba(0, 13, 126, 0);
+    }
+    50%, 100% {
+        background-color: rgb(251, 80, 0);
+    }
+  }

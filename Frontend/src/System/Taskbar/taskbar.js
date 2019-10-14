@@ -38,7 +38,7 @@ class Taskbar extends React.Component {
         }
         );
         return(
-            <table className="Taskbar" style={{ zIndex: window.maxZIndex+10, backgroundColor: this.convertHex(window.systemColor0,90) }}>
+            <table className="Taskbar" style={{ zIndex: window.maxZIndex+10, backgroundColor: this.convertHex(window.systemColor0,95) }}>
                 <tbody>
                     <tr style={{ border: 'none' }} >
                         <td style={{ width: 32 }}><div title="Click to Start" onClick={this.props.toggleMenu} className="StartMenu"></div></td>

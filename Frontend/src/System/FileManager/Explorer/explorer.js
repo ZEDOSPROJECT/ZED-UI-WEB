@@ -3,6 +3,7 @@ import Icon from "./Icon/icon";
 import mimeMusic from './types/music.png';
 import mimeVideo from './types/video.png';
 import mimeImage from './types/image.png';
+import CategoryTitle from './CategoryTitle/CategoryTitle';
 import "./explorer.css";
 
 class Explorer extends React.Component {
@@ -15,20 +16,10 @@ class Explorer extends React.Component {
   render() {
     let indents;
     let currentType=null;
-    if(this.props.mainType!==false && this.props.mainType!==undefined){
-      if(this.props.mainType.includes("image/")){
-        currentType=mimeImage;
-      }
-      if(this.props.mainType.includes("audio/")){
-        currentType=mimeMusic;
-      }
-      if(this.props.mainType.includes("video/")){
-        currentType=mimeVideo;
-      }
-    }
-    if(this.props.listDir !== undefined){
-      if(this.props.listDir.length !== 0){
-        indents=this.props.listDir.map(data => {
+    let devices=null;
+    if(this.props.currentPath === "My Computer"){
+      if(this.props.devices !== undefined){
+        devices=this.props.devices.map(data => {
           return (
             <Icon
               currentPath={this.props.currentPath} 
@@ -40,12 +31,42 @@ class Explorer extends React.Component {
             />
           );
         }); 
-      }else{
-        indents=<div style={{ color: 'black', marginTop: 20 }}><center>This folder is empty</center></div>
+        indents=<div><CategoryTitle label="Hard Disk Drives"/>{devices}</div>
+      }
+    }else{
+      if(this.props.mainType!==false && this.props.mainType!==undefined){
+        if(this.props.mainType.includes("image/")){
+          currentType=mimeImage;
+        }
+        if(this.props.mainType.includes("audio/")){
+          currentType=mimeMusic;
+        }
+        if(this.props.mainType.includes("video/")){
+          currentType=mimeVideo;
+        }
+      }
+      if(this.props.listDir !== undefined){
+        if(this.props.listDir.length !== 0){
+          indents=this.props.listDir.map(data => {
+            return (
+              <Icon
+                currentPath={this.props.currentPath} 
+                onIClick={this.props.onIClick}
+                onDBClick={this.props.onDBClick}
+                selected={this.props.selected}
+                key={data.name}
+                data={data}
+              />
+            );
+          }); 
+        }else{
+          indents=<div style={{ color: 'black', marginTop: 20 }}><center>This folder is empty</center></div>
+        } 
+      }else {
+        indents=<div>Loading . . .</div>;
       } 
-    }else {
-      indents=<div>Loading . . .</div>;
-    } 
+    }
+    
     return( <div className="fExplorer">
             <img className="typeF" draggable="false" alt="" src={currentType} />
             {indents}

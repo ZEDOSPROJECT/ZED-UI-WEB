@@ -8,8 +8,15 @@ import "./styles.css";
 class App extends React.Component {
   constructor(props) {
     super(props);
+    let currentID=0;
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('id');
+    if(myParam  !== null){
+      currentID=myParam;
+    }
+
     this.state = {
-      CurrentSettingID: 0,
+      CurrentSettingID: currentID,
       SettingJSON: {},
       Wallpapers: [],
       Videos: [],
