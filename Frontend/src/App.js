@@ -95,7 +95,7 @@ class App extends Component {
   processSysCalls(call){
     let calls=call.split(":");
     if(calls[0]==="SYSCALL"){
-        
+
     }else{
         this.msgError("Invalid SYSCALL");
     }
@@ -231,20 +231,25 @@ class App extends Component {
   } 
 
   onToggleMinimize(uuid){
-    let newData = this.state.openedWindows;
-    let i=0;
-    newData.forEach(element => {
-        if(element!=null){
-            if( element.UUID === uuid ){
-                newData[i].VISIBLE=!element.VISIBLE
-                if(newData[i].VISIBLE){
-                    window.toFront=uuid;
+    if(window.topUUID!==uuid){
+        window.topUUID=uuid;
+        window.toFront=uuid;
+    }else{
+        let newData = this.state.openedWindows;
+        let i=0;
+        newData.forEach(element => {
+            if(element!=null){
+                if( element.UUID === uuid ){
+                    newData[i].VISIBLE=!element.VISIBLE
+                    if(newData[i].VISIBLE){
+                        window.toFront=uuid;
+                    } 
                 } 
             } 
-        } 
-        i++;
-    });
-    this.setState({ openedWindows: newData });
+            i++;
+        });
+        this.setState({ openedWindows: newData });
+    }
   } 
 
   createWindow(url,title,icon,windowSize){
