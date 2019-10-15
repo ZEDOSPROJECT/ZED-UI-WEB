@@ -1,3 +1,3 @@
 <script>
-  window.location = "http://zed-os.sourceforge.net/store/?APPNAME=TuneIn";
+  window.location = "http://127.0.0.1:3031/API/APPS/ExistsAppAndRedirect.php?appName=TuneIn";
 </script>
