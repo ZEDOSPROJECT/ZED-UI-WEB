@@ -9,7 +9,7 @@
   </HEAD>
   <BODY>
     <?php
-      $json = json_decode(file_get_contents('http://zed-os.sourceforge.net/store/getAppList.php'),false);
+      $json = json_decode(file_get_contents('http://zed-os.sourceforge.net/store/getAppList.php?type=all'),false);
       for ($i=0; $i < sizeof($json->files); $i++) { 
         echo('<div class="appCard" onClick="openApp(\''.$json->files[$i]->file.'\')">');
         echo('<img class="appIcon" src="http://zed-os.sourceforge.net/store/DIRECTORY/'.$json->files[$i]->file.'/favicon.png"/>');
