@@ -8,6 +8,7 @@
         window.location.href = "index.php?type="+type;
       }
     </script>
+    <title>STORE</title>
   </HEAD>
   <BODY>
       <div class="topBar">
