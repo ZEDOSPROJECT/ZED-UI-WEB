@@ -95,7 +95,27 @@ class App extends Component {
   processSysCalls(call){
     let calls=call.split(":");
     if(calls[0]==="SYSCALL"){
-
+        if(calls[1]==="INSTALL"){
+            fetch(REST_URL+'/API/APPS/installApp.php?appName='+calls[2])
+            .then(response => response.text())
+            .then(text => {
+                if(text==="done"){
+                    this.msgInfo(calls[2]+" installed!");
+                }else{
+                    this.msgError("Erro installing "+calls[2]);
+                }
+            });
+        }else if(calls[1]==="UNINSTALL"){
+            fetch(REST_URL+'/API/APPS/uninstallApp.php?appName='+calls[2])
+            .then(response => response.text())
+            .then(text => {
+                if(text==="done"){
+                    this.msgInfo(calls[2]+" removed!");
+                }else{
+                    this.msgError("Erro uninstalling "+calls[2]);
+                }
+            });
+        }
     }else{
         this.msgError("Invalid SYSCALL");
     }
@@ -231,25 +251,26 @@ class App extends Component {
   } 
 
   onToggleMinimize(uuid){
-    if(window.topUUID!==uuid){
-        window.topUUID=uuid;
-        window.toFront=uuid;
-    }else{
-        let newData = this.state.openedWindows;
-        let i=0;
-        newData.forEach(element => {
-            if(element!=null){
-                if( element.UUID === uuid ){
+    let newData = this.state.openedWindows;
+    let i=0;
+    newData.forEach(element => {
+        if(element!=null){
+            if( element.UUID === uuid ){
+                if(window.topUUID!==uuid){
+                    window.topUUID=uuid;
+                    window.toFront=uuid;
+                    newData[i].VISIBLE=true;
+                }else{
                     newData[i].VISIBLE=!element.VISIBLE
                     if(newData[i].VISIBLE){
                         window.toFront=uuid;
                     } 
-                } 
+                }
             } 
-            i++;
-        });
-        this.setState({ openedWindows: newData });
-    }
+        } 
+        i++;
+    });
+    this.setState({ openedWindows: newData });
   } 
 
   createWindow(url,title,icon,windowSize){
