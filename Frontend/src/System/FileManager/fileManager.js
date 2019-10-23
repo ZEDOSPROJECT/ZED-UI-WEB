@@ -174,6 +174,11 @@ class FileManager extends React.Component {
           });
       });
     }else{
+      fetch(REST_URL+'/API/SYSTEM/IO/getDriveDevices.php')
+      .then(response => response.json())
+      .then(json => {
+        this.setState({ devices: json });
+      });
       this.props.onTitleChange(path);
       this.setState({
         currentPath: path,
