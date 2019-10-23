@@ -219,7 +219,10 @@ class FileManager extends React.Component {
         clickSoundPlayer.play();
       }, 10);
     } else if(data.type === "hdd"){
-      const newPath=data.mountpoint;
+      let newPath=data.mountpoint;
+      if(newPath.substr(newPath.length - 1)!=="/"){
+        newPath=newPath+"/";
+      }
       this.listFolder(newPath);
       let newHistory=[];
       for (let index = 0; index <= this.state.historyIndex; index++) {
