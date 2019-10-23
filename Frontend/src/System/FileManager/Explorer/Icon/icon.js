@@ -28,8 +28,6 @@ class Icon extends React.Component {
   } 
 
   render() {
-    let usage=null;
-
     if (this.props.data.type === "folder") {
       theIcon = Folder;
     }else if(this.props.data.type === "hdd") {
