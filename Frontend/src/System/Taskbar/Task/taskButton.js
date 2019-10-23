@@ -23,10 +23,12 @@ class TaskButton extends React.Component {
         let currentTitle=window.winTitle[this.props.uuid];
         let notifys='';
         if(currentTitle.indexOf("(")!==-1 && currentTitle.indexOf(")")!==-1){
-            notifys=currentTitle.split('(').pop().split(')')[0];
-            if(notifys>9){
-                notifys="9+";
-            }
+            try {
+                notifys=parseInt(currentTitle.split('(').pop().split(')')[0]);
+                if(notifys>9){
+                    notifys="9+";
+                }
+            } catch (e) {}
         }
 
         if(window.topUUID !== this.props.uuid){
