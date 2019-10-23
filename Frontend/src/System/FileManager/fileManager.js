@@ -131,6 +131,9 @@ class FileManager extends React.Component {
         currentTitle="File System";
       }
       this.props.onTitleChange(currentTitle);
+      if(path.substr(path.length - 1)!=="/"){
+        path=path+"/";
+      }
       this.setState({
         currentPath: path,
         historyIndex: this.state.historyIndex,
