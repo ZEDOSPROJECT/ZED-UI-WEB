@@ -25,6 +25,9 @@
                 if($obj["mountpoint"] === "/"){
                     $tmp_obj["name"]="File System"; 
                 }
+                if($tmp_obj["name"]==""){
+                    $tmp_obj["name"]="Unamed Drive";
+                }
                 if(!in_array($tmp_obj["name"], $used)){
                     array_push($DEVICES,$tmp_obj);
                     array_push($used,$tmp_obj["name"]);
