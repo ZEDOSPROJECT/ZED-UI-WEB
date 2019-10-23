@@ -13,7 +13,11 @@
   <BODY>
       <div class="topBar">
         <?php
-          $type=$_GET['type'];
+          if(isset($_GET['type'])){
+            $type=$_GET['type'];
+          }else{
+            $type="all";
+          }
           if($type=="game"){
             echo('<div class="typeIcon selected"><img class="typeImg" width="24" height="24" src="imgs/games.png"/><div class="typelbl">Games</div></div>');
           }else{
