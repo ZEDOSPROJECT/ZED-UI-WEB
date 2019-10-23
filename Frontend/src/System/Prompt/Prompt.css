@@ -19,6 +19,7 @@
     border: 1px solid #ccc;
     background-color: #f3f3f3;
     padding: 20px;
+    z-index: 20;
 }
 
 .promptDialogInput {
