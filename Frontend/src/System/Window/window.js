@@ -10,6 +10,7 @@ import CMINIMIZE from './MINIMIZE.png';
 import FileManager from '../FileManager/fileManager';
 import WebBrowser from '../WebBrowser/WebBrowser';
 import { REST_URL } from '../../REST_URL';
+import preload from './preload';
 import './window.css';
 
 class Window extends React.Component{
@@ -287,7 +288,7 @@ class Window extends React.Component{
             if(!isElectron()){  
                 WindowContent=(<iframe title={window.winTitle[this.state.uuid]}  onLoad={this.onTitleChange} className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
             } else {  
-                WindowContent=(<webview ref={(input) => { this.webview = input; }} onLoad={this.onTitleChange} useragent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3626.120 Safari/537.36" className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url} plugins="true" allowpopups="true"></webview>);
+                WindowContent=(<webview preload={preload} ref={(input) => { this.webview = input; }} onLoad={this.onTitleChange} useragent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3626.120 Safari/537.36" className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url} plugins="true" allowpopups="true"></webview>);
             }
         }else{
             if(this.state.url !== "Web Browser"){
