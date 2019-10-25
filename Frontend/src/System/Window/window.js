@@ -56,7 +56,15 @@ class Window extends React.Component{
             systemColor0: window.systemColor0,
             systemColor1: window.systemColor1,
             gradient: 'on',
-            myStyle: "window hidden"
+            myStyle: "window hidden",
+            errorHiddenList: [
+                                "a parser-blocking cross site",
+                                "uncaught typeerror: cannot read property",
+                                "%",
+                                "refused to get unsafe header",
+                                "ad start",
+                                "failed to set referrer policy",
+                            ]
         };
         setTimeout(() => {
             this.setState({myStyle: "window shadow"});
@@ -236,15 +244,30 @@ class Window extends React.Component{
                 this.forceUpdate();
             });
 
+            this.webview.addEventListener('new-window', (e) => {
+                this.setState({url: e.url});
+              });
+
             this.webview.addEventListener('console-message', (e) => {
-                if(e.level===0){
-                    this.props.onInfo(e.message);
-                }
-                if(e.level===1){
-                    this.props.onWarn(e.message);
-                }
-                if(e.level===2){
-                    this.props.onError(e.message);
+                const tmpWord=e.message.toLowerCase();
+                let found=false;
+                this.state.errorHiddenList.forEach(element => {
+
+                    if(tmpWord.indexOf(element) !== -1 ){
+                        found=true;
+                    }
+                });
+
+                if(!found){
+                    if(e.level===0){
+                        this.props.onInfo(e.message);
+                    }
+                    if(e.level===1){
+                        this.props.onWarn(e.message);
+                    }
+                    if(e.level===2){
+                        this.props.onError(e.message);
+                    }
                 }
             });
 
@@ -262,16 +285,6 @@ class Window extends React.Component{
             });
 
             this.webview.addEventListener('crashed', (e) => {
-                this.setState({url: REST_URL+'/API/APPS/onErrorLoad.html'});
-                this.forceUpdate();
-            });
-
-            this.webview.addEventListener('plugin-crashed', (e) => {
-                this.setState({url: REST_URL+'/API/APPS/onErrorLoad.html'});
-                this.forceUpdate();
-            });
-
-            this.webview.addEventListener('did-fail-load', (e) => {
                 this.setState({url: REST_URL+'/API/APPS/onErrorLoad.html'});
                 this.forceUpdate();
             });
