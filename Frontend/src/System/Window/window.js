@@ -64,6 +64,7 @@ class Window extends React.Component{
                                 "refused to get unsafe header",
                                 "ad start",
                                 "failed to set referrer policy",
+                                "[object object]"
                             ]
         };
         setTimeout(() => {
