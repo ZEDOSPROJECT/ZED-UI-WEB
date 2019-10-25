@@ -5,4 +5,7 @@
     right: 0;
     bottom:39px;
     overflow: hidden;
+    column-width: 6em;
+    column-gap: 0;
+    column-fill: auto;
 }
