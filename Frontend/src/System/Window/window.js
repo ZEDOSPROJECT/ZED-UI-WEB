@@ -64,7 +64,9 @@ class Window extends React.Component{
                                 "refused to get unsafe header",
                                 "ad start",
                                 "failed to set referrer policy",
-                                "[object object]"
+                                "[object object]",
+                                "deprecationwarning",
+                                "refused to load the script"
                             ]
         };
         setTimeout(() => {
@@ -85,6 +87,7 @@ class Window extends React.Component{
         this.handleClickInsideWindow = this.handleClickInsideWindow.bind(this);
         this.onTitleChange = this.onTitleChange.bind(this);
         this.onDrag = this.onDrag.bind(this);
+        this.returnToApp = this.returnToApp.bind(this);
         this.onResizeStop = this.onResizeStop.bind(this);
 
         window.maxZIndex=window.maxZIndex+1;
@@ -114,6 +117,12 @@ class Window extends React.Component{
                 } 
             }
         },800);
+    }
+
+    returnToApp(){
+        this.setState({
+            url: this.props.url
+        })
     }
 
     convertHex(hex,opacity){
@@ -393,6 +402,11 @@ class Window extends React.Component{
                     </div>
                     <div onMouseDown={e => e.stopPropagation()} className={finalBodyStyle}>
                         {WindowContent}  
+                        {this.state.url == this.props.url ? 
+                            null
+                        :(
+                            <div onClick={this.returnToApp} className="goBackURL"><center>Return to the main APP</center></div>
+                        )}
                         {this.state.active ? 
                             null
                         :(
