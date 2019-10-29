@@ -110,6 +110,19 @@ class App extends Component {
             .then(response => response.text())
             .then(text => {
                 if(text==="done"){
+                    if(localStorage.favoriteIcons){
+                        let tmpFavorites=JSON.parse(localStorage.favoriteIcons).favorites;
+                        let id=0;
+                        let tmpFinalFav={};
+                        tmpFavorites.forEach(element => {
+                            if(element.Name==calls[2]){
+                                tmpFavorites.splice(id, 1);
+                                tmpFinalFav["favorites"]=tmpFavorites;
+                                localStorage.favoriteIcons=JSON.stringify(tmpFinalFav);
+                            }
+                            id++;
+                        });
+                    }
                     this.msgInfo(calls[2]+" removed!");
                 }else{
                     this.msgError("Erro uninstalling "+calls[2]);
