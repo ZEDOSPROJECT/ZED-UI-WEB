@@ -60,7 +60,7 @@ class App extends Component {
 
     setInterval(() => {
         for (var key in window.winTitle) {
-            if(window.winTitle[key] === "Control Panel"){
+            if(window.winTitle[key] === "Control Panel" || window.winTitle[key] === "Photo Viwer"){
                 this.loadUserSettings();
             }
         }
