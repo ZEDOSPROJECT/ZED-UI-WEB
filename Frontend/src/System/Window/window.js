@@ -402,7 +402,7 @@ class Window extends React.Component{
                     </div>
                     <div onMouseDown={e => e.stopPropagation()} className={finalBodyStyle}>
                         {WindowContent}  
-                        {this.state.url == this.props.url ? 
+                        {this.state.url === this.props.url ? 
                             null
                         :(
                             <div onClick={this.returnToApp} className="goBackURL"><center>Return to the main APP</center></div>

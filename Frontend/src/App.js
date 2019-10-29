@@ -115,7 +115,7 @@ class App extends Component {
                         let id=0;
                         let tmpFinalFav={};
                         tmpFavorites.forEach(element => {
-                            if(element.Name==calls[2]){
+                            if(element.Name===calls[2]){
                                 tmpFavorites.splice(id, 1);
                                 tmpFinalFav["favorites"]=tmpFavorites;
                                 localStorage.favoriteIcons=JSON.stringify(tmpFinalFav);
