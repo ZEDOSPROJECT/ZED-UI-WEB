@@ -9,6 +9,7 @@ import CRESTORE from './RESTORE.png';
 import CMINIMIZE from './MINIMIZE.png';
 import FileManager from '../FileManager/fileManager';
 import WebBrowser from '../WebBrowser/WebBrowser';
+import VUGif from '../Taskbar/Task/vu.gif';
 import { REST_URL } from '../../REST_URL';
 import preload from './preload';
 import './window.css';
@@ -116,6 +117,7 @@ class Window extends React.Component{
                     this.setState({ systemColor1: window.systemColor1 });
                 } 
             }
+            this.forceUpdate();
         },800);
     }
 
@@ -307,6 +309,10 @@ class Window extends React.Component{
         let finalBodyStyle="body";
         let screenX=window.innerWidth;
         let screenY=window.innerHeight;
+        let isPlaying=false;
+        if(window.soundsEmitter.indexOf(this.props.uuid) !== -1){
+            isPlaying=true;
+        }
         if(this.state.url !== "Web Browser" && this.state.url !== "MyComputer" && this.state.url !== "MyMusic" && this.state.url !== "MyPictures" && this.state.url !== "MyDocuments"){
             if(!isElectron()){  
                 WindowContent=(<iframe title={window.winTitle[this.state.uuid]}  onLoad={this.onTitleChange} className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
@@ -391,6 +397,7 @@ class Window extends React.Component{
                     }}
                 >
                 <div className={this.state.myStyle}  initwidth={800} initheight={400} style={finalStyle}>
+                    { isPlaying ? (<img draggable="false" alt="" className="bgUv" src={VUGif} />) : null }
                     <div onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} className="titleBar" >
                         <div style={{ maxHeight: 20,width: 20 }} className="appIcon"><img draggable="false" alt="" className="appIcon" src={this.props.icon}></img></div>
                         <div className="appTitle" style={{ color: invert(window.systemColor1, true)}}>{window.winTitle[this.state.uuid]}</div>
