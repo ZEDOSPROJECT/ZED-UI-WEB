@@ -21,23 +21,32 @@ class TaskButton extends React.Component {
         let isPlaying=false;
         let isTOP=true;
         let currentTitle=window.winTitle[this.props.uuid];
-        let notifys='';
-        if(currentTitle.indexOf("(")!==-1 && currentTitle.indexOf(")")!==-1){
-            notifys=currentTitle.split('(').pop().split(')')[0];
-            if(notifys>9){
-                notifys="9+";
-            }
-        }
-
+        let notifys=null;
         if(window.topUUID !== this.props.uuid){
             isTOP=false;
         }
+
+        if(!isTOP){
+            if(currentTitle.indexOf("(")!==-1 && currentTitle.indexOf(")")!==-1){
+                try {
+                    notifys=currentTitle.split('(').pop().split(')')[0];
+                    if(notifys==="NaN"){
+                        notifys=null;
+                    }else{
+                        if(notifys>9){
+                            notifys="9+";
+                        }
+                    }
+                } catch (e) {}
+            }
+        }
+
         if(window.soundsEmitter.indexOf(this.props.uuid) !== -1){
             isPlaying=true;
         }
         return(
             <div title={currentTitle} onClick={ e => this.props.onToggleMinimize(this.props.uuid)} style={{ color: invert(window.systemColor0, true), backgroundColor: ( isTOP ? "rgba(0,0,0,0.2)" : "" ) }}   className="taskButton">
-                {notifys !== '' ? (
+                {notifys !== null ? (
                     <div>
                         <div className="notifyAnimation"></div>
                     </div>
@@ -45,7 +54,7 @@ class TaskButton extends React.Component {
                 { isPlaying ? (<img draggable="false" alt="" className="taskSound" src={VUGif} />) : null }
                 <img draggable="false" alt="" className="taskIcon" src={this.props.icon}  />
                 <div className="taskTitle">{currentTitle}</div>
-                {notifys !== '' ? (
+                {notifys !== null ? (
                     <div>
                         <div className="notifys">{notifys}</div>
                     </div>

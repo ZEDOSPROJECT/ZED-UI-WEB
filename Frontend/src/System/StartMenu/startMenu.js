@@ -103,14 +103,18 @@ class StartMenu extends React.Component {
         let lastLeter="0";
         const appList = this.state.Apps.map((app) =>{ 
             let show=true;
-            if(isElectron()){
-                if(!app.manifest.Platforms.includes("DESKTOP")){
-                    show=false;
+            if(app.manifest!==null){
+                if(isElectron()){
+                    if(!app.manifest.Platforms.includes("DESKTOP")){
+                        show=false;
+                    }
+                }else{
+                    if(!app.manifest.Platforms.includes("WEB")){
+                        show=false;
+                    }
                 }
             }else{
-                if(!app.manifest.Platforms.includes("WEB")){
-                    show=false;
-                }
+                show=false;
             }
             if(app.Name !== "Settings" && show) {
                 let newDiv=<div></div>;

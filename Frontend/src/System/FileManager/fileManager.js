@@ -131,6 +131,9 @@ class FileManager extends React.Component {
         currentTitle="File System";
       }
       this.props.onTitleChange(currentTitle);
+      if(path.substr(path.length - 1)!=="/"){
+        path=path+"/";
+      }
       this.setState({
         currentPath: path,
         historyIndex: this.state.historyIndex,
@@ -171,6 +174,11 @@ class FileManager extends React.Component {
           });
       });
     }else{
+      fetch(REST_URL+'/API/SYSTEM/IO/getDriveDevices.php')
+      .then(response => response.json())
+      .then(json => {
+        this.setState({ devices: json });
+      });
       this.props.onTitleChange(path);
       this.setState({
         currentPath: path,
@@ -216,7 +224,10 @@ class FileManager extends React.Component {
         clickSoundPlayer.play();
       }, 10);
     } else if(data.type === "hdd"){
-      const newPath=data.mountpoint;
+      let newPath=data.mountpoint;
+      if(newPath.substr(newPath.length - 1)!=="/"){
+        newPath=newPath+"/";
+      }
       this.listFolder(newPath);
       let newHistory=[];
       for (let index = 0; index <= this.state.historyIndex; index++) {

@@ -9,7 +9,9 @@ import CRESTORE from './RESTORE.png';
 import CMINIMIZE from './MINIMIZE.png';
 import FileManager from '../FileManager/fileManager';
 import WebBrowser from '../WebBrowser/WebBrowser';
+import VUGif from '../Taskbar/Task/vu.gif';
 import { REST_URL } from '../../REST_URL';
+import preload from './preload';
 import './window.css';
 
 class Window extends React.Component{
@@ -55,7 +57,18 @@ class Window extends React.Component{
             systemColor0: window.systemColor0,
             systemColor1: window.systemColor1,
             gradient: 'on',
-            myStyle: "window hidden"
+            myStyle: "window hidden",
+            errorHiddenList: [
+                                "a parser-blocking cross site",
+                                "uncaught typeerror: cannot read property",
+                                "%",
+                                "refused to get unsafe header",
+                                "ad start",
+                                "failed to set referrer policy",
+                                "[object object]",
+                                "deprecationwarning",
+                                "refused to load the script"
+                            ]
         };
         setTimeout(() => {
             this.setState({myStyle: "window shadow"});
@@ -75,6 +88,7 @@ class Window extends React.Component{
         this.handleClickInsideWindow = this.handleClickInsideWindow.bind(this);
         this.onTitleChange = this.onTitleChange.bind(this);
         this.onDrag = this.onDrag.bind(this);
+        this.returnToApp = this.returnToApp.bind(this);
         this.onResizeStop = this.onResizeStop.bind(this);
 
         window.maxZIndex=window.maxZIndex+1;
@@ -103,7 +117,14 @@ class Window extends React.Component{
                     this.setState({ systemColor1: window.systemColor1 });
                 } 
             }
+            this.forceUpdate();
         },800);
+    }
+
+    returnToApp(){
+        this.setState({
+            url: this.props.url
+        })
     }
 
     convertHex(hex,opacity){
@@ -235,15 +256,30 @@ class Window extends React.Component{
                 this.forceUpdate();
             });
 
+            this.webview.addEventListener('new-window', (e) => {
+                this.setState({url: e.url});
+              });
+
             this.webview.addEventListener('console-message', (e) => {
-                if(e.level===0){
-                    this.props.onInfo(e.message);
-                }
-                if(e.level===1){
-                    this.props.onWarn(e.message);
-                }
-                if(e.level===2){
-                    this.props.onError(e.message);
+                const tmpWord=e.message.toLowerCase();
+                let found=false;
+                this.state.errorHiddenList.forEach(element => {
+
+                    if(tmpWord.indexOf(element) !== -1 ){
+                        found=true;
+                    }
+                });
+
+                if(!found){
+                    if(e.level===0){
+                        this.props.onInfo(e.message);
+                    }
+                    if(e.level===1){
+                        this.props.onWarn(e.message);
+                    }
+                    if(e.level===2){
+                        this.props.onError(e.message);
+                    }
                 }
             });
 
@@ -264,16 +300,6 @@ class Window extends React.Component{
                 this.setState({url: REST_URL+'/API/APPS/onErrorLoad.html'});
                 this.forceUpdate();
             });
-
-            this.webview.addEventListener('plugin-crashed', (e) => {
-                this.setState({url: REST_URL+'/API/APPS/onErrorLoad.html'});
-                this.forceUpdate();
-            });
-
-            this.webview.addEventListener('did-fail-load', (e) => {
-                this.setState({url: REST_URL+'/API/APPS/onErrorLoad.html'});
-                this.forceUpdate();
-            });
         }
     }
 
@@ -283,11 +309,15 @@ class Window extends React.Component{
         let finalBodyStyle="body";
         let screenX=window.innerWidth;
         let screenY=window.innerHeight;
+        let isPlaying=false;
+        if(window.soundsEmitter.indexOf(this.props.uuid) !== -1){
+            isPlaying=true;
+        }
         if(this.state.url !== "Web Browser" && this.state.url !== "MyComputer" && this.state.url !== "MyMusic" && this.state.url !== "MyPictures" && this.state.url !== "MyDocuments"){
             if(!isElectron()){  
                 WindowContent=(<iframe title={window.winTitle[this.state.uuid]}  onLoad={this.onTitleChange} className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
             } else {  
-                WindowContent=(<webview ref={(input) => { this.webview = input; }} onLoad={this.onTitleChange} useragent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3626.120 Safari/537.36" className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url} plugins="true" allowpopups="true"></webview>);
+                WindowContent=(<webview preload={preload} ref={(input) => { this.webview = input; }} onLoad={this.onTitleChange} useragent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3626.120 Safari/537.36" className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url} plugins="true" allowpopups="true"></webview>);
             }
         }else{
             if(this.state.url !== "Web Browser"){
@@ -367,6 +397,7 @@ class Window extends React.Component{
                     }}
                 >
                 <div className={this.state.myStyle}  initwidth={800} initheight={400} style={finalStyle}>
+                    { isPlaying ? (<img draggable="false" alt="" className="bgUv" src={VUGif} />) : null }
                     <div onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} className="titleBar" >
                         <div style={{ maxHeight: 20,width: 20 }} className="appIcon"><img draggable="false" alt="" className="appIcon" src={this.props.icon}></img></div>
                         <div className="appTitle" style={{ color: invert(window.systemColor1, true)}}>{window.winTitle[this.state.uuid]}</div>
@@ -378,6 +409,11 @@ class Window extends React.Component{
                     </div>
                     <div onMouseDown={e => e.stopPropagation()} className={finalBodyStyle}>
                         {WindowContent}  
+                        {this.state.url === this.props.url ? 
+                            null
+                        :(
+                            <div onClick={this.returnToApp} className="goBackURL"><center>Return to the main APP</center></div>
+                        )}
                         {this.state.active ? 
                             null
                         :(

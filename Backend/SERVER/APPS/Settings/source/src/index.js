@@ -14,19 +14,19 @@ class App extends React.Component {
     if(myParam  !== null){
       currentID=myParam;
     }
-
     this.state = {
       CurrentSettingID: currentID,
       SettingJSON: {},
       Wallpapers: [],
+      branch: "master",
       Videos: [],
       SystemInfo: {
         OperatingSystem: "ZED",
-        CPU: "Intel Core i3 2.2GHz",
+        CPU: undefined,
         Version: "2019.0",
-        Kernel: "5.0.1",
-        RAM: "3.8GB",
-        STORAGE: "1TB"
+        Kernel: undefined,
+        RAM: undefined,
+        STORAGE: undefined  
       }
     };
     this.changeBlueFilter = this.changeBlueFilter.bind(this);
@@ -42,20 +42,25 @@ class App extends React.Component {
     this.switchSetting = this.switchSetting.bind(this);
     this.onChangeVideoWallpaper = this.onChangeVideoWallpaper.bind(this);
     this.setBranch = this.setBranch.bind(this);
+  }
 
+  componentWillMount(){
     this.getSettingsData();
   }
 
   setBranch(e){
-    fetch(
-      "http://" +
-        window.location.hostname +
-        ":3031/API/SYSTEM/UPDATES/setUpdateBranch.php?id="+e.target.value,
-      {
-        method: "post",
-        body: JSON.stringify(this.state.SettingJSON)
-      }
-    );
+    if(e.target.value!==""){
+      this.setState({branch: e.target.value});
+      fetch(
+        "http://" +
+          window.location.hostname +
+          ":3031/API/SYSTEM/UPDATES/setUpdateBranch.php?id="+e.target.value,
+        {
+          method: "post",
+          body: JSON.stringify(this.state.SettingJSON)
+        }
+      );
+    }
   }
 
   save() {
@@ -84,53 +89,64 @@ class App extends React.Component {
         window.location.hostname +
         ":3031/API/SYSTEM/SETTINGS/USER/getSettings.php"
     )
-      .then(response => response.json())
-      .then(json => {
-        this.setState({ SettingJSON: json });
-        fetch(
-          "http://" +
-            window.location.hostname +
-            ":3031/API/SYSTEM/SETTINGS/USER/SETTING/getWallpapersImages.php"
-        )
-          .then(response => response.json())
-          .then(jsonWallpapers => {
-            let newWallpapers = [""];
-            jsonWallpapers.WALLPAPERS.forEach(element => {
-              if (element !== "") {
-                newWallpapers.push(
-                  "http://" +
-                    window.location.hostname +
-                    ":3031/Wallpapers/Images/" +
-                    element
-                );
-              }
-            });
-            this.setState({ Wallpapers: newWallpapers });
-            fetch(
-              "http://" +
-                window.location.hostname +
-                ":3031/API/SYSTEM/SETTINGS/USER/SETTING/getWallpapersVideos.php"
-            )
-              .then(response => response.json())
-              .then(jsonWallpapers => {
-                this.setState({ Videos: jsonWallpapers.WALLPAPERS });
-              });
-              fetch(
-                "http://" +
-                  window.location.hostname +
-                  ":3031/API/SYSTEM/getInfo.php"
-              )
-                .then(response => response.json())
-                .then(SystemInfo => {
-                  this.setState({ SystemInfo: SystemInfo });
-                });
-          });
+    .then(response => response.json())
+    .then(json => {
+      this.setState({ SettingJSON: json });
+    });
+    fetch(
+      "http://" +
+        window.location.hostname +
+        ":3031/API/SYSTEM/SETTINGS/USER/SETTING/getWallpapersImages.php"
+    )
+    .then(response => response.json())
+    .then(jsonWallpapers => {
+      let newWallpapers = [""];
+      jsonWallpapers.WALLPAPERS.forEach(element => {
+        if (element !== "") {
+          newWallpapers.push(
+            "http://" +
+              window.location.hostname +
+              ":3031/Wallpapers/Images/" +
+              element
+          );
+        }
       });
+      this.setState({ Wallpapers: newWallpapers });
+    });
+
+    fetch(
+      "http://" +
+        window.location.hostname +
+        ":3031/API/SYSTEM/SETTINGS/USER/SETTING/getWallpapersVideos.php"
+    )
+    .then(response => response.json())
+    .then(jsonWallpapers => {
+      this.setState({ Videos: jsonWallpapers.WALLPAPERS });
+    });
+
+    fetch(
+      "http://" +
+        window.location.hostname +
+        ":3031/API/SYSTEM/getInfo.php"
+    )
+    .then(response => response.json())
+    .then(SystemInfo => {
+      this.setState({ SystemInfo: SystemInfo });
+    });
+    fetch(
+      "http://" +
+        window.location.hostname +
+        ":3031/API/SYSTEM/UPDATES/getUpdateBranch.php"
+    )
+    .then(response => response.text())
+    .then(text => {
+      this.setState({branch: text});  
+    })
   }
 
   switchSetting(id) {
     this.setState({ CurrentSettingID: id });
-    this.save();
+    //this.save();
   }
 
   changeColor0(event) {
@@ -204,13 +220,17 @@ class App extends React.Component {
     this.save();
   }
 
-  render() {
+  render() {  
+    let branchIndex=0;
+    if(this.state.branch!=="master"){
+      branchIndex=1;
+    }
     const SettingsScreens = [
       <div>
         <h2>Background</h2>
         <div>
           {this.state.Wallpapers.map((wallpaper, index) => {
-            if (wallpaper !== "") {
+            if(wallpaper !== "") {
               return (
                 <img
                   draggable="false"
@@ -376,9 +396,10 @@ class App extends React.Component {
           <div>
             <h2>System Updates</h2>
             Which development branch would you like to use? <br/><br/>
-            <select id="branch" onChange={this.setBranch}>
-              <option>master</option>
-              <option>develop</option>
+            <select value={"Select Branch"} id="branch" onChange={this.setBranch}>
+              <option value="">Select Branch</option>
+              <option value="master">master</option>
+              <option value="develop">develop</option>
             </select>
           </div>
         </div>

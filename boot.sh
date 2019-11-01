@@ -4,9 +4,6 @@ if [ -e ".branch" ]
 then
    git checkout "$(<.branch)"
    rm .branch
-   cd Frontend
-   npm install
-   cd ..
 fi
 git stash
 git pull
@@ -15,6 +12,7 @@ cd Backend
 ./startBackend.sh&
 cd ..
 cd Frontend
+npm install
 npm run electron&
 sleep 1
 npm start&

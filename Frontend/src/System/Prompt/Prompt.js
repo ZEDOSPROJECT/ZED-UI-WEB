@@ -14,7 +14,7 @@ export default class NewFolderDialog extends Component {
 
     handleChange(e){
         this.setState({
-            newFolder: e.target.value
+            newPrompt: e.target.value
         });
     }
 
@@ -38,7 +38,7 @@ export default class NewFolderDialog extends Component {
         if(this.props.visible){
             return (
                 <div onClick={this.props.onESQ} className="promptDialog">
-                    <div className="promptDialogModal">
+                    <div onClick={e => e.stopPropagation()} className="promptDialogModal">
                         {this.props.label}
                         <input 
                             className="promptDialogInput"
