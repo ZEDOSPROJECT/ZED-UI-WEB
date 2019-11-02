@@ -183,15 +183,6 @@ class Window extends React.Component{
         localStorage["WINDOW_"+appID+"_Y"]=this.state.y;
         localStorage["WINDOW_"+appID+"_W"]=this.state.width;
         localStorage["WINDOW_"+appID+"_H"]=this.state.height;
-        let id=-1;
-        let i=0
-        window.soundsEmitter.forEach(element => {
-            if(element === this.state.uuid)
-                id=i;
-            i++;
-        });
-        if(id>=0)
-            window.soundsEmitter=window.soundsEmitter.splice(id, 1);
     }
 
     onDragStart(){

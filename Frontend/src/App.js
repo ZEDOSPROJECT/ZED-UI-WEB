@@ -249,18 +249,31 @@ class App extends Component {
   } 
 
   onClose(uuid){
-      let newData = this.state.openedWindows;
-      let i=0;
-      newData.forEach(element => {
+        setTimeout(() => {
+            let id=-1;
+            let x=0
+            window.soundsEmitter.forEach(element => {
+                if(element === uuid)
+                    id=x;
+                x++;
+            });
+            if(id !== -1){
+                window.soundsEmitter.splice(id, 1);
+            }
+        }, 300);
+    
+        let newData = this.state.openedWindows;
+        let i=0;
+        newData.forEach(element => {
           if(element!=null){
             if( element.UUID === uuid ){
                 newData[i]=null;
             } 
           } 
           i++;
-      });
-      delete window.winTitle[uuid]; 
-      this.setState({ openedWindows: newData });
+        });
+        delete window.winTitle[uuid]; 
+        this.setState({ openedWindows: newData });
   } 
 
   onToggleMinimize(uuid){
