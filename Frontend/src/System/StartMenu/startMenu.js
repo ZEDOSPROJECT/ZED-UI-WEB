@@ -112,7 +112,7 @@ class StartMenu extends React.Component {
                 if(this.state.searchBox === ""){
                     if(app.Name.charAt(0).toUpperCase() !== lastLeter.toUpperCase()) {
                         lastLeter=app.Name.charAt(0);
-                        newDiv=<div key={"stmenu_"+app.Name} style={{ color: invert(window.systemColor0, true)}} className="startLeter"><b>{lastLeter}</b></div>
+                        newDiv=<div key={"stmenu_"+app.Name} className="startLeter"><b>{lastLeter}</b></div>
                     }
                 } 
                 return <div  style={{ height: 80 }} key={"stmenu_"+app.Name}>{newDiv}<AppCard forceRefreshApps={this.refreshApps} windowSize={app.manifest.Window} onClickApp={this.props.onClickApp} appName={app.Name}  /></div>
@@ -134,7 +134,7 @@ class StartMenu extends React.Component {
                         </div>
                     </div>
                     <div className="middleMenu">
-                        <div className="AppsList" style={{ color: invert(window.systemColor0, true)}}>
+                        <div className="AppsList">
                             {appList} 
                         </div>
                         <div className="systemMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,80), color: invert(window.systemColor0, true)}}>
