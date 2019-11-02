@@ -1,5 +1,4 @@
 import React from 'react';
-import invert from 'invert-color';
 import { REST_URL } from '../../../REST_URL';
 import './icon.css';
 
@@ -15,7 +14,7 @@ class Icon extends React.Component {
 
     render(){
         return(
-            <div onClick={this.processClick} title={this.props.Name} className="desktopIcon" style={{ color: invert(window.systemColor1, true)}}>
+            <div onClick={this.processClick} title={this.props.Name} className="desktopIcon">
                 <center>
                     <img draggable="false" alt="" className="desktopIconImage" src={this.props.Icon} />
                 </center>
