@@ -406,7 +406,7 @@ class App extends React.Component {
       </div>
     ];
     const MenusTitles = [
-      "Appeaarence",
+      "Appearence",
       "Sound and Screen",
       "Network",
       "Users",
