@@ -5,9 +5,12 @@ import Explorer from "./Explorer/explorer";
 import LeftBar from "./LeftBar/leftBar";
 import StatusBar from "./StatusBar/statusBar";
 import NewFolderDialog from '../Prompt/Prompt';
+import RenameDialog from '../Prompt/Prompt';
 import clickSound from './click.mp3';
 import { REST_URL } from './../../REST_URL';
 import "./fileManager.css";
+
+let detailsFlag=false;
 
 class FileManager extends React.Component {
   constructor(props) {
@@ -20,6 +23,7 @@ class FileManager extends React.Component {
       historyIndex: 0,
       details:undefined,
       createFolderVisible: false,
+      renameVisible: false,
       mainType:"",
       devices:undefined
     };
@@ -43,6 +47,40 @@ class FileManager extends React.Component {
     this.onCreateFolderCancel = this.onCreateFolderCancel.bind(this);
     this.onCreateFolderReady = this.onCreateFolderReady.bind(this);
     this.onCreateFolderOpen = this.onCreateFolderOpen.bind(this);
+    this.onRenameCancel = this.onRenameCancel.bind(this);
+    this.onRenameReady = this.onRenameReady.bind(this);
+    this.onRenameOpen = this.onRenameOpen.bind(this);
+  }
+
+  onRenameCancel(){
+    this.setState({
+      renameVisible: false
+    });
+  }
+
+  onRenameReady(name){
+    let extension="";
+    if(this.state.selected.includes(".")){
+      extension=this.state.selected.substr(this.state.selected.lastIndexOf('.') + 1);
+    }
+    fetch(REST_URL+'/API/SYSTEM/IO/rename.php?path='+this.state.currentPath+this.state.selected+"&new_name="+name+"."+extension)
+    .then(response => response.text())
+    .then(text => {
+      if(text!=="1"){
+        console.log("ERROR");
+      }else{
+        this.listFolder(this.state.currentPath);
+      }
+    });
+    this.setState({
+      renameVisible: false
+    });
+  }
+
+  onRenameOpen(){
+    this.setState({
+      renameVisible: true
+    });
   }
 
   onCreateFolderCancel(){
@@ -102,24 +140,26 @@ class FileManager extends React.Component {
     fetch(REST_URL+'/API/SYSTEM/IO/getInfo.php?path='+path)
     .then(response => response.json())
     .then(json => {
-        let final;
-        if(json.MIME==="directory"){
-          final=<div style={{ fontSize: 12, overflow: "hidden" }}>
-            <b>Type:</b> Folder <br/><br/>
-            <b>Last Change</b> {json.LASTE_DATE}
-          </div>
+        if(detailsFlag){
+          let final;
+          if(json.MIME==="directory"){
+            final=<div style={{ fontSize: 12, overflow: "hidden" }}>
+              <b>Type:</b> Folder <br/><br/>
+              <b>Last Change</b> {json.LASTE_DATE}
+            </div>
+          }
+          else{
+            final=<div style={{ fontSize: 12, overflow: "hidden" }}>
+              <b>Type:</b> {json.MIME}<br/>
+              <p><b>Size:</b> {json.SIZE}<br/></p>
+              <b>Last Change</b> {json.LASTE_DATE}
+            </div>
+          }
+  
+          this.setState({
+            details: final,
+          });
         }
-        else{
-          final=<div style={{ fontSize: 12, overflow: "hidden" }}>
-            <b>Type:</b> {json.MIME}<br/>
-            <p><b>Size:</b> {json.SIZE}<br/></p>
-            <b>Last Change</b> {json.LASTE_DATE}
-          </div>
-        }
-
-        this.setState({
-          details: final,
-        });
     });
   }
 
@@ -200,11 +240,13 @@ class FileManager extends React.Component {
 
   onIClick(data) {
     this.setState({ selected: data.name });
+    detailsFlag=true;
     this.getDetails(this.state.currentPath+data.name);
   }
 
   onDBClick(data) {
-    this.setState({ selected: "" });
+    detailsFlag=false;
+    this.setState({ selected: "",details:undefined });
     if (data.type === "folder") {
       const newPath=this.state.currentPath + data.name + "/";
       this.listFolder(newPath);
@@ -264,7 +306,7 @@ class FileManager extends React.Component {
     }
   }
 
-  render() {
+  render() {  
     return (
       <div className="fm">
         <ToolBar 
@@ -278,6 +320,7 @@ class FileManager extends React.Component {
           userDirs={this.props.userDirs}
           details={this.state.details}
           onCreateFolderOpen={this.onCreateFolderOpen}
+          onRenameOpen={this.onRenameOpen}
         /> 
         <Explorer
           mainType={this.state.mainType}
@@ -297,6 +340,13 @@ class FileManager extends React.Component {
           onENTER={this.onCreateFolderReady}
           placeholder="New Folder"
           label="Name of new folder: "
+        />
+        <RenameDialog 
+          visible={this.state.renameVisible}
+          onESQ={this.onRenameCancel}
+          onENTER={this.onRenameReady}
+          placeholder="New name"
+          label="Rename"
         />
       </div>
     );
