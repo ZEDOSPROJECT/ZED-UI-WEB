@@ -59,11 +59,11 @@ class FileManager extends React.Component {
   }
 
   onRenameReady(name){
-    let extension="";
+    let url=REST_URL+'/API/SYSTEM/IO/rename.php?path='+this.state.currentPath+this.state.selected+"&new_name="+name;
     if(this.state.selected.includes(".")){
-      extension=this.state.selected.substr(this.state.selected.lastIndexOf('.') + 1);
+      url+="."+this.state.selected.substr(this.state.selected.lastIndexOf('.') + 1);
     }
-    fetch(REST_URL+'/API/SYSTEM/IO/rename.php?path='+this.state.currentPath+this.state.selected+"&new_name="+name+"."+extension)
+    fetch(url)
     .then(response => response.text())
     .then(text => {
       if(text!=="1"){
