@@ -68,7 +68,7 @@ class App extends Component {
         this.clean();
         if(window.ZED_RUN !== null){
             const AppMetadata=Object.assign({}, window.ZED_RUN);
-            this.onClickApp(null,AppMetadata.Url,AppMetadata.Label,AppMetadata.Icon);
+            this.onClickApp(null,AppMetadata.Url,AppMetadata.Label,AppMetadata.Icon,AppMetadata.SystemWindow);
             window.ZED_RUN=null;
         } 
     },200);
@@ -299,13 +299,14 @@ class App extends Component {
     this.setState({ openedWindows: newData });
   } 
 
-  createWindow(url,title,icon,windowSize){
+  createWindow(url,title,icon,windowSize,systemWindow){
         const uuid = getUUID();
         var newList = this.state.openedWindows;
         newList.push({ 'UUID'  : uuid, 'WINDOW' : (
             <Window 
                 userDirs={this.state.userPaths}  
                 url={url}  
+                systemWindow={systemWindow}
                 icon={icon}
                 windowSize={windowSize}
                 onError={this.msgError}
@@ -339,38 +340,38 @@ class App extends Component {
         });
     }  
 
-  onClickApp(e,url,name,icon,windowSize){
+  onClickApp(e,url,name,icon,windowSize,systemWindow){
       if(!windowSize){
           windowSize={};
           windowSize['Width']=0;
           windowSize['Height']=0;
      }
-      if( name !== "Web Browser" && name !== "MyComputer" && name !== "MyMusic" && name !== "MyPictures" && name !== "MyDocuments"){
-        this.createWindow(url,name,icon,windowSize);
+      if(!systemWindow){
+        this.createWindow(url,name,icon,windowSize,systemWindow);
         this.setState({ showMenu: false });
       }else{
         if(name === "Web Browser"){
-            this.createWindow("Web Browser","Web Browser",REST_URL+"/APPS/Web Browser/favicon.png",windowSize);
+            this.createWindow("Web Browser","Web Browser",REST_URL+"/APPS/Web Browser/favicon.png",windowSize,systemWindow);
             this.setState({ showMenu: false });
         }
         if(name === "MyComputer"){
             window.explorer_open="My Computer";
-            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize);
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize,systemWindow);
             this.setState({ showMenu: false });
         }
         if(name === "MyMusic"){
             window.explorer_open=this.state.userPaths['music'];
-            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize);
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize,systemWindow);
             this.setState({ showMenu: false });
         }
         if(name === "MyPictures"){
             window.explorer_open=this.state.userPaths['picture'];
-            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize);
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize,systemWindow);
             this.setState({ showMenu: false });
         }
         if(name === "MyDocuments"){
             window.explorer_open=this.state.userPaths['documents'];
-            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize);
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize,systemWindow);
             this.setState({ showMenu: false });
         }
       } 

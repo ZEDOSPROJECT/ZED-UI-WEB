@@ -293,14 +293,16 @@ class FileManager extends React.Component {
         window.ZED_RUN={
           Label: 'Picture View',
           Url: REST_URL+'/APPS/Picture Visualizer/index.php?path='+file,
-          Icon: REST_URL+"/API/SYSTEM/ICONS/ModernXP (27).png"
+          Icon: REST_URL+"/API/SYSTEM/ICONS/ModernXP (27).png",
+          SystemWindow: false
         } 
       } 
       if(mimeType.includes("audio/") || mimeType.includes("video/")){
         window.ZED_RUN={
           Label: 'ZED Media Player',
           Url: REST_URL+'/APPS/ZED Media Player/index.php?path='+file,
-          Icon: REST_URL+"/APPS/ZED Media Player/favicon.png"
+          Icon: REST_URL+"/APPS/ZED Media Player/favicon.png",
+          SystemWindow: false
         } 
       }
     }

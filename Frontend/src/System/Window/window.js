@@ -47,6 +47,7 @@ class Window extends React.Component{
             modalIsOpen: true,
             draggable: false,
             uuid: this.props.uuid,
+            systemWindow: this.props.systemWindow,
             currentZIndex: window.maxZIndex,
             maximized: false,
             x: positionX,
@@ -304,16 +305,16 @@ class Window extends React.Component{
         if(window.soundsEmitter.indexOf(this.props.uuid) !== -1){
             isPlaying=true;
         }
-        if(this.state.url !== "Web Browser" && this.state.url !== "MyComputer" && this.state.url !== "MyMusic" && this.state.url !== "MyPictures" && this.state.url !== "MyDocuments"){
+        if(!this.state.systemWindow){
             if(!isElectron()){  
                 WindowContent=(<iframe title={window.winTitle[this.state.uuid]}  onLoad={this.onTitleChange} className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
             } else {  
                 WindowContent=(<webview preload={preload} ref={(input) => { this.webview = input; }} onLoad={this.onTitleChange} useragent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3626.120 Safari/537.36" className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url} plugins="true" allowpopups="true"></webview>);
             }
         }else{
-            if(this.state.url !== "Web Browser"){
+            if(this.state.url === "MyComputer" || this.state.url === "MyMusic" || this.state.url === "MyPictures" || this.state.url === "MyDocuments"){
                 WindowContent=<FileManager onTitleChange={this.onTitleChange} userDirs={this.props.userDirs} className="frame dontMove"/>
-            }else{
+            }else if(this.state.url === "Web Browser"){
                 WindowContent=<WebBrowser onTitleChange={this.onTitleChange} className="frame dontMove"/>
             }
         } 

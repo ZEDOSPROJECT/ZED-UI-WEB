@@ -9,7 +9,7 @@ class Icon extends React.Component {
     }
 
     processClick(){
-        this.props.onClickApp(null,REST_URL+"/APPS/"+this.props.Name+"/",this.props.Name,REST_URL+"/APPS/"+this.props.Name+"/favicon.png",this.props.WindowSize);
+        this.props.onClickApp(null,REST_URL+"/APPS/"+this.props.Name+"/",this.props.Name,REST_URL+"/APPS/"+this.props.Name+"/favicon.png",this.props.WindowSize,false);
     }
 
     render(){
