@@ -68,7 +68,7 @@ class App extends Component {
         this.clean();
         if(window.ZED_RUN !== null){
             const AppMetadata=Object.assign({}, window.ZED_RUN);
-            this.onClickApp(null,AppMetadata.Url,AppMetadata.Label,AppMetadata.Icon,AppMetadata.SystemWindow);
+            this.onClickApp(null,AppMetadata.Url,AppMetadata.Label,AppMetadata.Icon,undefined,AppMetadata.SystemWindow);
             window.ZED_RUN=null;
         } 
     },200);
@@ -346,6 +346,9 @@ class App extends Component {
           windowSize['Width']=0;
           windowSize['Height']=0;
      }
+     if(url.includes("/Web Browser/")){
+        systemWindow=true;
+     }
       if(!systemWindow){
         this.createWindow(url,name,icon,windowSize,systemWindow);
         this.setState({ showMenu: false });
@@ -372,6 +375,12 @@ class App extends Component {
         if(name === "MyDocuments"){
             window.explorer_open=this.state.userPaths['documents'];
             this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize,systemWindow);
+            this.setState({ showMenu: false });
+        }
+        if(name === "Copy"){
+            windowSize['Width']=400;
+            windowSize['Height']=185;
+            this.createWindow(url,"Copy",REST_URL+"/API/SYSTEM/ICONS/copy.png",windowSize,systemWindow);
             this.setState({ showMenu: false });
         }
       } 

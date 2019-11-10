@@ -9,6 +9,7 @@ import CRESTORE from './RESTORE.png';
 import CMINIMIZE from './MINIMIZE.png';
 import FileManager from '../FileManager/fileManager';
 import WebBrowser from '../WebBrowser/WebBrowser';
+import CopyDialog from '../SystemDialogs/Copy/copy.js';
 import VUGif from '../Taskbar/Task/vu.gif';
 import { REST_URL } from '../../REST_URL';
 import preload from './preload';
@@ -52,6 +53,7 @@ class Window extends React.Component{
             maximized: false,
             x: positionX,
             y: positionY,
+            notResiable: false,
             width: windowSize.Width,
             height: windowSize.Height,
             active: true,
@@ -72,6 +74,9 @@ class Window extends React.Component{
                             ]
         };
         setTimeout(() => {
+            if(window.winTitle[this.state.uuid].includes("Copy")){
+                this.setState({notResiable: true});
+            }
             this.setState({myStyle: "window shadow"});
         }, 40);
 
@@ -302,20 +307,38 @@ class Window extends React.Component{
         let screenX=window.innerWidth;
         let screenY=window.innerHeight;
         let isPlaying=false;
+        let systemWindow=this.state.systemWindow;
         if(window.soundsEmitter.indexOf(this.props.uuid) !== -1){
             isPlaying=true;
         }
-        if(!this.state.systemWindow){
+        if(!systemWindow){
             if(!isElectron()){  
                 WindowContent=(<iframe title={window.winTitle[this.state.uuid]}  onLoad={this.onTitleChange} className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
             } else {  
                 WindowContent=(<webview preload={preload} ref={(input) => { this.webview = input; }} onLoad={this.onTitleChange} useragent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3626.120 Safari/537.36" className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url} plugins="true" allowpopups="true"></webview>);
             }
         }else{
-            if(this.state.url === "MyComputer" || this.state.url === "MyMusic" || this.state.url === "MyPictures" || this.state.url === "MyDocuments"){
+            const url=this.state.url;  
+            const params=url.split("|");
+            let isOpen=false;
+            if(url === "MyComputer" || this.state.url === "MyMusic" || this.state.url === "MyPictures" || this.state.url === "MyDocuments" || url === "Web Browser"){
                 WindowContent=<FileManager onTitleChange={this.onTitleChange} userDirs={this.props.userDirs} className="frame dontMove"/>
-            }else if(this.state.url === "Web Browser"){
+                isOpen=true;
+            }
+            if(url === "Web Browser"){
                 WindowContent=<WebBrowser onTitleChange={this.onTitleChange} className="frame dontMove"/>
+                isOpen=true;
+            }
+            if(params[0] === "copy"){
+                if(params[1]!== "" && params[2]!== ""){
+                    WindowContent=<CopyDialog UUID={this.state.uuid} onClose={this.onClose} from={params[1]} to={params[2]} onTitleChange={this.onTitleChange} className="frame dontMove"/>
+                    isOpen=true;
+                }
+            }
+            if(!isOpen){
+                setTimeout(() => {
+                    this.onClose();
+                }, 40);
             }
         } 
 
