@@ -32,6 +32,7 @@ class App extends Component {
         videoWallpaperURL: "",
         ScreenSaverTimer: 0
     };
+    window.clipBoard="";
     window.systemColor0="#06001E";
     window.systemColor1="#06001E";
     window.maxZIndex=1;

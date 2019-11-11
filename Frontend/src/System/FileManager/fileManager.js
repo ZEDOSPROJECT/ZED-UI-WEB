@@ -50,6 +50,8 @@ class FileManager extends React.Component {
     this.onRenameCancel = this.onRenameCancel.bind(this);
     this.onRenameReady = this.onRenameReady.bind(this);
     this.onRenameOpen = this.onRenameOpen.bind(this);
+    this.onCopy = this.onCopy.bind(this);
+    this.onPaste = this.onPaste.bind(this);
   }
 
   onRenameCancel(){
@@ -238,6 +240,20 @@ class FileManager extends React.Component {
     });
   }
 
+  onCopy(){
+    window.clipBoard=this.state.currentPath+this.state.selected;
+  }
+
+  onPaste(){
+    const pathArr=window.clipBoard.split("/");
+    window.ZED_RUN={
+      Url: "copy|"+window.clipBoard+"|"+this.state.currentPath+pathArr[pathArr.length-1],
+      Label: "Copy",
+      Icon: REST_URL+"/API/SYSTEM/ICONS/copy.png",
+      SystemWindow: true
+    }
+  }
+
   onIClick(data) {
     this.setState({ selected: data.name });
     detailsFlag=true;
@@ -323,6 +339,8 @@ class FileManager extends React.Component {
           details={this.state.details}
           onCreateFolderOpen={this.onCreateFolderOpen}
           onRenameOpen={this.onRenameOpen}
+          onCopy={this.onCopy}
+          onPaste={this.onPaste}
         /> 
         <Explorer
           mainType={this.state.mainType}

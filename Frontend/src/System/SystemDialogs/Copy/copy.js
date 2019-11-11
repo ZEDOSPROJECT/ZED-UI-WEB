@@ -14,37 +14,33 @@ class Copy extends React.Component {
         }
         this.readyRequest=true;  
 
-
         fetch(REST_URL+'/API/SYSTEM/IO/copy.php?uuid='+this.props.UUID+"&from="+this.props.from+"&to="+this.props.to)
         .then(response => response.text())
         .then(text => {
             setInterval(() => {
-                if(this.readyRequest){
-                    this.readyRequest=false;
-                    fetch(REST_URL+'/API/SYSTEM/IO/getCopy.php?uuid='+this.props.UUID)
-                    .then(response => response.text())
-                    .then(progress => {
-                        if(progress==="FINISHED"){
-                            this.props.onClose();
-                        }else{
-                            const data=progress.split("|");
-                            this.setState({
-                                currentFile: data[0],
-                                percentage: data[1]
-                            })
-                            this.props.onTitleChange("Copying "+data[1]+"%");
-                            this.readyRequest=true;
-                        }
-                    });
-                }
-            }, 400);
+                fetch(REST_URL+'/API/SYSTEM/IO/getCopy.php?uuid='+this.props.UUID)
+                .then(response => response.text())
+                .then(progress => {
+                    if(progress==="FINISHED"){
+                        this.props.onClose();
+                    }else{
+                        const data=progress.split("|");
+                        this.setState({
+                            currentFile: data[0],
+                            percentage: data[1]
+                        })
+                        this.props.onTitleChange("Copying "+data[1]+"%");
+                    }
+                });
+            }, 1400);
         });
+
     }
     render(){  
         return(<div className="copyForm">
             <img className="copyAnimation" alt="" draggable="false" style={{width: "380px", height: 'auto'}} src={copyAnimation}/>
             <div className="copyStatus">
-                A copiar {this.state.currentFile}
+                Copying {this.state.currentFile}
             </div>
             <Progress className="copyProgress" color="midnightblue" completed={Number(this.state.percentage)} />
         </div>)

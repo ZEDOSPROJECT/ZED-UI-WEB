@@ -5,6 +5,9 @@
 
 .copyStatus {
     margin: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .copyProgress {
