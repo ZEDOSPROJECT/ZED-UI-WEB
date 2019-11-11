@@ -42,11 +42,11 @@ class Copy extends React.Component {
     }
     render(){  
         return(<div className="copyForm">
-            <img className="copyAnimation" draggable="false" style={{width: "380px", height: 'auto'}} src={copyAnimation}/>
+            <img className="copyAnimation" alt="" draggable="false" style={{width: "380px", height: 'auto'}} src={copyAnimation}/>
             <div className="copyStatus">
                 A copiar {this.state.currentFile}
             </div>
-            <Progress className="copyProgress" color="midnightblue" completed={parseInt(this.state.percentage)} />
+            <Progress className="copyProgress" color="midnightblue" completed={Number(this.state.percentage)} />
         </div>)
     }
 }
