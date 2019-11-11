@@ -61,10 +61,10 @@
           header('Location: index.php?type=all');
           exit;
         }
-        $json = json_decode(file_get_contents('http://zed-os.sourceforge.net/store/getAppList.php?type='.$_GET['type']),false);
+        $json = json_decode(file_get_contents('http://zedserver.epizy.com/store/getAppList.php?type='.$_GET['type']),false);
         for ($i=0; $i < sizeof($json->files); $i++) { 
           echo('<div class="appCard" onClick="openApp(\''.$json->files[$i]->file.'\')">');
-          echo('<img class="appIcon" src="http://zed-os.sourceforge.net/store/DIRECTORY/'.$json->files[$i]->file.'/favicon.png"/>');
+          echo('<img class="appIcon" src="http://zedserver.epizy.com/store/DIRECTORY/'.$json->files[$i]->file.'/favicon.png"/>');
           echo('<div class="appTitle"><h2>'.$json->files[$i]->file.'</h2></div>');
           echo("</div>");
         } 
