@@ -21,7 +21,7 @@ class LeftBar extends React.Component {
             <Combo title="Tasks" open >
                 <div className="link" onClick={this.props.onCreateFolderOpen}><img alt="" src={createFolder} className="miniIcon"></img>New folder</div>
                 <div className="link"><img alt="" src={find} className="miniIcon"></img>Find files and folders</div>
-                {window.clipBoard != "" ? (<div className="link" onClick={this.props.onPaste}><img draggable="false" alt="" src={paste} className="miniIcon"></img>Paste</div>) : null}
+                {window.clipBoard !== "" ? (<div className="link" onClick={this.props.onPaste}><img draggable="false" alt="" src={paste} className="miniIcon"></img>Paste</div>) : null}
                 {this.props.details ? (
                     <div>
                         <div className="link" onClick={this.props.onRenameOpen}><img draggable="false" alt="" src={rename} className="miniIcon"></img>Rename</div>
