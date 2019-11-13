@@ -6,6 +6,7 @@ import LeftBar from "./LeftBar/leftBar";
 import StatusBar from "./StatusBar/statusBar";
 import NewFolderDialog from '../Prompt/Prompt';
 import RenameDialog from '../Prompt/Prompt';
+import QuestionDialog from '../SystemDialogs/Question/question';
 import clickSound from './click.mp3';
 import { REST_URL } from './../../REST_URL';
 import "./fileManager.css";
@@ -25,7 +26,8 @@ class FileManager extends React.Component {
       createFolderVisible: false,
       renameVisible: false,
       mainType:"",
-      devices:undefined
+      devices:undefined,
+      removeVisible: false
     };
 
     setTimeout(() => {
@@ -52,6 +54,33 @@ class FileManager extends React.Component {
     this.onRenameOpen = this.onRenameOpen.bind(this);
     this.onCopy = this.onCopy.bind(this);
     this.onPaste = this.onPaste.bind(this);
+    this.onRemove = this.onRemove.bind(this);
+    this.onRemoveCancel = this.onRemoveCancel.bind(this);
+    this.onRemoveOpen = this.onRemoveOpen.bind(this);
+  }
+
+  onRemove(){
+    let url=REST_URL+'/API/SYSTEM/IO/FILE/delete.php?path='+this.state.currentPath+this.state.selected;
+    fetch(url)
+    .then(response => response.text())
+    .then(text => {
+        this.listFolder(this.state.currentPath);
+    });
+    this.setState({
+      removeVisible: false
+    })
+  }
+
+  onRemoveCancel(){
+    this.setState({
+      removeVisible: false
+    })
+  }
+
+  onRemoveOpen(){
+    this.setState({
+      removeVisible: true
+    })
   }
 
   onRenameCancel(){
@@ -341,6 +370,7 @@ class FileManager extends React.Component {
           onRenameOpen={this.onRenameOpen}
           onCopy={this.onCopy}
           onPaste={this.onPaste}
+          onRemoveOpen={this.onRemoveOpen}
         /> 
         <Explorer
           mainType={this.state.mainType}
@@ -367,6 +397,12 @@ class FileManager extends React.Component {
           onENTER={this.onRenameReady}
           placeholder="New name"
           label="Rename"
+        />
+        <QuestionDialog
+            visible={this.state.removeVisible}
+            label={"Are you sure to remove '"+this.state.selected+"'"}
+            onYes={this.onRemove}
+            onNo={this.onRemoveCancel}
         />
       </div>
     );

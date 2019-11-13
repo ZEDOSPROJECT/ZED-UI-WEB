@@ -442,9 +442,10 @@ class App extends Component {
             toggleMenu={this.toggleMenu}
             visible={this.state.showMenu}
         />
+
         <ToastContainer />
-        <BlueLightFilter enabled={this.state.setting_blueFilter}/>
         <ScreenSaver timer={this.state.ScreenSaverTimer}/>
+        <BlueLightFilter enabled={this.state.setting_blueFilter}/>
       </div>
     );
   }

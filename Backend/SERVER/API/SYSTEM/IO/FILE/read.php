@@ -1,7 +1,5 @@
 <?php
 	header("Access-Control-Allow-Origin: *");
-	$PATH=$_GET['path'];
-
 	$file = $_GET['path'];
 	
 	if(!file_exists($file)){ // file does not exist
