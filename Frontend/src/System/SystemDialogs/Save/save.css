@@ -1,0 +1,28 @@
+.saveDialog {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.ExplorerContainer {
+    height: 40px;
+}
+
+.fileNameInput{
+    width: 65%;
+}
+
+.Label {
+    float: left;
+    margin-right: 10px;
+}
+
+.saveBottomArea {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background-color: #f0efdd;
+    z-index: 20;
+}

@@ -11,6 +11,7 @@
     opacity: 1;
     padding: 0px;
     transition-duration: 0.3s;
+    backdrop-filter: blur(1px);
   }
 
   .dontMove {

@@ -72,6 +72,9 @@ class App extends Component {
             this.onClickApp(null,AppMetadata.Url,AppMetadata.Label,AppMetadata.Icon,undefined,AppMetadata.SystemWindow);
             window.ZED_RUN=null;
         } 
+        if(window.soundsEmitter.length>0){
+            this.setState({ScreenSaverTimer: 0});
+        }
     },200);
     setTimeout(() => {
         fetch(REST_URL+'/API/SYSTEM/SETTINGS/USER/getPaths.php')
@@ -382,6 +385,12 @@ class App extends Component {
             windowSize['Width']=400;
             windowSize['Height']=185;
             this.createWindow(url,"Copy",REST_URL+"/API/SYSTEM/ICONS/copy.png",windowSize,systemWindow);
+            this.setState({ showMenu: false });
+        }
+        if(name === "Save File"){
+            windowSize['Width']=600;
+            windowSize['Height']=485;
+            this.createWindow(url,"Save File    ",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize,systemWindow);
             this.setState({ showMenu: false });
         }
       } 

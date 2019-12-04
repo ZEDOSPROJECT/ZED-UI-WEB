@@ -10,6 +10,7 @@ import CMINIMIZE from './MINIMIZE.png';
 import FileManager from '../FileManager/fileManager';
 import WebBrowser from '../WebBrowser/WebBrowser';
 import CopyDialog from '../SystemDialogs/Copy/copy.js';
+import SaveDialog from '../SystemDialogs/Save/save.js';
 import VUGif from '../Taskbar/Task/vu.gif';
 import { REST_URL } from '../../REST_URL';
 import preload from './preload';
@@ -345,6 +346,10 @@ class Window extends React.Component{
                 WindowContent=<WebBrowser onTitleChange={this.onTitleChange} className="frame dontMove"/>
                 isOpen=true;
             }
+            if(url === "Save File"){
+                WindowContent=<SaveDialog userDirs={this.props.userDirs} onTitleChange={this.onTitleChange} className="frame dontMove"/>
+                isOpen=true;
+            }
             if(params[0] === "copy"){
                 if(params[1]!== "" && params[2]!== ""){
                     WindowContent=<CopyDialog UUID={this.state.uuid} onClose={this.onClose} from={params[1]} to={params[2]} onTitleChange={this.onTitleChange} className="frame dontMove"/>
@@ -362,7 +367,7 @@ class Window extends React.Component{
             finalBodyStyle="body maximizedBody";
         }
         if(!window.gradientEffect){
-            finalStyle={ backgroundColor: this.convertHex(this.state.systemColor0,90) };
+            finalStyle={ backgroundColor: this.convertHex(this.state.systemColor0,50) };
         }else{
             finalStyle={ background: 'linear-gradient('+this.convertHex(this.state.systemColor1,95)+', '+this.convertHex(this.state.systemColor0,95)} 
         } 
