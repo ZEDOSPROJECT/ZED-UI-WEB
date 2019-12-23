@@ -7,6 +7,11 @@ import Screen_system from './Screens/System';
 import Screen_soundScreen from './Screens/SoundScreen'
 import Screen_network from './Screens/Network'
 import Screen_users from './Screens/Users'
+import img_0 from './0.png';
+import img_1 from './1.png';
+import img_2 from './2.png';
+import img_3 from './3.png';
+import Logo from './logo.png';
 import "./styles.css";
 
 class App extends React.Component {
@@ -255,12 +260,20 @@ class App extends React.Component {
       "Users",
       "System"
     ];
+    const MenuIcons = [
+      <img src={img_0} alt="" width="30" height="30" />,
+      <img src={img_1} alt="" width="30" height="30" />,
+      <img src={img_2} alt="" width="30" height="30" />,
+      <img src={img_3} alt="" width="30" height="30" />,
+      <img src={Logo} alt="" width="30" height="30" />
+    ]
     return (
       <div className="App">
         <div className="settingTable">
           <LeftPanel
             switchSetting={this.switchSetting}
             MenusTitles={MenusTitles}
+            MenuIcons={MenuIcons}
             CurrentSettingID={this.state.CurrentSettingID}
           />
           <SettingContext title={MenusTitles[this.state.CurrentSettingID]}>
