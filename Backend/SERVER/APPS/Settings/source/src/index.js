@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import LeftPanel from "./LeftPanel/LeftPanel.js";
 import SettingContext from "./SettingContext/settingContext.js";
-import Screen_appearance from './Screens/Appearance';
-import Screen_system from './Screens/System';
-import Screen_soundScreen from './Screens/SoundScreen'
-import Screen_network from './Screens/Network'
-import Screen_users from './Screens/Users'
+import ScreeAppearance from './Screens/Appearance';
+import ScreenSystem from './Screens/System';
+import ScreenSoundScreen from './Screens/SoundScreen'
+import ScreenNetwork from './Screens/Network'
+import ScreenUsers from './Screens/Users'
 import img_0 from './0.png';
 import img_1 from './1.png';
 import img_2 from './2.png';
@@ -75,6 +75,7 @@ class App extends React.Component {
   save() {
     // Make JSON Settings compatible with ZED
     let tmpSettings = this.state.SettingJSON;
+    // eslint-disable-next-line
     tmpSettings.setting_wallpaperURL = this.state.SettingJSON.setting_wallpaperURL.replace(
       /^.*[\\\/]/,
       ""
@@ -155,7 +156,7 @@ class App extends React.Component {
 
   switchSetting(id) {
     this.setState({ CurrentSettingID: id });
-    //this.save();
+    this.save();
   }
 
   changeColor0(event) {
@@ -230,12 +231,15 @@ class App extends React.Component {
   }
 
   render() {  
+    // eslint-disable-next-line
     let branchIndex=0;
     if(this.state.branch!=="master"){
       branchIndex=1;
+    }else{
+      branchIndex=0;
     }
     const SettingsScreens = [
-      <Screen_appearance
+      <ScreeAppearance
         Wallpapers={this.state.Wallpapers}
         changeWallpaper={this.changeWallpaper}
         SettingJSON={this.state.SettingJSON}
@@ -247,10 +251,10 @@ class App extends React.Component {
         changeGradient={this.changeGradient}
         onChangeVideoWallpaper={this.onChangeVideoWallpaper}
       />,
-      <Screen_soundScreen />,
-      <Screen_network />,
-      <Screen_users />,
-      <Screen_system
+      <ScreenSoundScreen />,
+      <ScreenNetwork />,
+      <ScreenUsers />,
+      <ScreenSystem
         SystemInfo={this.state.SystemInfo}
         setBranch={this.setBranch}
       />

@@ -11,23 +11,24 @@ class Appearance extends React.Component {
                     if(wallpaper !== "") {
                     return (
                         <img
-                        draggable="false"
-                        onClick={this.props.changeWallpaper}
-                        style={
-                            wallpaper
-                            .toString()
-                            .includes(this.props.SettingJSON.setting_wallpaperURL)
-                            ? {
-                                margin: "4",
-                                filter: "grayscale(100%)",
-                                border: "1px solid #ddd"
-                                }
-                            : { margin: "4" }
-                        }
-                        width="150"
-                        height="100"
-                        src={wallpaper}
-                        key={index}
+                            alt=""
+                            draggable="false"
+                            onClick={this.props.changeWallpaper}
+                            style={
+                                wallpaper
+                                .toString()
+                                .includes(this.props.SettingJSON.setting_wallpaperURL)
+                                ? {
+                                    margin: "4",
+                                    filter: "grayscale(100%)",
+                                    border: "1px solid #ddd"
+                                    }
+                                : { margin: "4" }
+                            }
+                            width="150"
+                            height="100"
+                            src={wallpaper}
+                            key={index}
                         />
                     );
                     } else {
@@ -55,7 +56,9 @@ class Appearance extends React.Component {
                     <option value="Disabled">Disabled</option>
                     {this.props.Videos.map((video, index) => {
                         if(video!==""){
-                        return (<option id={index} value={video}>{video}</option>);
+                            return (<option id={index} value={video}>{video}</option>);
+                        }else{
+                            return null;
                         }
                     })}
                     </select>
