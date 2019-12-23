@@ -241,9 +241,11 @@ class App extends React.Component {
         SettingJSON={this.state.SettingJSON}
         Videos={this.state.Videos}
         changeColor1={this.changeColor1}
-        changeColor2={this.changeColor2}
+        changeColor0={this.changeColor0}
         changeAutoGradient={this.changeAutoGradient}
         changeBlueFilter={this.changeBlueFilter}
+        changeGradient={this.changeGradient}
+        onChangeVideoWallpaper={this.onChangeVideoWallpaper}
       />,
       <Screen_soundScreen />,
       <Screen_network />,

@@ -51,7 +51,7 @@ class Appearance extends React.Component {
                     }
                 })}
                 <p>Video Wallpaper: 
-                    <select value={this.props.SettingJSON.videoWallpaperURL} name="video" onChange={this.onChangeVideoWallpaper}>
+                    <select value={this.props.SettingJSON.videoWallpaperURL} name="video" onChange={this.props.onChangeVideoWallpaper}>
                     <option value="Disabled">Disabled</option>
                     {this.props.Videos.map((video, index) => {
                         if(video!==""){
