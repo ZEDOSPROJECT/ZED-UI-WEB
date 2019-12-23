@@ -2,7 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import LeftPanel from "./LeftPanel/LeftPanel.js";
 import SettingContext from "./SettingContext/settingContext.js";
-import ZED_LOGO from "./logo.png";
+import Screen_appearance from './Screens/Appearance';
+import Screen_system from './Screens/System';
+import Screen_soundScreen from './Screens/SoundScreen'
+import Screen_network from './Screens/Network'
+import Screen_users from './Screens/Users'
 import "./styles.css";
 
 class App extends React.Component {
@@ -146,7 +150,7 @@ class App extends React.Component {
 
   switchSetting(id) {
     this.setState({ CurrentSettingID: id });
-    //this.save();
+    this.save();
   }
 
   changeColor0(event) {
@@ -226,184 +230,23 @@ class App extends React.Component {
       branchIndex=1;
     }
     const SettingsScreens = [
-      <div>
-        <h2>Background</h2>
-        <div>
-          {this.state.Wallpapers.map((wallpaper, index) => {
-            if(wallpaper !== "") {
-              return (
-                <img
-                  draggable="false"
-                  onClick={this.changeWallpaper}
-                  style={
-                    wallpaper
-                      .toString()
-                      .includes(this.state.SettingJSON.setting_wallpaperURL)
-                      ? {
-                          margin: "4",
-                          filter: "grayscale(100%)",
-                          border: "1px solid #ddd"
-                        }
-                      : { margin: "4" }
-                  }
-                  width="150"
-                  height="100"
-                  src={wallpaper}
-                  key={index}
-                />
-              );
-            } else {
-              let border =
-                this.state.SettingJSON.setting_wallpaperURL === ""
-                  ? "1px solid #ddd"
-                  : "";
-              return (
-                <div
-                  onClick={this.changeWallpaper}
-                  style={{
-                    margin: "4",
-                    border: border,
-                    width: 150,
-                    height: 100,
-                    float: "left",
-                    backgroundColor: this.state.SettingJSON
-                      .setting_wallpaperColor
-                  }}
-                />
-              );
-            }
-          })}
-          <p>Video Wallpaper: 
-            <select value={this.state.SettingJSON.videoWallpaperURL} name="video" onChange={this.onChangeVideoWallpaper}>
-              <option value="Disabled">Disabled</option>
-              {this.state.Videos.map((video, index) => {
-                if(video!==""){
-                  return (<option id={index} value={video}>{video}</option>);
-                }
-              })}
-            </select>
-          </p>
-          <p>
-            Use Bing wallpaper{" "}
-            <input
-              onClick={this.changeBing}
-              checked={this.state.SettingJSON.setting_bingWallpaper}
-              type="checkbox"
-            />
-          </p>
-          {this.state.SettingJSON.setting_wallpaperURL === "" ? (
-            <p>
-              Background color{" "}
-              <input
-                onChange={this.changeColorWallpaper}
-                value={this.state.SettingJSON.setting_wallpaperColor}
-                type="color"
-              />
-            </p>
-          ) : null}
-        </div>
-        <br />
-        <h2>Colors</h2>
-        <p>
-          Main System color{" "}
-          <input
-            onChange={this.changeColor0}
-            value={this.state.SettingJSON.setting_systemColor0}
-            type="color"
-          />
-        </p>
-        <p>
-          Second System color{" "}
-          <input
-            onChange={this.changeColor1}
-            value={this.state.SettingJSON.setting_systemColor1}
-            type="color"
-          />
-        </p>
-        <p>
-          Use Gradient Effect{" "}
-          <input
-            onClick={this.changeGradient}
-            checked={this.state.SettingJSON.setting_gradientEffect}
-            type="checkbox"
-          />
-        </p>
-        <p>
-          Use Auto Gradient by wallpaper{" "}
-          <input
-            onClick={this.changeAutoGradient}
-            checked={this.state.SettingJSON.setting_autoGradientEffect}
-            type="checkbox"
-          />
-        </p>
-        <p>
-          Blue Ligth Filter{" "}
-          <input
-            onClick={this.changeBlueFilter}
-            checked={this.state.SettingJSON.setting_blueFilter}
-            type="checkbox"
-          />
-        </p>
-      </div>,
-      <div>Not implemented</div>,
-      <div>Not implemented</div>,
-      <div>Not implemented</div>,
-      <div>
-        <img
-          draggable="false"
-          src={ZED_LOGO}
-          width="54"
-          height="54"
-          style={{ float: "left", marginRight: "12px" }}
-        />
-        <div style={{ padding: "10px" }}>
-          <b> ZED </b>
-          <font color="red">XP</font>
-          <br />
-          <font size="5px">BUILD: 0</font>
-          <div style={{ marginTop: 20 }}>
-            <table>
-              <tr>Software</tr>
-              <tr>
-                <th>O.S:</th>
-                <th>{this.state.SystemInfo.OperatingSystem}</th>
-              </tr>
-              <tr>
-                <th>Version:</th>
-                <th>{this.state.SystemInfo.Version}</th>
-              </tr>
-              <tr>
-                <th>Linux Kernel:</th>
-                <th>{this.state.SystemInfo.Kernel}</th>
-              </tr>
-              <tr style={{ height: 22 }} />
-              <tr>Hardware:</tr>
-              <tr>
-                <th style={{ width: 130 }}>CPU:</th>
-                <th>{this.state.SystemInfo.CPU}</th>
-              </tr>
-              <tr>
-                <th>Memory:</th>
-                <th>{this.state.SystemInfo.RAM}</th>
-              </tr>
-              <tr>
-                <th>Storage:</th>
-                <th>{this.state.SystemInfo.STORAGE}</th>
-              </tr>
-            </table>
-          </div>
-          <br />
-          <div>
-            <h2>System Updates</h2>
-            Which development branch would you like to use? <br/><br/>
-            <select value={"Select Branch"} id="branch" onChange={this.setBranch}>
-              <option value="">Select Branch</option>
-              <option value="master">master</option>
-              <option value="develop">develop</option>
-            </select>
-          </div>
-        </div>
-      </div>
+      <Screen_appearance
+        Wallpapers={this.state.Wallpapers}
+        changeWallpaper={this.changeWallpaper}
+        SettingJSON={this.state.SettingJSON}
+        Videos={this.state.Videos}
+        changeColor1={this.changeColor1}
+        changeColor2={this.changeColor2}
+        changeAutoGradient={this.changeAutoGradient}
+        changeBlueFilter={this.changeBlueFilter}
+      />,
+      <Screen_soundScreen />,
+      <Screen_network />,,
+      <Screen_users />,
+      <Screen_system
+        SystemInfo={this.state.SystemInfo}
+        setBranch={this.setBranch}
+      />
     ];
     const MenusTitles = [
       "Appearence",
