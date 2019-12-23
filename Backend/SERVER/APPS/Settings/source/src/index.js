@@ -155,7 +155,7 @@ class App extends React.Component {
 
   switchSetting(id) {
     this.setState({ CurrentSettingID: id });
-    this.save();
+    //this.save();
   }
 
   changeColor0(event) {
@@ -246,7 +246,7 @@ class App extends React.Component {
         changeBlueFilter={this.changeBlueFilter}
       />,
       <Screen_soundScreen />,
-      <Screen_network />,,
+      <Screen_network />,
       <Screen_users />,
       <Screen_system
         SystemInfo={this.state.SystemInfo}
