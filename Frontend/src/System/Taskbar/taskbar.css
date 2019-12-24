@@ -11,18 +11,19 @@
 
 
 .StartMenu {
-    width:30px;
+    width: 90px;
     height: 30px;
     float:left;
     background-size:100%;
-    background-color: rgba(0, 8, 124, 0);
     transition: background;
-    transition-duration: 1;
-    background-image: url(../../Icons/logo.png) 
+    transition-duration: 1s;
+    background-image: url('./start0.png');
+
 }
 
 .StartMenu:hover {
-    background-color: rgba(255, 255, 255, 0.685);
+    background-image: url('./start1.png');
+    transition-duration: 0.5s;
 }
 
 .buttonsArea{
