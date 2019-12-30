@@ -248,7 +248,10 @@ class FileManager extends React.Component {
       fetch(REST_URL+'/API/SYSTEM/IO/getDriveDevices.php')
       .then(response => response.json())
       .then(json => {
-        this.setState({ devices: json });
+        this.setState({
+                        devices: json,
+                        listDir: json
+                      });
       });
       this.props.onTitleChange(path);
       this.setState({
