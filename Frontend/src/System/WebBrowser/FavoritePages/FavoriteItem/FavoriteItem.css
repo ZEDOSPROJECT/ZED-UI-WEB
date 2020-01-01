@@ -1,0 +1,38 @@
+.FavoriteItem {
+    position: relative;
+    width: 100%;
+    background-color: white;
+}
+
+.FavoriteItem:hover {
+    width: 100%;    
+    background-color: royalblue;
+    cursor: pointer;
+}
+
+.FavoriteItemIcon {
+    float: left;
+    width: 32px;
+    height: 32px;
+}
+
+
+.FavoriteItemLabel {
+    padding-top: 10px;
+    width: 200px;
+    height: 20px;
+    float: bottom;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.deleteIconFav {
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 18px;
+    height: 18px;
+    pointer-events: all;
+    z-index: 20;
+}

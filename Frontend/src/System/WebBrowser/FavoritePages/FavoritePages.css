@@ -1,0 +1,27 @@
+.FavoritesPages {
+    position: fixed;
+    top: 94.3px;
+    width: 290px;
+    right: 4px;
+    background-color: rgb(234, 237, 255);
+    bottom: 2px;
+    overflow: hidden;
+}
+
+.FavoritesPagesTitle {
+    width: 290px;
+    padding-top: 5px;
+    text-align: left;
+    padding-left: 6px;
+}
+
+.FavoritesPagesList {
+    position: absolute;
+    overflow-y: scroll;
+    top: 20px;
+    width: 95%;
+    bottom: 40px;
+    margin-top: 10px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: inset 0px 1px 2px 0px rgba(0,0,0,0.75);
+}
