@@ -57,6 +57,7 @@
       </div>
     <div class="mainPage">
       <?php
+        session_start();
         if(!isset($_GET['type'])){
           header('Location: index.php?type=all');
           exit;

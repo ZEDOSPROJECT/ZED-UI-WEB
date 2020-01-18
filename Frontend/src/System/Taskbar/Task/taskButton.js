@@ -29,11 +29,11 @@ class TaskButton extends React.Component {
         if(!isTOP){
             if(currentTitle.indexOf("(")!==-1 && currentTitle.indexOf(")")!==-1){
                 try {
-                    notifys=currentTitle.split('(').pop().split(')')[0];
+                    notifys=Number(currentTitle.split('(').pop().split(')')[0]).toString();
                     if(notifys==="NaN"){
                         notifys=null;
                     }else{
-                        if(notifys>9){
+                        if(Number(notifys)>9){    
                             notifys="9+";
                         }
                     }

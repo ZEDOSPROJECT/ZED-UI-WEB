@@ -1,8 +1,8 @@
 import React from "react";
 import Tab from "./Tab/Tab";
 import NewTab from './NewTab/NewTab';
+import FavoritePages from './FavoritePages/FavoritePages';
 import getUUID from 'uuid';
-
 import "./styles.css";
 import BrowserContainer from "./BrowserContainer/BrowserContainer";
 
@@ -33,7 +33,7 @@ class WebBrowser extends React.Component {
                   />}],
       titles: startTitles,
       icons: startIcons,
-      currentTab: 0,
+      currentTab: 0
     }
   }
 
@@ -145,7 +145,9 @@ class WebBrowser extends React.Component {
 
     return (
       <div className="WebBrowser dontMove">
-        <div className="TabManager" style={{ "background":"linear-gradient(to bottom,"+this.convertHex(window.systemColor1,80)+",rgb(234, 237, 255) 100%"}}>
+        <div className="TabManager"
+          style={{ "background":"linear-gradient(to bottom,"+this.convertHex(window.systemColor1,80)+",rgb(234, 237, 255) 100%"}}
+        >
           {finalTabs}
           <NewTab newTab={this.newTab}/>
         </div>

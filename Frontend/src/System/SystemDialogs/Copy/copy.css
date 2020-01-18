@@ -1,0 +1,17 @@
+.copyForm{
+    position: relative;
+    overflow: hidden;
+}
+
+.copyStatus {
+    margin: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.copyProgress {
+    margin: 10px;
+    background-color: 'red';
+    background-color: rgb(200, 200, 200);
+}

@@ -121,7 +121,7 @@ class StartMenu extends React.Component {
                 if(this.state.searchBox === ""){
                     if(app.Name.charAt(0).toUpperCase() !== lastLeter.toUpperCase()) {
                         lastLeter=app.Name.charAt(0);
-                        newDiv=<div key={"stmenu_"+app.Name} style={{ color: invert(window.systemColor0, true)}} className="startLeter"><b>{lastLeter}</b></div>
+                        newDiv=<div key={"stmenu_"+app.Name} className="startLeter"><b>{lastLeter}</b></div>
                     }
                 } 
                 return <div  style={{ height: 80 }} key={"stmenu_"+app.Name}>{newDiv}<AppCard forceRefreshApps={this.refreshApps} windowSize={app.manifest.Window} onClickApp={this.props.onClickApp} appName={app.Name}  /></div>
@@ -144,28 +144,28 @@ class StartMenu extends React.Component {
                         </div>
                     </div>
                     <div className="middleMenu">
-                        <div className="AppsList" style={{ color: invert(window.systemColor0, true)}}>
+                        <div className="AppsList">
                             {appList} 
                         </div>
                         <div className="systemMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,80), color: invert(window.systemColor0, true)}}>
-                            <div onClick={event => this.props.onClickApp(event,"","MyDocuments",REST_URL+"/Icons/ModernXP (35).png",windowSystemSize)} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
+                            <div onClick={event => this.props.onClickApp(event,"","MyDocuments",REST_URL+"/Icons/ModernXP (35).png",windowSystemSize,true)} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
                                 <img draggable="false" alt="" src={myDocuments} ></img>
                                 <div>My Documents</div>
                             </div>
-                            <div onClick={event => this.props.onClickApp(event,"","MyPictures",REST_URL+"/Icons/ModernXP (35).png",windowSystemSize)} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
+                            <div onClick={event => this.props.onClickApp(event,"","MyPictures",REST_URL+"/Icons/ModernXP (35).png",windowSystemSize,true)} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
                                 <img draggable="false" alt="" src={myPictures} ></img>
                                 <div>My Pictures</div>
                             </div>
-                            <div onClick={event => this.props.onClickApp(event,"","MyMusic",REST_URL+"/Icons/ModernXP (35).png",windowSystemSize)} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
+                            <div onClick={event => this.props.onClickApp(event,"","MyMusic",REST_URL+"/Icons/ModernXP (35).png",windowSystemSize,true)} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
                                 <img draggable="false" alt="" src={myMusic} ></img>
                                 <div>My Music</div>
                             </div>
-                            <div onClick={event => this.props.onClickApp(event,"","MyComputer",REST_URL+"/Icons/ModernXP (35).png",windowSystemSize)} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
+                            <div onClick={event => this.props.onClickApp(event,"","MyComputer",REST_URL+"/Icons/ModernXP (35).png",windowSystemSize,true)} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
                                 <img draggable="false" alt="" src={myComputer} ></img>
                                 <div>My Computer</div>
                             </div>
                             <hr></hr>
-                            <div onClick={event => this.props.onClickApp(event,REST_URL+"/APPS/Settings/index.php","Control Panel",REST_URL+"/API/SYSTEM/ICONS/ModernXP (41).png",windowSystemSize)} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
+                            <div onClick={event => this.props.onClickApp(event,REST_URL+"/APPS/Settings/index.php","Control Panel",REST_URL+"/API/SYSTEM/ICONS/ModernXP (41).png",windowSystemSize,false)} style={{ color: invert(window.systemColor0, true)}} className="systemItem">
                                 <img draggable="false" alt="" src={controlPanel} ></img>
                                 <div>Control Panel</div>
                             </div>

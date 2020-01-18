@@ -3,6 +3,9 @@ import ReactButton from '../ToolBox/Button/Button';
 import png_Back from "../ToolBox/Icons/back.png";
 import png_Forward from "../ToolBox/Icons/forward.png";
 import png_Refresh from "../ToolBox/Icons/refresh.png";
+import png_Favorite from "../ToolBox/Icons/favorite.png";
+import png_addFavorite from '../ToolBox/Icons/addFavs.png';
+import FavoritePages from '../FavoritePages/FavoritePages';
 import "../ToolBox/ToolBox.css";
 import "./BrowserContainer.css";
 
@@ -18,8 +21,21 @@ class BrowserContainer extends React.Component {
     this.state = {
       currentURL: URL,
       inputURL: URL,
-      uuid: this.props.id
+      uuid: this.props.id,
+      FavoritePagesVisible: false,
+      currentTITLE: ""
     };
+
+    this.handleSwitchFavorites = this.handleSwitchFavorites.bind(this);
+    this.onLoadPage = this.onLoadPage.bind(this);
+    this.isFavorite = this.isFavorite.bind(this);
+    this.addToFavs = this.addToFavs.bind(this);
+  }
+
+  handleSwitchFavorites(){
+    this.setState({
+      FavoritePagesVisible: !this.state.FavoritePagesVisible
+    })
   }
 
   handleUrlChange = e => {
@@ -52,6 +68,18 @@ class BrowserContainer extends React.Component {
     this.webview.goForward();
   }
 
+  isFavorite(){
+    const favJ=JSON.parse(localStorage.getItem('favsList'));
+    let found=false;
+    favJ.data.forEach(element => {
+      if(element.URL === this.state.currentURL){
+        found=true;
+      }
+    });
+    console.log(found);
+    return found;
+  }
+
   componentDidMount(){
     if(this.webview){
         this.webview.addEventListener('dom-ready', (e) => {
@@ -61,6 +89,9 @@ class BrowserContainer extends React.Component {
 
         this.webview.addEventListener('page-title-updated', (e) => {
             this.props.OnTitleChange(this.state.uuid,e.title);
+            this.setState({
+              currentTITLE: e.title
+            })
             this.forceUpdate();
         });
 
@@ -85,7 +116,25 @@ class BrowserContainer extends React.Component {
     }
   }
 
+  onLoadPage(url){
+    this.setState({ currentURL: url, inputURL: url,FavoritePagesVisible: false });
+  }
+
+  addToFavs(){
+    if(!this.isFavorite()){
+      let tmpJ=JSON.parse(localStorage.getItem('favsList'));
+      let tmpOBJ={
+        "TITLE":this.state.currentTITLE,
+        "URL":this.state.currentURL
+      }
+      tmpJ.data.push(tmpOBJ);
+      localStorage.setItem('favsList', JSON.stringify(tmpJ));
+    }
+  }
+
+
   render() {
+    let addFavoriteRender=<ReactButton DISBALED={this.isFavorite} onClick={this.addToFavs} icon={png_addFavorite}/>
     return (
       <div className="BrowserContainer">
         <table className="ToolBox">
@@ -108,7 +157,10 @@ class BrowserContainer extends React.Component {
                 onKeyDown={this._handleKeyDown}
               />
             </td>
-            <td style={{ width: 20 }} />
+            <td style={{ width: 60 }}>
+              <ReactButton icon={png_Favorite} onClick={this.handleSwitchFavorites}/>
+              {addFavoriteRender}
+            </td>
           </tr>
         </tbody>
       </table>
@@ -120,6 +172,7 @@ class BrowserContainer extends React.Component {
             this.webview = input;
           }}
         />
+        <FavoritePages onLoadPage={this.onLoadPage} visible={this.state.FavoritePagesVisible}/>
       </div>
     );
   }

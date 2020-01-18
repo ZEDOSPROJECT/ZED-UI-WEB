@@ -10,7 +10,8 @@ class PanelButton extends React.Component {
     }
     return (
       <div key={key} onClick={e => this.props.switchSetting(key)} className={isActive}>
-        {this.props.title}
+        <div>{this.props.icon}</div>
+        <div>{this.props.title}</div>
       </div>
     );
   }

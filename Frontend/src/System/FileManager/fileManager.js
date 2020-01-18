@@ -5,9 +5,13 @@ import Explorer from "./Explorer/explorer";
 import LeftBar from "./LeftBar/leftBar";
 import StatusBar from "./StatusBar/statusBar";
 import NewFolderDialog from '../Prompt/Prompt';
+import RenameDialog from '../Prompt/Prompt';
+import QuestionDialog from '../SystemDialogs/Question/question';
 import clickSound from './click.mp3';
 import { REST_URL } from './../../REST_URL';
 import "./fileManager.css";
+
+let detailsFlag=false;
 
 class FileManager extends React.Component {
   constructor(props) {
@@ -20,8 +24,10 @@ class FileManager extends React.Component {
       historyIndex: 0,
       details:undefined,
       createFolderVisible: false,
+      renameVisible: false,
       mainType:"",
-      devices:undefined
+      devices:undefined,
+      removeVisible: false
     };
 
     setTimeout(() => {
@@ -43,6 +49,69 @@ class FileManager extends React.Component {
     this.onCreateFolderCancel = this.onCreateFolderCancel.bind(this);
     this.onCreateFolderReady = this.onCreateFolderReady.bind(this);
     this.onCreateFolderOpen = this.onCreateFolderOpen.bind(this);
+    this.onRenameCancel = this.onRenameCancel.bind(this);
+    this.onRenameReady = this.onRenameReady.bind(this);
+    this.onRenameOpen = this.onRenameOpen.bind(this);
+    this.onCopy = this.onCopy.bind(this);
+    this.onPaste = this.onPaste.bind(this);
+    this.onRemove = this.onRemove.bind(this);
+    this.onRemoveCancel = this.onRemoveCancel.bind(this);
+    this.onRemoveOpen = this.onRemoveOpen.bind(this);
+  }
+
+  onRemove(){
+    let url=REST_URL+'/API/SYSTEM/IO/FILE/delete.php?path='+this.state.currentPath+this.state.selected;
+    fetch(url)
+    .then(response => response.text())
+    .then(text => {
+        this.listFolder(this.state.currentPath);
+    });
+    this.setState({
+      removeVisible: false
+    })
+  }
+
+  onRemoveCancel(){
+    this.setState({
+      removeVisible: false
+    })
+  }
+
+  onRemoveOpen(){
+    this.setState({
+      removeVisible: true
+    })
+  }
+
+  onRenameCancel(){
+    this.setState({
+      renameVisible: false
+    });
+  }
+
+  onRenameReady(name){
+    let url=REST_URL+'/API/SYSTEM/IO/rename.php?path='+this.state.currentPath+this.state.selected+"&new_name="+name;
+    if(this.state.selected.includes(".")){
+      url+="."+this.state.selected.substr(this.state.selected.lastIndexOf('.') + 1);
+    }
+    fetch(url)
+    .then(response => response.text())
+    .then(text => {
+      if(text!=="1"){
+        console.log("ERROR");
+      }else{
+        this.listFolder(this.state.currentPath);
+      }
+    });
+    this.setState({
+      renameVisible: false
+    });
+  }
+
+  onRenameOpen(){
+    this.setState({
+      renameVisible: true
+    });
   }
 
   onCreateFolderCancel(){
@@ -102,24 +171,26 @@ class FileManager extends React.Component {
     fetch(REST_URL+'/API/SYSTEM/IO/getInfo.php?path='+path)
     .then(response => response.json())
     .then(json => {
-        let final;
-        if(json.MIME==="directory"){
-          final=<div style={{ fontSize: 12, overflow: "hidden" }}>
-            <b>Type:</b> Folder <br/><br/>
-            <b>Last Change</b> {json.LASTE_DATE}
-          </div>
+        if(detailsFlag){
+          let final;
+          if(json.MIME==="directory"){
+            final=<div style={{ fontSize: 12, overflow: "hidden" }}>
+              <b>Type:</b> Folder <br/><br/>
+              <b>Last Change</b> {json.LASTE_DATE}
+            </div>
+          }
+          else{
+            final=<div style={{ fontSize: 12, overflow: "hidden" }}>
+              <b>Type:</b> {json.MIME}<br/>
+              <p><b>Size:</b> {json.SIZE}<br/></p>
+              <b>Last Change</b> {json.LASTE_DATE}
+            </div>
+          }
+  
+          this.setState({
+            details: final,
+          });
         }
-        else{
-          final=<div style={{ fontSize: 12, overflow: "hidden" }}>
-            <b>Type:</b> {json.MIME}<br/>
-            <p><b>Size:</b> {json.SIZE}<br/></p>
-            <b>Last Change</b> {json.LASTE_DATE}
-          </div>
-        }
-
-        this.setState({
-          details: final,
-        });
     });
   }
 
@@ -177,7 +248,10 @@ class FileManager extends React.Component {
       fetch(REST_URL+'/API/SYSTEM/IO/getDriveDevices.php')
       .then(response => response.json())
       .then(json => {
-        this.setState({ devices: json });
+        this.setState({
+                        devices: json,
+                        listDir: json
+                      });
       });
       this.props.onTitleChange(path);
       this.setState({
@@ -198,13 +272,29 @@ class FileManager extends React.Component {
     });
   }
 
+  onCopy(){
+    window.clipBoard=this.state.currentPath+this.state.selected;
+  }
+
+  onPaste(){
+    const pathArr=window.clipBoard.split("/");
+    window.ZED_RUN={
+      Url: "copy|"+window.clipBoard+"|"+this.state.currentPath+pathArr[pathArr.length-1],
+      Label: "Copy",
+      Icon: REST_URL+"/API/SYSTEM/ICONS/copy.png",
+      SystemWindow: true
+    }
+  }
+
   onIClick(data) {
     this.setState({ selected: data.name });
+    detailsFlag=true;
     this.getDetails(this.state.currentPath+data.name);
   }
 
   onDBClick(data) {
-    this.setState({ selected: "" });
+    detailsFlag=false;
+    this.setState({ selected: "",details:undefined });
     if (data.type === "folder") {
       const newPath=this.state.currentPath + data.name + "/";
       this.listFolder(newPath);
@@ -251,20 +341,22 @@ class FileManager extends React.Component {
         window.ZED_RUN={
           Label: 'Picture View',
           Url: REST_URL+'/APPS/Picture Visualizer/index.php?path='+file,
-          Icon: REST_URL+"/API/SYSTEM/ICONS/ModernXP (27).png"
+          Icon: REST_URL+"/API/SYSTEM/ICONS/ModernXP (27).png",
+          SystemWindow: false
         } 
       } 
       if(mimeType.includes("audio/") || mimeType.includes("video/")){
         window.ZED_RUN={
           Label: 'ZED Media Player',
           Url: REST_URL+'/APPS/ZED Media Player/index.php?path='+file,
-          Icon: REST_URL+"/APPS/ZED Media Player/favicon.png"
+          Icon: REST_URL+"/APPS/ZED Media Player/favicon.png",
+          SystemWindow: false
         } 
       }
     }
   }
 
-  render() {
+  render() {  
     return (
       <div className="fm">
         <ToolBar 
@@ -278,6 +370,10 @@ class FileManager extends React.Component {
           userDirs={this.props.userDirs}
           details={this.state.details}
           onCreateFolderOpen={this.onCreateFolderOpen}
+          onRenameOpen={this.onRenameOpen}
+          onCopy={this.onCopy}
+          onPaste={this.onPaste}
+          onRemoveOpen={this.onRemoveOpen}
         /> 
         <Explorer
           mainType={this.state.mainType}
@@ -297,6 +393,19 @@ class FileManager extends React.Component {
           onENTER={this.onCreateFolderReady}
           placeholder="New Folder"
           label="Name of new folder: "
+        />
+        <RenameDialog 
+          visible={this.state.renameVisible}
+          onESQ={this.onRenameCancel}
+          onENTER={this.onRenameReady}
+          placeholder="New name"
+          label="Rename"
+        />
+        <QuestionDialog
+            visible={this.state.removeVisible}
+            label={"Are you sure to remove '"+this.state.selected+"'"}
+            onYes={this.onRemove}
+            onNo={this.onRemoveCancel}
         />
       </div>
     );

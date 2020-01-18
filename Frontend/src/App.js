@@ -32,6 +32,7 @@ class App extends Component {
         videoWallpaperURL: "",
         ScreenSaverTimer: 0
     };
+    window.clipBoard="";
     window.systemColor0="#06001E";
     window.systemColor1="#06001E";
     window.maxZIndex=1;
@@ -68,9 +69,12 @@ class App extends Component {
         this.clean();
         if(window.ZED_RUN !== null){
             const AppMetadata=Object.assign({}, window.ZED_RUN);
-            this.onClickApp(null,AppMetadata.Url,AppMetadata.Label,AppMetadata.Icon);
+            this.onClickApp(null,AppMetadata.Url,AppMetadata.Label,AppMetadata.Icon,undefined,AppMetadata.SystemWindow);
             window.ZED_RUN=null;
         } 
+        if(window.soundsEmitter.length>0){
+            this.setState({ScreenSaverTimer: 0});
+        }
     },200);
     setTimeout(() => {
         fetch(REST_URL+'/API/SYSTEM/SETTINGS/USER/getPaths.php')
@@ -249,18 +253,31 @@ class App extends Component {
   } 
 
   onClose(uuid){
-      let newData = this.state.openedWindows;
-      let i=0;
-      newData.forEach(element => {
+        setTimeout(() => {
+            let id=-1;
+            let x=0
+            window.soundsEmitter.forEach(element => {
+                if(element === uuid)
+                    id=x;
+                x++;
+            });
+            if(id !== -1){
+                window.soundsEmitter.splice(id, 1);
+            }
+        }, 300);
+    
+        let newData = this.state.openedWindows;
+        let i=0;
+        newData.forEach(element => {
           if(element!=null){
             if( element.UUID === uuid ){
                 newData[i]=null;
             } 
           } 
           i++;
-      });
-      delete window.winTitle[uuid]; 
-      this.setState({ openedWindows: newData });
+        });
+        delete window.winTitle[uuid]; 
+        this.setState({ openedWindows: newData });
   } 
 
   onToggleMinimize(uuid){
@@ -286,13 +303,14 @@ class App extends Component {
     this.setState({ openedWindows: newData });
   } 
 
-  createWindow(url,title,icon,windowSize){
+  createWindow(url,title,icon,windowSize,systemWindow){
         const uuid = getUUID();
         var newList = this.state.openedWindows;
         newList.push({ 'UUID'  : uuid, 'WINDOW' : (
             <Window 
                 userDirs={this.state.userPaths}  
                 url={url}  
+                systemWindow={systemWindow}
                 icon={icon}
                 windowSize={windowSize}
                 onError={this.msgError}
@@ -326,38 +344,53 @@ class App extends Component {
         });
     }  
 
-  onClickApp(e,url,name,icon,windowSize){
+  onClickApp(e,url,name,icon,windowSize,systemWindow){
       if(!windowSize){
           windowSize={};
           windowSize['Width']=0;
           windowSize['Height']=0;
      }
-      if( name !== "Web Browser" && name !== "MyComputer" && name !== "MyMusic" && name !== "MyPictures" && name !== "MyDocuments"){
-        this.createWindow(url,name,icon,windowSize);
+     if(url.includes("/Web Browser/")){
+        systemWindow=true;
+     }
+      if(!systemWindow){
+        this.createWindow(url,name,icon,windowSize,systemWindow);
         this.setState({ showMenu: false });
       }else{
         if(name === "Web Browser"){
-            this.createWindow("Web Browser","Web Browser",REST_URL+"/APPS/Web Browser/favicon.png",windowSize);
+            this.createWindow("Web Browser","Web Browser",REST_URL+"/APPS/Web Browser/favicon.png",windowSize,systemWindow);
             this.setState({ showMenu: false });
         }
         if(name === "MyComputer"){
             window.explorer_open="My Computer";
-            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize);
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize,systemWindow);
             this.setState({ showMenu: false });
         }
         if(name === "MyMusic"){
             window.explorer_open=this.state.userPaths['music'];
-            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize);
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize,systemWindow);
             this.setState({ showMenu: false });
         }
         if(name === "MyPictures"){
             window.explorer_open=this.state.userPaths['picture'];
-            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize);
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize,systemWindow);
             this.setState({ showMenu: false });
         }
         if(name === "MyDocuments"){
             window.explorer_open=this.state.userPaths['documents'];
-            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize);
+            this.createWindow(name,"ZED Explorer",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize,systemWindow);
+            this.setState({ showMenu: false });
+        }
+        if(name === "Copy"){
+            windowSize['Width']=400;
+            windowSize['Height']=185;
+            this.createWindow(url,"Copy",REST_URL+"/API/SYSTEM/ICONS/copy.png",windowSize,systemWindow);
+            this.setState({ showMenu: false });
+        }
+        if(name === "Save File"){
+            windowSize['Width']=600;
+            windowSize['Height']=485;
+            this.createWindow(url,"Save File    ",REST_URL+"/API/SYSTEM/ICONS/ModernXP (35).png",windowSize,systemWindow);
             this.setState({ showMenu: false });
         }
       } 
@@ -418,9 +451,10 @@ class App extends Component {
             toggleMenu={this.toggleMenu}
             visible={this.state.showMenu}
         />
+
         <ToastContainer />
-        <BlueLightFilter enabled={this.state.setting_blueFilter}/>
         <ScreenSaver timer={this.state.ScreenSaverTimer}/>
+        <BlueLightFilter enabled={this.state.setting_blueFilter}/>
       </div>
     );
   }

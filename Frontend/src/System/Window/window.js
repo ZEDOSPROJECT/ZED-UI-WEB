@@ -9,6 +9,8 @@ import CRESTORE from './RESTORE.png';
 import CMINIMIZE from './MINIMIZE.png';
 import FileManager from '../FileManager/fileManager';
 import WebBrowser from '../WebBrowser/WebBrowser';
+import CopyDialog from '../SystemDialogs/Copy/copy.js';
+import SaveDialog from '../SystemDialogs/Save/save.js';
 import VUGif from '../Taskbar/Task/vu.gif';
 import { REST_URL } from '../../REST_URL';
 import preload from './preload';
@@ -47,10 +49,12 @@ class Window extends React.Component{
             modalIsOpen: true,
             draggable: false,
             uuid: this.props.uuid,
+            systemWindow: this.props.systemWindow,
             currentZIndex: window.maxZIndex,
             maximized: false,
             x: positionX,
             y: positionY,
+            notResiable: false,
             width: windowSize.Width,
             height: windowSize.Height,
             active: true,
@@ -68,9 +72,13 @@ class Window extends React.Component{
                                 "[object object]",
                                 "deprecationwarning",
                                 "refused to load the script"
-                            ]
+                            ],
+            fullScreen: false
         };
         setTimeout(() => {
+            if(window.winTitle[this.state.uuid].includes("Copy")){
+                this.setState({notResiable: true});
+            }
             this.setState({myStyle: "window shadow"});
         }, 40);
 
@@ -90,6 +98,7 @@ class Window extends React.Component{
         this.onDrag = this.onDrag.bind(this);
         this.returnToApp = this.returnToApp.bind(this);
         this.onResizeStop = this.onResizeStop.bind(this);
+        this.toggleFullScreen = this.toggleFullScreen.bind(this);
 
         window.maxZIndex=window.maxZIndex+1;
         window.topUUID=this.state.uuid;
@@ -119,6 +128,12 @@ class Window extends React.Component{
             }
             this.forceUpdate();
         },800);
+    }
+
+    toggleFullScreen(){
+        this.setState({
+            fullScreen: !this.state.fullScreen
+        })
     }
 
     returnToApp(){
@@ -183,15 +198,6 @@ class Window extends React.Component{
         localStorage["WINDOW_"+appID+"_Y"]=this.state.y;
         localStorage["WINDOW_"+appID+"_W"]=this.state.width;
         localStorage["WINDOW_"+appID+"_H"]=this.state.height;
-        let id=-1;
-        let i=0
-        window.soundsEmitter.forEach(element => {
-            if(element === this.state.uuid)
-                id=i;
-            i++;
-        });
-        if(id>=0)
-            window.soundsEmitter=window.soundsEmitter.splice(id, 1);
     }
 
     onDragStart(){
@@ -258,7 +264,15 @@ class Window extends React.Component{
 
             this.webview.addEventListener('new-window', (e) => {
                 this.setState({url: e.url});
-              });
+            });
+
+            this.webview.addEventListener('enter-html-full-screen', (e) => {
+                this.setState({fullScreen: true});
+            });
+
+            this.webview.addEventListener('leave-html-full-screen', (e) => {
+                this.setState({fullScreen: false});
+            });
 
             this.webview.addEventListener('console-message', (e) => {
                 const tmpWord=e.message.toLowerCase();
@@ -310,20 +324,42 @@ class Window extends React.Component{
         let screenX=window.innerWidth;
         let screenY=window.innerHeight;
         let isPlaying=false;
+        let systemWindow=this.state.systemWindow;
         if(window.soundsEmitter.indexOf(this.props.uuid) !== -1){
             isPlaying=true;
         }
-        if(this.state.url !== "Web Browser" && this.state.url !== "MyComputer" && this.state.url !== "MyMusic" && this.state.url !== "MyPictures" && this.state.url !== "MyDocuments"){
+        if(!systemWindow){
             if(!isElectron()){  
                 WindowContent=(<iframe title={window.winTitle[this.state.uuid]}  onLoad={this.onTitleChange} className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
             } else {  
                 WindowContent=(<webview preload={preload} ref={(input) => { this.webview = input; }} onLoad={this.onTitleChange} useragent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3626.120 Safari/537.36" className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url} plugins="true" allowpopups="true"></webview>);
             }
         }else{
-            if(this.state.url !== "Web Browser"){
+            const url=this.state.url;  
+            const params=url.split("|");
+            let isOpen=false;
+            if(url === "MyComputer" || this.state.url === "MyMusic" || this.state.url === "MyPictures" || this.state.url === "MyDocuments" || url === "Web Browser"){
                 WindowContent=<FileManager onTitleChange={this.onTitleChange} userDirs={this.props.userDirs} className="frame dontMove"/>
-            }else{
+                isOpen=true;
+            }
+            if(url === "Web Browser"){
                 WindowContent=<WebBrowser onTitleChange={this.onTitleChange} className="frame dontMove"/>
+                isOpen=true;
+            }
+            if(url === "Save File"){
+                WindowContent=<SaveDialog userDirs={this.props.userDirs} onTitleChange={this.onTitleChange} className="frame dontMove"/>
+                isOpen=true;
+            }
+            if(params[0] === "copy"){
+                if(params[1]!== "" && params[2]!== ""){
+                    WindowContent=<CopyDialog UUID={this.state.uuid} onClose={this.onClose} from={params[1]} to={params[2]} onTitleChange={this.onTitleChange} className="frame dontMove"/>
+                    isOpen=true;
+                }
+            }
+            if(!isOpen){
+                setTimeout(() => {
+                    this.onClose();
+                }, 40);
             }
         } 
 
@@ -331,98 +367,106 @@ class Window extends React.Component{
             finalBodyStyle="body maximizedBody";
         }
         if(!window.gradientEffect){
-            finalStyle={ backgroundColor: this.convertHex(this.state.systemColor0,90) };
+            finalStyle={ backgroundColor: this.convertHex(this.state.systemColor0,50) };
         }else{
             finalStyle={ background: 'linear-gradient('+this.convertHex(this.state.systemColor1,95)+', '+this.convertHex(this.state.systemColor0,95)} 
         } 
         
         return(
-            <div>
-                <Rnd
-                    default={{
-                        x: 15,
-                        y: 15,
-                        width: 640,
-                        height: 480
-                    }}
-                    minWidth="200"
-                    minHeight="200"
-                    cancel=".dontMove"
-                    disableDragging={this.state.maximized}  
-                    style={{ zIndex: this.state.currentZIndex }} 
-                    size={{ width: ( this.state.maximized ? '100%' : this.state.width ),  height: ( this.state.maximized ? '100%' : this.state.height ) }}
-                    position={{ x: ( this.state.maximized ? '0' : this.state.x ), y: ( this.state.maximized ? '0' : this.state.y ) }}
-                    onDragStart={this.onDragStart} 
-                    onResizeStart={this.onResizeStart} 
-                    onResizeStop={this.onResizeStop}
-                    onDrag={this.onDrag}
-                    onDragStop={(e, d) => { 
-                        if(e.y === 0){
-                            setTimeout(() => {
-                                this.setState({ maximized: true });
-                            }, 20);
-                        }
-                        if(e.x < 10 ){
-                            setTimeout(() => {
-                                this.setState({ x:0, y:0, width: "50%",height: "99.5%" });
-                            }, 20);
-                        }
-                        if(e.x > screenX-10 ){
-                            setTimeout(() => {
-                                this.setState({ x: screenX/2 , y:0, width: "50%",height: "99.5%" });
-                            }, 20);
-                        }
-                        if(e.y > screenY-45){
-                            setTimeout(() => {
-                                this.setState({ y: (screenY-49) });
-                            }, 20);
-                        }
-                        if(!this.state.maximized){
-                            this.setState({
-                                x: d.x, y: d.y 
-                            });  
-                        }
-                    }}
-                    onResize={(e, direction, ref, delta, position) => {
-                        if(e.y<0){
-                            this.setState({ y: 1 });
-                        }
-                        if(!this.state.maximized){
-                            this.setState({
-                                width: ref.offsetWidth,
-                                height: ref.offsetHeight,
-                                ...position,
-                            });
-                        }                  
-                    }}
-                >
-                <div className={this.state.myStyle}  initwidth={800} initheight={400} style={finalStyle}>
-                    { isPlaying ? (<img draggable="false" alt="" className="bgUv" src={VUGif} />) : null }
-                    <div onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} className="titleBar" >
-                        <div style={{ maxHeight: 20,width: 20 }} className="appIcon"><img draggable="false" alt="" className="appIcon" src={this.props.icon}></img></div>
-                        <div className="appTitle" style={{ color: invert(window.systemColor1, true)}}>{window.winTitle[this.state.uuid]}</div>
-                        <div style={{ width: 150 }} className="appControls">
-                            <img draggable="false" alt="" className="btnXControl dontMove" onClick={this.onClose}  src={CCLOSE} ></img>
-                            <img draggable="false" alt="" className="btnControl dontMove" onClick={this.onToggleWindow} src={( this.state.maximized ? CRESTORE : CMAXIMIZE )}></img>
-                            <img draggable="false" alt="" className="btnControl dontMove" onClick={this.onToggleMinimize} src={CMINIMIZE}></img>
+            (!this.state.fullScreen ? (
+                <div>
+                    <Rnd
+                        default={{
+                            x: 15,
+                            y: 15,
+                            width: 640,
+                            height: 480
+                        }}
+                        minWidth="200"
+                        minHeight="200"
+                        cancel=".dontMove"
+                        disableDragging={this.state.maximized}  
+                        style={{ zIndex: this.state.currentZIndex }} 
+                        size={{ width: ( this.state.maximized ? '100%' : this.state.width ),  height: ( this.state.maximized ? '100%' : this.state.height ) }}
+                        position={{ x: ( this.state.maximized ? '0' : this.state.x ), y: ( this.state.maximized ? '0' : this.state.y ) }}
+                        onDragStart={this.onDragStart} 
+                        onResizeStart={this.onResizeStart} 
+                        onResizeStop={this.onResizeStop}
+                        onDrag={this.onDrag}
+                        onDragStop={(e, d) => { 
+                            if(e.y === 0){
+                                setTimeout(() => {
+                                    this.setState({ maximized: true });
+                                }, 20);
+                            }
+                            if(e.x < 10 ){
+                                setTimeout(() => {
+                                    this.setState({ x:0, y:0, width: "50%",height: "99.5%" });
+                                }, 20);
+                            }
+                            if(e.x > screenX-10 ){
+                                setTimeout(() => {
+                                    this.setState({ x: screenX/2 , y:0, width: "50%",height: "99.5%" });
+                                }, 20);
+                            }
+                            if(e.y > screenY-45){
+                                setTimeout(() => {
+                                    this.setState({ y: (screenY-49) });
+                                }, 20);
+                            }
+                            if(!this.state.maximized){
+                                this.setState({
+                                    x: d.x, y: d.y 
+                                });  
+                            }
+                        }}
+                        onResize={(e, direction, ref, delta, position) => {
+                            if(e.y<0){
+                                this.setState({ y: 1 });
+                            }
+                            if(!this.state.maximized){
+                                this.setState({
+                                    width: ref.offsetWidth,
+                                    height: ref.offsetHeight,
+                                    ...position,
+                                });
+                            }                  
+                        }}
+                    >
+                    <div className={this.state.myStyle}  initwidth={800} initheight={400} style={finalStyle}>
+                        { isPlaying ? (<img draggable="false" alt="" className="bgUv" src={VUGif} />) : null }
+                        <div onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} className="titleBar" >
+                            <div style={{ maxHeight: 20,width: 20 }} className="appIcon"><img draggable="false" alt="" className="appIcon" src={this.props.icon}></img></div>
+                            <div className="appTitle" style={{ color: invert(window.systemColor1, true)}}>{window.winTitle[this.state.uuid]}</div>
+                            <div style={{ width: 150 }} className="appControls">
+                                <img draggable="false" alt="" className="btnXControl dontMove" onClick={this.onClose}  src={CCLOSE} ></img>
+                                <img draggable="false" alt="" className="btnControl dontMove" onClick={this.onToggleWindow} src={( this.state.maximized ? CRESTORE : CMAXIMIZE )}></img>
+                                <img draggable="false" alt="" className="btnControl dontMove" onClick={this.onToggleMinimize} src={CMINIMIZE}></img>
+                            </div>
+                        </div>
+                        <div onMouseDown={e => e.stopPropagation()} className={finalBodyStyle}>
+                            {WindowContent}  
+                            {this.state.url === this.props.url ? 
+                                null
+                            :(
+                                <div onClick={this.returnToApp} className="goBackURL"><center>Return to the main APP</center></div>
+                            )}
+                            {this.state.active ? 
+                                null
+                            :(
+                                <div onClick={this.sendToFront}  className="overlay"></div>
+                            )}
                         </div>
                     </div>
-                    <div onMouseDown={e => e.stopPropagation()} className={finalBodyStyle}>
-                        {WindowContent}  
-                        {this.state.url === this.props.url ? 
-                            null
-                        :(
-                            <div onClick={this.returnToApp} className="goBackURL"><center>Return to the main APP</center></div>
-                        )}
-                        {this.state.active ? 
-                            null
-                        :(
-                            <div onClick={this.sendToFront}  className="overlay"></div>
-                        )}
-                    </div>
+                </Rnd>
+                </div>            
+            ):(
+                <div className="fullScreen">
+                    <div className="exitFS" onClick={this.toggleFullScreen}><center>EXIT FULL SCREEN</center></div>
+                    {WindowContent}  
                 </div>
-            </Rnd>
-            </div>            
+            ))
+            
         );
     } 
 } 

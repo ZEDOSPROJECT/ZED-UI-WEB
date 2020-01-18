@@ -19,6 +19,7 @@ class LeftPanel extends React.Component {
           style={{ "background-color": "red" }}
           buttonKey={id}
           title={item}
+          icon={this.props.MenuIcons[id]}
         />
       );
     });
