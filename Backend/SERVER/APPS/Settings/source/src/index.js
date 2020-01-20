@@ -156,7 +156,7 @@ class App extends React.Component {
 
   switchSetting(id) {
     this.setState({ CurrentSettingID: id });
-    //this.save();
+    this.save();
   }
 
   changeColor0(event) {
