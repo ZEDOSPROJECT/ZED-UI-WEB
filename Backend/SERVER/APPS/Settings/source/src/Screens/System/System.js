@@ -1,5 +1,5 @@
 import React from 'react';
-import ZED_LOGO from "../logo.png";
+import ZED_LOGO from "../../logo.png";
 
 export default class System extends React.Component {
     render(){
