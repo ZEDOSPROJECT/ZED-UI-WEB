@@ -6,9 +6,14 @@ export default class UsersContainer extends React.Component {
     render(){
         let finalListUsers=null;
         if(this.props.users !== undefined){
-            finalListUsers=this.props.users.map((item) => {
+            finalListUsers=this.props.users.map((item,i) => {
                 return(
-                    <UserIcon uName={item}/>
+                    <UserIcon
+                        key={i}
+                        OnSelected={this.props.OnSelected}
+                        selected={item===this.props.selectedUser}
+                        uName={item}
+                    />
                 );
             });
         }

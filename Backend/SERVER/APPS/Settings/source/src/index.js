@@ -32,7 +32,7 @@ class App extends React.Component {
       SystemInfo: {
         OperatingSystem: "ZED",
         CPU: undefined,
-        Version: "2019.0",
+        Version: "2020.0",
         Kernel: undefined,
         RAM: undefined,
         STORAGE: undefined  

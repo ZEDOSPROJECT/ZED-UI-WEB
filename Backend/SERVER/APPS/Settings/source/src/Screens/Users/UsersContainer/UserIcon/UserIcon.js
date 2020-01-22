@@ -3,13 +3,13 @@ import UserPNG from './User.jpg';
 import './UserIcon.css';
 
 export default class UserIcon extends React.Component {
-    constructor(props){
-        super(props);
-    }
     render(){
-        return(<div className="UserIcon">
+        return(<div
+                className={this.props.selected ? 'UserIconSELECTED' : 'UserIcon'}
+                onClick={ e => this.props.OnSelected(this.props.uName)}
+            >
             <center>
-                <img className="UserPNG" src={UserPNG} />
+                <img className="UserPNG" src={UserPNG} alt=""/>
                 <div>{this.props.uName}</div>
             </center>
         </div>)
