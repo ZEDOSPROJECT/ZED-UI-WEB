@@ -345,6 +345,14 @@ class FileManager extends React.Component {
           SystemWindow: false
         } 
       } 
+      if(mimeType.includes("application/pdf")){
+        window.ZED_RUN={
+          Label: 'PDF Reader',
+          Url: REST_URL+'/APPS/PDF/index.php?path='+file,
+          Icon: REST_URL+"/API/SYSTEM/ICONS/PDF.png",
+          SystemWindow: false
+        } 
+      } 
       if(mimeType.includes("audio/") || mimeType.includes("video/")){
         window.ZED_RUN={
           Label: 'ZED Media Player',

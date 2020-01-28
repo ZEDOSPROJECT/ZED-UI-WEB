@@ -6,6 +6,7 @@ import File from "./file.png";
 import AudioFile from "./audio.png";
 import VideoFile from './video.png';
 import TextFile from './text.png';
+import PDFFile from './pdf.png';
 import HDD from './hdd.png';
 import mime from 'mime-types';
 import { REST_URL } from './../../../../REST_URL';
@@ -43,6 +44,10 @@ class Icon extends React.Component {
         }
         if(mimeType.includes("audio/")){
           theIcon = AudioFile;
+          hasIcon=true;
+        }
+        if(mimeType.includes("application/pdf")){
+          theIcon = PDFFile;
           hasIcon=true;
         }
         if(mimeType==="text/plain" || mimeType==="text/xml"){
