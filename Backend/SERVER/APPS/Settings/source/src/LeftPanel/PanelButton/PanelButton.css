@@ -1,18 +1,18 @@
 .PanelButton {
-  background-color: rgb(5, 5, 5);
+  background-color: #7691e4;
   padding: 12px;
   text-align: left;
   cursor: pointer;
 }
 
 .PanelButtonActive {
-  background-color: rgb(143, 143, 143);
+  background-color: #86a8ff;
   padding: 12px;
-  color: black;
+  color: rgb(0, 0, 0);
   text-align: left;
   cursor: pointer;
 }
 
 .PanelButton:hover {
-  background-color: rgb(61, 61, 61);
+  background-color: #6184de;
 }
