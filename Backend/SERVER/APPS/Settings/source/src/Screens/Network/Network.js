@@ -1,4 +1,5 @@
 import React from 'react';
+import NetworkStatus from './NetWorkStatus/networkStateComponent.js';
 
 export default class Network extends React.Component {
     constructor(props){
@@ -28,6 +29,7 @@ export default class Network extends React.Component {
     render(){
         return(
             <div>
+                <NetworkStatus local={this.state.localIP} internet={this.state.ExternalIP} ></NetworkStatus><br/>
                 <div>My External IP Adress: {this.state.ExternalIP}</div>
                 <div>My Local IP Adress: {this.state.localIP}</div>
             </div>
