@@ -4,16 +4,24 @@ import getUUID from 'uuid';
 import './desktopIcons.css';
 
 class DesktopIcons extends React.Component {
+    desktopRefeshTimer=0;
     constructor(props){
         super(props);
         setInterval(() => {
             this.render();
-        }, 9000);
+        }, 900);
     }
     shouldComponentUpdate(){
-        return false;
+        this.desktopRefeshTimer++;
+        if(this.desktopRefeshTimer==10){
+            this.desktopRefeshTimer=0;
+            return true;
+        }else{
+            return false;
+        }
     }
     render(){
+        console.log()
         let storedIcons=[];
         let fianlRender=null;
         if(localStorage.favoriteIcons){
