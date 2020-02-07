@@ -10,6 +10,9 @@ class DesktopIcons extends React.Component {
             this.render();
         }, 9000);
     }
+    shouldComponentUpdate(){
+        return false;
+    }
     render(){
         let storedIcons=[];
         let fianlRender=null;
