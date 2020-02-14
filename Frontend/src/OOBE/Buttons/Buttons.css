@@ -1,0 +1,22 @@
+.Buttons{
+    width: 140px;
+    height: 50px;
+    color: white;
+    font-size: 31px;
+    margin: 20px;
+    user-select:none;
+    cursor: alias;
+    font-style: bold;
+    float: left;
+    text-align: middle;
+}
+
+.Buttons:hover{
+    background-color: rgb(34, 49, 184);
+}
+
+
+.ButtonsLabel{
+    padding: 10px;
+    float: left;
+}

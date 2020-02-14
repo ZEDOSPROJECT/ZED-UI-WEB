@@ -1,0 +1,80 @@
+.OOBE{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    user-select:none;
+}
+
+.WelcomeVideo{
+    overflow: hidden;
+    cursor: none;
+}
+
+
+.BackgroundVideo{
+    overflow: hidden;
+    z-index: -110;
+}
+
+.OOBEBar{
+    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.75);
+    background-color: #12387f;
+    width: 100%;
+    height: 90px;
+}
+
+.bottom{
+    position: fixed;
+    bottom: 0;
+}
+
+.top{
+    position: fixed;
+    top: 0;
+}
+
+.OOBEContainer {    
+    position: fixed;    
+    top: 90px;  
+    bottom: 90px;
+    left: 0;
+    right: 0;
+    padding: 50px;
+    overflow-x: auto;
+    color: white;
+    font-size: 20px;
+    cursor: default;
+    text-shadow: 0px 0px 8px rgba(0,0,0,0.28);
+    background-color: rgba(109, 172, 255, 0.644);
+}
+
+.ZEDLOGO{
+    position: fixed;
+    left: 10px;
+    top: 0px;
+    width: auto;
+    height: auto;
+    margin: 10px;
+}
+
+.ZEDLOGOPNG {
+    width: 60px;
+    height: auto;
+    float: left;
+    padding-right: 10px;
+}
+
+.ZEDLOGOLABEL {
+    width: 220px;
+    margin-top: 15px;
+    color: white;
+    font-size: 37px;
+}
+
+.buttonsGrup{
+    position: fixed;
+    right: 10px;
+    bottom: 0;
+}
