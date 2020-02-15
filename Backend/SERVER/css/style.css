@@ -53,10 +53,10 @@
 
 body {
 	user-select:none;
-	background-color: #12387f;
+	background-color: rgb(109, 172, 255);
 }
 
 .bar {
 	box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.75);
-	background-color: #638ed3;
+	background-color: #12387f;
 }
