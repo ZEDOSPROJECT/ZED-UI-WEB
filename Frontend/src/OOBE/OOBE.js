@@ -4,6 +4,7 @@ import ZEDLogo from '../Icons/logo.png';
 import Buttons from './Buttons/Buttons';
 import SRCWelcome from './Screens/Welcome/Welcome';
 import SRCUser from './Screens/User/User';
+import SRCFinish from './Screens/Finish/Finish';
 import BackgroundVideo from './bg.mp4';
 import WelcomeVideo from './welcome.webm';
 import './OOBE.css';
@@ -28,7 +29,8 @@ export default class OOBE extends React.Component {
                       <SRCUser onPass={this.onPass}
                                onUsername={this.onUsername}
                                onPassRep={this.onPassRep}
-                        />],
+                        />,
+                        <SRCFinish />],
             username: '',
             password: '',
             repeatPassword: ''
@@ -39,12 +41,14 @@ export default class OOBE extends React.Component {
         this.setState({
             password: e.target.value
         })
+        window.r=e.target.value;
     }
 
     onPassRep(e){
         this.setState({
             repeatPassword: e.target.value
         })
+        window.rp=e.target.value;
     }
 
     onUsername(e){
@@ -52,11 +56,13 @@ export default class OOBE extends React.Component {
         this.setState({
             username: tmp
         })
+        window.u=e.target.value.toLowerCase();
     }
 
     onNext(){
         if(this.state.currentScreen === this.state.Screens.length-1 ){
-            alert("End of OOBE");
+            window.location.reload();
+            localStorage.OOBE=true;
         }else{
             this.setState({
                 currentScreen: this.state.currentScreen+1
