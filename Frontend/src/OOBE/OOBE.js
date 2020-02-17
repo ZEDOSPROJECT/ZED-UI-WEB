@@ -7,8 +7,9 @@ import SRCUser from './Screens/User/User';
 import SRCFinish from './Screens/Finish/Finish';
 import BackgroundVideo from './bg.mp4';
 import WelcomeVideo from './welcome.webm';
-import './OOBE.css';
 import Welcome from './Screens/Welcome/Welcome';
+import { REST_URL } from '../REST_URL';
+import './OOBE.css';
 
 export default class OOBE extends React.Component {
     constructor(props){
@@ -61,8 +62,12 @@ export default class OOBE extends React.Component {
 
     onNext(){
         if(this.state.currentScreen === this.state.Screens.length-1 ){
-            window.location.reload();
-            localStorage.OOBE=true;
+            fetch(REST_URL+'/API/SYSTEM/SETTINGS/USER/OOBEFinish.php?username="'+this.state.username+'"&password='+decodeURI(this.state.password))
+            .then(response => response.text())
+            .then(text => {
+                window.location.reload();
+                localStorage.OOBE=true;
+            });
         }else{
             this.setState({
                 currentScreen: this.state.currentScreen+1
