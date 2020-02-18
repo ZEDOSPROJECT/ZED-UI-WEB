@@ -15,5 +15,5 @@ cp -a /home/zed/Public /home/$username/Public
 cp -a /home/zed/Templates /home/$username/Templates
 cp -a /home/zed/Videos /home/$username/Videos
 cp -a /home/zed/ZED-UI-WEB /home/$username/ZED-UI-WEB
-cp /home/zed/.config/openbox /etc/xdg/openbox/autostart
+cp /home/zed/.config/openbox/autostart /etc/xdg/openbox/autostart
 reboot
