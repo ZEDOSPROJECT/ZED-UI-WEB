@@ -3,7 +3,7 @@
 username=$1
 password=$2
 
-useradd -m $username -p $password
+useradd -m $username -p $password -U
 usermod -s /bin/bash $username
 echo -e "${password}\n${password}\n" | passwd $username
 cp -a /home/zed/Desktop /home/$username/Desktop
