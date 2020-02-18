@@ -63,10 +63,6 @@ export default class OOBE extends React.Component {
     onNext(){
         if(this.state.currentScreen === this.state.Screens.length-1 ){
             fetch(REST_URL+'/API/SYSTEM/SETTINGS/USER/OOBEFinish.php?username="'+this.state.username+'"&password='+decodeURI(this.state.password));
-            localStorage.OOBE=true;
-            const remote = require('electron').remote;
-            let w = remote.getCurrentWindow();
-            w.close();
         }else{
             this.setState({
                 currentScreen: this.state.currentScreen+1
