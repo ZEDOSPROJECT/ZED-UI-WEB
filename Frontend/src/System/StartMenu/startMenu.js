@@ -130,7 +130,7 @@ class StartMenu extends React.Component {
                     <div className="topMenu" style={{ backgroundColor: this.convertHex(window.systemColor0,95) }}>
                         <div>
                             <img draggable="false" alt="" className="userPicture" height="32" src={UserIcon}></img>
-                            <div style={{ color: invert(window.systemColor0, true)}} className="userName"><b>Administrator</b></div>
+        <div style={{ color: invert(window.systemColor0, true)}} className="userName"><b>{this.props.userName}</b></div>
                         </div>
                     </div>
                     <div className="middleMenu">
