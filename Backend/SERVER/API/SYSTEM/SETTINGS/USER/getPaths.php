@@ -1,6 +1,6 @@
 <?php
     header("Access-Control-Allow-Origin: *");
-    $user=exec("whomai");
+    $user=exec("whoami");
     $data['username'] = $user;
     $data['documents'] = "/home/".$user."/Documents/";
     $data['music'] = "/home/".$user."/Music/";
