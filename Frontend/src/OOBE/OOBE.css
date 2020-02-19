@@ -123,3 +123,24 @@
     height: 90px;
     background-color: #12387f;
 }
+
+.endOOBE{
+    background-color: black;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    cursor: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+.endOOBELOGO{
+    width: 100px;
+    height: auto;
+    padding: 40px;
+}

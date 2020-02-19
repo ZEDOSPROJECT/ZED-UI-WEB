@@ -17,6 +17,12 @@ export default class OOBE extends React.Component {
         let TITLEPlayer = new Audio(TITLE);
         TITLEPlayer.play();
 
+        setInterval(() => {
+            if(this.state.endOOBE && TITLEPlayer.volume>0.002){
+                TITLEPlayer.volume=TITLEPlayer.volume-0.001;
+            }
+        }, 9);
+
         this.onBack = this.onBack.bind(this);
         this.onNext = this.onNext.bind(this);
         this.onUsername = this.onUsername.bind(this);
@@ -34,7 +40,8 @@ export default class OOBE extends React.Component {
                         <SRCFinish />],
             username: '',
             password: '',
-            repeatPassword: ''
+            repeatPassword: '',
+            endOOBE: false,
         }
     }
 
@@ -63,6 +70,7 @@ export default class OOBE extends React.Component {
     onNext(){
         if(this.state.currentScreen === this.state.Screens.length-1 ){
             fetch(REST_URL+'/API/SYSTEM/SETTINGS/USER/OOBEFinish.php?username="'+this.state.username+'"&password='+decodeURI(this.state.password));
+            this.setState({ endOOBE: true});
         }else{
             this.setState({
                 currentScreen: this.state.currentScreen+1
@@ -85,6 +93,13 @@ export default class OOBE extends React.Component {
     render(){
         if(this.state.WelcomeVideo){
             return(<div className="video-container"><video ref={el => this.videoElement = el} width="101%" autoPlay className="WelcomeVideo" src={WelcomeVideo} /></div>)
+        }else if(this.state.endOOBE){
+            return(
+                <div className="endOOBE">
+                    <img src={ZEDLogo} className="endOOBELOGO"/><br/>
+                    <p>Please wait . . .</p>
+                </div>
+            );
         }else{
             let blockNext=false;
 
