@@ -1,10 +1,11 @@
 <?php
     header("Access-Control-Allow-Origin: *");
-    $data['username'] = get_current_user();
-    $data['documents'] = "/home/".get_current_user()."/Documents/";
-    $data['music'] = "/home/".get_current_user()."/Music/";
-    $data['picture'] = "/home/".get_current_user()."/Pictures/";
-    $data['videos'] = "/home/".get_current_user()."/Videos/";
-    $data['downloads'] = "/home/".get_current_user()."/Downloads/";
+    $user=exec("whomai");
+    $data['username'] = $user;
+    $data['documents'] = "/home/".$user."/Documents/";
+    $data['music'] = "/home/".$user."/Music/";
+    $data['picture'] = "/home/".$user."/Pictures/";
+    $data['videos'] = "/home/".$user."/Videos/";
+    $data['downloads'] = "/home/".$user."/Downloads/";
     echo json_encode($data);
 ?>
