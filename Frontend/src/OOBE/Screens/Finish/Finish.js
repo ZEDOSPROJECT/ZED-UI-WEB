@@ -8,7 +8,10 @@ export default class Finish extends React.Component {
             <center>
             <h1>All Done!</h1>
             <p><img className="FinishPNG" src={FinishLogo} /></p>
-            <p>Now you will enter in your no ZED installation</p>
+            <p>Now you will enter in your no ZED installation</p>   
+            <br/>
+            <hr/>
+            <p>Tank you for "https://soundcloud.com/programmerofficial" to the background music</p>
             </center>
         </div>)
     }
