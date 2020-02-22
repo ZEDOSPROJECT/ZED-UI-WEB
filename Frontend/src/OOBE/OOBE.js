@@ -8,6 +8,8 @@ import SRCFinish from './Screens/Finish/Finish';
 import BackgroundVideo from './bg.mp4';
 import WelcomeVideo from './welcome.webm';
 import Welcome from './Screens/Welcome/Welcome';
+import BTNNext from './next.png';
+import BTNBack from './back.png';
 import { REST_URL } from '../REST_URL';
 import './OOBE.css';
 
@@ -125,12 +127,12 @@ export default class OOBE extends React.Component {
                 <div className="OOBEBar bottom"> 
                     <div className="buttonsGrup">
                         {this.state.currentScreen !==0 ? (
-                            <Buttons OnClick={this.onBack} title="Back"/>  
+                            <Buttons OnClick={this.onBack} Bimg={BTNBack} title="Back"/>  
                         ):null}
                         {this.state.Screens.length-1 == this.state.currentScreen ? (
-                            <Buttons OnClick={this.onNext} title="Finish"/>
+                            <Buttons OnClick={this.onNext} Nimg={BTNNext} title="Finish"/>
                         ):(
-                            <Buttons OnClick={this.onNext} title="Next"/>
+                            <Buttons OnClick={this.onNext} Nimg={BTNNext} title="Next"/>
                         )}
                     </div>
                 </div>

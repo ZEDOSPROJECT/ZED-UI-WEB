@@ -1,9 +1,10 @@
 .Buttons{
-    width: 140px;
+    width: 180px;
     height: 50px;
     color: white;
-    font-size: 31px;
+    font-size: 37px;
     margin: 20px;
+    padding-bottom: 4px;
     user-select:none;
     cursor: alias;
     font-style: bold;
@@ -19,4 +20,10 @@
 .ButtonsLabel{
     padding: 10px;
     float: left;
+    
+}
+
+.ButtonsImg{
+    height: 40px;
+    width: auto;
 }
