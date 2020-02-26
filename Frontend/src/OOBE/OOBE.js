@@ -66,7 +66,7 @@ export default class OOBE extends React.Component {
         this.setState({
             username: tmp
         })
-        window.u=e.target.value.toLowerCase();
+        window.u=tmp;
     }
 
     onNext(){
