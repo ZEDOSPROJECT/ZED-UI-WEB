@@ -1,0 +1,6 @@
+.UsersContainer {
+    background-color: rgb(171, 217, 255);
+    width: 100%;
+    height: 400px;
+    overflow-y: scroll;
+}

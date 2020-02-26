@@ -2,12 +2,17 @@
 
 if [ -e ".branch" ]
 then
-   git checkout "$(<.branch)"
-   rm .branch
+   if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+      git checkout "$(<.branch)"
+      rm .branch
+   fi
 fi
-git stash
-git pull
-git stash pop
+
+if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+   git stash
+   git pull
+   git stash pop
+fi
 cd Backend
 ./startBackend.sh&
 cd ..

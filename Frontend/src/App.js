@@ -416,6 +416,11 @@ class App extends Component {
   }
 
   render() {
+    let username="";
+    if(this.state.userPaths !== null){
+        username=this.state.userPaths["username"]
+        username=username.charAt(0).toUpperCase() + username.slice(1)
+    }
     const windowList=this.state.openedWindows.map((item) => {
         if(item!=null){
             const visible=item.VISIBLE ? "winItem" : "winItem hidden";
@@ -450,6 +455,7 @@ class App extends Component {
             onClickApp={this.onClickApp}
             toggleMenu={this.toggleMenu}
             visible={this.state.showMenu}
+            userName={username}
         />
 
         <ToastContainer />

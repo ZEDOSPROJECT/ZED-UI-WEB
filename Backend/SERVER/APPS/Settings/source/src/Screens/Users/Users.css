@@ -1,0 +1,17 @@
+.UserAction {
+    width: 300px;
+    height: 20px;
+    margin: 4px;
+    padding: 4px;
+    color: rgb(0, 0, 0);
+}
+
+.UserAction:hover{
+    color: rgb(17, 0, 255);
+    cursor: pointer;
+}
+
+.UserActionlabel {
+    float:  left;
+    margin-right: 5px;
+}

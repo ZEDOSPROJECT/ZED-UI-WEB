@@ -1,14 +1,21 @@
+body {
+    background-color: aliceblue;
+}
+
 .appCard{
     width: 90%;
-    background-color: rgb(236, 236, 236);
+    background-color: rgb(255, 255, 255);
     margin: 10px;
     padding: 40px;
     position: relative;
     cursor: pointer;
+    transition-duration: .4s;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 .appCard:hover{
-    background-color: rgb(173, 173, 173);
+    background-color: rgb(218, 220, 255);
+    box-shadow: 0px 0px 5px 0px rgba(0, 17, 255, 0.856)
 }
 
 .mainPage{
@@ -30,7 +37,7 @@
 
 .topBar{
     height: 50px;
-    background-color:rgba(224, 224, 224, 0.877);
+    background-color:rgb(255, 255, 255);
     position: fixed;
     top: 0;
     left: 0;
@@ -40,10 +47,11 @@
     overflow: auto;
     white-space: nowrap;
     align-content: center;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 .typeIcon{
-    width: 120px;
+    width: 30px;
     height: 25px;
     background-color: rgb(255, 255, 255);
     margin: 5px;
@@ -53,19 +61,23 @@
     border-style: solid;
     border-width: 2px;
     border-color: white;
+    border-radius: 5px;
     float: left;
 }
 
 .selected {
-    border-color: rgb(108, 125, 255);
-}
-
-.typelbl{
-    width: 100%;
-    margin-left: 30px;
-    font-size: 25px;
+    border-color: rgb(0, 0, 0);
 }
 
 .typeImg{
     float: left;
+}
+
+.inputFind {
+    padding: 5px;
+    margin: 10px;
+    position: absolute;
+    right: 10px;
+    border-color: white;
+    border-radius: 5px;
 }

@@ -1,0 +1,55 @@
+.RunAsRootWindow {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.63);
+    z-index: 100;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.Modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+    width: 400px;   
+    padding: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(0, 6, 87);
+    border-radius: 5px;
+}
+
+.Head {
+ margin: 10px;
+ font-style: oblique;
+ font-size: 25px;
+}
+
+.KeyIcon {
+    width: 25px;
+    height: auto;
+    float: left;
+    margin-right: 10px;
+}
+
+.Label {
+    margin-left: 10px;
+}
+
+.txtPassword{
+    width: 95%;
+    margin-top: 10px;
+    padding: 5px;
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    margin: 10px;
+    background-color: #e7e7e7; color: black;
+}

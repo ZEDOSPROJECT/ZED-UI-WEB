@@ -1,0 +1,29 @@
+.UserIcon {
+    margin: 5px;
+    position: initial;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.UserIconSELECTED {
+    margin: 5px;
+    position: initial;
+    width: 100px;
+    height: 50px;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+.UserIcon:hover {
+    background-color: rgb(70, 125, 255);
+}
+
+
+.UserPNG {
+    width: 30px;
+    padding: 1px;
+    background-color: rgb(255, 255, 255);
+}
