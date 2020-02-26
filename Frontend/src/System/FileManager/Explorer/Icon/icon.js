@@ -76,7 +76,7 @@ class Icon extends React.Component {
           }
           title={this.props.data.name}
           onClick={data => this.props.onIClick(this.props.data)}
-          onDoubleClick={data => this.props.onDBClick(this.props.data)}
+          onContextMenu={data => this.props.onRClick(this.props.data)}
           className="icon"
         >
           <LazyLoadImage

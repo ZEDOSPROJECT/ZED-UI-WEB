@@ -40,7 +40,7 @@ class FileManager extends React.Component {
     }, 10);
 
     this.onIClick = this.onIClick.bind(this);
-    this.onDBClick = this.onDBClick.bind(this);
+    this.onRClick = this.onRClick.bind(this);
     this.listFolder = this.listFolder.bind(this);
     this.goBack = this.goBack.bind(this);
     this.goForward = this.goForward.bind(this);
@@ -286,81 +286,87 @@ class FileManager extends React.Component {
     }
   }
 
-  onIClick(data) {
+  onRClick(data) {
     this.setState({ selected: data.name });
     detailsFlag=true;
     this.getDetails(this.state.currentPath+data.name);
   }
 
-  onDBClick(data) {
-    detailsFlag=false;
-    this.setState({ selected: "",details:undefined });
-    if (data.type === "folder") {
-      const newPath=this.state.currentPath + data.name + "/";
-      this.listFolder(newPath);
-      let newHistory=[];
-      for (let index = 0; index <= this.state.historyIndex; index++) {
-        newHistory.push(this.state.history[index]);
+  onIClick(data) {
+    if(this.state.selected === data.name){
+      detailsFlag=false;
+      this.setState({ selected: "",details:undefined });
+      if (data.type === "folder") {
+        const newPath=this.state.currentPath + data.name + "/";
+        this.listFolder(newPath);
+        let newHistory=[];
+        for (let index = 0; index <= this.state.historyIndex; index++) {
+          newHistory.push(this.state.history[index]);
+        }
+        newHistory.push(newPath);
+        setTimeout(() => {
+          this.setState({
+            currentPath: newPath,
+            historyIndex: this.state.historyIndex+1,
+            history: newHistory,
+            details: undefined,
+          });
+          let clickSoundPlayer = new Audio(clickSound);
+          clickSoundPlayer.play();
+        }, 10);
+      } else if(data.type === "hdd"){
+        let newPath=data.mountpoint;
+        if(newPath.substr(newPath.length - 1)!=="/"){
+          newPath=newPath+"/";
+        }
+        this.listFolder(newPath);
+        let newHistory=[];
+        for (let index = 0; index <= this.state.historyIndex; index++) {
+          newHistory.push(this.state.history[index]);
+        }
+        newHistory.push(newPath);
+        setTimeout(() => {
+          this.setState({
+            currentPath: newPath,
+            historyIndex: this.state.historyIndex+1,
+            history: newHistory,
+            details: undefined,
+          });
+          let clickSoundPlayer = new Audio(clickSound);
+          clickSoundPlayer.play();
+        }, 10);
+      }else{
+        const file=this.state.currentPath + data.name;
+        const mimeType=mime.lookup(file);
+        if(mimeType.includes("image/")){
+          window.ZED_RUN={
+            Label: 'Picture View',
+            Url: REST_URL+'/APPS/Picture Visualizer/index.php?path='+file,
+            Icon: REST_URL+"/API/SYSTEM/ICONS/ModernXP (27).png",
+            SystemWindow: false
+          } 
+        } 
+        if(mimeType.includes("application/pdf")){
+          window.ZED_RUN={
+            Label: 'PDF Reader',
+            Url: REST_URL+'/APPS/PDF/index.php?path='+file,
+            Icon: REST_URL+"/API/SYSTEM/ICONS/PDF.png",
+            SystemWindow: false
+          } 
+        } 
+        if(mimeType.includes("audio/") || mimeType.includes("video/")){
+          window.ZED_RUN={
+            Label: 'ZED Media Player',
+            Url: REST_URL+'/APPS/ZED Media Player/index.php?path='+file,
+            Icon: REST_URL+"/APPS/ZED Media Player/favicon.png",
+            SystemWindow: false
+          } 
+        }
       }
-      newHistory.push(newPath);
-      setTimeout(() => {
-        this.setState({
-          currentPath: newPath,
-          historyIndex: this.state.historyIndex+1,
-          history: newHistory,
-          details: undefined,
-        });
-        let clickSoundPlayer = new Audio(clickSound);
-        clickSoundPlayer.play();
-      }, 10);
-    } else if(data.type === "hdd"){
-      let newPath=data.mountpoint;
-      if(newPath.substr(newPath.length - 1)!=="/"){
-        newPath=newPath+"/";
-      }
-      this.listFolder(newPath);
-      let newHistory=[];
-      for (let index = 0; index <= this.state.historyIndex; index++) {
-        newHistory.push(this.state.history[index]);
-      }
-      newHistory.push(newPath);
-      setTimeout(() => {
-        this.setState({
-          currentPath: newPath,
-          historyIndex: this.state.historyIndex+1,
-          history: newHistory,
-          details: undefined,
-        });
-        let clickSoundPlayer = new Audio(clickSound);
-        clickSoundPlayer.play();
-      }, 10);
     }else{
-      const file=this.state.currentPath + data.name;
-      const mimeType=mime.lookup(file);
-      if(mimeType.includes("image/")){
-        window.ZED_RUN={
-          Label: 'Picture View',
-          Url: REST_URL+'/APPS/Picture Visualizer/index.php?path='+file,
-          Icon: REST_URL+"/API/SYSTEM/ICONS/ModernXP (27).png",
-          SystemWindow: false
-        } 
-      } 
-      if(mimeType.includes("application/pdf")){
-        window.ZED_RUN={
-          Label: 'PDF Reader',
-          Url: REST_URL+'/APPS/PDF/index.php?path='+file,
-          Icon: REST_URL+"/API/SYSTEM/ICONS/PDF.png",
-          SystemWindow: false
-        } 
-      } 
-      if(mimeType.includes("audio/") || mimeType.includes("video/")){
-        window.ZED_RUN={
-          Label: 'ZED Media Player',
-          Url: REST_URL+'/APPS/ZED Media Player/index.php?path='+file,
-          Icon: REST_URL+"/APPS/ZED Media Player/favicon.png",
-          SystemWindow: false
-        } 
-      }
+      this.setState({ selected: data.name });
+      detailsFlag=true;
+      this.getDetails(this.state.currentPath+data.name);
     }
   }
 
@@ -387,7 +393,7 @@ class FileManager extends React.Component {
           mainType={this.state.mainType}
           currentPath={this.state.currentPath} 
           onIClick={this.onIClick}
-          onDBClick={this.onDBClick}
+          onRClick={this.onRClick}
           selected={this.state.selected}
           listDir={this.state.listDir}
           devices={this.state.devices}

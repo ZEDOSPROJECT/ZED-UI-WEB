@@ -81,3 +81,40 @@
   opacity: 0;
   display: none;
 } 
+
+
+.react-contextmenu{
+  cursor: default;
+  background-color: rgba(255, 255, 255, 0.918);
+  border-color: rgb(0, 0, 0)(0, 0, 0);
+  border-width: .4px;
+  border-style: solid; 
+  padding: 2px;
+  width: 150px;
+  font-size: 15px;
+  box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+} 
+
+.react-contextmenu-item{
+  background-color: rgba(255, 255, 255, 0.719);
+  color: black;
+  padding: 8px;
+}
+
+.react-contextmenu-item:hover{
+  background-color: #316ac5;
+  color:white;
+}
+
+.react-contextmenu-item--divider{
+  background-color: rgb(199, 199, 199) !important;
+  height: .1px;
+  font-size: 0;
+  padding: .4px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.react-contextmenu-item--divider:hover{
+  background-color: rgb(122, 120, 120) !important;
+}

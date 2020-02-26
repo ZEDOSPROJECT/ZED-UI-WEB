@@ -1,4 +1,6 @@
 import React from "react";
+import { Portal } from 'react-portal';
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 import Icon from "./Icon/icon";
 import mimeMusic from './types/music.png';
 import mimeVideo from './types/video.png';
@@ -7,10 +9,20 @@ import CategoryTitle from './CategoryTitle/CategoryTitle';
 import "./explorer.css";
 
 class Explorer extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.onRClick = this.onRClick.bind(this);
+  }
   shouldComponentUpdate(nextProps, nextState) {
     if(nextProps !== this.props || nextState !== this.state ){
         return true;
     }
+  }
+
+  onRClick(data){
+    this.props.onRClick(data);
+
   }
 
   render() {
@@ -24,7 +36,7 @@ class Explorer extends React.Component {
             <Icon
               currentPath={this.props.currentPath} 
               onIClick={this.props.onIClick}
-              onDBClick={this.props.onDBClick}
+              onRClick={this.onRClick}
               selected={this.props.selected}
               key={data.name}
               data={data}
@@ -52,7 +64,7 @@ class Explorer extends React.Component {
               <Icon
                 currentPath={this.props.currentPath} 
                 onIClick={this.props.onIClick}
-                onDBClick={this.props.onDBClick}
+                onRClick={this.props.onRClick}
                 selected={this.props.selected}
                 key={data.name}
                 data={data}
@@ -60,7 +72,7 @@ class Explorer extends React.Component {
             );
           }); 
         }else{
-          indents=<div style={{ color: 'black', marginTop: 20 }}><center>This folder is empty</center></div>
+          indents=<div id="explorerFS" style={{ color: 'black', marginTop: 20 }}><center>This folder is empty</center></div>
         } 
       }else {
         indents=<div>Loading . . .</div>;
@@ -69,7 +81,34 @@ class Explorer extends React.Component {
     
     return( <div className="fExplorer">
             <img className="typeF" draggable="false" alt="" src={currentType} />
+            <ContextMenuTrigger id="fileManager.explorer.files"> 
             {indents}
+            </ContextMenuTrigger>
+            <Portal>
+              <ContextMenu id="fileManager.explorer.files">
+                <MenuItem data={{foo: 'bar'}} onClick={this.handleClick}>
+                  <b>Open</b>
+                </MenuItem>
+                <MenuItem divider />
+                <MenuItem data={{foo: 'bar'}} onClick={this.handleClick}>
+                  Copy
+                </MenuItem>
+                <MenuItem data={{foo: 'bar'}} onClick={this.handleClick}>
+                  Paste
+                </MenuItem>
+                <MenuItem data={{foo: 'bar'}} onClick={this.handleClick}>
+                  Rename
+                </MenuItem>
+                <MenuItem divider />
+                <MenuItem data={{foo: 'bar'}} onClick={this.handleClick}>
+                  Delete
+                </MenuItem>
+                <MenuItem divider />
+                <MenuItem data={{foo: 'bar'}} onClick={this.handleClick}>
+                  Proprieties
+                </MenuItem>
+              </ContextMenu>
+            </Portal>
           </div>
           );
   }
