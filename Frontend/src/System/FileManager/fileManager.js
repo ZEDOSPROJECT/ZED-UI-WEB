@@ -25,6 +25,7 @@ class FileManager extends React.Component {
       history:["/"],
       historyIndex: 0,
       details:undefined,
+      JSONdetails:undefined,
       createFolderVisible: false,
       renameVisible: false,
       mainType:"",
@@ -192,6 +193,7 @@ class FileManager extends React.Component {
   
           this.setState({
             details: final,
+            JSONdetails: json
           });
         }
     });
@@ -374,20 +376,24 @@ class FileManager extends React.Component {
   }
 
   onOpen(){
-    const tmpT=this.state.details.props.children[1].toLowerCase().trim();
+    let tmpT=this.state.JSONdetails.MIME;
     let data;
-    if(tmpT==""){
+    if(tmpT==false){
       this.state.devices.forEach(element => {
         if(element.name === this.state.selected){
           data=element;
         }
       });
     }else{
+      if(tmpT=="directory"){
+        tmpT="folder";
+      }
       data={
         name: this.state.selected,
         type: tmpT
       }
     }
+    console.log(data);
     this.onIClick(data);
   }
 
