@@ -1,4 +1,6 @@
 import React from "react";
+import { Portal } from 'react-portal';
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 import mime from 'mime-types';
 import ToolBar from "./ToolBar/toolBar";
 import Explorer from "./Explorer/explorer";
@@ -52,6 +54,7 @@ class FileManager extends React.Component {
     this.onRenameCancel = this.onRenameCancel.bind(this);
     this.onRenameReady = this.onRenameReady.bind(this);
     this.onRenameOpen = this.onRenameOpen.bind(this);
+    this.onOpen = this.onOpen.bind(this);
     this.onCopy = this.onCopy.bind(this);
     this.onPaste = this.onPaste.bind(this);
     this.onRemove = this.onRemove.bind(this);
@@ -370,6 +373,24 @@ class FileManager extends React.Component {
     }
   }
 
+  onOpen(){
+    const tmpT=this.state.details.props.children[1].toLowerCase().trim();
+    let data;
+    if(tmpT==""){
+      this.state.devices.forEach(element => {
+        if(element.name === this.state.selected){
+          data=element;
+        }
+      });
+    }else{
+      data={
+        name: this.state.selected,
+        type: tmpT
+      }
+    }
+    this.onIClick(data);
+  }
+
   render() {  
     return (
       <div className="fm">
@@ -389,15 +410,38 @@ class FileManager extends React.Component {
           onPaste={this.onPaste}
           onRemoveOpen={this.onRemoveOpen}
         /> 
-        <Explorer
-          mainType={this.state.mainType}
-          currentPath={this.state.currentPath} 
-          onIClick={this.onIClick}
-          onRClick={this.onRClick}
-          selected={this.state.selected}
-          listDir={this.state.listDir}
-          devices={this.state.devices}
-        />
+        <ContextMenuTrigger id="fileManager.explorer.container"> 
+          <Explorer
+            mainType={this.state.mainType}
+            currentPath={this.state.currentPath} 
+            onIClick={this.onIClick}
+            onRClick={this.onRClick}
+            selected={this.state.selected}
+            listDir={this.state.listDir}
+            devices={this.state.devices}
+            onRenameOpen={this.onRenameOpen}
+            onRemoveOpen={this.onRemoveOpen}
+            onCopy={this.onCopy}
+            onOpen={this.onOpen}
+          />
+        </ContextMenuTrigger>
+        <Portal>
+          <ContextMenu id="fileManager.explorer.container">
+            <MenuItem onClick={this.onCreateFolderOpen}>
+              <b>New Folder</b>
+            </MenuItem>
+            <MenuItem divider />
+            {window.clipBoard !== "" ? (
+              <MenuItem onClick={this.onPaste}>
+                Paste
+              </MenuItem>
+            ) : null}
+            <MenuItem divider />
+            <MenuItem onClick={this.handleClick}>
+              Proprieties
+            </MenuItem>
+          </ContextMenu>
+        </Portal>
         <StatusBar 
           items={this.state.listDir}
         />

@@ -86,25 +86,22 @@ class Explorer extends React.Component {
             </ContextMenuTrigger>
             <Portal>
               <ContextMenu id="fileManager.explorer.files">
-                <MenuItem data={{foo: 'bar'}} onClick={this.handleClick}>
+                <MenuItem onClick={this.props.onOpen}>
                   <b>Open</b>
                 </MenuItem>
                 <MenuItem divider />
-                <MenuItem data={{foo: 'bar'}} onClick={this.handleClick}>
+                <MenuItem onClick={this.props.onCopy}>
                   Copy
                 </MenuItem>
-                <MenuItem data={{foo: 'bar'}} onClick={this.handleClick}>
-                  Paste
-                </MenuItem>
-                <MenuItem data={{foo: 'bar'}} onClick={this.handleClick}>
+                <MenuItem onClick={this.props.onRenameOpen}>
                   Rename
                 </MenuItem>
                 <MenuItem divider />
-                <MenuItem data={{foo: 'bar'}} onClick={this.handleClick}>
+                <MenuItem onClick={this.props.onRemoveOpen}>
                   Delete
                 </MenuItem>
                 <MenuItem divider />
-                <MenuItem data={{foo: 'bar'}} onClick={this.handleClick}>
+                <MenuItem onClick={this.handleClick}>
                   Proprieties
                 </MenuItem>
               </ContextMenu>
