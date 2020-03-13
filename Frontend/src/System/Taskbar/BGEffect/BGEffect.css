@@ -1,0 +1,15 @@
+.BGEffect{
+  z-index: -900;
+  width: 450px;
+  height: 100px;
+  background: rgb(2,0,36);
+  background: linear-gradient(220deg, rgba(2,0,36,0) 26%, rgba(255, 255, 255, 0.13) 45%, rgba(255,255,255,0) 74%);
+  position: absolute;
+  animation: mymove 20s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes mymove {
+    from {left: -100px;}
+    to {left: 100%;}
+}
