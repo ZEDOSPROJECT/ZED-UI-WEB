@@ -39,7 +39,11 @@ class Icon extends React.Component {
       if(mimeType!==false){
         let hasIcon=false;
         if(mimeType.includes("image/")){
-          theIcon=REST_URL+'/API/SYSTEM/IO/FILE/read.php?path='+this.props.currentPath+this.props.data.name;
+          if(this.props.searchMode){
+            theIcon=REST_URL+'/API/SYSTEM/IO/FILE/read.php?path='+this.props.data.path+this.props.data.name;
+          }else{
+            theIcon=REST_URL+'/API/SYSTEM/IO/FILE/read.php?path='+this.props.currentPath+this.props.data.name;
+          }
           hasIcon=true;
         }
         if(mimeType.includes("audio/")){

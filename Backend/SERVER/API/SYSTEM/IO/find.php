@@ -7,13 +7,22 @@
     $RESPONSE='{ "data" :[';
     $i=0;
     foreach ($result_R as $key => $value) {
+
+        $temp = explode('/', $value);
+
+        unset($temp[count($temp) - 1]);
+
+        $filePath=implode('/', $temp)."/";
+
         if(is_dir($PATH.$value) == 1) {
             $TYPE = 'folder';
         } else {
             $TYPE = "file";
         } 
-        $RESPONSE = $RESPONSE.'{ "name": "'.$value.'", "type": "'.$TYPE.'", "path": "'.$PATH.'"},';
-        $i=$i+1;
+        if($TYPE=="file"){
+            $RESPONSE = $RESPONSE.'{ "name": "'.basename($value).'", "type": "'.$TYPE.'", "path": "'.$filePath.'"},';
+            $i=$i+1;
+        }
     }
     if($i==0){
         echo json_encode('{ "data":[]}  '); 

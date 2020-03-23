@@ -57,26 +57,52 @@ class Explorer extends React.Component {
           currentType=mimeVideo;
         }
       }
-      if(this.props.listDir !== undefined){
-        if(this.props.listDir.length !== 0){
-          indents=this.props.listDir.map(data => {
-            return (
-              <Icon
-                currentPath={this.props.currentPath} 
-                onIClick={this.props.onIClick}
-                onRClick={this.props.onRClick}
-                selected={this.props.selected}
-                key={data.name}
-                data={data}
-              />
-            );
-          }); 
-        }else{
-          indents=<div id="explorerFS" style={{ color: 'black', marginTop: 20 }}><center>This folder is empty</center></div>
+
+      if(this.props.searchMode){
+        if(this.props.searchListDir !== undefined){
+          if(this.props.searchListDir.length !== 0){
+            indents=this.props.searchListDir.map(data => {
+              return (
+                <Icon
+                  currentPath={this.props.currentPath} 
+                  onIClick={this.props.onIClick}
+                  onRClick={this.props.onRClick}
+                  selected={this.props.selected}
+                  searchMode={this.props.searchMode}
+                  key={data.name}
+                  data={data}
+                />
+              );
+            }); 
+          }else{
+            indents=<div id="explorerFS" style={{ color: 'black', marginTop: 20 }}><center>This folder is empty</center></div>
+          } 
+        }else {
+          indents=<div>Searching . . .</div>;
         } 
-      }else {
-        indents=<div>Loading . . .</div>;
-      } 
+      }else{
+        if(this.props.listDir !== undefined){
+          if(this.props.listDir.length !== 0){
+            indents=this.props.listDir.map(data => {
+              return (
+                <Icon
+                  currentPath={this.props.currentPath} 
+                  onIClick={this.props.onIClick}
+                  onRClick={this.props.onRClick}
+                  selected={this.props.selected}
+                  searchMode={this.props.searchMode}
+                  key={data.name}
+                  data={data}
+                />
+              );
+            }); 
+          }else{
+            indents=<div id="explorerFS" style={{ color: 'black', marginTop: 20 }}><center>This folder is empty</center></div>
+          } 
+        }else {
+          indents=<div>Loading . . .</div>;
+        } 
+      }
     }
     
     return( <div className="fExplorer">

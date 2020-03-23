@@ -22,6 +22,7 @@ class FileManager extends React.Component {
       selected: "",
       currentPath: "/",
       listDir:[],
+      searchListDir:[],
       history:["/"],
       historyIndex: 0,
       details:undefined,
@@ -30,7 +31,8 @@ class FileManager extends React.Component {
       renameVisible: false,
       mainType:"",
       devices:undefined,
-      removeVisible: false
+      removeVisible: false,
+      searchMode: false
     };
 
     setTimeout(() => {
@@ -61,6 +63,70 @@ class FileManager extends React.Component {
     this.onRemove = this.onRemove.bind(this);
     this.onRemoveCancel = this.onRemoveCancel.bind(this);
     this.onRemoveOpen = this.onRemoveOpen.bind(this);
+    this.onSearchModeChange = this.onSearchModeChange.bind(this);
+    this.onSearchGo = this.onSearchGo.bind(this);
+  }
+
+  onSearchGo(query){
+    let path=this.state.currentPath;
+    let currentTitle="My Search";
+    this.props.onTitleChange(currentTitle);
+    if(path.substr(path.length - 1)!=="/"){
+      path=path+"/";
+    }
+    this.setState({
+      currentPath: path,
+      historyIndex: this.state.historyIndex,
+      details:undefined
+    });
+    fetch(REST_URL+'/API/SYSTEM/IO/find.php?query='+query+'&path='+path)
+    .then(response => response.json())
+    .then(json => {
+        const JSONdata=JSON.parse(json);
+        let mimeTypes=[];
+
+        JSONdata.data.forEach(file => {
+          if(file.type!=="folder"){
+            mimeTypes.push(mime.lookup(file.name));
+          }
+        });
+
+        var mf = 1;
+        var m = 0;
+        var item;
+        for (var i=0; i<mimeTypes.length; i++)
+        {
+            for (var j=i; j<mimeTypes.length; j++)
+            {
+                    if (mimeTypes[i] === mimeTypes[j])
+                    m++;
+                    if (mf<m)
+                    {
+                      mf=m; 
+                      item = mimeTypes[i];
+                    }
+            }
+            m=0;
+        }
+        this.setState({
+          searchListDir: JSONdata.data,
+          mainType: item
+        });
+    });
+  }
+
+  onSearchModeChange(){
+    if(this.state.searchMode){
+      this.refresh();
+    }
+    this.setState({
+      searchMode: !this.state.searchMode,
+      searchListDir: [],
+      listDir: [],
+      selected:"",
+      details:undefined,
+      JSONdetails:undefined,
+    })
   }
 
   onRemove(){
@@ -341,7 +407,13 @@ class FileManager extends React.Component {
           clickSoundPlayer.play();
         }, 10);
       }else{
-        const file=this.state.currentPath + data.name;
+        console.log(data);
+        let file;
+        if(this.state.searchMode){
+          file=data.path+data.name;
+        }else{
+          file=this.state.currentPath + data.name;
+        }
         const mimeType=mime.lookup(file);
         if(mimeType.includes("image/")){
           window.ZED_RUN={
@@ -393,7 +465,6 @@ class FileManager extends React.Component {
         type: tmpT
       }
     }
-    console.log(data);
     this.onIClick(data);
   }
 
@@ -408,13 +479,16 @@ class FileManager extends React.Component {
         />
         <LeftBar
           listFolder={this.listFolder} 
-          userDirs={this.props.userDirs}
+          userDirs={this.props.userDirs}onSearchModeChange
           details={this.state.details}
           onCreateFolderOpen={this.onCreateFolderOpen}
           onRenameOpen={this.onRenameOpen}
           onCopy={this.onCopy}
           onPaste={this.onPaste}
           onRemoveOpen={this.onRemoveOpen}
+          searchMode={this.state.searchMode}
+          onSearchModeChange={this.onSearchModeChange}
+          onSearchGo={this.onSearchGo}
         /> 
         <ContextMenuTrigger id="fileManager.explorer.container"> 
           <Explorer
@@ -424,11 +498,13 @@ class FileManager extends React.Component {
             onRClick={this.onRClick}
             selected={this.state.selected}
             listDir={this.state.listDir}
+            searchListDir={this.state.searchListDir}
             devices={this.state.devices}
             onRenameOpen={this.onRenameOpen}
             onRemoveOpen={this.onRemoveOpen}
             onCopy={this.onCopy}
             onOpen={this.onOpen}
+            searchMode={this.state.searchMode}
           />
         </ContextMenuTrigger>
         <Portal>
