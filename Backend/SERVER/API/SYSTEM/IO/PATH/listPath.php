@@ -10,7 +10,7 @@
             } else {
                 $TYPE = "file";
             } 
-            $RESPONSE = $RESPONSE.'{ "name": "'.$value.'", "type": "'.$TYPE.'"},';
+            $RESPONSE = $RESPONSE.'{ "name": "'.$value.'", "type": "'.$TYPE.'", "path": "'.$PATH.'"},';
             $i=$i+1;
         } 
     }
