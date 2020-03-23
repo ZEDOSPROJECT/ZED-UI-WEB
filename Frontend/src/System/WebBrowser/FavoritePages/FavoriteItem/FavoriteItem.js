@@ -31,7 +31,7 @@ class FavoriteItem extends React.Component {
                 <div onClick={this.onLoadPage} className="FavoriteItemLabel">
                     {this.props.TITLE}
                 </div>
-                <img className="deleteIconFav" onClick={this.onRemove} src={DeleteIcon} />
+                <img alt="" className="deleteIconFav" onClick={this.onRemove} src={DeleteIcon} />
                 <br/ >
             </div>
         );

@@ -450,14 +450,14 @@ class FileManager extends React.Component {
   onOpen(){
     let tmpT=this.state.JSONdetails.MIME;
     let data;
-    if(tmpT==false){
+    if(tmpT===false){
       this.state.devices.forEach(element => {
         if(element.name === this.state.selected){
           data=element;
         }
       });
     }else{
-      if(tmpT=="directory"){
+      if(tmpT==="directory"){
         tmpT="folder";
       }
       data={
@@ -479,7 +479,7 @@ class FileManager extends React.Component {
         />
         <LeftBar
           listFolder={this.listFolder} 
-          userDirs={this.props.userDirs}onSearchModeChange
+          userDirs={this.props.userDirs}
           details={this.state.details}
           onCreateFolderOpen={this.onCreateFolderOpen}
           onRenameOpen={this.onRenameOpen}

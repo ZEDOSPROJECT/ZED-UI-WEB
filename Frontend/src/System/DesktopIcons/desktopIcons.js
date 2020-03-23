@@ -13,7 +13,7 @@ class DesktopIcons extends React.Component {
     }
     shouldComponentUpdate(){
         this.desktopRefeshTimer++;
-        if(this.desktopRefeshTimer==10){
+        if(this.desktopRefeshTimer===10){
             this.desktopRefeshTimer=0;
             return true;
         }else{

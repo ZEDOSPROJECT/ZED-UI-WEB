@@ -1,5 +1,4 @@
 import React from 'react';
-import searchAnim from "./search.gif";
 import './SearchCombo.css';
 
 export default class SearchCombo extends React.Component {

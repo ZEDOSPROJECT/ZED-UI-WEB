@@ -1,7 +1,6 @@
 import React from "react";
 import Tab from "./Tab/Tab";
 import NewTab from './NewTab/NewTab';
-import FavoritePages from './FavoritePages/FavoritePages';
 import getUUID from 'uuid';
 import "./styles.css";
 import BrowserContainer from "./BrowserContainer/BrowserContainer";
