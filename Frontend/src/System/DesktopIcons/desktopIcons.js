@@ -21,7 +21,6 @@ class DesktopIcons extends React.Component {
         }
     }
     render(){
-        console.log()
         let storedIcons=[];
         let fianlRender=null;
         if(localStorage.favoriteIcons){

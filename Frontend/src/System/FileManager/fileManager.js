@@ -407,7 +407,6 @@ class FileManager extends React.Component {
           clickSoundPlayer.play();
         }, 10);
       }else{
-        console.log(data);
         let file;
         if(this.state.searchMode){
           file=data.path+data.name;
