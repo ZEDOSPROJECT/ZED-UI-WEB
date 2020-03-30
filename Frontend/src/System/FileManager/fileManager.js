@@ -1,4 +1,6 @@
 import React from "react";
+import { Portal } from 'react-portal';
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 import mime from 'mime-types';
 import ToolBar from "./ToolBar/toolBar";
 import Explorer from "./Explorer/explorer";
@@ -20,14 +22,17 @@ class FileManager extends React.Component {
       selected: "",
       currentPath: "/",
       listDir:[],
+      searchListDir:[],
       history:["/"],
       historyIndex: 0,
       details:undefined,
+      JSONdetails:undefined,
       createFolderVisible: false,
       renameVisible: false,
       mainType:"",
       devices:undefined,
-      removeVisible: false
+      removeVisible: false,
+      searchMode: false
     };
 
     setTimeout(() => {
@@ -40,7 +45,7 @@ class FileManager extends React.Component {
     }, 10);
 
     this.onIClick = this.onIClick.bind(this);
-    this.onDBClick = this.onDBClick.bind(this);
+    this.onRClick = this.onRClick.bind(this);
     this.listFolder = this.listFolder.bind(this);
     this.goBack = this.goBack.bind(this);
     this.goForward = this.goForward.bind(this);
@@ -52,11 +57,76 @@ class FileManager extends React.Component {
     this.onRenameCancel = this.onRenameCancel.bind(this);
     this.onRenameReady = this.onRenameReady.bind(this);
     this.onRenameOpen = this.onRenameOpen.bind(this);
+    this.onOpen = this.onOpen.bind(this);
     this.onCopy = this.onCopy.bind(this);
     this.onPaste = this.onPaste.bind(this);
     this.onRemove = this.onRemove.bind(this);
     this.onRemoveCancel = this.onRemoveCancel.bind(this);
     this.onRemoveOpen = this.onRemoveOpen.bind(this);
+    this.onSearchModeChange = this.onSearchModeChange.bind(this);
+    this.onSearchGo = this.onSearchGo.bind(this);
+  }
+
+  onSearchGo(query){
+    let path=this.state.currentPath;
+    let currentTitle="My Search";
+    this.props.onTitleChange(currentTitle);
+    if(path.substr(path.length - 1)!=="/"){
+      path=path+"/";
+    }
+    this.setState({
+      currentPath: path,
+      historyIndex: this.state.historyIndex,
+      details:undefined
+    });
+    fetch(REST_URL+'/API/SYSTEM/IO/find.php?query='+query+'&path='+path)
+    .then(response => response.json())
+    .then(json => {
+        const JSONdata=JSON.parse(json);
+        let mimeTypes=[];
+
+        JSONdata.data.forEach(file => {
+          if(file.type!=="folder"){
+            mimeTypes.push(mime.lookup(file.name));
+          }
+        });
+
+        var mf = 1;
+        var m = 0;
+        var item;
+        for (var i=0; i<mimeTypes.length; i++)
+        {
+            for (var j=i; j<mimeTypes.length; j++)
+            {
+                    if (mimeTypes[i] === mimeTypes[j])
+                    m++;
+                    if (mf<m)
+                    {
+                      mf=m; 
+                      item = mimeTypes[i];
+                    }
+            }
+            m=0;
+        }
+        this.setState({
+          searchListDir: JSONdata.data,
+          mainType: item
+        });
+    });
+  }
+
+  onSearchModeChange(){
+    if(this.state.searchMode){
+      this.refresh();
+    }
+    this.setState({
+      searchMode: !this.state.searchMode,
+      searchListDir: [],
+      listDir: [],
+      selected:"",
+      details:undefined,
+      JSONdetails:undefined,
+    })
   }
 
   onRemove(){
@@ -189,6 +259,7 @@ class FileManager extends React.Component {
   
           this.setState({
             details: final,
+            JSONdetails: json
           });
         }
     });
@@ -286,82 +357,114 @@ class FileManager extends React.Component {
     }
   }
 
-  onIClick(data) {
+  onRClick(data) {
     this.setState({ selected: data.name });
     detailsFlag=true;
     this.getDetails(this.state.currentPath+data.name);
   }
 
-  onDBClick(data) {
-    detailsFlag=false;
-    this.setState({ selected: "",details:undefined });
-    if (data.type === "folder") {
-      const newPath=this.state.currentPath + data.name + "/";
-      this.listFolder(newPath);
-      let newHistory=[];
-      for (let index = 0; index <= this.state.historyIndex; index++) {
-        newHistory.push(this.state.history[index]);
+  onIClick(data) {
+    if(this.state.selected === data.name){
+      detailsFlag=false;
+      this.setState({ selected: "",details:undefined });
+      if (data.type === "folder") {
+        const newPath=this.state.currentPath + data.name + "/";
+        this.listFolder(newPath);
+        let newHistory=[];
+        for (let index = 0; index <= this.state.historyIndex; index++) {
+          newHistory.push(this.state.history[index]);
+        }
+        newHistory.push(newPath);
+        setTimeout(() => {
+          this.setState({
+            currentPath: newPath,
+            historyIndex: this.state.historyIndex+1,
+            history: newHistory,
+            details: undefined,
+          });
+          let clickSoundPlayer = new Audio(clickSound);
+          clickSoundPlayer.play();
+        }, 10);
+      } else if(data.type === "hdd"){
+        let newPath=data.mountpoint;
+        if(newPath.substr(newPath.length - 1)!=="/"){
+          newPath=newPath+"/";
+        }
+        this.listFolder(newPath);
+        let newHistory=[];
+        for (let index = 0; index <= this.state.historyIndex; index++) {
+          newHistory.push(this.state.history[index]);
+        }
+        newHistory.push(newPath);
+        setTimeout(() => {
+          this.setState({
+            currentPath: newPath,
+            historyIndex: this.state.historyIndex+1,
+            history: newHistory,
+            details: undefined,
+          });
+          let clickSoundPlayer = new Audio(clickSound);
+          clickSoundPlayer.play();
+        }, 10);
+      }else{
+        let file;
+        if(this.state.searchMode){
+          file=data.path+data.name;
+        }else{
+          file=this.state.currentPath + data.name;
+        }
+        const mimeType=mime.lookup(file);
+        if(mimeType.includes("image/")){
+          window.ZED_RUN={
+            Label: 'Picture View',
+            Url: REST_URL+'/APPS/Picture Visualizer/index.php?path='+file,
+            Icon: REST_URL+"/API/SYSTEM/ICONS/ModernXP (27).png",
+            SystemWindow: false
+          } 
+        } 
+        if(mimeType.includes("application/pdf")){
+          window.ZED_RUN={
+            Label: 'PDF Reader',
+            Url: REST_URL+'/APPS/PDF/index.php?path='+file,
+            Icon: REST_URL+"/API/SYSTEM/ICONS/PDF.png",
+            SystemWindow: false
+          } 
+        } 
+        if(mimeType.includes("audio/") || mimeType.includes("video/")){
+          window.ZED_RUN={
+            Label: 'ZED Media Player',
+            Url: REST_URL+'/APPS/ZED Media Player/index.php?path='+file,
+            Icon: REST_URL+"/APPS/ZED Media Player/favicon.png",
+            SystemWindow: false
+          } 
+        }
       }
-      newHistory.push(newPath);
-      setTimeout(() => {
-        this.setState({
-          currentPath: newPath,
-          historyIndex: this.state.historyIndex+1,
-          history: newHistory,
-          details: undefined,
-        });
-        let clickSoundPlayer = new Audio(clickSound);
-        clickSoundPlayer.play();
-      }, 10);
-    } else if(data.type === "hdd"){
-      let newPath=data.mountpoint;
-      if(newPath.substr(newPath.length - 1)!=="/"){
-        newPath=newPath+"/";
-      }
-      this.listFolder(newPath);
-      let newHistory=[];
-      for (let index = 0; index <= this.state.historyIndex; index++) {
-        newHistory.push(this.state.history[index]);
-      }
-      newHistory.push(newPath);
-      setTimeout(() => {
-        this.setState({
-          currentPath: newPath,
-          historyIndex: this.state.historyIndex+1,
-          history: newHistory,
-          details: undefined,
-        });
-        let clickSoundPlayer = new Audio(clickSound);
-        clickSoundPlayer.play();
-      }, 10);
     }else{
-      const file=this.state.currentPath + data.name;
-      const mimeType=mime.lookup(file);
-      if(mimeType.includes("image/")){
-        window.ZED_RUN={
-          Label: 'Picture View',
-          Url: REST_URL+'/APPS/Picture Visualizer/index.php?path='+file,
-          Icon: REST_URL+"/API/SYSTEM/ICONS/ModernXP (27).png",
-          SystemWindow: false
-        } 
-      } 
-      if(mimeType.includes("application/pdf")){
-        window.ZED_RUN={
-          Label: 'PDF Reader',
-          Url: REST_URL+'/APPS/PDF/index.php?path='+file,
-          Icon: REST_URL+"/API/SYSTEM/ICONS/PDF.png",
-          SystemWindow: false
-        } 
-      } 
-      if(mimeType.includes("audio/") || mimeType.includes("video/")){
-        window.ZED_RUN={
-          Label: 'ZED Media Player',
-          Url: REST_URL+'/APPS/ZED Media Player/index.php?path='+file,
-          Icon: REST_URL+"/APPS/ZED Media Player/favicon.png",
-          SystemWindow: false
-        } 
+      this.setState({ selected: data.name });
+      detailsFlag=true;
+      this.getDetails(this.state.currentPath+data.name);
+    }
+  }
+
+  onOpen(){
+    let tmpT=this.state.JSONdetails.MIME;
+    let data;
+    if(tmpT===false){
+      this.state.devices.forEach(element => {
+        if(element.name === this.state.selected){
+          data=element;
+        }
+      });
+    }else{
+      if(tmpT==="directory"){
+        tmpT="folder";
+      }
+      data={
+        name: this.state.selected,
+        type: tmpT
       }
     }
+    this.onIClick(data);
   }
 
   render() {  
@@ -382,16 +485,44 @@ class FileManager extends React.Component {
           onCopy={this.onCopy}
           onPaste={this.onPaste}
           onRemoveOpen={this.onRemoveOpen}
+          searchMode={this.state.searchMode}
+          onSearchModeChange={this.onSearchModeChange}
+          onSearchGo={this.onSearchGo}
         /> 
-        <Explorer
-          mainType={this.state.mainType}
-          currentPath={this.state.currentPath} 
-          onIClick={this.onIClick}
-          onDBClick={this.onDBClick}
-          selected={this.state.selected}
-          listDir={this.state.listDir}
-          devices={this.state.devices}
-        />
+        <ContextMenuTrigger id="fileManager.explorer.container"> 
+          <Explorer
+            mainType={this.state.mainType}
+            currentPath={this.state.currentPath} 
+            onIClick={this.onIClick}
+            onRClick={this.onRClick}
+            selected={this.state.selected}
+            listDir={this.state.listDir}
+            searchListDir={this.state.searchListDir}
+            devices={this.state.devices}
+            onRenameOpen={this.onRenameOpen}
+            onRemoveOpen={this.onRemoveOpen}
+            onCopy={this.onCopy}
+            onOpen={this.onOpen}
+            searchMode={this.state.searchMode}
+          />
+        </ContextMenuTrigger>
+        <Portal>
+          <ContextMenu id="fileManager.explorer.container">
+            <MenuItem onClick={this.onCreateFolderOpen}>
+              <b>New Folder</b>
+            </MenuItem>
+            <MenuItem divider />
+            {window.clipBoard !== "" ? (
+              <MenuItem onClick={this.onPaste}>
+                Paste
+              </MenuItem>
+            ) : null}
+            <MenuItem divider />
+            <MenuItem onClick={this.handleClick}>
+              Proprieties
+            </MenuItem>
+          </ContextMenu>
+        </Portal>
         <StatusBar 
           items={this.state.listDir}
         />

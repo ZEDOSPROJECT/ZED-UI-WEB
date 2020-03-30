@@ -1,5 +1,4 @@
 import React from 'react';
-import mime from 'mime-types';
 import ToolBar from "../../FileManager/ToolBar/toolBar";
 import FileBrowser from '../../FileManager/Explorer/explorer';
 import LeftBar from "../../FileManager/LeftBar/leftBar";
@@ -7,6 +6,7 @@ import clickSound from '../../FileManager/click.mp3';
 import { REST_URL } from '../../../REST_URL';
 import './save.css';
 
+// eslint-disable-next-line
 let detailsFlag=false;
 
 class Save extends React.Component  {

@@ -18,7 +18,7 @@ class ReactButton extends React.Component {
   render() {
     return (
       <div onClick={this.handleClick} className="ReactButton">
-        <img draggable="false" style={{ filter: ( this.props.DISABLED == true ? ("grayscale(100%)"):("grayscale(0%)")) }} src={this.props.icon} width="25" alt="" />
+        <img draggable="false" style={{ filter: ( this.props.DISABLED === true ? ("grayscale(100%)"):("grayscale(0%)")) }} src={this.props.icon} width="25" alt="" />
       </div>
     );
   }

@@ -3,9 +3,6 @@ import questionIcon from './question.png';
 import './question.css';
 
 export default class Question extends React.Component {
-    constructor(props){
-        super(props);
-    }
     render(){
         if(this.props.visible){
             return(<div className="questionDialog">

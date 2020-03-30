@@ -10,18 +10,16 @@ class VolumeControl extends Component {
         super(props);
 
         this.state = {
-            volumeLevel: 0,
             volumeScreen:false
         }
 
         this.toggleVolumeScreen = this.toggleVolumeScreen.bind(this);
         this.onVolumeChange = this.onVolumeChange.bind(this);
 
-        fetch(REST_URL+'/API/SYSTEM/SETTINGS/getAudioVolume.php')
-        .then(response => response.text())
-        .then(text => {
-            this.setState({volumeLevel: text});
-        });
+        if(!localStorage.systemVolume){
+            localStorage.systemVolume=50;
+        }
+        fetch(REST_URL+'/API/SYSTEM/SETTINGS/setAudioVolume.php?volume='+localStorage.systemVolume);
     }
 
     toggleVolumeScreen(){
@@ -31,7 +29,7 @@ class VolumeControl extends Component {
 
     onVolumeChange(e){
         fetch(REST_URL+'/API/SYSTEM/SETTINGS/setAudioVolume.php?volume='+e.target.value);
-        this.setState({volumeLevel: e.target.value});
+        localStorage.systemVolume=e.target.value;
         let testSoundPLayer = new Audio(testSound);
         testSoundPLayer.play();
     }
@@ -46,7 +44,7 @@ class VolumeControl extends Component {
                 <img onClick={this.toggleVolumeScreen} draggable="false" alt="" src={SoundIcon} width="32" height="32" />
                 { this.state.volumeScreen ? (<div className="volumeScreen">
                     System Volume:<br/>
-                    <input className="volumeScreenSlider" onMouseUp={this.onVolumeChange} defaultValue={this.state.volumeLevel} type="range" min="0" step="1" max="100"/>
+                    <input className="volumeScreenSlider" onMouseUp={this.onVolumeChange} defaultValue={localStorage.systemVolume} type="range" min="0" step="1" max="100"/>
                 </div>) : null}
             </div>
         );

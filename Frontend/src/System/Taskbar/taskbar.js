@@ -4,6 +4,7 @@ import TaskButton from './Task/taskButton';
 import NetworkStatus from './networkStatus/networkStatus';
 import BatteryStatus from './batteryStatus/batteryStatus';
 import VolumeControl from './volumeControl/VolumeControl';
+import BGEffect from './BGEffect/BGEffect';
 import './taskbar.css';
 
 class Taskbar extends React.Component {
@@ -41,6 +42,7 @@ class Taskbar extends React.Component {
             <table className="Taskbar" style={{ zIndex: window.maxZIndex+10, backgroundColor: this.convertHex(window.systemColor0,95) }}>
                 <tbody>
                     <tr style={{ border: 'none' }} >
+                        <BGEffect />
                         <td style={{ width: 32 }}><div title="Click to Start" onClick={this.props.toggleMenu} className="StartMenu" /></td>
                         <td className="buttonsArea">{iconList}</td>
                         <td style={{ width: 32 }}><VolumeControl /></td>

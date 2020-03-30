@@ -7,7 +7,7 @@ export default class Finish extends React.Component {
         return(<div>
             <center>
             <h1>All Done!</h1>
-            <p><img className="FinishPNG" src={FinishLogo} /></p>
+            <p><img alt="" className="FinishPNG" src={FinishLogo} /></p>
             <p>Now you will enter in your no ZED installation</p>   
             <br/>
             <hr/>

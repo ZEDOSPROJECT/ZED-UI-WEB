@@ -76,7 +76,6 @@ class BrowserContainer extends React.Component {
         found=true;
       }
     });
-    console.log(found);
     return found;
   }
 
