@@ -11,6 +11,7 @@ import StartMenu from './System/StartMenu/startMenu';
 import DesktopIcons from './System/DesktopIcons/desktopIcons';
 import BlueLightFilter from './System/BlueFilter/blueFilter';
 import ScreenSaver from './System/ScreenSaver/ScreenSaver';
+import UI3D from './System/UI3D/UI3D';
 import { REST_URL } from './REST_URL';
 import './App.css';
 import { setTimeout } from 'timers';
@@ -30,7 +31,8 @@ class App extends Component {
         nextWindowX: 15,
         nextWindowY: 15,
         videoWallpaperURL: "",
-        ScreenSaverTimer: 0
+        ScreenSaverTimer: 0,
+        notSwitch3Dlbl:"3D"
     };
     window.clipBoard="";
     window.systemColor0="#06001E";
@@ -56,6 +58,7 @@ class App extends Component {
     this.msgInfo = this.msgInfo.bind(this);
     this.msgError = this.msgError.bind(this);
     this.msgWarn = this.msgWarn.bind(this);
+    this.onSwitch3DClick = this.onSwitch3DClick.bind(this);
 
     this.onMouseMove = this.onMouseMove.bind(this);
 
@@ -95,6 +98,18 @@ class App extends Component {
         this.setState({ScreenSaverTimer: this.state.ScreenSaverTimer+1});
     }, 60000);
   } 
+
+  onSwitch3DClick(e){
+    if(this.state.notSwitch3Dlbl==="3D"){
+        this.setState({
+            notSwitch3Dlbl: "2D"
+        })
+    }else{
+        this.setState({
+            notSwitch3Dlbl: "3D"
+        })
+    }
+  }
 
   processSysCalls(call){
     let calls=call.split(":");
@@ -446,10 +461,15 @@ class App extends Component {
             {windowList}
         </div>
         <DesktopIcons onClickApp={this.onClickApp}/>
+        { this.state.notSwitch3Dlbl !== "3D" ? (
+            <UI3D onClickApp={this.onClickApp}/>
+        ) : null}
         <TaskBar
             openedWindows={this.state.openedWindows}
             onToggleMinimize={this.onToggleMinimize}
             toggleMenu={this.toggleMenu}
+            onSwitch3DClick={this.onSwitch3DClick}
+            notSwitch3Dlbl={this.state.notSwitch3Dlbl}
         />
         <StartMenu
             onClickApp={this.onClickApp}

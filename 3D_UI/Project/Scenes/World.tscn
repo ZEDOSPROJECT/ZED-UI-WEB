@@ -1,0 +1,1068 @@
+[gd_scene load_steps=44 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Home.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Objects/Home_ground_1.jpeg" type="Texture" id=3]
+[ext_resource path="res://Objects/predio.fbx" type="PackedScene" id=4]
+[ext_resource path="res://Objects/casa.fbx" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Station.fbx" type="PackedScene" id=6]
+[ext_resource path="res://Sounds/day.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Objects/tunel.fbx" type="PackedScene" id=8]
+[ext_resource path="res://Textures/r_R.png" type="Texture" id=9]
+[ext_resource path="res://Textures/r_C.png" type="Texture" id=10]
+[ext_resource path="res://Textures/r_A.png" type="Texture" id=11]
+[ext_resource path="res://Objects/mesa.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Objects/earth lp.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scripts/earthRotation.gd" type="Script" id=14]
+[ext_resource path="res://Objects/Loja.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Textures/3DLock.png" type="Texture" id=16]
+[ext_resource path="res://Objects/Lowpoly_Notebook_2.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Objects/rad.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Player/Player.gd" type="Script" id=19]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.258824, 0.258824, 0.258824, 0.721569 )
+
+[sub_resource type="PlaneMesh" id=2]
+material = SubResource( 1 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 6.88056, 2.3022, 8.8466 )
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="BoxShape" id=5]
+
+[sub_resource type="CubeMesh" id=6]
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 1.12824, 1.17966, 1 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 0.2, 0.5, 0.7 )
+
+[sub_resource type="SphereShape" id=9]
+radius = 3.0
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 1, 2, 2 )
+
+[sub_resource type="GDScript" id=11]
+script/source = "extends Spatial
+
+
+func _on_Area_input_event(camera, event, click_position, click_normal, shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed == true:
+			print(\"OK\")
+"
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 2.7, 2.6, 1.2 )
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_texture = ExtResource( 9 )
+
+[sub_resource type="PlaneMesh" id=14]
+material = SubResource( 13 )
+
+[sub_resource type="Skin" id=15]
+bind_count = 1
+bind/0/name = ""
+bind/0/bone = -1
+bind/0/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[sub_resource type="SpatialMaterial" id=16]
+flags_transparent = true
+albedo_texture = ExtResource( 10 )
+
+[sub_resource type="PlaneMesh" id=17]
+material = SubResource( 16 )
+
+[sub_resource type="SpatialMaterial" id=18]
+flags_transparent = true
+albedo_texture = ExtResource( 11 )
+
+[sub_resource type="QuadMesh" id=19]
+material = SubResource( 18 )
+
+[sub_resource type="SpatialMaterial" id=20]
+flags_transparent = true
+albedo_texture = ExtResource( 11 )
+
+[sub_resource type="QuadMesh" id=21]
+material = SubResource( 20 )
+
+[sub_resource type="SpatialMaterial" id=22]
+albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 100, 100, 100 )
+
+[sub_resource type="CubeMesh" id=23]
+material = SubResource( 22 )
+
+[sub_resource type="ConvexPolygonShape" id=24]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[node name="World" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8668, -0.931902, 0 )
+
+[node name="City" type="Node" parent="."]
+
+[node name="tunel" parent="City" instance=ExtResource( 8 )]
+transform = Transform( -3.12994e-07, 0, 1.92114, 0, 2.67562, 0, -1, 0, -1.62921e-07, -82.1049, -3.08215, 62.2331 )
+
+[node name="shadow" type="MeshInstance" parent="City/tunel"]
+transform = Transform( -2.49429, 5.17017, -8.55366e-07, -2.18783, -5.89438, -1.24121e-06, -1.42737e-06, -8.51803e-07, 3.39721, -0.822002, 0.0746459, -3.11029 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/tunel"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/tunel/StaticBody"]
+transform = Transform( 1, 0, 2.84217e-14, 0, 1, 0, 0, 0, 1, -3.65469, 0, -2.13804 )
+shape = SubResource( 3 )
+
+[node name="tunel2" parent="City" instance=ExtResource( 8 )]
+transform = Transform( -1.62921e-07, 0, -1.92114, 0, 2.67562, 0, 1, 0, -3.12993e-07, -93.1192, -3.08215, -57.4966 )
+
+[node name="shadow" type="MeshInstance" parent="City/tunel2"]
+transform = Transform( -2.49429, 5.17017, -8.55366e-07, -2.18783, -5.89438, -1.24121e-06, -1.42737e-06, -8.51803e-07, 3.39721, -0.822002, 0.0746459, -3.11029 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/tunel2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/tunel2/StaticBody"]
+transform = Transform( 1, 0, 2.84217e-14, 0, 1, 0, 0, 0, 1, -3.65469, 0, -2.13804 )
+shape = SubResource( 3 )
+
+[node name="tunel4" parent="City" instance=ExtResource( 8 )]
+transform = Transform( -3.12994e-07, 0, 1.92114, 0, 2.67562, 0, -1, 0, -1.62921e-07, -55.0308, -3.08215, 62.2331 )
+
+[node name="shadow" type="MeshInstance" parent="City/tunel4"]
+transform = Transform( -2.49429, 5.17017, -8.55366e-07, -2.18783, -5.89438, -1.24121e-06, -1.42737e-06, -8.51803e-07, 3.39721, -0.822002, 0.0746459, -3.11029 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/tunel4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/tunel4/StaticBody"]
+transform = Transform( 1, 0, 2.84217e-14, 0, 1, 0, 0, 0, 1, -3.65469, 0, -2.13804 )
+shape = SubResource( 3 )
+
+[node name="tunel3" parent="City" instance=ExtResource( 8 )]
+transform = Transform( -2.11797e-07, 0, -2.49748, 0, 2.67562, 0, 1, 0, -3.12993e-07, -66.0451, -3.08215, -57.4966 )
+
+[node name="shadow" type="MeshInstance" parent="City/tunel3"]
+transform = Transform( -2.49429, 5.17017, -8.55366e-07, -2.18783, -5.89438, -1.24121e-06, -1.42737e-06, -8.51803e-07, 3.39721, -0.822002, 0.0746459, -3.11029 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/tunel3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/tunel3/StaticBody"]
+transform = Transform( 1, 0, 2.84217e-14, 0, 1, 0, 0, 0, 1, -3.65469, 0, -2.13804 )
+shape = SubResource( 3 )
+
+[node name="Casas" type="Node" parent="City"]
+
+[node name="casa" parent="City/Casas" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -40.6852, -6.1518, -10.7386 )
+
+[node name="casa2" parent="City/Casas" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -40.7889, -6.1518, 19.3256 )
+
+[node name="casa4" parent="City/Casas" instance=ExtResource( 5 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -29.7477, -6.1518, 60.9687 )
+
+[node name="casa5" parent="City/Casas" instance=ExtResource( 5 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -2.5472, -6.1518, 60.9687 )
+
+[node name="predio" parent="City/Casas" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7508, -6.13887, 59.9839 )
+
+[node name="predio2" parent="City/Casas" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 17.7846, -6.28601, -4.51452 )
+
+[node name="predio3" parent="City/Casas" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 21.2753, -6.28601, -31.262 )
+
+[node name="predio4" parent="City/Casas" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 21.2753, -6.28601, -58.1114 )
+
+[node name="predio5" parent="City/Casas" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 21.2753, -6.28601, -84.7701 )
+
+[node name="predio6" parent="City/Casas" instance=ExtResource( 4 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -39.05, -6.28601, -66.8056 )
+
+[node name="predio7" parent="City/Casas" instance=ExtResource( 4 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -65.8033, -6.28601, -50.5899 )
+
+[node name="MeshInstance24" type="MeshInstance" parent="City/Casas"]
+transform = Transform( -1.88384e-06, 0, 0.237094, 0, 6.49496, 0, -61.3985, 0, -2.05111e-07, 5.37788, 0.917946, -0.73103 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Casas/MeshInstance24"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Casas/MeshInstance24/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance25" type="MeshInstance" parent="City/Casas"]
+transform = Transform( -0.000247222, 0, 31.1146, 0, 6.49496, 0, -15.3496, 0, -5.12776e-08, -22.6221, -1.08205, -52.731 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Casas/MeshInstance25"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Casas/MeshInstance25/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance26" type="MeshInstance" parent="City/Casas"]
+transform = Transform( -0.000247222, 0, 31.1146, 0, 6.49496, 0, -15.3496, 0, -5.12776e-08, -22.6221, -1.08205, 63.269 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Casas/MeshInstance26"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Casas/MeshInstance26/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance27" type="MeshInstance" parent="City/Casas"]
+transform = Transform( -0.000173056, 0, 21.7802, 0, 6.49496, 0, -15.3496, 0, -5.12776e-08, -31.6221, -1.08205, 21.269 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Casas/MeshInstance27"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Casas/MeshInstance27/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance28" type="MeshInstance" parent="City/Casas"]
+transform = Transform( -9.44884e-05, 0, 11.892, 0, 6.49496, 0, -15.3496, 0, -5.12776e-08, -41.6221, -1.08205, -6.73103 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Casas/MeshInstance28"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Casas/MeshInstance28/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Protection" type="Node" parent="City"]
+
+[node name="MeshInstance" type="MeshInstance" parent="City/Protection"]
+transform = Transform( -118.155, 0, 0, 0, -9.91061, 0, 0, 0, -1.87294, 0, -5.6158, 72.5031 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Protection/MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Protection/MeshInstance/StaticBody"]
+transform = Transform( 0.910043, 0, 0, 0, 0.910043, 0, 0, 0, 0.910043, 0, -0.0508851, 0 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="City/Protection"]
+transform = Transform( -118.155, 0, 0, 0, -9.91061, 0, 0, 0, -1.87294, 0, -5.6158, -72.1061 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Protection/MeshInstance2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Protection/MeshInstance2/StaticBody"]
+transform = Transform( 0.910043, 0, 0, 0, 0.910043, 0, 0, 0, 0.910043, 0, -0.0508851, 0 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="City/Protection"]
+transform = Transform( 1.925e-05, 0, -1.87294, 0, -9.91061, 0, 118.155, 0, 3.05141e-07, 51.7072, -5.6158, -45.5884 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Protection/MeshInstance3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Protection/MeshInstance3/StaticBody"]
+transform = Transform( 0.910043, 0, 0, 0, 0.910043, 0, 0, 0, 0.910043, 0, -0.0508851, 0 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="City/Protection"]
+transform = Transform( 1.925e-05, 0, -1.87294, 0, -9.91061, 0, 118.155, 0, 3.05141e-07, -106.859, -5.6158, -45.5884 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Protection/MeshInstance4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Protection/MeshInstance4/StaticBody"]
+transform = Transform( 0.910043, 0, 0, 0, 0.910043, 0, 0, 0, 0.910043, 0, -0.0508851, 0 )
+shape = SubResource( 7 )
+
+[node name="Home" type="MeshInstance" parent="City"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -25.9183, -5.84066, 12.3334 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+material/13 = null
+material/14 = null
+material/15 = null
+material/16 = null
+material/17 = null
+material/18 = null
+material/19 = null
+material/20 = null
+material/21 = null
+material/22 = null
+material/23 = null
+material/24 = null
+material/25 = null
+material/26 = null
+material/27 = null
+material/28 = null
+material/29 = null
+material/30 = null
+material/31 = null
+material/32 = null
+material/33 = null
+material/34 = null
+material/35 = null
+material/36 = null
+material/37 = null
+material/38 = null
+material/39 = null
+material/40 = null
+material/41 = null
+material/42 = null
+material/43 = null
+material/44 = null
+material/45 = null
+material/46 = null
+material/47 = null
+material/48 = null
+material/49 = null
+material/50 = null
+material/51 = null
+material/52 = null
+material/53 = null
+material/54 = null
+material/55 = null
+material/56 = null
+material/57 = null
+material/58 = null
+material/59 = null
+material/60 = null
+material/61 = null
+material/62 = null
+material/63 = null
+material/64 = null
+material/65 = null
+material/66 = null
+material/67 = null
+material/68 = null
+material/69 = null
+material/70 = null
+material/71 = null
+material/72 = null
+material/73 = null
+material/74 = null
+material/75 = null
+material/76 = null
+material/77 = null
+material/78 = null
+material/79 = null
+material/80 = null
+material/81 = null
+material/82 = null
+material/83 = null
+material/84 = null
+material/85 = null
+material/86 = null
+material/87 = null
+material/88 = null
+material/89 = null
+material/90 = null
+material/91 = null
+material/92 = null
+material/93 = null
+material/94 = null
+material/95 = null
+material/96 = null
+material/97 = null
+material/98 = null
+material/99 = null
+material/100 = null
+material/101 = null
+material/102 = null
+material/103 = null
+material/104 = null
+material/105 = null
+material/106 = null
+material/107 = null
+material/108 = null
+material/109 = null
+material/110 = null
+material/111 = null
+material/112 = null
+material/113 = null
+material/114 = null
+material/115 = null
+material/116 = null
+material/117 = null
+material/118 = null
+material/119 = null
+material/120 = null
+material/121 = null
+material/122 = null
+material/123 = null
+material/124 = null
+material/125 = null
+material/126 = null
+material/127 = null
+material/128 = null
+material/129 = null
+material/130 = null
+material/131 = null
+material/132 = null
+material/133 = null
+material/134 = null
+material/135 = null
+material/136 = null
+material/137 = null
+material/138 = null
+material/139 = null
+material/140 = null
+material/141 = null
+material/142 = null
+material/143 = null
+material/144 = null
+material/145 = null
+material/146 = null
+material/147 = null
+material/148 = null
+material/149 = null
+material/150 = null
+material/151 = null
+material/152 = null
+material/153 = null
+material/154 = null
+material/155 = null
+material/156 = null
+material/157 = null
+material/158 = null
+material/159 = null
+material/160 = null
+material/161 = null
+material/162 = null
+material/163 = null
+material/164 = null
+material/165 = null
+material/166 = null
+material/167 = null
+material/168 = null
+material/169 = null
+material/170 = null
+material/171 = null
+material/172 = null
+material/173 = null
+material/174 = null
+material/175 = null
+material/176 = null
+material/177 = null
+material/178 = null
+material/179 = null
+material/180 = null
+material/181 = null
+material/182 = null
+material/183 = null
+material/184 = null
+material/185 = null
+material/186 = null
+material/187 = null
+material/188 = null
+material/189 = null
+material/190 = null
+material/191 = null
+material/192 = null
+material/193 = null
+material/194 = null
+material/195 = null
+material/196 = null
+material/197 = null
+material/198 = null
+material/199 = null
+material/200 = null
+material/201 = null
+material/202 = null
+material/203 = null
+material/204 = null
+material/205 = null
+material/206 = null
+material/207 = null
+material/208 = null
+material/209 = null
+material/210 = null
+material/211 = null
+material/212 = null
+material/213 = null
+material/214 = null
+material/215 = null
+material/216 = null
+material/217 = null
+material/218 = null
+material/219 = null
+material/220 = null
+material/221 = null
+material/222 = null
+material/223 = null
+material/224 = null
+material/225 = null
+
+[node name="Loja" parent="City/Home" instance=ExtResource( 15 )]
+transform = Transform( 0.79969, 0, 0.0222536, 0, 0.8, 0, -0.0222536, 0, 0.79969, 20.446, 2.743, 6.918 )
+
+[node name="Store" type="StaticBody" parent="City/Home/Loja"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/Loja/Store"]
+shape = SubResource( 8 )
+
+[node name="earth lp" parent="City/Home" instance=ExtResource( 13 )]
+transform = Transform( -3.25841e-08, 0, -0.2, 0, 0.2, 0, 0.2, 0, -3.25841e-08, 20.894, 2.831, 8.436 )
+script = ExtResource( 14 )
+
+[node name="Web Browser" type="StaticBody" parent="City/Home/earth lp"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/earth lp/Web Browser"]
+shape = SubResource( 9 )
+
+[node name="mesa" parent="City/Home" instance=ExtResource( 12 )]
+transform = Transform( -7.47807e-08, 0, -0.172, 0, 0.47, 0, 0.459, 0, -2.80224e-08, 20.5914, 2.16576, 7.4825 )
+
+[node name="Lowpoly_Notebook_2" parent="City/Home" instance=ExtResource( 17 )]
+transform = Transform( 0.338289, 0, 0.132977, 0, 0.35, 0, -0.138518, 0, 0.411022, 18.3334, 2.34066, -0.981695 )
+
+[node name="My Computer" type="StaticBody" parent="City/Home/Lowpoly_Notebook_2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/Lowpoly_Notebook_2/My Computer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 8.9407e-08, 0, 1, -0.783081, 0, -0.263905 )
+shape = SubResource( 10 )
+
+[node name="rad" parent="City/Home" instance=ExtResource( 18 )]
+transform = Transform( -3.25842e-08, 0, -0.2, 0, 0.2, 0, 0.2, 0, -3.25842e-08, 18.3334, 2.34066, 0.918304 )
+script = SubResource( 11 )
+
+[node name="ZED Media Player" type="StaticBody" parent="City/Home/rad"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/rad/ZED Media Player"]
+shape = SubResource( 12 )
+
+[node name="mesa2" parent="City/Home" instance=ExtResource( 12 )]
+transform = Transform( -7.47807e-08, 0, -0.172, 0, 0.47, 0, 0.459, 0, -2.80224e-08, 17.926, 2.166, -0.121 )
+
+[node name="ligths" type="Node" parent="City/Home"]
+
+[node name="OmniLight" type="OmniLight" parent="City/Home/ligths"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4225, -0.00777268, -13.6482 )
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_specular = 1.0
+light_bake_mode = 0
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
+omni_range = 10.0785
+
+[node name="OmniLight2" type="OmniLight" parent="City/Home/ligths"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4225, -0.00777268, -3.89848 )
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_specular = 1.0
+light_bake_mode = 0
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
+omni_range = 10.0785
+
+[node name="OmniLight5" type="OmniLight" parent="City/Home/ligths"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1221, 6.2498, -1.10038 )
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_specular = 1.0
+light_bake_mode = 0
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
+omni_range = 10.0785
+
+[node name="OmniLight6" type="OmniLight" parent="City/Home/ligths"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1221, 6.2498, -13.4155 )
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_specular = 1.0
+light_bake_mode = 0
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
+omni_range = 10.0785
+
+[node name="OmniLight7" type="OmniLight" parent="City/Home/ligths"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6195, 6.25613, -15.8988 )
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_specular = 1.0
+light_bake_mode = 0
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
+omni_range = 10.0785
+
+[node name="OmniLight8" type="OmniLight" parent="City/Home/ligths"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6277, 6.2498, -4.74978 )
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_specular = 1.0
+light_bake_mode = 0
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
+omni_range = 10.0785
+
+[node name="OmniLight3" type="OmniLight" parent="City/Home/ligths"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1428, -0.00777268, -0.445878 )
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_specular = 1.0
+light_bake_mode = 0
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
+omni_range = 10.0785
+
+[node name="OmniLight4" type="OmniLight" parent="City/Home/ligths"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1428, -0.00777268, -12.2177 )
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_specular = 1.0
+light_bake_mode = 0
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
+omni_range = 10.0785
+
+[node name="tectoFinal" type="MeshInstance" parent="City/Home"]
+transform = Transform( -1.54384e-06, -14.2363, 7.60093e-09, 0, -6.22287e-07, -0.173889, 9.47601, -2.31938e-06, 1.23835e-15, 21.256, 12.9133, 6.89247 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/tectoFinal"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/tectoFinal/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="colliders" type="Node" parent="City/Home"]
+
+[node name="MeshInstance" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( -1.88384e-06, 0, 0.237094, 0, 6.49496, 0, -12.2797, 0, -4.10221e-08, -9.62212, 0.917946, -6.73103 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance13" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( -8.87531e-07, 0, 0.237094, 0, 3.14375, 0, -5.44763, 0, -3.86275e-08, -22.8634, 4.15599, -8.61605 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance13"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance13/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance14" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( -3.1916e-07, 0, 0.237094, 0, 3.14375, 0, -1.95899, 0, -3.86275e-08, -16.2884, -2.19162, -16.9154 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance14"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance14/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance15" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( -6.58886e-07, 0, 0.237094, 0, 3.14375, 0, -4.04421, 0, -3.86275e-08, -16.2884, -2.19162, 0.837688 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance15"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance15/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance16" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( -6.13285e-07, 0, 0.237094, 0, 3.14375, 0, -3.76432, 0, -3.86275e-08, -16.2884, -2.19162, -9.01884 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance16"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance16/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( -1.88384e-06, 0, 0.237094, 0, 6.49496, 0, -1.15263, 0, -3.85052e-09, -9.62824, 0.794616, -22.2001 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance3/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( -1.88384e-06, 0, 0.237094, 0, 4.33178, 0, -1.15263, 0, -3.85052e-09, -9.62824, 3.42875, -19.9908 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance4/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( -1.88384e-06, 0, 0.237094, 0, 6.49496, 0, -14.3874, 0, -4.80633e-08, -28.2369, 0.917946, -9.2892 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance2/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance9" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( 9.92027, 0, 0, 0, -1.05816e-06, -0.237094, 0, 12.1838, -7.24605e-08, -18.9135, 0.881836, -6.64559 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance9"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance9/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance10" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( 2.96564, 0, 0, 0, -1.05816e-06, -0.237094, 0, 2.08451, -1.23972e-08, -25.9779, 0.881836, -20.9152 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance10"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance10/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance11" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( 2.96564, 0, 0, 0, -1.05816e-06, -0.237094, 0, 2.08451, -1.23972e-08, -12.8268, 0.881836, -20.9152 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance11"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance11/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance12" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( 5.13218, -6.96159e-07, -0.153558, -4.36258, -5.41836e-07, -0.180647, 5.80001e-07, 2.08451, -9.82399e-08, -17.8288, -3.29112, -21.0494 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance12"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance12/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( 8.87278, 0, 0, 0, 6.49496, 0, 0, 0, 0.237094, -18.9718, 0.917946, -23.2569 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance5"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance5/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( 8.87278, 0, 0, 0, 6.49496, 0, 0, 0, 0.237094, -18.9718, 0.917946, 5.23569 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance6"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance6/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( 6.69832, 0, 0, 0, 3.21302, 0, 0, 0, 0.237094, -16.3779, 4.34165, -6.91692 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance7"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance7/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( 6.14401, 0, 0, 0, 3.21302, 0, 0, 0, 0.237094, -22.2503, -2.24842, -6.91692 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance8"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance8/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance17" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( 6.14401, 0, 0, 0, 3.21302, 0, 0, 0, 0.237094, -22.2503, -2.24842, -18.8467 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance17"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance17/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance18" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( 3.33769, 0, 0, 0, 3.21302, 0, 0, 0, 0.237094, -19.8003, 3.96266, -18.8467 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance18"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance18/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance19" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( -3.50684e-07, 0, 0.237094, 0, 3.21302, 0, -2.15248, 0, -3.86275e-08, -16.2617, 3.96266, -20.8596 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance19"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance19/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance20" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( -2.15985e-07, 0, 0.237094, 0, 3.21302, 0, -1.32571, 0, -3.86275e-08, -22.8973, 3.96266, -17.4503 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance20"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance20/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance21" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( -4.98165e-07, 0, 0.237094, 0, 3.21302, 0, -3.05771, 0, -3.86275e-08, -22.8973, 3.96266, 2.03009 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance21"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance21/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance22" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( -1.30147e-06, 0, 0.237094, 0, 0.578038, 0, -7.98839, 0, -3.86275e-08, -22.8762, 6.73663, -8.66322 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance22"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance22/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance23" type="MeshInstance" parent="City/Home/colliders"]
+transform = Transform( -1.30147e-06, 0, 0.237094, 0, 0.578038, 0, -7.98839, 0, -3.86275e-08, -16.2942, 0.144682, -8.66322 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Home/colliders/MeshInstance23"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/colliders/MeshInstance23/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Station" parent="City" instance=ExtResource( 6 )]
+transform = Transform( 6.43598, 0, 0, 0, 5.95036, 0, 0, 0, 4.45305, -67.1566, -5.58042, 9.10132 )
+
+[node name="Roads" type="Node" parent="City"]
+
+[node name="MeshInstance" type="MeshInstance" parent="City/Roads"]
+transform = Transform( -1.5299e-07, 0, 3.5, 0, 1, 0, -8.75, 0, -3.82475e-07, -2, -5.918, 6 )
+mesh = SubResource( 14 )
+skin = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance12" type="MeshInstance" parent="City/Roads"]
+transform = Transform( 6.60607e-07, 0, 3.881, 0, 1, 0, -8.75, 0, 2.93007e-07, -60.445, -5.918, 21 )
+mesh = SubResource( 14 )
+skin = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance13" type="MeshInstance" parent="City/Roads"]
+transform = Transform( 6.60607e-07, 0, 3.881, 0, 1, 0, -8.75, 0, 2.93007e-07, -60.445, -5.918, 4 )
+mesh = SubResource( 14 )
+skin = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance14" type="MeshInstance" parent="City/Roads"]
+transform = Transform( 6.60607e-07, 0, 3.881, 0, 1, 0, -8.75, 0, 2.93007e-07, -60.445, -5.918, -11 )
+mesh = SubResource( 14 )
+skin = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance15" type="MeshInstance" parent="City/Roads"]
+transform = Transform( 6.60607e-07, 0, 3.881, 0, 1, 0, -8.75, 0, 2.93007e-07, -60.445, -5.918, -49 )
+mesh = SubResource( 14 )
+skin = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance16" type="MeshInstance" parent="City/Roads"]
+transform = Transform( 6.60607e-07, 0, 3.881, 0, 1, 0, -8.75, 0, 2.93007e-07, -60.445, -5.918, -65 )
+mesh = SubResource( 14 )
+skin = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance17" type="MeshInstance" parent="City/Roads"]
+transform = Transform( 6.60607e-07, 0, 3.881, 0, 1, 0, -8.75, 0, 2.93007e-07, -60.445, -5.918, 57 )
+mesh = SubResource( 14 )
+skin = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="City/Roads"]
+transform = Transform( -1.5299e-07, 0, 3.5, 0, 1, 0, -8.75, 0, -3.82475e-07, -2, -5.918, -11 )
+mesh = SubResource( 14 )
+skin = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="City/Roads"]
+transform = Transform( -1.5299e-07, 0, 3.5, 0, 1, 0, -8.75, 0, -3.82475e-07, -2, -5.918, 23 )
+mesh = SubResource( 14 )
+skin = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance6" type="MeshInstance" parent="City/Roads"]
+transform = Transform( -8.75, 0, -5.88733e-07, 0, 1, 0, 1.32121e-06, 0, -3.899, -27.127, -5.918, 39.91 )
+mesh = SubResource( 14 )
+skin = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance7" type="MeshInstance" parent="City/Roads"]
+transform = Transform( -8.75, 0, -6.58946e-07, 0, 1, 0, 1.32121e-06, 0, -4.364, -27.127, -5.918, -30.403 )
+mesh = SubResource( 14 )
+skin = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance9" type="MeshInstance" parent="City/Roads"]
+transform = Transform( -8.75, 0, -5.88733e-07, 0, 1, 0, 1.32121e-06, 0, -3.899, -43.127, -5.918, 39.91 )
+mesh = SubResource( 14 )
+skin = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance8" type="MeshInstance" parent="City/Roads"]
+transform = Transform( -8.75, 0, -6.58946e-07, 0, 1, 0, 1.32121e-06, 0, -4.364, -43.127, -5.918, -30.403 )
+mesh = SubResource( 14 )
+skin = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="City/Roads"]
+transform = Transform( 9.98749, 0, 0, 0, 5.13, 0, 0, 0, 11.985, -8.616, -5.9, -22.523 )
+mesh = SubResource( 17 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="City/Roads"]
+transform = Transform( -4.8948e-07, 0, -9.921, 0, 5.333, 0, 11.198, 0, -4.33661e-07, -8.564, -5.927, 32.477 )
+mesh = SubResource( 17 )
+material/0 = null
+
+[node name="MeshInstance10" type="MeshInstance" parent="City/Roads"]
+transform = Transform( 0.0217589, -14.117, -4.37114e-08, 0, -6.17074e-07, 1, -20.778, -0.0147835, -4.5775e-11, -57, -5.899, 40 )
+mesh = SubResource( 19 )
+material/0 = null
+
+[node name="MeshInstance11" type="MeshInstance" parent="City/Roads"]
+transform = Transform( 0.0217589, -14.117, -4.37114e-08, 0, -6.17074e-07, 1, -20.778, -0.0147835, -4.5775e-11, -57, -5.899, -30 )
+mesh = SubResource( 21 )
+material/0 = null
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1.3832, 0, 0, 0, 1, 14.8668, -3.0681, -20 )
+script = ExtResource( 19 )
+
+[node name="UI" type="Node" parent="Player"]
+
+[node name="Label" type="Label" parent="Player/UI"]
+margin_right = 956.0
+margin_bottom = 587.0
+text = "O"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3DLOCK" type="TextureRect" parent="Player/UI"]
+visible = false
+margin_left = -4.0
+margin_right = 1021.0
+margin_bottom = 603.0
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ground" type="MeshInstance" parent="."]
+transform = Transform( 87.0847, 0, 0, 0, 1, 0, 0, 0, 70.6455, 0, -6.04547, 0 )
+mesh = SubResource( 23 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Ground"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/StaticBody"]
+shape = SubResource( 24 )
+
+[node name="BGSound" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BGSound"]
+stream = ExtResource( 7 )
+volume_db = -11.34
+autoplay = true
+mix_target = 2
