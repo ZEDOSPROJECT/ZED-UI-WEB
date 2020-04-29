@@ -1,6 +1,7 @@
 import React from "react";
 import Progress from 'react-progressbar';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import Folder from "./folder.png";
 import File from "./file.png";
 import AudioFile from "./audio.png";
@@ -72,30 +73,32 @@ class Icon extends React.Component {
 
     return (
       (this.state.ready ? (
-        <div
-          style={
-            this.props.data.name === this.props.selected
-              ? { backgroundColor: "#3191ef", color: "white" }
-              : null
-          }
-          title={this.props.data.name}
-          onClick={data => this.props.onIClick(this.props.data)}
-          onContextMenu={data => this.props.onRClick(this.props.data)}
-          className="icon"
-        >
-          <LazyLoadImage
-            draggable="false"
-            alt=""
-            src={theIcon}
-            className="img"
-          />
-          <div className="label">{this.props.data.name}</div>
-          {
-            this.props.data.type === "hdd"
-              ? ( <div className="usage"><Progress color="midnightblue" completed={this.props.data.fsuse} /></div> )
-              : null
-          }
-        </div>
+          <LazyLoadComponent>
+            <div
+              style={
+                this.props.data.name === this.props.selected
+                  ? { backgroundColor: "#3191ef", color: "white" }
+                  : null
+              }
+              title={this.props.data.name}
+              onClick={data => this.props.onIClick(this.props.data)}
+              onContextMenu={data => this.props.onRClick(this.props.data)}
+              className="icon"
+            >
+            <LazyLoadImage
+              draggable="false"
+              alt=""
+              src={theIcon}
+              className="img"
+            />
+            <div className="label">{this.props.data.name}</div>
+            {
+              this.props.data.type === "hdd"
+                ? ( <div className="usage"><Progress color="midnightblue" completed={this.props.data.fsuse} /></div> )
+                : null
+            }
+          </div>
+        </LazyLoadComponent>
       ) : null)
     );
   }
