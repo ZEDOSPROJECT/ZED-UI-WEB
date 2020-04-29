@@ -7,4 +7,6 @@
         "Width":370,
         "Height":590
     }
+    ,
+    "requireInternet": false
 }

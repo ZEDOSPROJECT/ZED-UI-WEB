@@ -33,23 +33,19 @@ class StartMenu extends React.Component {
         this.handleSearchChange = this.handleSearchChange.bind(this);
 
         this.refreshApps("");
-            setInterval(() => {
-                if(this.props.visible){
-                    this.refreshApps(this.state.searchBox);
-                } 
+        setInterval(() => {
+            if(this.props.visible){
+                this.refreshApps(this.state.searchBox);
+            } 
             else
             {
                 this.setState({searchBox: ''});
+                this.refreshApps(undefined);
             }
             this.setState({visible: this.props.visible });
         },100);
     } 
 
-    shouldComponentUpdate(nextProps, nextState) {
-        if(nextProps !== this.props || nextState !== this.state ){
-            return true;
-        }
-    }
 
     refreshApps(query){
         fetch(REST_URL+'/API/APPS/getAppsList.php?query='+query)
@@ -107,7 +103,7 @@ class StartMenu extends React.Component {
             }else{
                 show=false;
             }
-            if(app.Name !== "Settings" && show) {
+            if(app.Name && show) {
                 let newDiv=<div></div>;
                 if(this.state.searchBox === ""){
                     if(app.Name.charAt(0).toUpperCase() !== lastLeter.toUpperCase()) {
@@ -115,7 +111,7 @@ class StartMenu extends React.Component {
                         newDiv=<div key={"stmenu_"+app.Name} className="startLeter"><b>{lastLeter}</b></div>
                     }
                 } 
-                return <div  style={{ height: 80 }} key={"stmenu_"+app.Name}>{newDiv}<AppCard forceRefreshApps={this.refreshApps} windowSize={app.manifest.Window} onClickApp={this.props.onClickApp} appName={app.Name}  /></div>
+                return <div  style={{ height: 80 }} key={"stmenu_"+app.Name}>{newDiv}<AppCard requireInternet={app.manifest.requireInternet} forceRefreshApps={this.refreshApps} windowSize={app.manifest.Window} onClickApp={this.props.onClickApp} appName={app.Name}  /></div>
             }else{
                 return null;
             } 
