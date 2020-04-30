@@ -65,7 +65,11 @@ class appCard extends React.Component{
             tmpObject['WindowSize']=this.props.windowSize;
             tmpObject['Icon']=REST_URL+"/APPS/"+this.props.appName+"/favicon.png";
             tmpObject['Name']=this.props.appName;
-            tmpObject['RequireInternet']=this.props.requireInternet.toString();
+            let tempRI="true";
+            if(this.props.requireInternet !== undefined){
+                tempRI=this.props.requireInternet.toString();
+            }
+            tmpObject['RequireInternet']=tempRI;
 
             if(this.findIfIsFavorite(tmpObject,tmpFavorites)>=0){
                 style="isAppFavorite";
@@ -86,7 +90,7 @@ class appCard extends React.Component{
                     </div>
                 );
             }else{
-                return(
+                return(Cópia de Abril
                     <div>
                         <div className="appCardOffline ">
                             <img draggable="false" alt="" style={{ color: invert(window.systemColor0, true)}} className="appCardIconOffline" src={appIcon}  /><div className="appCardTitle">{appName} </div>
