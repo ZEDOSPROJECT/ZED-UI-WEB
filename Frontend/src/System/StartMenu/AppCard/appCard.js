@@ -90,7 +90,7 @@ class appCard extends React.Component{
                     </div>
                 );
             }else{
-                return(Cópia de Abril
+                return(
                     <div>
                         <div className="appCardOffline ">
                             <img draggable="false" alt="" style={{ color: invert(window.systemColor0, true)}} className="appCardIconOffline" src={appIcon}  /><div className="appCardTitle">{appName} </div>
