@@ -65,11 +65,7 @@ class appCard extends React.Component{
             tmpObject['WindowSize']=this.props.windowSize;
             tmpObject['Icon']=REST_URL+"/APPS/"+this.props.appName+"/favicon.png";
             tmpObject['Name']=this.props.appName;
-            let tempRI="true";
-            if(this.props.requireInternet !== undefined){
-                tempRI=this.props.requireInternet.toString();
-            }
-            tmpObject['RequireInternet']=tempRI;
+            tmpObject['RequireInternet']=this.props.requireInternet;
 
             if(this.findIfIsFavorite(tmpObject,tmpFavorites)>=0){
                 style="isAppFavorite";

@@ -111,7 +111,11 @@ class StartMenu extends React.Component {
                         newDiv=<div key={"stmenu_"+app.Name} className="startLeter"><b>{lastLeter}</b></div>
                     }
                 } 
-                return <div  style={{ height: 80 }} key={"stmenu_"+app.Name}>{newDiv}<AppCard requireInternet={app.manifest.requireInternet} forceRefreshApps={this.refreshApps} windowSize={app.manifest.Window} onClickApp={this.props.onClickApp} appName={app.Name}  /></div>
+                let RequireInternetConnection="true";
+                if(app.manifest.requireInternet !== undefined){
+                    RequireInternetConnection=app.manifest.requireInternet;
+                }
+                return <div  style={{ height: 80 }} key={"stmenu_"+app.Name}>{newDiv}<AppCard requireInternet={RequireInternetConnection} forceRefreshApps={this.refreshApps} windowSize={app.manifest.Window} onClickApp={this.props.onClickApp} appName={app.Name}  /></div>
             }else{
                 return null;
             } 
