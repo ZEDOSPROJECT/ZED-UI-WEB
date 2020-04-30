@@ -19,8 +19,6 @@ class appCard extends React.Component{
         let found=-1;
         let id=0;
         list.forEach(element => {
-            console.log(newObj);
-            console.log(element);
             if(_.isEqual(element, newObj)){
                 found=id;
             }
