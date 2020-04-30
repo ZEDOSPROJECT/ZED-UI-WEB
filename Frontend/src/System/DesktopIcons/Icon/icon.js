@@ -14,12 +14,16 @@ class Icon extends React.Component {
 
 
     render(){
-        let finalIR;
+        let finalIR="true";
         if(this.props.RequireInternet !== undefined){
             finalIR = this.props.RequireInternet;
         }
+        let finalHI="true";
+        if(localStorage.hasInternet !== undefined){
+            finalHI =localStorage.hasInternet.toString();
+        }
         if(finalIR === "true" ){
-            if(localStorage.hasInternet.toString() === "true"){
+            if(finalHI === "true"){
                 return(
                     <div onClick={this.processClick} title={this.props.Name} className="desktopIcon">
                         <center>

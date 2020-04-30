@@ -19,6 +19,8 @@ class appCard extends React.Component{
         let found=-1;
         let id=0;
         list.forEach(element => {
+            console.log(newObj);
+            console.log(element);
             if(_.isEqual(element, newObj)){
                 found=id;
             }
@@ -38,7 +40,7 @@ class appCard extends React.Component{
         tmpObject['WindowSize']=this.props.windowSize;
         tmpObject['Icon']=REST_URL+"/APPS/"+this.props.appName+"/favicon.png";
         tmpObject['Name']=this.props.appName;
-        tmpObject['RequireInternet']=this.props.requireInternet.toString();
+        tmpObject['RequireInternet']=this.props.requireInternet;
 
         let favoriteID=this.findIfIsFavorite(tmpObject,tmpFavorites);
         if(favoriteID<0){
