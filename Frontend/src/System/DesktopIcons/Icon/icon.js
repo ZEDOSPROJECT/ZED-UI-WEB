@@ -16,11 +16,11 @@ class Icon extends React.Component {
     render(){
         let finalIR="true";
         if(this.props.RequireInternet !== undefined){
-            finalIR = this.props.RequireInternet;
+            finalIR = this.props.RequireInternet.toString();
         }
-        let finalHI="true";
+        let finalHI="false";
         if(localStorage.hasInternet !== undefined){
-            finalHI =localStorage.hasInternet.toString();
+            finalHI=localStorage.hasInternet.toString();
         }
         if(finalIR === "true" ){
             if(finalHI === "true"){
