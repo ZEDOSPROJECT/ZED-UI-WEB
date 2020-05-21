@@ -7,7 +7,7 @@ export default class ScreenSaver extends Component {
         if(this.props.timer>5){
             return(
                 <div>
-                    <video style={{zIndex: window.maxZIndex+100,opacity: 1,cursor: "none"}} className="ScreenSaver" src={REST_URL+"/Wallpapers/Videos/Winter Lantern (Animated Wallpaper) - Wallpaper Engine.mp4"} loop autoPlay muted></video>
+                    <video style={{zIndex: window.maxZIndex+100,opacity: 1,cursor: "none"}} className="ScreenSaver" src={REST_URL+"/Wallpapers/ScreenSaver.mp4"} loop autoPlay muted></video>
                 </div>
             )
         }else{

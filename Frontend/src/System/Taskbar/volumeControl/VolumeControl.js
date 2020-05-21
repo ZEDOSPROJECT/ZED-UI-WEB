@@ -43,7 +43,7 @@ class VolumeControl extends Component {
             <div className="VolumeControl">
                 <img onClick={this.toggleVolumeScreen} draggable="false" alt="" src={SoundIcon} width="32" height="32" />
                 { this.state.volumeScreen ? (<div className="volumeScreen">
-                    System Volume:<br/>
+                    Sound Volume:<br/>
                     <input className="volumeScreenSlider" onMouseUp={this.onVolumeChange} defaultValue={localStorage.systemVolume} type="range" min="0" step="1" max="100"/>
                 </div>) : null}
             </div>

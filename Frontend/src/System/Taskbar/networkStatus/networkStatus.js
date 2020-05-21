@@ -6,9 +6,7 @@ import "./networkStatus.css";
 import C0 from "./CONNECTED_0.png";
 import C1 from "./CONNECTED_1.png";
 
-
 class NetworkStatus extends React.Component {
-
   constructor(props){
     super(props);
 
@@ -17,6 +15,14 @@ class NetworkStatus extends React.Component {
     }
 
     this.toggleNetworkManager = this.toggleNetworkManager.bind(this);
+  }
+
+  iHaveInternet(){
+    localStorage.hasInternet=true;
+  }
+
+  iDontHaveInternet(){
+    localStorage.hasInternet=false;
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -36,8 +42,12 @@ class NetworkStatus extends React.Component {
   render() {
     return (
       <div className="NetworkStatus">
-        <Online><img onClick={this.toggleNetworkManager} draggable="false" alt="" src={C1}/></Online>
-        <Offline><img onClick={this.toggleNetworkManager} draggable="false" alt="" src={C0}/></Offline>
+        <Online>
+          <img onClick={this.toggleNetworkManager} onLoad={this.iHaveInternet} draggable="false" alt="" src={C1}/>
+        </Online>
+        <Offline>
+          <img onClick={this.toggleNetworkManager} onLoad={this.iDontHaveInternet} draggable="false" alt="" src={C0}/>
+        </Offline>
         <NetworkManager visible={this.state.NetworkManagerVisible} />
       </div>
     );

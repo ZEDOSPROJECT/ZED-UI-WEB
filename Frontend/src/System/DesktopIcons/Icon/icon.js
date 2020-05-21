@@ -12,15 +12,46 @@ class Icon extends React.Component {
         this.props.onClickApp(null,REST_URL+"/APPS/"+this.props.Name+"/",this.props.Name,REST_URL+"/APPS/"+this.props.Name+"/favicon.png",this.props.WindowSize,false);
     }
 
+
     render(){
-        return(
-            <div onClick={this.processClick} title={this.props.Name} className="desktopIcon">
-                <center>
-                    <img draggable="false" alt="" className="desktopIconImage" src={this.props.Icon} />
-                </center>
-                <center><div className="desktopIconLabel">{this.props.Name}</div></center>
-            </div>
-        );
+        let finalIR="true";
+        if(this.props.RequireInternet !== undefined){
+            finalIR = this.props.RequireInternet.toString();
+        }
+        let finalHI="false";
+        if(localStorage.hasInternet !== undefined){
+            finalHI=localStorage.hasInternet.toString();
+        }
+        if(finalIR === "true" ){
+            if(finalHI === "true"){
+                return(
+                    <div onClick={this.processClick} title={this.props.Name} className="desktopIcon">
+                        <center>
+                            <img draggable="false" alt="" className="desktopIconImage" src={this.props.Icon} />
+                        </center>
+                        <center><div className="desktopIconLabel">{this.props.Name}</div></center>
+                    </div>
+                );
+            }else{
+                return(
+                    <div title={this.props.Name+" [NEED INTERNET CONNECTION]"} className="desktopIconOffline">
+                        <center>
+                            <img draggable="false" alt="" className="desktopIconImageOffline" src={this.props.Icon} />
+                        </center>
+                        <center><div className="desktopIconLabel">{this.props.Name}</div></center>
+                    </div>
+                );
+            }
+        }else{
+            return(
+                <div onClick={this.processClick} title={this.props.Name} className="desktopIcon">
+                    <center>
+                        <img draggable="false" alt="" className="desktopIconImage" src={this.props.Icon} />
+                    </center>
+                    <center><div className="desktopIconLabel">{this.props.Name}</div></center>
+                </div>
+            );
+        }
     }
 }
 

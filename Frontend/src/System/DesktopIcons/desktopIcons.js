@@ -34,6 +34,7 @@ class DesktopIcons extends React.Component {
                     WindowSize = {element.WindowSize}
                     Icon = {element.Icon}
                     Name = {element.Name}
+                    RequireInternet = {element.RequireInternet}
                 />
             });
         }

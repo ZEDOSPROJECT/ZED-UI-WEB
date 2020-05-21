@@ -28,9 +28,7 @@ const {app, BrowserWindow} = require('electron')
     // win.webContents.openDevTools()
     // Emitted when the window is closed.
     win.on('closed', () => {
-      // Dereference the window object, usually you would store windows
-      // in an array if your app supports multi windows, this is the time
-      // when you should delete the corresponding element.
+      // Dereference the window o12he corresponding element.
       win = null
     })
 
@@ -43,6 +41,14 @@ const {app, BrowserWindow} = require('electron')
   // This method will be called when Electron has finished
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
+
+  app.commandLine.appendSwitch('use-bundled-ca');
+  app.commandLine.appendSwitch('force-fips');
+  app.commandLine.appendSwitch('enable-fips');
+  app.commandLine.appendSwitch('openssl-config');
+  app.commandLine.appendSwitch('use-openssl-ca');
+  app.commandLine.appendSwitch('autoplay-policy', 'no-user-gesture-required');
+
   app.on('ready', createWindow)
   
   // Quit when all windows are closed.

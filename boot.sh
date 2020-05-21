@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cd Backend
+./startBackend.sh&
+cd ..
 if [ -e ".branch" ]
 then
    if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
@@ -13,9 +16,6 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
    git pull
    git stash pop
 fi
-cd Backend
-./startBackend.sh&
-cd ..
 cd Frontend
 npm install
 npm run electron&

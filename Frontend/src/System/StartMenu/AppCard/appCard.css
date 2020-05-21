@@ -10,6 +10,16 @@
     background-color: rgba(0, 1, 65, 0.37);
 } 
 
+.appCardOffline{
+    background-color: rgba(0, 1, 65, 0);
+    width: 95%;
+    height: 40px;
+    margin: 5px;
+    padding: 5px;
+} 
+
+
+
 .appCardTitle {
     margin-top: 5px;
 } 
@@ -19,6 +29,14 @@
     margin-Right: 10px;
     width: 32px;
     height: 32px;
+}  
+
+.appCardIconOffline{
+    float: left;
+    margin-Right: 10px;
+    width: 32px;
+    height: 32px;
+    filter: grayscale();
 }  
 
 .searchBox{
@@ -48,5 +66,5 @@
 .isAppNotFavorite{
     width: 10px;
     height: 10px;
-    filter: grayscale(1);
+    filter: grayscale();
 }

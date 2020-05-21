@@ -35,10 +35,10 @@ class appCard extends React.Component{
         if(localStorage.favoriteIcons){
             tmpFavorites=JSON.parse(localStorage.favoriteIcons).favorites;
         }
-        
         tmpObject['WindowSize']=this.props.windowSize;
         tmpObject['Icon']=REST_URL+"/APPS/"+this.props.appName+"/favicon.png";
         tmpObject['Name']=this.props.appName;
+        tmpObject['RequireInternet']=this.props.requireInternet;
 
         let favoriteID=this.findIfIsFavorite(tmpObject,tmpFavorites);
         if(favoriteID<0){
@@ -65,21 +65,47 @@ class appCard extends React.Component{
             tmpObject['WindowSize']=this.props.windowSize;
             tmpObject['Icon']=REST_URL+"/APPS/"+this.props.appName+"/favicon.png";
             tmpObject['Name']=this.props.appName;
+            tmpObject['RequireInternet']=this.props.requireInternet;
 
             if(this.findIfIsFavorite(tmpObject,tmpFavorites)>=0){
                 style="isAppFavorite";
             }
         }
-
-        return(
-            <div>
-                <div onClick={(event) => (this.props.onClickApp(event,REST_URL+"/APPS/"+appName+"/",appName,REST_URL+"/APPS/"+appName+"/favicon.png",windowSize,false))}  className="appCard">
-                    <img draggable="false" alt="" style={{ color: invert(window.systemColor0, true)}} className="appCardIcon" src={appIcon}  /><div className="appCardTitle">{appName} </div>
+        if(this.props.requireInternet.toString() === "true"){
+            let finalIR = "true";
+            if(localStorage !== undefined){
+                finalIR=localStorage.hasInternet;
+            }
+            if(finalIR === "true"){
+                return(
+                    <div>
+                        <div onClick={(event) => (this.props.onClickApp(event,REST_URL+"/APPS/"+appName+"/",appName,REST_URL+"/APPS/"+appName+"/favicon.png",windowSize,false))} className="appCard">
+                            <img draggable="false" alt="" style={{ color: invert(window.systemColor0, true)}} className="appCardIcon" src={appIcon}  /><div className="appCardTitle">{appName} </div>
+                        </div>
+                        <div onClick={this.addToFavorites} className="addToDeskop"><img draggable="false" alt="" className={style} src={favorite}/></div>
+                    </div>
+                );
+            }else{
+                return(
+                    <div>
+                        <div className="appCardOffline ">
+                            <img draggable="false" alt="" style={{ color: invert(window.systemColor0, true)}} className="appCardIconOffline" src={appIcon}  /><div className="appCardTitle">{appName} </div>
+                        </div>
+                        <div onClick={this.addToFavorites} className="addToDeskop"><img draggable="false" alt="" className={style} src={favorite}/></div>
+                    </div>
+                );
+            }
+        }else{
+            return(
+                <div>
+                    <div onClick={(event) => (this.props.onClickApp(event,REST_URL+"/APPS/"+appName+"/",appName,REST_URL+"/APPS/"+appName+"/favicon.png",windowSize,false))} className="appCard">
+                        <img draggable="false" alt="" style={{ color: invert(window.systemColor0, true)}} className="appCardIcon" src={appIcon}  /><div className="appCardTitle">{appName} </div>
+                    </div>
+                    <div onClick={this.addToFavorites} className="addToDeskop"><img draggable="false" alt="" className={style} src={favorite}/></div>
                 </div>
-                <div onClick={this.addToFavorites} className="addToDeskop"><img draggable="false" alt="" className={style} src={favorite}/></div>
-            </div>
-        )
-    }  
-}  
+            );  
+        }
+    }
+}    
 
 export default appCard;

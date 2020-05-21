@@ -2,9 +2,10 @@
     "Name":"Control Center",
     "Version":"1.0.0",
     "Website":"",
-    "Platforms":"MOBILE|DESKTOP|WEB",
+    "Platforms":"INVISIBLE",
     "Window":{
         "Width":0,
         "Height":0
-    }
+    },
+    "requireInternet": false
 }

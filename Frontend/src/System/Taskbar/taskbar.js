@@ -4,6 +4,7 @@ import TaskButton from './Task/taskButton';
 import NetworkStatus from './networkStatus/networkStatus';
 import BatteryStatus from './batteryStatus/batteryStatus';
 import VolumeControl from './volumeControl/VolumeControl';
+import Switch3D from './Switch3D/Switch3D';
 import BGEffect from './BGEffect/BGEffect';
 import './taskbar.css';
 
@@ -49,6 +50,7 @@ class Taskbar extends React.Component {
                         <td style={{ width: 32 }}><BatteryStatus /></td>
                         <td style={{ width: 32 }}><NetworkStatus /></td>
                         <td style={{ width: 32 }}><Clock /></td>
+                        <td style={{ width: 62 }}><Switch3D onSwitch3DClick={this.props.onSwitch3DClick} notSwitch3Dlbl={this.props.notSwitch3Dlbl}/></td>
                     </tr>
                 </tbody>
             </table>

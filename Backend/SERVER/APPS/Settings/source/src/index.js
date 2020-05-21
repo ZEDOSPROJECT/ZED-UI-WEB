@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import LeftPanel from "./LeftPanel/LeftPanel.js";
 import SettingContext from "./SettingContext/settingContext.js";
-import ScreeAppearance from './Screens/Appearance';
-import ScreenSystem from './Screens/System';
-import ScreenSoundScreen from './Screens/SoundScreen'
-import ScreenNetwork from './Screens/Network'
-import ScreenUsers from './Screens/Users'
+import ScreeAppearance from './Screens/Apperarance/Appearance';
+import ScreenSystem from './Screens/System/System';
+import ScreenSoundScreen from './Screens/SoundScreen/SoundScreen'
+import ScreenNetwork from './Screens/Network/Network'
+import ScreenUsers from './Screens/Users/Users'
 import img_0 from './0.png';
 import img_1 from './1.png';
 import img_2 from './2.png';
