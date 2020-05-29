@@ -4,7 +4,8 @@
 
 ONE UI is part of ZED OS Project, it's an User interface based on Web Tecnologies
 
-[Tasks](https://trello.com/b/Kl8SVAQX/zed-os-ui-web)
+* [Tasks](https://trello.com/b/Kl8SVAQX/zed-os-ui-web) <- Trello with tasks
+* [Discord](https://discord.gg/bKkyqxf) <- Our Discord
 
 
 
