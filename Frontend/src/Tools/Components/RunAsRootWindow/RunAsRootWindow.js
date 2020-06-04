@@ -27,7 +27,7 @@ export default class RunAsRootWindow extends React.Component {
         this.setState({
             password: ''
         });
-        fetch(REST_URL + '/API/SYSTEM/ACTIONS/runAsRoot.php?pwd="' + decodeURI(this.state.password) + '"&cmd=' + this.state.command);
+        fetch(REST_URL + '/API/SYSTEM/ACTIONS/runAsRoot.php?pwd="' + decodeURI(this.state.password) + '"&cmd="' + this.state.command + '"');
         this.props.onOk();
     }
 
