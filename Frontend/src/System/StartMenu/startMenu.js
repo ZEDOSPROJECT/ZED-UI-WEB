@@ -162,7 +162,7 @@ class StartMenu extends React.Component {
                     </div>
                     <div className="bottomMenu" style={{ backgroundColor: this.convertHex(window.systemColor0, 95) }}>
                         <input id="searchBox" autoFocus={this.state.visible} onChange={this.handleSearchChange} placeholder="Type to search . . ." type="text"></input>
-                        <img draggable="false" alt="" className="logoff" src={logoff} width="32" height="32" ></img>
+                        <img onClick={this.props.onLogout} draggable="false" alt="" className="logoff" src={logoff} width="32" height="32" ></img>
                         <img onClick={this.props.onShutdownDLGShow} draggable="false" alt="" className="shutdown" src={shutdown} width="32" height="32" ></img>
                     </div>
                 </div>

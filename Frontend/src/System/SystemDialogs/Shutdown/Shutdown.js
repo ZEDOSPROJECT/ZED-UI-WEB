@@ -3,7 +3,6 @@ import Logo from '../../../Icons/logo.png';
 import standBy from './standby.png';
 import turnoff from './turnoff.png';
 import restart from './restart.png'
-import { REST_URL } from '../../../REST_URL';
 import RunAsRoot from '../../../Tools/Components/RunAsRootWindow/RunAsRootWindow';
 import './Shutdown.css';
 

@@ -12,7 +12,8 @@ import DesktopIcons from './System/DesktopIcons/desktopIcons';
 import BlueLightFilter from './System/BlueFilter/blueFilter';
 import ScreenSaver from './System/ScreenSaver/ScreenSaver';
 import UI3D from './System/UI3D/UI3D';
-import ShutdownDLG from './System/SystemDialogs/Shutdown/Shutdown';
+import ShutdownDLG from './System/SystemDialogs/Shutdown/Shutdown'
+import RunAsRoot from './Tools/Components/RunAsRootWindow/RunAsRootWindow';
 import { REST_URL } from './REST_URL';
 import './App.css';
 import { setTimeout } from 'timers';
@@ -34,7 +35,8 @@ class App extends Component {
             videoWallpaperURL: "",
             ScreenSaverTimer: 0,
             notSwitch3Dlbl: "3D",
-            shutdownDLG: false
+            shutdownDLG: false,
+            logout: false
         };
         window.clipBoard = "";
         window.systemColor0 = "#06001E";
@@ -63,6 +65,8 @@ class App extends Component {
         this.onSwitch3DClick = this.onSwitch3DClick.bind(this);
         this.onShutdownDLGCancel = this.onShutdownDLGCancel.bind(this);
         this.onShutdownDLGShow = this.onShutdownDLGShow.bind(this);
+        this.onLogoutCancel = this.onLogoutCancel.bind(this);
+        this.onLogout = this.onLogout.bind(this);
 
         this.onMouseMove = this.onMouseMove.bind(this);
 
@@ -101,6 +105,18 @@ class App extends Component {
         setInterval(() => {
             this.setState({ ScreenSaverTimer: this.state.ScreenSaverTimer + 1 });
         }, 60000);
+    }
+
+    onLogoutCancel() {
+        this.setState({
+            logout: false
+        });
+    }
+
+    onLogout() {
+        this.setState({
+            logout: true
+        });
     }
 
     onShutdownDLGCancel() {
@@ -496,7 +512,15 @@ class App extends Component {
                     visible={this.state.showMenu}
                     userName={username}
                     onShutdownDLGShow={this.onShutdownDLGShow}
+                    onLogout={this.onLogout}
                 />
+                {this.state.logout ? (
+                    <RunAsRoot
+                        command="pkill -u $USER"
+                        onCancel={this.onLogoutCancel}
+                        onOk={this.onLogoutCancel}
+                    />
+                ) : null}
 
                 <ToastContainer />
                 <ShutdownDLG
