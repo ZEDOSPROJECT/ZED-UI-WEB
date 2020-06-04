@@ -29,12 +29,12 @@ export default class Shutdown extends React.Component {
                     <div className="ShutdownLBL">
                         <b>Turn off computer</b>
                     </div>
-                    <img className="ShutdownLogo" src={Logo}></img>
+                    <img draggable="false" className="ShutdownLogo" src={Logo}></img>
                     <div className="ShutdownMainDLG">
                         <center>
                             <div className="ShutdownBTN">
                                 <div>
-                                    <img className="ShutdownBTNIcon" src={standBy} style={{ width: 50, height: 50 }}></img>
+                                    <img draggable="false" className="ShutdownBTNIcon" src={standBy} style={{ width: 50, height: 50 }}></img>
                                 </div>
                                 <div>
                                     Stand by
@@ -42,7 +42,7 @@ export default class Shutdown extends React.Component {
                             </div>
                             <div className="ShutdownBTN">
                                 <div>
-                                    <img onClick={this.onShutdown} className="ShutdownBTNIcon" src={turnoff} style={{ width: 50, height: 50 }}></img>
+                                    <img draggable="false" onClick={this.onShutdown} className="ShutdownBTNIcon" src={turnoff} style={{ width: 50, height: 50 }}></img>
                                 </div>
                                 <div>
                                     Turn off
@@ -50,7 +50,7 @@ export default class Shutdown extends React.Component {
                             </div>
                             <div className="ShutdownBTN">
                                 <div>
-                                    <img onClick={this.onRestart} className="ShutdownBTNIcon" src={restart} style={{ width: 50, height: 50 }}></img>
+                                    <img draggable="false" onClick={this.onRestart} className="ShutdownBTNIcon" src={restart} style={{ width: 50, height: 50 }}></img>
                                 </div>
                                 <div>
                                     Restart
