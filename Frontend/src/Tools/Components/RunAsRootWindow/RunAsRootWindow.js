@@ -4,9 +4,9 @@ import { REST_URL } from '../../../REST_URL';
 import './RunAsRootWindow.css';
 
 export default class RunAsRootWindow extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             visible: this.props.visible,
             password: '',
             command: this.props.command
@@ -17,48 +17,48 @@ export default class RunAsRootWindow extends React.Component {
         this.onOk = this.onOk.bind(this);
     }
 
-    handlePasswordSave(e){
+    handlePasswordSave(e) {
         this.setState({
             password: e.target.value
         });
     }
 
-    onOk(e){
+    onOk(e) {
         this.setState({
             password: ''
         });
-        fetch(REST_URL+'/API/SYSTEM/ACTIONS/runAsRoot.php?pwd="'+decodeURI(this.state.password)+'"&cmd=pluma');
+        fetch(REST_URL + '/API/SYSTEM/ACTIONS/runAsRoot.php?pwd="' + decodeURI(this.state.password) + '"&cmd=pluma');
         this.props.onOk();
     }
-    
-    onCancel(e){
+
+    onCancel(e) {
         this.setState({
             password: ''
         })
         this.props.onCancel();
     }
 
-    render(){
-        return(<div className="RunAsRootWindow">
-                <div className="Modal">
-                    <div className="Head">
-                        <img draggable="false" src={KeyIcon} className="KeyIcon"></img>Run as Administrator
+    render() {
+        return (<div className="RunAsRootWindow" style={{ zIndex: window.maxZIndex + 12 }}>
+            <div className="Modal">
+                <div className="Head">
+                    <img draggable="false" src={KeyIcon} className="KeyIcon"></img>Run as Administrator
                     </div>
-                    <div className="Label">
-                        Type your Administrator password to continue
+                <div className="Label">
+                    Type your Administrator password to continue
                         <input
-                            autoFocus
-                            className="txtPassword"
-                            type="password"
-                            onChange={this.handlePasswordSave}
-                            value={this.state.password}
-                        />
-                    </div>
-                    <center>
-                        <button onClick={this.onOk}>OK</button>
-                        <button onClick={this.onCancel}>Cancel</button> 
-                    </center>   
+                        autoFocus
+                        className="txtPassword"
+                        type="password"
+                        onChange={this.handlePasswordSave}
+                        value={this.state.password}
+                    />
                 </div>
-            </div>);
+                <center>
+                    <button onClick={this.onOk}>OK</button>
+                    <button onClick={this.onCancel}>Cancel</button>
+                </center>
+            </div>
+        </div>);
     }
 }

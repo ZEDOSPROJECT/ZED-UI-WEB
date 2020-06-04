@@ -501,7 +501,7 @@ class App extends Component {
                 <ToastContainer />
                 <ShutdownDLG
                     visible={this.state.shutdownDLG}
-                    onCamcel={this.onShutdownDLGCancel}
+                    onCancel={this.onShutdownDLGCancel}
                 />
                 <ScreenSaver timer={this.state.ScreenSaverTimer} />
                 <BlueLightFilter enabled={this.state.setting_blueFilter} />
