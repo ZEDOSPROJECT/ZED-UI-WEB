@@ -46,9 +46,7 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    margin: 5px;
-    width: 100px;
-    height: 40px;
+    margin: 15px;
 }
 
 .ShutdownBTN {
@@ -71,4 +69,10 @@
     height: 50;
     filter: saturate(5);
     margin-bottom: 5px;
+}
+
+.shutdownbutton {
+    padding: 10px;
+    margin: 10px;
+    background-color: #e7e7e7; color: black;
 }

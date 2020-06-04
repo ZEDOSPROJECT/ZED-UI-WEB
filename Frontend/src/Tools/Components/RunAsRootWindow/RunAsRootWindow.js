@@ -55,8 +55,8 @@ export default class RunAsRootWindow extends React.Component {
                     />
                 </div>
                 <center>
-                    <button onClick={this.onOk}>OK</button>
-                    <button onClick={this.onCancel}>Cancel</button>
+                    <button className="rarbutton" onClick={this.onOk}>OK</button>
+                    <button className="rarbutton" onClick={this.onCancel}>Cancel</button>
                 </center>
             </div>
         </div>);
