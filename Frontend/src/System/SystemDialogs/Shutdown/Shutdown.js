@@ -3,9 +3,25 @@ import Logo from '../../../Icons/logo.png';
 import standBy from './standby.png';
 import turnoff from './turnoff.png';
 import restart from './restart.png'
+import { REST_URL } from '../../../REST_URL';
 import './Shutdown.css';
 
 export default class Shutdown extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.onShutdown = this.onShutdown.bind(this);
+        this.onRestart = this.onRestart.bind(this);
+    }
+
+    onShutdown() {
+        fetch(REST_URL + '/API/SYSTEM/ACTIONS/POWER/shutdown.php');
+    }
+
+    onRestart() {
+        fetch(REST_URL + '/API/SYSTEM/ACTIONS/POWER/reboot.php');
+    }
+
     render() {
         if (this.props.visible === true) {
             return (<div className="Shutdown" style={{ zIndex: window.maxZIndex + 10 }}>
@@ -26,7 +42,7 @@ export default class Shutdown extends React.Component {
                             </div>
                             <div className="ShutdownBTN">
                                 <div>
-                                    <img className="ShutdownBTNIcon" src={turnoff} style={{ width: 50, height: 50 }}></img>
+                                    <img onClick={this.onShutdown} className="ShutdownBTNIcon" src={turnoff} style={{ width: 50, height: 50 }}></img>
                                 </div>
                                 <div>
                                     Turn off
@@ -34,7 +50,7 @@ export default class Shutdown extends React.Component {
                             </div>
                             <div className="ShutdownBTN">
                                 <div>
-                                    <img className="ShutdownBTNIcon" src={restart} style={{ width: 50, height: 50 }}></img>
+                                    <img onClick={this.onRestart} className="ShutdownBTNIcon" src={restart} style={{ width: 50, height: 50 }}></img>
                                 </div>
                                 <div>
                                     Restart
