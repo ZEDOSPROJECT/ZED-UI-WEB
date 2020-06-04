@@ -46,7 +46,9 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    margin: 12px;
+    margin: 5px;
+    width: 100px;
+    height: 40px;
 }
 
 .ShutdownBTN {
