@@ -505,6 +505,7 @@ class App extends Component {
                     toggleMenu={this.toggleMenu}
                     onSwitch3DClick={this.onSwitch3DClick}
                     notSwitch3Dlbl={this.state.notSwitch3Dlbl}
+                    onClose={this.onClose}
                 />
                 <StartMenu
                     onClickApp={this.onClickApp}
