@@ -13,10 +13,10 @@
 					document.getElementById("welcome").hidden = false;
 					clearInterval(loader);
 					let startupSoundPlayer = new Audio("startup.mp3");
-					startupSoundPlayer.onpause = function() {
+					startupSoundPlayer.onpause = function () {
 						window.location.href = "http://" + window.location.hostname + ":3000";
 					}
-    				startupSoundPlayer.play();
+					startupSoundPlayer.play();
 				}
 			})
 		}, 500);
@@ -60,7 +60,12 @@
 				<tr style="height: 100%;">
 					<td style="width: 100%; text-align: right; height: 100%;">
 						<div>
-							<center><img draggable="false" height="80" src="loading.gif"></img><h2><font color="white">Starting ZED OS  . . .</font></h2></center>
+							<center><img draggable="false" height="80" src="loading.gif"></img>
+								<h2>
+									<font color="white" stye="text-shadow: 2px 2px 1px #0000002f;">Starting ZED OS . . .
+									</font>
+								</h2>
+							</center>
 						</div>
 					</td>
 				</tr>
@@ -80,7 +85,13 @@
 				<tr style="height: 100%;">
 					<td style="width: 100%; text-align: right; height: 100%;">
 						<div>
-							<center><h1><font color="white"><b><i style="cursor: default;-webkit-user-select: none;">WELCOME</i></b></font></h1></center>
+							<center>
+								<h1>
+									<font color="white"><b><i
+												style="cursor: default;-webkit-user-select: none;text-shadow: 2px 2px 1px #0000002f;">WELCOME</i></b>
+									</font>
+								</h1>
+							</center>
 						</div>
 					</td>
 				</tr>
