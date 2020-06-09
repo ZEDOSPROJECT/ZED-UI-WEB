@@ -42,7 +42,7 @@ export default class RunAsRootWindow extends React.Component {
         return (<div className="RunAsRootWindow" style={{ zIndex: window.maxZIndex + 12 }}>
             <div className="Modal">
                 <div className="Head">
-                    <img draggable="false" src={KeyIcon} className="KeyIcon"></img>Run as Administrator
+                    <img alt="" draggable="false" src={KeyIcon} className="KeyIcon"></img>Run as Administrator
                     </div>
                 <div className="Label">
                     Type your Administrator password to continue
