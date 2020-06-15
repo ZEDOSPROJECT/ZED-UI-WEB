@@ -13,7 +13,7 @@ ONE UI is part of ZED OS Project (http://zed-os.tk/), it's an User interface bas
 	-VirtualBox 6.1.10
 	-VT-x Enabled
 
-	[Download](https://mega.nz/file/d4lX0RDR#zMYA5WfgPrlnTUcngLvcf4H0r9qF4FDQESRZlAeeu4k)
+[Download](https://mega.nz/file/d4lX0RDR#zMYA5WfgPrlnTUcngLvcf4H0r9qF4FDQESRZlAeeu4k)
 	
 
 ### Prerequisites
