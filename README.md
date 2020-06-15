@@ -5,6 +5,16 @@
 ONE UI is part of ZED OS Project (http://zed-os.tk/), it's an User interface based on Web Tecnologies
 
 [Tasks](https://trello.com/b/Kl8SVAQX/zed-os-ui-web)
+[Discord](https://discord.gg/bKkyqxf)
+
+
+### VM to test
+	Need:
+	-VirtualBox 6.1.10
+	-VT-x Enabled
+
+	[Download](https://mega.nz/file/d4lX0RDR#zMYA5WfgPrlnTUcngLvcf4H0r9qF4FDQESRZlAeeu4k)
+	
 
 ### Prerequisites
 
