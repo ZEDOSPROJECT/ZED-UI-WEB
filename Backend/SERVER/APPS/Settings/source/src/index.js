@@ -17,11 +17,11 @@ import "./styles.css";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    let currentID=0;
+    let currentID = 0;
     const urlParams = new URLSearchParams(window.location.search);
     const myParam = urlParams.get('id');
-    if(myParam  !== null){
-      currentID=myParam;
+    if (myParam !== null) {
+      currentID = myParam;
     }
     this.state = {
       CurrentSettingID: currentID,
@@ -32,10 +32,10 @@ class App extends React.Component {
       SystemInfo: {
         OperatingSystem: "ZED",
         CPU: undefined,
-        Version: "2020.0",
+        Version: "",
         Kernel: undefined,
         RAM: undefined,
-        STORAGE: undefined  
+        STORAGE: undefined
       }
     };
     this.changeBlueFilter = this.changeBlueFilter.bind(this);
@@ -53,17 +53,18 @@ class App extends React.Component {
     this.setBranch = this.setBranch.bind(this);
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.getSettingsData();
   }
 
-  setBranch(e){
-    if(e.target.value!==""){
-      this.setState({branch: e.target.value});
+  setBranch(e) {
+    if (e.target.value !== "") {
+      this.setState({ branch: e.target.value });
+      console.log("Changed to branch " + e.target.value);
       fetch(
         "http://" +
-          window.location.hostname +
-          ":3031/API/SYSTEM/UPDATES/setUpdateBranch.php?id="+e.target.value,
+        window.location.hostname +
+        ":3031/API/SYSTEM/UPDATES/setUpdateBranch.php?id=" + e.target.value,
         {
           method: "post",
           body: JSON.stringify(this.state.SettingJSON)
@@ -77,14 +78,14 @@ class App extends React.Component {
     let tmpSettings = this.state.SettingJSON;
     tmpSettings.setting_wallpaperURL = this.state.SettingJSON.setting_wallpaperURL.replace(
       // eslint-disable-next-line
-      /^.*[\\\/]/, 
+      /^.*[\\\/]/,
       ""
     );
     if (Object.entries(tmpSettings).length > 0) {
       fetch(
         "http://" +
-          window.location.hostname +
-          ":3031/API/SYSTEM/SETTINGS/USER/setSettings.php",
+        window.location.hostname +
+        ":3031/API/SYSTEM/SETTINGS/USER/setSettings.php",
         {
           method: "post",
           body: JSON.stringify(this.state.SettingJSON)
@@ -96,62 +97,62 @@ class App extends React.Component {
   getSettingsData() {
     fetch(
       "http://" +
-        window.location.hostname +
-        ":3031/API/SYSTEM/SETTINGS/USER/getSettings.php"
+      window.location.hostname +
+      ":3031/API/SYSTEM/SETTINGS/USER/getSettings.php"
     )
-    .then(response => response.json())
-    .then(json => {
-      this.setState({ SettingJSON: json });
-    });
+      .then(response => response.json())
+      .then(json => {
+        this.setState({ SettingJSON: json });
+      });
     fetch(
       "http://" +
-        window.location.hostname +
-        ":3031/API/SYSTEM/SETTINGS/USER/SETTING/getWallpapersImages.php"
+      window.location.hostname +
+      ":3031/API/SYSTEM/SETTINGS/USER/SETTING/getWallpapersImages.php"
     )
-    .then(response => response.json())
-    .then(jsonWallpapers => {
-      let newWallpapers = [""];
-      jsonWallpapers.WALLPAPERS.forEach(element => {
-        if (element !== "") {
-          newWallpapers.push(
-            "http://" +
+      .then(response => response.json())
+      .then(jsonWallpapers => {
+        let newWallpapers = [""];
+        jsonWallpapers.WALLPAPERS.forEach(element => {
+          if (element !== "") {
+            newWallpapers.push(
+              "http://" +
               window.location.hostname +
               ":3031/Wallpapers/Images/" +
               element
-          );
-        }
+            );
+          }
+        });
+        this.setState({ Wallpapers: newWallpapers });
       });
-      this.setState({ Wallpapers: newWallpapers });
-    });
 
     fetch(
       "http://" +
-        window.location.hostname +
-        ":3031/API/SYSTEM/SETTINGS/USER/SETTING/getWallpapersVideos.php"
+      window.location.hostname +
+      ":3031/API/SYSTEM/SETTINGS/USER/SETTING/getWallpapersVideos.php"
     )
-    .then(response => response.json())
-    .then(jsonWallpapers => {
-      this.setState({ Videos: jsonWallpapers.WALLPAPERS });
-    });
+      .then(response => response.json())
+      .then(jsonWallpapers => {
+        this.setState({ Videos: jsonWallpapers.WALLPAPERS });
+      });
 
     fetch(
       "http://" +
-        window.location.hostname +
-        ":3031/API/SYSTEM/getInfo.php"
+      window.location.hostname +
+      ":3031/API/SYSTEM/getInfo.php"
     )
-    .then(response => response.json())
-    .then(SystemInfo => {
-      this.setState({ SystemInfo: SystemInfo });
-    });
+      .then(response => response.json())
+      .then(SystemInfo => {
+        this.setState({ SystemInfo: SystemInfo });
+      });
     fetch(
       "http://" +
-        window.location.hostname +
-        ":3031/API/SYSTEM/UPDATES/getUpdateBranch.php"
+      window.location.hostname +
+      ":3031/API/SYSTEM/UPDATES/getUpdateBranch.php"
     )
-    .then(response => response.text())
-    .then(text => {
-      this.setState({branch: text});  
-    })
+      .then(response => response.text())
+      .then(text => {
+        this.setState({ branch: text });
+      })
   }
 
   switchSetting(id) {
@@ -194,11 +195,12 @@ class App extends React.Component {
     this.save();
   }
 
-  onChangeVideoWallpaper(event){
+  onChangeVideoWallpaper(event) {
     let obj = this.state.SettingJSON;
-    if(event.target.value!=="Disabled"){
+    if (event.target.value !== "Disabled") {
       obj["videoWallpaperURL"] = event.target.value;
-    }else{
+      obj["setting_wallpaperURL"] = "";
+    } else {
       obj["videoWallpaperURL"] = "";
     }
     this.setState({ SettingJSON: obj });
@@ -221,6 +223,7 @@ class App extends React.Component {
 
   changeWallpaper(img) {
     let obj = this.state.SettingJSON;
+    obj["videoWallpaperURL"] = "";
     if (img.target.src) {
       obj["setting_wallpaperURL"] = img.target.src;
     } else {
@@ -230,13 +233,13 @@ class App extends React.Component {
     this.save();
   }
 
-  render() {  
+  render() {
     // eslint-disable-next-line
-    let branchIndex=0;
-    if(this.state.branch!=="master"){
-      branchIndex=1;
-    }else{
-      branchIndex=0;
+    let branchIndex = 0;
+    if (this.state.branch !== "master") {
+      branchIndex = 1;
+    } else {
+      branchIndex = 0;
     }
     const SettingsScreens = [
       <ScreeAppearance
