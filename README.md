@@ -2,7 +2,11 @@
 
 ![alt text](https://github.com/ZEDOSPROJECT/ZED-UI-WEB/blob/master/screenshot.png?raw=true)
 
-ONE UI is part of ZED OS Project (http://zed-os.tk/), it's an User interface based on Web Tecnologies
+ONE UI is part of ZED OS Project, it's an User interface based on Web Tecnologies
+
+* [Tasks](https://trello.com/b/Kl8SVAQX/zed-os-ui-web) <- Trello with tasks
+* [Discord](https://discord.gg/bKkyqxf) <- Our Discord
+
 
 [Tasks](https://trello.com/b/Kl8SVAQX/zed-os-ui-web)
 [Discord](https://discord.gg/bKkyqxf)
