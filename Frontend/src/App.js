@@ -53,7 +53,6 @@ class App extends Component {
         this.toggleMenu = this.toggleMenu.bind(this);
         this.onClickApp = this.onClickApp.bind(this);
         this.onToggleMinimize = this.onToggleMinimize.bind(this);
-        this.getBingPicture = this.getBingPicture.bind(this);
         this.loadUserSettings = this.loadUserSettings.bind(this);
         this.componentToHex = this.componentToHex.bind(this);
         this.rgbToHex = this.rgbToHex.bind(this);
@@ -286,12 +285,6 @@ class App extends Component {
                 }
                 window.gradientEffect = json.setting_gradientEffect;
                 window.autoGradient = json.setting_autoGradientEffect;
-                if (window.setting_bingWallpaper !== json.setting_bingWallpaper) {
-                    window.setting_bingWallpaper = json.setting_bingWallpaper;
-                    if (window.setting_bingWallpaper) {
-                        this.getBingPicture();
-                    }
-                }
                 if (json.setting_wallpaperURL !== this.state.setting_wallpaperURL) {
                     this.setState({
                         setting_wallpaperURL: json.setting_wallpaperURL
@@ -454,15 +447,6 @@ class App extends Component {
             document.getElementById("searchBox").value = "";
             document.getElementById("searchBox").focus();
         }
-    }
-
-    getBingPicture() {
-        fetch('https://cors.io/?https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US')
-            .then(response => response.json())
-            .then(json => {
-                let url = "https://www.bing.com/" + json.images[0].url;
-                fetch(REST_URL + '/API//SYSTEM/SETTINGS/USER/SETTING/getOnlineWallpaper.php?url=' + url);
-            });
     }
 
     render() {
