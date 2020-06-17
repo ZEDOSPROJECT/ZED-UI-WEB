@@ -17,8 +17,8 @@ import Combo from './Combo/combo';
 import './leftBar.css';
 
 class LeftBar extends React.Component {
-    render(){
-        if(this.props.searchMode){
+    render() {
+        if (this.props.searchMode) {
             return (<div className="leftBar">
                 <Combo title="Search for . . ." open >
                     <SearchCombo
@@ -27,8 +27,8 @@ class LeftBar extends React.Component {
                     />
                 </Combo>
             </div>);
-        }else{
-            return(<div className="leftBar">
+        } else {
+            return (<div className="leftBar">
                 {
                     !this.props.saveDialog ? (
                         <Combo title="Tasks" open >
@@ -41,23 +41,23 @@ class LeftBar extends React.Component {
                                     <div className="link" onClick={this.props.onCopy}><img draggable="false" alt="" src={copy} className="miniIcon"></img>Copy</div>
                                     <div className="link" onClick={this.props.onRemoveOpen}><img draggable="false" alt="" src={remove} className="miniIcon"></img>Remove</div>
                                 </div>
-                            ) : null }
+                            ) : null}
                         </Combo>
-                    ): null
+                    ) : null
                 }
                 <Combo title="Other Places" open >
                     <div className="link" onClick={data => this.props.listFolder("My Computer")}><img draggable="false" alt="" src={myComputer} className="miniIcon"></img>My Computer</div>
                     <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["music"])}><img draggable="false" alt="" src={myMusic} className="miniIcon"></img>My Music</div>
-                    <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["picture"])}><img draggable="false" alt="" src={myPictures} className="miniIcon"></img>My Picture</div>
+                    <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["picture"])}><img draggable="false" alt="" src={myPictures} className="miniIcon"></img>My Pictures</div>
                     <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["videos"])}><img draggable="false" alt="" src={myVideos} className="miniIcon"></img>My Videos</div>
                     <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["documents"])}><img draggable="false" alt="" src={myDocuments} className="miniIcon"></img>My Documents</div>
                 </Combo>
                 {this.props.details && !this.props.saveDialog ? (
                     <Combo title="Details" open>{this.props.details}</Combo>
-                ) : null }
+                ) : null}
             </div>);
         }
-    } 
-} 
+    }
+}
 
 export default LeftBar;

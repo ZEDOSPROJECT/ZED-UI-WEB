@@ -1,4 +1,4 @@
 <?php
 	header("Access-Control-Allow-Origin: *");
-	shell_exec('shutdown -h now');
+	shell_exec('systemctl suspend');
 ?>
