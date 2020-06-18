@@ -87,7 +87,6 @@ class App extends Component {
             }
         }, 200);
         // UPDATE APPS (30 minutes to 30 minutes)
-        fetch(REST_URL + '/API/APPS/updateApps.php');
         setInterval(function () {
             fetch(REST_URL + '/API/APPS/updateApps.php');
         }, 1800000);
