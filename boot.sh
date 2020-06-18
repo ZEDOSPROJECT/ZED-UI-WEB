@@ -22,3 +22,13 @@ npm install
 npm run electron&
 sleep 1
 npm start&
+cd Backend
+cd SERVER
+cd API
+cd APPS
+while [ true ]
+do
+	php updateApps.php
+	sleep 30m
+done
+

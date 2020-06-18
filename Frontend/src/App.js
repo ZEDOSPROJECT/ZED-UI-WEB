@@ -86,11 +86,6 @@ class App extends Component {
                 this.setState({ ScreenSaverTimer: 0 });
             }
         }, 200);
-        // UPDATE APPS (30 minutes to 30 minutes)
-        setInterval(function () {
-            fetch(REST_URL + '/API/APPS/updateApps.php');
-        }, 1800000);
-        ////////////////////////////////////////
 
         setTimeout(() => {
             fetch(REST_URL + '/API/SYSTEM/SETTINGS/USER/getPaths.php')

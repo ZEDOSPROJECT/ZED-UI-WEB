@@ -3,6 +3,7 @@
     
     $APPS=scandir("../../APPS/");
     foreach ($APPS as $appName) {
+        sleep(10);
         if($appName!=".." and $appName!="."){
             $tempFileName=md5(uniqid("")).".tar.gz";
             file_put_contents("/tmp/".$tempFileName, fopen("http://zed-os.sourceforge.net/store/DIRECTORY/".$appName."/app.tar.gz", 'r'));
