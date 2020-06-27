@@ -1,7 +1,7 @@
 .questionDialog {
     position: fixed;
     top: calc( 50% - 100px );
-    background-color: rgba(0, 110, 255, 0.904);
+    background-color: rgba(255, 255, 255, 0.904);
     width: 100%;
     height: 200px;
     z-index: 1000;
@@ -9,7 +9,7 @@
 
 .questionDialogMark {
     margin: 40px;
-    width: 100px;
+    width: 80px;
     height: 100%;
     height: auto;
     float: left;
@@ -20,7 +20,7 @@
     white-space: nowrap;
     overflow: hidden;
     position: absolute;
-    color: white;
+    color: rgb(0, 0, 0);
     top: 10px;
     right: 10px;
     height: 60%;
@@ -33,23 +33,24 @@
 }
 
 .questionDialogButton {
-    width: 10%;
-    margin: 20px;
-    font-size: 20px;
-	box-shadow:inset 0px 34px 0px -15px #2e39f7;
-	background-color:#1d00f5;
-	border:1px solid #241d13;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	background-color:#ffffff;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
 	display:inline-block;
 	cursor:pointer;
-	color:#ffffff;
+	color:#666666;
 	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
-	padding:9px 23px;
+	padding:10px 44px;
 	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
 }
 .questionDialogButton:hover {
-	background-color:#001aff;
+	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+	background-color:#f6f6f6;
 }
 .questionDialogButton:active {
 	position:relative;
