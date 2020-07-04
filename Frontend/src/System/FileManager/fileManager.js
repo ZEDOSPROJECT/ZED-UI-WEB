@@ -4,10 +4,11 @@ import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 import mime from 'mime-types';
 import ToolBar from "./ToolBar/toolBar";
 import Explorer from "./Explorer/explorer";
+import FileProprietiesBG from '../SystemDialogs/FileProprieties/FileProprieties';
 import LeftBar from "./LeftBar/leftBar";
 import StatusBar from "./StatusBar/statusBar";
-import NewFolderDialog from '../Prompt/Prompt';
-import RenameDialog from '../Prompt/Prompt';
+import NewFolderDialog from '../SystemDialogs/Prompt/Prompt';
+import RenameDialog from '../SystemDialogs/Prompt/Prompt';
 import QuestionDialog from '../SystemDialogs/Question/question';
 import clickSound from './click.mp3';
 import { REST_URL } from './../../REST_URL';
@@ -32,7 +33,8 @@ class FileManager extends React.Component {
       mainType: "",
       devices: undefined,
       removeVisible: false,
-      searchMode: false
+      searchMode: false,
+      showFileProprieties: false
     };
 
     setTimeout(() => {
@@ -65,6 +67,13 @@ class FileManager extends React.Component {
     this.onRemoveOpen = this.onRemoveOpen.bind(this);
     this.onSearchModeChange = this.onSearchModeChange.bind(this);
     this.onSearchGo = this.onSearchGo.bind(this);
+    this.onShowProprieties = this.onShowProprieties.bind(this);
+  }
+
+  onShowProprieties() {
+    this.setState({
+      showFileProprieties: !this.state.showFileProprieties
+    })
   }
 
   onSearchGo(query) {
@@ -497,6 +506,7 @@ class FileManager extends React.Component {
             onRemoveOpen={this.onRemoveOpen}
             onCopy={this.onCopy}
             onOpen={this.onOpen}
+            onShowProprieties={this.onShowProprieties}
             searchMode={this.state.searchMode}
           />
         </ContextMenuTrigger>
@@ -514,7 +524,7 @@ class FileManager extends React.Component {
                   </MenuItem>
                 ) : null}
                 <MenuItem divider />
-                <MenuItem onClick={this.handleClick}>
+                <MenuItem onClick={this.onShowProprieties}>
                   Proprieties
                 </MenuItem>
               </ContextMenu>
@@ -544,6 +554,14 @@ class FileManager extends React.Component {
           onYes={this.onRemove}
           onNo={this.onRemoveCancel}
         />
+        {
+          this.state.showFileProprieties ? (
+            <FileProprietiesBG
+              file={this.state.currentPath + this.state.selected}
+              onShowProprieties={this.onShowProprieties}
+            />
+          ) : null
+        }
       </div >
     );
   }
