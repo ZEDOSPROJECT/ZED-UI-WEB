@@ -60,7 +60,7 @@ class App extends React.Component {
   setBranch(e) {
     if (e.target.value !== "") {
       this.setState({ branch: e.target.value });
-      console.log("Changed to branch " + e.target.value);
+      console.log("Changed to branch " + e.target.value + ",Reboot to apply new settings");
       fetch(
         "http://" +
         window.location.hostname +
