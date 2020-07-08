@@ -256,7 +256,7 @@ class App extends React.Component {
       />,
       <ScreenSoundScreen />,
       <ScreenNetwork />,
-      <ScreenUsers />,
+      // <ScreenUsers />,
       <ScreenSystem
         SystemInfo={this.state.SystemInfo}
         setBranch={this.setBranch}
@@ -266,14 +266,14 @@ class App extends React.Component {
       "Appearence",
       "Sound and Screen",
       "Network",
-      "Users",
+      // "Users",
       "System"
     ];
     const MenuIcons = [
       <img src={img_0} alt="" width="30" height="30" />,
       <img src={img_1} alt="" width="30" height="30" />,
       <img src={img_2} alt="" width="30" height="30" />,
-      <img src={img_3} alt="" width="30" height="30" />,
+      // <img src={img_3} alt="" width="30" height="30" />,
       <img src={Logo} alt="" width="30" height="30" />
     ]
     return (
