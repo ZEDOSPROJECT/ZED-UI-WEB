@@ -1,3 +1,3 @@
 <script>
-  window.location = "https://viliusle.github.io/miniPaint/";
+  window.location = "https://jspaint.app/";
 </script>
