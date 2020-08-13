@@ -1,0 +1,11 @@
+{
+    "Name": "System Usage",
+    "Version": "1.0.0",
+    "Website": "",
+    "Platforms": "DESKTOP",
+    "Window": {
+        "Width": 0,
+        "Height": 0
+    },
+    "requireInternet": false
+}
