@@ -6,11 +6,11 @@ import ScreeAppearance from './Screens/Apperarance/Appearance';
 import ScreenSystem from './Screens/System/System';
 import ScreenSoundScreen from './Screens/SoundScreen/SoundScreen'
 import ScreenNetwork from './Screens/Network/Network'
-import ScreenUsers from './Screens/Users/Users'
+// import ScreenUsers from './Screens/Users/Users'
 import img_0 from './0.png';
 import img_1 from './1.png';
 import img_2 from './2.png';
-import img_3 from './3.png';
+// import img_3 from './3.png';
 import Logo from './logo.png';
 import "./styles.css";
 
@@ -60,7 +60,7 @@ class App extends React.Component {
   setBranch(e) {
     if (e.target.value !== "") {
       this.setState({ branch: e.target.value });
-      console.log("Changed to branch " + e.target.value);
+      console.log("Changed to branch " + e.target.value + ",Reboot to apply new settings");
       fetch(
         "http://" +
         window.location.hostname +
@@ -76,7 +76,6 @@ class App extends React.Component {
   save() {
     // Make JSON Settings compatible with ZED
     let tmpSettings = this.state.SettingJSON;
-    // eslint-disable-next-line
     tmpSettings.setting_wallpaperURL = this.state.SettingJSON.setting_wallpaperURL.replace(
       // eslint-disable-next-line
       /^.*[\\\/]/,
@@ -158,7 +157,7 @@ class App extends React.Component {
 
   switchSetting(id) {
     this.setState({ CurrentSettingID: id });
-    //this.save();
+    this.save();
   }
 
   changeColor0(event) {
@@ -257,7 +256,7 @@ class App extends React.Component {
       />,
       <ScreenSoundScreen />,
       <ScreenNetwork />,
-      <ScreenUsers />,
+      // <ScreenUsers />,
       <ScreenSystem
         SystemInfo={this.state.SystemInfo}
         setBranch={this.setBranch}
@@ -267,14 +266,14 @@ class App extends React.Component {
       "Appearence",
       "Sound and Screen",
       "Network",
-      "Users",
+      // "Users",
       "System"
     ];
     const MenuIcons = [
       <img src={img_0} alt="" width="30" height="30" />,
       <img src={img_1} alt="" width="30" height="30" />,
       <img src={img_2} alt="" width="30" height="30" />,
-      <img src={img_3} alt="" width="30" height="30" />,
+      // <img src={img_3} alt="" width="30" height="30" />,
       <img src={Logo} alt="" width="30" height="30" />
     ]
     return (

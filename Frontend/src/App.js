@@ -86,6 +86,7 @@ class App extends Component {
                 this.setState({ ScreenSaverTimer: 0 });
             }
         }, 200);
+
         setTimeout(() => {
             fetch(REST_URL + '/API/SYSTEM/SETTINGS/USER/getPaths.php')
                 .then(response => response.json())
@@ -179,6 +180,8 @@ class App extends Component {
                             this.msgError("Erro uninstalling " + calls[2]);
                         }
                     });
+            } else if (calls[1] === "RESETSCREENSAVER") {
+                this.setState({ ScreenSaverTimer: 0 });
             }
         } else {
             this.msgError("Invalid SYSCALL");

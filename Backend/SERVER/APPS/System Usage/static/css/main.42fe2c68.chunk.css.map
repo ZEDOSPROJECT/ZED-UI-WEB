@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles.css"],"names":[],"mappings":"AAAA,KACE,sBAAuB,CACvB,iBACF,CAEA,MACE,SAAU,CACV,YAAa,CACb,sBACF","file":"main.42fe2c68.chunk.css","sourcesContent":[".App {\n  font-family: sans-serif;\n  text-align: center;\n}\n\n.graf {\n  width: 30%;\n  padding: 20px;\n  transition-duration: 4s;\n}"]}

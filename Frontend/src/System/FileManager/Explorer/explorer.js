@@ -9,32 +9,32 @@ import CategoryTitle from './CategoryTitle/CategoryTitle';
 import "./explorer.css";
 
 class Explorer extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.onRClick = this.onRClick.bind(this);
   }
   shouldComponentUpdate(nextProps, nextState) {
-    if(nextProps !== this.props || nextState !== this.state ){
-        return true;
+    if (nextProps !== this.props || nextState !== this.state) {
+      return true;
     }
   }
 
-  onRClick(data){
+  onRClick(data) {
     this.props.onRClick(data);
 
   }
 
   render() {
     let indents;
-    let currentType=null;
-    let devices=null;
-    if(this.props.currentPath === "My Computer"){
-      if(this.props.devices !== undefined){
-        devices=this.props.devices.map(data => {
+    let currentType = null;
+    let devices = null;
+    if (this.props.currentPath === "My Computer") {
+      if (this.props.devices !== undefined) {
+        devices = this.props.devices.map(data => {
           return (
             <Icon
-              currentPath={this.props.currentPath} 
+              currentPath={this.props.currentPath}
               onIClick={this.props.onIClick}
               onRClick={this.onRClick}
               selected={this.props.selected}
@@ -42,29 +42,29 @@ class Explorer extends React.Component {
               data={data}
             />
           );
-        }); 
-        indents=<div><CategoryTitle label="Hard Disk Drives"/>{devices}</div>
+        });
+        indents = <div><CategoryTitle label="Hard Disk Drives" />{devices}</div>
       }
-    }else{
-      if(this.props.mainType!==false && this.props.mainType!==undefined){
-        if(this.props.mainType.includes("image/")){
-          currentType=mimeImage;
+    } else {
+      if (this.props.mainType !== false && this.props.mainType !== undefined) {
+        if (this.props.mainType.includes("image/")) {
+          currentType = mimeImage;
         }
-        if(this.props.mainType.includes("audio/")){
-          currentType=mimeMusic;
+        if (this.props.mainType.includes("audio/")) {
+          currentType = mimeMusic;
         }
-        if(this.props.mainType.includes("video/")){
-          currentType=mimeVideo;
+        if (this.props.mainType.includes("video/")) {
+          currentType = mimeVideo;
         }
       }
 
-      if(this.props.searchMode){
-        if(this.props.searchListDir !== undefined){
-          if(this.props.searchListDir.length !== 0){
-            indents=this.props.searchListDir.map(data => {
+      if (this.props.searchMode) {
+        if (this.props.searchListDir !== undefined) {
+          if (this.props.searchListDir.length !== 0) {
+            indents = this.props.searchListDir.map(data => {
               return (
                 <Icon
-                  currentPath={this.props.currentPath} 
+                  currentPath={this.props.currentPath}
                   onIClick={this.props.onIClick}
                   onRClick={this.props.onRClick}
                   selected={this.props.selected}
@@ -73,20 +73,20 @@ class Explorer extends React.Component {
                   data={data}
                 />
               );
-            }); 
-          }else{
-            indents=<div id="explorerFS" style={{ color: 'black', marginTop: 20 }}><center>This folder is empty</center></div>
-          } 
-        }else {
-          indents=<div>Searching . . .</div>;
-        } 
-      }else{
-        if(this.props.listDir !== undefined){
-          if(this.props.listDir.length !== 0){
-            indents=this.props.listDir.map(data => {
+            });
+          } else {
+            indents = <div id="explorerFS" style={{ color: 'black', marginTop: 20 }}><center>This folder is empty</center></div>
+          }
+        } else {
+          indents = <div>Searching . . .</div>;
+        }
+      } else {
+        if (this.props.listDir !== undefined) {
+          if (this.props.listDir.length !== 0) {
+            indents = this.props.listDir.map(data => {
               return (
                 <Icon
-                  currentPath={this.props.currentPath} 
+                  currentPath={this.props.currentPath}
                   onIClick={this.props.onIClick}
                   onRClick={this.props.onRClick}
                   selected={this.props.selected}
@@ -95,45 +95,45 @@ class Explorer extends React.Component {
                   data={data}
                 />
               );
-            }); 
-          }else{
-            indents=<div id="explorerFS" style={{ color: 'black', marginTop: 20 }}><center>This folder is empty</center></div>
-          } 
-        }else {
-          indents=<div>Loading . . .</div>;
-        } 
+            });
+          } else {
+            indents = <div id="explorerFS" style={{ color: 'black', marginTop: 20 }}><center>This folder is empty</center></div>
+          }
+        } else {
+          indents = <div>Loading . . .</div>;
+        }
       }
     }
-    
-    return( <div className="fExplorer">
-            <img className="typeF" draggable="false" alt="" src={currentType} />
-            <ContextMenuTrigger id="fileManager.explorer.files"> 
-            {indents}
-            </ContextMenuTrigger>
-            <Portal>
-              <ContextMenu id="fileManager.explorer.files">
-                <MenuItem onClick={this.props.onOpen}>
-                  <b>Open</b>
+
+    return (<div className="fExplorer">
+      <img className="typeF" draggable="false" alt="" src={currentType} />
+      <ContextMenuTrigger id="fileManager.explorer.files">
+        {indents}
+      </ContextMenuTrigger>
+      <Portal>
+        <ContextMenu id="fileManager.explorer.files">
+          <MenuItem onClick={this.props.onOpen}>
+            <b>Open</b>
+          </MenuItem>
+          <MenuItem divider />
+          <MenuItem onClick={this.props.onCopy}>
+            Copy
                 </MenuItem>
-                <MenuItem divider />
-                <MenuItem onClick={this.props.onCopy}>
-                  Copy
+          <MenuItem onClick={this.props.onRenameOpen}>
+            Rename
                 </MenuItem>
-                <MenuItem onClick={this.props.onRenameOpen}>
-                  Rename
+          <MenuItem divider />
+          <MenuItem onClick={this.props.onRemoveOpen}>
+            Delete
                 </MenuItem>
-                <MenuItem divider />
-                <MenuItem onClick={this.props.onRemoveOpen}>
-                  Delete
+          <MenuItem divider />
+          <MenuItem onClick={this.props.onShowProprieties}>
+            Proprieties
                 </MenuItem>
-                <MenuItem divider />
-                <MenuItem onClick={this.handleClick}>
-                  Proprieties
-                </MenuItem>
-              </ContextMenu>
-            </Portal>
-          </div>
-          );
+        </ContextMenu>
+      </Portal>
+    </div>
+    );
   }
 }
 

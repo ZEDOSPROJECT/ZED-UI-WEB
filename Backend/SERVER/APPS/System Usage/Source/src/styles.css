@@ -1,0 +1,10 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.graf {
+  width: 30%;
+  padding: 20px;
+  transition-duration: 4s;
+}
