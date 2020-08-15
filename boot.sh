@@ -14,7 +14,15 @@ fi
 
 if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
    git stash
+<<<<<<< HEAD
    git pull
+=======
+   if ! git pull
+   then
+      git checkout Backend/SERVER/API/SYSTEM/SETTINGS/USER/SETTINGS.json
+      git pull
+   fi
+>>>>>>> develop
    git stash pop
 fi
 cd Frontend
