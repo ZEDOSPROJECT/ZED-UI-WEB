@@ -1,0 +1,11 @@
+{
+  "name": "updateinstaller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "../Frontend/node_modules/electron/dist/electron ."
+  },
+  "author": "",
+  "license": "ISC"
+}
