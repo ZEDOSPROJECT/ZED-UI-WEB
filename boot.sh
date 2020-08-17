@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 cd Backend
 ./startBackend.sh&
 cd ..
@@ -22,8 +21,9 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
       git checkout Backend/SERVER/API/SYSTEM/SETTINGS/USER/SETTINGS.json
       git pull
    fi
-   killall electron
+   ./updateInstaller/postUpdate.sh
    git stash pop
+   killall electron
 fi
 cd Frontend
 npm install
@@ -39,4 +39,3 @@ do
 	php updateApps.php
 	sleep 30m
 done
-
