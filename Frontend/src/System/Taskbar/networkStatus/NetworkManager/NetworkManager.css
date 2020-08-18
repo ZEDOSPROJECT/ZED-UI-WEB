@@ -2,8 +2,8 @@
     position: fixed;
     bottom: 45px;
     right: 0;
-    width: 200px;
-    height: 400px;
+    width: 400px;
+    height: calc( 100% - 600px );
     padding: 10px;
     background-color: rgba(179, 179, 179, 0.575);
     border-radius: 10px;
