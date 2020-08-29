@@ -148,6 +148,7 @@
       let currentIndex = 0;
       const Http = new XMLHttpRequest();
       const localFile = getUrlVars()["path"];
+      document.title = decodeURIComponent(localFile.replace(/^.*[\\\/]/, '').split(".")[0])+" - ZED Media Player";
       player.src = "http://" + window.location.hostname + ":3031/API/SYSTEM/IO/FILE/read.php?path=" + localFile;
     },300);
 

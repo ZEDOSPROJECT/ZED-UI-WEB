@@ -32,7 +32,7 @@
       
       const Http = new XMLHttpRequest();
       const localFile = getUrlVars()["path"];
-      document.title = localFile.replace(/^.*[\\\/]/, '').split(".")[0]+" - ZED Picture Viewer";
+      document.title = decodeURIComponent(localFile.replace(/^.*[\\\/]/, '').split(".")[0])+" - ZED Picture Viewer";
       let url = "http://"+window.location.hostname + ":3031/API/SYSTEM/IO/PATH/listPath.php?path=" + localFile;
       url = url.substr(0, url.lastIndexOf("/"));
 
@@ -79,7 +79,7 @@
           "http://"+window.location.hostname +
           ":3031/API/SYSTEM/IO/FILE/read.php?path=" +
           fileList[currentIndex].split('=')[1];
-          document.title = fileList[currentIndex].split('=')[1].replace(/^.*[\\\/]/, '').split(".")[0]+" - ZED Picture Viewer";
+          document.title = decodeURIComponent(fileList[currentIndex].split('=')[1].replace(/^.*[\\\/]/, '').split(".")[0])+" - ZED Picture Viewer";
       } 
 
       function goBack(){
@@ -92,7 +92,7 @@
           "http://"+window.location.hostname +
           ":3031/API/SYSTEM/IO/FILE/read.php?path=" +
           fileList[currentIndex].split('=')[1];
-          document.title = fileList[currentIndex].split('=')[1].replace(/^.*[\\\/]/, '').split(".")[0]+" - ZED Picture Viewer"
+          document.title = decodeURIComponent(fileList[currentIndex].split('=')[1].replace(/^.*[\\\/]/, '').split(".")[0])+" - ZED Picture Viewer"
       } 
 
       function getUrlVars() {
