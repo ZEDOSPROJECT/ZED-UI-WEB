@@ -48,9 +48,9 @@ class Taskbar extends React.Component {
         }
         );
         return (
-            <table className="Taskbar" style={{ zIndex: window.maxZIndex + 10, backgroundColor: this.convertHex(window.systemColor0, 95) }}>
-                <tbody>
-                    <tr style={{ border: 'none' }} >
+            <table cellspacing="0" className=" Taskbar" style={{ zIndex: window.maxZIndex + 10, backgroundColor: this.convertHex(window.systemColor0, 95) }}>
+                < tbody >
+                    <tr style={{ border: 'none', borderWidth: 0 }} >
                         <BGEffect />
                         <td style={{ width: 32 }}><div title="Click to Start" onClick={this.props.toggleMenu} className="StartMenu" /></td>
                         <td className="buttonsArea">{iconList}</td>
@@ -61,8 +61,8 @@ class Taskbar extends React.Component {
                         <td style={{ width: 32 }}><Clock /></td>
                         <td style={{ width: 62 }}><Switch3D onSwitch3DClick={this.props.onSwitch3DClick} notSwitch3Dlbl={this.props.notSwitch3Dlbl} /></td>
                     </tr>
-                </tbody>
-            </table>
+                </tbody >
+            </table >
         )
     }
 }
