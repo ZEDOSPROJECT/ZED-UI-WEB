@@ -52,14 +52,14 @@ class Taskbar extends React.Component {
                 < tbody >
                     <tr style={{ border: 'none', borderWidth: 0 }} >
                         <BGEffect />
-                        <td style={{ width: 32 }}><div title="Click to Start" onClick={this.props.toggleMenu} className="StartMenu" /></td>
+                        <td style={{ width: 32, height: 20 }}><div title="Click to Start" onClick={this.props.toggleMenu} className="StartMenu" /></td>
                         <td className="buttonsArea">{iconList}</td>
-                        <td style={{ width: 32 }}><VolumeControl /></td>
-                        <td style={{ width: 32 }}><BatteryStatus /></td>
-                        <td style={{ width: 32 }}><NetworkStatus /></td>
-                        <td style={{ width: 32 }}><NotificationIcon /></td>
-                        <td style={{ width: 32 }}><Clock /></td>
-                        <td style={{ width: 62 }}><Switch3D onSwitch3DClick={this.props.onSwitch3DClick} notSwitch3Dlbl={this.props.notSwitch3Dlbl} /></td>
+                        <td style={{ width: 32, height: 20 }}><VolumeControl /></td>
+                        <td style={{ width: 32, height: 20 }}><BatteryStatus /></td>
+                        <td style={{ width: 32, height: 20 }}><NetworkStatus /></td>
+                        <td style={{ width: 32, height: 20 }}><NotificationIcon /></td>
+                        <td style={{ width: 32, height: 20 }}><Clock /></td>
+                        <td style={{ width: 62, height: 20 }}><Switch3D onSwitch3DClick={this.props.onSwitch3DClick} notSwitch3Dlbl={this.props.notSwitch3Dlbl} /></td>
                     </tr>
                 </tbody >
             </table >
