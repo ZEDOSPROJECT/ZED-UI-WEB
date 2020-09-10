@@ -365,6 +365,7 @@ class App extends Component {
                     nextWindowY={this.state.nextWindowY}
                     uuid={uuid}
                     onClose={this.onClose}
+                    onClickApp={this.onClickApp}
                     onToggleMinimize={this.onToggleMinimize}
                 />
             ), 'VISIBLE': true

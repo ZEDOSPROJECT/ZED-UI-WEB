@@ -11,6 +11,7 @@ import FileManager from '../FileManager/fileManager';
 import WebBrowser from '../WebBrowser/WebBrowser';
 import CopyDialog from '../SystemDialogs/Copy/copy.js';
 import SaveDialog from '../SystemDialogs/Save/save.js';
+import unknowApp from '../../Icons/ModernXP (69).png';
 import VUGif from '../Taskbar/Task/vu.gif';
 import { REST_URL } from '../../REST_URL';
 import preload from './preload';
@@ -263,7 +264,7 @@ class Window extends React.Component {
             });
 
             this.webview.addEventListener('new-window', (e) => {
-                this.setState({ url: e.url });
+                this.props.onClickApp(null, e.url, "", unknowApp, 0, 0);
             });
 
             this.webview.addEventListener('enter-html-full-screen', (e) => {
@@ -465,11 +466,6 @@ class Window extends React.Component {
                             </div>
                             <div onMouseDown={e => e.stopPropagation()} className={finalBodyStyle}>
                                 {WindowContent}
-                                {this.state.url === this.props.url ?
-                                    null
-                                    : (
-                                        <div onClick={this.returnToApp} className="goBackURL"><center>Return to the main APP</center></div>
-                                    )}
                                 {this.state.active ?
                                     null
                                     : (
