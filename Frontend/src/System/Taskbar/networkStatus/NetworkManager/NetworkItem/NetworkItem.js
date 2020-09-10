@@ -55,13 +55,13 @@ class NetworkItem extends Component {
     render() {
         let securityIcon = undefined;
         if (this.props.security !== "") {
-            securityIcon = <img src={SecurityICN} />;
+            securityIcon = <img alt="" draggable="false" src={SecurityICN} />;
         }
 
-        return (<div className={"NetworkItem " + (this.props.inUse == "*" ? "inUse" : "")}>
+        return (<div className={"NetworkItem " + (this.props.inUse === "*" ? "inUse" : "")}>
             {this.props.ssid}<br />
             <div className="NetworkItemSecurity">{securityIcon}</div>
-            {this.props.inUse == "*" ? (<button onClick={this.onDisconnect}>Disconnect</button>) : (<button onClick={this.onConnect}>Connect</button>)}
+            {this.props.inUse === "*" ? (<button onClick={this.onDisconnect}>Disconnect</button>) : (<button onClick={this.onConnect}>Connect</button>)}
             {this.state.showInputPassword ? (
                 <div className="NetworkItemPassword">
                     <input
