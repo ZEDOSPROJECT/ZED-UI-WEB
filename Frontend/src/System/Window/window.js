@@ -299,19 +299,21 @@ class Window extends React.Component {
                         if (e.level === 2) {
                             this.props.onError(e.message);
                         }
-                        let tmpNotifications;
-                        if (sessionStorage.Notifications === undefined) {
-                            tmpNotifications = [];
-                        } else {
-                            tmpNotifications = JSON.parse(sessionStorage.Notifications);
+                        if (!e.message.includes("SYSCALL")) {
+                            let tmpNotifications;
+                            if (sessionStorage.Notifications === undefined) {
+                                tmpNotifications = [];
+                            } else {
+                                tmpNotifications = JSON.parse(sessionStorage.Notifications);
+                            }
+                            tmpNotifications.push({
+                                Type: e.level,
+                                AppName: window.winTitle[this.state.uuid],
+                                AppIcon: this.props.icon,
+                                Message: e.message
+                            })
+                            sessionStorage.Notifications = JSON.stringify(tmpNotifications);
                         }
-                        tmpNotifications.push({
-                            Type: e.level,
-                            AppName: window.winTitle[this.state.uuid],
-                            AppIcon: this.props.icon,
-                            Message: e.message
-                        })
-                        sessionStorage.Notifications = JSON.stringify(tmpNotifications);
                     }
                 }
                 /////////////////
