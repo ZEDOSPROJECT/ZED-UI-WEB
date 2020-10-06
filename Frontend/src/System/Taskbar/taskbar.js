@@ -48,9 +48,9 @@ class Taskbar extends React.Component {
         }
         );
         return (
-            <table cellspacing="0" className=" Taskbar" style={{ zIndex: window.maxZIndex + 10, backgroundColor: this.convertHex(window.systemColor0, 95) }}>
+            <table className=" Taskbar" style={{ zIndex: window.maxZIndex + 10, backgroundColor: this.convertHex(window.systemColor0, 95) }}>
                 < tbody >
-                    <tr style={{ border: 'none', borderWidth: 0 }} >
+                    <tr style={{ border: 'none' }} >    
                         <BGEffect />
                         <td style={{ width: 32, height: 20 }}><div title="Click to Start" onClick={this.props.toggleMenu} className="StartMenu" /></td>
                         <td className="buttonsArea">{iconList}</td>
