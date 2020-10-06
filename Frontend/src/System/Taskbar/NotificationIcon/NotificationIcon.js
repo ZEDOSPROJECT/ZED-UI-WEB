@@ -33,7 +33,7 @@ export default class NotificationIcon extends React.Component {
                     alt=""
                     draggable=""
                     src={NoNotifications}
-                    style={{ paddingTop: 5 }}
+                    style={{ paddingTop: 5, width:17,height:"100%"}}
                 ></img>
             </div>)
         } else {
@@ -43,7 +43,7 @@ export default class NotificationIcon extends React.Component {
                     draggable=""
                     src={Notif}
                     onClick={this.onToggle}
-                    style={{ paddingTop: 5 }}
+                    style={{ paddingTop: 5, width:17,height:"100%"}}
                 ></img>
             </div>)
         }
