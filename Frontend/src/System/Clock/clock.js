@@ -48,7 +48,7 @@ class Clock extends React.Component {
                     visible={this.state.calendarVisible}
                     toggleCalendar={this.switchCalendar}
                 />
-                <div onClick={this.switchCalendar} > {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+                <div onClick={this.switchCalendar} > {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</div>
             </div>
         );
     }
