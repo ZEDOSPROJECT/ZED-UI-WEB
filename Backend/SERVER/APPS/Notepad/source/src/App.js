@@ -29,13 +29,13 @@ export default class App extends React.Component {
     let query = this.getQueryParams(document.location.search);
     if (query.file !== undefined) {
       this.setState({
-        file: query.file
+        file: decodeURIComponent(query.file)
       });
       let url =
         "http://" +
         window.location.hostname +
         ":3031/API/SYSTEM/IO/FILE/read.php?path=" +
-        query.file;
+        decodeURIComponent(query.file);
       fetch(url)
         .then((response) => response.text())
         .then((text) => {
