@@ -425,7 +425,7 @@ class FileManager extends React.Component {
             SystemWindow: false
           }
         }
-        if (mimeType.includes("text/plain")) {
+        if (mimeType.includes("text/")) {
           window.ZED_RUN = {
             Label: 'Notepad',
             Url: REST_URL + '/APPS/Notepad/index.php?file=' + file,
