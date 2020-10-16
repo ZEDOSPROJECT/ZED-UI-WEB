@@ -25,6 +25,14 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
    git stash pop
    killall electron
 fi
+
+Xaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
+
+Yaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
+
+wget https://picsum.photos/${Xaxis}/${Yaxis} -O ./Backend/SERVER/Wallpapers/Images/onlineImage.jpg&
+
+
 cd Frontend
 npm install
 npm run electron&
