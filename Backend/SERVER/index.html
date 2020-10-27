@@ -12,7 +12,7 @@
 
 <body>
 	<div id="screen">
-		<table id="starting" border="0" style="border-collapse: collapse; width: 100%; height: 100%;" border="1">
+		<table id="starting" border="0" style="border-collapse: collapse; width: 101%; height: 100%;" border="1">
 			<tbody id="backG">
 				<tr class="bar" style="height: 45px;">
 					<td style="width: 50%; height: 45px;">&nbsp;</td>
@@ -37,8 +37,8 @@
 			</tbody>
 
 		</table>
-		<table hidden id="welcome" border="0" style="border-collapse: collapse; width: 100%; height: 100%;" border="1">
-			<tbody>
+		<table hidden id="welcome" border="0" style="border-collapse: collapse; width: 101%; height: 100%;" border="1">
+			<tbody id="backC">
 				<tr class="bar" style="height: 45px;">
 					<td style="width: 50%; height: 45px;">&nbsp;</td>
 					<td style="width: 50%; height: 45px;">&nbsp;</td>
@@ -70,10 +70,12 @@
 
 <script>
 	let backG=document.getElementById("backG");
+	let backC=document.getElementById("backC");
 	let BarG=document.getElementsByClassName("bar");
 	let Hour=new Date().getHours();
 	if(Hour>20 || Hour<5){
 		backG.style.backgroundColor="#010c1d";
+		backC.style.backgroundColor="#010c1d";
 		for (let index = 0; index < BarG.length; index++) {
 			BarG[index].style.backgroundColor="#000000";		
 		}
@@ -117,5 +119,10 @@
 		img.src = url + "/favicon.ico";
 	}
 </script>
+<style>
+	body{
+		overflow: hidden;
+	}
+</style>
 
 </html>
