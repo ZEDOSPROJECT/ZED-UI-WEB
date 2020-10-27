@@ -42,6 +42,8 @@ cd Backend
 cd SERVER
 cd API
 cd APPS
+php updateApps.php
+sleep 10m
 while [ true ]
 do
 	php updateApps.php
