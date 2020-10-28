@@ -395,7 +395,6 @@ class Window extends React.Component {
         }
 
         return (
-            (!this.state.fullScreen ? (
                 <div>
                     <Rnd
                         default={{
@@ -477,13 +476,6 @@ class Window extends React.Component {
                         </div>
                     </Rnd>
                 </div>
-            ) : (
-                    <div className="fullScreen">
-                        <div className="exitFS" onClick={this.toggleFullScreen}><center>EXIT FULL SCREEN</center></div>
-                        {WindowContent}
-                    </div>
-                ))
-
         );
     }
 }
