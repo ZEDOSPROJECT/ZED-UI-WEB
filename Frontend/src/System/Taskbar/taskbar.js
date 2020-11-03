@@ -7,6 +7,7 @@ import VolumeControl from './volumeControl/VolumeControl';
 import NotificationIcon from './NotificationIcon/NotificationIcon';
 import Switch3D from './Switch3D/Switch3D';
 import BGEffect from './BGEffect/BGEffect';
+import LightEffect from './lightEffect.png';
 import './taskbar.css';
 
 class Taskbar extends React.Component {
@@ -48,7 +49,9 @@ class Taskbar extends React.Component {
         }
         );
         return (
-            <table className=" Taskbar" style={{ zIndex: window.maxZIndex + 10, backgroundColor: this.convertHex(window.systemColor0, 95) }}>
+            <div>
+                <img draggable="false" src={LightEffect} className="tLightEffect" />
+                <table className=" Taskbar" style={{ zIndex: window.maxZIndex + 10, backgroundColor: this.convertHex(window.systemColor0, 95) }}>
                 < tbody >
                     <tr style={{ border: 'none' }} >    
                         <BGEffect />
@@ -63,6 +66,7 @@ class Taskbar extends React.Component {
                     </tr>
                 </tbody >
             </table >
+            </div>
         )
     }
 }

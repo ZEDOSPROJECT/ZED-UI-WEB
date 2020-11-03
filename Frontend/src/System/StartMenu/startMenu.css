@@ -130,7 +130,7 @@ hr{
     width: 100%;
     height: 95%;
     color: black;
-    background-color: rgba(255, 255, 255, 0.616);
+    background-color: rgb(255, 255, 255);
     overflow-y: scroll;
     overflow-x: hidden;
     padding-bottom: 10px;
