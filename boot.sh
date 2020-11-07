@@ -22,9 +22,12 @@ if [ -z $isLive ]; then
       git stash
       if ! git pull
       then
-         git checkout Backend/SERVER/API/SYSTEM/SETTINGS/USER/SETTINGS.json
+         git update-index --assume-unchanged Backend/SERVER/API/SYSTEM/SETTINGS/USER/SETTINGS.json
          git pull
       fi
+      cd Backend/SERVER/API/SYSTEM/SETTINGS/USER/
+      php updateSettings.php
+      cd ../../../../../../
       ./updateInstaller/postUpdate.sh
       git stash pop
       killall electron
