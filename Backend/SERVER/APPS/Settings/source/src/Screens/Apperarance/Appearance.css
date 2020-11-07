@@ -1,0 +1,16 @@
+.WallpaperContainer{
+    position: static;
+    width: 100%;
+    height: 400px;
+    overflow-y: scroll;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(226, 226, 226);
+}
+
+.isOnlinePic{
+    position: absolute;
+    width: 30px;
+    right: 5px;
+    bottom:10px;
+}
