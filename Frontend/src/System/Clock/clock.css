@@ -1,10 +1,10 @@
 .Clock {
-    width: 45px;
+    width: 50px;
     height: 100%;
     float: right;
     bottom: 0; 
     right: 0; 
-    margin-top:5px;
+    margin-top:12px;
     text-align: center;
     vertical-align: center;
 }

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Photo Viwer</title>
+    <title>Photo Viewer</title>
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -32,6 +32,7 @@
       
       const Http = new XMLHttpRequest();
       const localFile = getUrlVars()["path"];
+      document.title = decodeURIComponent(localFile.replace(/^.*[\\\/]/, '').split(".")[0])+" - ZED Picture Viewer";
       let url = "http://"+window.location.hostname + ":3031/API/SYSTEM/IO/PATH/listPath.php?path=" + localFile;
       url = url.substr(0, url.lastIndexOf("/"));
 
@@ -78,6 +79,7 @@
           "http://"+window.location.hostname +
           ":3031/API/SYSTEM/IO/FILE/read.php?path=" +
           fileList[currentIndex].split('=')[1];
+          document.title = decodeURIComponent(fileList[currentIndex].split('=')[1].replace(/^.*[\\\/]/, '').split(".")[0])+" - ZED Picture Viewer";
       } 
 
       function goBack(){
@@ -90,6 +92,7 @@
           "http://"+window.location.hostname +
           ":3031/API/SYSTEM/IO/FILE/read.php?path=" +
           fileList[currentIndex].split('=')[1];
+          document.title = decodeURIComponent(fileList[currentIndex].split('=')[1].replace(/^.*[\\\/]/, '').split(".")[0])+" - ZED Picture Viewer"
       } 
 
       function getUrlVars() {

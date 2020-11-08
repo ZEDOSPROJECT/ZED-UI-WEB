@@ -1,8 +1,8 @@
 .appCard{
     background-color: rgba(0, 1, 65, 0);
-    width: 95%;
+    width: 90%;
     height: 40px;
-    margin: 5px;
+    margin-left: 5px;
     padding: 5px;
 } 
 
@@ -19,9 +19,9 @@
 } 
 
 
-
 .appCardTitle {
     margin-top: 5px;
+    overflow: hidden;
 } 
 
 .appCardIcon{
@@ -59,11 +59,17 @@
 }
 
 .isAppFavorite{
+    position: absolute;
+    right: 15px;
+    top:5px;
     width: 10px;
     height: 10px;
 }
 
 .isAppNotFavorite{
+    position: absolute;
+    right: 15px;
+    top:5px;
     width: 10px;
     height: 10px;
     filter: grayscale();

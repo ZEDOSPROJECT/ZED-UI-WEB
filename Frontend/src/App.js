@@ -71,7 +71,7 @@ class App extends Component {
 
         setInterval(() => {
             for (var key in window.winTitle) {
-                if (window.winTitle[key] === "Control Panel" || window.winTitle[key] === "Photo Viwer") {
+                if (window.winTitle[key] === "Control Panel" || window.winTitle[key].includes("- ZED Picture Viewer")) {
                     this.loadUserSettings();
                 }
             }
@@ -365,6 +365,7 @@ class App extends Component {
                     nextWindowY={this.state.nextWindowY}
                     uuid={uuid}
                     onClose={this.onClose}
+                    onClickApp={this.onClickApp}
                     onToggleMinimize={this.onToggleMinimize}
                 />
             ), 'VISIBLE': true

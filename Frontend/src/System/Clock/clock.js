@@ -6,7 +6,7 @@ import CalendarWindow from './Calendar/calendar';
 class Clock extends React.Component {
     constructor(props) {
         super(props)
-        
+
         this.state = {
             time: new Date(),
             calendarVisible: false
@@ -15,37 +15,40 @@ class Clock extends React.Component {
     }
 
     componentDidMount() {
-        setInterval(this.update, 5000);  
+        setInterval(this.update, 5000);
     }
 
-    update = () => { 
+    componentWillUnmount() { // delete the interval just before component is removed
+        clearInterval(this.update);
+    }
+
+    update = () => {
         this.setState({
             time: new Date()
-        })   
+        })
     };
 
-    switchCalendar(){
+    switchCalendar() {
         this.setState({
             calendarVisible: !this.state.calendarVisible
-        })  
-    } 
+        })
+    }
 
     shouldComponentUpdate(nextProps, nextState) {
-        if(nextProps !== this.props || nextState !== this.state ){
+        if (nextProps !== this.props || nextState !== this.state) {
             return true;
         }
     }
 
-    render(){
-		const h = this.state.time.getHours()
-        const mn = this.state.time.getMinutes()
-        return(
-            <div className='Clock' style={{ color: invert(window.systemColor0, true)}}>
-                <CalendarWindow 
+    render() {
+        const { time } = this.state;
+        return (
+            <div className='Clock' style={{ color: invert(window.systemColor0, true) }}>
+                <CalendarWindow
                     visible={this.state.calendarVisible}
-                    toggleCalendar={this.switchCalendar} 
+                    toggleCalendar={this.switchCalendar}
                 />
-                <div onClick={this.switchCalendar} >{h % 12}:{(mn < 10 ? '0' + mn : mn)}</div>
+                <div onClick={this.switchCalendar} > {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</div>
             </div>
         );
     }

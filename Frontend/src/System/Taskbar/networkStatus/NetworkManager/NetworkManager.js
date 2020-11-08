@@ -4,7 +4,7 @@ import { REST_URL } from '../../../../REST_URL';
 import './NetworkManager.css';
 
 class NetworkManager extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -12,37 +12,38 @@ class NetworkManager extends Component {
         }
 
         setInterval(() => {
-            if(this.props.visible){
-                fetch(REST_URL+'/API/SYSTEM/NETWORK/WIFI/getWifiList.php')
-                .then(response => response.json())
-                .then(json => {
-                    this.setState({ networksJson: json['data'] });
-                    this.forceUpdate();
-                });
+            if (this.props.visible) {
+                fetch(REST_URL + '/API/SYSTEM/NETWORK/WIFI/getWifiList.php')
+                    .then(response => response.json())
+                    .then(json => {
+                        this.setState({ networksJson: json['data'] });
+                        this.forceUpdate();
+                    });
             }
         }, 2000);
     }
     render() {
-        let networksList=<div className="noNetworks">No networks avaliable</div>;
-        if(this.state.networksJson !== undefined){
-            if(this.state.networksJson.length !== 0){
-                networksList=undefined;
+        let networksList = <div className="noNetworks">No networks avaliable</div>;
+        if (this.state.networksJson !== undefined) {
+            if (this.state.networksJson.length !== 0) {
+                networksList = undefined;
 
-                networksList=this.state.networksJson.map((data, key) => {
+                networksList = this.state.networksJson.map((data, key) => {
                     return (
-                        <NetworkItem 
+                        <NetworkItem
                             ssid={data.ssid}
                             inUse={data.inUse}
+                            security={data.security}
                             key={key}
                         />
                     );
-                });   
-            }       
+                });
+            }
         }
 
-        
 
-        if(this.props.visible){
+
+        if (this.props.visible) {
             return (
                 <div className="NetworkManager">
                     <div>Wifi networks</div>
@@ -51,7 +52,7 @@ class NetworkManager extends Component {
                     </div>
                 </div>
             );
-        }else{
+        } else {
             return null;
         }
     }

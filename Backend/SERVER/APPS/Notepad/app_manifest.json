@@ -1,0 +1,11 @@
+{
+    "Name":"Notepad",
+    "Version":"1.0.0",
+    "Website":"",
+    "Platforms":"MOBILE|DESKTOP",
+    "Window":{
+        "Width":0,
+        "Height":0
+    },
+    "requireInternet": false
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Home.obj" type="ArrayMesh" id=2]
@@ -6,19 +6,26 @@
 [ext_resource path="res://Objects/predio.fbx" type="PackedScene" id=4]
 [ext_resource path="res://Objects/casa.fbx" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Station.fbx" type="PackedScene" id=6]
-[ext_resource path="res://Sounds/day.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/Night.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Objects/tunel.fbx" type="PackedScene" id=8]
-[ext_resource path="res://Textures/r_R.png" type="Texture" id=9]
-[ext_resource path="res://Textures/r_C.png" type="Texture" id=10]
-[ext_resource path="res://Textures/r_A.png" type="Texture" id=11]
+[ext_resource path="res://Scripts/skyManager.gd" type="Script" id=9]
+[ext_resource path="res://Skys/Day.tres" type="Environment" id=10]
+[ext_resource path="res://Objects/Loja/Loja.glb" type="PackedScene" id=11]
 [ext_resource path="res://Objects/mesa.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Objects/earth lp.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scripts/earthRotation.gd" type="Script" id=14]
-[ext_resource path="res://Objects/Loja.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Textures/3DLock.png" type="Texture" id=16]
 [ext_resource path="res://Objects/Lowpoly_Notebook_2.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Objects/rad.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Player/Player.gd" type="Script" id=19]
+[ext_resource path="res://Objects/train.glb" type="PackedScene" id=20]
+[ext_resource path="res://Sounds/noise.ogg" type="AudioStream" id=21]
+[ext_resource path="res://Objects/Buildings/building0.glb" type="PackedScene" id=22]
+[ext_resource path="res://Objects/Buildings/building2.glb" type="PackedScene" id=23]
+[ext_resource path="res://Objects/Buildings/building1.glb" type="PackedScene" id=24]
+[ext_resource path="res://Objects/Buildings/building3.glb" type="PackedScene" id=25]
+[ext_resource path="res://Sounds/City.ogg" type="AudioStream" id=26]
+[ext_resource path="res://Objects/lampspot.glb" type="PackedScene" id=28]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.258824, 0.258824, 0.258824, 0.721569 )
@@ -61,47 +68,55 @@ func _on_Area_input_event(camera, event, click_position, click_normal, shape_idx
 extents = Vector3( 2.7, 2.6, 1.2 )
 
 [sub_resource type="SpatialMaterial" id=13]
-albedo_texture = ExtResource( 9 )
+render_priority = 3
+metallic_specular = 0.0
+roughness = 0.0
+roughness_texture_channel = 1
+rim_enabled = true
+rim = 0.0
+rim_tint = 0.0
 
-[sub_resource type="PlaneMesh" id=14]
-material = SubResource( 13 )
+[sub_resource type="SpatialMaterial" id=14]
+albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="Skin" id=15]
-bind_count = 1
-bind/0/name = ""
-bind/0/bone = -1
-bind/0/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+[sub_resource type="CubeMesh" id=15]
+material = SubResource( 14 )
 
-[sub_resource type="SpatialMaterial" id=16]
-flags_transparent = true
-albedo_texture = ExtResource( 10 )
+[sub_resource type="CubeMesh" id=16]
 
 [sub_resource type="PlaneMesh" id=17]
-material = SubResource( 16 )
 
 [sub_resource type="SpatialMaterial" id=18]
-flags_transparent = true
-albedo_texture = ExtResource( 11 )
+albedo_color = Color( 0.207843, 0.207843, 0.207843, 1 )
 
-[sub_resource type="QuadMesh" id=19]
-material = SubResource( 18 )
-
-[sub_resource type="SpatialMaterial" id=20]
-flags_transparent = true
-albedo_texture = ExtResource( 11 )
-
-[sub_resource type="QuadMesh" id=21]
-material = SubResource( 20 )
-
-[sub_resource type="SpatialMaterial" id=22]
+[sub_resource type="SpatialMaterial" id=19]
 albedo_texture = ExtResource( 3 )
 uv1_scale = Vector3( 100, 100, 100 )
 
-[sub_resource type="CubeMesh" id=23]
-material = SubResource( 22 )
+[sub_resource type="CubeMesh" id=20]
+material = SubResource( 19 )
 
-[sub_resource type="ConvexPolygonShape" id=24]
+[sub_resource type="ConvexPolygonShape" id=21]
 points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=22]
+
+[sub_resource type="PhysicsMaterial" id=23]
+
+[sub_resource type="BoxShape" id=24]
+extents = Vector3( 3, 4, 55 )
+
+[sub_resource type="Animation" id=25]
+resource_name = "Train"
+length = 58.0
+step = 1.0
+tracks/0/type = "transform"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0.2, 1, -67.1332, 0.931902, 158, 0, 0, 0, 1, 1, 1, 1, 16, 1, -67.1332, 0.931902, -14, 0, 0, 0, 1, 1, 1, 1, 44, 1, -67.1332, 0.931902, -14, 0, 0, 0, 1, 1, 1, 1, 56, 1, -67.1332, 0.931902, -159, 0, 0, 0, 1, 1, 1, 1 )
 
 [node name="World" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8668, -0.931902, 0 )
@@ -109,7 +124,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8668, -0.931902, 0 )
 [node name="City" type="Node" parent="."]
 
 [node name="tunel" parent="City" instance=ExtResource( 8 )]
-transform = Transform( -3.12994e-07, 0, 1.92114, 0, 2.67562, 0, -1, 0, -1.62921e-07, -82.1049, -3.08215, 62.2331 )
+transform = Transform( -4.78881e-07, 0, 2.93934, 0, 4.54855, 0, -1, 0, -1.62921e-07, -84.1992, -2.48215, 62.2331 )
 
 [node name="shadow" type="MeshInstance" parent="City/tunel"]
 transform = Transform( -2.49429, 5.17017, -8.55366e-07, -2.18783, -5.89438, -1.24121e-06, -1.42737e-06, -8.51803e-07, 3.39721, -0.822002, 0.0746459, -3.11029 )
@@ -123,7 +138,7 @@ transform = Transform( 1, 0, 2.84217e-14, 0, 1, 0, 0, 0, 1, -3.65469, 0, -2.1380
 shape = SubResource( 3 )
 
 [node name="tunel2" parent="City" instance=ExtResource( 8 )]
-transform = Transform( -1.62921e-07, 0, -1.92114, 0, 2.67562, 0, 1, 0, -3.12993e-07, -93.1192, -3.08215, -57.4966 )
+transform = Transform( -2.93258e-07, 0, -3.45805, 0, 4.54855, 0, 1, 0, -3.12993e-07, -101.225, -2.48215, -57.4966 )
 
 [node name="shadow" type="MeshInstance" parent="City/tunel2"]
 transform = Transform( -2.49429, 5.17017, -8.55366e-07, -2.18783, -5.89438, -1.24121e-06, -1.42737e-06, -8.51803e-07, 3.39721, -0.822002, 0.0746459, -3.11029 )
@@ -137,7 +152,7 @@ transform = Transform( 1, 0, 2.84217e-14, 0, 1, 0, 0, 0, 1, -3.65469, 0, -2.1380
 shape = SubResource( 3 )
 
 [node name="tunel4" parent="City" instance=ExtResource( 8 )]
-transform = Transform( -3.12994e-07, 0, 1.92114, 0, 2.67562, 0, -1, 0, -1.62921e-07, -55.0308, -3.08215, 62.2331 )
+transform = Transform( -3.12994e-07, 0, 1.92114, 0, 4.54855, 0, -1, 0, -1.62921e-07, -54.5308, -2.48215, 62.2331 )
 
 [node name="shadow" type="MeshInstance" parent="City/tunel4"]
 transform = Transform( -2.49429, 5.17017, -8.55366e-07, -2.18783, -5.89438, -1.24121e-06, -1.42737e-06, -8.51803e-07, 3.39721, -0.822002, 0.0746459, -3.11029 )
@@ -151,7 +166,7 @@ transform = Transform( 1, 0, 2.84217e-14, 0, 1, 0, 0, 0, 1, -3.65469, 0, -2.1380
 shape = SubResource( 3 )
 
 [node name="tunel3" parent="City" instance=ExtResource( 8 )]
-transform = Transform( -2.11797e-07, 0, -2.49748, 0, 2.67562, 0, 1, 0, -3.12993e-07, -66.0451, -3.08215, -57.4966 )
+transform = Transform( -2.11797e-07, 0, -2.49748, 0, 4.54855, 0, 1, 0, -3.12993e-07, -66.0451, -2.48215, -57.4966 )
 
 [node name="shadow" type="MeshInstance" parent="City/tunel3"]
 transform = Transform( -2.49429, 5.17017, -8.55366e-07, -2.18783, -5.89438, -1.24121e-06, -1.42737e-06, -8.51803e-07, 3.39721, -0.822002, 0.0746459, -3.11029 )
@@ -164,94 +179,94 @@ material/0 = null
 transform = Transform( 1, 0, 2.84217e-14, 0, 1, 0, 0, 0, 1, -3.65469, 0, -2.13804 )
 shape = SubResource( 3 )
 
-[node name="Casas" type="Node" parent="City"]
+[node name="Houses" type="Node" parent="City"]
 
-[node name="casa" parent="City/Casas" instance=ExtResource( 5 )]
+[node name="casa" parent="City/Houses" instance=ExtResource( 5 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -40.6852, -6.1518, -10.7386 )
 
-[node name="casa2" parent="City/Casas" instance=ExtResource( 5 )]
+[node name="casa2" parent="City/Houses" instance=ExtResource( 5 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -40.7889, -6.1518, 19.3256 )
 
-[node name="casa4" parent="City/Casas" instance=ExtResource( 5 )]
+[node name="casa4" parent="City/Houses" instance=ExtResource( 5 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -29.7477, -6.1518, 60.9687 )
 
-[node name="casa5" parent="City/Casas" instance=ExtResource( 5 )]
+[node name="casa5" parent="City/Houses" instance=ExtResource( 5 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -2.5472, -6.1518, 60.9687 )
 
-[node name="predio" parent="City/Casas" instance=ExtResource( 4 )]
+[node name="predio" parent="City/Houses" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7508, -6.13887, 59.9839 )
 
-[node name="predio2" parent="City/Casas" instance=ExtResource( 4 )]
+[node name="predio2" parent="City/Houses" instance=ExtResource( 4 )]
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 17.7846, -6.28601, -4.51452 )
 
-[node name="predio3" parent="City/Casas" instance=ExtResource( 4 )]
+[node name="predio3" parent="City/Houses" instance=ExtResource( 4 )]
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 21.2753, -6.28601, -31.262 )
 
-[node name="predio4" parent="City/Casas" instance=ExtResource( 4 )]
+[node name="predio4" parent="City/Houses" instance=ExtResource( 4 )]
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 21.2753, -6.28601, -58.1114 )
 
-[node name="predio5" parent="City/Casas" instance=ExtResource( 4 )]
+[node name="predio5" parent="City/Houses" instance=ExtResource( 4 )]
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 21.2753, -6.28601, -84.7701 )
 
-[node name="predio6" parent="City/Casas" instance=ExtResource( 4 )]
+[node name="predio6" parent="City/Houses" instance=ExtResource( 4 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -39.05, -6.28601, -66.8056 )
 
-[node name="predio7" parent="City/Casas" instance=ExtResource( 4 )]
+[node name="predio7" parent="City/Houses" instance=ExtResource( 4 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -65.8033, -6.28601, -50.5899 )
 
-[node name="MeshInstance24" type="MeshInstance" parent="City/Casas"]
+[node name="MeshInstance24" type="MeshInstance" parent="City/Houses"]
 transform = Transform( -1.88384e-06, 0, 0.237094, 0, 6.49496, 0, -61.3985, 0, -2.05111e-07, 5.37788, 0.917946, -0.73103 )
 visible = false
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="StaticBody" type="StaticBody" parent="City/Casas/MeshInstance24"]
+[node name="StaticBody" type="StaticBody" parent="City/Houses/MeshInstance24"]
 
-[node name="CollisionShape" type="CollisionShape" parent="City/Casas/MeshInstance24/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="City/Houses/MeshInstance24/StaticBody"]
 shape = SubResource( 5 )
 
-[node name="MeshInstance25" type="MeshInstance" parent="City/Casas"]
+[node name="MeshInstance25" type="MeshInstance" parent="City/Houses"]
 transform = Transform( -0.000247222, 0, 31.1146, 0, 6.49496, 0, -15.3496, 0, -5.12776e-08, -22.6221, -1.08205, -52.731 )
 visible = false
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="StaticBody" type="StaticBody" parent="City/Casas/MeshInstance25"]
+[node name="StaticBody" type="StaticBody" parent="City/Houses/MeshInstance25"]
 
-[node name="CollisionShape" type="CollisionShape" parent="City/Casas/MeshInstance25/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="City/Houses/MeshInstance25/StaticBody"]
 shape = SubResource( 5 )
 
-[node name="MeshInstance26" type="MeshInstance" parent="City/Casas"]
+[node name="MeshInstance26" type="MeshInstance" parent="City/Houses"]
 transform = Transform( -0.000247222, 0, 31.1146, 0, 6.49496, 0, -15.3496, 0, -5.12776e-08, -22.6221, -1.08205, 63.269 )
 visible = false
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="StaticBody" type="StaticBody" parent="City/Casas/MeshInstance26"]
+[node name="StaticBody" type="StaticBody" parent="City/Houses/MeshInstance26"]
 
-[node name="CollisionShape" type="CollisionShape" parent="City/Casas/MeshInstance26/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="City/Houses/MeshInstance26/StaticBody"]
 shape = SubResource( 5 )
 
-[node name="MeshInstance27" type="MeshInstance" parent="City/Casas"]
+[node name="MeshInstance27" type="MeshInstance" parent="City/Houses"]
 transform = Transform( -0.000173056, 0, 21.7802, 0, 6.49496, 0, -15.3496, 0, -5.12776e-08, -31.6221, -1.08205, 21.269 )
 visible = false
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="StaticBody" type="StaticBody" parent="City/Casas/MeshInstance27"]
+[node name="StaticBody" type="StaticBody" parent="City/Houses/MeshInstance27"]
 
-[node name="CollisionShape" type="CollisionShape" parent="City/Casas/MeshInstance27/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="City/Houses/MeshInstance27/StaticBody"]
 shape = SubResource( 5 )
 
-[node name="MeshInstance28" type="MeshInstance" parent="City/Casas"]
+[node name="MeshInstance28" type="MeshInstance" parent="City/Houses"]
 transform = Transform( -9.44884e-05, 0, 11.892, 0, 6.49496, 0, -15.3496, 0, -5.12776e-08, -41.6221, -1.08205, -6.73103 )
 visible = false
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="StaticBody" type="StaticBody" parent="City/Casas/MeshInstance28"]
+[node name="StaticBody" type="StaticBody" parent="City/Houses/MeshInstance28"]
 
-[node name="CollisionShape" type="CollisionShape" parent="City/Casas/MeshInstance28/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="City/Houses/MeshInstance28/StaticBody"]
 shape = SubResource( 5 )
 
 [node name="Protection" type="Node" parent="City"]
@@ -530,12 +545,14 @@ material/223 = null
 material/224 = null
 material/225 = null
 
-[node name="Loja" parent="City/Home" instance=ExtResource( 15 )]
-transform = Transform( 0.79969, 0, 0.0222536, 0, 0.8, 0, -0.0222536, 0, 0.79969, 20.446, 2.743, 6.918 )
+[node name="Store" parent="City/Home" instance=ExtResource( 11 )]
+transform = Transform( 0.772316, 0, -9.91625e-08, 0, 0.833047, 0, 5.26818e-08, 0, 0.694675, 20.3334, 2.84066, 7.0183 )
 
-[node name="Store" type="StaticBody" parent="City/Home/Loja"]
+[node name="Store" type="StaticBody" parent="City/Home/Store"]
+transform = Transform( 1.03544, 0, 0.0288143, 0, 0.96033, 0, -0.0320346, 0, 1.15117, 0.145806, -0.117237, -0.000442505 )
 
-[node name="CollisionShape" type="CollisionShape" parent="City/Home/Loja/Store"]
+[node name="CollisionShape" type="CollisionShape" parent="City/Home/Store/Store"]
+transform = Transform( 1, 0, -1.86265e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 8 )
 
 [node name="earth lp" parent="City/Home" instance=ExtResource( 13 )]
@@ -547,7 +564,7 @@ script = ExtResource( 14 )
 [node name="CollisionShape" type="CollisionShape" parent="City/Home/earth lp/Web Browser"]
 shape = SubResource( 9 )
 
-[node name="mesa" parent="City/Home" instance=ExtResource( 12 )]
+[node name="Table1" parent="City/Home" instance=ExtResource( 12 )]
 transform = Transform( -7.47807e-08, 0, -0.172, 0, 0.47, 0, 0.459, 0, -2.80224e-08, 20.5914, 2.16576, 7.4825 )
 
 [node name="Lowpoly_Notebook_2" parent="City/Home" instance=ExtResource( 17 )]
@@ -568,95 +585,105 @@ script = SubResource( 11 )
 [node name="CollisionShape" type="CollisionShape" parent="City/Home/rad/ZED Media Player"]
 shape = SubResource( 12 )
 
-[node name="mesa2" parent="City/Home" instance=ExtResource( 12 )]
+[node name="Table" parent="City/Home" instance=ExtResource( 12 )]
 transform = Transform( -7.47807e-08, 0, -0.172, 0, 0.47, 0, 0.459, 0, -2.80224e-08, 17.926, 2.166, -0.121 )
 
 [node name="ligths" type="Node" parent="City/Home"]
 
 [node name="OmniLight" type="OmniLight" parent="City/Home/ligths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4225, -0.00777268, -13.6482 )
-light_energy = 2.0
+light_energy = 4.33
 light_indirect_energy = 0.0
 light_specular = 1.0
 light_bake_mode = 0
-shadow_bias = 0.0
-shadow_reverse_cull_face = true
+shadow_bias = 16.0
 omni_range = 10.0785
 
 [node name="OmniLight2" type="OmniLight" parent="City/Home/ligths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4225, -0.00777268, -3.89848 )
-light_energy = 2.0
+light_energy = 4.33
 light_indirect_energy = 0.0
 light_specular = 1.0
 light_bake_mode = 0
-shadow_bias = 0.0
-shadow_reverse_cull_face = true
+shadow_bias = 16.0
 omni_range = 10.0785
 
 [node name="OmniLight5" type="OmniLight" parent="City/Home/ligths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1221, 6.2498, -1.10038 )
-light_energy = 2.0
+light_energy = 4.33
 light_indirect_energy = 0.0
 light_specular = 1.0
 light_bake_mode = 0
-shadow_bias = 0.0
-shadow_reverse_cull_face = true
+shadow_bias = 16.0
 omni_range = 10.0785
 
 [node name="OmniLight6" type="OmniLight" parent="City/Home/ligths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1221, 6.2498, -13.4155 )
-light_energy = 2.0
+light_energy = 4.33
 light_indirect_energy = 0.0
 light_specular = 1.0
 light_bake_mode = 0
-shadow_bias = 0.0
-shadow_reverse_cull_face = true
+shadow_bias = 16.0
 omni_range = 10.0785
 
 [node name="OmniLight7" type="OmniLight" parent="City/Home/ligths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6195, 6.25613, -15.8988 )
-light_energy = 2.0
+light_energy = 4.33
 light_indirect_energy = 0.0
 light_specular = 1.0
 light_bake_mode = 0
-shadow_bias = 0.0
-shadow_reverse_cull_face = true
+shadow_bias = 16.0
+omni_range = 10.0785
+
+[node name="OmniLight9" type="OmniLight" parent="City/Home/ligths"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.9195, 2.25613, -21.1988 )
+light_energy = 1.1
+light_indirect_energy = 0.0
+light_specular = 1.0
+light_bake_mode = 0
+shadow_bias = 16.0
+omni_range = 10.0785
+
+[node name="OmniLight10" type="OmniLight" parent="City/Home/ligths"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9195, 0.25613, -20.1988 )
+light_energy = 1.1
+light_indirect_energy = 0.0
+light_specular = 1.0
+light_bake_mode = 0
+shadow_bias = 16.0
 omni_range = 10.0785
 
 [node name="OmniLight8" type="OmniLight" parent="City/Home/ligths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6277, 6.2498, -4.74978 )
-light_energy = 2.0
+light_energy = 4.33
 light_indirect_energy = 0.0
 light_specular = 1.0
 light_bake_mode = 0
-shadow_bias = 0.0
-shadow_reverse_cull_face = true
+shadow_bias = 16.0
 omni_range = 10.0785
 
 [node name="OmniLight3" type="OmniLight" parent="City/Home/ligths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1428, -0.00777268, -0.445878 )
-light_energy = 2.0
+light_energy = 4.33
 light_indirect_energy = 0.0
 light_specular = 1.0
 light_bake_mode = 0
-shadow_bias = 0.0
-shadow_reverse_cull_face = true
+shadow_bias = 16.0
 omni_range = 10.0785
 
 [node name="OmniLight4" type="OmniLight" parent="City/Home/ligths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1428, -0.00777268, -12.2177 )
-light_energy = 2.0
+light_energy = 4.33
 light_indirect_energy = 0.0
 light_specular = 1.0
 light_bake_mode = 0
-shadow_bias = 0.0
-shadow_reverse_cull_face = true
+shadow_bias = 16.0
 omni_range = 10.0785
 
 [node name="tectoFinal" type="MeshInstance" parent="City/Home"]
-transform = Transform( -1.54384e-06, -14.2363, 7.60093e-09, 0, -6.22287e-07, -0.173889, 9.47601, -2.31938e-06, 1.23835e-15, 21.256, 12.9133, 6.89247 )
+transform = Transform( -1.62103e-06, -16.2294, 8.66506e-09, 0, -6.22287e-07, -0.173889, 9.94981, -2.64409e-06, 1.41172e-15, 21.256, 13.1133, 6.89247 )
 mesh = SubResource( 4 )
-material/0 = null
+material/0 = SubResource( 13 )
 
 [node name="StaticBody" type="StaticBody" parent="City/Home/tectoFinal"]
 
@@ -919,107 +946,372 @@ material/0 = null
 shape = SubResource( 5 )
 
 [node name="Station" parent="City" instance=ExtResource( 6 )]
-transform = Transform( 6.43598, 0, 0, 0, 5.95036, 0, 0, 0, 4.45305, -67.1566, -5.58042, 9.10132 )
+transform = Transform( 8.36677, 0, 0, 0, 5.95036, 0, 0, 0, 7.48112, -64.6566, -5.58042, 0.60132 )
+
+[node name="catenary" type="MeshInstance" parent="City/Station"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.302502, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="City/Station/catenary"]
+transform = Transform( 0.002, 0, 0, 0, 0.002, 0, 0, 0, 28.62, -3.574, 0.949, 0.674 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="City/Station/catenary"]
+transform = Transform( 0.002, 0, 0, 0, -8.74227e-11, -0.0939999, 0, 0.002, -4.10887e-09, -3.574, 1.044, -13.4736 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="City/Station/catenary"]
+transform = Transform( 0.002, 0, 0, 0, -8.74227e-11, -0.0939999, 0, 0.002, -4.10887e-09, -3.574, 1.044, -11.6771 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="City/Station/catenary"]
+transform = Transform( 0.002, 0, 0, 0, -8.74227e-11, -0.0939999, 0, 0.002, -4.10887e-09, -3.574, 1.044, -8.53316 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance6" type="MeshInstance" parent="City/Station/catenary"]
+transform = Transform( 0.002, 0, 0, 0, -8.74227e-11, -0.0939999, 0, 0.002, -4.10887e-09, -3.574, 1.044, -5.61381 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance7" type="MeshInstance" parent="City/Station/catenary"]
+transform = Transform( 0.002, 0, 0, 0, -8.74226e-11, -0.0939998, 0, 0.002, -4.10886e-09, -3.574, 1.044, -3.36816 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance8" type="MeshInstance" parent="City/Station/catenary"]
+transform = Transform( 0.002, 0, 0, 0, -8.74225e-11, -0.0939997, 0, 0.002, -4.10886e-09, -3.574, 1.044, -0.448813 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance9" type="MeshInstance" parent="City/Station/catenary"]
+transform = Transform( 0.002, 0, 0, 0, -8.74225e-11, -0.0939997, 0, 0.00199999, -4.10886e-09, -3.574, 1.044, 2.6951 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance10" type="MeshInstance" parent="City/Station/catenary"]
+transform = Transform( 0.002, 0, 0, 0, -8.74225e-11, -0.0939997, 0, 0.00199999, -4.10886e-09, -3.574, 1.044, 6.28814 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance11" type="MeshInstance" parent="City/Station/catenary"]
+transform = Transform( 0.002, 0, 0, 0, -8.74225e-11, -0.0939997, 0, 0.00199999, -4.10886e-09, -3.574, 1.044, 9.43205 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="City/Station/catenary"]
+transform = Transform( 0.002, 0, 0, 0, 0.002, 0, 0, 0, 28.62, -3.574, 1.138, 0.674 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="catenary2" type="MeshInstance" parent="City/Station"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668118, 0.302502, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="City/Station/catenary2"]
+transform = Transform( 0.002, 0, 0, 0, 0.002, 0, 0, 0, 28.62, -3.574, 0.949, 0.674 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="City/Station/catenary2"]
+transform = Transform( 0.002, 0, 0, 0, -8.74227e-11, -0.0939999, 0, 0.002, -4.10887e-09, -3.574, 1.044, -13.4736 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="City/Station/catenary2"]
+transform = Transform( 0.002, 0, 0, 0, -8.74227e-11, -0.0939999, 0, 0.002, -4.10887e-09, -3.574, 1.044, -11.6771 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="City/Station/catenary2"]
+transform = Transform( 0.002, 0, 0, 0, -8.74227e-11, -0.0939999, 0, 0.002, -4.10887e-09, -3.574, 1.044, -8.53316 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance6" type="MeshInstance" parent="City/Station/catenary2"]
+transform = Transform( 0.002, 0, 0, 0, -8.74227e-11, -0.0939999, 0, 0.002, -4.10887e-09, -3.574, 1.044, -5.61381 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance7" type="MeshInstance" parent="City/Station/catenary2"]
+transform = Transform( 0.002, 0, 0, 0, -8.74226e-11, -0.0939998, 0, 0.002, -4.10886e-09, -3.574, 1.044, -3.36816 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance8" type="MeshInstance" parent="City/Station/catenary2"]
+transform = Transform( 0.002, 0, 0, 0, -8.74225e-11, -0.0939997, 0, 0.002, -4.10886e-09, -3.574, 1.044, -0.448813 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance9" type="MeshInstance" parent="City/Station/catenary2"]
+transform = Transform( 0.002, 0, 0, 0, -8.74225e-11, -0.0939997, 0, 0.00199999, -4.10886e-09, -3.574, 1.044, 2.6951 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance10" type="MeshInstance" parent="City/Station/catenary2"]
+transform = Transform( 0.002, 0, 0, 0, -8.74225e-11, -0.0939997, 0, 0.00199999, -4.10886e-09, -3.574, 1.044, 6.28814 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance11" type="MeshInstance" parent="City/Station/catenary2"]
+transform = Transform( 0.002, 0, 0, 0, -8.74225e-11, -0.0939997, 0, 0.00199999, -4.10886e-09, -3.574, 1.044, 9.43205 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="City/Station/catenary2"]
+transform = Transform( 0.002, 0, 0, 0, 0.002, 0, 0, 0, 28.62, -3.574, 1.138, 0.674 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance" type="MeshInstance" parent="City/Station"]
+transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 6.49999, -1.55376, 1.34446, 0 )
+mesh = SubResource( 16 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="City/Station"]
+transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 6.49999, -4.97205, 1.34445, 0 )
+mesh = SubResource( 16 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="City/Station"]
+transform = Transform( -0.183585, 0, 0, 0, -1.66555, 0, 0, 0, -0.420597, -1.54497, -0.00594586, 1.52537 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Station/MeshInstance5"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Station/MeshInstance5/StaticBody"]
+transform = Transform( 0.910043, 0, 0, 0, 0.910043, 0, 0, 0, 0.910043, 0, -0.0508851, 0 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="City/Station"]
+transform = Transform( -0.183585, 0, 0, 0, -1.66555, 0, 0, 0, -0.420597, -1.54497, -0.00594586, -1.39397 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Station/MeshInstance6"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Station/MeshInstance6/StaticBody"]
+transform = Transform( 0.910043, 0, 0, 0, 0.910043, 0, 0, 0, 0.910043, 0, -0.0508851, 0 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="City/Station"]
+transform = Transform( -0.183585, 0, 0, 0, -1.66555, 0, 0, 0, -0.420597, -1.54497, -0.00594586, -4.76245 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Station/MeshInstance7"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Station/MeshInstance7/StaticBody"]
+transform = Transform( 0.910043, 0, 0, 0, 0.910043, 0, 0, 0, 0.910043, 0, -0.0508851, 0 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance11" type="MeshInstance" parent="City/Station"]
+transform = Transform( -0.954642, 0, 0, 0, -0.166554, 0, 0, 0, -8.63014, -1.54497, -0.056363, -0.00166297 )
+visible = false
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Station/MeshInstance11"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Station/MeshInstance11/StaticBody"]
+transform = Transform( 0.910043, 0, 0, 0, 0.910043, 0, 0, 0, 0.910043, 0, -0.0508851, 0 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance12" type="MeshInstance" parent="City/Station"]
+transform = Transform( -0.954642, 0, 0, 0, -0.166554, 0, 0, 0, -8.63014, -4.80788, -0.056363, -0.00166297 )
+visible = false
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Station/MeshInstance12"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Station/MeshInstance12/StaticBody"]
+transform = Transform( 0.910043, 0, 0, 0, 0.910043, 0, 0, 0, 0.910043, 0, -0.0508851, 0 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="City/Station"]
+transform = Transform( -0.183585, 0, 0, 0, -1.66555, 0, 0, 0, -0.420597, -4.79234, -0.00594586, 1.52538 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Station/MeshInstance8"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Station/MeshInstance8/StaticBody"]
+transform = Transform( 0.910043, 0, 0, 0, 0.910043, 0, 0, 0, 0.910043, 0, -0.0508851, 0 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance9" type="MeshInstance" parent="City/Station"]
+transform = Transform( -0.183585, 0, 0, 0, -1.66555, 0, 0, 0, -0.420597, -4.79234, -0.00594586, -1.39397 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Station/MeshInstance9"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Station/MeshInstance9/StaticBody"]
+transform = Transform( 0.910043, 0, 0, 0, 0.910043, 0, 0, 0, 0.910043, 0, -0.0508851, 0 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance10" type="MeshInstance" parent="City/Station"]
+transform = Transform( -0.183585, 0, 0, 0, -1.66555, 0, 0, 0, -0.420597, -4.79234, -0.00594586, -4.76245 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="City/Station/MeshInstance10"]
+
+[node name="CollisionShape" type="CollisionShape" parent="City/Station/MeshInstance10/StaticBody"]
+transform = Transform( 0.910043, 0, 0, 0, 0.910043, 0, 0, 0, 0.910043, 0, -0.0508851, 0 )
+shape = SubResource( 7 )
 
 [node name="Roads" type="Node" parent="City"]
 
+[node name="lampSpot" type="Node" parent="City/Roads"]
+
+[node name="lampspot5" parent="City/Roads/lampSpot" instance=ExtResource( 28 )]
+transform = Transform( 0.227, 0, 0, 0, 0.281, 0, 0, 0, 0.668, -19.263, -1.211, 33 )
+
+[node name="lampspot6" parent="City/Roads/lampSpot" instance=ExtResource( 28 )]
+transform = Transform( 0.227, 0, 0, 0, 0.281, 0, 0, 0, 0.668, -19.263, -1.211, 61 )
+
+[node name="lampspot7" parent="City/Roads/lampSpot" instance=ExtResource( 28 )]
+transform = Transform( 0.227, 0, 0, 0, 0.281, 0, 0, 0, 0.668, -19.263, -1.211, -4 )
+
+[node name="lampspot8" parent="City/Roads/lampSpot" instance=ExtResource( 28 )]
+transform = Transform( 0.227, 0, 0, 0, 0.281, 0, 0, 0, 0.668, -78.263, -1.211, 33 )
+
+[node name="lampspot9" parent="City/Roads/lampSpot" instance=ExtResource( 28 )]
+transform = Transform( 0.227, 0, 0, 0, 0.281, 0, 0, 0, 0.668, -78.263, -1.211, 61 )
+
+[node name="lampspot10" parent="City/Roads/lampSpot" instance=ExtResource( 28 )]
+transform = Transform( 0.227, 0, 0, 0, 0.281, 0, 0, 0, 0.668, -77.263, -1.211, -13.8 )
+
+[node name="lampspot13" parent="City/Roads/lampSpot" instance=ExtResource( 28 )]
+transform = Transform( 7.45058e-09, 0, 0.668, 0, 0.281, 0, -0.227, 0, 2.98023e-08, -4.263, -1.211, -15 )
+
+[node name="lampspot11" parent="City/Roads/lampSpot" instance=ExtResource( 28 )]
+transform = Transform( -1.49012e-08, 0, -0.668, 0, 0.281, 0, 0.227, 0, -5.96046e-08, -52.763, -1.211, 23.5 )
+
+[node name="lampspot12" parent="City/Roads/lampSpot" instance=ExtResource( 28 )]
+transform = Transform( -1.49012e-08, 0, -0.668, 0, 0.281, 0, 0.227, 0, -5.96046e-08, -80.763, -1.211, 23.5 )
+
 [node name="MeshInstance" type="MeshInstance" parent="City/Roads"]
-transform = Transform( -1.5299e-07, 0, 3.5, 0, 1, 0, -8.75, 0, -3.82475e-07, -2, -5.918, 6 )
-mesh = SubResource( 14 )
-skin = SubResource( 15 )
-material/0 = null
-
-[node name="MeshInstance12" type="MeshInstance" parent="City/Roads"]
-transform = Transform( 6.60607e-07, 0, 3.881, 0, 1, 0, -8.75, 0, 2.93007e-07, -60.445, -5.918, 21 )
-mesh = SubResource( 14 )
-skin = SubResource( 15 )
-material/0 = null
-
-[node name="MeshInstance13" type="MeshInstance" parent="City/Roads"]
-transform = Transform( 6.60607e-07, 0, 3.881, 0, 1, 0, -8.75, 0, 2.93007e-07, -60.445, -5.918, 4 )
-mesh = SubResource( 14 )
-skin = SubResource( 15 )
-material/0 = null
-
-[node name="MeshInstance14" type="MeshInstance" parent="City/Roads"]
-transform = Transform( 6.60607e-07, 0, 3.881, 0, 1, 0, -8.75, 0, 2.93007e-07, -60.445, -5.918, -11 )
-mesh = SubResource( 14 )
-skin = SubResource( 15 )
-material/0 = null
-
-[node name="MeshInstance15" type="MeshInstance" parent="City/Roads"]
-transform = Transform( 6.60607e-07, 0, 3.881, 0, 1, 0, -8.75, 0, 2.93007e-07, -60.445, -5.918, -49 )
-mesh = SubResource( 14 )
-skin = SubResource( 15 )
-material/0 = null
-
-[node name="MeshInstance16" type="MeshInstance" parent="City/Roads"]
-transform = Transform( 6.60607e-07, 0, 3.881, 0, 1, 0, -8.75, 0, 2.93007e-07, -60.445, -5.918, -65 )
-mesh = SubResource( 14 )
-skin = SubResource( 15 )
-material/0 = null
-
-[node name="MeshInstance17" type="MeshInstance" parent="City/Roads"]
-transform = Transform( 6.60607e-07, 0, 3.881, 0, 1, 0, -8.75, 0, 2.93007e-07, -60.445, -5.918, 57 )
-mesh = SubResource( 14 )
-skin = SubResource( 15 )
-material/0 = null
+transform = Transform( 4.2, 0, 0, 0, 1, 0, 0, 0, 75, -60, -5.9, 0 )
+mesh = SubResource( 17 )
+material/0 = SubResource( 18 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="City/Roads"]
-transform = Transform( -1.5299e-07, 0, 3.5, 0, 1, 0, -8.75, 0, -3.82475e-07, -2, -5.918, -11 )
-mesh = SubResource( 14 )
-skin = SubResource( 15 )
-material/0 = null
+transform = Transform( 4.2, 0, 0, 0, 1, 0, 0, 0, 41.25, -2, -5.9, 3.7 )
+mesh = SubResource( 17 )
+material/0 = SubResource( 18 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="City/Roads"]
-transform = Transform( -1.5299e-07, 0, 3.5, 0, 1, 0, -8.75, 0, -3.82475e-07, -2, -5.918, 23 )
-mesh = SubResource( 14 )
-skin = SubResource( 15 )
-material/0 = null
-
-[node name="MeshInstance6" type="MeshInstance" parent="City/Roads"]
-transform = Transform( -8.75, 0, -5.88733e-07, 0, 1, 0, 1.32121e-06, 0, -3.899, -27.127, -5.918, 39.91 )
-mesh = SubResource( 14 )
-skin = SubResource( 15 )
-material/0 = null
-
-[node name="MeshInstance7" type="MeshInstance" parent="City/Roads"]
-transform = Transform( -8.75, 0, -6.58946e-07, 0, 1, 0, 1.32121e-06, 0, -4.364, -27.127, -5.918, -30.403 )
-mesh = SubResource( 14 )
-skin = SubResource( 15 )
-material/0 = null
-
-[node name="MeshInstance9" type="MeshInstance" parent="City/Roads"]
-transform = Transform( -8.75, 0, -5.88733e-07, 0, 1, 0, 1.32121e-06, 0, -3.899, -43.127, -5.918, 39.91 )
-mesh = SubResource( 14 )
-skin = SubResource( 15 )
-material/0 = null
-
-[node name="MeshInstance8" type="MeshInstance" parent="City/Roads"]
-transform = Transform( -8.75, 0, -6.58946e-07, 0, 1, 0, 1.32121e-06, 0, -4.364, -43.127, -5.918, -30.403 )
-mesh = SubResource( 14 )
-skin = SubResource( 15 )
-material/0 = null
+transform = Transform( -1.1566e-07, 0, 25.9875, 0, 1, 0, -4.2, 0, -1.80309e-06, -32, -5.888, -33.3 )
+mesh = SubResource( 17 )
+material/0 = SubResource( 18 )
 
 [node name="MeshInstance4" type="MeshInstance" parent="City/Roads"]
-transform = Transform( 9.98749, 0, 0, 0, 5.13, 0, 0, 0, 11.985, -8.616, -5.9, -22.523 )
+transform = Transform( -1.1566e-07, 0, 25.9875, 0, 1, 0, -4.2, 0, -1.80309e-06, -32, -5.888, 40.7 )
 mesh = SubResource( 17 )
-material/0 = null
+material/0 = SubResource( 18 )
 
-[node name="MeshInstance5" type="MeshInstance" parent="City/Roads"]
-transform = Transform( -4.8948e-07, 0, -9.921, 0, 5.333, 0, 11.198, 0, -4.33661e-07, -8.564, -5.927, 32.477 )
-mesh = SubResource( 17 )
-material/0 = null
+[node name="ExternalBuilds" type="MeshInstance" parent="City"]
 
-[node name="MeshInstance10" type="MeshInstance" parent="City/Roads"]
-transform = Transform( 0.0217589, -14.117, -4.37114e-08, 0, -6.17074e-07, 1, -20.778, -0.0147835, -4.5775e-11, -57, -5.899, 40 )
-mesh = SubResource( 19 )
-material/0 = null
+[node name="building12" parent="City/ExternalBuilds" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, -9, -130 )
 
-[node name="MeshInstance11" type="MeshInstance" parent="City/Roads"]
-transform = Transform( 0.0217589, -14.117, -4.37114e-08, 0, -6.17074e-07, 1, -20.778, -0.0147835, -4.5775e-11, -57, -5.899, -30 )
-mesh = SubResource( 21 )
-material/0 = null
+[node name="building13" parent="City/ExternalBuilds" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -92, -9, -130 )
+
+[node name="building14" parent="City/ExternalBuilds" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -164, -9, 12 )
+
+[node name="building15" parent="City/ExternalBuilds" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -164, -9, 182 )
+
+[node name="building16" parent="City/ExternalBuilds" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97, -9, 169 )
+
+[node name="building17" parent="City/ExternalBuilds" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97, -9, 231 )
+
+[node name="building0" parent="City/ExternalBuilds" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, -176, -51, -29 )
+
+[node name="building29" parent="City/ExternalBuilds" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, -543, -51, -29 )
+
+[node name="building30" parent="City/ExternalBuilds" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, -543, -51, -29 )
+
+[node name="building31" parent="City/ExternalBuilds" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, -543, 113, -29 )
+
+[node name="building9" parent="City/ExternalBuilds" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, -293, -51, 122 )
+
+[node name="building10" parent="City/ExternalBuilds" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, -293, -51, 166 )
+
+[node name="building18" parent="City/ExternalBuilds" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, -195, -52, 182 )
+
+[node name="building19" parent="City/ExternalBuilds" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, -470, -52, 238 )
+
+[node name="building11" parent="City/ExternalBuilds" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, -293, -51, 230 )
+
+[node name="building3" parent="City/ExternalBuilds" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, -176, -51, 84 )
+
+[node name="building1" parent="City/ExternalBuilds" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, -125, -100, -106 )
+
+[node name="building2" parent="City/ExternalBuilds" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, -72, -100, -106 )
+
+[node name="building4" parent="City/ExternalBuilds" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42, -9, 116 )
+
+[node name="building5" parent="City/ExternalBuilds" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -258, -9, 116 )
+
+[node name="building6" parent="City/ExternalBuilds" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -258, -9, 68 )
+
+[node name="building20" parent="City/ExternalBuilds" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -89, -9, -191 )
+
+[node name="building21" parent="City/ExternalBuilds" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -9, -191 )
+
+[node name="building7" parent="City/ExternalBuilds" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -258, -9, -53 )
+
+[node name="building8" parent="City/ExternalBuilds" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 71, 22 )
+
+[node name="building28" parent="City/ExternalBuilds" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 0, 78 )
+
+[node name="building22" parent="City/ExternalBuilds" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 66, -8, 22 )
+
+[node name="building27" parent="City/ExternalBuilds" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -162, -8, 321 )
+
+[node name="building23" parent="City/ExternalBuilds" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 71, -72 )
+
+[node name="building24" parent="City/ExternalBuilds" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 66, -8, -72 )
+
+[node name="building25" parent="City/ExternalBuilds" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -269, 71, -129 )
+
+[node name="building26" parent="City/ExternalBuilds" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -269, -8, -129 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1.3832, 0, 0, 0, 1, 14.8668, -3.0681, -20 )
@@ -1051,18 +1343,324 @@ __meta__ = {
 
 [node name="Ground" type="MeshInstance" parent="."]
 transform = Transform( 87.0847, 0, 0, 0, 1, 0, 0, 0, 70.6455, 0, -6.04547, 0 )
-mesh = SubResource( 23 )
+mesh = SubResource( 20 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Ground"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Ground/StaticBody"]
+shape = SubResource( 21 )
+
+[node name="Train" type="MeshInstance" parent="."]
+transform = Transform( 1.4, 0, 0, 0, 1, 0, 0, 0, 1.125, -65.9332, 0.931902, -8.7 )
+
+[node name="Train" type="MeshInstance" parent="Train"]
+transform = Transform( -1.99489, 0, -1.14633e-07, 0, 3.24888, 0, 4.62286e-06, 0, -30.04, 0, -4.6, 14 )
+visible = false
+mesh = SubResource( 22 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Train/Train"]
+transform = Transform( 0.387147, 0, 2.11837e-08, 0, 0.25641, 0, 5.67311e-08, 0, 0.0185, -0.250637, 0, -0.266312 )
+physics_material_override = SubResource( 23 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Train/Train/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 7.10543e-14, 0, 1, 0.647415, 0, 14.3952 )
 shape = SubResource( 24 )
+
+[node name="train" parent="Train" instance=ExtResource( 20 )]
+transform = Transform( -0.772316, 0, -4.43799e-08, 0, 1.0538, 0, 1.28284e-07, 0, -0.83361, 0.499989, -15.4, 22 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Train/train"]
+stream = ExtResource( 21 )
+unit_db = 80.0
+unit_size = 70.8
+max_db = -4.207
+autoplay = true
+max_distance = 56.0
+emission_angle_enabled = true
+emission_angle_degrees = 48.9
+emission_angle_filter_attenuation_db = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Train"]
+root_node = NodePath("../Train")
+playback_process_mode = 2
+method_call_mode = 1
+anims/Train = SubResource( 25 )
+next/Train = "Train"
+blend_times = [ "Train", "Train", 0.045 ]
 
 [node name="BGSound" type="Node" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BGSound"]
+[node name="timeOfDay" type="AudioStreamPlayer" parent="BGSound"]
 stream = ExtResource( 7 )
 volume_db = -11.34
 autoplay = true
 mix_target = 2
+
+[node name="City" type="AudioStreamPlayer" parent="BGSound"]
+stream = ExtResource( 26 )
+volume_db = -11.34
+autoplay = true
+mix_target = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 10 )
+script = ExtResource( 9 )
+
+[node name="NightLights" type="MeshInstance" parent="."]
+visible = false
+
+[node name="OmniLight" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2038, 5.12091, 7.4 )
+light_energy = 5.67
+light_indirect_energy = 5.82
+shadow_bias = -16.0
+omni_range = 15.0
+
+[node name="OmniLight2" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2038, 5.12091, 35.4 )
+light_energy = 5.67
+light_indirect_energy = 5.82
+shadow_bias = -16.0
+omni_range = 15.0
+
+[node name="OmniLight3" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2038, 5.12091, -29.6 )
+light_energy = 5.67
+light_indirect_energy = 5.82
+shadow_bias = -16.0
+omni_range = 15.0
+
+[node name="OmniLight4" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.7962, 5.12091, 7.4 )
+light_energy = 5.67
+light_indirect_energy = 5.82
+shadow_bias = -16.0
+omni_range = 15.0
+
+[node name="OmniLight5" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.7962, 5.12091, 35.4 )
+light_energy = 5.67
+light_indirect_energy = 5.82
+shadow_bias = -16.0
+omni_range = 15.0
+
+[node name="OmniLight6" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.7962, 5.12091, -37.6 )
+light_energy = 5.67
+light_indirect_energy = 5.82
+shadow_bias = -16.0
+omni_range = 15.0
+
+[node name="OmniLight7" type="OmniLight" parent="NightLights"]
+transform = Transform( 3.28219e-08, 0, 1, 0, 1, 0, -1, 0, 3.28219e-08, -6.9962, 5.12091, -33.6 )
+light_energy = 5.67
+light_indirect_energy = 5.82
+shadow_bias = -16.0
+omni_range = 15.0
+
+[node name="OmniLight8" type="OmniLight" parent="NightLights"]
+transform = Transform( -6.56439e-08, 0, -1, 0, 1, 0, 1, 0, -6.56439e-08, -4.29619, 5.12091, 42.1 )
+light_energy = 5.67
+light_indirect_energy = 5.82
+shadow_bias = -16.0
+omni_range = 15.0
+
+[node name="OmniLight9" type="OmniLight" parent="NightLights"]
+transform = Transform( -6.56439e-08, 0, -1, 0, 1, 0, 1, 0, -6.56439e-08, -32.2962, 5.12091, 42.1 )
+light_energy = 5.67
+light_indirect_energy = 5.82
+shadow_bias = -16.0
+omni_range = 15.0
+
+[node name="OmniLight10" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 89.8668, 1.9319, -7 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 4.4
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 55.0
+
+[node name="OmniLight11" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 89.8668, 1.9319, -66 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 4.4
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 55.0
+
+[node name="OmniLight12" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8668, 1.9319, -141 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 4.4
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 55.0
+
+[node name="OmniLight13" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 57.8668, 1.9319, -141 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 4.4
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 55.0
+
+[node name="OmniLight14" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8668, -18.0681, -118 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 4.4
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 55.0
+
+[node name="OmniLight15" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -39.1332, -3.0681, -94 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 4.4
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 55.0
+
+[node name="OmniLight16" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -101.133, -3.0681, -94 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 4.4
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 55.0
+
+[node name="OmniLight17" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -148.133, -3.0681, -94 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 4.4
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 55.0
+
+[node name="OmniLight18" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -148.133, -3.0681, -23 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 4.4
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 55.0
+
+[node name="OmniLight19" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -99.1332, -3.0681, -45 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 10.86
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 15.0
+
+[node name="OmniLight20" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -104.133, -3.0681, 22 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 2.26
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 23.0
+
+[node name="OmniLight21" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -99.1332, -3.0681, 113 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 4.4
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 55.0
+
+[node name="OmniLight22" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1332, -3.0681, 113 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 4.4
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 55.0
+
+[node name="OmniLight23" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 82.8668, -3.0681, 85 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 4.4
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 55.0
+
+[node name="OmniLight24" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 134.867, -3.0681, 26 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 4.4
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 55.0
+
+[node name="OmniLight25" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8668, -3.0681, 85 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 4.4
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 55.0
+
+[node name="OmniLight26" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1332, -3.0681, 196 )
+light_color = Color( 0.835294, 0.796078, 0.2, 1 )
+light_energy = 4.4
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 6.37
+omni_range = 55.0
+
+[node name="OmniLight27" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54.0898, 1.25148, -22.8987 )
+light_energy = 1.4
+light_bake_mode = 0
+omni_range = 16.0
+
+[node name="OmniLight29" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54.0898, 1.25147, 30.1013 )
+light_energy = 1.4
+light_bake_mode = 0
+omni_range = 16.0
+
+[node name="OmniLight30" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -79.4898, 0.351475, -22.8987 )
+light_energy = 1.4
+light_bake_mode = 0
+omni_range = 16.0
+
+[node name="OmniLight32" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -79.4898, 0.351469, 30.1013 )
+light_energy = 1.4
+light_bake_mode = 0
+omni_range = 16.0
+
+[node name="OmniLight28" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54.0898, 1.25148, 3.10132 )
+light_energy = 1.4
+light_bake_mode = 0
+omni_range = 16.0
+
+[node name="OmniLight31" type="OmniLight" parent="NightLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -80.4898, 0.351473, 3.10133 )
+light_energy = 1.4
+light_bake_mode = 0
+omni_range = 16.0
+
+[editable path="City/Home/Store"]

@@ -1,0 +1,24 @@
+.NotificationArea{
+    position: fixed;
+    right: 0;
+    top:0;
+    width: 400px;
+    height: calc( 100% - 45px);
+}
+
+.RenderNotifys{
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    right: 0px;
+    bottom: 10px;
+    overflow-y: auto;
+}
+
+.clearNotifs{
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.281);
+    cursor: pointer;
+    padding-left: 10px;
+    margin: 5px;
+}

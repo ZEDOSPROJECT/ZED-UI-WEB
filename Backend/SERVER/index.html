@@ -5,45 +5,6 @@
 	<meta charset="UTF-8">
 	<title>ZED LOGIN</title>
 
-	<script>
-		var loader = setInterval(function () {
-			isSiteOnline("http://" + window.location.hostname + ":3000", function (found) {
-				if (found) {
-					document.getElementById("starting").hidden = true;
-					document.getElementById("welcome").hidden = false;
-					clearInterval(loader);
-					let startupSoundPlayer = new Audio("startup.mp3");
-					startupSoundPlayer.onpause = function () {
-						window.location.href = "http://" + window.location.hostname + ":3000";
-					}
-					startupSoundPlayer.play();
-				}
-			})
-		}, 500);
-
-
-		function isSiteOnline(url, callback) {
-			// try to load favicon
-			var timer = setTimeout(function () {
-				// timeout after 5 seconds
-				callback(false);
-			}, 5000)
-
-			var img = document.createElement("img");
-			img.onload = function () {
-				clearTimeout(timer);
-				callback(true);
-			}
-
-			img.onerror = function () {
-				clearTimeout(timer);
-				callback(false);
-			}
-
-			img.src = url + "/favicon.ico";
-		}
-	</script>
-
 	<link rel="stylesheet" href="css/style.css">
 
 
@@ -51,8 +12,8 @@
 
 <body>
 	<div id="screen">
-		<table id="starting" border="0" style="border-collapse: collapse; width: 100%; height: 100%;" border="1">
-			<tbody>
+		<table id="starting" border="0" style="border-collapse: collapse; width: 101%; height: 100%;" border="1">
+			<tbody id="backG">
 				<tr class="bar" style="height: 45px;">
 					<td style="width: 50%; height: 45px;">&nbsp;</td>
 					<td style="width: 50%; height: 45px;">&nbsp;</td>
@@ -76,8 +37,8 @@
 			</tbody>
 
 		</table>
-		<table hidden id="welcome" border="0" style="border-collapse: collapse; width: 100%; height: 100%;" border="1">
-			<tbody>
+		<table hidden id="welcome" border="0" style="border-collapse: collapse; width: 101%; height: 100%;" border="1">
+			<tbody id="backC">
 				<tr class="bar" style="height: 45px;">
 					<td style="width: 50%; height: 45px;">&nbsp;</td>
 					<td style="width: 50%; height: 45px;">&nbsp;</td>
@@ -106,5 +67,62 @@
 
 
 </body>
+
+<script>
+	let backG=document.getElementById("backG");
+	let backC=document.getElementById("backC");
+	let BarG=document.getElementsByClassName("bar");
+	let Hour=new Date().getHours();
+	if(Hour>20 || Hour<5){
+		backG.style.backgroundColor="#010c1d";
+		backC.style.backgroundColor="#010c1d";
+		for (let index = 0; index < BarG.length; index++) {
+			BarG[index].style.backgroundColor="#000000";		
+		}
+	}
+
+	var loader = setInterval(function () {
+		isSiteOnline("http://" + window.location.hostname + ":3000", function (found) {
+			if (found) {
+				document.getElementById("starting").hidden = true;
+				document.getElementById("welcome").hidden = false;
+				clearInterval(loader);
+				let startupSoundPlayer = new Audio("startup.mp3");
+				startupSoundPlayer.onpause = function () {
+					window.location.href = "http://" + window.location.hostname + ":3000";
+				}
+				startupSoundPlayer.volume=0.5;
+				startupSoundPlayer.play();
+			}
+		})
+	}, 500);
+
+
+	function isSiteOnline(url, callback) {
+		// try to load favicon
+		var timer = setTimeout(function () {
+			// timeout after 5 seconds
+			callback(false);
+		}, 5000)
+
+		var img = document.createElement("img");
+		img.onload = function () {
+			clearTimeout(timer);
+			callback(true);
+		}
+
+		img.onerror = function () {
+			clearTimeout(timer);
+			callback(false);
+		}
+
+		img.src = url + "/favicon.ico";
+	}
+</script>
+<style>
+	body{
+		overflow: hidden;
+	}
+</style>
 
 </html>

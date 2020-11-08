@@ -4,8 +4,10 @@ import TaskButton from './Task/taskButton';
 import NetworkStatus from './networkStatus/networkStatus';
 import BatteryStatus from './batteryStatus/batteryStatus';
 import VolumeControl from './volumeControl/VolumeControl';
+import NotificationIcon from './NotificationIcon/NotificationIcon';
 import Switch3D from './Switch3D/Switch3D';
 import BGEffect from './BGEffect/BGEffect';
+import LightEffect from './lightEffect.png';
 import './taskbar.css';
 
 class Taskbar extends React.Component {
@@ -47,20 +49,24 @@ class Taskbar extends React.Component {
         }
         );
         return (
-            <table className="Taskbar" style={{ zIndex: window.maxZIndex + 10, backgroundColor: this.convertHex(window.systemColor0, 95) }}>
-                <tbody>
-                    <tr style={{ border: 'none' }} >
+            <div>
+                <img draggable="false" src={LightEffect} style={{ zIndex: window.maxZIndex + 6}} className="tLightEffect" />
+                <table className=" Taskbar" style={{ zIndex: window.maxZIndex + 5, backgroundColor: this.convertHex(window.systemColor0, 95) }}>
+                < tbody >
+                    <tr style={{ border: 'none' }} >    
                         <BGEffect />
-                        <td style={{ width: 32 }}><div title="Click to Start" onClick={this.props.toggleMenu} className="StartMenu" /></td>
+                        <td style={{ width: 32, height: 20 }}><div title="Click to Start" onClick={this.props.toggleMenu} className="StartMenu" /></td>
                         <td className="buttonsArea">{iconList}</td>
-                        <td style={{ width: 32 }}><VolumeControl /></td>
-                        <td style={{ width: 32 }}><BatteryStatus /></td>
-                        <td style={{ width: 32 }}><NetworkStatus /></td>
-                        <td style={{ width: 32 }}><Clock /></td>
-                        <td style={{ width: 62 }}><Switch3D onSwitch3DClick={this.props.onSwitch3DClick} notSwitch3Dlbl={this.props.notSwitch3Dlbl} /></td>
+                        <td style={{ width: 32, height: 20 }}><VolumeControl /></td>
+                        <td style={{ width: 32, height: 20 }}><BatteryStatus /></td>
+                        <td style={{ width: 32, height: 20 }}><NetworkStatus /></td>
+                        <td style={{ width: 32, height: 20 }}><NotificationIcon /></td>
+                        <td style={{ width: 32, height: 20 }}><Clock /></td>
+                        <td style={{ width: 62, height: 20 }}><Switch3D onSwitch3DClick={this.props.onSwitch3DClick} notSwitch3Dlbl={this.props.notSwitch3Dlbl} /></td>
                     </tr>
-                </tbody>
-            </table>
+                </tbody >
+            </table >
+            </div>
         )
     }
 }

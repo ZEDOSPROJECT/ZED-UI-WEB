@@ -1,11 +1,32 @@
 .NetworkItem {
-    height: 40px;
+    position: relative;
+    height: 50px;
     margin: 5px;
     padding: 5px;
 }
 
 .inUse {
     background-color: rgb(213, 212, 255);
-    height: 40px;
+    height: 50px;
     margin: 5px;
+}
+
+.NetworkItemSecurity{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.NetworkItemPassword{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    background-color: rgb(250, 250, 250);
+}
+
+.NetworkItemPasswordInput{
+    width: 90%;
+    margin-top: 10px;
 }
