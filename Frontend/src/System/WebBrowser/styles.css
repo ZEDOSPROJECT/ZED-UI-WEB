@@ -5,7 +5,11 @@
   top: 0px;
   left: 0px;
   width: 100%;
-  height: calc( 100% - 65px );
+  height: calc( 100% - 68px );
+  border-top: 1px solid #bdbdbd;
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
 }
 
 .WBContainer {
