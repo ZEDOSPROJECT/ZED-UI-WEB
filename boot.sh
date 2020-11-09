@@ -28,6 +28,7 @@ if [ -z $isLive ]; then
       cd ../../../../../../
       ./updateInstaller/postUpdate.sh
       killall electron
+      sleep 5
    fi
 
    Xaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
