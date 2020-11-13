@@ -4,6 +4,10 @@ isLive=$(which ubiquity)
 
 if [ -z $isLive ]; then
    # is installed
+   UPSTREAM=${1:-'@{u}'}
+   LOCAL=$(git rev-parse @)
+   BASE=$(git merge-base @ "$UPSTREAM")
+
    if [ -e ".branch" ]
    then
       if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
@@ -12,23 +16,20 @@ if [ -z $isLive ]; then
       fi
    fi
 
-   if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+   if [ $LOCAL = $BASE ]; then
       cd updateInstaller
       npm start&
       cd ..
-      if ! git pull
-      then
-         mv Backend/SERVER/API/SYSTEM/SETTINGS/USER/SETTINGS.json /tmp/SETTINGS.json
-         git checkout .
-         git pull
-         mv /tmp/SETTINGS.json Backend/SERVER/API/SYSTEM/SETTINGS/USER/SETTINGS.json
-      fi
+      mv Backend/SERVER/API/SYSTEM/SETTINGS/USER/SETTINGS.json /tmp/SETTINGS.json
+      git checkout .
+      git pull
+      mv /tmp/SETTINGS.json Backend/SERVER/API/SYSTEM/SETTINGS/USER/SETTINGS.json
       cd Backend/SERVER/API/SYSTEM/SETTINGS/USER/
       php updateSettings.php
       cd ../../../../../../
       ./updateInstaller/postUpdate.sh
       killall electron
-      sleep 5
+      sleep 1
    fi
 
    Xaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
