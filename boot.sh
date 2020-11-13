@@ -28,6 +28,9 @@ if [ -z $isLive ]; then
       php updateSettings.php
       cd ../../../../../../
       ./updateInstaller/postUpdate.sh
+      cd Frontend
+      npm install
+      cd ..
       killall electron
       sleep 1
    fi
@@ -40,7 +43,6 @@ if [ -z $isLive ]; then
    ./startBackend.sh&
    cd ..
    cd Frontend
-   npm install
    npm run electron&
    sleep 1
    npm start&
