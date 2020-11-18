@@ -354,7 +354,7 @@ class Window extends React.Component {
             if (!isElectron()) {
                 WindowContent = (<iframe title={window.winTitle[this.state.uuid]} onLoad={this.onTitleChange} className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
             } else {
-                WindowContent = (<webview preload={preload} ref={(input) => { this.webview = input; }} onLoad={this.onTitleChange} useragent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3626.120 Safari/537.36" className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url} plugins="true" allowpopups="true"></webview>);
+                WindowContent = (<webview preload={preload} ref={(input) => { this.webview = input; }} onLoad={this.onTitleChange} useragent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36" className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url} plugins="true" allowpopups="true"></webview>);
             }
         } else {
             const url = this.state.url;
