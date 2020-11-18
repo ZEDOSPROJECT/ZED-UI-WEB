@@ -16,7 +16,7 @@ if [ -z $isLive ]; then
       fi
    fi
 
-   if [ $LOCAL = $BASE ]; then
+   if [ $LOCAL != $BASE ]; then
       cd updateInstaller
       npm start&
       cd ..
