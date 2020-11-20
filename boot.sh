@@ -6,6 +6,7 @@ if [ -z $isLive ]; then
    # is installed
    UPSTREAM=${1:-'@{u}'}
    LOCAL=$(git rev-parse @)
+   REMOTE=$(git rev-parse "$UPSTREAM")
    BASE=$(git merge-base @ "$UPSTREAM")
 
    if [ -e ".branch" ]
@@ -16,7 +17,10 @@ if [ -z $isLive ]; then
       fi
    fi
 
-   if [ $LOCAL != $BASE ]; then
+
+   if [ $LOCAL = $REMOTE ]; then
+      echo "Up-to-date"
+   elif [ $LOCAL = $BASE ]; then
       cd updateInstaller
       npm start&
       cd ..
@@ -33,6 +37,11 @@ if [ -z $isLive ]; then
       cd ..
       killall electron
       sleep 1
+   else
+      echo "Diverged"
+   fi
+
+   if [ $LOCAL != $BASE ]; then
    fi
 
    Xaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
