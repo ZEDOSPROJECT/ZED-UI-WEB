@@ -31,12 +31,14 @@
 .desktopIconImage{
     width: 37px;
     height: 37px;
+    filter: drop-shadow(1px 1px 1px #222222);
 }
 
 .desktopIconImageOffline{
     width: 37px;
     height: 37px;
     filter: grayscale();
+    filter: drop-shadow(5px 5px 5px #222222);
 }
 
 .desktopIconLabel{
