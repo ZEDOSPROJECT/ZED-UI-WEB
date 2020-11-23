@@ -110,7 +110,7 @@ export default class Shutdown extends React.Component {
                 </div>
                 {this.state.turnoff ? (
                     <RunAsRoot
-                        command="shutdown -h now"
+                        command="php ./POWER/shutdown.php"
                         onCancel={this.onShutdownCancel}
                         onOk={this.onOk}
                     />
@@ -118,7 +118,7 @@ export default class Shutdown extends React.Component {
 
                 {this.state.standBy ? (
                     <RunAsRoot
-                        command="systemctl suspend"
+                        command="php ./POWER/suspend.php"
                         onCancel={this.onStandbyCancel}
                         onOk={this.onOk}
                     />
@@ -126,7 +126,7 @@ export default class Shutdown extends React.Component {
 
                 {this.state.restart ? (
                     <RunAsRoot
-                        command="reboot"
+                        command="php ./POWER/reboot.php"
                         onCancel={this.onRestartCancel}
                         onOk={this.onOk}
                     />

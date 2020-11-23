@@ -275,6 +275,10 @@ class Window extends React.Component {
                 this.setState({ fullScreen: false });
             });
 
+            this.webview.addEventListener('close', (e) => {
+                this.onClose();
+            });
+
             this.webview.addEventListener('console-message', (e) => {
                 const tmpWord = e.message.toLowerCase();
                 let found = false;
