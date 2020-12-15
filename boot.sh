@@ -5,11 +5,21 @@ isLive=$(which ubiquity)
 if [ -z $isLive ]; then
    # is installed
 
-   if [ -e ".branch" ]
+   ZED_FOLDER=~/.ZED
+   if [ ! -d "$ZED_FOLDER" ]; then
+      mkdir ~/.ZED
+      mkdir ~/.smartDesktop
+      cd Backend/SERVER/API/SYSTEM/SETTINGS/USER/
+      php updateSettings.php
+      cd ../../../../../../
+   fi
+
+   BRANCH_FILE=~/.ZED/.branch
+   if [ -e "$BRANCH_FILE" ]
    then
       if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
-         git checkout "$(<.branch)"
-         rm .branch
+         git checkout "$(<$BRANCH_FILE)"
+         rm $BRANCH_FILE
       fi
    fi
 
@@ -19,10 +29,8 @@ if [ -z $isLive ]; then
       cd updateInstaller
       npm start&
       cd ..
-      mv Backend/SERVER/API/SYSTEM/SETTINGS/USER/SETTINGS.json /tmp/SETTINGS.json
       git checkout .
       git pull
-      mv /tmp/SETTINGS.json Backend/SERVER/API/SYSTEM/SETTINGS/USER/SETTINGS.json
       cd Backend/SERVER/API/SYSTEM/SETTINGS/USER/
       php updateSettings.php
       cd ../../../../../../

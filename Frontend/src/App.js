@@ -70,9 +70,14 @@ class App extends Component {
         this.onMouseMove = this.onMouseMove.bind(this);
 
         setInterval(() => {
-            for (var key in window.winTitle) {
-                if (window.winTitle[key] === "Control Panel" || window.winTitle[key].includes("- ZED Picture Viewer")) {
-                    this.loadUserSettings();
+            if(window.loadUserSettings=="X"){
+                window.loadUserSettings=undefined;
+                this.loadUserSettings();
+            }else{
+                for (var key in window.winTitle) {
+                    if (window.winTitle[key] === "Control Panel" || window.winTitle[key].includes("- ZED Picture Viewer")) {
+                        this.loadUserSettings();
+                    }
                 }
             }
 
@@ -494,6 +499,7 @@ class App extends Component {
                     onSwitch3DClick={this.onSwitch3DClick}
                     notSwitch3Dlbl={this.state.notSwitch3Dlbl}
                     onClose={this.onClose}
+                    loadUserSettings={this.loadUserSettings}
                 />
                 <StartMenu
                     onClickApp={this.onClickApp}

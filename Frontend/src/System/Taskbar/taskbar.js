@@ -59,7 +59,7 @@ class Taskbar extends React.Component {
                         <td className="buttonsArea">{iconList}</td>
                         <td style={{ width: 32, height: 20 }}><VolumeControl /></td>
                         <td style={{ width: 32, height: 20 }}><BatteryStatus /></td>
-                        <td style={{ width: 32, height: 20 }}><NetworkStatus /></td>
+                        <td style={{ width: 32, height: 20 }}><NetworkStatus loadUserSettings={this.props.loadUserSettings} /></td>
                         <td style={{ width: 32, height: 20 }}><NotificationIcon /></td>
                         <td style={{ width: 32, height: 20 }}><Clock /></td>
                         <td style={{ width: 62, height: 20 }}><Switch3D onSwitch3DClick={this.props.onSwitch3DClick} notSwitch3Dlbl={this.props.notSwitch3Dlbl} /></td>

@@ -2,9 +2,10 @@
 when added or removed settings from ZED -->
 
 <?php
-    if(file_exists("./SETTINGS.json")){
+    $user=exec("whoami");
+    if(file_exists("/home/".$user."/.ZED/SETTINGS.json")){
         $template = json_decode(file_get_contents("./templateSettings.json"), true);
-        $userSettings = json_decode(file_get_contents("./SETTINGS.json"), true);
+        $userSettings = json_decode(file_get_contents("/home/".$user."/.ZED/SETTINGS.json"), true);
     
         $unSyncKeysAdd=[];
         $unSyncKeysUseless=[];
@@ -51,8 +52,8 @@ when added or removed settings from ZED -->
         
     
         // Save new user settings updated   
-        file_put_contents('SETTINGS.json', json_encode($userSettings));
+        file_put_contents("/home/".$user."/.ZED/SETTINGS.json", json_encode($userSettings));
     }else{
-        copy("./templateSettings.json","./SETTINGS.json");
+        copy("./templateSettings.json","/home/".$user."/.ZED/SETTINGS.json");
     }
 ?>

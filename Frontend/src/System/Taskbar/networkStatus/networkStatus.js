@@ -19,6 +19,7 @@ class NetworkStatus extends React.Component {
 
   iHaveInternet(){
     localStorage.hasInternet=true;
+    window.loadUserSettings="X";
   }
 
   iDontHaveInternet(){

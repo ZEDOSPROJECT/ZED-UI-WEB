@@ -1,5 +1,6 @@
 <?php
-    header("Access-Control-Allow-Origin: *");
-   	$settings = file_get_contents('SETTINGS.json');
+	header("Access-Control-Allow-Origin: *");
+	$user=exec("whoami");
+   	$settings = file_get_contents("/home/".$user."/.ZED/SETTINGS.json");
 	echo $settings;
 ?>
