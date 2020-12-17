@@ -8,7 +8,7 @@ if [ -z $isLive ]; then
    ZED_FOLDER=~/.ZED
    if [ ! -d "$ZED_FOLDER" ]; then
       mkdir ~/.ZED
-      mkdir ~/.smartDesktop
+      mkdir ~/.ZED/smartDesktop
       cd Backend/SERVER/API/SYSTEM/SETTINGS/USER/
       php updateSettings.php
       cd ../../../../../../
