@@ -2,6 +2,7 @@ import React from "react";
 import { Offline, Online } from "react-detect-offline";
 import onClickOutside from 'react-onclickoutside';
 import NetworkManager from './NetworkManager/NetworkManager';
+import { REST_URL } from '../../../REST_URL';
 import "./networkStatus.css";
 import C0 from "./CONNECTED_0.png";
 import C1 from "./CONNECTED_1.png";
@@ -20,10 +21,19 @@ class NetworkStatus extends React.Component {
   iHaveInternet(){
     localStorage.hasInternet=true;
     window.loadUserSettings="X";
+    setTimeout(() => {
+      fetch(REST_URL + '/API/SYSTEM/NETWORK/WIFI/getCurrent.php')
+      .then(response => response.text())
+      .then(text => {
+        localStorage.currentLAN=text;
+      });
+    }, 100);
   }
 
   iDontHaveInternet(){
+    localStorage.currentLAN="";
     localStorage.hasInternet=false;
+    window.loadUserSettings="X";
   }
 
   shouldComponentUpdate(nextProps, nextState) {

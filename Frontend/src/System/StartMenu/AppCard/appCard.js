@@ -32,8 +32,8 @@ class appCard extends React.Component{
         let tmpFinalFav={};
         var tmpObject={};
 
-        if(localStorage.favoriteIcons){
-            tmpFavorites=JSON.parse(localStorage.favoriteIcons).favorites;
+        if(localStorage[localStorage.currentLAN+"|favoriteIcons"]){
+            tmpFavorites=JSON.parse(localStorage[localStorage.currentLAN+"|favoriteIcons"]).favorites;
         }
         tmpObject['WindowSize']=this.props.windowSize;
         tmpObject['Icon']=REST_URL+"/APPS/"+this.props.appName+"/favicon.png";
@@ -44,11 +44,11 @@ class appCard extends React.Component{
         if(favoriteID<0){
             tmpFavorites.push(tmpObject);
             tmpFinalFav["favorites"]=tmpFavorites;
-            localStorage.favoriteIcons=JSON.stringify(tmpFinalFav);
+            localStorage[localStorage.currentLAN+"|favoriteIcons"]=JSON.stringify(tmpFinalFav);
         }else{
             tmpFavorites.splice(favoriteID, 1);
             tmpFinalFav["favorites"]=tmpFavorites;
-            localStorage.favoriteIcons=JSON.stringify(tmpFinalFav);
+            localStorage[localStorage.currentLAN+"|favoriteIcons"]=JSON.stringify(tmpFinalFav);
         }
         this.props.forceRefreshApps();
     }
@@ -59,8 +59,8 @@ class appCard extends React.Component{
         const windowSize=this.props.windowSize;
         let style="isAppNotFavorite";
 
-        if(localStorage.favoriteIcons){
-            var tmpFavorites=JSON.parse(localStorage.favoriteIcons).favorites;
+        if(localStorage[localStorage.currentLAN+"|favoriteIcons"]){
+            var tmpFavorites=JSON.parse(localStorage[localStorage.currentLAN+"|favoriteIcons"]).favorites;
             var tmpObject={};
             tmpObject['WindowSize']=this.props.windowSize;
             tmpObject['Icon']=REST_URL+"/APPS/"+this.props.appName+"/favicon.png";

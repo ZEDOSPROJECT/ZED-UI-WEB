@@ -23,8 +23,8 @@ class DesktopIcons extends React.Component {
     render(){
         let storedIcons=[];
         let fianlRender=null;
-        if(localStorage.favoriteIcons){
-            storedIcons=JSON.parse(localStorage.favoriteIcons).favorites;
+        if(localStorage[localStorage.currentLAN+"|favoriteIcons"]){
+            storedIcons=JSON.parse(localStorage[localStorage.currentLAN+"|favoriteIcons"]).favorites;
             fianlRender = storedIcons.map((element) => {
                 return <Icon
                     key={getUUID()}

@@ -3,57 +3,78 @@ when added or removed settings from ZED -->
 
 <?php
     $user=exec("whoami");
-    if(file_exists("/home/".$user."/.ZED/SETTINGS.json")){
-        $template = json_decode(file_get_contents("./templateSettings.json"), true);
-        $userSettings = json_decode(file_get_contents("/home/".$user."/.ZED/SETTINGS.json"), true);
+
+    $configsFile=listFolderFiles("/home/".$user."/.ZED/smartDesktop/");
+    array_push($configsFile,"/home/".$user."/.ZED/SETTINGS.json");
     
-        $unSyncKeysAdd=[];
-        $unSyncKeysUseless=[];
-    
-        // Search for keys inexistent in user settings
-        foreach ($template as $key => $value) {
-            $found=false;
-            foreach (array_keys($userSettings) as $keyU) {
-                if($key===$keyU){
-                    $found=true;
-                }
-            }
-            if(!$found){
-                $unSyncKeysAdd[$key] = $value;
+    function listFolderFiles($dir){
+        $finalList=[];
+        foreach (scandir($dir) as $value) {
+            if($value<>"." and $value<>".." and $value<>".noData"){
+                array_push($finalList,$dir.$value);
             }
         }
-        /////////////////////////////////////////////
-    
-        // Search for useless keys in user settings
-        foreach ($userSettings as $key => $value) {
-            $found=false;
-            foreach (array_keys($template) as $keyU) {
-                if($key===$keyU){
-                    $found = true;
-                }
-            }
-            if(!$found){
-                $unSyncKeysUseless[$key] = $value;
-            }
-        }
-        /////////////////////////////////////////////
-    
-        // Clean useless keys in user settings
-        foreach (array_keys($unSyncKeysUseless) as $key) {
-            unset($userSettings[$key]); 
-        }
-        /////////////////////////////////////////////
-    
-        // Add unSync inexistent keys in user settings but found in template
-        foreach ($unSyncKeysAdd as $key => $value) {
-            $userSettings[$key] = $value;
-        }
-        //////////////////////////////////////////////////////////////////////////////////////////
+        return $finalList;
+    }
+
+    function sync($path,$user){
+        echo("Syncing: ".$path."\n");
+        if(file_exists($path)){
+            $template = json_decode(file_get_contents("./templateSettings.json"), true);
+            $userSettings = json_decode(file_get_contents($path), true);
         
-    
-        // Save new user settings updated   
-        file_put_contents("/home/".$user."/.ZED/SETTINGS.json", json_encode($userSettings));
-    }else{
-        copy("./templateSettings.json","/home/".$user."/.ZED/SETTINGS.json");
+            $unSyncKeysAdd=[];
+            $unSyncKeysUseless=[];
+        
+            // Search for keys inexistent in user settings
+            foreach ($template as $key => $value) {
+                $found=false;
+                foreach (array_keys($userSettings) as $keyU) {
+                    if($key===$keyU){
+                        $found=true;
+                    }
+                }
+                if(!$found){
+                    $unSyncKeysAdd[$key] = $value;
+                }
+            }
+            /////////////////////////////////////////////
+        
+            // Search for useless keys in user settings
+            foreach ($userSettings as $key => $value) {
+                $found=false;
+                foreach (array_keys($template) as $keyU) {
+                    if($key===$keyU){
+                        $found = true;
+                    }
+                }
+                if(!$found){
+                    $unSyncKeysUseless[$key] = $value;
+                }
+            }
+            /////////////////////////////////////////////
+        
+            // Clean useless keys in user settings
+            foreach (array_keys($unSyncKeysUseless) as $key) {
+                unset($userSettings[$key]); 
+            }
+            /////////////////////////////////////////////
+        
+            // Add unSync inexistent keys in user settings but found in template
+            foreach ($unSyncKeysAdd as $key => $value) {
+                $userSettings[$key] = $value;
+            }
+            //////////////////////////////////////////////////////////////////////////////////////////
+            
+        
+            // Save new user settings updated   
+            file_put_contents($path, json_encode($userSettings));
+        }else{
+            copy("./templateSettings.json",$path);
+        }
+    }
+
+    foreach ($configsFile as $value) {
+        sync($value,$user);
     }
 ?>

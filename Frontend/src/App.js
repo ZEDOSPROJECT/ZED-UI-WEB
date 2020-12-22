@@ -266,7 +266,7 @@ class App extends Component {
     }
 
     loadUserSettings() {
-        fetch(REST_URL + '/API/SYSTEM/SETTINGS/USER/getSettings.php')
+        fetch(REST_URL + '/API/SYSTEM/SETTINGS/USER/getSettings.php?smartdesk=0')
             .then(response => response.json())
             .then(json => {
                 if (json.setting_wallpaperColor !== this.state.setting_wallpaperColor) {
@@ -288,7 +288,9 @@ class App extends Component {
                     window.systemColor1 = json.setting_systemColor1;
                 } else {
                     if (window.gradientEffect) {
-                        this.getGradient();
+                        setTimeout(() => {
+                            this.getGradient(); 
+                        }, 20);
                     }
                 }
                 window.gradientEffect = json.setting_gradientEffect;
