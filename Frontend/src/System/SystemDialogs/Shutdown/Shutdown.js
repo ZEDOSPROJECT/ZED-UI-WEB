@@ -13,7 +13,8 @@ export default class Shutdown extends React.Component {
         this.state = {
             standby: false,
             turnoff: false,
-            restart: false
+            restart: false,
+            onAction: false
         }
         this.onShutdown = this.onShutdown.bind(this);
         this.onRestart = this.onRestart.bind(this);
@@ -30,7 +31,9 @@ export default class Shutdown extends React.Component {
         this.setState({
             standBy: false,
             restart: false,
-            turnoff: false
+            turnoff: false,
+            visible: false,
+            onAction: true
         })
     }
 
@@ -71,7 +74,7 @@ export default class Shutdown extends React.Component {
     }
 
     render() {
-        if (this.props.visible === true) {
+        if (this.props.visible === true && this.state.visible!=false) {
             return (<div className="Shutdown" style={{ zIndex: window.maxZIndex + 10 }}>
                 <div className="ShutdownDLG">
                     <div className="ShutdownLBL">
@@ -134,7 +137,11 @@ export default class Shutdown extends React.Component {
 
             </div>);
         } else {
-            return null;
+            if(this.state.onAction){
+                return (<div className="Shutdown" style={{ zIndex: window.maxZIndex + 10 }}/>);
+            }else{
+                return null;
+            }
         }
     }
 }
