@@ -50,7 +50,7 @@ class Taskbar extends React.Component {
         );
         return (
             <div>
-                <img draggable="false" src={LightEffect} style={{ zIndex: window.maxZIndex + 6}} className="tLightEffect" />
+                <img draggable="false" src={LightEffect} alt="" style={{ zIndex: window.maxZIndex + 6}} className="tLightEffect" />
                 <table className=" Taskbar" style={{ zIndex: window.maxZIndex + 5, backgroundColor: this.convertHex(window.systemColor0, 95) }}>
                 < tbody >
                     <tr style={{ border: 'none' }} >    

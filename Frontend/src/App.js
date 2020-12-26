@@ -70,7 +70,7 @@ class App extends Component {
         this.onMouseMove = this.onMouseMove.bind(this);
 
         setInterval(() => {
-            if(window.loadUserSettings=="X"){
+            if(window.loadUserSettings==="X"){
                 window.loadUserSettings=undefined;
                 this.loadUserSettings();
             }else{

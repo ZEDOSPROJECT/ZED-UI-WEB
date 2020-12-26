@@ -74,7 +74,7 @@ export default class Shutdown extends React.Component {
     }
 
     render() {
-        if (this.props.visible === true && this.state.visible!=false) {
+        if (this.props.visible === true && this.state.visible!==false) {
             return (<div className="Shutdown" style={{ zIndex: window.maxZIndex + 10 }}>
                 <div className="ShutdownDLG">
                     <div className="ShutdownLBL">

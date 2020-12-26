@@ -15,6 +15,7 @@ export default class NotificationItem extends React.Component {
         }
         return (<div className={"NotificationItem " + typeData}>
             <img
+                alt=""
                 src={this.props.Data.AppIcon}
                 width="32"
                 style={{ margin: 10, float: "left" }}
