@@ -21,7 +21,8 @@ function createWindow() {
       "webgl": true,
       "nodeIntegration": true,
       "allowDisplayingInsecureContent": true,
-      "scrollBounce": false
+      "scrollBounce": false,
+      "webviewTag": true
     }
   })
   win.setMenu(null);
