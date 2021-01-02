@@ -3,6 +3,14 @@
     header("Access-Control-Allow-Origin: *");
 
     function copyFolder($from,$to,$uuid){
+        if($from==$to){
+            $i=0;
+            $originalTo=$to;
+            while(file_exists($to)){
+                $i++;
+                $to=sprintf("%s - Copy(%o)",$originalTo,$i); 
+            }
+        }
         $source = $from;
         $dest= $to;
         $objects = new RecursiveIteratorIterator(
@@ -31,6 +39,17 @@
     }
 
     function copyFile($from,$to,$uuid){
+        if($from==$to){
+            $i=0;
+            $path_parts = pathinfo($to);
+            $path = $path_parts['dirname'];
+            $fname = $path_parts['filename'];
+            $fextension = $path_parts['extension'];
+            while(file_exists($to)){
+                $i++;
+                $to=sprintf("%s/%s - Copy(%o).%s",$path,$fname,$i,$fextension); 
+            }
+        }
         $remote = fopen($from, 'rb');
         $local = fopen($to, 'wb');
         $read_bytes = 0;
