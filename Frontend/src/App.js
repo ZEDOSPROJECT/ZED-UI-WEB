@@ -198,13 +198,9 @@ class App extends Component {
     }
 
     msgInfo(data) {
-        if (!data.includes("SYSCALL")) {
-            toast.info(data);
-            let infoSoundPlayer = new Audio(infoSound);
-            infoSoundPlayer.play();
-        } else {
-            this.processSysCalls(data);
-        }
+        toast.info(data);
+        let infoSoundPlayer = new Audio(infoSound);
+        infoSoundPlayer.play();
     }
 
     msgError(data) {
@@ -215,9 +211,13 @@ class App extends Component {
 
 
     msgWarn(data) {
-        let warningSoundPlayer = new Audio(warningSound);
-        warningSoundPlayer.play();
-        toast.warn(data);
+        if (!data.includes("SYSCALL")) {
+            let warningSoundPlayer = new Audio(warningSound);
+            warningSoundPlayer.play();
+            toast.warn(data);
+        } else {
+            this.processSysCalls(data);
+        }
     }
 
     componentToHex(c) {
