@@ -12,7 +12,7 @@ class Appearance extends React.Component {
             if (wallpaper !== "") {
                 let isOnlinePic = null;
                 if (wallpaper.includes("onlineImage.jpg")) {
-                    isOnlinePic = <img className="isOnlinePic" src={Online} />;
+                    isOnlinePic = <img className="isOnlinePic" alt="" src={Online} />;
                 }
                 return (
                 <div style={{ float: "left",position:"relative" }}>
@@ -30,7 +30,7 @@ class Appearance extends React.Component {
                                 width:"10",
                                 height:"10"
                                 }
-                            : { margin: "5px" }
+                            : { margin: "5px",cursor:"pointer" }
                         }
                         width="150"
                         height="100"

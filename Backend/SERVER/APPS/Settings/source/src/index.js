@@ -4,13 +4,13 @@ import LeftPanel from "./LeftPanel/LeftPanel.js";
 import SettingContext from "./SettingContext/settingContext.js";
 import ScreeAppearance from './Screens/Apperarance/Appearance';
 import ScreenSystem from './Screens/System/System';
-import ScreenSoundScreen from './Screens/SoundScreen/SoundScreen'
-import ScreenNetwork from './Screens/Network/Network'
-// import ScreenUsers from './Screens/Users/Users'
+import ScreenSoundScreen from './Screens/SoundScreen/SoundScreen';
+import ScreenNetwork from './Screens/Network/Network';
+import ScreenUsers from './Screens/Users/Users';
 import img_0 from './0.png';
 import img_1 from './1.png';
 import img_2 from './2.png';
-// import img_3 from './3.png';
+import img_3 from './3.png';
 import Logo from './logo.png';
 import "./styles.css";
 
@@ -98,7 +98,7 @@ class App extends React.Component {
     fetch(
       "http://" +
       window.location.hostname +
-      ":3031/API/SYSTEM/SETTINGS/USER/getSettings.php"
+      ":3031/API/SYSTEM/SETTINGS/USER/getSettings.php?smartdesk=1"
     )
       .then(response => response.json())
       .then(json => {
@@ -256,7 +256,9 @@ class App extends React.Component {
       />,
       <ScreenSoundScreen />,
       <ScreenNetwork />,
-      // <ScreenUsers />,
+      <ScreenUsers
+        Avatars={this.state.Avatars}
+      />,
       <ScreenSystem
         SystemInfo={this.state.SystemInfo}
         setBranch={this.setBranch}
@@ -273,7 +275,7 @@ class App extends React.Component {
       <img src={img_0} alt="" width="30" height="30" />,
       <img src={img_1} alt="" width="30" height="30" />,
       <img src={img_2} alt="" width="30" height="30" />,
-      // <img src={img_3} alt="" width="30" height="30" />,
+      <img src={img_3} alt="" width="30" height="30" />,
       <img src={Logo} alt="" width="30" height="30" />
     ]
     return (

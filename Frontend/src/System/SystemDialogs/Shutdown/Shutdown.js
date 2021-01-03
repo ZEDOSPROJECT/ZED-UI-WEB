@@ -13,7 +13,8 @@ export default class Shutdown extends React.Component {
         this.state = {
             standby: false,
             turnoff: false,
-            restart: false
+            restart: false,
+            onAction: false
         }
         this.onShutdown = this.onShutdown.bind(this);
         this.onRestart = this.onRestart.bind(this);
@@ -30,7 +31,9 @@ export default class Shutdown extends React.Component {
         this.setState({
             standBy: false,
             restart: false,
-            turnoff: false
+            turnoff: false,
+            visible: false,
+            onAction: true
         })
     }
 
@@ -71,7 +74,7 @@ export default class Shutdown extends React.Component {
     }
 
     render() {
-        if (this.props.visible === true) {
+        if (this.props.visible === true && this.state.visible!==false) {
             return (<div className="Shutdown" style={{ zIndex: window.maxZIndex + 10 }}>
                 <div className="ShutdownDLG">
                     <div className="ShutdownLBL">
@@ -110,7 +113,7 @@ export default class Shutdown extends React.Component {
                 </div>
                 {this.state.turnoff ? (
                     <RunAsRoot
-                        command="shutdown -h now"
+                        command="php ./POWER/shutdown.php"
                         onCancel={this.onShutdownCancel}
                         onOk={this.onOk}
                     />
@@ -118,7 +121,7 @@ export default class Shutdown extends React.Component {
 
                 {this.state.standBy ? (
                     <RunAsRoot
-                        command="systemctl suspend"
+                        command="php ./POWER/suspend.php"
                         onCancel={this.onStandbyCancel}
                         onOk={this.onOk}
                     />
@@ -126,7 +129,7 @@ export default class Shutdown extends React.Component {
 
                 {this.state.restart ? (
                     <RunAsRoot
-                        command="reboot"
+                        command="php ./POWER/reboot.php"
                         onCancel={this.onRestartCancel}
                         onOk={this.onOk}
                     />
@@ -134,7 +137,11 @@ export default class Shutdown extends React.Component {
 
             </div>);
         } else {
-            return null;
+            if(this.state.onAction){
+                return (<div className="Shutdown" style={{ zIndex: window.maxZIndex + 10 }}/>);
+            }else{
+                return null;
+            }
         }
     }
 }

@@ -14,11 +14,7 @@
     }
 
     function get_server_cpu_usage(){
-
-        $loads = sys_getloadavg();
-        $core_nums = trim(shell_exec("grep -P '^processor' /proc/cpuinfo|wc -l"));
-        $load = round($loads[0]/($core_nums + 1)*100, 2);
-        return $load;
+        return floatval(shell_exec("./getCPU.sh"));
     
     }
 

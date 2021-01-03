@@ -24,7 +24,8 @@ class StartMenu extends React.Component {
         this.state = {
             Apps: [],
             searchBox: '',
-            visible: false
+            visible: false,
+            UserIcon: UserIcon
         }
 
         this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -40,6 +41,19 @@ class StartMenu extends React.Component {
             else {
                 this.setState({ searchBox: '' });
                 this.refreshApps(undefined);
+                fetch(REST_URL+'/API/SYSTEM/IO/FILE/read.php?path=/home/'+this.props.userName.toLowerCase()+"/.face")
+                .then(response => response.blob())
+                .then(blob => {
+                    if(blob.size>0){
+                        this.setState({
+                            UserIcon: REST_URL+'/API/SYSTEM/IO/FILE/read.php?path=/home/'+this.props.userName.toLowerCase()+"/.face&x="+Math.random()
+                        }); 
+                    }else{
+                        this.setState({
+                            UserIcon: UserIcon
+                        }); 
+                    }
+                });
             }
             this.setState({ visible: this.props.visible });
         }, 100);
@@ -128,7 +142,7 @@ class StartMenu extends React.Component {
                 <div className={visible} style={{ zIndex: window.maxZIndex + 10, backgroundColor: this.convertHex(window.systemColor0, 90) }}>
                     <div className="topMenu" style={{ backgroundColor: this.convertHex(window.systemColor0, 95) }}>
                         <div>
-                            <img draggable="false" alt="" className="userPicture" height="32" src={UserIcon}></img>
+                            <img draggable="false" alt="" className="userPicture" height="32" src={this.state.UserIcon}></img>
                             <div style={{ color: invert(window.systemColor0, true) }} className="userName"><b>{this.props.userName}</b></div>
                         </div>
                     </div>

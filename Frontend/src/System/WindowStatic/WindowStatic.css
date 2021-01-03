@@ -43,5 +43,8 @@
     right: 0;
     bottom: 1px;
     background-color: #e6e4d1;
-
+    border-top: 1px solid #bdbdbd;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
 }

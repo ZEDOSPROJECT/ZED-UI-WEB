@@ -50,7 +50,7 @@ class Taskbar extends React.Component {
         );
         return (
             <div>
-                <img draggable="false" src={LightEffect} style={{ zIndex: window.maxZIndex + 6}} className="tLightEffect" />
+                <img draggable="false" src={LightEffect} alt="" style={{ zIndex: window.maxZIndex + 6}} className="tLightEffect" />
                 <table className=" Taskbar" style={{ zIndex: window.maxZIndex + 5, backgroundColor: this.convertHex(window.systemColor0, 95) }}>
                 < tbody >
                     <tr style={{ border: 'none' }} >    
@@ -59,7 +59,7 @@ class Taskbar extends React.Component {
                         <td className="buttonsArea">{iconList}</td>
                         <td style={{ width: 32, height: 20 }}><VolumeControl /></td>
                         <td style={{ width: 32, height: 20 }}><BatteryStatus /></td>
-                        <td style={{ width: 32, height: 20 }}><NetworkStatus /></td>
+                        <td style={{ width: 32, height: 20 }}><NetworkStatus loadUserSettings={this.props.loadUserSettings} /></td>
                         <td style={{ width: 32, height: 20 }}><NotificationIcon /></td>
                         <td style={{ width: 32, height: 20 }}><Clock /></td>
                         <td style={{ width: 62, height: 20 }}><Switch3D onSwitch3DClick={this.props.onSwitch3DClick} notSwitch3Dlbl={this.props.notSwitch3Dlbl} /></td>

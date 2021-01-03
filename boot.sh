@@ -4,41 +4,57 @@ isLive=$(which ubiquity)
 
 if [ -z $isLive ]; then
    # is installed
-   cd Backend
-   ./startBackend.sh&
-   cd ..
-   if [ -e ".branch" ]
+
+   ZED_FOLDER=~/.ZED
+   if [ ! -d "$ZED_FOLDER" ]; then
+      mkdir ~/.ZED
+      mkdir ~/.ZED/smartDesktop
+      cd Backend/SERVER/API/SYSTEM/SETTINGS/USER/
+      php updateSettings.php
+      cd ../../../../../../
+   fi
+
+   BRANCH_FILE=~/.ZED/.branch
+   if [ -e "$BRANCH_FILE" ]
    then
       if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
-         git checkout "$(<.branch)"
-         rm .branch
+         git checkout "$(<$BRANCH_FILE)"
+         rm $BRANCH_FILE
       fi
    fi
 
-   if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+   changed=0
+   git remote update && git status -uno | grep -q 'Your branch is behind' && changed=1
+   if [ $changed = 1 ]; then
       cd updateInstaller
       npm start&
       cd ..
-      git stash
-      if ! git pull
-      then
-         git update-index --assume-unchanged Backend/SERVER/API/SYSTEM/SETTINGS/USER/SETTINGS.json
-         git pull
-      fi
+      git checkout .
+      git pull
       cd Backend/SERVER/API/SYSTEM/SETTINGS/USER/
       php updateSettings.php
       cd ../../../../../../
       ./updateInstaller/postUpdate.sh
-      git stash pop
+      cd Frontend
+      npm install
+      cd ..
       killall electron
+      sleep 1
    fi
 
-   Xaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
-   Yaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
-   wget https://picsum.photos/${Xaxis}/${Yaxis} -q -O ./Backend/SERVER/Wallpapers/Images/onlineImage.jpg
+   if test `find "./Backend/SERVER/Wallpapers/Images/onlineImage.jpg" -mmin +1440`
+   then
+      if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+         Xaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
+         Yaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
+         wget https://picsum.photos/${Xaxis}/${Yaxis} -q -O ./Backend/SERVER/Wallpapers/Images/onlineImage.jpg
+      fi
+   fi
 
+   cd Backend
+   ./startBackend.sh&
+   cd ..
    cd Frontend
-   npm install
    npm run electron&
    sleep 1
    npm start&

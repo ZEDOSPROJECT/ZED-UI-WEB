@@ -65,7 +65,7 @@
 
       function setAsWallpaper(){
         fetch("http://"+window.location.hostname +
-          ":3031/API/SYSTEM/SETTINGS/USER/SETTING/setWallpaper.php?path=" +
+          ":3031/API/SYSTEM/SETTINGS/USER/SETTING/setWallpaper.php?smartdesk=0&path=" +
           document.getElementById("theImage").src.split("=")[1]);
       } 
 

@@ -23,13 +23,16 @@
 .backgroundVideo {
   position: fixed;
   top:0;
+  bottom: 0;
   /* Span the full grid */
   grid-area: var(--fullGrid);
+  height: 100vh;
+  width: 100vh;
 
   /* Re-size video to cover full screen while maintaining aspect ratio */
   min-width: 100%;
   min-height: 100%;
-  object-fit: cover;
+  object-fit: fill;
 
   /* Display video below overlay */
   z-index: -1;
@@ -58,6 +61,7 @@
   /* Preserve aspet ratio */
   min-width: 100%;
   min-height: 100%;
+  transition-duration: 1s;
 }
 
 .windowArea{

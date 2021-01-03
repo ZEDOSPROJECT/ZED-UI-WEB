@@ -63,7 +63,7 @@
     animation: notifyAnimation 1s infinite;  /* IE 10+, Fx 29+ */
   }
   
-  @-webkit-keyframes notifyAnimation {
+  @keyframes notifyAnimation {
     0%, 49% {
       background-color: rgba(0, 13, 126, 0);
     }

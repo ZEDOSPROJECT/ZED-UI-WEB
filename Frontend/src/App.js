@@ -70,9 +70,14 @@ class App extends Component {
         this.onMouseMove = this.onMouseMove.bind(this);
 
         setInterval(() => {
-            for (var key in window.winTitle) {
-                if (window.winTitle[key] === "Control Panel" || window.winTitle[key].includes("- ZED Picture Viewer")) {
-                    this.loadUserSettings();
+            if(window.loadUserSettings==="X"){
+                window.loadUserSettings=undefined;
+                this.loadUserSettings();
+            }else{
+                for (var key in window.winTitle) {
+                    if (window.winTitle[key] === "Control Panel" || window.winTitle[key].includes("- ZED Picture Viewer")) {
+                        this.loadUserSettings();
+                    }
                 }
             }
 
@@ -193,13 +198,9 @@ class App extends Component {
     }
 
     msgInfo(data) {
-        if (!data.includes("SYSCALL")) {
-            toast.info(data);
-            let infoSoundPlayer = new Audio(infoSound);
-            infoSoundPlayer.play();
-        } else {
-            this.processSysCalls(data);
-        }
+        toast.info(data);
+        let infoSoundPlayer = new Audio(infoSound);
+        infoSoundPlayer.play();
     }
 
     msgError(data) {
@@ -210,9 +211,13 @@ class App extends Component {
 
 
     msgWarn(data) {
-        let warningSoundPlayer = new Audio(warningSound);
-        warningSoundPlayer.play();
-        toast.warn(data);
+        if (!data.includes("SYSCALL")) {
+            let warningSoundPlayer = new Audio(warningSound);
+            warningSoundPlayer.play();
+            toast.warn(data);
+        } else {
+            this.processSysCalls(data);
+        }
     }
 
     componentToHex(c) {
@@ -261,7 +266,7 @@ class App extends Component {
     }
 
     loadUserSettings() {
-        fetch(REST_URL + '/API/SYSTEM/SETTINGS/USER/getSettings.php')
+        fetch(REST_URL + '/API/SYSTEM/SETTINGS/USER/getSettings.php?smartdesk=0')
             .then(response => response.json())
             .then(json => {
                 if (json.setting_wallpaperColor !== this.state.setting_wallpaperColor) {
@@ -283,7 +288,9 @@ class App extends Component {
                     window.systemColor1 = json.setting_systemColor1;
                 } else {
                     if (window.gradientEffect) {
-                        this.getGradient();
+                        setTimeout(() => {
+                            this.getGradient(); 
+                        }, 20);
                     }
                 }
                 window.gradientEffect = json.setting_gradientEffect;
@@ -494,6 +501,7 @@ class App extends Component {
                     onSwitch3DClick={this.onSwitch3DClick}
                     notSwitch3Dlbl={this.state.notSwitch3Dlbl}
                     onClose={this.onClose}
+                    loadUserSettings={this.loadUserSettings}
                 />
                 <StartMenu
                     onClickApp={this.onClickApp}

@@ -21,7 +21,8 @@ function createWindow() {
       "webgl": true,
       "nodeIntegration": true,
       "allowDisplayingInsecureContent": true,
-      "scrollBounce": false
+      "scrollBounce": false,
+      "webviewTag": true
     }
   })
   win.setMenu(null);
@@ -31,7 +32,7 @@ function createWindow() {
   // win.webContents.openDevTools()
 
   setTimeout(() => {
-    win.loadURL('http://localhost:3031', { userAgent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3626.120 Safari/537.36' });
+    win.loadURL('http://localhost:3031', { userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36' });
   }, 200);
   // and load the index.html of the app.
 }
