@@ -8,19 +8,6 @@ ONE UI is part of ZED OS Project, it's an User interface based on Web Tecnologie
 [Discord](https://discord.gg/bKkyqxf)
 
 
-### VM to test
-	Need:
-	-VirtualBox 6.1.10
-	-VT-x Enabled
-
-	Login
-	username:zed
-	password:zed
-
-[Download](https://mega.nz/file/d4lX0RDR#zMYA5WfgPrlnTUcngLvcf4H0r9qF4FDQESRZlAeeu4k)
-
-	
-
 ### Prerequisites
 
 	-NODEJS 10 or superior
@@ -29,7 +16,11 @@ ONE UI is part of ZED OS Project, it's an User interface based on Web Tecnologie
 
 ### Installing
 
-	1 - git clone https://github.com/ZEDOSPROJECT/ZED-UI-WEB.git
+	// if you want to clone full project
+	1.a - git clone https://github.com/ZEDOSPROJECT/ZED-UI-WEB.git
+
+	// if you want to clone only the last commit 
+	1.b - git clone --no-checkout  --depth=1 https://github.com/ZEDOSPROJECT/ZED-UI-WEB.git
 
 	2a - Backend:
 	  cd Backend; ./startBackend.sh
