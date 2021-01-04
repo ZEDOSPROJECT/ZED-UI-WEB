@@ -25,7 +25,8 @@ class StartMenu extends React.Component {
             Apps: [],
             searchBox: '',
             visible: false,
-            UserIcon: UserIcon
+            UserIcon: UserIcon,
+            flagLoad:true,
         }
 
         this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -37,37 +38,47 @@ class StartMenu extends React.Component {
         setInterval(() => {
             if (this.props.visible) {
                 this.refreshApps(this.state.searchBox);
+                if(!this.state.flagLoad){
+                    this.setState({
+                        flagLoad: true
+                    })
+                    fetch(REST_URL+'/API/SYSTEM/IO/FILE/read.php?path=/home/'+this.props.userName.toLowerCase()+"/.face")
+                    .then(response => response.blob())
+                    .then(blob => {
+                        if(blob.size>0){
+                            if(blob.size!=this.state.UserIcon.size){
+                                this.setState({
+                                    UserIcon: URL.createObjectURL(blob)
+                                }); 
+                            }
+                        }else{
+                            this.setState({
+                                UserIcon: UserIcon
+                            }); 
+                        }
+                    });
+                }
             }
             else {
-                this.setState({ searchBox: '' });
-                this.refreshApps(undefined);
-                fetch(REST_URL+'/API/SYSTEM/IO/FILE/read.php?path=/home/'+this.props.userName.toLowerCase()+"/.face")
-                .then(response => response.blob())
-                .then(blob => {
-                    if(blob.size>0){
-                        this.setState({
-                            UserIcon: REST_URL+'/API/SYSTEM/IO/FILE/read.php?path=/home/'+this.props.userName.toLowerCase()+"/.face&x="+Math.random()
-                        }); 
-                    }else{
-                        this.setState({
-                            UserIcon: UserIcon
-                        }); 
-                    }
-                });
+                if(this.state.flagLoad){
+                    this.setState({ searchBox: '',flagLoad:false });
+                }
             }
+        }, 1000);
+        setInterval(() => {
             this.setState({ visible: this.props.visible });
-        }, 100);
+        }, 50);
     }
 
 
     refreshApps(query) {
         fetch(REST_URL + '/API/APPS/getAppsList.php?query=' + query)
-            .then(response => response.json())
-            .then(json => {
-                this.setState({
-                    Apps: json,
-                });
+        .then(response => response.json())
+        .then(json => {
+            this.setState({
+                Apps: json,
             });
+        });
     }
 
     handleSearchChange(e) {

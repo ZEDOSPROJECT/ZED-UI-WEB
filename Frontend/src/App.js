@@ -70,17 +70,6 @@ class App extends Component {
         this.onMouseMove = this.onMouseMove.bind(this);
 
         setInterval(() => {
-            if(window.loadUserSettings==="X"){
-                window.loadUserSettings=undefined;
-                this.loadUserSettings();
-            }else{
-                for (var key in window.winTitle) {
-                    if (window.winTitle[key] === "Control Panel" || window.winTitle[key].includes("- ZED Picture Viewer")) {
-                        this.loadUserSettings();
-                    }
-                }
-            }
-
             this.clean();
             if (window.ZED_RUN !== null) {
                 const AppMetadata = Object.assign({}, window.ZED_RUN);
@@ -91,6 +80,19 @@ class App extends Component {
                 this.setState({ ScreenSaverTimer: 0 });
             }
         }, 200);
+
+        setInterval(() => {
+            if(window.loadUserSettings==="X"){
+                window.loadUserSettings=undefined;
+                this.loadUserSettings();
+            }else{
+                for (var key in window.winTitle) {
+                    if (window.winTitle[key] === "Control Panel" || window.winTitle[key].includes("- ZED Picture Viewer")) {
+                        this.loadUserSettings();
+                    }
+                }
+            }
+        }, 1000);
 
         setTimeout(() => {
             fetch(REST_URL + '/API/SYSTEM/SETTINGS/USER/getPaths.php')

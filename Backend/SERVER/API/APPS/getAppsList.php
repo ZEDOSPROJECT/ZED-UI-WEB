@@ -5,7 +5,9 @@
     $query="";  
     if(isset($_GET['query'])){
         $query=$_GET['query'];  
-    } 
+    }else{
+        $query="";
+    }
     foreach (scandir($_SERVER["DOCUMENT_ROOT"]."/APPS") as $app) {
         if($app != ".." and $app != "."){
             $content=file_get_contents($_SERVER["DOCUMENT_ROOT"]."/APPS/".$app."/app_manifest.json");
