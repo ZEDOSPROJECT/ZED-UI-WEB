@@ -44,7 +44,6 @@ class App extends React.Component {
     this.changeColorWallpaper = this.changeColorWallpaper.bind(this);
     this.changeAutoGradient = this.changeAutoGradient.bind(this);
     this.changeGradient = this.changeGradient.bind(this);
-    this.changeBing = this.changeBing.bind(this);
     this.changeColor0 = this.changeColor0.bind(this);
     this.changeColor1 = this.changeColor1.bind(this);
     this.changeWallpaper = this.changeWallpaper.bind(this);
@@ -76,11 +75,7 @@ class App extends React.Component {
   save() {
     // Make JSON Settings compatible with ZED
     let tmpSettings = this.state.SettingJSON;
-    tmpSettings.setting_wallpaperURL = this.state.SettingJSON.setting_wallpaperURL.replace(
-      // eslint-disable-next-line
-      /^.*[\\\/]/,
-      ""
-    );
+    tmpSettings.setting_wallpaperURL = this.state.SettingJSON.setting_wallpaperURL;
     if (Object.entries(tmpSettings).length > 0) {
       fetch(
         "http://" +
@@ -114,12 +109,7 @@ class App extends React.Component {
         let newWallpapers = [""];
         jsonWallpapers.WALLPAPERS.forEach(element => {
           if (element !== "") {
-            newWallpapers.push(
-              "http://" +
-              window.location.hostname +
-              ":3031/Wallpapers/Images/" +
-              element
-            );
+            newWallpapers.push(element);
           }
         });
         this.setState({ Wallpapers: newWallpapers });
@@ -174,13 +164,6 @@ class App extends React.Component {
     this.save();
   }
 
-  changeBing(event) {
-    let obj = this.state.SettingJSON;
-    obj["setting_bingWallpaper"] = event.target.checked;
-    this.setState({ SettingJSON: obj });
-    this.save();
-  }
-
   changeGradient(event) {
     let obj = this.state.SettingJSON;
     obj["setting_gradientEffect"] = event.target.checked;
@@ -224,8 +207,8 @@ class App extends React.Component {
   changeWallpaper(img) {
     let obj = this.state.SettingJSON;
     obj["videoWallpaperURL"] = "";
-    if (img.target.src) {
-      obj["setting_wallpaperURL"] = img.target.src;
+    if (img.target.id) {
+      obj["setting_wallpaperURL"] = img.target.id;
     } else {
       obj["setting_wallpaperURL"] = "";
     }
@@ -249,6 +232,7 @@ class App extends React.Component {
         Videos={this.state.Videos}
         changeColor1={this.changeColor1}
         changeColor0={this.changeColor0}
+        changeColorWallpaper={this.changeColorWallpaper}
         changeAutoGradient={this.changeAutoGradient}
         changeBlueFilter={this.changeBlueFilter}
         changeGradient={this.changeGradient}

@@ -20,6 +20,7 @@ class Appearance extends React.Component {
                         alt=""
                         draggable="false"
                         onClick={this.props.changeWallpaper}
+                        id={wallpaper}
                         style={
                             wallpaper
                             .toString()
@@ -34,7 +35,7 @@ class Appearance extends React.Component {
                         }
                         width="150"
                         height="100"
-                        src={wallpaper}
+                        src={ "http://" + window.location.hostname + ":3031/API/SYSTEM/IO/FILE/read.php?path="+wallpaper}
                         key={index}
                     />
                     {isOnlinePic}
@@ -54,8 +55,7 @@ class Appearance extends React.Component {
                     width: 150,
                     height: 100,
                     float: "left",
-                    backgroundColor: this.props.SettingJSON
-                        .setting_wallpaperColor,
+                    backgroundColor: this.props.SettingJSON.setting_wallpaperColor,
                     }}
                 />
                 );

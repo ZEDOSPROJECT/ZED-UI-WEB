@@ -27,6 +27,7 @@ class App extends Component {
             showMenu: false,
             setting_blueFilter: false,
             setting_wallpaperURL: '',
+            wallpaperBlob: undefined,
             setting_wallpaperColor: '#004e98',
             setting_resolution: '100%',
             userPaths: null,
@@ -249,7 +250,7 @@ class App extends Component {
                 window.systemColor0 = finalColorBOTTOM;
             }
         });
-        img.src = REST_URL + '/API/SYSTEM/SETTINGS/USER/SETTING/getCurrentBackground.php?file=' + this.state.setting_wallpaperURL;
+        img.src = this.state.wallpaperBlob;
     }
 
     clean() {
@@ -298,8 +299,13 @@ class App extends Component {
                 window.gradientEffect = json.setting_gradientEffect;
                 window.autoGradient = json.setting_autoGradientEffect;
                 if (json.setting_wallpaperURL !== this.state.setting_wallpaperURL) {
-                    this.setState({
-                        setting_wallpaperURL: json.setting_wallpaperURL
+                    fetch(REST_URL + '/API/SYSTEM/IO/FILE/read.php?path=' + json.setting_wallpaperURL)
+                    .then(response => response.blob())
+                    .then(blob => {
+                        this.setState({
+                            setting_wallpaperURL: json.setting_wallpaperURL,
+                            wallpaperBlob: URL.createObjectURL(blob)
+                        }); 
                     });
                 }
             });
@@ -478,14 +484,13 @@ class App extends Component {
                 return null;
             }
         })
-        const wallpaperURL = REST_URL + '/Wallpapers/Images/' + this.state.setting_wallpaperURL;
         const wallpaperColor = this.state.setting_wallpaperColor;
         return (
             <div onMouseMove={this.onMouseMove} className="App" style={{ zoom: this.state.setting_resolution }} >
                 {this.state.videoWallpaperURL !== "" ? (
                     <video className="backgroundVideo" src={REST_URL + "/Wallpapers/Videos/" + this.state.videoWallpaperURL} loop autoPlay muted></video>
                 ) : (
-                        <div className="backgroundImage" style={{ backgroundImage: 'url(' + wallpaperURL + ')', backgroundColor: wallpaperColor }} >
+                        <div className="backgroundImage" style={{ backgroundImage: 'url(' + this.state.wallpaperBlob + ')', backgroundColor: wallpaperColor }} >
 
                         </div>
                     )}

@@ -42,12 +42,14 @@ if [ -z $isLive ]; then
       sleep 1
    fi
 
-   if test `find "./Backend/SERVER/Wallpapers/Images/onlineImage.jpg" -mmin +1440`
-   then
-      if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
-         Xaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
-         Yaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
-         wget https://picsum.photos/${Xaxis}/${Yaxis} -q -O ./Backend/SERVER/Wallpapers/Images/onlineImage.jpg
+   if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+      Xaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
+      Yaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
+      if [ ! -d "~/.ZED/onlineImage.jpg" ]; then
+         wget https://picsum.photos/${Xaxis}/${Yaxis} -q -O ~/.ZED/onlineImage.jpg >/dev/null&
+      fi
+      if test `find "~/.ZED/onlineImage.jpg" -mmin +1440`; then
+         wget https://picsum.photos/${Xaxis}/${Yaxis} -q -O ~/.ZED/onlineImage.jpg >/dev/null&
       fi
    fi
 
