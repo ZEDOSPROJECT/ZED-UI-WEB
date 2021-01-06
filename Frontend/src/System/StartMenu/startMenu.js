@@ -67,6 +67,10 @@ class StartMenu extends React.Component {
         }, 1000);
         setInterval(() => {
             this.setState({ visible: this.props.visible });
+            if(window.loadApps=="X"){
+                this.refreshApps("");
+                window.loadApps=undefined;
+            }
         }, 50);
     }
 

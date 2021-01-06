@@ -11,9 +11,6 @@ class appCard extends React.Component{
         this.addToFavorites = this.addToFavorites.bind(this);
         this.findIfIsFavorite = this.findIfIsFavorite.bind(this);
     }
-    shouldComponentUpdate(nextProps, nextState) {
-        return false;
-    }
 
     findIfIsFavorite(newObj,list){
         let found=-1;

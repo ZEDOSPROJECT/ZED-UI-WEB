@@ -47,11 +47,13 @@ class NetworkItem extends Component {
         })
         localStorage["WIFI_NETWORK_" + this.props.ssid] = pwd
         localStorage["CONNECTED_NETWORK"]=this.props.ssid;
+        this.props.hideWifiList();
     }
 
     onDisconnect() {
         fetch(REST_URL + '/API/SYSTEM/NETWORK/WIFI/disconnectWifi.php?ssid=' + this.props.ssid + "");
         localStorage["CONNECTED_NETWORK"]="";
+        this.props.hideWifiList();
     }
 
     render() {

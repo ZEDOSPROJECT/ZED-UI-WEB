@@ -2,9 +2,8 @@
 
 isLive=$(which ubiquity)
 
-if [ -z $isLive ]; then
-   # is installed
-
+START_ZED()
+{
    ZED_FOLDER=~/.ZED
    if [ ! -d "$ZED_FOLDER" ]; then
       mkdir ~/.ZED
@@ -29,17 +28,25 @@ if [ -z $isLive ]; then
       cd updateInstaller
       npm start&
       cd ..
+      cp Frontend/package.json /tmp
       git checkout .
       git pull
       cd Backend/SERVER/API/SYSTEM/SETTINGS/USER/
       php updateSettings.php
       cd ../../../../../../
       ./updateInstaller/postUpdate.sh
-      cd Frontend
-      npm install
-      cd ..
+
+      file1="./Frontend/package.json"
+      file2="/tmp/package.json"
+
+      if ! cmp -s "$file1" "$file2"; then
+         cd Frontend
+         npm install
+         cd ..
+      fi
+      rm /tmp/package.json
       killall electron
-      sleep 1
+      sleep 0.2
    fi
 
    if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
@@ -71,6 +78,11 @@ if [ -z $isLive ]; then
       php updateApps.php
       sleep 30m
    done
+}
+
+if [ -z $isLive ]; then
+   START_ZED
 else
    ubiquity
+   START_ZED
 fi

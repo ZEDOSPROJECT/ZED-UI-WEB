@@ -289,15 +289,10 @@ class App extends Component {
                 if (!json.setting_autoGradientEffect) {
                     window.systemColor0 = json.setting_systemColor0;
                     window.systemColor1 = json.setting_systemColor1;
-                } else {
-                    if (window.gradientEffect) {
-                        setTimeout(() => {
-                            this.getGradient(); 
-                        }, 20);
-                    }
                 }
                 window.gradientEffect = json.setting_gradientEffect;
                 window.autoGradient = json.setting_autoGradientEffect;
+                let tmpLink=json.setting_wallpaperURL;
                 if (json.setting_wallpaperURL !== this.state.setting_wallpaperURL) {
                     fetch(REST_URL + '/API/SYSTEM/IO/FILE/read.php?path=' + json.setting_wallpaperURL)
                     .then(response => response.blob())
@@ -306,6 +301,11 @@ class App extends Component {
                             setting_wallpaperURL: json.setting_wallpaperURL,
                             wallpaperBlob: URL.createObjectURL(blob)
                         }); 
+                        if (json.setting_autoGradientEffect) {
+                            setTimeout(() => {
+                                this.getGradient(); 
+                            }, 20);
+                        }
                     });
                 }
             });

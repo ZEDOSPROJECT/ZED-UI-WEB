@@ -34,6 +34,7 @@ class NetworkManager extends Component {
                             ssid={data.ssid}
                             inUse={data.inUse}
                             security={data.security}
+                            hideWifiList={this.props.hideWifiList}
                             key={key}
                         />
                     );

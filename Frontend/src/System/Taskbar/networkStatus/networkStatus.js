@@ -16,11 +16,19 @@ class NetworkStatus extends React.Component {
     }
 
     this.toggleNetworkManager = this.toggleNetworkManager.bind(this);
+    this.hideWifiList = this.hideWifiList.bind(this);
+  }
+
+  hideWifiList(){
+    this.setState({
+      NetworkManagerVisible:false
+    })
   }
 
   iHaveInternet(){
     localStorage.hasInternet=true;
     window.loadUserSettings="X";
+    window.loadApps="X";
     setTimeout(() => {
       fetch(REST_URL + '/API/SYSTEM/NETWORK/WIFI/getCurrent.php')
       .then(response => response.text())
@@ -32,6 +40,7 @@ class NetworkStatus extends React.Component {
 
   iDontHaveInternet(){
     localStorage.hasInternet=false;
+    window.loadApps="X";
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -57,7 +66,7 @@ class NetworkStatus extends React.Component {
         <Offline>
           <img onClick={this.toggleNetworkManager} onLoad={this.iDontHaveInternet} draggable="false" alt="" src={C0}/>
         </Offline>
-        <NetworkManager visible={this.state.NetworkManagerVisible} />
+        <NetworkManager hideWifiList={this.hideWifiList} visible={this.state.NetworkManagerVisible} />
       </div>
     );
   }
