@@ -46,7 +46,7 @@ class StartMenu extends React.Component {
                     .then(response => response.blob())
                     .then(blob => {
                         if(blob.size>0){
-                            if(blob.size!=this.state.UserIcon.size){
+                            if(blob.size!==this.state.UserIcon.size){
                                 this.setState({
                                     UserIcon: URL.createObjectURL(blob)
                                 }); 
@@ -67,7 +67,7 @@ class StartMenu extends React.Component {
         }, 1000);
         setInterval(() => {
             this.setState({ visible: this.props.visible });
-            if(window.loadApps=="X"){
+            if(window.loadApps==="X"){
                 this.refreshApps("");
                 window.loadApps=undefined;
             }

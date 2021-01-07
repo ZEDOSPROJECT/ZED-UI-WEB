@@ -292,7 +292,6 @@ class App extends Component {
                 }
                 window.gradientEffect = json.setting_gradientEffect;
                 window.autoGradient = json.setting_autoGradientEffect;
-                let tmpLink=json.setting_wallpaperURL;
                 if (json.setting_wallpaperURL !== this.state.setting_wallpaperURL) {
                     fetch(REST_URL + '/API/SYSTEM/IO/FILE/read.php?path=' + json.setting_wallpaperURL)
                     .then(response => response.blob())
