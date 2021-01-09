@@ -525,7 +525,7 @@ class App extends Component {
                     />
                 ) : null}
 
-                <ToastContainer />
+                <ToastContainer limit={3} draggablePercent={60} />
                 <ShutdownDLG
                     visible={this.state.shutdownDLG}
                     onCancel={this.onShutdownDLGCancel}

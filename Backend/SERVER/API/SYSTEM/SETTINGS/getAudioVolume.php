@@ -1,4 +1,4 @@
 <?php
     header("Access-Control-Allow-Origin: *");
-    echo shell_exec("amixer get Master | awk '$0~/%/{print $4}' | tr -d '[]%'");
+    echo shell_exec("amixer -D pulse get Master | awk -F 'Left:|[][]' 'BEGIN {RS=""}{ print $3 }'| tr -d '[]%'");
 ?>
