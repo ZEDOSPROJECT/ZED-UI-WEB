@@ -1,0 +1,41 @@
+.Controls{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100px;
+    transition-duration: 5s;
+    transition-delay: 2s;
+    background-color: rgba(131, 130, 133, 0);
+    opacity: 0;
+}
+
+.Controls:hover{
+    background-color: rgba(0, 0, 0, 0.822);
+    transition-duration: .2s;
+    transition-delay: .1s;
+    opacity: 100;
+}
+
+.btnPPlay{
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+    border-radius: 100%;
+    background-color: rgb(56, 56, 56);  
+    border-color: blue; 
+    border-width: 0px;
+    border-style: solid;
+    transition-duration: 2s;
+}
+
+.btnPPlay:hover{
+    background-color: rgb(56, 56, 56);
+    border-color: rgb(0, 119, 255); 
+    border-width: 3px;
+    transition-duration: .2s;
+}
+
+.timeLine{
+    width: 97vw;
+}
