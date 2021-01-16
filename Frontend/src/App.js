@@ -202,15 +202,23 @@ class App extends Component {
     }
 
     msgInfo(data) {
-        toast.info(data);
-        let infoSoundPlayer = new Audio(infoSound);
-        infoSoundPlayer.play();
+        if (!data.includes("SYSCALL")) {
+            toast.info(data);
+            let infoSoundPlayer = new Audio(infoSound);
+            infoSoundPlayer.play()
+        } else {
+            this.processSysCalls(data);
+        }
     }
 
     msgError(data) {
-        let errorSoundPlayer = new Audio(errorSound);
-        errorSoundPlayer.play();
-        toast.error(data);
+        if (!data.includes("SYSCALL")) {
+            let errorSoundPlayer = new Audio(errorSound);
+            errorSoundPlayer.play();
+            toast.error(data);
+        } else {
+            this.processSysCalls(data);
+        }
     }
 
 
