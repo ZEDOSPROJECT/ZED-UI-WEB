@@ -14,6 +14,7 @@ import ScreenSaver from './System/ScreenSaver/ScreenSaver';
 import UI3D from './System/UI3D/UI3D';
 import ShutdownDLG from './System/SystemDialogs/Shutdown/Shutdown'
 import RunAsRoot from './Tools/Components/RunAsRootWindow/RunAsRootWindow';
+import FirstBOOT from './FIRSTBOOT.jpg';
 import { REST_URL } from './REST_URL';
 import './App.css';
 import { setTimeout } from 'timers';
@@ -292,20 +293,27 @@ class App extends Component {
                 }
                 window.gradientEffect = json.setting_gradientEffect;
                 window.autoGradient = json.setting_autoGradientEffect;
-                if (json.setting_wallpaperURL !== this.state.setting_wallpaperURL) {
-                    fetch(REST_URL + '/API/SYSTEM/IO/FILE/read.php?path=' + json.setting_wallpaperURL)
-                    .then(response => response.blob())
-                    .then(blob => {
-                        this.setState({
-                            setting_wallpaperURL: json.setting_wallpaperURL,
-                            wallpaperBlob: URL.createObjectURL(blob)
-                        }); 
-                        if (json.setting_autoGradientEffect) {
-                            setTimeout(() => {
-                                this.getGradient(); 
-                            }, 20);
-                        }
-                    });
+                if(json.setting_wallpaperURL=="FIRSTBOOT"){
+                    this.setState({
+                        setting_wallpaperURL: json.setting_wallpaperURL,
+                        wallpaperBlob: FirstBOOT
+                    }); 
+                }else{
+                    if (json.setting_wallpaperURL !== this.state.setting_wallpaperURL) {
+                        fetch(REST_URL + '/API/SYSTEM/IO/FILE/read.php?path=' + json.setting_wallpaperURL)
+                        .then(response => response.blob())
+                        .then(blob => {
+                            this.setState({
+                                setting_wallpaperURL: json.setting_wallpaperURL,
+                                wallpaperBlob: URL.createObjectURL(blob)
+                            }); 
+                            if (json.setting_autoGradientEffect) {
+                                setTimeout(() => {
+                                    this.getGradient(); 
+                                }, 20);
+                            }
+                        });
+                    }
                 }
             });
     }
