@@ -7,8 +7,15 @@ import './App.css';
 export default class App extends React.Component{
   constructor(props){
     super(props);
+    let query = this.getQueryParams(document.location.search);
+    const localFile = query.path;
+    if(localFile!==undefined){
+      document.title = localFile.replace(/^.*[\\\/]/, "") + " - ZED Media Player";
+    }else{
+      document.title = "ZED Media Player";
+    }
     this.state={
-      url:"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      url:"http://" + window.location.hostname + ":3031/API/SYSTEM/IO/FILE/read.php?path=" + localFile,
       loop:true,
       playing:false,
       currentTime:0
@@ -16,6 +23,21 @@ export default class App extends React.Component{
     this.handlePlayerClick=this.handlePlayerClick.bind(this);
     this.onProgress=this.onProgress.bind(this);
     this.goToTime = this.goToTime.bind(this);
+    this.getQueryParams = this.getQueryParams.bind(this);
+  }
+
+  getQueryParams(qs) {
+    qs = qs.split("+").join(" ");
+
+    var params = {},
+      tokens,
+      re = /[?&]?([^=]+)=([^&]*)/g;
+
+    while ((tokens = re.exec(qs))) {
+      params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
   }
 
   handlePlayerClick(e){

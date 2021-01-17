@@ -301,7 +301,7 @@ class App extends Component {
                 }
                 window.gradientEffect = json.setting_gradientEffect;
                 window.autoGradient = json.setting_autoGradientEffect;
-                if(json.setting_wallpaperURL=="FIRSTBOOT"){
+                if(json.setting_wallpaperURL==="FIRSTBOOT"){
                     this.setState({
                         setting_wallpaperURL: json.setting_wallpaperURL,
                         wallpaperBlob: FirstBOOT

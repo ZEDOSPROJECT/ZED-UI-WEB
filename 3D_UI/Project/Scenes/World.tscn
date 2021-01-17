@@ -567,6 +567,9 @@ shape = SubResource( 9 )
 [node name="Table1" parent="City/Home" instance=ExtResource( 12 )]
 transform = Transform( -7.47807e-08, 0, -0.172, 0, 0.47, 0, 0.459, 0, -2.80224e-08, 20.5914, 2.16576, 7.4825 )
 
+[node name="Table2" parent="City/Home" instance=ExtResource( 12 )]
+transform = Transform( -7.47807e-08, 0, -0.172, 0, 0.47, 0, 0.459, 0, -2.80224e-08, 29.9294, 2.16576, 7.4825 )
+
 [node name="Lowpoly_Notebook_2" parent="City/Home" instance=ExtResource( 17 )]
 transform = Transform( 0.338289, 0, 0.132977, 0, 0.35, 0, -0.138518, 0, 0.411022, 18.3334, 2.34066, -0.981695 )
 
