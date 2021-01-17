@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import BPlay from '../../Images/play.png';
 import BPause from '../../Images/pause.png';
+import MaxTime from '../MaxTime/MaxTime';
+import CurrentTime from '../CurrentTime/CurrentTime';
 import './Controls.css';
 
 class Controls extends Component {
@@ -22,6 +24,8 @@ class Controls extends Component {
                     ):(
                         <img alt="" className="btnPPlay" src={BPlay} onClick={this.props.handlePlayerClick}/>
                     )}
+                    <MaxTime MaxTime={this.props.MaxTime}/> 
+                    <CurrentTime CurrentTime={this.props.CurrentTime}/>          
                 </center>
             </div>
         );

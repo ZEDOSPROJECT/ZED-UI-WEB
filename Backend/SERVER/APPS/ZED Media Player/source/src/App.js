@@ -18,7 +18,9 @@ export default class App extends React.Component{
       url:"http://" + window.location.hostname + ":3031/API/SYSTEM/IO/FILE/read.php?path=" + localFile,
       loop:true,
       playing:false,
-      currentTime:0
+      currentTime:0,
+      MaxTime:"",
+      PlayedTime:""
     }
     this.handlePlayerClick=this.handlePlayerClick.bind(this);
     this.onProgress=this.onProgress.bind(this);
@@ -48,8 +50,11 @@ export default class App extends React.Component{
 
   onProgress(e){
     this.setState({
-      currentTime: e.played
+      currentTime: e.played,
+      PlayedTime:new Date(e.playedSeconds * 1000).toISOString().substr(11, 8),
+      MaxTime: new Date(this.player.getDuration() * 1000).toISOString().substr(11, 8)
     })
+  
   }
 
   goToTime(e){
@@ -80,6 +85,8 @@ export default class App extends React.Component{
         currentTime={this.state.currentTime}
         goToTime={this.goToTime}
         playing={this.state.playing}
+        MaxTime={this.state.MaxTime}
+        CurrentTime={this.state.PlayedTime}
       />
     </div>)
   }
