@@ -17,9 +17,19 @@ import Combo from './Combo/combo';
 import './leftBar.css';
 
 class LeftBar extends React.Component {
+    constructor(props){
+        super(props);
+        this.brighten=this.brighten.bind(this);
+    }
+
+    brighten(color, c) {
+        const calc = (sub1,sub2)=> Math.min(255,Math.floor(parseInt(color.substr(sub1,sub2),16)*c)).toString(16).padStart(2,"0")
+        return `#${calc(1,2)}${calc(3,2)}${calc(5,2)}`
+    }
+
     render() {
         if (this.props.searchMode) {
-            return (<div className="leftBar">
+            return (<div className="leftBar" style={{backgroundColor: this.brighten(window.systemColor1,.8)}}>
                 <Combo title="Search for . . ." open >
                     <SearchCombo
                         onSearchModeChange={this.props.onSearchModeChange}
@@ -28,7 +38,7 @@ class LeftBar extends React.Component {
                 </Combo>
             </div>);
         } else {
-            return (<div className="leftBar">
+            return (<div className="leftBar" style={{backgroundColor: this.brighten(window.systemColor1,.8)}}>
                 {
                     !this.props.saveDialog ? (
                         <Combo title="Tasks" open >
