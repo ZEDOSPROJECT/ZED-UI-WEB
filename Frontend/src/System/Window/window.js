@@ -405,7 +405,7 @@ class Window extends React.Component {
         if (!window.gradientEffect) {
             finalStyle = { backgroundColor: this.convertHex(this.state.systemColor0, 50) };
         } else {
-            finalStyle = { background: 'linear-gradient(' + this.convertHex(this.state.systemColor1, 95) + ', ' + this.convertHex(this.state.systemColor0, 95) }
+            finalStyle = { background: 'linear-gradient(' + this.convertHex(this.state.systemColor1, 65) + ', ' + this.convertHex(this.state.systemColor0, 65) }
         }
 
         return (
