@@ -4,14 +4,44 @@ import invert from 'invert-color';
 import { Portal } from 'react-portal';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 import './taskButton.css';
+import WindowPreview from './WindowPreview/WindowPreview';
 
 class TaskButton extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state={
+            showPreview: false
+        };
+
+        this.handle=undefined;
+
         setInterval(() => {
             this.forceUpdate();
         }, 800);
 
+        this.mouseOver = this.mouseOver.bind(this);
+        this.mouseLeave = this.mouseLeave.bind(this);
+    }
+
+    mouseOver() {
+        this.handle = setTimeout(() => {
+            clearTimeout(this.handle);
+            this.handle = undefined;
+            this.setState({
+                showPreview: true
+            })
+        }, 1000);
+    }
+
+    mouseLeave() {
+        // if (this.handle) {
+            clearTimeout(this.handle);
+            this.handle = undefined;
+            this.setState({
+                showPreview: false
+            })
+        // }
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -48,7 +78,13 @@ class TaskButton extends React.Component {
             isPlaying = true;
         }
         return (
-            <div>
+            <div onMouseOver={this.mouseOver} onMouseLeave={this.mouseLeave}>
+                {this.state.showPreview ? (
+                    <WindowPreview
+                        onToggleMinimize={this.props.onToggleMinimize}
+                        uuid={this.props.uuid}
+                    />
+                ): null}
                 <ContextMenuTrigger id={"taskbar.task_" + this.props.uuid}>
                     <div title={currentTitle} onClick={e => this.props.onToggleMinimize(this.props.uuid)} style={{ color: invert(window.systemColor0, true), backgroundColor: (isTOP ? "rgba(0,0,0,0.2)" : "") }} className="taskButton">
                         {notifys !== null ? (

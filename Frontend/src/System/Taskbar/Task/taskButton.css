@@ -1,5 +1,6 @@
 .taskButton {
     position: relative;
+    transform: translateX(0);
     height: 30px;
     width: 150px;
     float: left;

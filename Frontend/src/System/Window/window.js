@@ -1,5 +1,7 @@
 import React from 'react';
 import invert from 'invert-color';
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import isElectron from 'is-electron';
 import onClickOutside from 'react-onclickoutside';
 import { Rnd } from "react-rnd";
@@ -76,6 +78,7 @@ class Window extends React.Component {
             ],
             fullScreen: false
         };
+        this.windowRef = React.createRef();
         setTimeout(() => {
             if (window.winTitle[this.state.uuid].includes("Copy")) {
                 this.setState({ notResiable: true });
@@ -104,6 +107,30 @@ class Window extends React.Component {
         window.maxZIndex = window.maxZIndex + 1;
         window.topUUID = this.state.uuid;
         setInterval(() => {
+            if(this.windowRef){
+                if(this.props.systemWindow){
+                    htmlToImage.toJpeg(this.windowRef.current)
+                    .then((dataUrl)=> {
+                        if(dataUrl!="data:," && dataUrl!=""){
+                            sessionStorage["w_WINDOW_"+this.state.uuid]=dataUrl;
+                        }
+                    })
+                    .catch(function (error) {
+                        console.error('oops, something went wrong!', error);
+                    });
+                }else{
+                    if(isElectron){
+                        if(this.webview){
+                            this.webview.capturePage().then((value)=> {
+                                let temp=value.toDataURL(0.1);
+                                if(temp!="data:image/png;base64," && temp!=""){
+                                    sessionStorage["w_WINDOW_"+this.state.uuid]=temp;
+                                }
+                            });
+                        }
+                    }
+                }
+            }
             if (window.toFront) {
                 if (window.toFront === this.props.uuid) {
                     let newIndex = this.state.currentZIndex;
@@ -116,7 +143,7 @@ class Window extends React.Component {
                     window.toFront = undefined;
                 }
             }
-            if (this.state.systemColor0 !== window.systemColor0) {
+            if (this.state.systemColor0 !== window.systemColor0) {  
                 this.setState({ systemColor0: window.systemColor0 });
             }
             if (this.state.gradient !== window.gradientEffect) {
@@ -356,7 +383,13 @@ class Window extends React.Component {
         }
         if (!systemWindow) {
             if (!isElectron()) {
-                WindowContent = (<iframe title={window.winTitle[this.state.uuid]} onLoad={this.onTitleChange} className="frame dontMove" onError={this.onErrorFRAME} src={this.state.url}> </iframe>);
+                WindowContent = (<iframe
+                                    title={window.winTitle[this.state.uuid]}
+                                    onLoad={this.onTitleChange}
+                                    className="frame dontMove"
+                                    onError={this.onErrorFRAME}
+                                    src={this.state.url}>
+                                </iframe>);
             } else {
                 WindowContent = (<webview
                                     preload={preload}
@@ -479,7 +512,7 @@ class Window extends React.Component {
                                     <img draggable="false" alt="" className="btnControl dontMove" onClick={this.onToggleMinimize} src={CMINIMIZE}></img>
                                 </div>
                             </div>
-                            <div onMouseDown={e => e.stopPropagation()} className={finalBodyStyle}>
+                            <div ref={this.windowRef} onMouseDown={e => e.stopPropagation()} className={finalBodyStyle}>
                                 {WindowContent}
                                 {this.state.active ?
                                     null

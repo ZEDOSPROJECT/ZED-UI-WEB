@@ -1,0 +1,20 @@
+.WindowPreview{
+    position: fixed;
+    display: inline;
+    width: 158px;
+    height: 120px;
+    margin: 2.5px;
+    border: 5px;
+    bottom:40px;
+    background-color: rgba(47, 0, 255, 0.801);
+    user-select: none;
+    border-radius: 5px 5px 0 0;
+}
+
+.WindowPVW{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 95%;
+    height: 100%;
+}
