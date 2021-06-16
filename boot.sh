@@ -1,9 +1,9 @@
 #!/bin/bash
 
-isLive=$(which ubiquity)
+# isLive=$(which ubiquity)
 
-START_ZED()
-{
+# START_ZED()
+# {
    ZED_FOLDER=~/.ZED
    if [ ! -d "$ZED_FOLDER" ]; then
       mkdir ~/.ZED
@@ -66,7 +66,7 @@ START_ZED()
    cd Frontend
    npm run electron&
    sleep 1
-   npm start&
+   pm2 start npm start
    cd Backend
    cd SERVER
    cd API
@@ -78,11 +78,11 @@ START_ZED()
       php updateApps.php
       sleep 30m
    done
-}
+# }
 
-if [ -z $isLive ]; then
-   START_ZED
-else
-   ubiquity
-   START_ZED
-fi
+# if [ -z $isLive ]; then
+#    START_ZED
+# else
+#    ubiquity
+#    START_ZED
+# fi
