@@ -66,7 +66,7 @@
    cd Frontend
    npm run electron&
    sleep 1
-   pm2 start npm start
+   pm2 start npm -- start
    cd Backend
    cd SERVER
    cd API
