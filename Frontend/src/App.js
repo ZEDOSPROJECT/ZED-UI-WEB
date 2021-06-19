@@ -123,9 +123,10 @@ class App extends Component {
     }
 
     onLogout() {
-        this.setState({
-            logout: true
-        });
+        fetch(REST_URL + '/API/SYSTEM/ACTIONS/runAsRoot.php?pwd=""&cmd="php ./POWER/reboot.php"');
+        // this.setState({
+        //     logout: true
+        // });
     }
 
     onShutdownDLGCancel() {

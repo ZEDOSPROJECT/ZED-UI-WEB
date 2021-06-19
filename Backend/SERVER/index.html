@@ -69,6 +69,10 @@
 </body>
 
 <script>
+	let startupSoundPlayer = new Audio("startup.mp3");
+	startupSoundPlayer.onpause = function () {
+		window.location.href = "http://" + window.location.hostname + ":3000";
+	}
 	let backG=document.getElementById("backG");
 	let backC=document.getElementById("backC");
 	let BarG=document.getElementsByClassName("bar");
@@ -87,9 +91,8 @@
 				document.getElementById("starting").hidden = true;
 				document.getElementById("welcome").hidden = false;
 				clearInterval(loader);
-				let startupSoundPlayer = new Audio("startup.mp3");
-				startupSoundPlayer.onpause = function () {
-					window.location.href = "http://" + window.location.hostname + ":3000";
+				if (!(startupSoundPlayer.paused && startupSoundPlayer.currentTime > 0 && !startupSoundPlayer.ended)) {
+					startupSoundPlayer.play();
 				}
 				startupSoundPlayer.volume=0.5;
 				startupSoundPlayer.play();
