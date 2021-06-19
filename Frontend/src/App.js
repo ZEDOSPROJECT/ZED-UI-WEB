@@ -123,7 +123,7 @@ class App extends Component {
     }
 
     onLogout() {
-        fetch(REST_URL + '/API/SYSTEM/ACTIONS/runAsRoot.php?pwd=""&cmd="php ./POWER/reboot.php"');
+        fetch(REST_URL + '/API/SYSTEM/ACTIONS/runAsRoot.php?pwd=""&cmd="pkill -u $USER"');
         // this.setState({
         //     logout: true
         // });
@@ -534,13 +534,13 @@ class App extends Component {
                     onShutdownDLGShow={this.onShutdownDLGShow}
                     onLogout={this.onLogout}
                 />
-                {this.state.logout ? (
+                {/* {this.state.logout ? (
                     <RunAsRoot
                         command="pkill -u $USER"
                         onCancel={this.onLogoutCancel}
                         onOk={this.onLogoutCancel}
                     />
-                ) : null}
+                ) : null} */}
 
                 <ToastContainer limit={3} draggablePercent={60} />
                 <ShutdownDLG
