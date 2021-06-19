@@ -66,6 +66,11 @@
    cd Frontend
    npm run electron&
    sleep 1
+   cd ..
+   cd ..
+   chmod -R 777 ZED-UI-WEB
+   cd ZED-UI-WEB
+   cd Frontend
    pm2 start npm -- start
    cd Backend
    cd SERVER

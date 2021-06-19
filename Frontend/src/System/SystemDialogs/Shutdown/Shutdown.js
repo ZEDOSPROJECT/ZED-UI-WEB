@@ -3,7 +3,8 @@ import Logo from '../../../Icons/logo.png';
 import standBy from './standby.png';
 import turnoff from './turnoff.png';
 import restart from './restart.png'
-import RunAsRoot from '../../../Tools/Components/RunAsRootWindow/RunAsRootWindow';
+// import RunAsRoot from '../../../Tools/Components/RunAsRootWindow/RunAsRootWindow';
+import { REST_URL } from '../../../REST_URL';
 import './Shutdown.css';
 
 export default class Shutdown extends React.Component {
@@ -38,20 +39,44 @@ export default class Shutdown extends React.Component {
     }
 
     onShutdown() {
+        fetch(REST_URL + '/API/SYSTEM/ACTIONS/runAsRoot.php?pwd=""&cmd="php ./POWER/shutdown.php"');
+        // this.setState({
+        //     turnoff: true
+        // })
         this.setState({
-            turnoff: true
+            standBy: false,
+            restart: false,
+            turnoff: false,
+            visible: false,
+            onAction: true
         })
     }
 
     onRestart() {
+        fetch(REST_URL + '/API/SYSTEM/ACTIONS/runAsRoot.php?pwd=""&cmd="php ./POWER/reboot.php"');
+        // this.setState({
+        //     restart: true
+        // })
         this.setState({
-            restart: true
+            standBy: false,
+            restart: false,
+            turnoff: false,
+            visible: false,
+            onAction: true
         })
     }
 
     onStandby() {
+        fetch(REST_URL + '/API/SYSTEM/ACTIONS/runAsRoot.php?pwd=""&cmd="php ./POWER/suspend.php"');
+        // this.setState({
+        //     standBy: true
+        // })
         this.setState({
-            standBy: true
+            standBy: false,
+            restart: false,
+            turnoff: false,
+            visible: false,
+            onAction: true
         })
     }
 
@@ -111,7 +136,7 @@ export default class Shutdown extends React.Component {
                     </div>
                     <button onClick={this.props.onCancel} className="ShutdownCancel">Cancel</button>
                 </div>
-                {this.state.turnoff ? (
+                {/* {this.state.turnoff ? (
                     <RunAsRoot
                         command="php ./POWER/shutdown.php"
                         onCancel={this.onShutdownCancel}
@@ -133,7 +158,7 @@ export default class Shutdown extends React.Component {
                         onCancel={this.onRestartCancel}
                         onOk={this.onOk}
                     />
-                ) : null}
+                ) : null} */}
 
             </div>);
         } else {
