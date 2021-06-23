@@ -3,7 +3,7 @@ import './batteryStatus.css';
 import charging from './charging.png';
 import lowBattery from './lb.png';
 
-class BatteryStatus extends React.Component{
+class BatteryStatus extends React.PureComponent{
     constructor(props){
         super(props);
         this.state = ({

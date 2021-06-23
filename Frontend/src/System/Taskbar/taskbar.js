@@ -10,7 +10,7 @@ import BGEffect from './BGEffect/BGEffect';
 import LightEffect from './lightEffect.png';
 import './taskbar.css';
 
-class Taskbar extends React.Component {
+class Taskbar extends React.PureComponent {
     constructor(props) {
         super(props);
 

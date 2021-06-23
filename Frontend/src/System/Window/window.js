@@ -19,7 +19,7 @@ import { REST_URL } from '../../REST_URL';
 import preload from './preload';
 import './window.css';
 
-class Window extends React.Component {
+class Window extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -48,6 +48,7 @@ class Window extends React.Component {
         }
 
         this.state = {
+            WindowFreez: false,
             url: this.props.url,
             modalIsOpen: true,
             draggable: false,
@@ -229,17 +230,36 @@ class Window extends React.Component {
     }
 
     onDragStart() {
-        this.sendToFront();
+        if(!this.state.WindowFreez){
+            this.sendToFront();
+            this.setState({
+                WindowFreez:true
+            })
+        }
     }
 
-    onResizeStart() {
-        this.sendToFront();
+    onDragStop() {
+        this.setState({
+            WindowFreez:true
+        })
     }
 
     onDrag(e) {
     }
 
+    onResizeStart() {
+        if(!this.state.WindowFreez){
+            this.sendToFront();
+            this.setState({
+                WindowFreez:true
+            })
+        }
+    }
+
     onResizeStop(e) {
+        this.setState({
+            WindowFreez:true
+        })
         setTimeout(() => {
             if (e.x > window.innerWidth) {
                 this.setState({ x: 0 });

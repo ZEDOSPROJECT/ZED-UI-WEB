@@ -2,7 +2,7 @@ import React from 'react';
 import { REST_URL } from '../../REST_URL';
 import './UI3D.css';
 
-export default class UI3D extends React.Component {
+export default class UI3D extends React.PureComponent {
 
     componentDidMount(){
         

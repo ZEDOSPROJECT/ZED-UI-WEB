@@ -3,7 +3,7 @@ import invert from 'invert-color';
 import './clock.css';
 import CalendarWindow from './Calendar/calendar';
 
-class Clock extends React.Component {
+class Clock extends React.PureComponent {
     constructor(props) {
         super(props)
 
@@ -21,6 +21,10 @@ class Clock extends React.Component {
     componentWillUnmount() { // delete the interval just before component is removed
         clearInterval(this.update);
     }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return true;
+      }
 
     update = () => {
         this.setState({

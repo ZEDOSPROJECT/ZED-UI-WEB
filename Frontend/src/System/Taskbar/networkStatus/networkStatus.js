@@ -7,7 +7,7 @@ import "./networkStatus.css";
 import C0 from "./CONNECTED_0.png";
 import C1 from "./CONNECTED_1.png";
 
-class NetworkStatus extends React.Component {
+class NetworkStatus extends React.PureComponent {
   constructor(props){
     super(props);
 
@@ -23,6 +23,10 @@ class NetworkStatus extends React.Component {
     this.setState({
       NetworkManagerVisible:false
     })
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return true;
   }
 
   iHaveInternet(){

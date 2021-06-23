@@ -3,7 +3,7 @@ import Calendar from 'react-calendar';
 import onClickOutside from 'react-onclickoutside';
 import './calendar.css';
  
-class CalendarWindow extends Component {
+class CalendarWindow extends React.PureComponent {
   state = {
     date: new Date(),
     
@@ -13,6 +13,10 @@ class CalendarWindow extends Component {
  
     handleClickOutside(){
         this.props.toggleCalendar();
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+      return true;
     }
 
   render(){  

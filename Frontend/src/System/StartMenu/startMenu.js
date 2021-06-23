@@ -18,7 +18,7 @@ import './startMenu.css';
 
 let searchTimer = null;
 
-class StartMenu extends React.Component {
+class StartMenu extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -71,7 +71,7 @@ class StartMenu extends React.Component {
                 this.refreshApps("");
                 window.loadApps=undefined;
             }
-        }, 50);
+        }, 100);
     }
 
 
@@ -113,6 +113,10 @@ class StartMenu extends React.Component {
         const result = 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
         return result;
     }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return true;
+      }
 
     render() {
         let lastLeter = "0";

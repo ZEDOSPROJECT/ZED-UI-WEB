@@ -81,7 +81,7 @@ class App extends Component {
             if (window.soundsEmitter.length > 0) {
                 this.setState({ ScreenSaverTimer: 0 });
             }
-        }, 200);
+        }, 1000);
 
         setInterval(() => {
             if(window.loadUserSettings==="X"){
@@ -134,6 +134,10 @@ class App extends Component {
             shutdownDLG: false
         });
     }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return true;
+      }
 
     onShutdownDLGShow() {
         this.setState({

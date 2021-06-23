@@ -1,7 +1,7 @@
 import React from 'react';
 import './blueFilter.css'
 
-class BlueLightFilter extends React.Component {
+class BlueLightFilter extends React.PureComponent {
     constructor(props){
         super(props);
         setInterval(() => {

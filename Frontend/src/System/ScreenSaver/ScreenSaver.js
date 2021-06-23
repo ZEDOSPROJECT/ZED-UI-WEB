@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { REST_URL } from '../../REST_URL';
 import './ScreenSaver.css';
 
-export default class ScreenSaver extends Component {
+export default class ScreenSaver extends PureComponent {
+    shouldComponentUpdate(nextProps, nextState) {
+        return true;
+      }
+      
     render() {
         if(this.props.timer>5){
             return(
