@@ -47,6 +47,8 @@ app.commandLine.appendSwitch('enable-fips');
 app.commandLine.appendSwitch('openssl-config');
 app.commandLine.appendSwitch('use-openssl-ca');
 app.commandLine.appendSwitch('autoplay-policy', 'no-user-gesture-required');
+app.disableHardwareAcceleration();
+app.commandLine.appendSwitch("disable-software-rasterizer");
 
 app.on('ready', createWindow)
 
