@@ -68,11 +68,23 @@ class WebBrowser extends React.Component {
     let newData = this.state.tabs;
     delete newData[i];
     this.setState({ tabs: newData });
-    setTimeout(() => {
-      this.setState({
-        currentTab: 0
-      });
-    }, 12);
+    if(Object.keys(newData).length==0){
+      this.newTab("https://google.com");
+    }else{
+      if(i>=Object.keys(newData).length){
+        setTimeout(() => {
+          this.setState({
+            currentTab: i-1
+          });
+        }, 12);
+      }else{
+        setTimeout(() => {
+          this.setState({
+            currentTab: this.state.tabs.length-1
+          });
+        }, 12);
+      }
+    }
   }
 
   newTab(url){
