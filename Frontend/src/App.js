@@ -13,7 +13,6 @@ import BlueLightFilter from './System/BlueFilter/blueFilter';
 import ScreenSaver from './System/ScreenSaver/ScreenSaver';
 import UI3D from './System/UI3D/UI3D';
 import ShutdownDLG from './System/SystemDialogs/Shutdown/Shutdown'
-import RunAsRoot from './Tools/Components/RunAsRootWindow/RunAsRootWindow';
 import FirstBOOT from './FIRSTBOOT.jpg';
 import { REST_URL } from './REST_URL';
 import './App.css';

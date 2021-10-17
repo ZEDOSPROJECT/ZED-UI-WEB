@@ -24,11 +24,7 @@ class NetworkStatus extends React.PureComponent {
       NetworkManagerVisible:false
     })
   }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return true;
-  }
-
+  
   iHaveInternet(){
     localStorage.hasInternet=true;
     window.loadUserSettings="X";

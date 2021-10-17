@@ -22,10 +22,6 @@ class Clock extends React.PureComponent {
         clearInterval(this.update);
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        return true;
-      }
-
     update = () => {
         this.setState({
             time: new Date()

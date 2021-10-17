@@ -1,7 +1,6 @@
 import React from 'react';
 import invert from 'invert-color';
 import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import isElectron from 'is-electron';
 import onClickOutside from 'react-onclickoutside';
 import { Rnd } from "react-rnd";
@@ -112,7 +111,7 @@ class Window extends React.PureComponent {
                 if(this.props.systemWindow){
                     htmlToImage.toJpeg(this.windowRef.current)
                     .then((dataUrl)=> {
-                        if(dataUrl!="data:," && dataUrl!=""){
+                        if(dataUrl!=="data:," && dataUrl!==""){
                             sessionStorage["w_WINDOW_"+this.state.uuid]=dataUrl;
                         }
                     })
@@ -124,7 +123,7 @@ class Window extends React.PureComponent {
                         if(this.webview){
                             this.webview.capturePage().then((value)=> {
                                 let temp=value.toDataURL(0.1);
-                                if(temp!="data:image/png;base64," && temp!=""){
+                                if(temp!=="data:image/png;base64," && temp!==""){
                                     sessionStorage["w_WINDOW_"+this.state.uuid]=temp;
                                 }
                             });

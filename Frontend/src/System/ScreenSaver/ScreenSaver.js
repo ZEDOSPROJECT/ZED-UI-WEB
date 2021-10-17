@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { REST_URL } from '../../REST_URL';
 import './ScreenSaver.css';
 
