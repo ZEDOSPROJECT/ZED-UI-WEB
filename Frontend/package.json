@@ -5,7 +5,7 @@
   "main": "electron-starter.js",
   "dependencies": {
     "connected-react-router": "^4.4.1",
-    "electron": "^11.1.0",
+    "electron": "^15.5.5",
     "flash-player-loader": "^1.2.0",
     "fs": "0.0.1-security",
     "history": "^4.7.2",
