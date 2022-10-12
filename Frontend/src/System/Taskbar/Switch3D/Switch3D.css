@@ -1,8 +1,8 @@
 .Switch3D {
     position: absolute;
     top:0px;
-    background-color: rgba(38, 0, 255, 0.116);
-    color: rgba(255, 255, 255, 0.26);
+    background-color: rgba(38, 0, 255, 0.63);
+    color: rgb(255, 255, 255);
     padding-top: 15px;
     padding-left: 20px;
     width: 100%;
@@ -10,6 +10,5 @@
 }
 
 .Switch3D:hover {
-    background-color: rgba(38, 0, 255, 0.63);
-    color: rgb(255, 255, 255);
+    background-color: rgba(38, 0, 255, 0.116);
 }
