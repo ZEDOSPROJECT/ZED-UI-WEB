@@ -1,40 +1,31 @@
 <?php
     header("Access-Control-Allow-Origin: *");
-    $DEVICES=[];
-    $decode = json_decode( shell_exec('lsblk -O -J'), TRUE );
-    $SUPPORTED_TYPE=["ntfs","ext2","ext3","ext4"];
-    $used=[];
+    $output = json_decode(shell_exec('lsblk -O -J'), true);
+    $supportedTypes = ["ntfs", "ext2", "ext3", "ext4"];
+    $devices = [];
+    $used = [];
 
-    foreach ( $decode["blockdevices"] as $valor){
-        foreach ( $valor["children"] as $obj){
-            if(in_array($obj["fstype"], $SUPPORTED_TYPE)){
-                shell_exec('udisksctl mount -b '.$obj["path"]);
-            }
+    foreach ($output["blockdevices"] as $blockdevice) {
+    foreach ($blockdevice["children"] as $child) {
+        if (in_array($child["fstype"], $supportedTypes)) {
+        shell_exec("udisksctl mount -b " . $child["path"]);
+        $device = [
+            "mountpoint" => $child["mountpoint"],
+            "name" => $child["partlabel"] ?: "Unamed Drive",
+            "fsuse" => preg_replace('/[^0-9]/', '', $child["fsuse%"]),
+            "fstype" => $child["fstype"],
+            "type" => "hdd"
+        ];
+        if ($child["mountpoint"] === "/") {
+            $device["name"] = "File System";
+        }
+        if (!in_array($device["name"], $used)) {
+            $devices[] = $device;
+            $used[] = $device["name"];
+        }
         }
     }
-
-    foreach ( $decode["blockdevices"] as $valor){
-        foreach ( $valor["children"] as $obj){
-            if(in_array($obj["fstype"], $SUPPORTED_TYPE)){
-                $tmp_obj=[];
-                $tmp_obj["mountpoint"]=$obj["mountpoint"];
-                $tmp_obj["name"]=$obj["partlabel"];
-                $tmp_obj["fsuse"]=preg_replace('/[^0-9]/', '', $obj["fsuse%"]);
-                $tmp_obj["fstype"]=$obj["fstype"];
-                $tmp_obj["type"]="hdd";
-                if($obj["mountpoint"] === "/"){
-                    $tmp_obj["name"]="File System"; 
-                }
-                if($tmp_obj["name"]==""){
-                    $tmp_obj["name"]="Unamed Drive";
-                }
-                if(!in_array($tmp_obj["name"], $used)){
-                    array_push($DEVICES,$tmp_obj);
-                    array_push($used,$tmp_obj["name"]);
-                }
-            }
-        }
     }
-    
-    echo json_encode($DEVICES);
+
+    echo json_encode($devices);
 ?>

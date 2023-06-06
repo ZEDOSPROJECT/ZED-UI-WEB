@@ -5,6 +5,7 @@ import Icon from "./Icon/icon";
 import mimeMusic from './types/music.png';
 import mimeVideo from './types/video.png';
 import mimeImage from './types/image.png';
+import loadingAnim from './loading.gif';
 import CategoryTitle from './CategoryTitle/CategoryTitle';
 import "./explorer.css";
 
@@ -105,35 +106,41 @@ class Explorer extends React.Component {
       }
     }
 
-    return (<div className="fExplorer">
-      <img className="typeF" draggable="false" alt="" src={currentType} />
-      <ContextMenuTrigger id="fileManager.explorer.files">
-        {indents}
-      </ContextMenuTrigger>
-      <Portal>
-        <ContextMenu id="fileManager.explorer.files">
-          <MenuItem onClick={this.props.onOpen}>
-            <b>Open</b>
-          </MenuItem>
-          <MenuItem divider />
-          <MenuItem onClick={this.props.onCopy}>
-            Copy
-                </MenuItem>
-          <MenuItem onClick={this.props.onRenameOpen}>
-            Rename
-                </MenuItem>
-          <MenuItem divider />
-          <MenuItem onClick={this.props.onRemoveOpen}>
-            Delete
-                </MenuItem>
-          <MenuItem divider />
-          <MenuItem onClick={this.props.onShowProprieties}>
-            Proprieties
-                </MenuItem>
-        </ContextMenu>
-      </Portal>
-    </div>
-    );
+    if(this.props.isReady){
+      return (<div className="fExplorer">
+        <img className="typeF" draggable="false" alt="" src={currentType} />
+        <ContextMenuTrigger id="fileManager.explorer.files">
+          {indents}
+        </ContextMenuTrigger>
+        <Portal>
+          <ContextMenu id="fileManager.explorer.files">
+            <MenuItem onClick={this.props.onOpen}>
+              <b>Open</b>
+            </MenuItem>
+            <MenuItem divider />
+            <MenuItem onClick={this.props.onCopy}>
+              Copy
+                  </MenuItem>
+            <MenuItem onClick={this.props.onRenameOpen}>
+              Rename
+                  </MenuItem>
+            <MenuItem divider />
+            <MenuItem onClick={this.props.onRemoveOpen}>
+              Delete
+                  </MenuItem>
+            <MenuItem divider />
+            <MenuItem onClick={this.props.onShowProprieties}>
+              Proprieties
+                  </MenuItem>
+          </ContextMenu>
+        </Portal>
+      </div>
+      );
+    }else{
+      return <div>
+        <img className="explorerLoading" src={loadingAnim} draggable="false" alt="" />
+      </div>;
+    }    
   }
 }
 

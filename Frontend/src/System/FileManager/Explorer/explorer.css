@@ -16,3 +16,11 @@
   height: auto;
   z-index: 0;
 }
+
+.explorerLoading{
+  position: fixed;
+  left: calc( 55% - 20px );
+  top: calc( 50% - 50px );
+  width: 100px;
+  height: 80px;
+}

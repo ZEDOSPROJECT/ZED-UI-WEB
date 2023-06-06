@@ -34,7 +34,8 @@ class FileManager extends React.Component {
       devices: undefined,
       removeVisible: false,
       searchMode: false,
-      showFileProprieties: false
+      showFileProprieties: false,
+      ready: true
     };
 
     setTimeout(() => {
@@ -44,7 +45,7 @@ class FileManager extends React.Component {
         window.explorer_open = "";
         this.refresh();
       }
-    }, 10);
+    }, 1000);
 
     this.onIClick = this.onIClick.bind(this);
     this.onRClick = this.onRClick.bind(this);
@@ -285,7 +286,9 @@ class FileManager extends React.Component {
       this.setState({
         currentPath: path,
         historyIndex: this.state.historyIndex,
-        details: undefined
+        details: undefined,
+        listDir: [],
+        ready: false
       });
       fetch(REST_URL + '/API/SYSTEM/IO/PATH/listPath.php?path=' + path)
         .then(response => response.json())
@@ -315,7 +318,8 @@ class FileManager extends React.Component {
           }
           this.setState({
             listDir: JSONdata.data,
-            mainType: item
+            mainType: item,
+            ready: true
           });
         });
     } else {
@@ -331,7 +335,7 @@ class FileManager extends React.Component {
       this.setState({
         currentPath: path,
         historyIndex: this.state.historyIndex,
-        details: undefined
+        details: undefined,
       });
     }
   }
@@ -387,7 +391,7 @@ class FileManager extends React.Component {
           });
           let clickSoundPlayer = new Audio(clickSound);
           clickSoundPlayer.play();
-        }, 10);
+        }, 500);
       } else if (data.type === "hdd") {
         let newPath = data.mountpoint;
         if (newPath.substr(newPath.length - 1) !== "/") {
@@ -408,7 +412,7 @@ class FileManager extends React.Component {
           });
           let clickSoundPlayer = new Audio(clickSound);
           clickSoundPlayer.play();
-        }, 10);
+        }, 500);
       } else {
         let file;
         if (this.state.searchMode) {
@@ -516,6 +520,7 @@ class FileManager extends React.Component {
             onOpen={this.onOpen}
             onShowProprieties={this.onShowProprieties}
             searchMode={this.state.searchMode}
+            isReady={this.state.ready}
           />
         </ContextMenuTrigger>
         {
@@ -541,6 +546,7 @@ class FileManager extends React.Component {
         }
         <StatusBar
           items={this.state.listDir}
+          isReady={this.state.ready}
         />
         <NewFolderDialog
           visible={this.state.createFolderVisible}
@@ -573,6 +579,7 @@ class FileManager extends React.Component {
       </div >
     );
   }
+    
 }
 
 export default FileManager;

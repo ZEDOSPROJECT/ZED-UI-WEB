@@ -1,7 +1,7 @@
 <?php
     header("Access-Control-Allow-Origin: *");
-    $data['OperatingSystem'] = "ZED OS";
-    $data['Version'] = "2021";
+    $data['OperatingSystem'] = "ZED XP";
+    $data['Version'] = "2023";
     $data['Kernel'] = php_uname("r");
 
     $cpuinfo = file('/proc/cpuinfo');

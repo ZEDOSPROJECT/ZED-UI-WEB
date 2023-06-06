@@ -2,7 +2,10 @@
     header("Access-Control-Allow-Origin: *");
     $PATH=$_GET['path'];
     $RESPONSE='{ "data" :[';
-    $i=0;
+
+    shell_exec('./generateThumbs.sh "'.$PATH.'"&');
+
+    $i=0;   
 	foreach (sort_dir_files($PATH) as $value) {
         if( $value != "." and $value != ".." and substr( $value , 0, 1) != "."){
             if(is_dir($PATH.$value) == 1) {
