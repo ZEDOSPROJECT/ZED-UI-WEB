@@ -15,16 +15,17 @@ function createWindow() {
     height: 600,
     fullscreen: true,
     kiosk: true,
-    'webPreferences': {
-      "plugins": true,
-      "webSecurity": true,
-      "webgl": true,
-      "nodeIntegration": true,
-      "allowDisplayingInsecureContent": true,
-      "scrollBounce": false,
-      "webviewTag": true
+    webPreferences: {
+      plugins: true,
+      webSecurity: true,
+      webgl: true,
+      nodeIntegration: true,
+      allowDisplayingInsecureContent: true,
+      scrollBounce: false,
+      webviewTag: true
     }
-  })
+  }
+  )
   win.setMenu(null);
   win.onbeforeunload = (e) => {
     e.returnValue = false;
@@ -47,7 +48,7 @@ app.commandLine.appendSwitch('enable-fips');
 app.commandLine.appendSwitch('openssl-config');
 app.commandLine.appendSwitch('use-openssl-ca');
 app.commandLine.appendSwitch('autoplay-policy', 'no-user-gesture-required');
-app.disableHardwareAcceleration();
+app.commandLine.appendSwitch('disable-gpu');
 
 app.on('ready', createWindow)
 
