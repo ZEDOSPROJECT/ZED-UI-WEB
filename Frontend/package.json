@@ -24,7 +24,7 @@
     "react-dom": "^16.13.1",
     "react-godot": "^1.0.0",
     "react-lazy-load-image-component": "^1.4.3",
-    "react-modal-resizable-draggable": "^0.1.1-rc.13",
+    "react-modal-resizable-draggable": "^0.1.6",
     "react-onclickoutside": "^6.7.1",
     "react-portal": "^4.2.1",
     "react-progressbar": "^15.4.1",
