@@ -55,7 +55,7 @@ export default class System extends React.Component {
                 Which development branch would you like to use? <br/><br/>
                 <select value={"Select Branch"} id="branch" onChange={this.props.setBranch}>
                 <option value="">Select Branch</option>
-                <option value="master">master</option>
+                <option value="main">main</option>
                 <option value="develop">develop</option>
                 </select>
             </div>
