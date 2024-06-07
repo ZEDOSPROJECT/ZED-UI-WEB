@@ -33,7 +33,7 @@ function createWindow() {
   // win.webContents.openDevTools()
 
   setTimeout(() => {
-    win.loadURL('http://localhost:3031', { userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36' });
+    win.loadURL('http://localhost:3031', { userAgent: 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0' });
   }, 200);
   // and load the index.html of the app.
 }

@@ -64,7 +64,7 @@ class Window extends React.PureComponent {
             systemColor0: window.systemColor0,
             systemColor1: window.systemColor1,
             gradient: 'on',
-            myStyle: "window hidden",
+            myStyle: "window",
             errorHiddenList: [
                 "a parser-blocking cross site",
                 "uncaught typeerror: cannot read property",
@@ -99,7 +99,6 @@ class Window extends React.PureComponent {
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.handleClickInsideWindow = this.handleClickInsideWindow.bind(this);
         this.onTitleChange = this.onTitleChange.bind(this);
-        this.onDrag = this.onDrag.bind(this);
         this.returnToApp = this.returnToApp.bind(this);
         this.onResizeStop = this.onResizeStop.bind(this);
         this.toggleFullScreen = this.toggleFullScreen.bind(this);
@@ -214,7 +213,7 @@ class Window extends React.PureComponent {
         setTimeout(() => {
             this.props.onClose(this.state.uuid);
         }, 240);
-        this.setState({ myStyle: "window hidden" });
+        this.setState({ myStyle: "window" });
 
         let appID = this.state.url.split("/");
         if (appID[4] === undefined) {
@@ -241,9 +240,6 @@ class Window extends React.PureComponent {
         this.setState({
             WindowFreez:true
         })
-    }
-
-    onDrag(e) {
     }
 
     onResizeStart() {
@@ -414,7 +410,7 @@ class Window extends React.PureComponent {
                                     preload={preload}
                                     ref={(input) => { this.webview = input; }}
                                     onLoad={this.onTitleChange}
-                                    useragent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36"
+                                    useragent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0"
                                     className="frame dontMove"
                                     onError={this.onErrorFRAME}
                                     src={this.state.url}
@@ -479,7 +475,6 @@ class Window extends React.PureComponent {
                         onDragStart={this.onDragStart}
                         onResizeStart={this.onResizeStart}
                         onResizeStop={this.onResizeStop}
-                        onDrag={this.onDrag}
                         onDragStop={(e, d) => {
                             if (e.y === 0) {
                                 setTimeout(() => {

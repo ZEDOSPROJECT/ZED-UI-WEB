@@ -69,6 +69,7 @@ class FileManager extends React.Component {
     this.onSearchModeChange = this.onSearchModeChange.bind(this);
     this.onSearchGo = this.onSearchGo.bind(this);
     this.onShowProprieties = this.onShowProprieties.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   onShowProprieties() {
@@ -272,75 +273,77 @@ class FileManager extends React.Component {
       });
   }
 
-  listFolder(path) {
-    if (path !== "My Computer") {
-      let tempArray = path.split("/");
-      let currentTitle = tempArray[tempArray.length - 2];
-      if (currentTitle === "") {
-        currentTitle = "File System";
-      }
-      this.props.onTitleChange(currentTitle);
-      if (path.substr(path.length - 1) !== "/") {
-        path = path + "/";
-      }
-      this.setState({
-        currentPath: path,
-        historyIndex: this.state.historyIndex,
-        details: undefined,
-        listDir: [],
-        ready: false
-      });
-      fetch(REST_URL + '/API/SYSTEM/IO/PATH/listPath.php?path=' + path)
-        .then(response => response.json())
-        .then(json => {
-          const JSONdata = JSON.parse(json);
-          let mimeTypes = [];
-
-          JSONdata.data.forEach(file => {
-            if (file.type !== "folder") {
-              mimeTypes.push(mime.lookup(file.name));
-            }
-          });
-
-          var mf = 1;
-          var m = 0;
-          var item;
-          for (var i = 0; i < mimeTypes.length; i++) {
-            for (var j = i; j < mimeTypes.length; j++) {
-              if (mimeTypes[i] === mimeTypes[j])
-                m++;
-              if (mf < m) {
-                mf = m;
-                item = mimeTypes[i];
-              }
-            }
-            m = 0;
-          }
-          this.setState({
-            listDir: JSONdata.data,
-            mainType: item,
-            ready: true
-          });
-        });
+  async listFolder(path) {
+    if (path === "My Computer") {
+      this.handleMyComputerPath();
     } else {
-      fetch(REST_URL + '/API/SYSTEM/IO/getDriveDevices.php')
-        .then(response => response.json())
-        .then(json => {
-          this.setState({
-            devices: json,
-            listDir: json
-          });
-        });
-      this.props.onTitleChange(path);
-      this.setState({
-        currentPath: path,
-        historyIndex: this.state.historyIndex,
-        details: undefined,
-      });
+      this.handleRegularPath(path);
     }
   }
+  
+  handleMyComputerPath = async () => {
+    const response = await fetch(REST_URL + '/API/SYSTEM/IO/getDriveDevices.php');
+    const json = await response.json();
+    this.props.onTitleChange("My Computer");
+    this.setState({
+      devices: json,
+      listDir: json,
+      currentPath: "My Computer",
+      historyIndex: this.state.historyIndex,
+      details: undefined,
+    });
+  }
+  
+  handleRegularPath = async (path) => {
+    const currentTitle = this.extractTitleFromPath(path);
+    this.props.onTitleChange(currentTitle);
+  
+    path = this.ensureTrailingSlash(path);
+    this.setState(this.initialStateForPath(path));
+  
+    const response = await fetch(REST_URL + '/API/SYSTEM/IO/PATH/listPath.php?path=' + path);
+    const json = await response.json();
+    const JSONdata = JSON.parse(json);
+    const mainType = this.findMainMimeType(JSONdata.data);
+  
+    this.setState({
+      listDir: JSONdata.data,
+      mainType: mainType,
+      ready: true
+    });
+  }
+  
+  extractTitleFromPath = (path) => {
+    let tempArray = path.split("/");
+    let currentTitle = tempArray[tempArray.length - 2];
+    return currentTitle === "" ? "File System" : currentTitle;
+  }
+  
+  ensureTrailingSlash = (path) => {
+    return path.substr(-1) === "/" ? path : path + "/";
+  }
+  
+  initialStateForPath = (path) => ({
+    currentPath: path,
+    historyIndex: this.state.historyIndex,
+    details: undefined,
+    listDir: [],
+    ready: false
+  })
+  
+  findMainMimeType = (files) => {
+    let mimeTypes = files
+      .filter(file => file.type !== "folder")
+      .map(file => mime.lookup(file.name));
+  
+    return mimeTypes.sort((a, b) =>
+      mimeTypes.filter(v => v === a).length - mimeTypes.filter(v => v === b).length
+    ).pop();
+  }
 
-  componentWillMount() {
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyDown);
     this.listFolder(this.state.currentPath);
 
     fetch(REST_URL + '/API/SYSTEM/IO/getDriveDevices.php')
@@ -348,6 +351,18 @@ class FileManager extends React.Component {
       .then(json => {
         this.setState({ devices: json });
       });
+  }
+
+  componentWillUnmount() {
+      document.removeEventListener('keydown', this.handleKeyDown);
+  }
+
+  handleKeyDown(event) {
+    if (event.key === 'Enter') {
+        if(this.state.selected!==""){
+          this.onOpen();
+        }
+    }
   }
 
   onCopy() {

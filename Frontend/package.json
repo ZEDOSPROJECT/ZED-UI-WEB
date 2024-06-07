@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "main": "electron-starter.js",
+  "engines": {
+    "node": "16.13.1"
+  },
   "dependencies": {
     "connected-react-router": "^4.4.1",
     "electron": "^11.4.8",
