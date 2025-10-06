@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Calendar from 'react-calendar';
 import onClickOutside from 'react-onclickoutside';
 import './calendar.css';
@@ -20,17 +21,17 @@ class CalendarWindow extends React.PureComponent {
     }
 
   render(){  
-    return (
-        (this.props.visible ? (
-            <div>
-                <Calendar
-                    style={{ zIndex: window.maxZIndex+10 }}
-                    className="Calendar"
-                    onChange={this.onChange}
-                    value={this.state.date}
-                />
-            </div>
-        ) : null)
+    if (!this.props.visible) return null;
+    
+    return ReactDOM.createPortal(
+      <div className="CalendarWrapper">
+        <Calendar
+          className="Calendar"
+          onChange={this.onChange}
+          value={this.state.date}
+        />
+      </div>,
+      document.body
     );
   }
 }

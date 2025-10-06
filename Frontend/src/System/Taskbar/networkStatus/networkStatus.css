@@ -1,11 +1,22 @@
 
-.NetworkStatus{
-    width: 30px;
-    height: 30px;
+.NetworkStatus {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 } 
 
-img{
-    margin: 2px;
-    width: 25px;
-    height: 25px;
+.NetworkStatus img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.NetworkStatus img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.4));
 } 

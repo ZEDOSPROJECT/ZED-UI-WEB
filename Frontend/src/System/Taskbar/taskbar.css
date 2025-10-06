@@ -1,38 +1,202 @@
 .Taskbar {
     width: 100%;
     position: fixed;
-    left:0px;
+    left: 0px;
     bottom: 0px;
-    border:none !important;
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    border: none !important;
+    -webkit-box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+    position: relative;
+    height: 40px;
+    min-height: 40px;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.Taskbar tbody,
+.Taskbar tr,
+.Taskbar td {
+    height: 40px;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+}
+
+.Taskbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        transparent 100%);
+    animation: taskbarShine 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes taskbarShine {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
 }
 
 
 .StartMenu {
     width: 90px;
-    height: 30px;
-    float:left;
-    background-size:100%;
-    transition: background;
-    transition-duration: 1s;
-    background-image: url('./start0.png');
+    height: 36px;
+    display: inline-block;
+    position: relative;
+    transition: all 0.2s ease;
+    border-radius: 0 8px 0 0;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+    vertical-align: middle;
+    overflow: hidden;
+    
+    /* Green crystal gradient */
+    background: linear-gradient(to bottom, 
+        #1aff8f 0%,
+        #00d97e 50%,
+        #00b869 100%
+    );
+    
+    /* Glass border */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-bottom: none;
+    border-left: none;
+    
+    /* Shadows and glow */
+    box-shadow: 
+        0 0 15px rgba(0, 220, 120, 0.4),
+        0 3px 10px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
 
+/* Glass overlay effect */
+.StartMenu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(0, 0, 0, 0.1) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Start icon/text */
+.StartMenu::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('./start0.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 .StartMenu:hover {
+    background: linear-gradient(to bottom, 
+        #2bffad 0%,
+        #00e891 50%,
+        #00c678 100%
+    );
+    
+    box-shadow: 
+        0 0 25px rgba(0, 255, 150, 0.6),
+        0 4px 12px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    
+    transform: translateY(-1px);
+}
+
+.StartMenu:hover::after {
     background-image: url('./start1.png');
-    transition-duration: 0.5s;
+}
+
+.StartMenu:active,
+.StartMenu.active,
+.StartMenu.opened {
+    background: linear-gradient(to bottom, 
+        #00b869 0%,
+        #00d97e 50%,
+        #00a85a 100%
+    );
+    
+    box-shadow: 
+        0 0 10px rgba(0, 200, 100, 0.3),
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(0, 0, 0, 0.2);
+    
+    transform: translateY(1px);
+}
+
+.StartMenu:active::before,
+.StartMenu.active::before,
+.StartMenu.opened::before {
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
 }
 
 .buttonsArea{
-    display: block;
+    display: flex;
+    align-items: center;
     overflow-y: auto;
-    max-height: 35px;
-    bottom: 0px;
-    height: 100%;
+    overflow-x: hidden;
+    max-height: 40px;
+    height: 40px;
     width: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.buttonsArea::-webkit-scrollbar {
+    height: 6px;
+}
+
+.buttonsArea::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.3) 100%);
+    border-radius: 3px;
+}
+
+.buttonsArea::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.4) 100%);
+}
+
+.buttonsArea::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
 } 
 
 
@@ -46,9 +210,33 @@
     position: fixed;
     left: 0;
     right: 0;
-    bottom: -4px;
+    bottom: 0px;
     width: 100%;
-    height: 43px;
+    height: 40px;
     user-select: none;
     pointer-events: none;
+    z-index: 3;
+}
+
+/* System Tray Icons Styling - Removido o hover */
+.Taskbar td {
+    padding: 0 2px;
+    position: relative;
+    z-index: 2;
+    height: 40px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.Taskbar td > div,
+.Taskbar td > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.Taskbar td img {
+    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.2));
+    vertical-align: middle;
 }

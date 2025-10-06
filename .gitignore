@@ -8,6 +8,13 @@
 node_modules
 public
 
+# Python virtual environment
+Backend/venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
 # testing
 /coverage
 
@@ -26,3 +33,4 @@ yarn-debug.log*
 yarn-error.log*
 Backend/SERVER/Wallpapers/Images/*_EXTERNAL.jpg
 Backend/SERVER/Wallpapers/Images/onlineImage.jpg
+Backend/C:/xampp/php/logs/php_error_log

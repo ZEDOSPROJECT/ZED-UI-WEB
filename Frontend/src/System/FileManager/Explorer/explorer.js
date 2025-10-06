@@ -14,17 +14,34 @@ class Explorer extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      contextMenuOpen: false,
+      contextMenuPosition: { x: 0, y: 0 }
+    };
+
     this.onRClick = this.onRClick.bind(this);
+    this.closeContextMenu = this.closeContextMenu.bind(this);
   }
+  
   shouldComponentUpdate(nextProps, nextState) {
     if (nextProps !== this.props || nextState !== this.state) {
       return true;
     }
   }
 
-  onRClick(data) {
+  onRClick(data, event) {
     this.props.onRClick(data);
+    // Abre o menu de contexto na posição do mouse
+    if (event) {
+      this.setState({
+        contextMenuOpen: true,
+        contextMenuPosition: { x: event.clientX, y: event.clientY }
+      });
+    }
+  }
 
+  closeContextMenu() {
+    this.setState({ contextMenuOpen: false });
   }
 
   render() {
@@ -68,7 +85,7 @@ class Explorer extends React.Component {
                 <Icon
                   currentPath={this.props.currentPath}
                   onIClick={this.props.onIClick}
-                  onRClick={this.props.onRClick}
+                  onRClick={this.onRClick}
                   selected={this.props.selected}
                   searchMode={this.props.searchMode}
                   key={data.name}
@@ -90,7 +107,7 @@ class Explorer extends React.Component {
                 <Icon
                   currentPath={this.props.currentPath}
                   onIClick={this.props.onIClick}
-                  onRClick={this.props.onRClick}
+                  onRClick={this.onRClick}
                   selected={this.props.selected}
                   searchMode={this.props.searchMode}
                   key={data.name}
@@ -109,11 +126,37 @@ class Explorer extends React.Component {
 
     if(this.props.isReady){
       return (
-        <ExplorerWithContextMenu 
-          {...this.props}
-          currentType={currentType}
-          indents={indents}
-        />
+        <div className="fExplorer">
+          <img className="typeF" draggable="false" alt="" src={currentType} />
+          <div>
+            {indents}
+          </div>
+          
+          <ControlledMenu 
+            state={this.state.contextMenuOpen ? 'open' : 'closed'}
+            anchorPoint={this.state.contextMenuPosition}
+            onClose={this.closeContextMenu}
+          >
+            <MenuItem onClick={(e) => {this.props.onOpen(e); this.closeContextMenu();}}>
+              <b>Open</b>
+            </MenuItem>
+            <MenuItem type="separator" />
+            <MenuItem onClick={(e) => {this.props.onCopy(e); this.closeContextMenu();}}>
+              Copy
+            </MenuItem>
+            <MenuItem onClick={(e) => {this.props.onRenameOpen(e); this.closeContextMenu();}}>
+              Rename
+            </MenuItem>
+            <MenuItem type="separator" />
+            <MenuItem onClick={(e) => {this.props.onRemoveOpen(e); this.closeContextMenu();}}>
+              Delete
+            </MenuItem>
+            <MenuItem type="separator" />
+            <MenuItem onClick={(e) => {this.props.onShowProprieties(e); this.closeContextMenu();}}>
+              Properties
+            </MenuItem>
+          </ControlledMenu>
+        </div>
       );
     }else{
       return <div>
@@ -121,52 +164,6 @@ class Explorer extends React.Component {
       </div>;
     }    
   }
-}
-
-// Wrapper funcional para usar o hook useMenuState
-function ExplorerWithContextMenu(props) {
-  const [menuState, toggleMenu] = useMenuState({ unmountOnClose: true });
-  const [anchorPoint, setAnchorPoint] = React.useState({ x: 0, y: 0 });
-
-  const handleContextMenu = (e) => {
-    e.preventDefault();
-    setAnchorPoint({ x: e.clientX, y: e.clientY });
-    toggleMenu(true);
-  };
-
-  return (
-    <div className="fExplorer">
-      <img className="typeF" draggable="false" alt="" src={props.currentType} />
-      <div onContextMenu={handleContextMenu}>
-        {props.indents}
-      </div>
-      
-      <ControlledMenu 
-        {...menuState} 
-        anchorPoint={anchorPoint}
-        onClose={() => toggleMenu(false)}
-      >
-        <MenuItem onClick={(e) => {props.onOpen(e); toggleMenu(false);}}>
-          <b>Open</b>
-        </MenuItem>
-        <MenuItem type="separator" />
-        <MenuItem onClick={(e) => {props.onCopy(e); toggleMenu(false);}}>
-          Copy
-        </MenuItem>
-        <MenuItem onClick={(e) => {props.onRenameOpen(e); toggleMenu(false);}}>
-          Rename
-        </MenuItem>
-        <MenuItem type="separator" />
-        <MenuItem onClick={(e) => {props.onRemoveOpen(e); toggleMenu(false);}}>
-          Delete
-        </MenuItem>
-        <MenuItem type="separator" />
-        <MenuItem onClick={(e) => {props.onShowProprieties(e); toggleMenu(false);}}>
-          Properties
-        </MenuItem>
-      </ControlledMenu>
-    </div>
-  );
 }
 
 export default Explorer;

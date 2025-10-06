@@ -1,15 +1,19 @@
 .startMenu{
-    position:absolute;
-    width: 400px;
-    height: 70%;
-    max-height: 500px;
+    position: absolute;
+    width: 520px;
+    height: 75%;
+    max-height: 650px;
     bottom: 43px;
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.527);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.527);
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.527);
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
     transition: opacity .2s;
     opacity: 1;
     transition: all .2s;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: none;
 }
 .startMenu.hidden{
   opacity: 0;
@@ -20,63 +24,128 @@
 
 
 .userPicture {
-	width: 26px;
-	margin-right:12px;
-  margin-left:4px;
-  margin-top: 5px;
-	float:left;
-	border-radius:2px;
-	box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.75);
+	width: 56px;
+	height: 56px;
+	margin-right: 14px;
+	margin-left: 10px;
+	margin-top: 10px;
+	float: left;
+	border-radius: 3px;
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.4);
+	border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 .userName{
   float: left;
   margin-left: 0px;
-  margin-top: 5px;
-  font-style: oblique;
-  font-size: 22px;
+  margin-top: 22px;
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 } 
 
 .topMenu{
   width: 100%;
-  height: 38px;
+  height: 76px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
 } 
 
 .bottomMenu{
   width: 100%;
-  height: 50px;
+  height: 60px;
   position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.15) 100%);
 } 
 
 .bottomMenu input{
   position: absolute;
-  left: 10px;
-  top: 13px;
-  width: 290px;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 360px;
+  height: 30px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 5px 10px;
+  font-size: 14px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.9);
+  outline: none;
+}
+
+.bottomMenu input:focus {
+  border-color: rgba(51, 153, 255, 0.6);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 4px rgba(51, 153, 255, 0.3);
+  background-color: #fff;
 } 
 
 
 .bottomMenu .shutdown{
   position: absolute;
-  right: 10px;
-  top: 7px;
-  width: 25px;
-  height: 25px;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
   cursor: pointer;
-} 
+  padding: 4px;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.bottomMenu .shutdown:hover {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.bottomMenu .shutdown:active {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
 .bottomMenu .logoff{
   position: absolute;
-  right: 50px;
-  top: 7px;
-  width: 25px;
-  height: 25px;
+  right: 55px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
   cursor: pointer;
+  padding: 4px;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.bottomMenu .logoff:hover {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.bottomMenu .logoff:active {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
 } 
 
 .startLeter {
-  margin-left: 15px;
-  padding: 2px;
-  color: black;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  padding: 6px 12px;
+  color: #003399;
+  background: linear-gradient(to bottom, rgba(230, 240, 255, 0.6) 0%, rgba(210, 230, 255, 0.4) 100%);
+  border-left: 3px solid #3366cc;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 } 
 
 .menuIcon {
@@ -95,34 +164,64 @@
   padding-top: 10px;
   position: absolute;
   left: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
 } 
 
 .systemItem{
   position: relative;
-  width: 95%;
-  height: 40px;
-  padding-left: 10px;
+  width: 92%;
+  height: 58px;
+  padding-left: 14px;
+  padding-right: 10px;
+  margin-left: 5px;
+  margin-bottom: 3px;
   background-color: rgba(0, 0, 139, 0);
-} 
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
 
 .systemItem:hover{
-  background-color: rgba(255, 255, 255, 0.315)
-} 
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.systemItem:active {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
 
 .systemItem img{
-  height:32px;
-  width: 32px;
+  height: 42px;
+  width: 42px;
+  margin-top: 8px;
 } 
 
 .systemItem div{
   position: absolute;
-  top: 10px;
-  left: 52px;
+  top: 18px;
+  left: 66px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
 } 
 
 hr{
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.6) 5%, 
+    rgba(255, 255, 255, 0.6) 95%, 
+    transparent 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 } 
 
 .AppsList{
@@ -130,55 +229,96 @@ hr{
     width: 100%;
     height: 95%;
     color: black;
-    background-color: rgb(255, 255, 255);
+    background: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%);
     overflow-y: scroll;
     overflow-x: hidden;
     padding-bottom: 10px;
-    padding-top: 10px;
+    padding-top: 5px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
 } 
 
 .middleMenu{
   width: 50%;
-  height: -moz-calc(100% - 88px);
+  height: -moz-calc(100% - 136px);
   /* WebKit */
-  height: -webkit-calc(100% - 88px);
+  height: -webkit-calc(100% - 136px);
   /* Opera */
-  height: -o-calc(100% - 88px);
+  height: -o-calc(100% - 136px);
   /* Standard */
-  height: calc(100% - 88px);
+  height: calc(100% - 136px);
   position: relative;
 } 
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+.startMenu ::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
 }
-::-webkit-scrollbar-button {
-  width: 0px;
-  height: 0px;
+
+.startMenu ::-webkit-scrollbar-button {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(to bottom, 
+    rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.3) 0%, 
+    rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.5) 100%);
+  border: 1px solid rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.6);
 }
-::-webkit-scrollbar-thumb {
-  background: #68b8ff;
-  border: 0px none #ffffff;
-  border-radius: 50px;
+
+.startMenu ::-webkit-scrollbar-button:vertical:decrement {
+  border-bottom-color: rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.2);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M 8 6 L 4 10 L 12 10 Z" fill="%23fff"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #68b8ff;
+
+.startMenu ::-webkit-scrollbar-button:vertical:increment {
+  border-top-color: rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.2);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M 8 10 L 4 6 L 12 6 Z" fill="%23fff"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
 }
-::-webkit-scrollbar-thumb:active {
-  background: #0088ff;
+
+.startMenu ::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, 
+    rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.6) 0%, 
+    rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.8) 50%, 
+    rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.6) 100%);
+  border: 1px solid rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.7);
+  border-radius: 0px;
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.2);
 }
-::-webkit-scrollbar-track {
-  background: #e5e5e5;
-  border: 0px none #ffffff;
-  border-radius: 50px;
+
+.startMenu ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, 
+    rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.7) 0%, 
+    rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.9) 50%, 
+    rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.7) 100%);
 }
-::-webkit-scrollbar-track:hover {
-  background: #e5e5e5;
+
+.startMenu ::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(to right, 
+    rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.8) 0%, 
+    rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 1) 50%, 
+    rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.8) 100%);
 }
-::-webkit-scrollbar-track:active {
-  background: #c8c8c8;
+
+.startMenu ::-webkit-scrollbar-track {
+  background: rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.1);
+  border: 1px solid rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.2);
+  border-radius: 0px;
+}
+
+.startMenu ::-webkit-scrollbar-track:hover {
+  background: rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.15);
+}
+
+.startMenu ::-webkit-scrollbar-track:active {
+  background: rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.2);
+}
+
+.startMenu ::-webkit-scrollbar-corner {
+  background: rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.1);
 }
 ::-webkit-scrollbar-corner {
-  background: transparent;
+  background: #f0f0f0;
+  border: 1px solid #999;
 }

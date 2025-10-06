@@ -134,14 +134,14 @@ class StartMenu extends React.PureComponent {
                 if (this.state.searchBox === "") {
                     if (app.Name.charAt(0).toUpperCase() !== lastLeter.toUpperCase()) {
                         lastLeter = app.Name.charAt(0);
-                        newDiv = <div key={"stmenu_" + app.Name} className="startLeter"><b>{lastLeter}</b></div>
+                        newDiv = <div key={"stmenu_sep_" + app.Name} className="startLeter"><b>{lastLeter}</b></div>
                     }
                 }
                 let RequireInternetConnection = "true";
                 if (app.manifest.requireInternet !== undefined) {
                     RequireInternetConnection = app.manifest.requireInternet;
                 }
-                return <div style={{ height: 80 }} key={"stmenu_" + app.Name}>{newDiv}<AppCard requireInternet={RequireInternetConnection} forceRefreshApps={this.refreshApps} windowSize={app.manifest.Window} onClickApp={this.props.onClickApp} appName={app.Name} /></div>
+                return <div style={{ minHeight: 68 }} key={"stmenu_" + app.Name}>{newDiv}<AppCard requireInternet={RequireInternetConnection} forceRefreshApps={this.refreshApps} windowSize={app.manifest.Window} onClickApp={this.props.onClickApp} appName={app.Name} /></div>
             } else {
                 return null;
             }
@@ -150,9 +150,22 @@ class StartMenu extends React.PureComponent {
         let windowSystemSize = {};
         windowSystemSize['Width'] = 0;
         windowSystemSize['Height'] = 0;
+        
+        // Extract RGB values from system color for CSS variables
+        const hex = window.systemColor0.replace('#', '');
+        const r = parseInt(hex.substring(0, 2), 16);
+        const g = parseInt(hex.substring(2, 4), 16);
+        const b = parseInt(hex.substring(4, 6), 16);
+        
         return (
             <div>
-                <div className={visible} style={{ zIndex: window.maxZIndex + 10, backgroundColor: this.convertHex(window.systemColor0, 90) }}>
+                <div className={visible} style={{ 
+                    zIndex: window.maxZIndex + 10, 
+                    backgroundColor: this.convertHex(window.systemColor0, 90),
+                    '--system-color-r': r,
+                    '--system-color-g': g,
+                    '--system-color-b': b
+                }}>
                     <div className="topMenu" style={{ backgroundColor: this.convertHex(window.systemColor0, 95) }}>
                         <div>
                             <img draggable="false" alt="" className="userPicture" height="32" src={this.state.UserIcon}></img>

@@ -35,10 +35,10 @@ class Window extends React.PureComponent {
         // If WindowSize in width and Height is equal ZERO has no manifest file
         if (windowSize.Width === 0 && windowSize.Height === 0) {
             if (localStorage["WINDOW_" + appID + "_X"]) {
-                positionX = localStorage["WINDOW_" + appID + "_X"];
-                positionY = localStorage["WINDOW_" + appID + "_Y"];
-                windowSize.Width = localStorage["WINDOW_" + appID + "_W"];
-                windowSize.Height = localStorage["WINDOW_" + appID + "_H"];
+                positionX = parseInt(localStorage["WINDOW_" + appID + "_X"], 10) || positionX;
+                positionY = parseInt(localStorage["WINDOW_" + appID + "_Y"], 10) || positionY;
+                windowSize.Width = parseInt(localStorage["WINDOW_" + appID + "_W"], 10) || 640;
+                windowSize.Height = parseInt(localStorage["WINDOW_" + appID + "_H"], 10) || 480;
             } else {
                 windowSize.Width = 640;
                 windowSize.Height = 480;
@@ -65,6 +65,7 @@ class Window extends React.PureComponent {
             systemColor1: window.systemColor1,
             gradient: 'on',
             myStyle: "window hidden",
+            snapMode: null,
             errorHiddenList: [
                 "a parser-blocking cross site",
                 "uncaught typeerror: cannot read property",
@@ -79,6 +80,19 @@ class Window extends React.PureComponent {
             fullScreen: false
         };
         this.windowRef = React.createRef();
+        this.dragAnimationFrame = null;
+        this.pendingDragPosition = null;
+        this.isInteracting = false;
+        this.dragStartPointerOffset = { x: 0, y: 0 };
+        this.rndRef = React.createRef();
+        this.lastNormalBounds = {
+            x: positionX,
+            y: positionY,
+            width: windowSize.Width,
+            height: windowSize.Height
+        };
+        this.captureTimeoutId = null;
+        this.capturePending = false;
         setTimeout(() => {
             if (window.winTitle[this.state.uuid] && typeof window.winTitle[this.state.uuid] === 'string' && window.winTitle[this.state.uuid].includes("Copy")) {
                 this.setState({ notResiable: true });
@@ -100,36 +114,21 @@ class Window extends React.PureComponent {
         this.handleClickInsideWindow = this.handleClickInsideWindow.bind(this);
         this.onTitleChange = this.onTitleChange.bind(this);
         this.onDrag = this.onDrag.bind(this);
+    this.onDragStop = this.onDragStop.bind(this);
         this.returnToApp = this.returnToApp.bind(this);
         this.onResizeStop = this.onResizeStop.bind(this);
+    this.onResize = this.onResize.bind(this);
         this.toggleFullScreen = this.toggleFullScreen.bind(this);
+    this.queueCapture = this.queueCapture.bind(this);
+    this.performCapture = this.performCapture.bind(this);
 
         window.maxZIndex = window.maxZIndex + 1;
         window.topUUID = this.state.uuid;
-        setInterval(() => {
-            if(this.windowRef){
-                if(this.props.systemWindow){
-                    htmlToImage.toJpeg(this.windowRef.current)
-                    .then((dataUrl)=> {
-                        if(dataUrl!=="data:," && dataUrl!==""){
-                            sessionStorage["w_WINDOW_"+this.state.uuid]=dataUrl;
-                        }
-                    })
-                    .catch(function (error) {
-                        console.error('oops, something went wrong!', error);
-                    });
-                }else{
-                    // Use webview capture (Electron-based)
-                    if(this.webview){
-                        this.webview.capturePage().then((value)=> {
-                            let temp=value.toDataURL(0.1);
-                            if(temp!=="data:image/png;base64," && temp!==""){
-                                sessionStorage["w_WINDOW_"+this.state.uuid]=temp;
-                            }
-                        });
-                    }
-                }
+        this.captureIntervalId = setInterval(() => {
+            if (this.isInteracting) {
+                return;
             }
+
             if (window.toFront) {
                 if (window.toFront === this.props.uuid) {
                     let newIndex = this.state.currentZIndex;
@@ -153,7 +152,6 @@ class Window extends React.PureComponent {
                     this.setState({ systemColor1: window.systemColor1 });
                 }
             }
-            this.forceUpdate();
         }, 800);
     }
 
@@ -167,6 +165,50 @@ class Window extends React.PureComponent {
         this.setState({
             url: this.props.url
         })
+    }
+
+    queueCapture(delay = 120) {
+        if (this.captureTimeoutId) {
+            clearTimeout(this.captureTimeoutId);
+        }
+        this.captureTimeoutId = setTimeout(() => {
+            this.captureTimeoutId = null;
+            if (this.isInteracting) {
+                this.capturePending = true;
+                return;
+            }
+            this.performCapture();
+        }, delay);
+    }
+
+    async performCapture() {
+        if (!this.windowRef || !this.windowRef.current) {
+            return;
+        }
+
+        if (this.props.systemWindow) {
+            try {
+                const dataUrl = await htmlToImage.toJpeg(this.windowRef.current);
+                if (dataUrl && dataUrl !== "data:," && dataUrl !== "") {
+                    sessionStorage["w_WINDOW_" + this.state.uuid] = dataUrl;
+                }
+            } catch (error) {
+                console.error('oops, something went wrong!', error);
+            }
+            return;
+        }
+
+        if (this.webview && this.webview.capturePage) {
+            try {
+                const value = await this.webview.capturePage();
+                const temp = value.toDataURL(0.1);
+                if (temp !== "data:image/png;base64," && temp !== "") {
+                    sessionStorage["w_WINDOW_" + this.state.uuid] = temp;
+                }
+            } catch (error) {
+                console.error('oops, something went wrong!', error);
+            }
+        }
     }
 
     convertHex(hex, opacity) {
@@ -183,13 +225,21 @@ class Window extends React.PureComponent {
         if (nextProps !== this.props || nextState !== this.state) {
             return true;
         }
+        return false;
     }
 
     handleClickOutside() {
-        this.setState({ active: false });
+        this.setState({ active: false }, () => {
+            this.queueCapture(220);
+        });
     }
 
     handleClickInsideWindow() {
+        if (this.captureTimeoutId) {
+            clearTimeout(this.captureTimeoutId);
+            this.captureTimeoutId = null;
+        }
+        this.capturePending = false;
         this.setState({ active: true });
     }
 
@@ -227,59 +277,250 @@ class Window extends React.PureComponent {
         localStorage["WINDOW_" + appID + "_H"] = this.state.height;
     }
 
-    onDragStart() {
-        if(!this.state.WindowFreez){
-            this.sendToFront();
+    onDragStart(e, data) {
+        if (this.captureTimeoutId) {
+            clearTimeout(this.captureTimeoutId);
+            this.captureTimeoutId = null;
+        }
+        this.capturePending = false;
+        this.sendToFront();
+        this.isInteracting = true;
+        const pointerSource = e.touches ? e.touches[0] : e;
+        const pointerClientX = pointerSource && pointerSource.clientX !== undefined ? pointerSource.clientX : data.x;
+        const pointerClientY = pointerSource && pointerSource.clientY !== undefined ? pointerSource.clientY : data.y;
+        const pointerOffsetX = pointerClientX - data.x;
+        const pointerOffsetY = pointerClientY - data.y;
+        this.dragStartPointerOffset = { x: pointerOffsetX, y: pointerOffsetY };
+
+        if (this.state.snapMode) {
+            const restoredBounds = this.lastNormalBounds || {
+                x: this.state.x,
+                y: this.state.y,
+                width: this.state.width,
+                height: this.state.height
+            };
+            const nextWidth = restoredBounds.width;
+            const nextHeight = restoredBounds.height;
+            const nextX = Math.min(
+                Math.max(pointerClientX - pointerOffsetX, 0),
+                Math.max(0, window.innerWidth - nextWidth)
+            );
+            const nextY = Math.min(
+                Math.max(pointerClientY - pointerOffsetY, 0),
+                Math.max(0, window.innerHeight - nextHeight)
+            );
+            this.pendingDragPosition = { x: nextX, y: nextY };
             this.setState({
-                WindowFreez:true
-            })
+                snapMode: null,
+                width: nextWidth,
+                height: nextHeight,
+                x: nextX,
+                y: nextY
+            });
+        }
+
+        if (!this.state.WindowFreez) {
+            this.setState({
+                WindowFreez: true
+            });
         }
     }
 
-    onDragStop() {
-        this.setState({
-            WindowFreez:true
-        })
-    }
-
-    onDrag(e) {
-    }
-
-    onResizeStart() {
-        if(!this.state.WindowFreez){
-            this.sendToFront();
-            this.setState({
-                WindowFreez:true
-            })
-        }
-    }
-
-    onResizeStop(e) {
-        this.setState({
-            WindowFreez:true
-        })
-        setTimeout(() => {
-            if (e.x > window.innerWidth) {
-                this.setState({ x: 0 });
-            }
-            if (e.y > window.innerWidth) {
-                this.setState({ y: 0 });
-            }
-        }, 40);
-    }
-
-    onToggleWindow() {
-        let tmpStyle = "window";
+    onDrag(e, data) {
         if (this.state.maximized) {
-            tmpStyle = "window shadow";
+            return;
         }
-        this.setState({
-            maximized: !this.state.maximized,
-            myStyle: tmpStyle
+        
+        this.pendingDragPosition = { x: data.x, y: data.y };
+        if (!this.dragAnimationFrame) {
+            this.dragAnimationFrame = window.requestAnimationFrame(() => {
+                this.dragAnimationFrame = null;
+                if (this.pendingDragPosition && !this.state.maximized) {
+                    const { x, y } = this.pendingDragPosition;
+                    this.pendingDragPosition = null;
+                    // Update state every frame during drag for smooth movement
+                    if (this.state.x !== x || this.state.y !== y) {
+                        this.setState({ x, y });
+                    }
+                }
+            });
+        }
+    }
+
+    onDragStop(e, data) {
+        if (this.dragAnimationFrame) {
+            cancelAnimationFrame(this.dragAnimationFrame);
+            this.dragAnimationFrame = null;
+        }
+        this.pendingDragPosition = null;
+
+        const screenX = window.innerWidth;
+        const screenY = window.innerHeight;
+        const updates = { WindowFreez: false };
+        this.isInteracting = false;
+        let nextSnapMode = null;
+
+        const preSnapBounds = {
+            x: data.x,
+            y: data.y,
+            width: this.state.width,
+            height: this.state.height
+        };
+
+        if (data.y <= 0) {
+            updates.maximized = true;
+            updates.x = 0;
+            updates.y = 0;
+            nextSnapMode = 'maximized';
+        } else {
+            const currentWidth = typeof this.state.width === 'number' ? this.state.width : parseInt(this.state.width, 10) || 0;
+            const currentHeight = typeof this.state.height === 'number' ? this.state.height : parseInt(this.state.height, 10) || 0;
+            let nextX = data.x;
+            let nextY = data.y;
+            let nextWidth = currentWidth;
+            let nextHeight = currentHeight;
+
+            if (data.x <= 10) {
+                nextX = 0;
+                nextY = 0;
+                nextWidth = Math.round(screenX / 2);
+                nextHeight = Math.round(screenY - 49);
+                nextSnapMode = 'left';
+            } else if (data.x + currentWidth >= screenX - 10) {
+                nextX = Math.round(screenX / 2);
+                nextY = 0;
+                nextWidth = Math.round(screenX / 2);
+                nextHeight = Math.round(screenY - 49);
+                nextSnapMode = 'right';
+            } else if (data.y >= screenY - 45) {
+                nextY = screenY - 49;
+                nextSnapMode = 'bottom';
+            }
+
+            updates.maximized = false;
+            updates.x = nextX;
+            updates.y = nextY;
+            if (nextWidth > 0) {
+                updates.width = nextWidth;
+            }
+            if (nextHeight > 0) {
+                updates.height = nextHeight;
+            }
+        }
+
+        updates.snapMode = nextSnapMode;
+
+        this.setState(updates, () => {
+            if (nextSnapMode) {
+                this.lastNormalBounds = preSnapBounds;
+            } else if (!this.state.maximized) {
+                this.lastNormalBounds = {
+                    x: this.state.x,
+                    y: this.state.y,
+                    width: this.state.width,
+                    height: this.state.height
+                };
+            }
+            if (this.capturePending) {
+                this.capturePending = false;
+                this.queueCapture(180);
+            }
         });
     }
 
+    onResizeStart() {
+        if (this.captureTimeoutId) {
+            clearTimeout(this.captureTimeoutId);
+            this.captureTimeoutId = null;
+        }
+        this.capturePending = false;
+        this.sendToFront();
+        this.isInteracting = true;
+        this.setState({
+            WindowFreez: true,
+            snapMode: null
+        });
+    }
+
+    onResizeStop(e, direction, ref, delta, position) {
+        this.isInteracting = false;
+        const boundedX = position.x > window.innerWidth ? 0 : position.x;
+        const boundedY = position.y > window.innerHeight ? 0 : position.y;
+        this.setState({
+            WindowFreez: false,
+            width: ref.offsetWidth,
+            height: ref.offsetHeight,
+            x: boundedX,
+            y: boundedY,
+            snapMode: null
+        }, () => {
+            if (!this.state.maximized) {
+                this.lastNormalBounds = {
+                    x: this.state.x,
+                    y: this.state.y,
+                    width: this.state.width,
+                    height: this.state.height
+                };
+            }
+            if (this.capturePending) {
+                this.capturePending = false;
+                this.queueCapture(180);
+            }
+        });
+    }
+
+    onResize(e, direction, ref, delta, position) {
+        if (this.state.maximized) {
+            return;
+        }
+        const nextX = position.x < 0 ? 0 : position.x;
+        const nextY = position.y < 0 ? 0 : position.y;
+        this.setState({
+            width: ref.offsetWidth,
+            height: ref.offsetHeight,
+            x: nextX,
+            y: nextY,
+            snapMode: null
+        });
+    }
+
+    onToggleWindow() {
+        const { maximized } = this.state;
+        if (!maximized) {
+            this.lastNormalBounds = {
+                x: this.state.x,
+                y: this.state.y,
+                width: this.state.width,
+                height: this.state.height
+            };
+            this.setState({
+                maximized: true,
+                myStyle: "window",
+                snapMode: 'maximized',
+                x: 0,
+                y: 0
+            });
+        } else {
+            const restored = this.lastNormalBounds || {
+                x: this.state.x,
+                y: this.state.y,
+                width: this.state.width,
+                height: this.state.height
+            };
+            this.setState({
+                maximized: false,
+                myStyle: "window shadow",
+                snapMode: null,
+                x: restored.x,
+                y: restored.y,
+                width: restored.width,
+                height: restored.height
+            });
+        }
+    }
+
     onToggleMinimize() {
+        this.queueCapture(40);
         this.props.onToggleMinimize(this.state.uuid);
     }
 
@@ -388,10 +629,26 @@ class Window extends React.PureComponent {
         }
     }
 
+    componentWillUnmount() {
+        if (this.captureIntervalId) {
+            clearInterval(this.captureIntervalId);
+        }
+        if (this.dragAnimationFrame) {
+            cancelAnimationFrame(this.dragAnimationFrame);
+        }
+        if (this.captureTimeoutId) {
+            clearTimeout(this.captureTimeoutId);
+        }
+    }
+
     render() {
         let WindowContent;
         let finalStyle = {};
         let finalBodyStyle = "body";
+        let frameClassName = "frame dontMove";
+        if (this.isInteracting) {
+            frameClassName = "frame dontMove interacting";
+        }
         let screenX = window.innerWidth;
         let screenY = window.innerHeight;
         let isPlaying = false;
@@ -409,7 +666,7 @@ class Window extends React.PureComponent {
                                     this.onTitleChange(this.state.name);
                                 }}
                                 useragent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36"
-                                className="frame dontMove"
+                                className={frameClassName}
                                 onError={this.onErrorFRAME}
                                 src={this.state.url}
                                 plugins="true"
@@ -420,20 +677,20 @@ class Window extends React.PureComponent {
             const params = url.split("|");
             let isOpen = false;
             if (url === "MyComputer" || this.state.url === "MyMusic" || this.state.url === "MyPictures" || this.state.url === "MyDocuments" || url === "Web Browser") {
-                WindowContent = <FileManager onTitleChange={this.onTitleChange} userDirs={this.props.userDirs} className="frame dontMove" />
+                WindowContent = <FileManager onTitleChange={this.onTitleChange} userDirs={this.props.userDirs} className={frameClassName} />
                 isOpen = true;
             }
             if (url === "Web Browser") {
-                WindowContent = <WebBrowser onTitleChange={this.onTitleChange} className="frame dontMove" />
+                WindowContent = <WebBrowser onTitleChange={this.onTitleChange} className={frameClassName} />
                 isOpen = true;
             }
             if (url === "Save File") {
-                WindowContent = <SaveDialog userDirs={this.props.userDirs} onTitleChange={this.onTitleChange} className="frame dontMove" />
+                WindowContent = <SaveDialog userDirs={this.props.userDirs} onTitleChange={this.onTitleChange} className={frameClassName} />
                 isOpen = true;
             }
             if (params[0] === "copy") {
                 if (params[1] !== "" && params[2] !== "") {
-                    WindowContent = <CopyDialog UUID={this.state.uuid} onClose={this.onClose} from={params[1]} to={params[2]} onTitleChange={this.onTitleChange} className="frame dontMove" />
+                    WindowContent = <CopyDialog UUID={this.state.uuid} onClose={this.onClose} from={params[1]} to={params[2]} onTitleChange={this.onTitleChange} className={frameClassName} />
                     isOpen = true;
                 }
             }
@@ -447,6 +704,21 @@ class Window extends React.PureComponent {
         if (this.state.maximized) {
             finalBodyStyle = "body maximizedBody";
         }
+        
+        // Title bar uses only systemColor1 with transparency for blur effect
+        // When audio is playing, make it 95% transparent to show the animation
+        let titleBarStyle = {
+            backgroundColor: this.state.systemColor1 + (isPlaying ? '0D' : 'BF') // 5% opacity when playing, 75% when not
+        };
+        
+        // Window border style with system colors
+        let windowBorderStyle = {
+            borderTopColor: this.state.systemColor1,
+            borderLeftColor: this.state.systemColor1,
+            borderRightColor: this.state.systemColor0,
+            borderBottomColor: this.state.systemColor0
+        };
+        
         if (!window.gradientEffect) {
             finalStyle = { backgroundColor: this.convertHex(this.state.systemColor0, 50) };
         } else {
@@ -456,6 +728,7 @@ class Window extends React.PureComponent {
         return (
                 <div>
                     <Rnd
+                        ref={this.rndRef}
                         default={{
                             x: 15,
                             y: 15,
@@ -468,60 +741,23 @@ class Window extends React.PureComponent {
                         disableDragging={this.state.maximized}
                         style={{ zIndex: this.state.currentZIndex }}
                         size={{ width: (this.state.maximized ? '100%' : this.state.width), height: (this.state.maximized ? '100%' : this.state.height) }}
-                        position={{ x: (this.state.maximized ? '0' : this.state.x), y: (this.state.maximized ? '0' : this.state.y) }}
+                        position={{ x: (this.state.maximized ? 0 : this.state.x), y: (this.state.maximized ? 0 : this.state.y) }}
                         onDragStart={this.onDragStart}
                         onResizeStart={this.onResizeStart}
                         onResizeStop={this.onResizeStop}
                         onDrag={this.onDrag}
-                        onDragStop={(e, d) => {
-                            if (e.y === 0) {
-                                setTimeout(() => {
-                                    this.setState({ maximized: true });
-                                }, 20);
-                            }
-                            if (e.x < 10) {
-                                setTimeout(() => {
-                                    this.setState({ x: 0, y: 0, width: "50%", height: "99.5%" });
-                                }, 20);
-                            }
-                            if (e.x > screenX - 10) {
-                                setTimeout(() => {
-                                    this.setState({ x: screenX / 2, y: 0, width: "50%", height: "99.5%" });
-                                }, 20);
-                            }
-                            if (e.y > screenY - 45) {
-                                setTimeout(() => {
-                                    this.setState({ y: (screenY - 49) });
-                                }, 20);
-                            }
-                            if (!this.state.maximized) {
-                                this.setState({
-                                    x: d.x, y: d.y
-                                });
-                            }
-                        }}
-                        onResize={(e, direction, ref, delta, position) => {
-                            if (e.y < 0) {
-                                this.setState({ y: 1 });
-                            }
-                            if (!this.state.maximized) {
-                                this.setState({
-                                    width: ref.offsetWidth,
-                                    height: ref.offsetHeight,
-                                    ...position,
-                                });
-                            }
-                        }}
+                        onDragStop={this.onDragStop}
+                        onResize={this.onResize}
                     >
-                        <div className={this.state.myStyle} initwidth={800} initheight={400} style={finalStyle}>
+                        <div className={this.state.myStyle} initwidth={800} initheight={400} style={{...finalStyle, ...windowBorderStyle}}>
                             {isPlaying ? (<img draggable="false" alt="" className="bgUv" src={VUGif} />) : null}
-                            <div onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} className="titleBar" >
-                                <div style={{ maxHeight: 20, width: 20 }} className="appIcon"><img draggable="false" alt="" className="appIcon" src={this.props.icon}></img></div>
-                                <div className="appTitle" style={{ color: invert(window.systemColor1, true) }}>{window.winTitle[this.state.uuid] || "Window"}</div>
-                                <div style={{ width: 150 }} className="appControls">
-                                    <img draggable="false" alt="" className="btnXControl dontMove" onClick={this.onClose} src={CCLOSE} ></img>
-                                    <img draggable="false" alt="" className="btnControl dontMove" onClick={this.onToggleWindow} src={(this.state.maximized ? CRESTORE : CMAXIMIZE)}></img>
-                                    <img draggable="false" alt="" className="btnControl dontMove" onClick={this.onToggleMinimize} src={CMINIMIZE}></img>
+                            <div onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} className="titleBar" style={titleBarStyle}>
+                                <div className="appIcon"><img draggable="false" alt="" src={this.props.icon}></img></div>
+                                <div className="appTitle">{window.winTitle[this.state.uuid] || "Window"}</div>
+                                <div className="appControls">
+                                    <div className="btnControl minimize dontMove" onClick={this.onToggleMinimize}></div>
+                                    <div className={"btnControl " + (this.state.maximized ? "restore" : "maximize") + " dontMove"} onClick={this.onToggleWindow}></div>
+                                    <div className="btnXControl dontMove" onClick={this.onClose}></div>
                                 </div>
                             </div>
                             <div ref={this.windowRef} onMouseDown={(e) => {e.stopPropagation()}} className={finalBodyStyle}>

@@ -484,8 +484,23 @@ class FileManager extends React.Component {
   }
 
   render() {
+    // Extract RGB values from systemColor0 for dynamic scrollbars
+    let r = 128, g = 128, b = 128; // Default gray
+    if (window.systemColor0) {
+        const hex = window.systemColor0.replace('#', '');
+        r = parseInt(hex.substring(0, 2), 16);
+        g = parseInt(hex.substring(2, 4), 16);
+        b = parseInt(hex.substring(4, 6), 16);
+    }
+
+    const fmStyle = {
+        '--system-color-r': r,
+        '--system-color-g': g,
+        '--system-color-b': b
+    };
+
     return (
-      <div className="fm">
+      <div className="fm" style={fmStyle}>
         <ToolBar
           refresh={this.refresh}
           goBack={this.goBack}

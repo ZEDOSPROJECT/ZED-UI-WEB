@@ -117,7 +117,7 @@ class Icon extends React.Component {
               }
               title={this.props.data.name}
               onClick={(data) => {this.props.onIClick(this.props.data)}}
-              onContextMenu={(data) => {this.props.onRClick(this.props.data)}}
+              onContextMenu={(e) => {e.preventDefault(); e.stopPropagation(); this.props.onRClick(this.props.data, e)}}
               className="icon"
             >
             <img

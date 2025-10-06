@@ -11,3 +11,79 @@
   border-bottom: 1px solid #ffffff;
   border-left: 1px solid #ffffff;
 }
+
+/* Dynamic scrollbar styles using system color */
+.fm ::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+.fm ::-webkit-scrollbar-track {
+  background: rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.1);
+  border-radius: 0;
+}
+
+.fm ::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.8),
+    rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.6)
+  );
+  border-radius: 0;
+  border: 1px solid rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.3);
+}
+
+.fm ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.9),
+    rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.7)
+  );
+}
+
+.fm ::-webkit-scrollbar-thumb:active {
+  background: rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.6);
+}
+
+.fm ::-webkit-scrollbar-button {
+  background: rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.3);
+  height: 16px;
+  width: 16px;
+  border: 1px solid rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.2);
+}
+
+.fm ::-webkit-scrollbar-button:hover {
+  background: rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.5);
+}
+
+.fm ::-webkit-scrollbar-button:active {
+  background: rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.4);
+}
+
+.fm ::-webkit-scrollbar-button:vertical:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23ffffff' d='M8 5l-4 4h8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.fm ::-webkit-scrollbar-button:vertical:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23ffffff' d='M8 11l4-4H4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.fm ::-webkit-scrollbar-button:horizontal:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23ffffff' d='M5 8l4-4v8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.fm ::-webkit-scrollbar-button:horizontal:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23ffffff' d='M11 8l-4 4V4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.fm ::-webkit-scrollbar-corner {
+  background: rgba(var(--system-color-r), var(--system-color-g), var(--system-color-b), 0.1);
+}

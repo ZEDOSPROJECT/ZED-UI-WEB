@@ -1,42 +1,74 @@
 .appCard{
     background-color: rgba(0, 1, 65, 0);
-    width: 90%;
-    height: 40px;
-    margin-left: 5px;
-    padding: 5px;
+    width: 88%;
+    height: 52px;
+    margin-left: 10px;
+    margin-bottom: 3px;
+    padding: 8px;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+    position: relative;
+    display: flex;
+    align-items: center;
 } 
 
 .appCard:hover{
-    background-color: rgba(0, 1, 65, 0.37);
+    background: linear-gradient(to bottom, rgba(51, 153, 255, 0.2) 0%, rgba(51, 153, 255, 0.15) 100%);
+    border: 1px solid rgba(51, 153, 255, 0.3);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.appCard:active {
+    background: linear-gradient(to bottom, rgba(51, 153, 255, 0.3) 0%, rgba(51, 153, 255, 0.25) 100%);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 } 
 
 .appCardOffline{
     background-color: rgba(0, 1, 65, 0);
-    width: 95%;
-    height: 40px;
-    margin: 5px;
-    padding: 5px;
+    width: 88%;
+    height: 52px;
+    margin-left: 10px;
+    margin-bottom: 3px;
+    padding: 8px;
+    border-radius: 4px;
+    opacity: 0.5;
+    border: 1px solid transparent;
+    position: relative;
+    display: flex;
+    align-items: center;
 } 
 
 
 .appCardTitle {
-    margin-top: 5px;
+    flex: 1;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+    letter-spacing: 0.2px;
+    line-height: 1;
 } 
 
 .appCardIcon{
-    float: left;
-    margin-Right: 10px;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
+    margin-right: 12px;
+    border-radius: 3px;
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.2));
+    flex-shrink: 0;
 }  
 
 .appCardIconOffline{
-    float: left;
-    margin-Right: 10px;
-    width: 32px;
-    height: 32px;
-    filter: grayscale();
+    width: 36px;
+    height: 36px;
+    margin-right: 12px;
+    border-radius: 3px;
+    filter: grayscale() drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.2));
+    flex-shrink: 0;
 }  
 
 .searchBox{
@@ -50,27 +82,46 @@
 } 
 
 .addToDeskop {
-    position: relative;
-    width: 20px;
-    height: 20px;
-    top: -55px;
-    left: 180px;
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
     cursor: pointer;
+    transition: all 0.15s ease;
+    padding: 3px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addToDeskop:hover {
+    transform: translateY(-50%) scale(1.15);
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .isAppFavorite{
-    position: absolute;
-    right: 15px;
-    top:5px;
-    width: 10px;
-    height: 10px;
+    width: 16px;
+    height: 16px;
+    transition: all 0.15s ease;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.isAppFavorite:hover {
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.4));
 }
 
 .isAppNotFavorite{
-    position: absolute;
-    right: 15px;
-    top:5px;
-    width: 10px;
-    height: 10px;
-    filter: grayscale();
+    width: 16px;
+    height: 16px;
+    filter: grayscale(100%) brightness(0.6);
+    opacity: 0.4;
+    transition: all 0.15s ease;
+}
+
+.isAppNotFavorite:hover {
+    opacity: 0.7;
+    filter: grayscale(50%) brightness(0.7);
 }

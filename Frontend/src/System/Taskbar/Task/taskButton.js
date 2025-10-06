@@ -16,6 +16,7 @@ class TaskButton extends React.Component {
         };
 
         this.handle=undefined;
+        this.buttonRef = React.createRef();
 
         setInterval(() => {
             this.forceUpdate();
@@ -91,6 +92,7 @@ class TaskButton extends React.Component {
                 showPreview={this.state.showPreview}
                 mouseOver={this.mouseOver}
                 mouseLeave={this.mouseLeave}
+                buttonRef={this.buttonRef}
             />
         );
     }
@@ -103,16 +105,18 @@ function TaskButtonWithContextMenu(props) {
 
     const handleContextMenu = (e) => {
         e.preventDefault();
+        e.stopPropagation();
         setAnchorPoint({ x: e.clientX, y: e.clientY });
         toggleMenu(true);
     };
 
     return (
-        <div onMouseOver={props.mouseOver} onMouseLeave={props.mouseLeave}>
+        <div ref={props.buttonRef} onMouseOver={props.mouseOver} onMouseLeave={props.mouseLeave}>
             {props.showPreview ? (
                 <WindowPreview
                     onToggleMinimize={props.onToggleMinimize}
                     uuid={props.uuid}
+                    buttonRef={props.buttonRef}
                 />
             ): null}
             <div 
@@ -140,18 +144,22 @@ function TaskButtonWithContextMenu(props) {
                 ) : null}
             </div>
             
-            <ControlledMenu 
-                {...menuState} 
-                anchorPoint={anchorPoint}
-                onClose={() => toggleMenu(false)}
-            >
-                <MenuItem onClick={(e) => {props.onToggleMinimize(props.uuid); toggleMenu(false);}}>
-                    Minimize
-                </MenuItem>
-                <MenuItem onClick={(e) => {props.onClose(props.uuid); toggleMenu(false);}}>
-                    Close
-                </MenuItem>
-            </ControlledMenu>
+            <Portal>
+                <ControlledMenu 
+                    {...menuState} 
+                    anchorPoint={anchorPoint}
+                    onClose={() => toggleMenu(false)}
+                    portal={true}
+                    menuStyle={{ zIndex: 99999 }}
+                >
+                    <MenuItem onClick={(e) => {props.onToggleMinimize(props.uuid); toggleMenu(false);}}>
+                        Minimize
+                    </MenuItem>
+                    <MenuItem onClick={(e) => {props.onClose(props.uuid); toggleMenu(false);}}>
+                        Close
+                    </MenuItem>
+                </ControlledMenu>
+            </Portal>
         </div>
     );
 }

@@ -1,4 +1,4 @@
-.window {
+  .window {
     position: absolute;
     z-index: 1;
     cursor: default;
@@ -6,16 +6,23 @@
     left:0px;
     width: 100%;
     height: 100%;
-    border: 1px solid rgb(0, 0, 0);
+    /* Windows XP-style border - will use system colors from inline style */
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 8px 8px 0 0;
     user-select: none;
     opacity: 1;
     padding: 0px;
     transition-duration: 0.3s;
-    backdrop-filter: blur(1px);
+    will-change: transform;
+    /* Simple shadow like XP */
+    box-shadow: 
+      0 0 0 1px rgba(0, 0, 0, 0.2),
+      3px 3px 8px rgba(0, 0, 0, 0.4);
   }
-
+  
   .dontMove {
-
+    cursor: inherit;
   }
 
   .goBackURL{
@@ -36,9 +43,10 @@
   }
 
   .shadow {
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    /* Enhanced Windows XP shadow effect */
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6), 0px 4px 8px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6), 0px 4px 8px 0px rgba(0,0,0,0.4);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6), 0px 4px 8px 0px rgba(0,0,0,0.4);
   }
 
   .window.hidden {
@@ -47,27 +55,34 @@
   }
 
   .bgUv{
+    position: absolute;
     width: 98%;
     margin-left: 10px;
     margin-top: 10px;
     height: 50px;
-    filter: blur(5px);
+    filter: blur(3px);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.9;
   }
 
   .overlay{
-    top:-26px;
-    background-color:rgba(0, 0, 0, 0.356);
-    left:-5px;
-    width:calc( 100% + 10px);
-    height:calc( 100% + 30px);
-    position:absolute;
-    transition-duration: .6s;
+    top: -31px;
+    background-color: rgba(0, 0, 0, 0.25);
+    left: -3px;
+    width: calc(100% + 6px);
+    height: calc(100% + 34px);
+    position: absolute;
+    transition-duration: .4s;
     transition-property: all;
     z-index: 100;
+    border-radius: 8px 8px 0 0;
+    backdrop-filter: blur(2px);
   }
 
   .overlay:hover{
-    background-color:rgba(0, 0, 0, 0);
+    background-color:rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1px);
   }
 
   
@@ -97,21 +112,26 @@
 
   .body{
       position: absolute;
-      margin-top:26px;
-      margin-bottom: 5px;
-      margin-left: 5px;
-      margin-right: 5px;
+      margin-top: 31px;
+      margin-bottom: 3px;
+      margin-left: 3px;
+      margin-right: 3px;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
       background-color: rgb(255, 255, 255);
+      /* Simple XP border */
+      border: 1px solid #ababab;
+      border-radius: 0 0 5px 5px;
   } 
 
   .maximizedBody {
     margin-bottom: 0px;
     margin-left: 0px;
     margin-right: 0px;
+    margin-top: 31px;
+    border-radius: 0;
   }
 
   .frame{
@@ -124,69 +144,320 @@
     border-right: 1px solid #ffffff;
     border-bottom: 1px solid #ffffff;
     border-left: 1px solid #ffffff;
+  }
+
+  .frame.interacting {
+    pointer-events: none;
   } 
 
   .appTitle{
-    position: absolute;
-    left: 30px;
-    right: 80px;
-    top: 4px;
+    flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
-    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+    /* XP style white text with strong shadow */
+    color: #ffffff;
+    text-shadow: 
+      1px 1px 2px rgba(0, 0, 0, 0.9),
+      0 0 3px rgba(0, 0, 0, 0.7);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    line-height: 30px;
+    padding-right: 8px;
+    z-index: 2;
+    position: relative;
 	}
 	.titleBar{
-    float: left;
-    margin-top: 6.5px;
+    position: relative;
+    width: 100%;
+    height: 30px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    width: 112px;
+    border-radius: 5px 5px 0 0;
+    /* Transparent background for blur effect */
+    background: transparent;
+    /* Subtle inner highlight on top */
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    /* Blur effect - glass morphism */
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    z-index: 10;
 	}
-	.appIcon{
+  
+  /* Color overlay with transparency */
+  .titleBar::after {
+    content: '';
     position: absolute;
-		width:18px;
-    height:18px;
-    left: 2px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    opacity: 0.75;
+    z-index: -1;
+    border-radius: 5px 5px 0 0;
+  }
+  
+  /* Subtle highlight for title bar - XP style */
+  .titleBar::before {
+    content: '';
+    position: absolute;
     top: 1px;
-	}
-	.appControls{
-    width:72px;
-    height: 20px;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+    border-radius: 5px 5px 0 0;
+    z-index: 1;
+  }
+  
+  /* Color overlay with transparency */
+  .titleBar::after {
+    content: '';
     position: absolute;
-    right: 2px;
-    top: 4px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    z-index: 0;
+    border-radius: 5px 5px 0 0;
+  }
+	.appIcon{
+    position: relative;
+		width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    margin-right: 6px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+    z-index: 2;
+	}
+  
+  .appIcon img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+	.appControls{
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: 3px;
+    z-index: 2;
+    position: relative;
 	}
 	.btnControl{
-		width:18px;
-		height:18px;
-    float:right;
+		width: 21px;
+		height: 21px;
     margin: 0;
     padding: 0;
-    margin-right: 5px;
-    transition-duration: .2s;
-    transition-property: all;
+    transition: all .08s ease;
+    cursor: pointer;
+    position: relative;
+    /* Windows XP button - light blue background */
+    background: linear-gradient(to bottom, 
+      #e8f0ff 0%,
+      #c8dcff 48%,
+      #a8c8ff 52%,
+      #88b4ff 100%
+    );
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: #003c74 #003c74 #00275a #00275a;
+    box-shadow: 
+      inset 1px 1px 0 rgba(255, 255, 255, 0.6),
+      0 1px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 	}
+  
+  /* Minimize icon - single line with blue color */
+  .btnControl.minimize::before {
+    content: '';
+    width: 10px;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 0px;
+    margin-top: 4px;
+    box-shadow: 
+      0 0 2px rgba(0, 0, 0, 0.8),
+      0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Maximize icon - square outline with green color */
+  .btnControl.maximize::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border: 2.5px solid #ffffff;
+    border-top-width: 3.5px;
+    border-radius: 0px;
+    box-sizing: border-box;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.8)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+  }
+  
+  /* Restore icon - two overlapping squares with green color */
+  .btnControl.restore::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border: 2px solid #ffffff;
+    border-top-width: 3px;
+    border-radius: 0px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 7px;
+    left: 8px;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.8)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+  }
+  
+  .btnControl.restore::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border: 2px solid #ffffff;
+    border-top-width: 3px;
+    border-radius: 0px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 5px;
+    left: 6px;
+    background: rgba(136, 180, 255, 0.9);
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.8)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+  }
 	.btnControl:hover{
-    filter:brightness(120%);
-    transition-duration: .2s;
-    transition-property: all;
+    /* Green background on hover */
+    background: linear-gradient(to bottom, 
+      #d0ffd0 0%,
+      #a0ffa0 48%,
+      #70ff70 52%,
+      #40ff40 100%
+    );
+    border-color: #008800 #008800 #006600 #006600;
+    box-shadow: 
+      inset 1px 1px 0 rgba(255, 255, 255, 0.7),
+      0 1px 2px rgba(0, 0, 0, 0.3);
 	}
+  
+  .btnControl:hover.minimize::before {
+    background: #ffffff;
+  }
+  
+  .btnControl:hover.maximize::before {
+    border-color: #ffffff;
+  }
+  
+  .btnControl:hover.restore::before,
+  .btnControl:hover.restore::after {
+    border-color: #ffffff;
+  }
+  
+  .btnControl:hover.restore::after {
+    background: rgba(64, 255, 64, 0.6);
+  }
+  .btnControl:active{
+    background: linear-gradient(to bottom, 
+      #80d080 0%,
+      #60c060 100%
+    );
+    box-shadow: 
+      inset 1px 1px 3px rgba(0, 0, 0, 0.3);
+    border-color: #006600;
+  }
 	.btnXControl{
-		width:18px;
-		height:18px;
-    float:right;
+		width: 21px;
+		height: 21px;
     margin: 0;
     padding: 0;
-    margin-right: 5px;
-    transition-duration: .2s;
-    transition-property: all;
+    transition: all .08s ease;
+    cursor: pointer;
+    position: relative;
+    /* Windows XP close button - light blue background */
+    background: linear-gradient(to bottom, 
+      #e8f0ff 0%,
+      #c8dcff 48%,
+      #a8c8ff 52%,
+      #88b4ff 100%
+    );
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: #003c74 #003c74 #00275a #00275a;
+    box-shadow: 
+      inset 1px 1px 0 rgba(255, 255, 255, 0.6),
+      0 1px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 	}
+  
+  /* Close icon - X shape in white */
+  .btnXControl::before,
+  .btnXControl::after {
+    content: '';
+    position: absolute;
+    width: 11px;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 0.5px;
+    box-shadow: 
+      0 0 2px rgba(0, 0, 0, 0.8),
+      0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .btnXControl::before {
+    transform: rotate(45deg);
+  }
+  
+  .btnXControl::after {
+    transform: rotate(-45deg);
+  }
 	.btnXControl:hover{
-    filter:brightness(150%);
-    transition-duration: .2s;
-    transition-property: all;
+    /* Red background on hover */
+    background: linear-gradient(to bottom, 
+      #ffe0e0 0%,
+      #ffb0b0 48%,
+      #ff7070 52%,
+      #ff4040 100%
+    );
+    border-color: #cc0000 #cc0000 #990000 #990000;
+    box-shadow: 
+      inset 1px 1px 0 rgba(255, 255, 255, 0.7),
+      0 1px 2px rgba(0, 0, 0, 0.3);
 	}
+  
+  .btnXControl:hover::before,
+  .btnXControl:hover::after {
+    background: #ffffff;
+  }
+  .btnXControl:active{
+    background: linear-gradient(to bottom, 
+      #d96060 0%,
+      #c54040 100%
+    );
+    box-shadow: 
+      inset 1px 1px 3px rgba(0, 0, 0, 0.3);
+    border-color: #990000;
+  }
+  
+  .btnXControl:active::before,
+  .btnXControl:active::after {
+    background: #ffffff;
+  }
 
   .fullScreen{
     position: fixed;

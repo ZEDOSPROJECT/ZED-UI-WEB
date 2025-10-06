@@ -1,33 +1,64 @@
 .NetworkManager {
     position: fixed;
     bottom: 45px;
-    right: 0;
-    width: 400px;
-    height: calc( 100% - 600px );
-    padding: 10px;
-    background-color: rgba(179, 179, 179, 0.575);
-    border-radius: 10px;
-    margin: 10px;
-    transition-duration: 0.8s;
-    transition-property: all;
+    right: 5px;
+    width: 350px;
+    max-height: 450px;
+    background: linear-gradient(to bottom, #f9f9f9 0%, #ffffff 100%);
+    border: 1px solid #5a8ac6;
+    border-radius: 8px;
+    box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+        0 4px 20px rgba(0, 0, 0, 0.25),
+        0 8px 40px rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    z-index: 99999;
+    transition: all 0.2s ease;
 }
 
 .NetworkManager:hover {
-    background-color: rgba(179, 179, 179, 0.945);
-    transition-duration: 0.2s;
-    transition-property: all;
+    box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset,
+        0 6px 25px rgba(0, 0, 0, 0.3),
+        0 10px 45px rgba(0, 0, 0, 0.2);
 }
 
 .NetworksList {
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffff;
     width: 100%;
-    height: 90%;
-    padding-top:2px;
-    overflow: auto;
+    max-height: 380px;
+    padding: 8px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom scrollbar for NetworksList */
+.NetworksList::-webkit-scrollbar {
+    width: 8px;
+}
+
+.NetworksList::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+.NetworksList::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #c4d7eb 0%, #9fb8d3 100%);
+    border-radius: 4px;
+    border: 1px solid #8fa9c4;
+}
+
+.NetworksList::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #b8cfe8 0%, #8ba4c5 100%);
 }
 
 .noNetworks {
-    padding: 29px;
-    color: rgb(255, 71, 71);
+    padding: 30px;
+    color: #c53030;
     font-size: 14px;
+    text-align: center;
+    font-weight: 600;
 }
