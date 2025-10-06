@@ -1,7 +1,7 @@
 import React from "react";
 import Tab from "./Tab/Tab";
 import NewTab from './NewTab/NewTab';
-import getUUID from 'uuid';
+import { v4 as getUUID } from 'uuid';
 import "./styles.css";
 import BrowserContainer from "./BrowserContainer/BrowserContainer";
 

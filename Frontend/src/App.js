@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import getUUID from 'uuid';
+import { v4 as getUUID } from 'uuid';
 import errorSound from './Sounds/error.mp3';
 import warningSound from './Sounds/warning.mp3';
 import infoSound from './Sounds/info.mp3';

@@ -6,7 +6,6 @@
   "dependencies": {
     "connected-react-router": "^4.4.1",
     "electron": "^11.4.8",
-    "flash-player-loader": "^1.2.0",
     "fs": "0.0.1-security",
     "history": "^4.10.1",
     "html-to-image": "^1.6.2",
@@ -16,6 +15,7 @@
     "jshint": "^2.13.0",
     "lodash": "^4.17.21",
     "npm": "^6.14.13",
+    "path-browserify": "^1.0.1",
     "react": "^16.13.1",
     "react-animated-css": "^1.2.1",
     "react-calendar": "^2.19.2",
@@ -36,6 +36,8 @@
     "react-toastify": "^4.4.3",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "timers-browserify": "^2.0.12",
+    "uuid": "^8.3.2",
     "webpack": "4.42.0"
   },
   "scripts": {
@@ -56,5 +58,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "customize-cra": "^1.0.0",
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1"
   }
 }
