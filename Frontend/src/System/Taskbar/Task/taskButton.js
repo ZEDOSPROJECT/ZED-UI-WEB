@@ -2,7 +2,8 @@ import React from 'react';
 import VUGif from './vu.gif';
 import invert from 'invert-color';
 import { Portal } from 'react-portal';
-import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
+import { ControlledMenu, MenuItem, useMenuState } from "@szhsin/react-menu";
+import '@szhsin/react-menu/dist/index.css';
 import './taskButton.css';
 import WindowPreview from './WindowPreview/WindowPreview';
 
@@ -59,7 +60,7 @@ class TaskButton extends React.Component {
             isTOP = false;
         }
 
-        if (!isTOP) {
+        if (!isTOP && currentTitle && typeof currentTitle === 'string') {
             if (currentTitle.indexOf("(") !== -1 && currentTitle.indexOf(")") !== -1) {
                 try {
                     notifys = Number(currentTitle.split('(').pop().split(')')[0]).toString();
@@ -78,43 +79,81 @@ class TaskButton extends React.Component {
             isPlaying = true;
         }
         return (
-            <div onMouseOver={this.mouseOver} onMouseLeave={this.mouseLeave}>
-                {this.state.showPreview ? (
-                    <WindowPreview
-                        onToggleMinimize={this.props.onToggleMinimize}
-                        uuid={this.props.uuid}
-                    />
-                ): null}
-                <ContextMenuTrigger id={"taskbar.task_" + this.props.uuid}>
-                    <div title={currentTitle} onClick={e => this.props.onToggleMinimize(this.props.uuid)} style={{ color: invert(window.systemColor0, true), backgroundColor: (isTOP ? "rgba(0,0,0,0.2)" : "") }} className="taskButton">
-                        {notifys !== null ? (
-                            <div>
-                                <div className="notifyAnimation"></div>
-                            </div>
-                        ) : null}
-                        {isPlaying ? (<img draggable="false" alt="" className="taskSound" src={VUGif} />) : null}
-                        <img draggable="false" alt="" className="taskIcon" src={this.props.icon} />
-                        <div className="taskTitle">{currentTitle}</div>
-                        {notifys !== null ? (
-                            <div>
-                                <div className="notifys">{notifys}</div>
-                            </div>
-                        ) : null}
-                    </div>
-                </ContextMenuTrigger>
-                <Portal>
-                    <ContextMenu id={"taskbar.task_" + this.props.uuid}>
-                        <MenuItem onClick={e => this.props.onToggleMinimize(this.props.uuid)}>
-                            Minimize
-                        </MenuItem>
-                        <MenuItem onClick={e => this.props.onClose(this.props.uuid)}>
-                            Close
-                        </MenuItem>
-                    </ContextMenu>
-                </Portal>
-            </div>
+            <TaskButtonWithContextMenu 
+                onToggleMinimize={this.props.onToggleMinimize}
+                onClose={this.props.onClose}
+                uuid={this.props.uuid}
+                icon={this.props.icon}
+                currentTitle={currentTitle}
+                notifys={notifys}
+                isPlaying={isPlaying}
+                isTOP={isTOP}
+                showPreview={this.state.showPreview}
+                mouseOver={this.mouseOver}
+                mouseLeave={this.mouseLeave}
+            />
         );
     }
+}
+
+// Wrapper funcional para usar o hook useMenuState
+function TaskButtonWithContextMenu(props) {
+    const [menuState, toggleMenu] = useMenuState({ unmountOnClose: true });
+    const [anchorPoint, setAnchorPoint] = React.useState({ x: 0, y: 0 });
+
+    const handleContextMenu = (e) => {
+        e.preventDefault();
+        setAnchorPoint({ x: e.clientX, y: e.clientY });
+        toggleMenu(true);
+    };
+
+    return (
+        <div onMouseOver={props.mouseOver} onMouseLeave={props.mouseLeave}>
+            {props.showPreview ? (
+                <WindowPreview
+                    onToggleMinimize={props.onToggleMinimize}
+                    uuid={props.uuid}
+                />
+            ): null}
+            <div 
+                title={props.currentTitle} 
+                onClick={(e) => {props.onToggleMinimize(props.uuid)}} 
+                onContextMenu={handleContextMenu}
+                style={{ 
+                    color: invert(window.systemColor0, true), 
+                    backgroundColor: (props.isTOP ? "rgba(0,0,0,0.2)" : "") 
+                }} 
+                className="taskButton"
+            >
+                {props.notifys !== null ? (
+                    <div>
+                        <div className="notifyAnimation"></div>
+                    </div>
+                ) : null}
+                {props.isPlaying ? (<img draggable="false" alt="" className="taskSound" src={VUGif} />) : null}
+                <img draggable="false" alt="" className="taskIcon" src={props.icon} />
+                <div className="taskTitle">{props.currentTitle}</div>
+                {props.notifys !== null ? (
+                    <div>
+                        <div className="notifys">{props.notifys}</div>
+                    </div>
+                ) : null}
+            </div>
+            
+            <ControlledMenu 
+                {...menuState} 
+                anchorPoint={anchorPoint}
+                onClose={() => toggleMenu(false)}
+            >
+                <MenuItem onClick={(e) => {props.onToggleMinimize(props.uuid); toggleMenu(false);}}>
+                    Minimize
+                </MenuItem>
+                <MenuItem onClick={(e) => {props.onClose(props.uuid); toggleMenu(false);}}>
+                    Close
+                </MenuItem>
+            </ControlledMenu>
+        </div>
+    );
 }
 
 export default TaskButton;

@@ -21,7 +21,7 @@ export default class WindowPreview extends React.Component {
         return(<div
                 style={{ zIndex: window.maxZIndex,backgroundColor: this.convertHex(window.systemColor0, 90) }}
                 className="WindowPreview"
-                onClick={e => this.props.onToggleMinimize(this.props.uuid)}
+                onClick={(e) => {this.props.onToggleMinimize(this.props.uuid)}}
                 >
             <img
                 alt=""

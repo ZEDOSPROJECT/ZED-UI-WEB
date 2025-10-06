@@ -1,7 +1,6 @@
 import React from 'react';
 import invert from 'invert-color';
 import * as htmlToImage from 'html-to-image';
-import isElectron from 'is-electron';
 import onClickOutside from 'react-onclickoutside';
 import { Rnd } from "react-rnd";
 import CCLOSE from './CLOSE.png';
@@ -49,6 +48,7 @@ class Window extends React.PureComponent {
         this.state = {
             WindowFreez: false,
             url: this.props.url,
+            name: this.props.title || "Window",
             modalIsOpen: true,
             draggable: false,
             uuid: this.props.uuid,
@@ -80,7 +80,7 @@ class Window extends React.PureComponent {
         };
         this.windowRef = React.createRef();
         setTimeout(() => {
-            if (window.winTitle[this.state.uuid].includes("Copy")) {
+            if (window.winTitle[this.state.uuid] && typeof window.winTitle[this.state.uuid] === 'string' && window.winTitle[this.state.uuid].includes("Copy")) {
                 this.setState({ notResiable: true });
             }
             this.setState({ myStyle: "window shadow" });
@@ -119,15 +119,14 @@ class Window extends React.PureComponent {
                         console.error('oops, something went wrong!', error);
                     });
                 }else{
-                    if(isElectron){
-                        if(this.webview){
-                            this.webview.capturePage().then((value)=> {
-                                let temp=value.toDataURL(0.1);
-                                if(temp!=="data:image/png;base64," && temp!==""){
-                                    sessionStorage["w_WINDOW_"+this.state.uuid]=temp;
-                                }
-                            });
-                        }
+                    // Use webview capture (Electron-based)
+                    if(this.webview){
+                        this.webview.capturePage().then((value)=> {
+                            let temp=value.toDataURL(0.1);
+                            if(temp!=="data:image/png;base64," && temp!==""){
+                                sessionStorage["w_WINDOW_"+this.state.uuid]=temp;
+                            }
+                        });
                     }
                 }
             }
@@ -401,27 +400,21 @@ class Window extends React.PureComponent {
             isPlaying = true;
         }
         if (!systemWindow) {
-            if (!isElectron()) {
-                WindowContent = (<iframe
-                                    title={window.winTitle[this.state.uuid]}
-                                    onLoad={this.onTitleChange}
-                                    className="frame dontMove"
-                                    onError={this.onErrorFRAME}
-                                    src={this.state.url}>
-                                </iframe>);
-            } else {
-                WindowContent = (<webview
-                                    preload={preload}
-                                    ref={(input) => { this.webview = input; }}
-                                    onLoad={this.onTitleChange}
-                                    useragent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36"
-                                    className="frame dontMove"
-                                    onError={this.onErrorFRAME}
-                                    src={this.state.url}
-                                    plugins="true"
-                                    allowpopups="true">
-                                </webview>);
-            }
+            // Use webview for all cases (Electron-based approach)
+            WindowContent = (<webview
+                                preload={preload}
+                                ref={(input) => { this.webview = input; }}
+                                onLoad={() => {
+                                    // Initialize with app name, webview title will be updated via event listener
+                                    this.onTitleChange(this.state.name);
+                                }}
+                                useragent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36"
+                                className="frame dontMove"
+                                onError={this.onErrorFRAME}
+                                src={this.state.url}
+                                plugins="true"
+                                allowpopups="true">
+                            </webview>);
         } else {
             const url = this.state.url;
             const params = url.split("|");
@@ -524,14 +517,14 @@ class Window extends React.PureComponent {
                             {isPlaying ? (<img draggable="false" alt="" className="bgUv" src={VUGif} />) : null}
                             <div onClick={this.sendToFront} onDoubleClick={this.onToggleWindow} className="titleBar" >
                                 <div style={{ maxHeight: 20, width: 20 }} className="appIcon"><img draggable="false" alt="" className="appIcon" src={this.props.icon}></img></div>
-                                <div className="appTitle" style={{ color: invert(window.systemColor1, true) }}>{window.winTitle[this.state.uuid]}</div>
+                                <div className="appTitle" style={{ color: invert(window.systemColor1, true) }}>{window.winTitle[this.state.uuid] || "Window"}</div>
                                 <div style={{ width: 150 }} className="appControls">
                                     <img draggable="false" alt="" className="btnXControl dontMove" onClick={this.onClose} src={CCLOSE} ></img>
                                     <img draggable="false" alt="" className="btnControl dontMove" onClick={this.onToggleWindow} src={(this.state.maximized ? CRESTORE : CMAXIMIZE)}></img>
                                     <img draggable="false" alt="" className="btnControl dontMove" onClick={this.onToggleMinimize} src={CMINIMIZE}></img>
                                 </div>
                             </div>
-                            <div ref={this.windowRef} onMouseDown={e => e.stopPropagation()} className={finalBodyStyle}>
+                            <div ref={this.windowRef} onMouseDown={(e) => {e.stopPropagation()}} className={finalBodyStyle}>
                                 {WindowContent}
                                 {this.state.active ?
                                     null

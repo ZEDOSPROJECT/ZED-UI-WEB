@@ -1,6 +1,7 @@
 import React from "react";
 import { Portal } from 'react-portal';
-import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
+import { ControlledMenu, MenuItem, useMenuState } from "@szhsin/react-menu";
+import '@szhsin/react-menu/dist/index.css';
 import mime from 'mime-types';
 import ToolBar from "./ToolBar/toolBar";
 import Explorer from "./Explorer/explorer";
@@ -504,46 +505,25 @@ class FileManager extends React.Component {
           onSearchModeChange={this.onSearchModeChange}
           onSearchGo={this.onSearchGo}
         />
-        <ContextMenuTrigger id="fileManager.explorer.container">
-          <Explorer
-            mainType={this.state.mainType}
-            currentPath={this.state.currentPath}
-            onIClick={this.onIClick}
-            onRClick={this.onRClick}
-            selected={this.state.selected}
-            listDir={this.state.listDir}
-            searchListDir={this.state.searchListDir}
-            devices={this.state.devices}
-            onRenameOpen={this.onRenameOpen}
-            onRemoveOpen={this.onRemoveOpen}
-            onCopy={this.onCopy}
-            onOpen={this.onOpen}
-            onShowProprieties={this.onShowProprieties}
-            searchMode={this.state.searchMode}
-            isReady={this.state.ready}
-          />
-        </ContextMenuTrigger>
-        {
-          this.state.currentPath !== "My Computer" ? (
-            <Portal>
-              <ContextMenu id="fileManager.explorer.container">
-                <MenuItem onClick={this.onCreateFolderOpen}>
-                  <b>New Folder</b>
-                </MenuItem>
-                <MenuItem divider />
-                {window.clipBoard !== "" ? (
-                  <MenuItem onClick={this.onPaste}>
-                    Paste
-                  </MenuItem>
-                ) : null}
-                <MenuItem divider />
-                <MenuItem onClick={this.onShowProprieties}>
-                  Proprieties
-                </MenuItem>
-              </ContextMenu>
-            </Portal>
-          ) : null
-        }
+        <ExplorerContainerWithContextMenu 
+          currentPath={this.state.currentPath}
+          mainType={this.state.mainType}
+          onIClick={this.onIClick}
+          onRClick={this.onRClick}
+          selected={this.state.selected}
+          listDir={this.state.listDir}
+          searchListDir={this.state.searchListDir}
+          devices={this.state.devices}
+          onRenameOpen={this.onRenameOpen}
+          onRemoveOpen={this.onRemoveOpen}
+          onCopy={this.onCopy}
+          onOpen={this.onOpen}
+          onShowProprieties={this.onShowProprieties}
+          searchMode={this.state.searchMode}
+          isReady={this.state.ready}
+          onCreateFolderOpen={this.onCreateFolderOpen}
+          onPaste={this.onPaste}
+        />
         <StatusBar
           items={this.state.listDir}
           isReady={this.state.ready}
@@ -580,6 +560,62 @@ class FileManager extends React.Component {
     );
   }
     
+}
+
+// Wrapper funcional para usar o hook useMenuState no container do Explorer
+function ExplorerContainerWithContextMenu(props) {
+  const [menuState, toggleMenu] = useMenuState({ unmountOnClose: true });
+  const [anchorPoint, setAnchorPoint] = React.useState({ x: 0, y: 0 });
+
+  const handleContextMenu = (e) => {
+    e.preventDefault();
+    setAnchorPoint({ x: e.clientX, y: e.clientY });
+    toggleMenu(true);
+  };
+
+  return (
+    <div onContextMenu={handleContextMenu}>
+      <Explorer
+        mainType={props.mainType}
+        currentPath={props.currentPath}
+        onIClick={props.onIClick}
+        onRClick={props.onRClick}
+        selected={props.selected}
+        listDir={props.listDir}
+        searchListDir={props.searchListDir}
+        devices={props.devices}
+        onRenameOpen={props.onRenameOpen}
+        onRemoveOpen={props.onRemoveOpen}
+        onCopy={props.onCopy}
+        onOpen={props.onOpen}
+        onShowProprieties={props.onShowProprieties}
+        searchMode={props.searchMode}
+        isReady={props.isReady}
+      />
+      
+      {props.currentPath !== "My Computer" && (
+        <ControlledMenu 
+          {...menuState} 
+          anchorPoint={anchorPoint}
+          onClose={() => toggleMenu(false)}
+        >
+          <MenuItem onClick={(e) => {props.onCreateFolderOpen(e); toggleMenu(false);}}>
+            <b>New Folder</b>
+          </MenuItem>
+          <MenuItem type="separator" />
+          {window.clipBoard !== "" && (
+            <MenuItem onClick={(e) => {props.onPaste(e); toggleMenu(false);}}>
+              Paste
+            </MenuItem>
+          )}
+          <MenuItem type="separator" />
+          <MenuItem onClick={(e) => {props.onShowProprieties(e); toggleMenu(false);}}>
+            Properties
+          </MenuItem>
+        </ControlledMenu>
+      )}
+    </div>
+  );
 }
 
 export default FileManager;

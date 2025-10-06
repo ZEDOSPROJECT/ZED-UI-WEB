@@ -1,6 +1,7 @@
 import React from "react";
 import { Portal } from 'react-portal';
-import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
+import { ControlledMenu, MenuItem, useMenuState } from "@szhsin/react-menu";
+import '@szhsin/react-menu/dist/index.css';
 import Icon from "./Icon/icon";
 import mimeMusic from './types/music.png';
 import mimeVideo from './types/video.png';
@@ -107,34 +108,12 @@ class Explorer extends React.Component {
     }
 
     if(this.props.isReady){
-      return (<div className="fExplorer">
-        <img className="typeF" draggable="false" alt="" src={currentType} />
-        <ContextMenuTrigger id="fileManager.explorer.files">
-          {indents}
-        </ContextMenuTrigger>
-        <Portal>
-          <ContextMenu id="fileManager.explorer.files">
-            <MenuItem onClick={this.props.onOpen}>
-              <b>Open</b>
-            </MenuItem>
-            <MenuItem divider />
-            <MenuItem onClick={this.props.onCopy}>
-              Copy
-                  </MenuItem>
-            <MenuItem onClick={this.props.onRenameOpen}>
-              Rename
-                  </MenuItem>
-            <MenuItem divider />
-            <MenuItem onClick={this.props.onRemoveOpen}>
-              Delete
-                  </MenuItem>
-            <MenuItem divider />
-            <MenuItem onClick={this.props.onShowProprieties}>
-              Proprieties
-                  </MenuItem>
-          </ContextMenu>
-        </Portal>
-      </div>
+      return (
+        <ExplorerWithContextMenu 
+          {...this.props}
+          currentType={currentType}
+          indents={indents}
+        />
       );
     }else{
       return <div>
@@ -142,6 +121,52 @@ class Explorer extends React.Component {
       </div>;
     }    
   }
+}
+
+// Wrapper funcional para usar o hook useMenuState
+function ExplorerWithContextMenu(props) {
+  const [menuState, toggleMenu] = useMenuState({ unmountOnClose: true });
+  const [anchorPoint, setAnchorPoint] = React.useState({ x: 0, y: 0 });
+
+  const handleContextMenu = (e) => {
+    e.preventDefault();
+    setAnchorPoint({ x: e.clientX, y: e.clientY });
+    toggleMenu(true);
+  };
+
+  return (
+    <div className="fExplorer">
+      <img className="typeF" draggable="false" alt="" src={props.currentType} />
+      <div onContextMenu={handleContextMenu}>
+        {props.indents}
+      </div>
+      
+      <ControlledMenu 
+        {...menuState} 
+        anchorPoint={anchorPoint}
+        onClose={() => toggleMenu(false)}
+      >
+        <MenuItem onClick={(e) => {props.onOpen(e); toggleMenu(false);}}>
+          <b>Open</b>
+        </MenuItem>
+        <MenuItem type="separator" />
+        <MenuItem onClick={(e) => {props.onCopy(e); toggleMenu(false);}}>
+          Copy
+        </MenuItem>
+        <MenuItem onClick={(e) => {props.onRenameOpen(e); toggleMenu(false);}}>
+          Rename
+        </MenuItem>
+        <MenuItem type="separator" />
+        <MenuItem onClick={(e) => {props.onRemoveOpen(e); toggleMenu(false);}}>
+          Delete
+        </MenuItem>
+        <MenuItem type="separator" />
+        <MenuItem onClick={(e) => {props.onShowProprieties(e); toggleMenu(false);}}>
+          Properties
+        </MenuItem>
+      </ControlledMenu>
+    </div>
+  );
 }
 
 export default Explorer;

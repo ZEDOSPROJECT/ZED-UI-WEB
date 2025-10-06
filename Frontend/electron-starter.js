@@ -13,14 +13,16 @@ function createWindow() {
     height: 600,
     fullscreen: true,
     kiosk: true,
-    'webPreferences': {
-      "plugins": false,
-      "webSecurity": true,
-      "webgl": true,
-      "nodeIntegration": true,
-      "allowDisplayingInsecureContent": true,
-      "scrollBounce": false,
-      "webviewTag": true
+    webPreferences: {
+      plugins: false,
+      webSecurity: true,
+      webgl: true,
+      nodeIntegration: false, // Melhor segurança
+      contextIsolation: true, // Melhor segurança
+      enableRemoteModule: false, // Melhor segurança
+      allowDisplayingInsecureContent: true,
+      scrollBounce: false,
+      webviewTag: true
     }
   })
   win.setMenu(null);
