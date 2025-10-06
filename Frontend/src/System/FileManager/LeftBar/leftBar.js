@@ -56,11 +56,11 @@ class LeftBar extends React.Component {
                     ) : null
                 }
                 <Combo title="Other Places" open >
-                    <div className="link" onClick={data => this.props.listFolder("My Computer")}><img draggable="false" alt="" src={myComputer} className="miniIcon"></img>My Computer</div>
-                    <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["music"])}><img draggable="false" alt="" src={myMusic} className="miniIcon"></img>My Music</div>
-                    <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["picture"])}><img draggable="false" alt="" src={myPictures} className="miniIcon"></img>My Pictures</div>
-                    <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["videos"])}><img draggable="false" alt="" src={myVideos} className="miniIcon"></img>My Videos</div>
-                    <div className="link" onClick={data => this.props.listFolder(this.props.userDirs["documents"])}><img draggable="false" alt="" src={myDocuments} className="miniIcon"></img>My Documents</div>
+                    <div className="link" onClick={(data) => {this.props.listFolder("My Computer")}}><img draggable="false" alt="" src={myComputer} className="miniIcon"></img>My Computer</div>
+                    <div className="link" onClick={(data) => {this.props.listFolder(this.props.userDirs["music"])}}><img draggable="false" alt="" src={myMusic} className="miniIcon"></img>My Music</div>
+                    <div className="link" onClick={(data) => {this.props.listFolder(this.props.userDirs["picture"])}}><img draggable="false" alt="" src={myPictures} className="miniIcon"></img>My Pictures</div>
+                    <div className="link" onClick={(data) => {this.props.listFolder(this.props.userDirs["videos"])}}><img draggable="false" alt="" src={myVideos} className="miniIcon"></img>My Videos</div>
+                    <div className="link" onClick={(data) => {this.props.listFolder(this.props.userDirs["documents"])}}><img draggable="false" alt="" src={myDocuments} className="miniIcon"></img>My Documents</div>
                 </Combo>
                 {this.props.details && !this.props.saveDialog ? (
                     <Combo title="Details" open>{this.props.details}</Combo>

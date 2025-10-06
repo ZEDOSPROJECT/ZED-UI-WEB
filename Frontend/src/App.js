@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import getUUID from 'uuid';
+import { v4 as getUUID } from 'uuid';
 import errorSound from './Sounds/error.mp3';
 import warningSound from './Sounds/warning.mp3';
 import infoSound from './Sounds/info.mp3';
@@ -16,7 +16,6 @@ import ShutdownDLG from './System/SystemDialogs/Shutdown/Shutdown'
 import FirstBOOT from './FIRSTBOOT.jpg';
 import { REST_URL } from './REST_URL';
 import './App.css';
-import { setTimeout } from 'timers';
 
 
 class App extends Component {
@@ -43,7 +42,7 @@ class App extends Component {
         window.systemColor0 = "#06001E";
         window.systemColor1 = "#06001E";
         window.maxZIndex = 1;
-        window.winTitle = [];
+        window.winTitle = {}; // Fixed: changed from array to object
         window.ZED_RUN = null;
         window.autoGradient = false;
         window.gradientEffect = false;
@@ -88,8 +87,10 @@ class App extends Component {
                 this.loadUserSettings();
             }else{
                 for (var key in window.winTitle) {
-                    if (window.winTitle[key] === "Control Panel" || window.winTitle[key].includes("- ZED Picture Viewer")) {
-                        this.loadUserSettings();
+                    if (window.winTitle[key] && typeof window.winTitle[key] === 'string') {
+                        if (window.winTitle[key] === "Control Panel" || window.winTitle[key].includes("- ZED Picture Viewer")) {
+                            this.loadUserSettings();
+                        }
                     }
                 }
             }
@@ -383,12 +384,16 @@ class App extends Component {
 
     createWindow(url, title, icon, windowSize, systemWindow) {
         const uuid = getUUID();
+        // Initialize the title BEFORE creating the component
+        window.winTitle[uuid] = title;
+        
         var newList = this.state.openedWindows;
         newList.push({
             'UUID': uuid, 'WINDOW': (
                 <Window
                     userDirs={this.state.userPaths}
                     url={url}
+                    title={title}
                     systemWindow={systemWindow}
                     icon={icon}
                     windowSize={windowSize}
@@ -404,7 +409,7 @@ class App extends Component {
                 />
             ), 'VISIBLE': true
         });
-        window.winTitle[uuid] = title;
+        // Removed duplicate title assignment that was too late
         let newX = this.state.nextWindowX;
         let newY = this.state.nextWindowY;
         const plusNewPosition = 35;

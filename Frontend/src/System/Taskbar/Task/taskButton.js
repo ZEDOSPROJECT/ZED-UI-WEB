@@ -59,7 +59,7 @@ class TaskButton extends React.Component {
             isTOP = false;
         }
 
-        if (!isTOP) {
+        if (!isTOP && currentTitle && typeof currentTitle === 'string') {
             if (currentTitle.indexOf("(") !== -1 && currentTitle.indexOf(")") !== -1) {
                 try {
                     notifys = Number(currentTitle.split('(').pop().split(')')[0]).toString();
@@ -86,7 +86,7 @@ class TaskButton extends React.Component {
                     />
                 ): null}
                 <ContextMenuTrigger id={"taskbar.task_" + this.props.uuid}>
-                    <div title={currentTitle} onClick={e => this.props.onToggleMinimize(this.props.uuid)} style={{ color: invert(window.systemColor0, true), backgroundColor: (isTOP ? "rgba(0,0,0,0.2)" : "") }} className="taskButton">
+                    <div title={currentTitle} onClick={(e) => {this.props.onToggleMinimize(this.props.uuid)}} style={{ color: invert(window.systemColor0, true), backgroundColor: (isTOP ? "rgba(0,0,0,0.2)" : "") }} className="taskButton">
                         {notifys !== null ? (
                             <div>
                                 <div className="notifyAnimation"></div>
@@ -104,10 +104,10 @@ class TaskButton extends React.Component {
                 </ContextMenuTrigger>
                 <Portal>
                     <ContextMenu id={"taskbar.task_" + this.props.uuid}>
-                        <MenuItem onClick={e => this.props.onToggleMinimize(this.props.uuid)}>
+                        <MenuItem onClick={(e) => {this.props.onToggleMinimize(this.props.uuid)}}>
                             Minimize
                         </MenuItem>
-                        <MenuItem onClick={e => this.props.onClose(this.props.uuid)}>
+                        <MenuItem onClick={(e) => {this.props.onClose(this.props.uuid)}}>
                             Close
                         </MenuItem>
                     </ContextMenu>

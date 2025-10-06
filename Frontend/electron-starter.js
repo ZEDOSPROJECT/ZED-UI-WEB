@@ -1,8 +1,6 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const url = require('url')
-let pluginName = '/PepperFlashPlayer-linux.so';
-require('flash-player-loader').addSource(__dirname + pluginName).load();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -15,14 +13,16 @@ function createWindow() {
     height: 600,
     fullscreen: true,
     kiosk: true,
-    'webPreferences': {
-      "plugins": true,
-      "webSecurity": true,
-      "webgl": true,
-      "nodeIntegration": true,
-      "allowDisplayingInsecureContent": true,
-      "scrollBounce": false,
-      "webviewTag": true
+    webPreferences: {
+      plugins: false,
+      webSecurity: true,
+      webgl: true,
+      nodeIntegration: false, // Melhor segurança
+      contextIsolation: true, // Melhor segurança
+      enableRemoteModule: false, // Melhor segurança
+      allowDisplayingInsecureContent: true,
+      scrollBounce: false,
+      webviewTag: true
     }
   })
   win.setMenu(null);

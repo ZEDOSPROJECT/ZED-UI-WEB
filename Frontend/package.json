@@ -4,9 +4,7 @@
   "private": true,
   "main": "electron-starter.js",
   "dependencies": {
-    "connected-react-router": "^4.4.1",
-    "electron": "^11.4.8",
-    "flash-player-loader": "^1.2.0",
+    "connected-react-router": "^6.9.3",
     "fs": "0.0.1-security",
     "history": "^4.10.1",
     "html-to-image": "^1.6.2",
@@ -16,13 +14,15 @@
     "jshint": "^2.13.0",
     "lodash": "^4.17.21",
     "npm": "^6.14.13",
-    "react": "^16.13.1",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "react": "^18.0.0",
     "react-animated-css": "^1.2.1",
     "react-calendar": "^2.19.2",
     "react-contextmenu": "^2.14.0",
     "react-detect-offline": "2.1.2",
     "react-device-detect": "^1.17.0",
-    "react-dom": "^16.13.1",
+    "react-dom": "^18.0.0",
     "react-godot": "^1.0.0",
     "react-lazy-load-image-component": "^1.5.1",
     "react-modal-resizable-draggable": "^0.1.5",
@@ -32,15 +32,16 @@
     "react-redux": "^7.2.1",
     "react-rnd": "^9.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "^5.0.0",
     "react-toastify": "^4.4.3",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "webpack": "4.42.0"
+    "uuid": "^8.3.2",
+    "electron": "^32.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "craco start",
+    "build": "craco build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "electron": "electron . --ignore-cpu-blacklist"
@@ -56,5 +57,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.1.0",
+    "buffer": "^6.0.3",
+    "customize-cra": "^1.0.0",
+    "electron-builder": "^21.2.0",
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1"
   }
 }

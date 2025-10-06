@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from './Icon/icon';
-import getUUID from 'uuid';
+import { v4 as getUUID } from 'uuid';
 import './desktopIcons.css';
 
 class DesktopIcons extends React.Component {
