@@ -76,7 +76,7 @@ class appCard extends React.Component{
             if(finalIR === "true"){
                 return(
                     <div>
-                        <div onClick={(event) => (this.props.onClickApp(event,REST_URL+"/APPS/"+appName+"/",appName,REST_URL+"/APPS/"+appName+"/favicon.png",windowSize,false))} className="appCard">
+                        <div onClick={(event) => {this.props.onClickApp(event,REST_URL+"/APPS/"+appName+"/",appName,REST_URL+"/APPS/"+appName+"/favicon.png",windowSize,false)}} className="appCard">
                             <img draggable="false" alt="" style={{ color: invert(window.systemColor0, true)}} className="appCardIcon" src={appIcon}  /><div className="appCardTitle">{appName} </div>
                         </div>
                         <div onClick={this.addToFavorites} className="addToDeskop"><img draggable="false" alt="" className={style} src={favorite}/></div>
@@ -95,7 +95,7 @@ class appCard extends React.Component{
         }else{
             return(
                 <div>
-                    <div onClick={(event) => (this.props.onClickApp(event,REST_URL+"/APPS/"+appName+"/",appName,REST_URL+"/APPS/"+appName+"/favicon.png",windowSize,false))} className="appCard">
+                    <div onClick={(event) => {this.props.onClickApp(event,REST_URL+"/APPS/"+appName+"/",appName,REST_URL+"/APPS/"+appName+"/favicon.png",windowSize,false)}} className="appCard">
                         <img draggable="false" alt="" style={{ color: invert(window.systemColor0, true)}} className="appCardIcon" src={appIcon}  /><div className="appCardTitle">{appName} </div>
                     </div>
                     <div onClick={this.addToFavorites} className="addToDeskop"><img draggable="false" alt="" className={style} src={favorite}/></div>
